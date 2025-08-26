@@ -11,7 +11,7 @@
   <!-- Main Content Card -->
   <div class="bg-white rounded-lg shadow-lg overflow-hidden">
     <!-- Header Section -->
-    <%= render 'shared/page_header', title: 'The Kluster', subtitle: 'Our development and testing facility' %>
+    <%= render 'shared/page_header', title: 'The Kluster', subtitle: "To quote a friend, 'This is way too much effort for Christmas Lights'" %>
 
     <!-- Content Section -->
     <div class="px-8 py-8">
@@ -20,8 +20,54 @@
           <h2 class="text-3xl font-bold text-gray-900 mb-6">The Kluster</h2>
 
           <p class="text-lg text-gray-700 mb-6">
-            The Kluster is our state-of-the-art development and testing facility where we design, prototype, and validate all Baldrick products before they reach our customers.
+            The Kluster is our state-of-the-art development and testing system where we design, prototype, and validate all Baldrick products before they reach our customers. But it didn't start that way - it began with a customer's problem and some old plywood.
           </p>
+
+          <div class="mb-8">
+            <img src="/img/kluster-inprocess.jpeg" alt="The Kluster development system showing multiple Baldrick boards mounted on wooden framework" class="w-2/3 mx-auto rounded-lg shadow-lg cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-xl" onclick="openImageModal(this.src, this.alt)">
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">How The Kluster Came About</h3>
+
+          <p class="text-gray-700 mb-4">
+            The story of The Kluster begins with one of our customers who was having issues with 15 <a href="/boards/baldrick8" class="text-blue-600 hover:text-blue-800 underline">Baldrick8 boards</a> on a large mega tree. When Dom heard about the problem, he knew he needed a way to replicate and test the setup to understand what was going wrong.
+          </p>
+          <p class="text-gray-700 mb-6">
+            So Dom took some old plywood he had received, cut up a load of positive and negative cables, found 24 Baldrick boards and added a pixel to each. This simple setup became the foundation of what we now call The Kluster.
+          </p>
+
+          <div class="mb-8">
+            <img src="/img/kluster-old.png" alt="Early version of The Kluster with Baldrick boards mounted on plywood with basic wiring" class="w-2/3 mx-auto rounded-lg shadow-lg cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-xl" onclick="openImageModal(this.src, this.alt)">
+            <p class="text-sm text-gray-500 mt-2 text-center">The early days - Baldrick boards mounted on plywood with basic power distribution</p>
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Evolution: From Simple Testing to Smart Monitoring</h3>
+
+          <p class="text-gray-700 mb-4">
+            After fixing some pixel issues, we then expanded The Kluster to have a monitoring system called Edmund which monitors all development data from the boards and allows us to test new features for issues.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Being a remote team, we wanted the ability to press buttons and turn off boards without someone physically present, so The Kluster and Edmund were expanded to manage relays and have an API for end-to-end testing.
+          </p>
+          <p class="text-gray-700 mb-6">
+            Today, Edmund and The Kluster now do pixel color monitoring, allowing us to track and analyze the performance of individual pixels across all our test boards in real-time.
+          </p>
+
+          <div class="mb-8">
+            <img src="/img/kluster-two.png" alt="Current Kluster setup showing multiple KLUSTER boards with glowing green LEDs in a grid arrangement" class="w-2/3 mx-auto rounded-lg shadow-lg cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-xl" onclick="openImageModal(this.src, this.alt)">
+            <p class="text-sm text-gray-500 mt-2 text-center">The current Kluster setup with multiple KLUSTER boards and monitoring systems</p>
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">The Kluster Today</h3>
+
+          <p class="text-gray-700 mb-6">
+            The Kluster now has instances of every board and revision in the Baldrick family (and a few not yet released) and is still under continuous development. We've recently upgraded Dom's old plywood for some good-looking laser cut mounts and we've got some custom PCBs on the way to help us monitor a bit more.
+          </p>
+
+          <div class="mb-8">
+            <img src="/img/kluster single.png" alt="Single KLUSTER board showing detailed components and connections" class="w-2/3 mx-auto rounded-lg shadow-lg cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-xl" onclick="openImageModal(this.src, this.alt)">
+            <p class="text-sm text-gray-500 mt-2 text-center">A single KLUSTER board showing the detailed components and monitoring capabilities</p>
+          </div>
 
           <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-8">
             <div class="flex">
@@ -32,75 +78,81 @@
               </div>
               <div class="ml-3">
                 <p class="text-sm text-green-700">
-                  <strong>Quality Assurance:</strong> Every Baldrick product undergoes rigorous testing in The Kluster before release.
+                  <strong>Continuous Innovation:</strong> The Kluster is constantly evolving, from simple plywood mounts to sophisticated monitoring systems.
                 </p>
               </div>
             </div>
           </div>
 
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">What is The Kluster?</h3>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Edmund: Our Smart Monitoring System</h3>
 
           <p class="text-gray-700 mb-6">
-            The Kluster is more than just a workshop - it's our innovation hub where ideas become reality. Named for its cluster of development stations and testing equipment, this facility houses everything we need to bring Baldrick products from concept to production.
+            Edmund is the brain behind The Kluster - our custom monitoring system that tracks everything from power consumption to pixel performance. It allows our remote team to:
           </p>
-
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">Facility Features</h3>
 
           <div class="grid md:grid-cols-2 gap-6 mb-8">
             <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
-              <h4 class="text-xl font-semibold text-gray-900 mb-3">Development Lab</h4>
+              <h4 class="text-xl font-semibold text-gray-900 mb-3">Remote Control</h4>
               <ul class="space-y-2 text-gray-700">
-                <li>• PCB design and prototyping</li>
-                <li>• 3D printing and CNC machining</li>
-                <li>• Component testing and validation</li>
-                <li>• Firmware development stations</li>
+                <li>• Power boards on/off remotely</li>
+                <li>• Monitor real-time performance</li>
+                <li>• Test new firmware features</li>
+                <li>• Debug issues from anywhere</li>
               </ul>
             </div>
 
             <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
-              <h4 class="text-xl font-semibold text-gray-900 mb-3">Testing Environment</h4>
+              <h4 class="text-xl font-semibold text-gray-900 mb-3">Data Collection</h4>
               <ul class="space-y-2 text-gray-700">
-                <li>• Environmental stress testing</li>
-                <li>• Performance benchmarking</li>
-                <li>• Long-term reliability testing</li>
-                <li>• Real-world simulation setups</li>
+                <li>• Track power consumption</li>
+                <li>• Monitor temperature and performance</li>
+                <li>• Log error conditions</li>
+                <li>• Generate test reports</li>
               </ul>
             </div>
           </div>
 
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Development Process</h3>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">What We Test</h3>
+
+          <p class="text-gray-700 mb-6">
+            The Kluster houses every Baldrick board variant, allowing us to test new features across our entire product line before release. This ensures that when you buy a Baldrick product, it's been thoroughly tested in real-world conditions.
+          </p>
 
           <div class="space-y-6 mb-8">
             <div class="bg-white border border-gray-200 rounded-lg p-6">
-              <h4 class="text-lg font-semibold text-gray-900 mb-3">1. Concept & Design</h4>
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Hardware Testing</h4>
               <p class="text-gray-700">
-                Every product starts with a concept. We brainstorm, sketch, and design solutions to real problems faced by lighting enthusiasts.
+                Every board revision is tested for power efficiency, thermal performance, and reliability under various load conditions.
               </p>
             </div>
 
             <div class="bg-white border border-gray-200 rounded-lg p-6">
-              <h4 class="text-lg font-semibold text-gray-900 mb-3">2. Prototyping</h4>
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Firmware Validation</h4>
               <p class="text-gray-700">
-                We build multiple prototypes, testing different approaches and refining the design based on real-world feedback.
+                New firmware features are tested across all board variants to ensure compatibility and performance.
               </p>
             </div>
 
             <div class="bg-white border border-gray-200 rounded-lg p-6">
-              <h4 class="text-lg font-semibold text-gray-900 mb-3">3. Testing & Validation</h4>
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Real-World Simulation</h4>
               <p class="text-gray-700">
-                Every prototype undergoes extensive testing in various conditions to ensure reliability and performance.
+                We simulate actual customer setups to catch issues before they reach our customers.
               </p>
             </div>
 
             <div class="bg-white border border-gray-200 rounded-lg p-6">
-              <h4 class="text-lg font-semibold text-gray-900 mb-3">4. Production Preparation</h4>
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Long-term Reliability</h4>
               <p class="text-gray-700">
-                Once validated, we prepare for production, ensuring quality control and consistency across all units.
+                Boards run continuously to ensure they can handle the demands of seasonal lighting displays.
               </p>
             </div>
           </div>
 
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">Equipment & Capabilities</h3>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">The Future of The Kluster</h3>
+
+          <p class="text-gray-700 mb-6">
+            We're constantly improving The Kluster. Our latest upgrades include laser-cut mounting systems and custom PCBs designed specifically for monitoring and testing. These improvements help us test more thoroughly and catch issues faster.
+          </p>
 
           <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
             <div class="flex">
@@ -111,61 +163,62 @@
               </div>
               <div class="ml-3">
                 <p class="text-sm text-blue-700">
-                  <strong>State-of-the-Art Equipment:</strong> The Kluster is equipped with the latest tools and technology for product development.
+                  <strong>Always Evolving:</strong> From plywood to laser-cut mounts, The Kluster continues to grow and improve with every iteration.
                 </p>
               </div>
             </div>
           </div>
 
-          <div class="grid md:grid-cols-3 gap-4 mb-8">
-            <div class="text-center">
-              <div class="bg-gray-100 rounded-lg p-4 mb-3">
-                <svg class="h-12 w-12 mx-auto text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"></path>
-                </svg>
-              </div>
-              <h5 class="font-semibold text-gray-900">PCB Design</h5>
-              <p class="text-sm text-gray-600">Professional PCB design and prototyping</p>
-            </div>
-
-            <div class="text-center">
-              <div class="bg-gray-100 rounded-lg p-4 mb-3">
-                <svg class="h-12 w-12 mx-auto text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <h5 class="font-semibold text-gray-900">3D Printing</h5>
-              <p class="text-sm text-gray-600">Rapid prototyping and enclosure design</p>
-            </div>
-
-            <div class="text-center">
-              <div class="bg-gray-100 rounded-lg p-4 mb-3">
-                <svg class="h-12 w-12 mx-auto text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
-                </svg>
-              </div>
-              <h5 class="font-semibold text-gray-900">Testing</h5>
-              <p class="text-sm text-gray-600">Comprehensive testing and validation</p>
-            </div>
-          </div>
-
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">Quality Standards</h3>
-
-          <p class="text-gray-700 mb-6">
-            Every product that comes out of The Kluster meets our high standards for quality, reliability, and performance. We test in real-world conditions, ensuring that our products work reliably in the environments where they'll be used.
-          </p>
-
           <div class="mt-8 bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <h4 class="text-lg font-semibold text-gray-900 mb-3">Visit The Kluster</h4>
+            <h4 class="text-lg font-semibold text-gray-900 mb-3">The Kluster Legacy</h4>
             <p class="text-gray-700 mb-4">
-              While The Kluster is primarily our development facility, we occasionally host open days and workshops for the community. Keep an eye on our events calendar for opportunities to see where the magic happens.
+              What started as a simple solution to a customer's problem has grown into our most valuable development tool. The Kluster represents our commitment to quality and our willingness to solve problems with whatever materials we have at hand.
             </p>
-            <a href="/events" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors">
-              View Upcoming Events
-            </a>
+            <p class="text-gray-700">
+              Every Baldrick product you use has been tested in The Kluster, ensuring it meets our high standards for reliability and performance.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Image Modal -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-50 flex items-center justify-center p-4">
+  <div class="relative max-w-4xl max-h-full">
+    <img id="modalImage" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg">
+    <button onclick="closeImageModal()" class="absolute top-4 right-4 text-white text-2xl font-bold hover:text-gray-300">&times;</button>
+  </div>
+</div>
+
+<script>
+function openImageModal(src, alt) {
+  const modal = document.getElementById('imageModal');
+  const modalImage = document.getElementById('modalImage');
+  modalImage.src = src;
+  modalImage.alt = alt;
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImageModal() {
+  const modal = document.getElementById('imageModal');
+  modal.classList.add('hidden');
+  document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside the image
+document.getElementById('imageModal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeImageModal();
+  }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeImageModal();
+  }
+});
+</script>
