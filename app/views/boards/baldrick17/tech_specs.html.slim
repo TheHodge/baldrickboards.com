@@ -10,111 +10,57 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'Baldrick17 Technical Specifications', subtitle: 'Detailed Specifications and Capabilities', image_url: '/img/baldrick17.png'
+    = render 'shared/page_header', title: 'Technical Specifications', subtitle: 'Board components and detailed specifications for Baldrick17'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / Board Components
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Baldrick17 Technical Specifications
-          
-          .grid.md:grid-cols-2.gap-8.mb-8
-            .space-y-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 General Specifications
-              
-              h3.text-xl.font-semibold.text-gray-900.mb-3 Physical
-              ul.space-y-1.text-gray-700
-                li • Dimensions: TBD
-                li • Weight: TBD
-                li • Enclosure: Industrial grade
-                li • Mounting: Multiple mounting options
-                li • Operating Temperature: -20°C to +60°C
-                li • Humidity: 10% to 90% non-condensing
-              
-              h3.text-xl.font-semibold.text-gray-900.mb-3 Power
-              ul.space-y-1.text-gray-700
-                li • Input Voltage: 12V DC
-                li • Power Consumption: TBD
-                li • Power Connector: TBD
-                li • Power Protection: Overcurrent, overvoltage
-              
-              h3.text-xl.font-semibold.text-gray-900.mb-3 Network
-              ul.space-y-1.text-gray-700
-                li • Ethernet: 10/100 Mbps
-                li • Protocol Support: UDP, TCP
-                li • IP Configuration: DHCP/Static
-                li • Network Security: TBD
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Board Components
+
+          .bg-white.rounded-lg.shadow-md.p-6.mb-6
+            = image_tag "baldrick17/breakdown.png", class: "w-full rounded-lg mb-6", alt: "Baldrick17 Board Overview"
             
-            .space-y-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Pixel Control Specifications
-              
-              h3.text-xl.font-semibold.text-gray-900.mb-3 Output Channels
-              ul.space-y-1.text-gray-700
-                li • Number of Channels: 17
-                li • Pixel Types: WS2811, WS2812B, SK6812
-                li • Max Pixels per Channel: TBD
-                li • Total Pixel Capacity: TBD
-                li • Output Voltage: 5V
-                li • Data Rate: 800 KHz
-              
-              h3.text-xl.font-semibold.text-gray-900.mb-3 Timing
-              ul.space-y-1.text-gray-700
-                li • Refresh Rate: Up to 60 FPS
-                li • Timing Precision: Microsecond accuracy
-                li • Synchronization: Network-based
-                li • Latency: < 1ms
-              
-              h3.text-xl.font-semibold.text-gray-900.mb-3 Features
-              ul.space-y-1.text-gray-700
-                li • Individual Channel Control
-                li • Brightness Control
-                li • Color Correction
-                li • Gamma Correction
-                li • Power Management
-                li • Status Monitoring
-          
-          h2.text-2xl.font-bold.text-gray-900.mb-4 Software & Interface
-          
-          h3.text-xl.font-semibold.text-gray-900.mb-3 Web Interface
-          ul.space-y-1.text-gray-700.mb-6
-            li • Browser-based configuration
-            li • Real-time status monitoring
-            li • Channel testing tools
-            li • Network diagnostics
-            li • Firmware updates
-            li • Backup/restore settings
-          
-          h3.text-xl.font-semibold.text-gray-900.mb-3 API Support
-          ul.space-y-1.text-gray-700.mb-6
-            li • REST API
-            li • WebSocket support
-            li • JSON data format
-            li • Third-party integration
-            li • Custom protocol support
-          
-          h2.text-2xl.font-bold.text-gray-900.mb-4 Compatibility
-          
-          h3.text-xl.font-semibold.text-gray-900.mb-3 Lighting Software
-          ul.space-y-1.text-gray-700.mb-6
-            li • xLights
-            li • Vixen
-            li • Light-O-Rama
-            li • Custom applications
-            li • Web-based controllers
-          
-          h3.text-xl.font-semibold.text-gray-900.mb-3 Protocols
-          ul.space-y-1.text-gray-700.mb-6
-            li • E1.31 (sACN)
-            li • Art-Net
-            li • Custom UDP protocols
-            li • HTTP/HTTPS
-            li • WebSocket
-          
-          .bg-gray-50.border.border-gray-200.rounded-lg.p-6.mt-8
-            h4.text-xl.font-semibold.text-gray-900.mb-3 Notes
-            ul.text-gray-700.space-y-1
-              li • Specifications subject to change without notice
-              li • Performance may vary based on network conditions
-              li • Maximum pixel counts depend on refresh rate and network bandwidth
-              li • Contact support for custom configurations
-              li • Firmware updates may add new features and capabilities
+            ol.list-decimal.list-inside.text-gray-700.space-y-3
+              li
+                strong 10AWG Power Jack - 
+                | These can take 5v to 48v (each jack powers 4 pixel ports and can take different voltages and will automatically step down to power the components, no jumpers needed).
+              li
+                strong 16AWG Power Jack - 
+                | A special connector for port 17, can take 5v to 48v.
+              li
+                strong Pixel connectors - 
+                | Using the industry standard Phoenix connectors, your pigtails or extensions will be added in G (Ground) D (Data) + (Positive / Voltage)
+              li
+                strong Fuse Holder - 
+                | Easy to access fuses for protection (and easy changing), the Baldrick17 is designed with 7.5amp mini blade fuses.
+              li
+                strong Mounting Holes - 
+                | We've designed the Baldrick17 to fit snugly on top of a meanwell power supply. These 3mm mounting holes are positioned for protection. 
+                strong DO NOT DRILL out 
+                | these holes to make them fit the screws you've got already, doing this will void any warranty.
+              li
+                strong 2 Ethernet ports - 
+                | I know I know, "you are really spoiling us". We've added two 100mb ethernet ports to connect to your show network and daisy chain other things in the Baldrick Family.
+              li
+                strong Mind ya business
+              li
+                strong 3 Turniput connectors - 
+                | The Baldrick17 goes beyond button inputs and adds lamp management to the easy interactivity (we also have physical buttons on the board for testing, pressing and holding these buttons will activate test mode or reset the board).
+              li
+                strong QR Code - 
+                | An easy to scan QR code which will take you to these docs for easy troubleshooting.
+              li
+                strong CR2032 battery cradle - 
+                | Allows for RTC and CunningFX scheduling.
+
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-yellow-700
+                  strong Important: 
+                  | DO NOT DRILL out the mounting holes to make them fit the screws you've got already, doing this will void your warranty.

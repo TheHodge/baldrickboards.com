@@ -10,7 +10,7 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'Baldrick17', subtitle: 'Documentation for Baldrick17', image_url: '/img/baldrick17.png'
+    = render 'shared/page_header', title: 'Baldrick17', subtitle: 'Documentation for Baldrick17', image_url: 'baldrick17/board.png'
 
     / Content Section
     .px-8.py-8
@@ -21,43 +21,27 @@
 
           .grid.md:grid-cols-2.gap-8.mb-8
             .flex.items-start
-              img.w-full.rounded-lg src="/img/baldrick17.png" alt="Baldrick17 Board Overview"
+              = image_tag "baldrick17.png", class: "w-full rounded-lg", alt: "Baldrick17 Board Overview"
             
             .flex.flex-col.justify-start
               p.text-lg.text-gray-700.mb-6
-                | The Baldrick17 is our flagship 17-channel pixel controller, designed for the most demanding lighting installations. 
-                | With massive pixel capacity and advanced networking features, it's perfect for large-scale displays and complex shows.
+                | The Baldrick17 is our newest pixel controller to join the Baldrick Family, designed for professional lighting displays 
+                | and large-scale installations. With support for up to 750 pixels per port at 40fps and high refresh rates, 
+                | it's perfect for creating stunning visual effects.
 
           h3.text-2xl.font-bold.text-gray-900.mb-4 Baldrick17 Controller Features
 
           ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li 17 independent pixel outputs for maximum flexibility
-            li Massive pixel capacity per channel for large-scale installations
-            li Advanced networking capabilities with multiple protocol support
-            li Enterprise-grade reliability for professional applications
-            li Professional timing precision for synchronized displays
-            li Comprehensive web interface for easy configuration
+            li 5 ports accepting 5v - 48v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS)
+            li Power ports are banked (4 + 4 + 4 + 4 + 1)
+            li 17 Ports handling up to 750 pixels per port at 40fps
+            li 17 fused connectors which combined with the included 7.5 amp fuses allows for full pixel runs at 100%
             li DDP, Artnet, E1.31 & sACN compatible
-            li High refresh rates for smooth visual effects
-            li Multiple power inputs for distributed power management
-            li Small footprint compatible with standard mounting solutions
+            li 3 Programmable Turniputs ports (Can use the FPP API to start / stop a sequence and full lamp control)
+            li No Pi or FPP Licence required
+            li Push from xLights integration
 
           p.text-gray-700.mb-6
-            | The Baldrick17 represents the pinnacle of our pixel controller technology, designed specifically for 
-            | professional installations where reliability, performance, and scalability are paramount.
-
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Perfect For
-
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Large-scale architectural lighting projects
-            li Complex pixel displays and installations
-            li Professional entertainment venues and theaters
-            li High-density pixel installations
-            li Multi-zone lighting systems
-            li Enterprise lighting solutions
-            li Commercial display applications
-            li Professional event lighting
-
-          .bg-purple-50.border-l-4.border-purple-400.p-4.mb-6
-            p.text-purple-800.font-medium
-              | "The Baldrick17 is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+            | In addition, we've tried to add some simple quality of life improvements such as a QR code which links directly 
+            | to the manual (easy to read on a mobile in the dark) and the three buttons have not only ports but physical 
+            | buttons onboard to help you test without having to hook everything up.

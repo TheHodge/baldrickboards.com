@@ -28,6 +28,9 @@ export default class extends Controller {
     this.effectsTarget.innerHTML = ''
     document.body.classList.remove('christmas-theme', 'halloween-theme')
 
+    // Clean up navigation lights
+    this.cleanupNavigationLights()
+
     // Remove existing theme styles
     const existingThemeStyle = document.getElementById('seasonal-theme-style')
     if (existingThemeStyle) {
@@ -115,51 +118,13 @@ export default class extends Controller {
         50% { transform: translateY(-15px) rotate(5deg); }
       }
       
-      @keyframes christmasLights {
-        0%, 100% { opacity: 1; filter: brightness(1); }
-        25% { opacity: 0.7; filter: brightness(1.2); }
-        50% { opacity: 1; filter: brightness(0.8); }
-        75% { opacity: 0.9; filter: brightness(1.1); }
-      }
-      
       @keyframes snowDrift {
         0% { transform: translateX(-100vw) translateY(0); }
         100% { transform: translateX(100vw) translateY(100vh); }
       }
-      
-      .christmas-light-string {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: repeating-linear-gradient(
-          90deg,
-          #ff0000 0px, #ff0000 20px,
-          #00ff00 20px, #00ff00 40px,
-          #ffff00 40px, #ffff00 60px,
-          #ff69b4 60px, #ff69b4 80px,
-          #00ffff 80px, #00ffff 100px
-        );
-        z-index: 9996;
-        animation: christmasLights 2s ease-in-out infinite;
-      }
-      
-      .christmas-light-string:nth-child(2) {
-        top: 50px;
-        animation-delay: 0.5s;
-      }
-      
-      .christmas-light-string:nth-child(3) {
-        top: 100px;
-        animation-delay: 1s;
-      }
     `
     document.head.appendChild(style)
 
-    // Create Christmas light strings across the top
-    this.createChristmasLightStrings()
-    
     // Create massive snow effect
     this.createChristmasSnow()
     
@@ -297,6 +262,13 @@ export default class extends Controller {
         75% { transform: translateX(75vw) translateY(-30px) rotate(-15deg); }
       }
       
+      @keyframes spookyTwinkle {
+        0%, 100% { opacity: 0.8; transform: scale(1); filter: brightness(1); }
+        25% { opacity: 1; transform: scale(1.2); filter: brightness(1.3); }
+        50% { opacity: 0.6; transform: scale(0.8); filter: brightness(0.7); }
+        75% { opacity: 0.9; transform: scale(1.1); filter: brightness(1.1); }
+      }
+      
       @keyframes lightning {
         0%, 95%, 100% { opacity: 0; }
         2%, 8% { opacity: 1; }
@@ -317,6 +289,9 @@ export default class extends Controller {
     // Create spooky effects
     this.createSpookyEffects()
     
+    // Add spooky navigation lights
+    this.createSpookyNavigationLights()
+    
     // Add subtle flickering to specific elements only
     this.createSubtleFlickering()
     
@@ -330,32 +305,7 @@ export default class extends Controller {
     this.createGhostEffects()
   }
 
-  createChristmasLightStrings() {
-    for (let i = 0; i < 5; i++) {
-      const lightString = document.createElement('div')
-      lightString.className = 'christmas-light-string'
-      lightString.style.cssText = `
-        position: fixed;
-        top: ${i * 60}px;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: repeating-linear-gradient(
-          90deg,
-          #ff0000 0px, #ff0000 25px,
-          #00ff00 25px, #00ff00 50px,
-          #ffff00 50px, #ffff00 75px,
-          #ff69b4 75px, #ff69b4 100px,
-          #00ffff 100px, #00ffff 125px
-        );
-        z-index: 9996;
-        animation: christmasLights ${Math.random() * 2 + 1}s ease-in-out infinite;
-        animation-delay: ${Math.random() * 2}s;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      `
-      this.effectsTarget.appendChild(lightString)
-    }
-  }
+
 
   createChristmasSnow() {
     for (let i = 0; i < 100; i++) {
@@ -602,6 +552,45 @@ export default class extends Controller {
         filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
       `
       this.effectsTarget.appendChild(ghost)
+    }
+  }
+
+  cleanupNavigationLights() {
+    // Remove all twinkle-light elements from the navigation
+    const nav = document.querySelector('nav')
+    if (nav) {
+      const twinkleLights = nav.querySelectorAll('.twinkle-light')
+      twinkleLights.forEach(light => light.remove())
+    }
+  }
+
+  createSpookyNavigationLights() {
+    const nav = document.querySelector('nav')
+    if (!nav) return
+
+    // Spooky Halloween colors - candy cane orange and deep purple focus
+    const spookyColors = ['#FF6B35', '#8B4513', '#4B0082', '#800080', '#FF8C00', '#2F4F4F', '#FF4500', '#8A2BE2', '#FF7F50', '#9932CC']
+
+    // Add spooky lights to navigation
+    for (let i = 0; i < 12; i++) {
+      const light = document.createElement('div')
+      light.className = 'twinkle-light'
+      light.style.cssText = `
+        position: absolute;
+        top: ${Math.random() * 100}%;
+        left: ${Math.random() * 100}%;
+        width: ${Math.random() * 6 + 4}px;
+        height: ${Math.random() * 6 + 4}px;
+        background: ${spookyColors[Math.floor(Math.random() * spookyColors.length)]};
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1000;
+        animation: spookyTwinkle ${Math.random() * 3 + 2}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 3}s;
+        box-shadow: 0 0 8px currentColor, 0 0 12px currentColor;
+        opacity: 0.8;
+      `
+      nav.appendChild(light)
     }
   }
 }
