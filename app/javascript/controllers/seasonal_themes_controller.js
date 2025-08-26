@@ -233,23 +233,54 @@ export default class extends Controller {
         75% { transform: translateY(-20px) rotate(-5deg) scale(1.05); }
       }
       
-      @keyframes flicker {
+      @keyframes subtleFlicker {
         0%, 100% { opacity: 1; filter: brightness(1); }
-        10% { opacity: 0.8; filter: brightness(1.2); }
-        20% { opacity: 0.6; filter: brightness(0.8); }
-        30% { opacity: 0.9; filter: brightness(1.1); }
-        40% { opacity: 0.7; filter: brightness(0.9); }
-        50% { opacity: 1; filter: brightness(1); }
-        60% { opacity: 0.8; filter: brightness(1.3); }
-        70% { opacity: 0.5; filter: brightness(0.7); }
-        80% { opacity: 0.9; filter: brightness(1.1); }
-        90% { opacity: 0.7; filter: brightness(0.9); }
+        25% { opacity: 0.95; filter: brightness(1.05); }
+        50% { opacity: 0.9; filter: brightness(0.95); }
+        75% { opacity: 0.95; filter: brightness(1.02); }
       }
       
       @keyframes spiderWeb {
         0% { transform: scale(0.5) rotate(0deg); opacity: 0; }
         50% { transform: scale(1.2) rotate(10deg); opacity: 1; }
         100% { transform: scale(1.1) rotate(5deg); opacity: 0.8; }
+      }
+      
+      .corner-web {
+        position: fixed;
+        width: 80px;
+        height: 80px;
+        pointer-events: none;
+        z-index: 9997;
+      }
+      
+      .corner-web::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+          radial-gradient(circle at 20% 20%, transparent 0%, transparent 15%, rgba(255,255,255,0.3) 16%, transparent 17%),
+          radial-gradient(circle at 80% 20%, transparent 0%, transparent 15%, rgba(255,255,255,0.3) 16%, transparent 17%),
+          radial-gradient(circle at 20% 80%, transparent 0%, transparent 15%, rgba(255,255,255,0.3) 16%, transparent 17%),
+          radial-gradient(circle at 80% 80%, transparent 0%, transparent 15%, rgba(255,255,255,0.3) 16%, transparent 17%),
+          radial-gradient(circle at 50% 50%, transparent 0%, transparent 25%, rgba(255,255,255,0.2) 26%, transparent 27%);
+        animation: spiderWeb 8s ease-in-out infinite;
+      }
+      
+      .corner-web::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+          conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,0.4) 10deg, transparent 20deg, rgba(255,255,255,0.4) 30deg, transparent 40deg, rgba(255,255,255,0.4) 50deg, transparent 60deg, rgba(255,255,255,0.4) 70deg, transparent 80deg, rgba(255,255,255,0.4) 90deg, transparent 100deg, rgba(255,255,255,0.4) 110deg, transparent 120deg, rgba(255,255,255,0.4) 130deg, transparent 140deg, rgba(255,255,255,0.4) 150deg, transparent 160deg, rgba(255,255,255,0.4) 170deg, transparent 180deg, rgba(255,255,255,0.4) 190deg, transparent 200deg, rgba(255,255,255,0.4) 210deg, transparent 220deg, rgba(255,255,255,0.4) 230deg, transparent 240deg, rgba(255,255,255,0.4) 250deg, transparent 260deg, rgba(255,255,255,0.4) 270deg, transparent 280deg, rgba(255,255,255,0.4) 290deg, transparent 300deg, rgba(255,255,255,0.4) 310deg, transparent 320deg, rgba(255,255,255,0.4) 330deg, transparent 340deg, rgba(255,255,255,0.4) 350deg, transparent 360deg);
+        animation: spiderWeb 8s ease-in-out infinite;
+        animation-delay: 2s;
       }
       
       @keyframes ghostFloat {
@@ -267,17 +298,12 @@ export default class extends Controller {
       }
       
       @keyframes lightning {
-        0%, 90%, 100% { opacity: 0; }
-        5%, 15% { opacity: 1; }
+        0%, 95%, 100% { opacity: 0; }
+        2%, 8% { opacity: 1; }
       }
       
       .lightning-flash {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(255, 255, 255, 0.3);
         pointer-events: none;
         z-index: 9995;
         animation: lightning 3s ease-in-out infinite;
@@ -288,13 +314,13 @@ export default class extends Controller {
     // Create lightning effects
     this.createLightningEffects()
     
-    // Create massive spooky effects
+    // Create spooky effects
     this.createSpookyEffects()
     
-    // Add intense flickering elements
-    this.createFlickeringElements()
+    // Add subtle flickering to specific elements only
+    this.createSubtleFlickering()
     
-    // Add spider webs everywhere
+    // Add spider webs
     this.createSpiderWebs()
     
     // Add flying bats
@@ -443,20 +469,23 @@ export default class extends Controller {
   }
 
   createLightningEffects() {
+    // Create targeted lightning strikes instead of full-screen overlay
     for (let i = 0; i < 3; i++) {
       const lightning = document.createElement('div')
       lightning.className = 'lightning-flash'
       lightning.style.cssText = `
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(255, 255, 255, 0.4);
+        top: ${Math.random() * 40}%;
+        left: ${Math.random() * 80}%;
+        width: ${Math.random() * 200 + 100}px;
+        height: ${Math.random() * 300 + 200}px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
         pointer-events: none;
         z-index: 9995;
-        animation: lightning ${Math.random() * 5 + 3}s ease-in-out infinite;
-        animation-delay: ${Math.random() * 5}s;
+        animation: lightning ${Math.random() * 8 + 6}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 10}s;
+        border-radius: 50%;
+        filter: blur(20px);
       `
       this.effectsTarget.appendChild(lightning)
     }
@@ -465,7 +494,7 @@ export default class extends Controller {
   createSpookyEffects() {
     const spookyElements = ['👻', '🦇', '🕷️', '🕸️', '💀', '🎃', '⚰️', '🕯️']
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 12; i++) {
       const spooky = document.createElement('div')
       spooky.className = 'spooky-element'
       spooky.textContent = spookyElements[Math.floor(Math.random() * spookyElements.length)]
@@ -484,19 +513,39 @@ export default class extends Controller {
     }
   }
 
-  createFlickeringElements() {
-    const elements = document.querySelectorAll('h1, h2, h3, .text-purple-200, .text-purple-300, p, li')
-    elements.forEach((el, index) => {
-      if (Math.random() > 0.5) { // 50% chance - much more flickering
-        el.style.animation = `flicker ${Math.random() * 4 + 2}s ease-in-out infinite`
-        el.style.animationDelay = `${Math.random() * 3}s`
-        el.style.filter = 'drop-shadow(0 0 3px rgba(255, 0, 0, 0.3))'
-      }
+  createSubtleFlickering() {
+    // Only apply subtle flickering to a few specific elements, not all text
+    const flickerCandidates = document.querySelectorAll('h1, .text-purple-200, .text-purple-300')
+    const elementsToFlicker = Array.from(flickerCandidates).filter(() => Math.random() > 0.7) // Only 30% chance
+    
+    elementsToFlicker.slice(0, 3).forEach((el) => { // Limit to max 3 elements
+      el.style.animation = `subtleFlicker ${Math.random() * 8 + 6}s ease-in-out infinite`
+      el.style.animationDelay = `${Math.random() * 5}s`
+      el.style.filter = 'drop-shadow(0 0 2px rgba(255, 0, 0, 0.2))'
     })
   }
 
   createSpiderWebs() {
-    for (let i = 0; i < 8; i++) {
+    // Create corner webs
+    const corners = [
+      { top: '10px', left: '10px', transform: 'rotate(-15deg)' },
+      { top: '10px', right: '10px', transform: 'rotate(15deg)' },
+      { bottom: '10px', left: '10px', transform: 'rotate(15deg)' },
+      { bottom: '10px', right: '10px', transform: 'rotate(-15deg)' }
+    ]
+    
+    // corners.forEach((corner, index) => {
+    //   const web = document.createElement('div')
+    //   web.className = 'corner-web'
+    //   web.style.cssText = `
+    //     ${Object.entries(corner).map(([key, value]) => `${key}: ${value}`).join('; ')}
+    //     animation-delay: ${Math.random() * 3}s;
+    //   `
+    //   this.effectsTarget.appendChild(web)
+    // })
+    
+    // Add a couple of random webs in other areas
+    for (let i = 0; i < 2; i++) {
       const web = document.createElement('div')
       web.className = 'spider-web'
       web.innerHTML = '🕸️'
@@ -504,12 +553,13 @@ export default class extends Controller {
         position: fixed;
         top: ${Math.random() * 60 + 20}%;
         left: ${Math.random() * 60 + 20}%;
-        font-size: ${Math.random() * 30 + 25}px;
+        font-size: ${Math.random() * 20 + 25}px;
         pointer-events: none;
         z-index: 9997;
         animation: spiderWeb ${Math.random() * 6 + 4}s ease-in-out infinite;
         animation-delay: ${Math.random() * 3}s;
         filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.3));
+        opacity: 0.6;
       `
       this.effectsTarget.appendChild(web)
     }

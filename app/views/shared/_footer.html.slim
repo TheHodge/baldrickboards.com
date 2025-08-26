@@ -26,11 +26,9 @@ footer.bg-purple-900.text-white
           li
             a.hover:text-white.transition-colors href="/support" Hardware Support Form
           li
-            a.hover:text-white.transition-colors href="/guides" Guides & Tutorials
+            a.hover:text-white.transition-colors href="/fun-stuff" Fun Stuff
           li
-            a.hover:text-white.transition-colors href="/resources" Resources
-          li
-            a.hover:text-white.transition-colors href="/resources/faq" FAQ
+            a.hover:text-white.transition-colors href="/faq" FAQ
       
       / Column 3: More
       div
@@ -46,6 +44,15 @@ footer.bg-purple-900.text-white
             a.hover:text-white.transition-colors href="/contact" Contact
           li
             a.hover:text-white.transition-colors href="/complaints" Complaints
+        
+        / Seasonal Themes Dropdown
+        .mt-6
+          h4.text-sm.font-semibold.mb-2.text-purple-200 Seasonal Themes
+          .relative
+            select.bg-purple-800.text-white.border.border-purple-600.rounded-md.px-3.py-2.text-sm.w-full.focus:outline-none.focus:ring-2.focus:ring-purple-500.focus:border-transparent data-seasonal-themes-target="select" data-action="change->seasonal-themes#change"
+              option value="default" Default Theme
+              option value="christmas" 🎄 Christmas
+              option value="halloween" 🎃 Halloween
   
   / Copyright
   .border-t.border-purple-800
