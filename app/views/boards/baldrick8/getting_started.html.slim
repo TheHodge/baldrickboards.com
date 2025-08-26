@@ -1,0 +1,257 @@
+- content_for :title, "Getting Started - Baldrick8 - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'Baldrick8', menu_items: board_menu_items('baldrick8')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrick8', 'Getting Started')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Getting Started with Baldrick8', subtitle: 'Complete setup guide from power to pixels', image_url: '/img/baldrick8-board.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        / Getting Started Guide for Baldrick8
+        .prose.max-w-none
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Getting Started with Baldrick8
+
+          p.text-lg.text-gray-700.mb-6
+            | Welcome to your new Baldrick8! This comprehensive guide will walk you through everything you need to know 
+            | to get your board up and running, from plugging in power to creating your first light show.
+
+          .bg-red-50.border-l-4.border-red-400.p-4.mb-8
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-red-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-red-700
+                  strong Safety First: 
+                  | Always ensure your power supply is disconnected before making any connections. 
+                  | Double-check all wiring before powering on.
+
+          / Step 1: Power Connection
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 1: Plugging in Your Controller
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Always Use a Power Supply
+
+            .bg-red-50.border-l-4.border-red-400.p-4.mb-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-red-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-red-700
+                    strong WARNING: 
+                    | Never, ever EVER EVER plug your controller directly into the wall outlet, it will go bang and you'll have to buy another one and explain to your partner what that burn mark on the kitchen table is.
+
+            p.text-gray-700.mb-4
+              | You'll notice that a British plug has three wires and our power jack inputs only have two - that's because you need to put a power supply in between them.
+
+            p.text-gray-700.mb-4
+              | We recommend the use of 
+              a.text-blue-600.hover:text-blue-800 href="https://buildalightshow.com/search?controller=search&s=meanwell" target="_blank" Meanwell Power Supplies
+              | .
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 The Power Supply Explained
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/meanwell-explained.png" alt="Meanwell Power Supply Diagram" class="mb-4"
+              ol.list-decimal.list-inside.space-y-2.text-gray-700
+                li
+                  strong Live 
+                  | - The live wire carries electricity from the power source to appliances or circuits, supplying the energy needed for operation. On a British plug this is generally BROWN.
+                li
+                  strong Neutral 
+                  | - This carries the electricity back to the power source. On a British plug this is generally BLUE.
+                li
+                  strong Earth 
+                  | - This grounds electrical systems, redirecting excess current safely into the ground to prevent shocks and fires. On a British plug this is generally GREEN / YELLOW.
+                li
+                  strong +V 
+                  | - The positive voltage output of the power supply, typically you'd attach a RED cable to this.
+                li
+                  strong -V 
+                  | - The negative voltage output of a power supply, typically you'd attach a BLACK cable to this.
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Powering the Board
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/board-power.png" alt="Baldrick Power Ports" class="mb-4"
+              ul.list-disc.list-inside.space-y-2.text-gray-700
+                li Port 1 will power pixel ports 1 - 4
+                li Port 2 will power pixel ports 5 - 8
+                li Either port will automatically power the board, you do not need to configure this
+                li Both ports will handle between 5v to 24v and can be different voltages
+
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-yellow-700
+                    strong Important: 
+                    | As with all power connectors, please check for stray strands BEFORE turning on your controller, those aren't the flashing lights we want to create.
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 What Cable Do I Use?
+
+            p.text-gray-700.mb-4
+              | The thicker the cable the better (within limits), DO NOT use the wire your wall plug came with to link your power supply to your controller.
+
+            p.text-gray-700.mb-4
+              | It is almost certainly not thick enough to handle the amps.
+
+            p.text-gray-700
+              | We recommend 
+              a.text-blue-600.hover:text-blue-800 href="https://amzn.to/3uOmTz6" target="_blank" 10AWG cable wire
+              |  at a minimum but please do further research for your requirements.
+
+          / Step 2: Firmware Installation
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 2: Installing the Firmware
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Initial Firmware Setup
+
+            p.text-gray-700.mb-4
+              | When your controller arrives it will be in a 'sleeping state' - you just need to plug it into your network and head to 
+              a.text-blue-600.hover:text-blue-800 href="http://baldrickboard.local" target="_blank" http://baldrickboard.local
+              |  (if your DNS doesn't accept that then just look for it on your network).
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/first-firmware.png" alt="First Firmware Screen" class="mb-4"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 How to Install
+
+            p.text-gray-700.mb-4
+              | To put it simply, press the button that says 
+              em "Lets Go" 
+              | then go and have a brew, the controller will connect to our server, download the latest firmware and automatically install it, once it's done the page will refresh and you can start connecting pixels.
+
+            .bg-blue-50.border-l-4.border-blue-400.p-4.mb-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-blue-700
+                    strong Tip: 
+                    | You must plug the board directly into your network for the initial firmware download (or make sure your computer can give it an IP address and internet access).
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 How Do I Update After That?
+
+            p.text-gray-700
+              | When you go to the Web interface and look at the stats section, you'll see the version number, if there is a new version, you can click that and it will automatically update in a similar interface to how this initial install works.
+
+          / Step 3: Connecting Pixels
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 3: Connecting Pixels
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 It's Time to Connect the Lights
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 To Pigtail or Not to Pigtail
+
+            p.text-gray-700.mb-4
+              | We recommend adding 
+              a.text-blue-600.hover:text-blue-800 href="https://buildalightshow.com/accessories-hardware/113-weatherproof-pigtails.html" target="_blank" pigtails
+              |  to your controller rather than pixels directly.
+
+            p.text-gray-700.mb-4
+              | Your controller will come with 3 port Phoenix connectors.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/phoenix-connector.png" alt="Phoenix Connector" class="mb-4"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 The Phoenix Connector Explained
+
+            ol.list-decimal.list-inside.space-y-2.text-gray-700
+              li
+                strong GROUND 
+                | - The negative wire of your pixels (this is BLACK)
+              li
+                strong DATA 
+                | - The data in wire of your pixels (this is YELLOW)
+              li
+                strong LIVE 
+                | - The positive wire of your pixels (this is RED)
+
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-yellow-700
+                    strong Note: 
+                    | The colour suggestions are for BALS pixels, if you are buying from somebody else... then ask them.
+
+          / Step 4: xLights Connection
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 4: xLights Connection
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Connecting with xLights
+
+            p.text-gray-700.mb-4
+              | You can connect directly with xLights, look for Baldrick Controller under ilightthat.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/xlights-settings.png" alt="xLights Download and Push" class="mb-4"
+
+            p.text-gray-700.mb-4
+              | From here you can push your model settings directly to the controller and output to lights nice and easily!
+
+            p.text-gray-700.mb-4 You can either:
+
+            ul.list-disc.list-inside.space-y-2.text-gray-700
+              li Click 
+                strong Discover 
+                | and xLights will automagically find the Baldrick8.
+              li Add the board manually by selecting 
+                em ILightThat 
+                | as a vendor and 
+                em Baldrick 8 Port v1 
+                | as the Model. You will then need to put the IP Address in manually.
+
+          / Next Steps
+          h3.text-2xl.font-bold.text-gray-900.mb-4 What's Next?
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h4.text-xl.font-semibold.text-gray-900.mb-3 Web Interface
+              ul.space-y-2.text-gray-700
+                li • Configure your network settings
+                li • Set up pixel counts and protocols
+                li • Test your connections
+                li • Create custom patterns
+                li • Monitor system status
+            
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h4.text-xl.font-semibold.text-gray-900.mb-3 Advanced Features
+              ul.space-y-2.text-gray-700
+                li • Configure button inputs
+                li • Set up multiple networks
+                li • Adjust refresh rates
+                li • Configure gamma correction
+                li • Create complex sequences
+
+          .bg-green-50.border-l-4.border-green-400.p-4.mb-6
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-green-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-green-700
+                  strong Congratulations! 
+                  | Your Baldrick8 is now set up and ready to create amazing light shows. 
+                  | Check out our other guides for advanced features and troubleshooting tips.
+
+          / Navigation Links
+          .flex.flex-col.sm:flex-row.gap-4.mt-8
+            = link_to 'Web Interface Guide', '/boards/baldrick8/web-interface', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Technical Specifications', '/boards/baldrick8/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'FAQ', '/boards/baldrick8/faq', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'

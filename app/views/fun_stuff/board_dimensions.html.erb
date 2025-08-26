@@ -1,0 +1,245 @@
+<% content_for :title, "Board Dimensions - Fun Stuff" %>
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Breadcrumb -->
+  <%= render 'shared/breadcrumbs', breadcrumbs: [
+  { title: 'Home', path: '/' },
+  { title: 'Fun Stuff', path: '/fun-stuff' },
+  { title: 'Board Dimensions', path: nil }
+] %>
+
+  <!-- Main Content Card -->
+  <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <!-- Header Section -->
+    <%= render 'shared/page_header', title: 'Board Dimensions', subtitle: 'Technical specifications and mounting information for all Baldrick boards' %>
+
+    <!-- Content Section -->
+    <div class="px-8 py-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose max-w-none">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Baldrick Dimensions</h2>
+
+          <p class="text-lg text-gray-700 mb-6">
+            Baldrick Boards are categorized into two board sizes: <strong>small</strong> and <strong>medium</strong>. This means that we don't have to keep making new mounts and accessory sizes as we create new boards.
+          </p>
+
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-blue-700">
+                  <strong>Important:</strong> Mounting holes in all our boards are <strong>M3</strong>. Please use the correct hardware for secure mounting.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Small Boards -->
+          <div class="bg-white border border-gray-200 rounded-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Small Boards</h3>
+            <p class="text-gray-700 mb-6">
+              We've designed the Small boards so they can be hidden inside a small junction or project box.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6 items-center">
+              <div>
+                <h4 class="text-lg font-semibold text-gray-900 mb-3">Small Board Specifications</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li>• <strong>Category:</strong> Small form factor</li>
+                  <li>• <strong>Mounting Holes:</strong> M3</li>
+                  <li>• <strong>Typical Use:</strong> Junction boxes, small enclosures</li>
+                  <li>• <strong>Installation:</strong> Hidden installations</li>
+                </ul>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <img src="/img/dimensions-small.jpeg" alt="Small Baldrick Board Dimensions" class="w-full h-auto rounded-lg">
+                <p class="text-sm text-gray-600 mt-2 text-center">Small Baldrick Board Dimensions</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Medium Boards -->
+          <div class="bg-white border border-gray-200 rounded-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Medium Boards</h3>
+            <p class="text-gray-700 mb-6">
+              We based the dimensions of the <strong>Medium Baldrick boards</strong> to match similar boards already in the market so you can reuse mounts and 3D printed elements.
+            </p>
+            
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6">
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <svg class="h-5 w-5 text-purple-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm text-purple-700">
+                    <strong>Community Fun Stuff:</strong> The Baldrick community have created an amazing range of mounts and STLs that you can print and use today.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 items-center">
+              <div>
+                <h4 class="text-lg font-semibold text-gray-900 mb-3">Medium Board Specifications</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li>• <strong>Category:</strong> Medium form factor</li>
+                  <li>• <strong>Board Footprint:</strong> 117mm × 74mm</li>
+                  <li>• <strong>Mounting Holes:</strong> M3</li>
+                  <li>• <strong>Compatibility:</strong> Matches similar boards in market</li>
+                  <li>• <strong>Typical Use:</strong> Standard installations, existing mounts</li>
+                </ul>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <img src="/img/dimensions-medium.jpeg" alt="Medium Baldrick Board Dimensions" class="w-full h-auto rounded-lg">
+                <p class="text-sm text-gray-600 mt-2 text-center">Medium Baldrick Board Dimensions</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mounting Guidelines -->
+          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-yellow-700">
+                  <strong>Important Warning:</strong> Once again we ask <strong>DO NOT ENLARGE THE MOUNTING HOLES</strong>. Use the correct M3 hardware for secure mounting.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Mounting Guidelines</h3>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Hardware Requirements</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li>• <strong>Screw Size:</strong> M3 (metric)</li>
+                <li>• <strong>Thread Pitch:</strong> 0.5mm</li>
+                <li>• <strong>Length:</strong> 6-8mm recommended</li>
+                <li>• <strong>Head Type:</strong> Pan head or countersunk</li>
+                <li>• <strong>Material:</strong> Stainless steel recommended</li>
+                <li>• <strong>Quantity:</strong> 4 screws per board</li>
+              </ul>
+            </div>
+
+            <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Installation Tips</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li>• Use proper M3 hardware - do not substitute</li>
+                <li>• Ensure adequate clearance around the board</li>
+                <li>• Consider thermal management requirements</li>
+                <li>• Allow space for cable routing</li>
+                <li>• Test fit before final installation</li>
+                <li>• Use thread-locking compound if needed</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Board Compatibility -->
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Board Compatibility</h3>
+
+          <div class="bg-white border border-gray-200 rounded-lg p-6 mb-8">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="text-lg font-semibold text-gray-900 mb-4">Small Form Factor</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li>• BaldrickInput1</li>
+                  <li>• BaldrickSignals</li>
+                  <li>• Other compact controllers</li>
+                </ul>
+                <p class="text-sm text-gray-600 mt-3">
+                  Perfect for space-constrained installations and hidden mounting applications.
+                </p>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-gray-900 mb-4">Medium Form Factor</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li>• Baldrick8</li>
+                  <li>• Baldrick17</li>
+                  <li>• BaldrickDMX</li>
+                  <li>• BaldrickSwitchy</li>
+                </ul>
+                <p class="text-sm text-gray-600 mt-3">
+                  Standard size compatible with most existing mounting solutions and enclosures.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enclosure Design Guidelines -->
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Enclosure Design Guidelines</h3>
+
+          <div class="space-y-6 mb-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Small Board Enclosures</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li>• Minimum internal dimensions: Add 10mm to board size</li>
+                <li>• Ventilation: Ensure adequate airflow</li>
+                <li>• Cable entry: Plan for power and data connections</li>
+                <li>• Mounting: Use M3 hardware with proper clearance</li>
+                <li>• Access: Consider maintenance and configuration access</li>
+              </ul>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Medium Board Enclosures</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li>• Standard footprint: 117mm × 74mm</li>
+                <li>• Height clearance: Minimum 25mm recommended</li>
+                <li>• Thermal management: Consider heat dissipation</li>
+                <li>• Cable management: Plan for multiple connections</li>
+                <li>• Professional mounting: Compatible with standard racks</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Related Fun Stuff -->
+                          <h3 class="text-2xl font-bold text-gray-900 mb-4">Related Fun Stuff</h3>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">3D Printed Mounts</h4>
+              <p class="text-gray-700 mb-4">
+                Download community-created STL files for custom mounts and enclosures.
+              </p>
+              <a href="/fun-stuff/stls-and-mounts" class="inline-block bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors">
+                View STLs & Mounts
+              </a>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Technical Support</h4>
+              <p class="text-gray-700 mb-4">
+                Need help with mounting or enclosure design? Our support team can assist.
+              </p>
+              <a href="/support" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                Contact Support
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h4 class="text-lg font-semibold text-gray-900 mb-3">Community Designs</h4>
+            <p class="text-gray-700 mb-4">
+              The Baldrick community has created an amazing range of mounts, enclosures, and accessories. Check out our STLs & Mounts page to see what's available, or share your own designs with the community.
+            </p>
+                            <a href="/fun-stuff" class="inline-block bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors">
+                  View All Fun Stuff
+                </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

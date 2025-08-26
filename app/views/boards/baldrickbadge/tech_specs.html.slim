@@ -1,0 +1,182 @@
+- content_for :title, "BaldrickBadge Technical Specifications - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickBadge', menu_items: board_menu_items('baldrickbadge')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickbadge', 'Technical Specifications')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'BaldrickBadge Technical Specifications', subtitle: 'Detailed Specifications and Capabilities', image_url: '/img/baldrickbadge.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 BaldrickBadge Technical Specifications
+          
+          .grid.md:grid-cols-2.gap-8.mb-8
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Physical Specifications
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Dimensions & Weight
+              ul.space-y-1.text-gray-700
+                li • Dimensions: TBD (compact badge format)
+                li • Weight: TBD (lightweight construction)
+                li • Form Factor: Badge-style design
+                li • Mounting: Multiple mounting options
+                li • Operating Temperature: -20°C to +60°C
+                li • Humidity: 10% to 90% non-condensing
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Power
+              ul.space-y-1.text-gray-700
+                li • Power Source: Battery-powered
+                li • Battery Type: TBD (rechargeable)
+                li • Battery Life: TBD (depending on usage)
+                li • Power Management: Advanced power saving
+                li • Charging: USB charging support
+                li • Low Power Modes: Multiple power states
+            
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Connectivity & Communication
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Network
+              ul.space-y-1.text-gray-700
+                li • WiFi: Built-in WiFi capability
+                li • Standalone Mode: Creates own network
+                li • Client Mode: Connects to existing networks
+                li • USB: USB connection for configuration
+                li • Range: TBD (WiFi range)
+                li • Security: WPA2 encryption support
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Output Capabilities
+              ul.space-y-1.text-gray-700
+                li • Pixel Control: WS2811/WS2812B support
+                li • Pixel Count: Configurable
+                li • Refresh Rate: Up to 60 Hz
+                li • Color Depth: 24-bit per pixel
+                li • Output Voltage: 5V
+                li • Current Capacity: TBD
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Software & Interface
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Web Interface
+          ul.space-y-1.text-gray-700.mb-6
+            li • Browser-based configuration
+            li • Mobile-responsive design
+            li • Real-time pixel control
+            li • Battery status monitoring
+            li • Power management settings
+            li • Firmware updates
+            li • Configuration backup/restore
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Power Management
+          ul.space-y-1.text-gray-700.mb-6
+            li • Battery level monitoring
+            li • Power-saving modes
+            li • Automatic sleep/wake
+            li • Low-power operation
+            li • Battery life optimization
+            li • Power consumption analysis
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 API Support
+          ul.space-y-1.text-gray-700.mb-6
+            li • REST API
+            li • WebSocket support
+            li • JSON data format
+            li • Third-party integration
+            li • Custom protocol support
+            li • Mobile app compatibility
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Compatibility
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Pixel Systems
+          ul.space-y-1.text-gray-700.mb-6
+            li • WS2811 pixel strips
+            li • WS2812B pixel strips
+            li • SK6812 pixel strips
+            li • APA102 pixel strips
+            li • Custom pixel configurations
+            li • Various pixel densities
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Applications
+          ul.space-y-1.text-gray-700.mb-6
+            li • Wearable lighting projects
+            li • Portable displays
+            li • Costume applications
+            li • Mobile art installations
+            li • Compact lighting systems
+            li • Battery-powered displays
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Performance
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Battery Performance
+          ul.space-y-1.text-gray-700.mb-6
+            li • Battery life: TBD hours (typical use)
+            li • Standby time: TBD hours
+            li • Charging time: TBD hours
+            li • Power efficiency: Optimized for battery life
+            li • Battery monitoring: Real-time status
+            li • Low battery protection: Automatic shutdown
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Operational Performance
+          ul.space-y-1.text-gray-700.mb-6
+            li • Startup time: < 5 seconds
+            li • Pixel response: < 10ms
+            li • WiFi connection: < 3 seconds
+            li • Web interface: Real-time updates
+            li • System reliability: 99.9% uptime
+            li • Temperature monitoring: Built-in sensors
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Portability Features
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Wearable Design
+          ul.space-y-1.text-gray-700.mb-6
+            li • Lightweight construction
+            li • Compact form factor
+            li • Easy mounting options
+            li • Comfortable for extended wear
+            li • Durable materials
+            li • Weather-resistant design
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Mobile Operation
+          ul.space-y-1.text-gray-700.mb-6
+            li • Self-contained operation
+            li • No external power required
+            li • Quick setup and teardown
+            li • Portable configuration
+            li • Mobile-friendly interface
+            li • Offline operation capability
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Development & Integration
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Programming
+          ul.space-y-1.text-gray-700.mb-6
+            li • Web-based configuration
+            li • No programming required
+            li • Visual interface design
+            li • Template-based setup
+            li • Quick start examples
+            li • Mobile app support
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Integration
+          ul.space-y-1.text-gray-700.mb-6
+            li • Standard pixel connections
+            li • WiFi integration capabilities
+            li • Third-party system compatibility
+            li • API for custom applications
+            li • Modular design for expansion
+            li • Scalable architecture
+          
+          .bg-gray-50.border.border-gray-200.rounded-lg.p-6.mt-8
+            h4.text-xl.font-semibold.text-gray-900.mb-3 Notes
+            ul.text-gray-700.space-y-1
+              li • Specifications subject to change without notice
+              li • Battery life varies based on usage patterns and pixel count
+              li • Performance may vary based on environmental conditions
+              li • Contact support for custom configurations
+              li • Firmware updates may add new features and capabilities
+              li • Designed for portable and wearable applications

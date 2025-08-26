@@ -1,0 +1,207 @@
+- content_for :title, "BaldrickInput1 Web Interface - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickInput1', menu_items: board_menu_items('baldrickinput1')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickinput1', 'Web Interface')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'BaldrickInput1 Web Interface', subtitle: 'Configuration and Control Guide', image_url: '/img/baldrickinput1.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Web Interface Guide
+
+          p.text-lg.text-gray-600.mb-8
+            | The BaldrickInput1 web interface provides simple and intuitive control for your single-input controller. 
+            | This guide will help you configure your input and output settings easily.
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Accessing the Web Interface
+
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-blue-900.mb-2 Quick Access
+            ol.text-blue-800.space-y-1
+              li 1. Ensure your BaldrickInput1 is powered on and connected to your network
+              li 2. Find the IP address (check your router's DHCP client list)
+              li 3. Open your web browser and navigate to the IP address
+              li 4. The web interface will load automatically
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Main Dashboard
+
+          p.text-gray-700.mb-4
+            | The main dashboard provides an overview of your BaldrickInput1's status and quick access to key functions.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Status Overview
+              ul.text-gray-700.space-y-1
+                li • Power status and voltage monitoring
+                li • Network connection status
+                li • Input status indicator
+                li • Temperature and system health
+                li • Active connections
+                li • System uptime
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Quick Actions
+              ul.text-gray-700.space-y-1
+                li • Test input functionality
+                li • Trigger output manually
+                li • System reboot options
+                li • Configuration backup/restore
+                li • Input monitoring
+                li • Status reset
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Input Configuration
+
+          p.text-gray-700.mb-4
+            | Configure your single input for your specific application requirements.
+
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-yellow-900.mb-2 Input Settings
+            ul.text-yellow-800.space-y-1
+              li • Input type selection (Button, Switch, Sensor)
+              li • Input voltage configuration (3.3V/5V)
+              li • Debouncing settings
+              li • Pull-up/Pull-down configuration
+              li • Edge detection (Rising/Falling/Both)
+              li • Input testing tools
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Configuration Steps
+
+          ol.space-y-4.text-gray-700.mb-8
+            li
+              strong.text-gray-900 1. Access Input Settings
+              p.mt-1 Navigate to the Input Configuration section in the web interface.
+
+            li
+              strong.text-gray-900 2. Select Input Type
+              p.mt-1 Choose the type of input device you're using (button, switch, sensor).
+
+            li
+              strong.text-gray-900 3. Configure Parameters
+              p.mt-1 Set voltage, debouncing, and edge detection parameters.
+
+            li
+              strong.text-gray-900 4. Test Configuration
+              p.mt-1 Use the test function to verify your input works correctly.
+
+            li
+              strong.text-gray-900 5. Save Settings
+              p.mt-1 Save your configuration and proceed to output setup.
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Output Configuration
+
+          p.text-gray-700.mb-4
+            | Configure what happens when your input is triggered.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Output Types
+              ul.text-gray-700.space-y-1
+                li • Pixel lighting control
+                li • Digital signal output
+                li • Network message sending
+                li • Trigger sequence activation
+                li • Status indicator control
+                li • Custom response actions
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Output Settings
+              ul.text-gray-700.space-y-1
+                li • Response timing configuration
+                li • Output duration settings
+                li • Repeat behavior options
+                li • Trigger conditions
+                li • Output testing tools
+                li • Status monitoring
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Network Configuration
+
+          p.text-gray-700.mb-4
+            | Configure network settings for optimal performance and integration.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 IP Configuration
+              ul.text-gray-700.space-y-1
+                li • DHCP (automatic) or Static IP
+                li • Subnet mask and gateway
+                li • DNS server settings
+                li • Network interface status
+                li • Connection speed and duplex
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Network Events
+              ul.text-gray-700.space-y-1
+                li • UDP message configuration
+                li • TCP event settings
+                li • Network trigger options
+                li • Message format settings
+                li • Network testing tools
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Advanced Features
+
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Input Monitoring
+          p.text-gray-700.mb-4
+            | Monitor and analyze your input behavior for optimal performance.
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Real-time input status monitoring
+            li Input event logging and history
+            li Response time analysis
+            li Input pattern recognition
+            li Performance metrics
+            li Diagnostic tools
+
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Automation
+          p.text-gray-700.mb-4
+            | Set up automated responses and sequences based on input triggers.
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Time-based responses
+            li Conditional triggers
+            li Sequence programming
+            li Schedule-based activation
+            li Event-driven actions
+            li Custom automation rules
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Troubleshooting
+
+          .bg-red-50.border-l-4.border-red-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-red-900.mb-2 Common Issues
+            ul.text-red-800.space-y-1
+              li • Web interface not loading - check network connection
+              li • Input not responding - verify wiring and configuration
+              li • Output not working - check output settings and connections
+              li • Network connectivity - verify IP settings
+              li • Input noise - adjust debouncing settings
+              li • Response delays - check timing configuration
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Best Practices
+
+          .bg-green-50.border-l-4.border-green-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-green-900.mb-2 Setup Tips
+            ul.text-green-800.space-y-1
+              li • Start with simple button input for testing
+              li • Use proper wiring and connections
+              li • Test input before configuring outputs
+              li • Monitor input behavior during operation
+              li • Keep configuration simple initially
+              li • Document your setup for future reference
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Support and Resources
+
+          p.text-gray-700.mb-6
+            | For additional help with the web interface, check our resources or contact support.
+
+          .flex.flex-col.sm:flex-row.gap-4
+            = link_to 'FAQ', '/boards/baldrickinput1/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Technical Specifications', '/boards/baldrickinput1/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Contact Support', '/support', class: 'bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center'

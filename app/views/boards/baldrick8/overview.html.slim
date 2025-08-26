@@ -1,0 +1,61 @@
+- content_for :title, "Baldrick8 - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'Baldrick8', menu_items: board_menu_items('baldrick8')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrick8')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Baldrick8', subtitle: 'Documentation for Baldrick8', image_url: '/img/baldrick8-board.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        / Board Overview for Baldrick8 - Complete Content
+        .prose.max-w-none
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Baldrick8 Overview
+
+          .grid.md:grid-cols-2.gap-8.mb-8
+            .flex.items-start
+              img.w-full.rounded-lg src="/img/baldrick8-board.png" alt="Baldrick8 Board Overview"
+            
+            .flex.flex-col.justify-start
+              p.text-lg.text-gray-700.mb-6
+                | The Baldrick8 is our flagship 8-output pixel controller, designed for professional lighting displays 
+                | and large-scale installations. With support for up to 750 pixels per port at 40fps and high refresh rates, 
+                | it's perfect for creating stunning visual effects.
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Baldrick8 Controller Features
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li 2 ports accepting 5v - 24v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS)
+            li 8 Ports handling many pixels per port (but 750 pixels per port at 40fps)
+            li 2 Power inputs (which combined with the included 7.5 amp fuses allows for full pixel runs at 100%)
+            li DDP, Artnet, E1.31 & sACN compatible
+            li 3 Programmable Button ports (Can use the FPP API to start / stop a sequence)
+            li Small footprint compatible with other smart receiver mounts
+            li No Pi or FPP Licence required
+            li Push from xLights integration
+
+          p.text-gray-700.mb-6
+            | In addition, we've tried to add some simple quality of life improvements such as a QR code which links directly 
+            | to the manual (easy to read on a mobile in the dark) and the three buttons have not only ports but physical 
+            | buttons onboard to help you test without having to hook everything up.
+
+     
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Video Introduction
+
+          p.text-gray-700.mb-4
+            | Our good friend Greg has produced a video overview of our 'development board' which you should have a watch 
+            | over tonight whilst you're having dinner.
+
+          .bg-gray-100.rounded-lg.p-4.mb-6
+            p.text-sm.text-gray-600.italic
+              | Video: Baldrick8 Overview by Greg
+              br
+              em Just a quick note that this unboxing is a development version of the board so things like E1.31 and 
+              | other developments are coming to the board, they just weren't present in this release

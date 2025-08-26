@@ -1,0 +1,186 @@
+- content_for :title, "Buy BaldrickBadge - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickBadge', menu_items: board_menu_items('baldrickbadge')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickbadge', 'Buy This Board')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Buy BaldrickBadge', subtitle: 'Compact Badge Controller', image_url: '/img/baldrickbadge.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Why Choose the BaldrickBadge?
+
+          .grid.md:grid-cols-2.gap-8.mb-8
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Compact & Portable
+              p.text-lg.text-gray-700
+                | The BaldrickBadge is a compact badge-style controller perfect for wearable and portable applications. 
+                | Battery-powered and designed for mobility, it's ideal for portable displays and wearable projects.
+
+              .bg-pink-50.border-l-4.border-pink-400.p-4
+                p.text-pink-800.font-medium
+                  | "The BaldrickBadge is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Key Benefits
+              ul.space-y-3.text-gray-700
+                li • Compact form factor for wearable applications
+                li • Battery-powered operation for portability
+                li • Lightweight construction for comfort
+                li • Easy mounting options for various applications
+                li • Mobile-responsive web interface
+                li • Advanced power management
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 What's Included
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Hardware
+              ul.space-y-2.text-gray-700
+                li • BaldrickBadge controller board
+                li • Battery (if included in package)
+                li • Mounting hardware
+                li • USB cable (if included)
+                li • Quick start guide
+                li • Basic documentation
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Software & Support
+              ul.space-y-2.text-gray-700
+                li • Mobile-responsive web interface
+                li • Power management tools
+                li • Firmware updates
+                li • Basic documentation
+                li • Community support
+                li • Getting started guides
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Technical Specifications
+
+          .bg-blue-50.rounded-lg.p-6.mb-8
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 Portable Design
+                ul.text-blue-800.space-y-1
+                  li • Compact badge form factor
+                  li • Lightweight construction
+                  li • Battery-powered operation
+                  li • WiFi connectivity
+                  li • USB charging support
+                  li • Weather-resistant design
+
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 Pixel Control
+                ul.text-blue-800.space-y-1
+                  li • WS2811/WS2812B support
+                  li • Configurable pixel count
+                  li • 24-bit color depth
+                  li • Up to 60 Hz refresh rate
+                  li • Power-optimized operation
+                  li • Real-time control
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Perfect For
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Wearable Applications
+              ul.space-y-2.text-gray-700
+                li • Wearable lighting projects
+                li • Costume applications and cosplay
+                li • Portable displays
+                li • Mobile art installations
+                li • Compact projects
+                li • Battery-powered displays
+
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Portable Projects
+              ul.space-y-2.text-gray-700
+                li • Mobile lighting systems
+                li • Portable art installations
+                li • Temporary exhibits
+                li • Outdoor applications
+                li • Travel-friendly projects
+                li • Self-contained displays
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Portable Features
+
+          .bg-pink-50.border.border-pink-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-pink-900.mb-4 Designed for Mobility
+            p.text-pink-800.mb-4
+              | The BaldrickBadge is specifically designed for portable and wearable applications.
+            
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-pink-900.mb-3 Power Management
+                ul.text-pink-800.space-y-1
+                  li • Battery monitoring
+                  li • Power-saving modes
+                  li • Low-power operation
+                  li • Battery life optimization
+                  li • Power status indicators
+                  li • Efficient pixel control
+
+              div
+                h4.text-lg.font-semibold.text-pink-900.mb-3 Portability Features
+                ul.text-pink-800.space-y-1
+                  li • Compact form factor
+                  li • Lightweight construction
+                  li • Easy mounting options
+                  li • Weather-resistant design
+                  li • Quick setup and teardown
+                  li • Mobile configuration
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Pricing & Availability
+
+          .bg-purple-50.border.border-purple-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-purple-900.mb-4 Affordable Portability
+            p.text-purple-800.mb-4
+              | The BaldrickBadge is competitively priced for portable and wearable applications, making it accessible 
+              | for costume makers, artists, and mobile project creators.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Contact for Pricing', '/where-to-buy-baldrick-boards', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
+              = link_to 'Technical Specifications', '/boards/baldrickbadge/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Support & Community
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Getting Started Support
+              ul.space-y-2.text-gray-700
+                li • Comprehensive documentation
+                li • Step-by-step guides
+                li • Video tutorials
+                li • Community forums
+                li • Basic support options
+                li • Learning resources
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Community & Projects
+              ul.space-y-2.text-gray-700
+                li • Active user community
+                li • Project sharing
+                li • Tutorial resources
+                li • Wearable project ideas
+                li • Knowledge sharing
+                li • Collaborative learning
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Ready to Get Started?
+
+          .bg-pink-50.border.border-pink-200.rounded-lg.p-6
+            h3.text-xl.font-semibold.text-pink-900.mb-4 Start Your Portable Journey Today
+            p.text-pink-800.mb-6
+              | Ready to create portable and wearable lighting projects? The BaldrickBadge is the perfect choice 
+              | for applications where size, weight, and battery life are critical factors.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Where to Buy', '/where-to-buy-baldrick-boards', class: 'bg-pink-600 text-white px-8 py-4 rounded-lg hover:bg-pink-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Contact Sales', '/support', class: 'bg-gray-600 text-white px-8 py-4 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Technical Specs', '/boards/baldrickbadge/tech-specs', class: 'bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'

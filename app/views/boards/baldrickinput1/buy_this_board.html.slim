@@ -1,0 +1,182 @@
+- content_for :title, "Buy BaldrickInput1 - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickInput1', menu_items: board_menu_items('baldrickinput1')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickinput1', 'Buy This Board')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Buy BaldrickInput1', subtitle: 'Single Input Controller', image_url: '/img/baldrickinput1.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Why Choose the BaldrickInput1?
+
+          .grid.md:grid-cols-2.gap-8.mb-8
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Simple Input Control
+              p.text-lg.text-gray-700
+                | The BaldrickInput1 is perfect for simple interactive displays and basic triggers. 
+                | Cost-effective and easy to set up, it's ideal for entry-level projects and simple automation.
+
+              .bg-red-50.border-l-4.border-red-400.p-4
+                p.text-red-800.font-medium
+                  | "The BaldrickInput1 is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Key Benefits
+              ul.space-y-3.text-gray-700
+                li • Single input handling for simple triggers
+                li • Interactive display control capabilities
+                li • Simple setup process for beginners
+                li • Cost-effective solution for basic projects
+                li • Web-based configuration interface
+                li • Pixel output support for visual feedback
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 What's Included
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Hardware
+              ul.space-y-2.text-gray-700
+                li • BaldrickInput1 controller board
+                li • Mounting hardware
+                li • Power supply (if included in package)
+                li • Network cable (if included)
+                li • Quick start guide
+                li • Basic documentation
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Software & Support
+              ul.space-y-2.text-gray-700
+                li • Web-based configuration interface
+                li • Input testing tools
+                li • Firmware updates
+                li • Basic documentation
+                li • Community support
+                li • Getting started guides
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Technical Specifications
+
+          .bg-blue-50.rounded-lg.p-6.mb-8
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 Input Control
+                ul.text-blue-800.space-y-1
+                  li • Single input port
+                  li • 3.3V/5V compatible
+                  li • Configurable debouncing
+                  li • Fast response time (< 1ms)
+                  li • Edge detection options
+
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 Simple Features
+                ul.text-blue-800.space-y-1
+                  li • Web-based configuration
+                  li • Pixel output support
+                  li • Network integration
+                  li • Real-time monitoring
+                  li • Easy setup process
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Perfect For
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Simple Applications
+              ul.space-y-2.text-gray-700
+                li • Button triggers and switches
+                li • Interactive displays and exhibits
+                li • Entry-level automation projects
+                li • Educational and learning projects
+                li • Prototype development
+                li • Basic home automation
+
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Project Types
+              ul.space-y-2.text-gray-700
+                li • Interactive art installations
+                li • Simple lighting control
+                li • Educational demonstrations
+                li • Prototype testing
+                li • Basic automation systems
+                li • Cost-conscious projects
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Ideal for Beginners
+
+          .bg-green-50.border.border-green-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-green-900.mb-4 Why Choose BaldrickInput1 for Learning?
+            p.text-green-800.mb-4
+              | The BaldrickInput1 is designed specifically for beginners and simple projects.
+            
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-green-900.mb-3 Easy Setup
+                ul.text-green-800.space-y-1
+                  li • No programming required
+                  li • Web-based configuration
+                  li • Simple wiring
+                  li • Quick start guide
+                  li • Visual interface
+
+              div
+                h4.text-lg.font-semibold.text-green-900.mb-3 Learning Features
+                ul.text-green-800.space-y-1
+                  li • Single input focus
+                  li • Clear documentation
+                  li • Community support
+                  li • Expandable design
+                  li • Cost-effective learning
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Pricing & Availability
+
+          .bg-purple-50.border.border-purple-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-purple-900.mb-4 Affordable Entry Point
+            p.text-purple-800.mb-4
+              | The BaldrickInput1 is priced competitively for beginners and simple projects, making it an excellent 
+              | entry point into interactive electronics and automation.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Contact for Pricing', '/where-to-buy-baldrick-boards', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
+              = link_to 'Technical Specifications', '/boards/baldrickinput1/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Support & Community
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Getting Started Support
+              ul.space-y-2.text-gray-700
+                li • Comprehensive documentation
+                li • Step-by-step guides
+                li • Video tutorials
+                li • Community forums
+                li • Basic support options
+                li • Learning resources
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Community & Learning
+              ul.space-y-2.text-gray-700
+                li • Active user community
+                li • Project sharing
+                li • Tutorial resources
+                li • Beginner-friendly environment
+                li • Knowledge sharing
+                li • Collaborative learning
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Ready to Get Started?
+
+          .bg-yellow-50.border.border-yellow-200.rounded-lg.p-6
+            h3.text-xl.font-semibold.text-yellow-900.mb-4 Start Your Journey Today
+            p.text-yellow-800.mb-6
+              | Ready to dive into interactive electronics? The BaldrickInput1 is the perfect starting point 
+              | for beginners and simple projects, offering an affordable and easy-to-use solution.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Where to Buy', '/where-to-buy-baldrick-boards', class: 'bg-yellow-600 text-white px-8 py-4 rounded-lg hover:bg-yellow-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Contact Sales', '/support', class: 'bg-gray-600 text-white px-8 py-4 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Technical Specs', '/boards/baldrickinput1/tech-specs', class: 'bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'

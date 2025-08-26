@@ -1,0 +1,146 @@
+- content_for :title, "BaldrickSwitchy FAQ - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickSwitchy', menu_items: board_menu_items('baldrickswitchy')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickswitchy', 'FAQ')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'BaldrickSwitchy FAQ', subtitle: 'Frequently Asked Questions', image_url: '/img/baldrickswitchy.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Frequently Asked Questions
+
+          .space-y-8
+            / General Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 General Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What is the BaldrickSwitchy?
+                  p.text-gray-700
+                    | The BaldrickSwitchy is a high-power relay controller designed for AC device control and traditional lighting. 
+                    | It provides precise timing control and safety features for controlling motors, lights, and other high-voltage applications.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How many relays does the BaldrickSwitchy have?
+                  p.text-gray-700
+                    | The BaldrickSwitchy features multiple high-power relay outputs. Each relay can handle significant current loads 
+                    | and is designed for safe, reliable operation in demanding environments.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What voltage and current can it handle?
+                  p.text-gray-700
+                    | The BaldrickSwitchy can handle up to 240V AC and significant current loads per relay. 
+                    | Exact specifications depend on the relay configuration and safety requirements.
+
+            / Technical Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Technical Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What power supply do I need?
+                  p.text-gray-700
+                    | The BaldrickSwitchy requires a 12V DC power supply. The exact current requirement depends on your relay load, 
+                    | but we recommend a high-quality power supply capable of delivering sufficient current for your installation.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I connect to the network?
+                  p.text-gray-700
+                    | Connect an Ethernet cable to the network port. The BaldrickSwitchy will automatically obtain an IP address via DHCP, 
+                    | or you can configure a static IP address through the web interface.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What protocols are supported?
+                  p.text-gray-700
+                    | The BaldrickSwitchy supports DDP, Artnet, E1.31 (sACN), and other industry-standard protocols for seamless 
+                    | integration with professional lighting software.
+
+            / Safety Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Safety Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What safety features are included?
+                  p.text-gray-700
+                    | The BaldrickSwitchy includes overcurrent protection, overvoltage protection, thermal protection, 
+                    | emergency stop functionality, and comprehensive fault detection systems.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Do I need a qualified electrician?
+                  p.text-gray-700
+                    | Yes, high-voltage work should be performed by qualified personnel. The BaldrickSwitchy deals with AC power 
+                    | and requires proper installation following local electrical codes and safety regulations.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What certifications does it have?
+                  p.text-gray-700
+                    | The BaldrickSwitchy is designed to meet CE certification for European markets and UL listing for North American markets, 
+                    | ensuring compliance with safety standards.
+
+            / Setup Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Setup Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I find the IP address?
+                  p.text-gray-700
+                    | Check your router's DHCP client list, use network scanning tools, or look for the BaldrickSwitchy in your 
+                    | network devices. The web interface will also display the current IP address.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I configure the relays?
+                  p.text-gray-700
+                    | Use the web interface to configure each relay. You can set voltage, current, timing, and safety parameters 
+                    | for each relay independently.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can I use different loads on different relays?
+                  p.text-gray-700
+                    | Yes! Each relay can be configured independently, allowing you to control different types of loads 
+                    | with different voltage and current requirements.
+
+            / Troubleshooting
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 My relays aren't working, what should I check?
+                  p.text-gray-700
+                    | First, verify your power supply is adequate for your relay load. Check all connections, 
+                    | ensure proper grounding, and verify your relay configuration in the web interface.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 The safety system activated
+                  p.text-gray-700
+                    | Check your protection settings and ensure your loads are within the specified limits. 
+                    | Verify proper grounding and check for any fault conditions.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Some relays work but others don't
+                  p.text-gray-700
+                    | Check the configuration for each relay individually. Verify voltage, current, and 
+                    | safety settings for each relay.
+
+            / Support
+            .bg-blue-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Need More Help?
+              
+              p.text-gray-700.mb-4
+                | If you can't find the answer to your question here, we're here to help!
+              
+              .flex.flex-col.sm:flex-row.gap-4
+                = link_to 'Contact Support', '/support', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+                = link_to 'Getting Started Guide', '/boards/baldrickswitchy/getting-started', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'

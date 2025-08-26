@@ -1,0 +1,93 @@
+<!-- Footer -->
+<footer class="bg-purple-900 text-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Column 1: Our Boards -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Our Boards</h3>
+        <ul class="space-y-2 text-purple-200">
+          <li>
+            <a href="/boards/baldrick8" class="hover:text-white transition-colors">Baldrick8 Docs</a>
+          </li>
+          <li>
+            <a href="/boards/baldrickswitchy" class="hover:text-white transition-colors">BaldrickSwitchy Docs</a>
+          </li>
+          <li>
+            <a href="/boards/baldrickdmx" class="hover:text-white transition-colors">BaldrickDMX Docs</a>
+          </li>
+          <li>
+            <a href="/boards/baldrickinput1" class="hover:text-white transition-colors">BaldrickInput1 Docs</a>
+          </li>
+          <li>
+            <a href="/boards/baldricksignals" class="hover:text-white transition-colors">BaldrickSignals Docs</a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Column 2: Help -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Help</h3>
+        <ul class="space-y-2 text-purple-200">
+          <li>
+            <a href="https://www.facebook.com/groups/baldrickboards" target="_blank" class="hover:text-white transition-colors">Baldrick Boards Facebook Group</a>
+          </li>
+          <li>
+            <a href="/support" class="hover:text-white transition-colors">Hardware Support Form</a>
+          </li>
+          <li>
+            <a href="/fun-stuff" class="hover:text-white transition-colors">Fun Stuff</a>
+          </li>
+          <li>
+            <a href="/faq" class="hover:text-white transition-colors">FAQ</a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Column 3: More -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">More</h3>
+        <ul class="space-y-2 text-purple-200">
+          <li>
+            <a href="/about" class="hover:text-white transition-colors">About Baldrick</a>
+          </li>
+          <li>
+            <a href="/where-to-buy-baldrick-boards" class="hover:text-white transition-colors">Where to Buy</a>
+          </li>
+          <li>
+            <a href="/support" class="hover:text-white transition-colors">Support</a>
+          </li>
+          <li>
+            <a href="/contact" class="hover:text-white transition-colors">Contact</a>
+          </li>
+          <li>
+            <a href="/complaints" class="hover:text-white transition-colors">Complaints</a>
+          </li>
+        </ul>
+        
+        <!-- Seasonal Themes Dropdown -->
+        <div class="mt-6" data-controller="seasonal-themes">
+          <h4 class="text-sm font-semibold mb-2 text-purple-200">Seasonal Themes</h4>
+          <div class="relative">
+            <select data-seasonal-themes-target="select" data-action="change->seasonal-themes#change" class="bg-purple-800 text-white border border-purple-600 rounded-md px-3 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+              <option value="default">Default Theme</option>
+              <option value="christmas">🎄 Christmas</option>
+              <option value="halloween">🎃 Halloween</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Copyright -->
+  <div class="border-t border-purple-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="text-center text-purple-300">
+        <p>Copyright © 2025 www.ilightthat.com</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Seasonal Theme Effects Container -->
+<div data-seasonal-themes-target="effects" class="fixed inset-0 pointer-events-none z-50"></div>

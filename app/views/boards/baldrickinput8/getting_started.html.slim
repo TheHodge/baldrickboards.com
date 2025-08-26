@@ -1,0 +1,158 @@
+- content_for :title, "BaldrickInput8 Getting Started - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickInput8', menu_items: board_menu_items('baldrickinput8')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickinput8', 'Getting Started')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Getting Started with BaldrickInput8', subtitle: 'Setup and Configuration Guide', image_url: '/img/baldrickinput8.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickInput8
+          
+          p.text-lg.text-gray-600.mb-8
+            | Welcome to the BaldrickInput8! This guide will help you set up your 8-channel input controller for complex interactive installations. 
+            | Perfect for multi-zone displays and sophisticated automation projects.
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 What's in the Box
+          ul.space-y-2.text-gray-700.mb-8
+            li • BaldrickInput8 controller board
+            li • Power supply (if included)
+            li • Mounting hardware
+            li • Quick start guide
+            li • Network cable (if included)
+            li • Input/output connection cables (if included)
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Quick Setup Steps
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 1. Power Connection
+          p.text-gray-700.mb-4
+            | Connect your power supply to the BaldrickInput8. The board requires a stable power supply for reliable multi-channel operation.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 2. Network Connection
+          p.text-gray-700.mb-4
+            | Connect an Ethernet cable to the network port. The BaldrickInput8 will automatically obtain an IP address via DHCP.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 3. Input Connections
+          p.text-gray-700.mb-4
+            | Connect your input devices (buttons, switches, sensors) to the 8 input ports. Each input can be configured independently.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 4. Output Connections
+          p.text-gray-700.mb-4
+            | Connect your pixel lighting or other output devices to the 8 output ports. Each output can control different zones or systems.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 5. Web Interface Access
+          p.text-gray-700.mb-4
+            | Open your web browser and navigate to the BaldrickInput8's IP address. You can find this in your router's DHCP client list.
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Configuration
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Network Settings
+          p.text-gray-700.mb-4
+            | The BaldrickInput8 supports both DHCP and static IP configuration. For complex installations, we recommend using static IP addresses.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Input Configuration
+          p.text-gray-700.mb-4
+            | Configure each of the 8 inputs independently. Set input types, voltage levels, debouncing, and trigger conditions for each channel.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Output Configuration
+          p.text-gray-700.mb-4
+            | Set up the 8 outputs for your specific application. Configure pixel counts, color patterns, timing, and response behaviors.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Logic Configuration
+          p.text-gray-700.mb-4
+            | Set up complex interaction logic between inputs and outputs. Create conditional responses, sequences, and coordinated behaviors.
+          
+          .bg-indigo-50.border-l-4.border-indigo-400.p-4.mb-8
+            h4.text-lg.font-semibold.text-indigo-800.mb-2 Advanced Setup Tips
+            ul.text-indigo-700.space-y-1
+              li • Plan your input/output mapping before configuration
+              li • Test each input and output individually first
+              li • Use the logic builder for complex interactions
+              li • Consider input priority and timing relationships
+              li • Document your configuration for future reference
+              li • Test complex scenarios before final installation
+          
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
+            h4.text-lg.font-semibold.text-yellow-800.mb-2 Important Notes
+            ul.text-yellow-700.space-y-1
+              li • Ensure proper wiring for all 8 inputs and outputs
+              li • Use appropriate input devices for each channel
+              li • Test complex logic scenarios thoroughly
+              li • Consider environmental factors for outdoor use
+              li • Keep firmware updated for best performance
+              li • Monitor system performance during operation
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Next Steps
+          p.text-gray-700.mb-6
+            | Once your BaldrickInput8 is configured, you can:
+          
+          ul.space-y-2.text-gray-700.mb-8
+            li • Explore the web interface features
+            li • Configure complex interaction logic
+            li • Set up multi-zone lighting sequences
+            li • Integrate with other systems
+            li • Test your interactive installation
+            li • Expand to more complex projects
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Example Projects
+          
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Multi-Zone Interactive Display
+              p.text-gray-700.mb-3
+                | Create an interactive display with 8 different zones, each responding to different inputs with coordinated lighting effects.
+              ul.text-gray-600.text-sm.space-y-1
+                li • 8 independent input zones
+                li • Coordinated lighting responses
+                li • Complex interaction patterns
+                li • Multi-zone synchronization
+          
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Advanced Automation System
+              p.text-gray-700.mb-3
+                | Build a sophisticated automation system with multiple sensors and coordinated output responses.
+              ul.text-gray-600.text-sm.space-y-1
+                li • Multi-sensor integration
+                li • Conditional logic responses
+                li • Sequential automation
+                li • Complex timing control
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Advanced Features
+          
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Logic Builder
+              ul.text-gray-700.space-y-1
+                li • Visual logic configuration
+                li • Conditional statements
+                li • Input/output relationships
+                li • Timing and sequencing
+                li • Priority handling
+                li • Complex automation rules
+          
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Multi-Channel Coordination
+              ul.text-gray-700.space-y-1
+                li • Cross-channel communication
+                li • Synchronized responses
+                li • Pattern recognition
+                li • Event-driven actions
+                li • State management
+                li • Performance optimization
+          
+          .bg-blue-50.border.border-blue-200.rounded-lg.p-6
+            h4.text-xl.font-semibold.text-blue-900.mb-3 Need Help?
+            p.text-blue-800.mb-4
+              | If you encounter any issues during setup, check our FAQ or contact support.
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'FAQ', '/boards/baldrickinput8/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+              = link_to 'Web Interface Guide', '/boards/baldrickinput8/web-interface', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'

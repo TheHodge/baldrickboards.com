@@ -1,0 +1,205 @@
+- content_for :title, "BaldrickSwitchy Web Interface - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickSwitchy', menu_items: board_menu_items('baldrickswitchy')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickswitchy', 'Web Interface')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'BaldrickSwitchy Web Interface', subtitle: 'Configuration and Control Guide', image_url: '/img/baldrickswitchy.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Web Interface Guide
+
+          p.text-lg.text-gray-600.mb-8
+            | The BaldrickSwitchy web interface provides comprehensive control and configuration options for your high-power relay controller. 
+            | This guide will help you navigate and use all the features effectively and safely.
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Accessing the Web Interface
+
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-blue-900.mb-2 Quick Access
+            ol.text-blue-800.space-y-1
+              li 1. Ensure your BaldrickSwitchy is powered on and connected to your network
+              li 2. Find the IP address (check your router's DHCP client list)
+              li 3. Open your web browser and navigate to the IP address
+              li 4. The web interface will load automatically
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Main Dashboard
+
+          p.text-gray-700.mb-4
+            | The main dashboard provides an overview of your BaldrickSwitchy's status and quick access to key functions.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Status Overview
+              ul.text-gray-700.space-y-1
+                li • Power status and voltage monitoring
+                li • Network connection status
+                li • Relay status indicators
+                li • Temperature and system health
+                li • Safety system status
+                li • Active protocols and connections
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Quick Actions
+              ul.text-gray-700.space-y-1
+                li • Test individual relays
+                li • Emergency stop functionality
+                li • Start/stop sequences
+                li • System reboot options
+                li • Configuration backup/restore
+                li • Safety system reset
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Relay Configuration
+
+          p.text-gray-700.mb-4
+            | Configure each relay independently for your specific application requirements.
+
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-yellow-900.mb-2 Relay Settings
+            ul.text-yellow-800.space-y-1
+              li • Relay type and configuration
+              li • Voltage and current ratings
+              li • Switching timing parameters
+              li • Safety interlocks and protection
+              li • Individual relay testing
+              li • Status monitoring setup
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Configuration Steps
+
+          ol.space-y-4.text-gray-700.mb-8
+            li
+              strong.text-gray-900 1. Access Relay Settings
+              p.mt-1 Navigate to the Relay Configuration section in the web interface.
+
+            li
+              strong.text-gray-900 2. Select Relay
+              p.mt-1 Choose the relay you want to configure.
+
+            li
+              strong.text-gray-900 3. Set Parameters
+              p.mt-1 Configure voltage, current, timing, and safety parameters.
+
+            li
+              strong.text-gray-900 4. Test Configuration
+              p.mt-1 Use the test function to verify your settings work correctly.
+
+            li
+              strong.text-gray-900 5. Save Settings
+              p.mt-1 Save your configuration and repeat for other relays.
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Safety Configuration
+
+          p.text-gray-700.mb-4
+            | Configure safety features and protection systems for reliable operation.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Protection Settings
+              ul.text-gray-700.space-y-1
+                li • Overcurrent protection limits
+                li • Overvoltage protection settings
+                li • Thermal protection thresholds
+                li • Emergency stop configuration
+                li • Fault detection parameters
+                li • Safety interlock setup
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Monitoring
+              ul.text-gray-700.space-y-1
+                li • Real-time current monitoring
+                li • Voltage level monitoring
+                li • Temperature monitoring
+                li • Relay status monitoring
+                li • Fault logging and alerts
+                li • Performance metrics
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Network Configuration
+
+          p.text-gray-700.mb-4
+            | Configure network settings for optimal performance and integration.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 IP Configuration
+              ul.text-gray-700.space-y-1
+                li • DHCP (automatic) or Static IP
+                li • Subnet mask and gateway
+                li • DNS server settings
+                li • Network interface status
+                li • Connection speed and duplex
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Protocol Settings
+              ul.text-gray-700.space-y-1
+                li • E1.31 (sACN) configuration
+                li • Art-Net universe settings
+                li • DDP protocol options
+                li • Multicast vs Unicast
+                li • Port configuration
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Advanced Features
+
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Timing and Synchronization
+          p.text-gray-700.mb-4
+            | Configure precise timing parameters for synchronized operations.
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Control rate settings (up to 60 FPS)
+            li Timing precision adjustments
+            li Synchronization with other controllers
+            li Latency optimization
+            li Buffer management
+
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Power Management
+          p.text-gray-700.mb-4
+            | Monitor and manage power consumption across all relays.
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Real-time power monitoring
+            li Current draw per relay
+            li Power limiting and protection
+            li Efficiency optimization
+            li Thermal monitoring
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Troubleshooting
+
+          .bg-red-50.border-l-4.border-red-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-red-900.mb-2 Common Issues
+            ul.text-red-800.space-y-1
+              li • Web interface not loading - check network connection
+              li • Relays not responding - verify configuration and power
+              li • Safety system activation - check protection settings
+              li • Network connectivity - verify IP settings
+              li • Power issues - monitor voltage and current
+              li • Thermal shutdown - check ventilation and cooling
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Safety Reminders
+
+          .bg-orange-50.border-l-4.border-orange-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-orange-900.mb-2 Important Safety Notes
+            ul.text-orange-800.space-y-1
+              li • High-voltage work should be performed by qualified personnel
+              li • Always disconnect power before making connections
+              li • Ensure proper grounding for all installations
+              li • Follow local electrical codes and regulations
+              li • Test all safety systems before operation
+              li • Monitor system status during operation
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Support and Resources
+
+          p.text-gray-700.mb-6
+            | For additional help with the web interface, check our resources or contact support.
+
+          .flex.flex-col.sm:flex-row.gap-4
+            = link_to 'FAQ', '/boards/baldrickswitchy/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Technical Specifications', '/boards/baldrickswitchy/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Contact Support', '/support', class: 'bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center'

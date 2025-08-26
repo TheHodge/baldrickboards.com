@@ -1,0 +1,261 @@
+- content_for :title, "BaldrickSignals Web Interface - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickSignals', menu_items: board_menu_items('baldricksignals')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldricksignals', 'Web Interface')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'BaldrickSignals Web Interface', subtitle: 'Configuration and Control Guide', image_url: '/img/baldricksignals-board.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Web Interface Guide
+
+          p.text-lg.text-gray-600.mb-8
+            | The BaldrickSignals web interface provides comprehensive signal control and routing management for your interactive applications. 
+            | This guide will help you configure signal routing, monitor signal quality, and manage interactive signal processing.
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Accessing the Web Interface
+
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-blue-900.mb-2 Quick Access
+            ol.text-blue-800.space-y-1
+              li 1. Ensure your BaldrickSignals is powered on and connected to network
+              li 2. Find the IP address in your router's DHCP client list
+              li 3. Open your web browser and navigate to the IP address
+              li 4. The professional-grade web interface will load automatically
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Main Dashboard
+
+          p.text-gray-700.mb-4
+            | The main dashboard provides an overview of your BaldrickSignals's signal routing status and quick access to key functions.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Signal Status Overview
+              ul.text-gray-700.space-y-1
+                li • Input signal status and quality
+                li • Output signal routing status
+                li • Signal processing performance
+                li • Network connectivity status
+                li • System temperature monitoring
+                li • Signal routing statistics
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Quick Actions
+              ul.text-gray-700.space-y-1
+                li • Test signal routing
+                li • Configure signal channels
+                li • Monitor signal quality
+                li • Update firmware
+                li • Backup/restore settings
+                li • Network configuration
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Signal Routing Configuration
+
+          p.text-gray-700.mb-4
+            | Configure signal routing and switching for your specific application requirements.
+
+          .bg-teal-50.border-l-4.border-teal-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-teal-900.mb-2 Signal Routing Settings
+            ul.text-teal-800.space-y-1
+              li • Input channel configuration
+              li • Output channel routing
+              li • Signal protocol conversion
+              li • Interactive routing rules
+              li • Signal quality thresholds
+              li • Performance optimization
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Configuration Steps
+
+          ol.space-y-4.text-gray-700.mb-8
+            li
+              strong.text-gray-900 1. Access Signal Configuration
+              p.mt-1 Navigate to the Signal Configuration section in the web interface.
+
+            li
+              strong.text-gray-900 2. Configure Input Channels
+              p.mt-1 Set up input channels with appropriate signal types, protocols, and quality parameters.
+
+            li
+              strong.text-gray-900 3. Configure Output Channels
+              p.mt-1 Define output channels and their routing destinations with signal conversion settings.
+
+            li
+              strong.text-gray-900 4. Set Up Routing Rules
+              p.mt-1 Create interactive routing rules and conditional signal processing logic.
+
+            li
+              strong.text-gray-900 5. Enable Monitoring
+              p.mt-1 Activate real-time signal monitoring and quality analysis for all channels.
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Interactive Signal Processing
+
+          p.text-gray-700.mb-4
+            | Configure interactive signal processing and automated responses for complex applications.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Interactive Features
+              ul.text-gray-700.space-y-1
+                li • Dynamic signal routing
+                li • Pattern recognition
+                li • Automated responses
+                li • Conditional processing
+                li • Event-driven handling
+                li • User-defined logic
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Processing Rules
+              ul.text-gray-700.space-y-1
+                li • Signal routing rules
+                li • Protocol conversion
+                li • Quality thresholds
+                li • Performance optimization
+                li • Error handling
+                li • Recovery procedures
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Signal Quality Monitoring
+
+          p.text-gray-700.mb-4
+            | Monitor signal quality, performance, and system health in real-time.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Real-time Monitoring
+              ul.text-gray-700.space-y-1
+                li • Signal quality metrics
+                li • Routing performance
+                li • Processing latency
+                li • Error rates
+                li • System temperature
+                li • Network status
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Quality Analysis
+              ul.text-gray-700.space-y-1
+                li • Signal-to-noise ratio
+                li • Crosstalk analysis
+                li • Bandwidth utilization
+                li • Performance trends
+                li • Quality reports
+                li • Diagnostic tools
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Network Configuration
+
+          p.text-gray-700.mb-4
+            | Configure network settings for professional and industrial installations.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Network Settings
+              ul.text-gray-700.space-y-1
+                li • IP address configuration
+                li • DHCP/Static IP settings
+                li • Network security settings
+                li • Protocol configuration
+                li • Network diagnostics
+                li • Connection monitoring
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Industrial Integration
+              ul.text-gray-700.space-y-1
+                li • Modbus TCP configuration
+                li • SNMP monitoring setup
+                li • SCADA system integration
+                li • Building management integration
+                li • Custom protocol support
+                li • Remote access configuration
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Advanced Features
+
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Signal Processing
+          p.text-gray-700.mb-4
+            | Advanced signal processing capabilities for complex applications.
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Digital signal processing (DSP) algorithms
+            li Multi-protocol signal conversion
+            li Adaptive signal routing
+            li Pattern recognition and analysis
+            li Signal conditioning and filtering
+            li Performance optimization
+
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Interactive Control
+          p.text-gray-700.mb-4
+            | Interactive control features for dynamic signal management.
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Real-time signal routing changes
+            li Interactive switching control
+            li Automated signal responses
+            li Conditional signal processing
+            li Event-driven signal handling
+            li User-defined signal logic
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Alerting & Notifications
+
+          p.text-gray-700.mb-4
+            | Configure comprehensive alerting and notification systems for signal monitoring.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Alert Types
+              ul.text-gray-700.space-y-1
+                li • Signal quality alerts
+                li • Routing failure notifications
+                li • Performance warnings
+                li • System status updates
+                li • Error notifications
+                li • Maintenance reminders
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Notification Methods
+              ul.text-gray-700.space-y-1
+                li • Email notifications
+                li • SMS alerts
+                li • Web interface alerts
+                li • SNMP traps
+                li • API notifications
+                li • Dashboard indicators
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Troubleshooting
+
+          .bg-red-50.border-l-4.border-red-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-red-900.mb-2 Common Issues
+            ul.text-red-800.space-y-1
+              li • Web interface not loading - check network connection
+              li • Signal routing not working - verify channel configuration
+              li • Poor signal quality - check connections and grounding
+              li • High latency - optimize signal processing settings
+              li • Network connectivity issues - check IP configuration
+              li • Signal conversion errors - verify protocol settings
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Best Practices
+
+          .bg-green-50.border-l-4.border-green-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-green-900.mb-2 Signal Control Tips
+            ul.text-green-800.space-y-1
+              li • Plan your signal routing topology before configuration
+              li • Test signal quality and timing for each connection
+              li • Set up redundant signal paths for critical applications
+              li • Monitor signal quality and performance regularly
+              li • Keep firmware updated for best performance
+              li • Document your signal routing configuration
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Support and Resources
+
+          p.text-gray-700.mb-6
+            | For additional help with the web interface, check our resources or contact support.
+
+          .flex.flex-col.sm:flex-row.gap-4
+            = link_to 'FAQ', '/boards/baldricksignals/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Technical Specifications', '/boards/baldricksignals/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Contact Support', '/support', class: 'bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center'

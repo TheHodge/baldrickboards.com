@@ -1,0 +1,376 @@
+<% content_for :title, "404 - Page Not Found - Baldrick Board Documentation" %>
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Breadcrumb -->
+  <nav class="text-sm text-gray-500 mb-6">
+    <div class="flex items-center space-x-2">
+      <a href="/" class="hover:text-gray-700 transition-colors">Home</a>
+      <svg class="h-4 w-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </svg>
+      <span class="text-gray-900 font-medium">404 - Page Not Found</span>
+    </div>
+  </nav>
+
+  <!-- Main Content Card -->
+  <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <!-- Header Section -->
+    <div class="bg-gradient-to-r from-red-500 via-red-600 to-red-800 px-8 py-12 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">404</h1>
+      <p class="text-xl md:text-2xl text-red-100 mb-2">You've broke it!</p>
+      <p class="text-lg text-red-200">Here's something to distract yourself...</p>
+    </div>
+
+    <!-- Game Section -->
+    <div class="p-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Pixel Repair Crew</h2>
+        </div>
+
+        <!-- Game Container -->
+        <div class="bg-purple-900 rounded-lg overflow-hidden shadow-xl" style="max-width: 760px; margin: 0 auto;">
+          <div class="bg-purple-800 px-4 py-3 border-b border-purple-700">
+            <div class="flex items-center justify-between">
+              <div class="flex gap-3 items-center flex-wrap">
+                <div class="bg-purple-700 text-gray-200 px-3 py-1 rounded-lg text-sm font-semibold" id="score">Score: 0</div>
+                <div class="bg-purple-700 text-gray-200 px-3 py-1 rounded-lg text-sm font-semibold" id="best">Best: 0</div>
+                <div class="bg-purple-700 text-gray-200 px-3 py-1 rounded-lg text-sm font-semibold" id="faults">Faults: 0 / 10</div>
+                <div class="bg-purple-700 text-gray-200 px-3 py-1 rounded-lg text-sm font-semibold" id="speed">Speed: 1×</div>
+              </div>
+                              <div class="text-white text-sm font-medium">A timewasting game from Baldrick</div>
+            </div>
+          </div>
+          
+          <div class="relative">
+            <canvas id="game" style="width: 100%; height: 420px; background: #0b0f17; cursor: crosshair; display: block;" aria-label="Pixel Repair Crew mini-game" role="img"></canvas>
+            
+            <!-- Intro overlay -->
+            <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm" id="intro">
+              <div class="bg-gray-900 border border-gray-600 rounded-lg p-6 max-w-md mx-4 text-center">
+                <h3 class="text-xl font-bold text-white mb-4">Pixel Repair Crew</h3>
+                <p class="text-gray-300 mb-4">It's 7pm on Christmas Eve and there are 300 people at your show. Disaster strikes. You've bought cheap pixels and they're dying.</p>
+                <p class="text-gray-300 mb-4">Grab the solder seals and fix the show before anyone notices. Keep the dead pixel count below <strong>10</strong> and you'll be fine.</p>
+                <p class="text-gray-400 text-sm">Click anywhere to begin.</p>
+              </div>
+            </div>
+
+            <!-- Game over overlay -->
+            <div class="absolute inset-0 flex items-center justify-center" id="overlay">
+              <div class="bg-gray-900 border border-gray-600 rounded-lg p-6 max-w-md mx-4 text-center">
+                <div class="text-2xl font-bold text-red-400 mb-4" id="cancelText">THE SHOW HAS BEEN CANCELLED!!</div>
+                <p class="text-gray-300 mb-4" id="finalStats">Score 0 • Best 0</p>
+                <p class="text-gray-400 text-sm">Click anywhere to play again.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="text-center mt-8">
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors inline-flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+              </svg>
+              Back to Home
+            </a>
+            <a href="/boards" class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+              </svg>
+              Browse Boards
+            </a>
+            <a href="/fun-stuff" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Fun Stuff
+            </a>
+            <a href="/faq" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              FAQ
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .bg-purple-900.shake {
+    animation: shake .6s ease both;
+  }
+  
+  @keyframes shake {
+    0% { transform: translate(0,0); }
+    20% { transform: translate(-6px,3px); }
+    40% { transform: translate(5px,-4px); }
+    60% { transform: translate(-4px,2px); }
+    80% { transform: translate(3px,-2px); }
+    100% { transform: translate(0,0); }
+  }
+  
+  #overlay {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+  }
+  
+  #overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
+
+<script>
+(()=>{
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const scoreEl = document.getElementById('score');
+  const bestEl = document.getElementById('best');
+  const faultsEl = document.getElementById('faults');
+  const speedEl = document.getElementById('speed');
+  const overlay = document.getElementById('overlay');
+  const intro = document.getElementById('intro');
+  const finalStats = document.getElementById('finalStats');
+
+  let DPR = Math.max(1, Math.min(2, window.devicePixelRatio||1));
+  let W=0, H=0;
+  function resize(){
+    const rect = canvas.getBoundingClientRect();
+    const w = Math.floor(rect.width * DPR);
+    const h = Math.floor(rect.height * DPR);
+    if(canvas.width!==w||canvas.height!==h){ canvas.width=w; canvas.height=h; }
+    layoutGrid();
+  }
+  new ResizeObserver(resize).observe(canvas);
+
+  // Grid config
+  let COLS=18, ROWS=12;
+  let cell=0, offX=0, offY=0;
+  function layoutGrid(){
+    const cw = canvas.width, ch = canvas.height;
+    COLS = Math.max(14, Math.round(cw/(34*DPR)));
+    ROWS = Math.max(10, Math.round(ch/(34*DPR)));
+    cell = Math.min(Math.floor(cw/COLS), Math.floor(ch/ROWS));
+    offX = Math.floor((cw - COLS*cell)/2);
+    offY = Math.floor((ch - ROWS*cell)/2);
+    initBulbs();
+  }
+
+  // Game state
+  const colors = ['#22d3ee','#f97316','#10b981','#f43f5e','#8b5cf6'];
+  const bulbs = []; // {r,c,state,phase,color,cool}
+  const STATE = { LIT:0, DARK:1 };
+  let running=false, score=0, best=0, faults=0, maxFaults=10;
+  let spawnBaseMs=1100, spawnTimer=0, speedMul=1; // easier start
+
+  // Game-over FX
+  let shards=[]; // {x,y,vx,vy,life,col}
+
+  function initBulbs(){
+    bulbs.length=0;
+    for(let r=0;r<ROWS;r++){
+      for(let c=0;c<COLS;c++){
+        bulbs.push({r,c,state:STATE.LIT,phase:Math.random()*Math.PI*2,color:colors[(r*COLS+c)%colors.length],cool:0});
+      }
+    }
+  }
+
+  function reset(){
+    running=false; score=0; faults=0; speedMul=1; spawnBaseMs=1100; spawnTimer=0; 
+    overlay.classList.remove('show');
+    shards=[];
+    updateHUD();
+    initBulbs();
+    draw(0);
+  }
+
+  function loadBest(){ best = +localStorage.getItem('baldrick-pixel-repair-best')||0; bestEl.textContent = `Best: ${best}`; }
+  function saveBest(){ localStorage.setItem('baldrick-pixel-repair-best', best); }
+
+  function updateHUD(){
+    scoreEl.textContent = `Score: ${score}`;
+    bestEl.textContent = `Best: ${best}`;
+    faultsEl.textContent = `Faults: ${faults} / ${maxFaults}`;
+    faultsEl.className = faultsEl.className.replace(' text-red-400', '');
+    if(faults>=Math.max(1,maxFaults-1)) faultsEl.classList.add('text-red-400');
+    speedEl.textContent = `Speed: ${speedMul.toFixed(1)}×`;
+  }
+
+  function indexAt(x,y){ return y*COLS + x; }
+  function randomLitIndex(){
+    const lit=[]; for(let i=0;i<bulbs.length;i++) if(bulbs[i].state===STATE.LIT) lit.push(i);
+    if(!lit.length) return -1; return lit[Math.floor(Math.random()*lit.length)];
+  }
+
+  function spawnFault(){
+    const i = randomLitIndex(); if(i<0) return;
+    bulbs[i].state = STATE.DARK; faults++; updateHUD();
+    if(faults>=maxFaults){ gameOver(); }
+  }
+
+  function gameOver(){
+    running=false;
+    
+    // Screen shake
+    const gameContainer = document.querySelector('.bg-purple-900');
+    gameContainer.classList.add('shake');
+    setTimeout(()=>gameContainer.classList.remove('shake'),650);
+    
+    // Break all LEDs and spawn shards
+    shards=[];
+    const maxShards = 320;
+    let added=0;
+    for(const b of bulbs){
+      b.state = STATE.DARK;
+      if(added<maxShards){
+        const bx = offX + b.c*cell + cell/2;
+        const by = offY + b.r*cell + cell/2;
+        for(let k=0;k<2 && added<maxShards;k++){
+          const ang = Math.random()*Math.PI*2;
+          const sp = 0.6 + Math.random()*1.8;
+          shards.push({x:bx,y:by,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp-0.2,life:900+Math.random()*600,col:'rgba(239,68,68,0.85)'});
+          added++;
+        }
+      }
+    }
+
+    if(score>best){ best=score; saveBest(); }
+    updateHUD();
+    finalStats.textContent = `Score ${score} • Best ${best}`;
+    overlay.classList.add('show');
+  }
+
+  // Input: click to repair, click overlays to start / restart
+  canvas.addEventListener('click', (e)=>{
+    if(!bulbs.length) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * DPR - offX;
+    const y = (e.clientY - rect.top) * DPR - offY;
+    if(x<0||y<0) return;
+    const cx = Math.floor(x / cell);
+    const cy = Math.floor(y / cell);
+    if(cx<0||cy<0||cx>=COLS||cy>=ROWS) return;
+    const b = bulbs[indexAt(cx,cy)];
+    if(b.state===STATE.DARK && running){
+      b.state=STATE.LIT; b.cool=1; score++; faults=Math.max(0,faults-1);
+      // Slower difficulty ramp: +0.15x every 7 points, cap 3.5x
+      if(score%7===0){ speedMul = Math.min(3.5, speedMul+0.15); }
+      updateHUD();
+    }
+  }, {passive:true});
+
+  intro.addEventListener('click', ()=>{ 
+    if(!running){ 
+      intro.style.display = 'none'; 
+      startPlay(); 
+    } 
+  });
+  
+  overlay.addEventListener('click', ()=>{ 
+    reset(); 
+    intro.style.display = 'flex'; 
+  });
+
+  function startPlay(){ running=true; spawnTimer=300; }
+
+  // Render loop with timed spawns
+  let last=0;
+  function draw(ts){
+    requestAnimationFrame(draw);
+    if(!last) last=ts; const dt = Math.min(64, ts-last); last=ts;
+
+    if(running){
+      spawnTimer -= dt;
+      // Easier curve: higher min target and slower with speed
+      const target = Math.max(220, spawnBaseMs / speedMul);
+      if(spawnTimer<=0){ spawnFault(); spawnTimer = target * (0.8 + Math.random()*0.6); }
+    }
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Transparent watermark background
+    ctx.save();
+    ctx.globalAlpha = 0.06;
+    ctx.fillStyle = '#94a3b8';
+    ctx.translate(canvas.width/2, canvas.height/2);
+    ctx.rotate(-Math.PI/7);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = `${Math.floor(Math.min(canvas.width,canvas.height)/9)}px ui-sans-serif, system-ui`;
+    ctx.fillText('baldrickboards.com', 0, 0);
+    ctx.restore();
+
+    // cable backdrop
+    ctx.lineWidth = Math.max(1, Math.floor(cell*0.06));
+    ctx.strokeStyle = 'rgba(31,41,55,0.7)';
+    ctx.lineCap = 'round';
+    for(let r=0;r<ROWS;r++){
+      ctx.beginPath();
+      for(let c=0;c<COLS;c++){
+        const x = offX + c*cell + cell/2, y = offY + r*cell + cell/2;
+        if(c===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+
+    // bulbs
+    for(const b of bulbs){
+      const x = offX + b.c*cell + cell/2;
+      const y = offY + b.r*cell + cell/2;
+      const radius = Math.max(3*DPR, Math.min(cell*0.22, 9*DPR));
+      const twinkle = 0.65 + 0.35*Math.sin((ts*0.004)+b.phase);
+
+      if(b.state===STATE.LIT){
+        const grad = ctx.createRadialGradient(x,y,0,x,y,radius*5);
+        grad.addColorStop(0, rgbaHex(b.color, 0.8*(twinkle)) );
+        grad.addColorStop(1, rgbaHex(b.color, 0) );
+        ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(x,y,radius*4.6,0,Math.PI*2); ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.beginPath(); ctx.arc(x,y,radius,0,Math.PI*2); ctx.fill();
+        ctx.fillStyle = b.color; ctx.beginPath(); ctx.arc(x,y,radius*0.8,0,Math.PI*2); ctx.fill();
+      } else {
+        ctx.fillStyle = 'rgba(15,23,42,0.92)'; ctx.beginPath(); ctx.arc(x,y,radius,0,Math.PI*2); ctx.fill();
+        ctx.strokeStyle = 'rgba(239,68,68,0.7)';
+        ctx.lineWidth = Math.max(1, radius*0.35); ctx.beginPath(); ctx.arc(x,y,radius*0.75,0,Math.PI*2); ctx.stroke();
+      }
+
+      if(b.cool>0){ b.cool -= dt*0.004; if(b.cool<0) b.cool=0;
+        ctx.strokeStyle = rgbaHex('#ffffff', 0.9*b.cool);
+        ctx.lineWidth = 1.2*DPR; ctx.beginPath(); ctx.arc(x,y,radius*1.45,0,Math.PI*2); ctx.stroke();
+      }
+    }
+
+    // Game-over FX: red pulse + shards drift
+    if(!running && faults>=maxFaults){
+      // Much more prominent red background - should persist throughout game over state
+      const a = 0.6 + 0.3*Math.sin(ts*0.005);
+      ctx.fillStyle = `rgba(255,0,0,${a})`; 
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+
+      // shards
+      for(let i=shards.length-1;i>=0;i--){
+        const s = shards[i];
+        s.life -= dt; s.x += s.vx*dt*0.06; s.y += s.vy*dt*0.06; s.vy += 0.0006*dt; // gravity
+        if(s.life<=0){ shards.splice(i,1); continue; }
+        ctx.fillStyle = s.col;
+        ctx.beginPath(); ctx.arc(s.x, s.y, Math.max(1, 1.4*DPR), 0, Math.PI*2); ctx.fill();
+      }
+    }
+  }
+
+  function rgbaHex(hex, a){
+    const h = hex.replace('#',''); const v = parseInt(h,16);
+    const r=(v>>16)&255, g=(v>>8)&255, b=v&255; return `rgba(${r},${g},${b},${a})`;
+  }
+
+  // Boot
+  resize();
+  loadBest();
+  reset();
+})();
+</script>

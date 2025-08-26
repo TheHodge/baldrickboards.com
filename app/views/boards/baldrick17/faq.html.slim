@@ -1,0 +1,123 @@
+- content_for :title, "Baldrick17 FAQ - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'Baldrick17', menu_items: board_menu_items('baldrick17')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrick17', 'FAQ')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Baldrick17 FAQ', subtitle: 'Frequently Asked Questions', image_url: '/img/baldrick17.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Frequently Asked Questions
+
+          .space-y-8
+            / General Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 General Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What is the Baldrick17?
+                  p.text-gray-700
+                    | The Baldrick17 is our flagship 17-channel pixel controller designed for professional lighting installations. 
+                    | It supports up to 17 independent pixel outputs with massive pixel capacity per channel.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How many pixels can the Baldrick17 control?
+                  p.text-gray-700
+                    | The Baldrick17 can control up to 750 pixels per channel at 40fps, with a total capacity of over 12,000 pixels 
+                    | across all 17 channels depending on your configuration and refresh rate requirements.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What pixel types are supported?
+                  p.text-gray-700
+                    | The Baldrick17 supports WS2811, WS2812B, SK6812, and other compatible pixel types. 
+                    | Each channel can be configured independently for different pixel types.
+
+            / Technical Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Technical Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What power supply do I need?
+                  p.text-gray-700
+                    | The Baldrick17 requires a 12V DC power supply. The exact current requirement depends on your pixel load, 
+                    | but we recommend a high-quality power supply capable of delivering sufficient current for your installation.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I connect to the network?
+                  p.text-gray-700
+                    | Connect an Ethernet cable to the network port. The Baldrick17 will automatically obtain an IP address via DHCP, 
+                    | or you can configure a static IP address through the web interface.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What protocols are supported?
+                  p.text-gray-700
+                    | The Baldrick17 supports DDP, Artnet, E1.31 (sACN), and other industry-standard protocols for seamless 
+                    | integration with professional lighting software.
+
+            / Setup Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Setup Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I find the IP address?
+                  p.text-gray-700
+                    | Check your router's DHCP client list, use network scanning tools, or look for the Baldrick17 in your 
+                    | network devices. The web interface will also display the current IP address.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I configure the channels?
+                  p.text-gray-700
+                    | Use the web interface to configure each of the 17 channels. You can set pixel type, count, 
+                    | and other parameters for each channel independently.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can I use different pixel types on different channels?
+                  p.text-gray-700
+                    | Yes! Each channel can be configured independently, allowing you to mix different pixel types 
+                    | and counts across your installation.
+
+            / Troubleshooting
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 My pixels aren't working, what should I check?
+                  p.text-gray-700
+                    | First, verify your power supply is adequate for your pixel load. Check all connections, 
+                    | ensure proper grounding, and verify your pixel configuration in the web interface.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 The web interface won't load
+                  p.text-gray-700
+                    | Check your network connection and ensure the Baldrick17 is powered on. Try accessing the IP address 
+                    | directly, and verify there are no firewall or network issues blocking the connection.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Some channels work but others don't
+                  p.text-gray-700
+                    | Check the configuration for each channel individually. Verify pixel counts, types, and 
+                    | power distribution. Each channel can be configured independently.
+
+            / Support
+            .bg-blue-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Need More Help?
+              
+              p.text-gray-700.mb-4
+                | If you can't find the answer to your question here, we're here to help!
+              
+              .flex.flex-col.sm:flex-row.gap-4
+                = link_to 'Contact Support', '/support', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+                = link_to 'Getting Started Guide', '/boards/baldrick17/getting-started', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'

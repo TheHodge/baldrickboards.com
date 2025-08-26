@@ -1,0 +1,363 @@
+- content_for :title, "Web Interface - Baldrick8 - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'Baldrick8', menu_items: board_menu_items('baldrick8')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrick8', 'Web Interface')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Baldrick8 Web Interface', subtitle: 'Complete configuration and control guide', image_url: '/img/baldrick8-board.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        / Web Interface Guide for Baldrick8
+        .prose.max-w-none
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Baldrick8 Web Interface
+
+          p.text-lg.text-gray-700.mb-6
+            | The Baldrick8 includes a powerful web-based configuration interface that allows you to set up and control your board from any web browser. 
+            | This comprehensive guide covers every aspect of the web interface.
+
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Access: 
+                  | When you first power on your Baldrick8, it creates a WiFi access point named "Baldrick8-XXXX". Connect to this network (no password required) and navigate to 
+                  code.bg-blue-100.text-blue-800.px-2.py-1.rounded 192.168.4.1
+                  |  in your web browser.
+
+          / Stats Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Stats Dashboard
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 System Information
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/web-interface-stats.png" alt="Baldrick8 Web Interface Stats" class="mb-4"
+
+            p.text-gray-700.mb-4
+              | The Stats board gives you a heads up as to what's going on with your controller.
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Uptime
+                p.text-sm.text-gray-700
+                  | Tells you how long your controller has been powered on 
+                  em (this is useful in June to remind you that you forgot to turn it off over christmas)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Frame Rate
+                p.text-sm.text-gray-700
+                  | This lets you know what the FPS (Frames Per Second) the controller is currently outputting. 
+                  strong The Baldrick8 has been optimised to output 750 pixels per port at 40fps.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Streaming State
+                p.text-sm.text-gray-700
+                  | Will indicate if the board is receiving data from a specific IP address and what type of data. 
+                  strong The board will also show if two IPs are streaming to the board at the same time which is very useful for debugging those pesky problems.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Network Throughput
+                p.text-sm.text-gray-700
+                  | Like the FPS, this gives you an indication of the volume of network traffic passing through the controller, this should help with debugging.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Temperature
+                p.text-sm.text-gray-700
+                  | With a sensor next to the Ethernet connector, this gives you an indication of the board temperature 
+                  em (in Celsius because water freezes at 0, not 32.. how does that make sense?)
+                  br
+                  br
+                  | Generally, PCBs and components are good for -40 to +85°C. Anything below 60°C on this board is fine and nothing to worry about. If the temp is above that, try blowing on it like you would a hot chip out of the oven.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Firmware Version
+                p.text-sm.text-gray-700
+                  | The Baldrick8 is pretty new in the world of controllers and we've got a LOT of features left to add, this will let you know your current version and if there is a version to upgrade to.
+                  br
+                  br
+                  em (clicking the new version will upgrade it in place then restart the controller)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+                p.text-sm.text-gray-700
+                  | It would be pretty silly to have a controller information box without showing you the IP Address of the controller wouldn't it? That would be like launching a controller without being able to manage the networking.
+
+          / Test Mode Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Test Mode
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Quick Testing & Troubleshooting
+
+            p.text-gray-700.mb-4
+              | Test mode is one of the most important features of the Baldrick Board. If it's two hours before switch on and something is going wrong, YOU NEED CLEAR INFORMATION QUICKLY.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/web-interface-test.png" alt="Baldrick8 Web Interface Test" class="mb-4"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Colour Presets
+
+            p.text-gray-700.mb-4
+              | We've created a bunch of presets to help you with your testing but we got bored with just writing colours so we thought we'd have some fun with the names.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/test-presets.png" alt="Test Presets" class="mb-4"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Brightness Control
+
+            p.text-gray-700.mb-4
+              | Sometimes 100% is too much 
+              em Have you done those power calculations correctly? 
+              | so we give you the choice of brightness.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/test-bright.png" alt="Brightness Control" class="mb-4"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Apply to Specific Areas
+
+            p.text-gray-700.mb-4
+              | Select your port (or all ports) then select if you want ALL configured pixels, 750 pixels or 50 pixels.
+
+            .bg-gray-50.rounded-lg.p-4
+              img.w-full.rounded src="/img/test-apply.png" alt="Apply to Specific Areas" class="mb-4"
+
+          / Port Configuration Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Port Configuration
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Manual Port Setup
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/web-interface-ports.png" alt="Baldrick8 Web Interface Ports" class="mb-4"
+
+            p.text-gray-700.mb-4
+              | I'll be honest, the Baldrick8 is designed on the basis that 99% of the time you'll be pushing config directly from xLights to the board so you should 
+              em never 
+              | have to play with this section.
+
+            p.text-gray-700
+              | But if you do, you can drill down into each port, monitor and configure the models, the pixel count and brightness.
+
+          / Networking Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Networking Configuration
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Good Defaults, Easy Config
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/web-interface-network.png" alt="Baldrick8 Web Interface Networking" class="mb-4"
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Hostname
+                p.text-sm.text-gray-700
+                  | The default hostname is baldrickboard (hence baldrickboard.local). If you have one Baldrick8 then it's completely fine to keep this as it is, however if like us you want to collect a few of them, then we'd recommend you change this to something like 
+                  em frontgarden 
+                  | or 
+                  em upstairsroof
+                  br
+                  br
+                  strong (Just a reminder that hostnames should be lowercase without spaces)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DHCP / STATIC
+                p.text-sm.text-gray-700
+                  | The default option is DHCP (which is Dynamic Host Configuration Protocol but you don't need to know that) which basically means your router or computer gives the board an I.P. address. This is great for initial setup but when you want to run a show it's best to switch it to STATIC, that's where your controller tells the router / computer "This is my IP".
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+                p.text-sm.text-gray-700
+                  | Set this to the IP address that you want the controller to be fixed to.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Subnet Mask & Gateway
+                p.text-sm.text-gray-700
+                  | It is more than likely that you can copy the Subnet Mask (the size of your network) and the Default Gateway (the exit point of your network) from the output of an IPconfig check.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DNS Server
+                p.text-sm.text-gray-700
+                  | DNS wise, typically, your default gateway is your router IP, and that more often than not, can provide your network with DNS. However, some people like to use "outside 3rd parties" DNS like google or cloudflares DNS. If you don't know about this, its probably best just to stick to DHCP.
+
+          / Buttons Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Button Configuration
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 External Input Triggers
+
+            p.text-gray-700.mb-4
+              | The Baldrick comes with three inputs to attach external triggers (buttons, beam breaks, motion sensors) that can be configured when triggered to do a multitude of tasks.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/web-button-advanced-clean.png" alt="Baldrick8 Web Interface Buttons" class="mb-4"
+
+            p.text-gray-700.mb-4
+              | Each input has two action states - either pressed instantly or held. When an input is in the active state, the interface will show the status by highlighting the LED.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/web-button-pressed.png" alt="Button Pressed State" class="mb-4"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Available Actions
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 FPP Integration
+                p.text-xs.text-gray-700
+                  | Control FPP (Falcon Pi Player) instances, change volume, play songs/playlists, or call FPP API directly.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Toggle Test Mode
+                p.text-xs.text-gray-700
+                  | Quickly enable any test mode at a specific brightness for quick prop testing.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickSwitchy Control
+                p.text-xs.text-gray-700
+                  | Turn on/off BaldrickSwitchy ports for specific durations (bubble machines, snow machines, etc.).
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickDMX Presets
+                p.text-xs.text-gray-700
+                  | Activate preset commands on your BaldrickDMX for moving heads, effects, etc.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 HTTP URL Calls
+                p.text-xs.text-gray-700
+                  | Call web APIs from simple triggers - perfect for custom integrations.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Do Nothing
+                p.text-xs.text-gray-700
+                  | Sometimes you set an input to do something and think "oh actually no, that's not what I want."
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 FPP Integration Details
+
+            p.text-gray-700.mb-4
+              | FPP (or Falcon Pi Player) is our recommended show player for the holiday lighting hobby. We've two ways of using FPP which have proper names but let's call them 'Easy' (Control an FPP Instance) and 'Advanced' (Call an FPP API Directly).
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/web-button-fpp-find.png" alt="FPP Instance Discovery" class="mb-4"
+
+            p.text-gray-700.mb-4
+              | Both start off the same way by selecting the FPP instance that you'd like to interact with. If we can't find it automatically you can put in an IP address.
+
+            h6.text-sm.font-semibold.text-gray-900.mb-2 Control an FPP Instance
+
+            p.text-gray-700.mb-4
+              | This section takes away having to use the scary API to ask FPP to do some things. For our initial version you can change the volume of FPP (either forever or for a period of seconds) or play a song / playlist / random song from a playlist.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/web-button-fpp-interface-confirm.png" alt="FPP Instance Control" class="mb-4"
+
+            h6.text-sm.font-semibold.text-gray-900.mb-2 Call an FPP API Directly
+
+            p.text-gray-700.mb-4
+              | If you want to get your hands dirty with FPP commands, here it is - almost everything you can do via the API direct and configurable to be executed via a Baldrick8 input!
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/web-button-fpp-command.png" alt="FPP API Commands" class="mb-4"
+
+            h6.text-sm.font-semibold.text-gray-900.mb-2 Test Mode Activation
+
+            p.text-gray-700.mb-4
+              | Sometimes you just want to quickly test how the props look (or put something up when the neighbors pop round to 'see how it's going'). You can quickly enable any of our test modes at a specific brightness with the touch (or activation) of an input.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/web-button-advanced-test-mode.png" alt="Test Mode Configuration" class="mb-4"
+
+            h6.text-sm.font-semibold.text-gray-900.mb-2 HTTP URL Calls
+
+            p.text-gray-700.mb-4
+              | When we first launched the Baldrick8, we were so proud of this feature! Imagine being able to call a web API from a simple trigger!
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              img.w-full.rounded src="/img/web-button-url.png" alt="HTTP URL Configuration" class="mb-4"
+
+            .bg-green-50.border-l-4.border-green-400.p-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-green-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-green-700
+                    strong Final Result: 
+                    | When that's all done, you might have a little something that looks like this.
+
+            .bg-gray-50.rounded-lg.p-4
+              img.w-full.rounded src="/img/web-interface-buttons-improved.png" alt="Final Button Configuration" class="mb-4"
+
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-yellow-700
+                    strong Note: 
+                    | Technically some have three states as don't forget the physical buttons on the board - these will activate the functionality AND have secret functionality.
+
+          / Troubleshooting Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
+
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-yellow-700
+                  strong Common Issues: 
+                  | If you can't access the web interface, try refreshing the page, clearing your browser cache, or ensuring you're connected to the correct WiFi network.
+
+          .space-y-4.mb-8
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Can't Access Web Interface
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Check WiFi connection to "Baldrick8-XXXX"
+                li Try different web browser
+                li Clear browser cache and cookies
+                li Restart the Baldrick8
+                li Check if firewall is blocking access
+
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Configuration Not Saving
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Ensure you click "Save" button
+                li Check for error messages
+                li Verify network connection
+                li Try refreshing the page
+                li Restart the controller
+
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 LEDs Not Responding
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Check power connections
+                li Verify pixel count settings
+                li Test with different patterns
+                li Check LED protocol selection
+                li Verify color order settings
+
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Button Inputs Not Working
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Check physical connections
+                li Verify button configuration
+                li Test with different actions
+                li Check network connectivity for FPP/HTTP calls
+                li Verify target device IP addresses
+
+          / Navigation Links
+          .flex.flex-col.sm:flex-row.gap-4.mt-8
+            = link_to 'Getting Started Guide', '/boards/baldrick8/getting-started', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Technical Specifications', '/boards/baldrick8/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'FAQ', '/boards/baldrick8/faq', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'

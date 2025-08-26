@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Pixel Repair Crew</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{--bg:#0b0f17;--panel:#111827;--ink:#e5e7eb;--muted:#94a3b8;--accent:#38bdf8}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:radial-gradient(1200px 600px at 70% -20%, #13263e 0%, var(--bg) 60%), var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    .wrap{min-height:100%;display:grid;grid-template-rows:1fr auto}
+
+    /* Game card */
+    .card{margin:auto;background:var(--panel);border:1px solid #1f2937;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.35);width:min(760px,94vw);overflow:hidden;position:relative}
+    .card.shake{animation:shake .6s ease both}
+    @keyframes shake{0%{transform:translate(0,0)}20%{transform:translate(-6px,3px)}40%{transform:translate(5px,-4px)}60%{transform:translate(-4px,2px)}80%{transform:translate(3px,-2px)}100%{transform:translate(0,0)}}
+
+    /* HUD */
+    .hud{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.55rem .8rem;border-bottom:1px solid #0f172a;background:#0a0e15}
+    .stats-left{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+    .badge{background:#0b1222;border:1px solid #1f2a44;padding:.28rem .45rem;border-radius:10px;font-size:.82rem;font-weight:800;color:#cbd5e1;min-width:92px;text-align:center}
+    .danger{border-color:#ef4444;color:#fecaca}
+    .tagline{color:#9aa6bd;font-size:.82rem;opacity:.9;white-space:nowrap}
+
+    main{position:relative}
+    canvas{display:block;width:100%;height:420px;background:#0b0f17;cursor:crosshair}
+
+    /* Overlays */
+    .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(11,15,23,.70);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .25s ease}
+    .overlay.show{opacity:1;pointer-events:auto}
+    .box{max-width:680px;margin:0 12px;text-align:center;background:rgba(17,24,39,.92);border:1px solid rgba(148,163,184,.2);border-radius:14px;padding:1rem 1.2rem;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+    .box h2{margin:.2rem 0 .4rem 0;font-size:1.35rem}
+    .box p{color:#e5e7eb;margin:.25rem 0;line-height:1.4}
+    .box small{display:block;color:#94a3b8;margin-top:.6rem}
+    .cancel{font-size:1.6rem;font-weight:900;color:#fca5a5;letter-spacing:.3px;margin-bottom:.3rem}
+
+    footer{padding:10px 14px;color:#6b7280;text-align:center;font-size:.9rem}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card" id="card">
+    <div class="hud">
+      <div class="stats-left">
+        <div class="badge" id="score">Score: 0</div>
+        <div class="badge" id="best">Best: 0</div>
+        <div class="badge" id="faults">Faults: 0 / 10</div>
+        <div class="badge" id="speed">Speed: 1×</div>
+      </div>
+      <div class="tagline">A timewasting game from Baldrick</div>
+    </div>
+    <main>
+      <canvas id="game" aria-label="Pixel Repair Crew mini-game" role="img"></canvas>
+
+      <!-- Intro overlay (click anywhere to start) -->
+      <div class="overlay show" id="intro">
+        <div class="box">
+          <h2>Pixel Repair Crew</h2>
+          <p>It's 7pm on Christmas Eve and there are 300 people at your show. Disaster strikes. You've bought cheap pixels and they're dying.</p>
+          <p>Grab the solder seals and fix the show before anyone notices. Keep the dead pixel count below <strong>10</strong> and you'll be fine.</p>
+          <small>Click anywhere to begin.</small>
+        </div>
+      </div>
+
+      <!-- Game over overlay (click to play again) -->
+      <div class="overlay" id="overlay">
+        <div class="box">
+          <div class="cancel" id="cancelText">THE SHOW HAS BEEN CANCELLED!!</div>
+          <p id="finalStats">Score 0 • Best 0</p>
+          <small>Click anywhere to play again.</small>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    Another stupid idea from the Baldrick team.
+  </footer>
+</div>
+
+<script>
+(()=>{
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const card = document.getElementById('card');
+  const scoreEl = document.getElementById('score');
+  const bestEl = document.getElementById('best');
+  const faultsEl = document.getElementById('faults');
+  const speedEl = document.getElementById('speed');
+  const overlay = document.getElementById('overlay');
+  const intro = document.getElementById('intro');
+  const finalStats = document.getElementById('finalStats');
+
+  let DPR = Math.max(1, Math.min(2, window.devicePixelRatio||1));
+  let W=0, H=0;
+  function resize(){
+    const rect = canvas.getBoundingClientRect();
+    const w = Math.floor(rect.width * DPR);
+    const h = Math.floor(rect.height * DPR);
+    if(canvas.width!==w||canvas.height!==h){ canvas.width=w; canvas.height=h; }
+    layoutGrid();
+  }
+  new ResizeObserver(resize).observe(canvas);
+
+  // Grid config
+  let COLS=18, ROWS=12;
+  let cell=0, offX=0, offY=0;
+  function layoutGrid(){
+    const cw = canvas.width, ch = canvas.height;
+    COLS = Math.max(14, Math.round(cw/(34*DPR)));
+    ROWS = Math.max(10, Math.round(ch/(34*DPR)));
+    cell = Math.min(Math.floor(cw/COLS), Math.floor(ch/ROWS));
+    offX = Math.floor((cw - COLS*cell)/2);
+    offY = Math.floor((ch - ROWS*cell)/2);
+    initBulbs();
+  }
+
+  // Game state
+  const colors = ['#22d3ee','#f97316','#10b981','#f43f5e','#8b5cf6'];
+  const bulbs = []; // {r,c,state,phase,color,cool}
+  const STATE = { LIT:0, DARK:1 };
+  let running=false, score=0, best=0, faults=0, maxFaults=10;
+  let spawnBaseMs=1100, spawnTimer=0, speedMul=1; // easier start
+
+  // Game-over FX
+  let shards=[]; // {x,y,vx,vy,life,col}
+
+  function initBulbs(){
+    bulbs.length=0;
+    for(let r=0;r<ROWS;r++){
+      for(let c=0;c<COLS;c++){
+        bulbs.push({r,c,state:STATE.LIT,phase:Math.random()*Math.PI*2,color:colors[(r*COLS+c)%colors.length],cool:0});
+      }
+    }
+  }
+
+  function reset(){
+    running=false; score=0; faults=0; speedMul=1; spawnBaseMs=1100; spawnTimer=0; overlay.classList.remove('show');
+    shards=[];
+    updateHUD();
+    initBulbs();
+    draw(0);
+  }
+
+  function loadBest(){ best = +localStorage.getItem('baldrick-pixel-repair-best')||0; bestEl.textContent = `Best: ${best}`; }
+  function saveBest(){ localStorage.setItem('baldrick-pixel-repair-best', best); }
+
+  function updateHUD(){
+    scoreEl.textContent = `Score: ${score}`;
+    bestEl.textContent = `Best: ${best}`;
+    faultsEl.textContent = `Faults: ${faults} / ${maxFaults}`;
+    faultsEl.className = 'badge ' + (faults>=Math.max(1,maxFaults-1)?'danger':'');
+    speedEl.textContent = `Speed: ${speedMul.toFixed(1)}×`;
+  }
+
+  function indexAt(x,y){ return y*COLS + x; }
+  function randomLitIndex(){
+    const lit=[]; for(let i=0;i<bulbs.length;i++) if(bulbs[i].state===STATE.LIT) lit.push(i);
+    if(!lit.length) return -1; return lit[Math.floor(Math.random()*lit.length)];
+  }
+
+  function spawnFault(){
+    const i = randomLitIndex(); if(i<0) return;
+    bulbs[i].state = STATE.DARK; faults++; updateHUD();
+    if(faults>=maxFaults){ gameOver(); }
+  }
+
+  function gameOver(){
+    running=false;
+    // Break all LEDs and spawn shards
+    shards=[];
+    const maxShards = 320;
+    let added=0;
+    for(const b of bulbs){
+      b.state = STATE.DARK;
+      if(added<maxShards){
+        const bx = offX + b.c*cell + cell/2;
+        const by = offY + b.r*cell + cell/2;
+        for(let k=0;k<2 && added<maxShards;k++){
+          const ang = Math.random()*Math.PI*2;
+          const sp = 0.6 + Math.random()*1.8;
+          shards.push({x:bx,y:by,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp-0.2,life:900+Math.random()*600,col:'rgba(239,68,68,0.85)'});
+          added++;
+        }
+      }
+    }
+
+    // Screen shake
+    card.classList.add('shake');
+    setTimeout(()=>card.classList.remove('shake'),650);
+
+    if(score>best){ best=score; saveBest(); }
+    updateHUD();
+    finalStats.textContent = `Score ${score} • Best ${best}`;
+    overlay.classList.add('show');
+  }
+
+  // Input: click to repair, click overlays to start / restart
+  canvas.addEventListener('click', (e)=>{
+    if(!bulbs.length) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * DPR - offX;
+    const y = (e.clientY - rect.top) * DPR - offY;
+    if(x<0||y<0) return;
+    const cx = Math.floor(x / cell);
+    const cy = Math.floor(y / cell);
+    if(cx<0||cy<0||cx>=COLS||cy>=ROWS) return;
+    const b = bulbs[indexAt(cx,cy)];
+    if(b.state===STATE.DARK && running){
+      b.state=STATE.LIT; b.cool=1; score++; faults=Math.max(0,faults-1);
+      // Slower difficulty ramp: +0.15x every 7 points, cap 3.5x
+      if(score%7===0){ speedMul = Math.min(3.5, speedMul+0.15); }
+      updateHUD();
+    }
+  }, {passive:true});
+
+  intro.addEventListener('click', ()=>{ if(!running){ intro.classList.remove('show'); startPlay(); } });
+  overlay.addEventListener('click', ()=>{ reset(); intro.classList.add('show'); });
+
+  function startPlay(){ running=true; spawnTimer=300; }
+
+  // Render loop with timed spawns
+  let last=0;
+  function draw(ts){
+    requestAnimationFrame(draw);
+    if(!last) last=ts; const dt = Math.min(64, ts-last); last=ts;
+
+    if(running){
+      spawnTimer -= dt;
+      // Easier curve: higher min target and slower with speed
+      const target = Math.max(220, spawnBaseMs / speedMul);
+      if(spawnTimer<=0){ spawnFault(); spawnTimer = target * (0.8 + Math.random()*0.6); }
+    }
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Transparent watermark background
+    ctx.save();
+    ctx.globalAlpha = 0.06;
+    ctx.fillStyle = '#94a3b8';
+    ctx.translate(canvas.width/2, canvas.height/2);
+    ctx.rotate(-Math.PI/7);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = `${Math.floor(Math.min(canvas.width,canvas.height)/9)}px ui-sans-serif, system-ui`;
+    ctx.fillText('baldrickboards.com', 0, 0);
+    ctx.restore();
+
+    // cable backdrop
+    ctx.lineWidth = Math.max(1, Math.floor(cell*0.06));
+    ctx.strokeStyle = 'rgba(31,41,55,0.7)';
+    ctx.lineCap = 'round';
+    for(let r=0;r<ROWS;r++){
+      ctx.beginPath();
+      for(let c=0;c<COLS;c++){
+        const x = offX + c*cell + cell/2, y = offY + r*cell + cell/2;
+        if(c===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+
+    // bulbs
+    for(const b of bulbs){
+      const x = offX + b.c*cell + cell/2;
+      const y = offY + b.r*cell + cell/2;
+      const radius = Math.max(3*DPR, Math.min(cell*0.22, 9*DPR));
+      const twinkle = 0.65 + 0.35*Math.sin((ts*0.004)+b.phase);
+
+      if(b.state===STATE.LIT){
+        const grad = ctx.createRadialGradient(x,y,0,x,y,radius*5);
+        grad.addColorStop(0, rgbaHex(b.color, 0.8*(twinkle)) );
+        grad.addColorStop(1, rgbaHex(b.color, 0) );
+        ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(x,y,radius*4.6,0,Math.PI*2); ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.beginPath(); ctx.arc(x,y,radius,0,Math.PI*2); ctx.fill();
+        ctx.fillStyle = b.color; ctx.beginPath(); ctx.arc(x,y,radius*0.8,0,Math.PI*2); ctx.fill();
+      } else {
+        ctx.fillStyle = 'rgba(15,23,42,0.92)'; ctx.beginPath(); ctx.arc(x,y,radius,0,Math.PI*2); ctx.fill();
+        ctx.strokeStyle = 'rgba(239,68,68,0.7)';
+        ctx.lineWidth = Math.max(1, radius*0.35); ctx.beginPath(); ctx.arc(x,y,radius*0.75,0,Math.PI*2); ctx.stroke();
+      }
+
+      if(b.cool>0){ b.cool -= dt*0.004; if(b.cool<0) b.cool=0;
+        ctx.strokeStyle = rgbaHex('#ffffff', 0.9*b.cool);
+        ctx.lineWidth = 1.2*DPR; ctx.beginPath(); ctx.arc(x,y,radius*1.45,0,Math.PI*2); ctx.stroke();
+      }
+    }
+
+    // Game-over FX: red pulse + shards drift
+    if(!running && faults>=maxFaults){
+      const a = 0.15 + 0.1*Math.sin(ts*0.012);
+      ctx.fillStyle = `rgba(239,68,68,${a})`; ctx.fillRect(0,0,canvas.width,canvas.height);
+
+      // shards
+      for(let i=shards.length-1;i>=0;i--){
+        const s = shards[i];
+        s.life -= dt; s.x += s.vx*dt*0.06; s.y += s.vy*dt*0.06; s.vy += 0.0006*dt; // gravity
+        if(s.life<=0){ shards.splice(i,1); continue; }
+        ctx.fillStyle = s.col;
+        ctx.beginPath(); ctx.arc(s.x, s.y, Math.max(1, 1.4*DPR), 0, Math.PI*2); ctx.fill();
+      }
+    }
+  }
+
+  function rgbaHex(hex, a){
+    const h = hex.replace('#',''); const v = parseInt(h,16);
+    const r=(v>>16)&255, g=(v>>8)&255, b=v&255; return `rgba(${r},${g},${b},${a})`;
+  }
+
+  // Boot
+  resize();
+  loadBest();
+  reset();
+})();
+</script>
+</body>
+</html>

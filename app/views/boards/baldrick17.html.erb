@@ -1,0 +1,140 @@
+<% content_for :title, "Baldrick17 - Baldrick Board Documentation" %>
+
+<!-- Board Submenu -->
+<%= render 'boards/shared/board_submenu', 
+    board_name: 'Baldrick17',
+    menu_items: baldrick17_menu_items %>
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Breadcrumb -->
+  <nav class="text-sm text-gray-500 mb-6">
+    <div class="flex items-center space-x-2">
+      <a href="/" class="hover:text-gray-700 transition-colors">Home</a>
+      <svg class="h-4 w-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </svg>
+      <a href="/boards" class="hover:text-gray-700 transition-colors">Boards</a>
+      <svg class="h-4 w-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </svg>
+      <span class="text-gray-900 font-medium">Baldrick17</span>
+    </div>
+  </nav>
+
+  <!-- Main Content Card -->
+  <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <!-- Header Section -->
+    <%= render 'shared/page_header', 
+        title: 'Baldrick17',
+        subtitle: 'Advanced 17-output controller for large-scale installations and complex displays',
+        image_url: '/img/baldrick17-board.png',
+        image_alt: 'Baldrick17 Controller Board' %>
+
+    <!-- Content Section -->
+    <div class="px-8 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Quick Navigation -->
+        <div class="bg-gray-50 rounded-lg p-6 mb-8 border border-gray-200">
+          <h2 class="text-lg font-semibold text-gray-900 mb-4">Quick Navigation</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <a href="/boards/baldrick17/getting-started" class="text-indigo-600 hover:text-indigo-800 transition-colors">Getting Started</a>
+            <a href="/boards/baldrick17/tech-specs" class="text-indigo-600 hover:text-indigo-800 transition-colors">Technical Specifications</a>
+            <a href="/boards/baldrick17/web-interface" class="text-indigo-600 hover:text-indigo-800 transition-colors">Web Interface</a>
+            <a href="/boards/baldrick17/faq" class="text-indigo-600 hover:text-indigo-800 transition-colors">FAQ</a>
+            <a href="/boards/baldrick17/why-this-board" class="text-indigo-600 hover:text-indigo-800 transition-colors">Why This Board?</a>
+            <a href="/boards/baldrick17/revisions" class="text-indigo-600 hover:text-indigo-800 transition-colors">Revisions</a>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="prose max-w-none">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Overview</h2>
+          
+          <p class="text-lg text-gray-700 mb-6">
+            The Baldrick17 is our most advanced pixel controller, designed for the most demanding 
+            large-scale installations and complex displays. With 17 independent outputs and massive 
+            pixel capacity, it's perfect for professional installations that require maximum performance.
+          </p>
+
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-blue-700">
+                  <strong>Key Features:</strong> 17 independent outputs, massive pixel capacity, advanced networking, 
+                  enterprise features, and professional-grade performance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Specifications -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Key Specifications</h2>
+          <%= render 'boards/shared/specs_table', specs: [
+            { feature: 'Outputs', value: '17 independent pixel outputs' },
+            { feature: 'Pixels per Output', value: 'Up to 1000+ pixels per output' },
+            { feature: 'Protocol Support', value: 'WS2811, WS2812B, SK6812' },
+            { feature: 'Power Input', value: '5V-24V DC, multiple power inputs' },
+            { feature: 'Communication', value: 'Ethernet, WiFi, advanced networking' },
+            { feature: 'Dimensions', value: 'Larger form factor for enterprise use' },
+            { feature: 'Compatibility', value: 'DDP, Artnet, E1.31 & sACN' },
+            { feature: 'Enterprise Features', value: 'Advanced monitoring and management' }
+          ] %>
+        </section>
+
+        <!-- Use Cases -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Perfect For</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Large-Scale Installations</h3>
+              <p class="text-gray-600 mb-4">
+                Massive displays, architectural lighting, and commercial installations.
+              </p>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>• Building facades</li>
+                <li>• Stadium lighting</li>
+                <li>• Theme parks</li>
+                <li>• Large events</li>
+              </ul>
+            </div>
+
+            <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Professional Productions</h3>
+              <p class="text-gray-600 mb-4">
+                High-end productions, concerts, and professional entertainment.
+              </p>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>• Concert venues</li>
+                <li>• Theater productions</li>
+                <li>• Corporate events</li>
+                <li>• Broadcast studios</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related Fun Stuff -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Related Fun Stuff</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Light Show 101</h3>
+              <p class="text-gray-600">Learn the basics of creating light shows with Baldrick controllers.</p>
+            </a>
+            <a href="/fun-stuff/board-dimensions" class="block bg-gray-50 rounded-lg p-6 border border-gray-200 hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Board Dimensions</h3>
+              <p class="text-gray-600">Technical specifications and mounting information.</p>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

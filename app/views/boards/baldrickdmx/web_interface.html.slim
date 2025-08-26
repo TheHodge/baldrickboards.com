@@ -1,0 +1,205 @@
+- content_for :title, "BaldrickDMX Web Interface - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickDMX', menu_items: board_menu_items('baldrickdmx')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickdmx', 'Web Interface')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'BaldrickDMX Web Interface', subtitle: 'Configuration and Control Guide', image_url: '/img/baldrickdmx.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Web Interface Guide
+
+          p.text-lg.text-gray-600.mb-8
+            | The BaldrickDMX web interface provides comprehensive control and configuration options for your professional DMX512 controller. 
+            | This guide will help you navigate and use all the features effectively for professional lighting applications.
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Accessing the Web Interface
+
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-blue-900.mb-2 Quick Access
+            ol.text-blue-800.space-y-1
+              li 1. Ensure your BaldrickDMX is powered on and connected to your network
+              li 2. Find the IP address (check your router's DHCP client list)
+              li 3. Open your web browser and navigate to the IP address
+              li 4. The web interface will load automatically
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Main Dashboard
+
+          p.text-gray-700.mb-4
+            | The main dashboard provides an overview of your BaldrickDMX's status and quick access to key functions.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Status Overview
+              ul.text-gray-700.space-y-1
+                li • Power status and voltage monitoring
+                li • Network connection status
+                li • DMX universe status indicators
+                li • Temperature and system health
+                li • Active protocols and connections
+                li • RDM device status
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Quick Actions
+              ul.text-gray-700.space-y-1
+                li • Test individual universes
+                li • Start/stop DMX output
+                li • Emergency stop functionality
+                li • System reboot options
+                li • Configuration backup/restore
+                li • RDM discovery
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 DMX Universe Configuration
+
+          p.text-gray-700.mb-4
+            | Configure each DMX universe independently for your specific lighting setup.
+
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-yellow-900.mb-2 Universe Settings
+            ul.text-yellow-800.space-y-1
+              li • Universe number assignment
+              li • Channel count configuration (1-512)
+              li • Output port assignment
+              li • Timing and refresh rate settings
+              li • Priority and failover configuration
+              li • Individual universe testing
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Configuration Steps
+
+          ol.space-y-4.text-gray-700.mb-8
+            li
+              strong.text-gray-900 1. Access Universe Settings
+              p.mt-1 Navigate to the DMX Universe Configuration section in the web interface.
+
+            li
+              strong.text-gray-900 2. Select Universe
+              p.mt-1 Choose the universe you want to configure.
+
+            li
+              strong.text-gray-900 3. Set Parameters
+              p.mt-1 Configure universe number, channel count, output port, and timing parameters.
+
+            li
+              strong.text-gray-900 4. Test Configuration
+              p.mt-1 Use the test function to verify your settings work correctly.
+
+            li
+              strong.text-gray-900 5. Save Settings
+              p.mt-1 Save your configuration and repeat for other universes.
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 RDM Management
+
+          p.text-gray-700.mb-4
+            | Manage RDM (Remote Device Management) devices for advanced fixture control.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 RDM Discovery
+              ul.text-gray-700.space-y-1
+                li • Automatic device discovery
+                li • Device information display
+                li • Manufacturer and model identification
+                li • Device addressing management
+                li • RDM parameter configuration
+                li • Device status monitoring
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 RDM Control
+              ul.text-gray-700.space-y-1
+                li • Remote device configuration
+                li • Parameter reading and writing
+                li • Device reset capabilities
+                li • Firmware update support
+                li • Device diagnostics
+                li • Error reporting
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Network Configuration
+
+          p.text-gray-700.mb-4
+            | Configure network settings for optimal performance and integration.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 IP Configuration
+              ul.text-gray-700.space-y-1
+                li • DHCP (automatic) or Static IP
+                li • Subnet mask and gateway
+                li • DNS server settings
+                li • Network interface status
+                li • Connection speed and duplex
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Protocol Settings
+              ul.text-gray-700.space-y-1
+                li • E1.31 (sACN) configuration
+                li • Art-Net universe settings
+                li • DDP protocol options
+                li • Multicast vs Unicast
+                li • Port configuration
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Advanced Features
+
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Timing and Synchronization
+          p.text-gray-700.mb-4
+            | Configure precise timing parameters for professional DMX applications.
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li DMX timing compliance settings
+            li Frame rate configuration (up to 44 Hz)
+            li Break time and mark after break timing
+            li Inter-slot timing adjustments
+            li Synchronization with other controllers
+
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Universe Management
+          p.text-gray-700.mb-4
+            | Manage multiple universes and advanced routing capabilities.
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Universe merging and splitting
+            li Priority handling and failover
+            li Backup universe configuration
+            li Real-time universe switching
+            li Performance monitoring
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Troubleshooting
+
+          .bg-red-50.border-l-4.border-red-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-red-900.mb-2 Common Issues
+            ul.text-red-800.space-y-1
+              li • Web interface not loading - check network connection
+              li • DMX output not working - verify universe configuration
+              li • RDM devices not responding - check device addressing
+              li • Network connectivity - verify IP settings
+              li • Timing issues - check DMX timing parameters
+              li • Signal quality - verify cable connections and termination
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Professional Tips
+
+          .bg-purple-50.border-l-4.border-purple-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-purple-900.mb-2 Best Practices
+            ul.text-purple-800.space-y-1
+              li • Use proper DMX cables with XLR-5 connectors
+              li • Terminate the last fixture in each universe
+              li • Keep DMX runs under 300 meters for optimal performance
+              li • Use DMX splitters for complex setups
+              li • Test all universes before live operation
+              li • Monitor signal quality during operation
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Support and Resources
+
+          p.text-gray-700.mb-6
+            | For additional help with the web interface, check our resources or contact support.
+
+          .flex.flex-col.sm:flex-row.gap-4
+            = link_to 'FAQ', '/boards/baldrickdmx/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Technical Specifications', '/boards/baldrickdmx/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Contact Support', '/support', class: 'bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center'

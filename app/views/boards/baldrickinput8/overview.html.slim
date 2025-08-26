@@ -1,0 +1,63 @@
+- content_for :title, "BaldrickInput8 - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickInput8', menu_items: board_menu_items('baldrickinput8')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickinput8')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'BaldrickInput8', subtitle: '8 Input/8 Output Controller', image_url: '/img/baldrickinput8.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        / Board Overview for BaldrickInput8 - Complete Content
+        .prose.max-w-none
+          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickInput8 Overview
+
+          .grid.md:grid-cols-2.gap-8.mb-8
+            .flex.items-start
+              img.w-full.rounded-lg src="/img/baldrickinput8.png" alt="BaldrickInput8 Board Overview"
+            
+            .flex.flex-col.justify-start
+              p.text-lg.text-gray-700.mb-6
+                | The BaldrickInput8 is an 8-channel input controller with pixel output capabilities for complex interactive installations. 
+                | Perfect for multi-zone displays and sophisticated interactive experiences.
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 BaldrickInput8 Controller Features
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li 8 independent input channels for complex interactions
+            li 8 pixel outputs for multi-zone lighting control
+            li Advanced logic capabilities for sophisticated automation
+            li Real-time response with sub-millisecond timing
+            li Web-based configuration for easy setup and management
+            li Complex interaction patterns and sequences
+            li Multi-sensor integration and coordination
+            li Professional-grade reliability and performance
+            li Scalable architecture for large installations
+            li Comprehensive monitoring and diagnostic tools
+
+          p.text-gray-700.mb-6
+            | The BaldrickInput8 represents our commitment to advanced interactive control, designed specifically for 
+            | applications requiring multiple inputs and outputs with sophisticated logic and coordination.
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Perfect For
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Multi-zone interactive displays and exhibits
+            li Complex automation systems and installations
+            li Interactive art installations and experiences
+            li Multi-sensor applications and monitoring
+            li Advanced lighting control and sequencing
+            li Professional installations and venues
+            li Complex interactive environments
+            li Sophisticated automation projects
+
+          .bg-indigo-50.border-l-4.border-indigo-400.p-4.mb-6
+            p.text-indigo-800.font-medium
+              | "The BaldrickInput8 is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"

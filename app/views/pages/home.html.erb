@@ -1,0 +1,524 @@
+<% content_for :title, "Baldrick Boards - Controllers as Cunning as a Fox" %>
+
+<!-- Hero Carousel Section -->
+<div class="bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 text-white relative overflow-hidden">
+  <!-- Carousel Container -->
+  <div class="carousel-container relative">
+    <!-- Slide 1: Baldrick8 (Image on Right) -->
+    <div class="carousel-slide active" data-slide="1">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div class="lg:w-1/2 mb-8 lg:mb-0">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              Boards as cunning as a fox who's just been appointed 
+              <span class="text-yellow-300">Professor of Cunning</span> 
+              at Oxford University
+            </h1>
+            <p class="text-xl md:text-2xl text-indigo-200 mb-8">
+              Professional-grade controller boards for lighting displays, interactive installations, and automated shows
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/boards" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center">
+                Explore Boards
+                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </a>
+
+            </div>
+          </div>
+                            <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative">
+                      <a href="/boards/baldrick8" class="block transition-transform duration-200 hover:scale-105">
+                        <%= image_tag 'baldrick8.png', alt: 'Baldrick8 Controller Board', class: 'w-full max-w-md h-auto rounded-lg shadow-lg' %>
+                        <div class="absolute -bottom-4 -right-4 bg-yellow-400 text-indigo-900 px-4 py-2 rounded-lg font-bold text-lg">
+                          Baldrick8
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: BaldrickSwitchy (Image on Left) -->
+    <div class="carousel-slide" data-slide="2">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="flex flex-col lg:flex-row-reverse items-center justify-between gap-12">
+          <div class="lg:w-1/2 mb-8 lg:mb-0">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              Powerful relay control with 
+              <span class="text-green-300">precision timing</span> 
+              and rock-solid reliability
+            </h1>
+            <p class="text-xl md:text-2xl text-indigo-200 mb-8">
+              Control AC lights, motors, and other high-power devices with our robust relay controller
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/boards/baldrickswitchy" class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center">
+                Learn More
+                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </a>
+              <a href="/boards" class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center">
+                All Boards
+              </a>
+            </div>
+          </div>
+                            <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative">
+                      <a href="/boards/baldrickswitchy" class="block transition-transform duration-200 hover:scale-105">
+                        <%= image_tag 'baldrickswitchy.png', alt: 'BaldrickSwitchy Controller Board', class: 'w-full max-w-md h-auto rounded-lg shadow-lg' %>
+                        <div class="absolute -bottom-4 -right-4 bg-green-400 text-indigo-900 px-4 py-2 rounded-lg font-bold text-lg">
+                          BaldrickSwitchy
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: BaldrickDMX (Image on Right) -->
+    <div class="carousel-slide" data-slide="3">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div class="lg:w-1/2 mb-8 lg:mb-0">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              Professional 
+              <span class="text-purple-300">DMX control</span> 
+              for stage and event lighting
+            </h1>
+            <p class="text-xl md:text-2xl text-indigo-200 mb-8">
+              Industry-standard DMX512 output with advanced features for professional lighting applications
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/boards/baldrickdmx" class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center">
+                Learn More
+                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </a>
+              <a href="/boards" class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center">
+                All Boards
+              </a>
+            </div>
+          </div>
+                            <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative">
+                      <a href="/boards/baldrickdmx" class="block transition-transform duration-200 hover:scale-105">
+                        <%= image_tag 'baldrickdmx.png', alt: 'BaldrickDMX Controller Board', class: 'w-full max-w-md h-auto rounded-lg shadow-lg' %>
+                        <div class="absolute -bottom-4 -right-4 bg-purple-400 text-indigo-900 px-4 py-2 rounded-lg font-bold text-lg">
+                          BaldrickDMX
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: BaldrickInput1 (Image on Left) -->
+    <div class="carousel-slide" data-slide="4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="flex flex-col lg:flex-row-reverse items-center justify-between gap-12">
+          <div class="lg:w-1/2 mb-8 lg:mb-0">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              Interactive control with 
+              <span class="text-orange-300">Turniput integration</span> 
+              for endless possibilities
+            </h1>
+            <p class="text-xl md:text-2xl text-indigo-200 mb-8">
+              Connect buttons, sensors, and switches to create interactive lighting experiences
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/boards/baldrickinput1" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center">
+                Learn More
+                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </a>
+              <a href="/boards" class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center">
+                All Boards
+              </a>
+            </div>
+          </div>
+                            <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative">
+                      <a href="/boards/baldrickinput1" class="block transition-transform duration-200 hover:scale-105">
+                        <%= image_tag 'baldrickinput1.png', alt: 'BaldrickInput1 Controller Board', class: 'w-full max-w-md h-auto rounded-lg shadow-lg' %>
+                        <div class="absolute -bottom-4 -right-4 bg-orange-400 text-indigo-900 px-4 py-2 rounded-lg font-bold text-lg">
+                          BaldrickInput1
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carousel Navigation -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-50">
+    <button class="carousel-dot active w-4 h-4 bg-white rounded-full opacity-50 hover:opacity-100 transition-opacity cursor-pointer" data-slide="1"></button>
+    <button class="carousel-dot w-4 h-4 bg-white rounded-full opacity-50 hover:opacity-100 transition-opacity cursor-pointer" data-slide="2"></button>
+    <button class="carousel-dot w-4 h-4 bg-white rounded-full opacity-50 hover:opacity-100 transition-opacity cursor-pointer" data-slide="3"></button>
+    <button class="carousel-dot w-4 h-4 bg-white rounded-full opacity-50 hover:opacity-100 transition-opacity cursor-pointer" data-slide="4"></button>
+  </div>
+
+
+</div>
+
+<!-- Features Section -->
+<div class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Baldrick Boards?</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Built by lighting professionals, for lighting professionals. Our controllers deliver the performance and reliability you need for stunning displays.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+          <svg class="h-8 w-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">High Performance</h3>
+        <p class="text-gray-600">Optimized for smooth, flicker-free operation with high refresh rates and precise timing control.</p>
+      </div>
+      
+      <div class="text-center">
+        <div class="bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+          <svg class="h-8 w-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Reliable & Robust</h3>
+        <p class="text-gray-600">Built to withstand the demands of professional installations with quality components and thoughtful design.</p>
+      </div>
+      
+      <div class="text-center">
+        <div class="bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+          <svg class="h-8 w-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Easy to Use</h3>
+        <p class="text-gray-600">Simple setup and configuration with comprehensive documentation and support to get you up and running quickly.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content Section -->
+<div class="bg-gray-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+                      <h2 class="text-3xl font-bold text-gray-900 mb-4">Documentation & Fun Stuff</h2>
+      <p class="text-xl text-gray-600">Everything you need to get the most out of your Baldrick boards</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Boards Section -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <div class="bg-blue-100 rounded-lg p-3 mr-4">
+              <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Boards</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Explore our range of controller boards for various applications.</p>
+          <ul class="text-sm text-gray-600 mb-4 space-y-1">
+            <li>• Pixel Controllers</li>
+            <li>• Relay Controllers</li>
+            <li>• Interactive Controllers</li>
+            <li>• Portable Controllers</li>
+            <li>• Power Distribution</li>
+            <li>• DMX Controllers</li>
+          </ul>
+          <a href="/boards" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+            View all boards
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+
+
+      <!-- Fun Stuff Section -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <div class="bg-purple-100 rounded-lg p-3 mr-4">
+              <svg class="h-6 w-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Fun Stuff</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Technical fun stuff, downloads, and reference materials.</p>
+          <ul class="text-sm text-gray-600 mb-4 space-y-1">
+            <li>• Release Notes</li>
+            <li>• STLs and Mounts</li>
+            <li>• Board Dimensions</li>
+
+            <li>• Problem Solver</li>
+          </ul>
+                          <a href="/fun-stuff" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                            View all fun stuff
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <div class="bg-yellow-100 rounded-lg p-3 mr-4">
+              <svg class="h-6 w-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">About Baldrick</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Learn more about Baldrick, our philosophy, and innovative breakthroughs.</p>
+          <ul class="text-sm text-gray-600 mb-4 space-y-1">
+            <li>• Company philosophy</li>
+            <li>• The name story</li>
+            <li>• Innovative technologies</li>
+            <li>• Baldrick Breakthroughs</li>
+          </ul>
+          <div class="flex space-x-4">
+            <a href="/about" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+              About Baldrick
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+            <a href="/breakthroughs" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+              Breakthroughs
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Support Section -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <div class="bg-red-100 rounded-lg p-3 mr-4">
+              <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Support</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Get help and support for your Baldrick products.</p>
+          <p class="text-sm text-gray-600 mb-4">Need assistance with your Baldrick board? Our support team is here to help.</p>
+          <a href="/support" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+            Get support
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Where to Buy Section -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <div class="bg-indigo-100 rounded-lg p-3 mr-4">
+              <svg class="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Where to Buy</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Find authorized retailers and purchase options for Baldrick boards.</p>
+          <p class="text-sm text-gray-600 mb-4">Discover where you can purchase genuine Baldrick products.</p>
+          <a href="/where-to-buy-baldrick-boards" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+            Find retailers
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA Section -->
+<div class="bg-indigo-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+    <p class="text-xl text-indigo-200 mb-8 max-w-2xl mx-auto">
+      Join the community of lighting professionals who trust Baldrick boards for their most demanding projects.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/boards" class="bg-white text-indigo-900 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center">
+        Browse Boards
+        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- Carousel Styles -->
+<style>
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+  }
+
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 600px;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .carousel-container {
+      min-height: 600px;
+    }
+    
+    .carousel-slide {
+      min-height: 600px;
+    }
+    
+    .carousel-slide h1 {
+      font-size: 2rem !important;
+      line-height: 1.2 !important;
+    }
+    
+    .carousel-slide p {
+      font-size: 1rem !important;
+    }
+    
+    .carousel-slide img {
+      max-width: 280px !important;
+    }
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  .carousel-dot {
+    z-index: 50;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .carousel-dot.active {
+    opacity: 1 !important;
+  }
+
+
+  
+  @media (max-width: 768px) {
+    .carousel-dot {
+      width: 12px !important;
+      height: 12px !important;
+    }
+  }
+</style>
+
+<!-- Carousel JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    let currentSlide = 0;
+    let autoPlayInterval;
+
+    function showSlide(index) {
+      // Hide all slides
+      slides.forEach(slide => {
+        slide.classList.remove('active');
+      });
+      
+      // Remove active class from all dots
+      dots.forEach(dot => {
+        dot.classList.remove('active');
+      });
+      
+      // Show current slide
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+      
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      const next = (currentSlide + 1) % slides.length;
+      showSlide(next);
+    }
+
+    function prevSlide() {
+      const prev = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(prev);
+    }
+
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+
+
+    // Dot navigation
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const slideIndex = parseInt(dot.getAttribute('data-slide')) - 1; // Convert from 1-based to 0-based
+        stopAutoPlay();
+        showSlide(slideIndex);
+        startAutoPlay();
+      });
+    });
+
+    // Pause auto-play on hover
+    const carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
+      carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+      carouselContainer.addEventListener('mouseleave', startAutoPlay);
+    }
+
+    // Start auto-play
+    startAutoPlay();
+
+
+  });
+</script>

@@ -1,0 +1,215 @@
+- content_for :title, "BaldrickSignals FAQ - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickSignals', menu_items: board_menu_items('baldricksignals')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldricksignals', 'FAQ')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'BaldrickSignals FAQ', subtitle: 'Frequently Asked Questions', image_url: '/img/baldricksignals-board.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Frequently Asked Questions
+
+          .space-y-8
+            / General Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 General Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What is the BaldrickSignals?
+                  p.text-gray-700
+                    | The BaldrickSignals is an advanced interactive signal controller designed for complex signaling and communication applications. 
+                    | It's perfect for traffic control, industrial signaling, and interactive display systems.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How is it different from other Baldrick boards?
+                  p.text-gray-700
+                    | The BaldrickSignals is specifically designed for signal control with advanced signal processing, multi-protocol support, 
+                    | and interactive signal routing for professional applications.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What can I control with it?
+                  p.text-gray-700
+                    | You can control traffic signals, industrial automation systems, audio/video signal routing, 
+                    | communication systems, and other complex signaling applications.
+
+            / Signal Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Signal Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How many signal channels does it have?
+                  p.text-gray-700
+                    | The BaldrickSignals features multiple input and output channels (specific count TBD), each with independent 
+                    | configuration for different signal types and protocols.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What signal types does it support?
+                  p.text-gray-700
+                    | The BaldrickSignals supports analog, digital, serial, and network signals with multi-protocol 
+                    | conversion capabilities for various applications.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How fast is the signal response?
+                  p.text-gray-700
+                    | The BaldrickSignals provides <1ms signal response time and <10ms processing latency 
+                    | for real-time signal control applications.
+
+            / Interactive Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Interactive Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What interactive features does it have?
+                  p.text-gray-700
+                    | The BaldrickSignals includes dynamic signal routing, pattern recognition, automated responses, 
+                    | conditional processing, and user-defined signal logic.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can it learn from signal patterns?
+                  p.text-gray-700
+                    | Yes, the BaldrickSignals includes pattern recognition algorithms and can adapt its signal 
+                    | routing based on learned patterns and user-defined rules.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How does the interactive routing work?
+                  p.text-gray-700
+                    | The system can dynamically change signal routing based on conditions, events, or user input, 
+                    | providing flexible and responsive signal control.
+
+            / Setup Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Setup Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I find the IP address?
+                  p.text-gray-700
+                    | The BaldrickSignals will obtain an IP address via DHCP. Check your router's DHCP client list 
+                    | or use network scanning tools to find the device on your network.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I configure the signal routing?
+                  p.text-gray-700
+                    | Use the web interface to configure input and output channels, set up routing rules, 
+                    | and define interactive signal processing logic.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Do I need to program anything?
+                  p.text-gray-700
+                    | No programming is required! The BaldrickSignals uses a web-based configuration interface that makes 
+                    | signal routing setup simple and intuitive.
+
+            / Professional Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Professional Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can it integrate with industrial systems?
+                  p.text-gray-700
+                    | Yes, the BaldrickSignals supports industrial protocols like Modbus TCP and SNMP, 
+                    | making it compatible with SCADA systems and building management systems.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What temperature range does it operate in?
+                  p.text-gray-700
+                    | The BaldrickSignals operates in temperatures from -20°C to +60°C, making it suitable 
+                    | for industrial environments and outdoor installations.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Is it suitable for 24/7 operation?
+                  p.text-gray-700
+                    | Yes, the BaldrickSignals is designed for continuous operation with professional-grade reliability 
+                    | and comprehensive monitoring for system health.
+
+            / Troubleshooting
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 The signal routing is not working
+                  p.text-gray-700
+                    | Check the signal configuration in the web interface. Verify channel settings, 
+                    | routing rules, and signal quality parameters.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 I can't connect to the web interface
+                  p.text-gray-700
+                    | Verify the network connection and check your router's DHCP client list for the IP address. 
+                    | Ensure the device is powered on and connected to the network.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 The signal quality is poor
+                  p.text-gray-700
+                    | Check signal connections, grounding, and configuration settings. 
+                    | The web interface provides signal quality monitoring and diagnostic tools.
+
+            / Application Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Application Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What projects can I build with it?
+                  p.text-gray-700
+                    | You can build traffic control systems, industrial automation, audio/video signal management, 
+                    | communication systems, and other complex signaling applications.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Is it good for traffic control?
+                  p.text-gray-700
+                    | Absolutely! The BaldrickSignals is specifically designed for traffic control systems with 
+                    | interactive signal routing and real-time response capabilities.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can it handle industrial automation?
+                  p.text-gray-700
+                    | Yes, the BaldrickSignals is built for industrial automation with robust construction, 
+                    | wide temperature range, and comprehensive signal processing features.
+
+            / Performance Questions
+            .bg-gray-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Performance Questions
+              
+              .space-y-6
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 How reliable is it?
+                  p.text-gray-700
+                    | The BaldrickSignals is designed for professional reliability with MTBF >100,000 hours, 
+                    | comprehensive protection, and continuous monitoring capabilities.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 What monitoring features are available?
+                  p.text-gray-700
+                    | Real-time monitoring includes signal quality, routing performance, processing latency, 
+                    | error rates, and system status with comprehensive alerting and notification systems.
+
+                .border-b.border-gray-200.pb-4
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can it scale to larger systems?
+                  p.text-gray-700
+                    | Yes, the BaldrickSignals features a scalable architecture and can be integrated with multiple units 
+                    | for even larger signal control networks.
+
+            / Support
+            .bg-blue-50.rounded-lg.p-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Need More Help?
+              
+              p.text-gray-700.mb-4
+                | If you can't find the answer to your question here, we're here to help!
+              
+              .flex.flex-col.sm:flex-row.gap-4
+                = link_to 'Contact Support', '/support', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+                = link_to 'Getting Started Guide', '/boards/baldricksignals/getting-started', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'

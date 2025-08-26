@@ -1,0 +1,93 @@
+- content_for :title, "FAQ - Baldrick8 - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'Baldrick8', menu_items: board_menu_items('baldrick8')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrick8', 'FAQ')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Frequently Asked Questions', subtitle: 'Common questions about Baldrick8', image_url: '/img/baldrick8-board.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        / FAQ for Baldrick8
+        .prose.max-w-none
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Baldrick8 FAQ
+
+          p.text-lg.text-gray-700.mb-6
+            | Find answers to the most commonly asked questions about the Baldrick8 controller.
+
+          .space-y-8
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How many pixels can I connect to each output?
+              p.text-gray-700 Each output can handle up to 750 pixels at 40fps. For optimal performance, we recommend keeping each output under 500 pixels.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What power supply do I need?
+              p.text-gray-700 The Baldrick8 accepts 5V-24V DC power. The exact voltage depends on your LED strip requirements. For 5V LED strips, use a 5V power supply. For 12V LED strips, use a 12V power supply.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Can I use different voltages on the two power inputs?
+              p.text-gray-700 Yes! The Baldrick8 has two power inputs that can accept different voltages. This allows you to power different sections of your display with different voltages if needed.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What LED protocols are supported?
+              p.text-gray-700 The Baldrick8 supports WS2811, WS2812B, SK6812, and many other popular LED protocols. Check the technical specifications for a complete list.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do I connect to the web interface?
+              p.text-gray-700 When you first power on the Baldrick8, it creates a WiFi access point named "Baldrick8-XXXX". Connect to this network (no password required) and navigate to 192.168.4.1 in your web browser.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Can I drill out the mounting holes to fit different screws?
+              p.text-gray-700
+                strong No! 
+                | DO NOT drill out the mounting holes. This will void your warranty. The mounting holes are designed to match other common controllers for compatibility.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What's the maximum refresh rate?
+              p.text-gray-700 The Baldrick8 can achieve up to 40fps refresh rate, which is perfect for smooth animations and professional displays.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Do I need a Raspberry Pi or FPP license?
+              p.text-gray-700 No! The Baldrick8 is a standalone controller that doesn't require a Raspberry Pi or any additional licenses. It runs its own firmware and web interface.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do the button inputs work?
+              p.text-gray-700 The Baldrick8 has 3 programmable button inputs that can execute URLs when pressed. You can use these with the FPP API to start/stop sequences or trigger other actions.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What network protocols are supported?
+              p.text-gray-700 The Baldrick8 supports DDP, Artnet, E1.31, and sACN protocols, making it compatible with most professional lighting software.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Can I use the Baldrick8 with xLights?
+              p.text-gray-700 Yes! The Baldrick8 has direct xLights integration. You can push sequences directly from xLights to the controller without needing additional software.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What's the operating temperature range?
+              p.text-gray-700 The Baldrick8 operates reliably between -10°C and +50°C, making it suitable for both indoor and outdoor installations.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do I update the firmware?
+              p.text-gray-700 Firmware updates are available through the web interface. Navigate to the System section and follow the update instructions. Always backup your configuration before updating.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What's the warranty period?
+              p.text-gray-700 The Baldrick8 comes with a standard warranty. Check your purchase documentation for specific warranty terms and conditions.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Can I use the Baldrick8 for commercial installations?
+              p.text-gray-700 Yes! The Baldrick8 is designed for professional use and can handle commercial installations. It's built with high-quality components for reliability in demanding environments.
+
+          .mt-8.bg-blue-50.border-l-4.border-blue-400.p-4
+            p.text-blue-700
+              strong Need more help? 
+              | If you can't find the answer to your question here, please check our 
+              a.text-blue-800.underline href="/support" support page
+              |  or contact our support team.

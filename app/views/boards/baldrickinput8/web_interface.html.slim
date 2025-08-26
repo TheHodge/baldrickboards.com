@@ -1,0 +1,233 @@
+- content_for :title, "BaldrickInput8 Web Interface - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickInput8', menu_items: board_menu_items('baldrickinput8')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickinput8', 'Web Interface')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'BaldrickInput8 Web Interface', subtitle: 'Configuration and Control Guide', image_url: '/img/baldrickinput8.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Web Interface Guide
+
+          p.text-lg.text-gray-600.mb-8
+            | The BaldrickInput8 web interface provides comprehensive control for your 8-channel input controller. 
+            | This guide will help you configure complex multi-channel interactions and sophisticated automation.
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Accessing the Web Interface
+
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-blue-900.mb-2 Quick Access
+            ol.text-blue-800.space-y-1
+              li 1. Ensure your BaldrickInput8 is powered on and connected to your network
+              li 2. Find the IP address (check your router's DHCP client list)
+              li 3. Open your web browser and navigate to the IP address
+              li 4. The web interface will load automatically
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Main Dashboard
+
+          p.text-gray-700.mb-4
+            | The main dashboard provides an overview of all 8 channels and quick access to key functions.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Multi-Channel Status
+              ul.text-gray-700.space-y-1
+                li • Power status and voltage monitoring
+                li • Network connection status
+                li • All 8 input channel status indicators
+                li • All 8 output channel status indicators
+                li • Temperature and system health
+                li • Active logic and automation status
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Quick Actions
+              ul.text-gray-700.space-y-1
+                li • Test individual channels
+                li • Trigger outputs manually
+                li • System reboot options
+                li • Configuration backup/restore
+                li • Multi-channel monitoring
+                li • Logic engine status
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Multi-Channel Configuration
+
+          p.text-gray-700.mb-4
+            | Configure each of the 8 input and output channels independently for your specific application.
+
+          .bg-indigo-50.border-l-4.border-indigo-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-indigo-900.mb-2 Channel Settings
+            ul.text-indigo-800.space-y-1
+              li • Individual channel configuration for all 8 inputs
+              li • Individual channel configuration for all 8 outputs
+              li • Input type selection (Button, Switch, Sensor)
+              li • Output pixel count and configuration
+              li • Channel-specific timing and response settings
+              li • Individual channel testing tools
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Configuration Steps
+
+          ol.space-y-4.text-gray-700.mb-8
+            li
+              strong.text-gray-900 1. Access Channel Settings
+              p.mt-1 Navigate to the Multi-Channel Configuration section in the web interface.
+
+            li
+              strong.text-gray-900 2. Configure Input Channels
+              p.mt-1 Set up each of the 8 input channels with appropriate types, voltage, and trigger conditions.
+
+            li
+              strong.text-gray-900 3. Configure Output Channels
+              p.mt-1 Set up each of the 8 output channels with pixel counts, color patterns, and response behaviors.
+
+            li
+              strong.text-gray-900 4. Test Individual Channels
+              p.mt-1 Use the testing tools to verify each channel works correctly.
+
+            li
+              strong.text-gray-900 5. Set Up Logic Relationships
+              p.mt-1 Configure how inputs and outputs interact using the logic builder.
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Logic Builder
+
+          p.text-gray-700.mb-4
+            | Create complex interaction logic between your 8 inputs and 8 outputs using the visual logic builder.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Logic Components
+              ul.text-gray-700.space-y-1
+                li • Visual logic configuration
+                li • Conditional statements
+                li • Input/output relationships
+                li • Timing and sequencing
+                li • Priority handling
+                li • Complex automation rules
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Advanced Logic
+              ul.text-gray-700.space-y-1
+                li • Cross-channel communication
+                li • Multi-input conditions
+                li • Sequential responses
+                li • Pattern recognition
+                li • State management
+                li • Event coordination
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Multi-Channel Monitoring
+
+          p.text-gray-700.mb-4
+            | Monitor and analyze the behavior of all 8 channels in real-time.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Real-Time Monitoring
+              ul.text-gray-700.space-y-1
+                li • Live status of all 8 inputs
+                li • Live status of all 8 outputs
+                li • Channel activity indicators
+                li • Response time monitoring
+                li • Error detection and reporting
+                li • Performance metrics
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Analytics
+              ul.text-gray-700.space-y-1
+                li • Channel usage statistics
+                li • Interaction pattern analysis
+                li • Performance optimization
+                li • Usage history and trends
+                li • Diagnostic information
+                li • System health monitoring
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Network Configuration
+
+          p.text-gray-700.mb-4
+            | Configure network settings for optimal performance and integration.
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 IP Configuration
+              ul.text-gray-700.space-y-1
+                li • DHCP (automatic) or Static IP
+                li • Subnet mask and gateway
+                li • DNS server settings
+                li • Network interface status
+                li • Connection speed and duplex
+
+            .bg-gray-50.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Network Events
+              ul.text-gray-700.space-y-1
+                li • Multi-channel UDP messages
+                li • TCP event settings
+                li • Network trigger options
+                li • Message format settings
+                li • Network testing tools
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Advanced Features
+
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Multi-Channel Coordination
+          p.text-gray-700.mb-4
+            | Coordinate complex interactions between multiple channels for sophisticated automation.
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Cross-channel communication and synchronization
+            li Multi-input conditional responses
+            li Coordinated output sequences
+            li Channel priority management
+            li Event-driven multi-channel actions
+            li Complex interaction patterns
+
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Automation & Sequencing
+          p.text-gray-700.mb-4
+            | Create sophisticated automation sequences and timed responses across multiple channels.
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Time-based multi-channel sequences
+            li Conditional automation rules
+            li Pattern-based responses
+            li State machine capabilities
+            li Event coordination
+            li Complex timing relationships
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Troubleshooting
+
+          .bg-red-50.border-l-4.border-red-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-red-900.mb-2 Common Issues
+            ul.text-red-800.space-y-1
+              li • Web interface not loading - check network connection
+              li • Individual channels not responding - verify wiring and configuration
+              li • Logic not working - check logic builder configuration
+              li • Cross-channel issues - verify channel relationships
+              li • Performance problems - check system load and configuration
+              li • Synchronization issues - verify timing settings
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Best Practices
+
+          .bg-green-50.border-l-4.border-green-400.p-4.mb-6
+            h3.text-lg.font-semibold.text-green-900.mb-2 Multi-Channel Setup Tips
+            ul.text-green-800.space-y-1
+              li • Plan your channel mapping before configuration
+              li • Test each channel individually before complex logic
+              li • Use the logic builder for complex interactions
+              li • Monitor channel performance during operation
+              li • Document your configuration for future reference
+              li • Consider channel priority and timing relationships
+
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Support and Resources
+
+          p.text-gray-700.mb-6
+            | For additional help with the web interface, check our resources or contact support.
+
+          .flex.flex-col.sm:flex-row.gap-4
+            = link_to 'FAQ', '/boards/baldrickinput8/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Technical Specifications', '/boards/baldrickinput8/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Contact Support', '/support', class: 'bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center'

@@ -1,0 +1,251 @@
+<% content_for :title, "FAQ - Fun Stuff" %>
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Breadcrumb -->
+  <%= render 'shared/breadcrumbs', breadcrumbs: [
+  { title: 'Home', path: '/' },
+  { title: 'Fun Stuff', path: '/fun-stuff' },
+  { title: 'FAQ', path: nil }
+] %>
+
+  <!-- Main Content Card -->
+  <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <!-- Header Section -->
+    <%= render 'shared/page_header', title: 'Frequently Asked Questions', subtitle: 'Common questions and answers about Baldrick products' %>
+
+    <!-- Content Section -->
+    <div class="px-8 py-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose max-w-none">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+
+          <p class="text-lg text-gray-700 mb-6">
+            Find answers to the most commonly asked questions about Baldrick products, setup, troubleshooting, and more.
+          </p>
+
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-blue-700">
+                  <strong>Can't find your answer?</strong> Check our support page or join our Facebook group for additional help.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">General Questions</h3>
+
+          <div class="space-y-6 mb-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">What makes Baldrick boards different from other controllers?</h4>
+              <p class="text-gray-700">
+                Baldrick boards are designed with simplicity and reliability in mind. We focus on ease of use, robust construction, and excellent support. Our boards feature intuitive web interfaces, comprehensive protocol support, and are built with high-quality components for long-term reliability.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Do I need a Raspberry Pi or FPP license?</h4>
+              <p class="text-gray-700">
+                No! Baldrick boards are standalone controllers that don't require a Raspberry Pi or any additional licenses. They run their own firmware and web interface, making setup simple and cost-effective.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">What LED protocols are supported?</h4>
+              <p class="text-gray-700">
+                Baldrick boards support all major LED protocols including WS2811, WS2812B, SK6812, APA102, and many others. Check the specific board's technical specifications for the complete list of supported protocols.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Can I use Baldrick boards outdoors?</h4>
+              <p class="text-gray-700">
+                Yes, but you'll need to provide proper protection. While our boards are built with quality components, they should be mounted in weatherproof enclosures for outdoor use. We offer 3D printable enclosure designs and recommend using appropriate materials for your environment.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Setup & Configuration</h3>
+
+          <div class="space-y-6 mb-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">How do I access the web interface?</h4>
+              <p class="text-gray-700">
+                When you first power on your Baldrick board, it creates a WiFi access point named "Baldrick8-XXXX" (or similar). Connect to this network (no password required) and navigate to 192.168.4.1 in your web browser. You can then configure your network settings and board parameters.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">What power supply do I need?</h4>
+              <p class="text-gray-700">
+                Baldrick boards accept 5V-24V DC power. The exact voltage depends on your LED strip requirements. For 5V LED strips, use a 5V power supply. For 12V LED strips, use a 12V power supply. Choose a power supply with sufficient current capacity for your total LED count.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">How many pixels can I connect to each output?</h4>
+              <p class="text-gray-700">
+                Each output can handle up to 750 pixels at 40fps. For optimal performance, we recommend keeping each output under 500 pixels. The exact number depends on your refresh rate requirements and LED protocol.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Can I use different voltages on the two power inputs?</h4>
+              <p class="text-gray-700">
+                Yes! Baldrick boards have two power inputs that can accept different voltages. This allows you to power different sections of your display with different voltages if needed, providing maximum flexibility for your setup.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Troubleshooting</h3>
+
+          <div class="space-y-6 mb-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">My LEDs aren't working. What should I check?</h4>
+              <p class="text-gray-700">
+                First, verify your power supply is adequate for your LED count. Check that your data direction is correct - LEDs won't work if connected backwards. Ensure your pixel count and protocol settings match your LED strips. Use the test patterns in the web interface to verify basic functionality.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">I can't connect to the web interface. What's wrong?</h4>
+              <p class="text-gray-700">
+                Make sure you're connecting to the correct WiFi network (Baldrick8-XXXX or similar). Try accessing 192.168.4.1 in your browser. If that doesn't work, try 192.168.1.100 or check your network settings. Ensure your device's WiFi is enabled and you're not connected to another network.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">The board is getting hot. Is this normal?</h4>
+              <p class="text-gray-700">
+                Some warmth is normal during operation, especially when driving many LEDs. However, if the board becomes uncomfortably hot, check your power supply capacity and ensure adequate ventilation. Consider reducing your LED count or adding additional power supplies if needed.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">How do I update the firmware?</h4>
+              <p class="text-gray-700">
+                Firmware updates are available through the web interface. Navigate to the System section and follow the update instructions. Always backup your configuration before updating. Updates are designed to preserve your settings, but it's best to be safe.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Compatibility & Integration</h3>
+
+          <div class="space-y-6 mb-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Can I use Baldrick boards with xLights?</h4>
+              <p class="text-gray-700">
+                Yes! Baldrick boards have direct xLights integration. You can push sequences directly from xLights to the controller without needing additional software. Our boards support the standard protocols that xLights uses for communication.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">What network protocols are supported?</h4>
+              <p class="text-gray-700">
+                Baldrick boards support DDP, Artnet, E1.31, and sACN protocols, making them compatible with most professional lighting software. This ensures you can integrate them into existing systems and workflows.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Can I use multiple Baldrick boards together?</h4>
+              <p class="text-gray-700">
+                Absolutely! Multiple Baldrick boards can work together on the same network. Each board can be configured with a unique IP address and can handle different sections of your display. This allows for scalable installations.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Do the button inputs work with FPP?</h4>
+              <p class="text-gray-700">
+                Yes! The button inputs can execute URLs when pressed, which can be used with the FPP API to start/stop sequences or trigger other actions. This provides easy integration with FPP-based systems.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Warranty & Support</h3>
+
+          <div class="space-y-6 mb-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">What's the warranty period?</h4>
+              <p class="text-gray-700">
+                Baldrick boards come with a standard warranty. Check your purchase documentation for specific warranty terms and conditions. We stand behind our products and are committed to customer satisfaction.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Can I drill out the mounting holes to fit different screws?</h4>
+              <p class="text-gray-700">
+                <strong>No!</strong> DO NOT drill out the mounting holes. This will void your warranty. The mounting holes are designed to match other common controllers for compatibility. Use the correct screw sizes as specified in the documentation.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">How do I get technical support?</h4>
+              <p class="text-gray-700">
+                We offer multiple support channels. Check our support page for contact information, join our Facebook group for community help, or use our hardware support form for technical issues. Our team is here to help!
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3">Can I use Baldrick boards for commercial installations?</h4>
+              <p class="text-gray-700">
+                Yes! Baldrick boards are designed for professional use and can handle commercial installations. They're built with high-quality components for reliability in demanding environments and include all necessary certifications.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-yellow-700">
+                  <strong>Still have questions?</strong> If you can't find the answer to your question here, please check our support page or contact our support team directly.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+              <h4 class="text-xl font-semibold text-gray-900 mb-3">Need More Help?</h4>
+              <p class="text-gray-700 mb-3">
+                Our support team is here to help with any questions not covered in this FAQ.
+              </p>
+              <a href="/support" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                Contact Support
+              </a>
+            </div>
+
+            <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+              <h4 class="text-xl font-semibold text-gray-900 mb-3">Join the Community</h4>
+              <p class="text-gray-700 mb-3">
+                Connect with other Baldrick users in our Facebook group for tips and advice.
+              </p>
+              <a href="https://www.facebook.com/groups/baldrickboards" target="_blank" class="inline-block bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors">
+                Join Facebook Group
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h4 class="text-lg font-semibold text-gray-900 mb-3">Was this helpful?</h4>
+            <p class="text-gray-700 mb-4">
+              We're constantly updating our FAQ based on user feedback. If you have suggestions for additional questions or improvements, please let us know!
+            </p>
+            <a href="/support" class="inline-block bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors">
+              Suggest Improvements
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

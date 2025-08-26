@@ -1,0 +1,150 @@
+- content_for :title, "BaldrickBadge Getting Started - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickBadge', menu_items: board_menu_items('baldrickbadge')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickbadge', 'Getting Started')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Getting Started with BaldrickBadge', subtitle: 'Setup and Configuration Guide', image_url: '/img/baldrickbadge.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickBadge
+          
+          p.text-lg.text-gray-600.mb-8
+            | Welcome to the BaldrickBadge! This guide will help you set up your compact badge controller for wearable and portable applications. 
+            | Perfect for portable displays and mobile lighting projects.
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 What's in the Box
+          ul.space-y-2.text-gray-700.mb-8
+            li • BaldrickBadge controller board
+            li • Battery (if included)
+            li • Mounting hardware
+            li • Quick start guide
+            li • USB cable (if included)
+            li • Pixel connection cables (if included)
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Quick Setup Steps
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 1. Power Connection
+          p.text-gray-700.mb-4
+            | Connect your battery to the BaldrickBadge. The board is designed for battery-powered operation and includes power management features.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 2. Network Connection
+          p.text-gray-700.mb-4
+            | Connect to the BaldrickBadge's WiFi network or use USB connection. The badge creates its own network for configuration.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 3. Pixel Connections
+          p.text-gray-700.mb-4
+            | Connect your pixel lighting to the output port. The BaldrickBadge supports various pixel types for portable displays.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 4. Web Interface Access
+          p.text-gray-700.mb-4
+            | Open your web browser and navigate to the BaldrickBadge's IP address or connect to its WiFi network for configuration.
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Configuration
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Network Settings
+          p.text-gray-700.mb-4
+            | The BaldrickBadge can operate in standalone mode or connect to existing networks. Configure based on your application needs.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Pixel Configuration
+          p.text-gray-700.mb-4
+            | Set up your pixel lighting with appropriate counts, patterns, and effects for your portable application.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Power Management
+          p.text-gray-700.mb-4
+            | Configure power-saving features and battery monitoring for optimal portable operation.
+          
+          .bg-pink-50.border-l-4.border-pink-400.p-4.mb-8
+            h4.text-lg.font-semibold.text-pink-800.mb-2 Portable Setup Tips
+            ul.text-pink-700.space-y-1
+              li • Choose appropriate battery capacity for your runtime needs
+              li • Secure mounting for wearable applications
+              li • Consider weather protection for outdoor use
+              li • Test battery life before final installation
+              li • Use lightweight pixel options for wearables
+              li • Plan for easy battery replacement
+          
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
+            h4.text-lg.font-semibold.text-yellow-800.mb-2 Important Notes
+            ul.text-yellow-700.space-y-1
+              li • Ensure proper battery connections for reliable operation
+              li • Use appropriate mounting for your application
+              li • Test in your intended environment before final setup
+              li • Consider power consumption for battery life
+              li • Keep firmware updated for best performance
+              li • Monitor battery status during operation
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Next Steps
+          p.text-gray-700.mb-6
+            | Once your BaldrickBadge is configured, you can:
+          
+          ul.space-y-2.text-gray-700.mb-8
+            li • Explore the web interface features
+            li • Configure your lighting patterns
+            li • Set up portable operation modes
+            li • Test battery life and performance
+            li • Mount for your specific application
+            li • Create mobile lighting displays
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Example Projects
+          
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Wearable Costume Lighting
+              p.text-gray-700.mb-3
+                | Create wearable lighting effects for costumes, cosplay, or performance applications.
+              ul.text-gray-600.text-sm.space-y-1
+                li • Compact pixel strips
+                li • Battery-powered operation
+                li • Lightweight mounting
+                li • Portable configuration
+          
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Portable Art Installation
+              p.text-gray-700.mb-3
+                | Build portable lighting displays for mobile art installations or temporary exhibits.
+              ul.text-gray-600.text-sm.space-y-1
+                li • Self-contained operation
+                li • Easy transport and setup
+                li • Flexible mounting options
+                li • Battery-powered independence
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Portable Features
+          
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Power Management
+              ul.text-gray-700.space-y-1
+                li • Battery monitoring
+                li • Power-saving modes
+                li • Low-power operation
+                li • Battery life optimization
+                li • Power status indicators
+                li • Efficient pixel control
+          
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Portability Features
+              ul.text-gray-700.space-y-1
+                li • Compact form factor
+                li • Lightweight construction
+                li • Easy mounting options
+                li • Weather-resistant design
+                li • Quick setup and teardown
+                li • Mobile configuration
+          
+          .bg-blue-50.border.border-blue-200.rounded-lg.p-6
+            h4.text-xl.font-semibold.text-blue-900.mb-3 Need Help?
+            p.text-blue-800.mb-4
+              | If you encounter any issues during setup, check our FAQ or contact support.
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'FAQ', '/boards/baldrickbadge/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+              = link_to 'Web Interface Guide', '/boards/baldrickbadge/web-interface', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'

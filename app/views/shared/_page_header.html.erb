@@ -1,0 +1,16 @@
+<!-- Page Header Component -->
+<div class="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-12 text-white relative overflow-hidden">
+  <div class="max-w-4xl mx-auto relative z-10">
+    <h1 class="text-4xl font-bold mb-4"><%= local_assigns[:title] %></h1>
+    <% if local_assigns[:subtitle].present? %>
+      <p class="text-xl text-indigo-100"><%= local_assigns[:subtitle] %></p>
+    <% end %>
+  </div>
+  
+  <% if local_assigns[:image_url].present? %>
+    <!-- Overlapping Image -->
+    <div class="absolute right-0 top-0 bottom-0 w-1/3 opacity-20">
+      <img src="<%= local_assigns[:image_url] %>" alt="<%= local_assigns[:image_alt] || title %>" class="w-full h-full object-cover">
+    </div>
+  <% end %>
+</div>

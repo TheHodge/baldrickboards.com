@@ -1,0 +1,120 @@
+- content_for :title, "Baldrick17 Technical Specifications - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'Baldrick17', menu_items: board_menu_items('baldrick17')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrick17', 'Technical Specifications')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Baldrick17 Technical Specifications', subtitle: 'Detailed Specifications and Capabilities', image_url: '/img/baldrick17.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Baldrick17 Technical Specifications
+          
+          .grid.md:grid-cols-2.gap-8.mb-8
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 General Specifications
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Physical
+              ul.space-y-1.text-gray-700
+                li • Dimensions: TBD
+                li • Weight: TBD
+                li • Enclosure: Industrial grade
+                li • Mounting: Multiple mounting options
+                li • Operating Temperature: -20°C to +60°C
+                li • Humidity: 10% to 90% non-condensing
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Power
+              ul.space-y-1.text-gray-700
+                li • Input Voltage: 12V DC
+                li • Power Consumption: TBD
+                li • Power Connector: TBD
+                li • Power Protection: Overcurrent, overvoltage
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Network
+              ul.space-y-1.text-gray-700
+                li • Ethernet: 10/100 Mbps
+                li • Protocol Support: UDP, TCP
+                li • IP Configuration: DHCP/Static
+                li • Network Security: TBD
+            
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Pixel Control Specifications
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Output Channels
+              ul.space-y-1.text-gray-700
+                li • Number of Channels: 17
+                li • Pixel Types: WS2811, WS2812B, SK6812
+                li • Max Pixels per Channel: TBD
+                li • Total Pixel Capacity: TBD
+                li • Output Voltage: 5V
+                li • Data Rate: 800 KHz
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Timing
+              ul.space-y-1.text-gray-700
+                li • Refresh Rate: Up to 60 FPS
+                li • Timing Precision: Microsecond accuracy
+                li • Synchronization: Network-based
+                li • Latency: < 1ms
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Features
+              ul.space-y-1.text-gray-700
+                li • Individual Channel Control
+                li • Brightness Control
+                li • Color Correction
+                li • Gamma Correction
+                li • Power Management
+                li • Status Monitoring
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Software & Interface
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Web Interface
+          ul.space-y-1.text-gray-700.mb-6
+            li • Browser-based configuration
+            li • Real-time status monitoring
+            li • Channel testing tools
+            li • Network diagnostics
+            li • Firmware updates
+            li • Backup/restore settings
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 API Support
+          ul.space-y-1.text-gray-700.mb-6
+            li • REST API
+            li • WebSocket support
+            li • JSON data format
+            li • Third-party integration
+            li • Custom protocol support
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Compatibility
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Lighting Software
+          ul.space-y-1.text-gray-700.mb-6
+            li • xLights
+            li • Vixen
+            li • Light-O-Rama
+            li • Custom applications
+            li • Web-based controllers
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Protocols
+          ul.space-y-1.text-gray-700.mb-6
+            li • E1.31 (sACN)
+            li • Art-Net
+            li • Custom UDP protocols
+            li • HTTP/HTTPS
+            li • WebSocket
+          
+          .bg-gray-50.border.border-gray-200.rounded-lg.p-6.mt-8
+            h4.text-xl.font-semibold.text-gray-900.mb-3 Notes
+            ul.text-gray-700.space-y-1
+              li • Specifications subject to change without notice
+              li • Performance may vary based on network conditions
+              li • Maximum pixel counts depend on refresh rate and network bandwidth
+              li • Contact support for custom configurations
+              li • Firmware updates may add new features and capabilities

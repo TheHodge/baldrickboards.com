@@ -1,0 +1,181 @@
+- content_for :title, "Buy BaldrickDMX - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickDMX', menu_items: board_menu_items('baldrickdmx')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickdmx', 'Buy This Board')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Buy BaldrickDMX', subtitle: 'Professional DMX512 Controller', image_url: '/img/baldrickdmx.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Why Choose the BaldrickDMX?
+
+          .grid.md:grid-cols-2.gap-8.mb-8
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Professional DMX Control
+              p.text-lg.text-gray-700
+                | The BaldrickDMX brings professional DMX512 control to your lighting installations. 
+                | Perfect for stage lighting, moving heads, and theatrical applications with precise timing and industry-standard protocols.
+
+              .bg-yellow-50.border-l-4.border-yellow-400.p-4
+                p.text-yellow-800.font-medium
+                  | "The BaldrickDMX is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Key Benefits
+              ul.space-y-3.text-gray-700
+                li • Industry-standard DMX512 protocol support
+                li • Multiple universe capabilities
+                li • RDM (Remote Device Management) support
+                li • Professional timing precision
+                li • Comprehensive web interface
+                li • Industry-standard compatibility
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 What's Included
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Hardware
+              ul.space-y-2.text-gray-700
+                li • BaldrickDMX controller board
+                li • Mounting hardware
+                li • Power supply (if included in package)
+                li • Network cable (if included)
+                li • Quick start guide
+                li • Professional documentation
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Software & Support
+              ul.space-y-2.text-gray-700
+                li • Web-based configuration interface
+                li • RDM management tools
+                li • Firmware updates
+                li • Technical documentation
+                li • Professional support options
+                li • Integration guides
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Technical Specifications
+
+          .bg-blue-50.rounded-lg.p-6.mb-8
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 DMX Control
+                ul.text-blue-800.space-y-1
+                  li • Multiple DMX universes
+                  li • 512 channels per universe
+                  li • DMX512-A protocol compliance
+                  li • XLR-5 output connectors
+                  li • Up to 44 Hz refresh rate
+
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 Professional Features
+                ul.text-blue-800.space-y-1
+                  li • RDM device management
+                  li • Precise timing control
+                  li • Universe merging capabilities
+                  li • Priority handling
+                  li • Real-time monitoring
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Perfect For
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Professional Applications
+              ul.space-y-2.text-gray-700
+                li • Stage lighting systems
+                li • Theatrical productions
+                li • Moving head fixtures
+                li • Professional entertainment venues
+                li • Architectural lighting
+                li • Event production
+
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Installation Types
+              ul.space-y-2.text-gray-700
+                li • Concert venues and theaters
+                li • Event spaces and arenas
+                li • Professional studios
+                li • Commercial installations
+                li • Live event production
+                li • Entertainment industry
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Industry Compatibility
+
+          .bg-green-50.border.border-green-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-green-900.mb-4 Professional Software Support
+            p.text-green-800.mb-4
+              | The BaldrickDMX is compatible with all major professional lighting software and consoles.
+            
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-green-900.mb-3 Lighting Consoles
+                ul.text-green-800.space-y-1
+                  li • GrandMA
+                  li • Avolites
+                  li • Chamsys
+                  li • ETC Eos
+                  li • QLab
+
+              div
+                h4.text-lg.font-semibold.text-green-900.mb-3 Protocols
+                ul.text-green-800.space-y-1
+                  li • DMX512-A (primary)
+                  li • RDM
+                  li • E1.31 (sACN)
+                  li • Art-Net
+                  li • DDP
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Pricing & Availability
+
+          .bg-purple-50.border.border-purple-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-purple-900.mb-4 Current Pricing
+            p.text-purple-800.mb-4
+              | The BaldrickDMX is available at competitive pricing for professional installations requiring industry-standard DMX control.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Contact for Pricing', '/where-to-buy-baldrick-boards', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
+              = link_to 'Technical Specifications', '/boards/baldrickdmx/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Support & Warranty
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Technical Support
+              ul.space-y-2.text-gray-700
+                li • Comprehensive documentation
+                li • Professional setup guides
+                li • RDM configuration assistance
+                li • Professional support options
+                li • Integration assistance
+                li • Industry expertise
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Warranty & Service
+              ul.space-y-2.text-gray-700
+                li • Professional warranty coverage
+                li • Quality assurance testing
+                li • Reliable performance guarantee
+                li • Service and repair options
+                li • Industry-standard support
+                li • Long-term commitment
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Ready to Order?
+
+          .bg-yellow-50.border.border-yellow-200.rounded-lg.p-6
+            h3.text-xl.font-semibold.text-yellow-900.mb-4 Get Started Today
+            p.text-yellow-800.mb-6
+              | Ready to take your professional lighting control to the next level? The BaldrickDMX is the perfect choice 
+              | for applications requiring industry-standard DMX control and professional reliability.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Where to Buy', '/where-to-buy-baldrick-boards', class: 'bg-yellow-600 text-white px-8 py-4 rounded-lg hover:bg-yellow-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Contact Sales', '/support', class: 'bg-gray-600 text-white px-8 py-4 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Technical Specs', '/boards/baldrickdmx/tech-specs', class: 'bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'

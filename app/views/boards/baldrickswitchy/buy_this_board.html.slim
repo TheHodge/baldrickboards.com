@@ -1,0 +1,179 @@
+- content_for :title, "Buy BaldrickSwitchy - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickSwitchy', menu_items: board_menu_items('baldrickswitchy')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickswitchy', 'Buy This Board')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Buy BaldrickSwitchy', subtitle: 'High-Power Relay Controller', image_url: '/img/baldrickswitchy.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Why Choose the BaldrickSwitchy?
+
+          .grid.md:grid-cols-2.gap-8.mb-8
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Professional Safety & Control
+              p.text-lg.text-gray-700
+                | The BaldrickSwitchy is our high-power relay controller, designed for safe and reliable AC device control. 
+                | With comprehensive safety features and precise timing control, it's perfect for controlling motors, lights, and other high-voltage applications.
+
+              .bg-green-50.border-l-4.border-green-400.p-4
+                p.text-green-800.font-medium
+                  | "The BaldrickSwitchy is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Key Benefits
+              ul.space-y-3.text-gray-700
+                li • High-power relay outputs for AC control
+                li • Comprehensive safety protection systems
+                li • Precise timing control for synchronized operations
+                li • Professional-grade reliability and safety
+                li • Comprehensive web interface for configuration
+                li • Industry-standard protocols and compatibility
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 What's Included
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Hardware
+              ul.space-y-2.text-gray-700
+                li • BaldrickSwitchy controller board
+                li • Mounting hardware
+                li • Power supply (if included in package)
+                li • Network cable (if included)
+                li • Quick start guide
+                li • Safety documentation
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Software & Support
+              ul.space-y-2.text-gray-700
+                li • Web-based configuration interface
+                li • Safety system configuration tools
+                li • Firmware updates
+                li • Technical documentation
+                li • Professional support options
+                li • Safety compliance guidance
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Technical Specifications
+
+          .bg-blue-50.rounded-lg.p-6.mb-8
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 Relay Control
+                ul.text-blue-800.space-y-1
+                  li • Multiple high-power relay outputs
+                  li • Up to 240V AC voltage handling
+                  li • High current capacity per relay
+                  li • Fast switching speed (< 1ms)
+                  li • Solid state relay technology
+
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 Safety Features
+                ul.text-blue-800.space-y-1
+                  li • Overcurrent protection
+                  li • Overvoltage protection
+                  li • Thermal protection
+                  li • Emergency stop functionality
+                  li • Comprehensive fault detection
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Perfect For
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Professional Applications
+              ul.space-y-2.text-gray-700
+                li • AC lighting control systems
+                li • Motor control applications
+                li • Industrial automation
+                li • Safety-critical systems
+                li • High-voltage switching
+                li • Commercial installations
+
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Installation Types
+              ul.space-y-2.text-gray-700
+                li • Traditional lighting displays
+                li • Industrial control systems
+                li • Commercial automation
+                li • Safety-focused applications
+                li • High-power switching
+                li • Professional installations
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Safety & Compliance
+
+          .bg-green-50.border.border-green-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-green-900.mb-4 Safety Standards
+            p.text-green-800.mb-4
+              | The BaldrickSwitchy is designed to meet the highest safety standards for high-voltage control applications.
+            
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-green-900.mb-3 Certifications
+                ul.text-green-800.space-y-1
+                  li • CE certification (European markets)
+                  li • UL listing (North American markets)
+                  li • Safety compliance testing
+                  li • Quality assurance standards
+
+              div
+                h4.text-lg.font-semibold.text-green-900.mb-3 Installation
+                ul.text-green-800.space-y-1
+                  li • Qualified electrician installation
+                  li • Proper grounding requirements
+                  li • Local electrical code compliance
+                  li • Safety system verification
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Pricing & Availability
+
+          .bg-purple-50.border.border-purple-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-purple-900.mb-4 Current Pricing
+            p.text-purple-800.mb-4
+              | The BaldrickSwitchy is available at competitive pricing for professional installations requiring high-power control and safety features.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Contact for Pricing', '/where-to-buy-baldrick-boards', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
+              = link_to 'Technical Specifications', '/boards/baldrickswitchy/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Support & Warranty
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Technical Support
+              ul.space-y-2.text-gray-700
+                li • Comprehensive documentation
+                li • Safety system configuration guides
+                li • Professional installation support
+                li • Qualified technician assistance
+                li • Integration assistance
+                li • Safety compliance guidance
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Warranty & Service
+              ul.space-y-2.text-gray-700
+                li • Professional warranty coverage
+                li • Safety system testing
+                li • Reliable performance guarantee
+                li • Service and repair options
+                li • Safety compliance verification
+                li • Long-term support commitment
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Ready to Order?
+
+          .bg-green-50.border.border-green-200.rounded-lg.p-6
+            h3.text-xl.font-semibold.text-green-900.mb-4 Get Started Today
+            p.text-green-800.mb-6
+              | Ready to take your high-power control applications to the next level? The BaldrickSwitchy is the perfect choice 
+              | for professional applications requiring safety, reliability, and precise control.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Where to Buy', '/where-to-buy-baldrick-boards', class: 'bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Contact Sales', '/support', class: 'bg-gray-600 text-white px-8 py-4 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Technical Specs', '/boards/baldrickswitchy/tech-specs', class: 'bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'

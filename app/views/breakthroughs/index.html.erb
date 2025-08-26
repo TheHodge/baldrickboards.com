@@ -1,0 +1,195 @@
+<% content_for :title, "Baldrick Breakthroughs - Baldrick Board Documentation" %>
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Breadcrumb -->
+  <nav class="text-sm text-gray-500 mb-6">
+    <div class="flex items-center space-x-2">
+      <a href="/" class="hover:text-gray-700 transition-colors">Home</a>
+      <svg class="h-4 w-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </svg>
+      <span class="text-gray-900 font-medium">Baldrick Breakthroughs</span>
+    </div>
+  </nav>
+
+  <!-- Main Content Card -->
+  <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <!-- Header Section -->
+    <%= render 'shared/page_header', 
+        title: 'Baldrick Breakthroughs',
+        subtitle: 'Innovation, ecosystem, and cutting-edge developments',
+        image_url: '/img/baldrick.jpg',
+        image_alt: 'Baldrick Breakthroughs' %>
+
+    <!-- Content Section -->
+    <div class="px-8 py-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- The Turnip Network -->
+          <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden group hover:shadow-lg hover:border-yellow-300 hover:bg-yellow-50 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="/breakthroughs/turnip-network" class="block no-underline">
+              <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center">
+                <div class="text-gray-400 text-center">
+                  <svg class="h-16 w-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+                  </svg>
+                  <p class="text-sm">The Turnip Network</p>
+                </div>
+              </div>
+                              <div class="p-6">
+                  <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:text-yellow-900 transition-colors duration-300">The Turnip Network</h3>
+                    <span class="text-sm text-gray-500 group-hover:text-yellow-600 transition-colors duration-300">Network Innovation</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">Revolutionary networking technology that connects Baldrick boards in ways never before possible.</p>
+                  <ul class="text-sm text-gray-600 mb-4 space-y-1 group-hover:text-gray-700 transition-colors duration-300">
+                    <li>• Advanced networking protocols</li>
+                    <li>• Seamless board communication</li>
+                    <li>• Scalable architecture</li>
+                    <li>• Future-proof technology</li>
+                  </ul>
+                </div>
+            </a>
+          </div>
+
+          <!-- The Kluster -->
+          <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden group hover:shadow-lg hover:border-yellow-300 hover:bg-yellow-50 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="/breakthroughs/kluster" class="block no-underline">
+              <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center">
+                <div class="text-gray-400 text-center">
+                  <svg class="h-16 w-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                  <p class="text-sm">The Kluster</p>
+                </div>
+              </div>
+                              <div class="p-6">
+                  <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:text-yellow-900 transition-colors duration-300">The Kluster</h3>
+                    <span class="text-sm text-gray-500 group-hover:text-yellow-600 transition-colors duration-300">Cluster Technology</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">Advanced clustering technology that enables multiple Baldrick boards to work together as a unified system.</p>
+                  <ul class="text-sm text-gray-600 mb-4 space-y-1 group-hover:text-gray-700 transition-colors duration-300">
+                    <li>• Multi-board coordination</li>
+                    <li>• Load balancing</li>
+                    <li>• Fault tolerance</li>
+                    <li>• Scalable performance</li>
+                  </ul>
+                </div>
+            </a>
+          </div>
+
+          <!-- CE & UKCA Certification -->
+          <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden group hover:shadow-lg hover:border-yellow-300 hover:bg-yellow-50 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="/breakthroughs/ce-ukca-certification" class="block no-underline">
+              <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center">
+                <div class="text-gray-400 text-center">
+                  <svg class="h-16 w-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <p class="text-sm">CE & UKCA Certification</p>
+                </div>
+              </div>
+                              <div class="p-6">
+                  <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:text-yellow-900 transition-colors duration-300">CE & UKCA Certification</h3>
+                    <span class="text-sm text-gray-500 group-hover:text-yellow-600 transition-colors duration-300">Compliance & Safety</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">Our commitment to safety and compliance with European and UK standards.</p>
+                  <ul class="text-sm text-gray-600 mb-4 space-y-1 group-hover:text-gray-700 transition-colors duration-300">
+                    <li>• European compliance</li>
+                    <li>• UK safety standards</li>
+                    <li>• Quality assurance</li>
+                    <li>• Professional reliability</li>
+                  </ul>
+                </div>
+            </a>
+          </div>
+
+          <!-- Turniput -->
+          <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden group hover:shadow-lg hover:border-yellow-300 hover:bg-yellow-50 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="/breakthroughs/turniput" class="block no-underline">
+              <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center">
+                <div class="text-gray-400 text-center">
+                  <svg class="h-16 w-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                  <p class="text-sm">Turniput</p>
+                </div>
+              </div>
+                              <div class="p-6">
+                  <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:text-yellow-900 transition-colors duration-300">Turniput</h3>
+                    <span class="text-sm text-gray-500 group-hover:text-yellow-600 transition-colors duration-300">Development Tools</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">Advanced development and programming tools for Baldrick board customization and control.</p>
+                  <ul class="text-sm text-gray-600 mb-4 space-y-1 group-hover:text-gray-700 transition-colors duration-300">
+                    <li>• Programming interfaces</li>
+                    <li>• Custom development</li>
+                    <li>• Advanced control</li>
+                    <li>• Developer tools</li>
+                  </ul>
+                </div>
+            </a>
+          </div>
+
+          <!-- Hodgical Test Mode -->
+          <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden group hover:shadow-lg hover:border-yellow-300 hover:bg-yellow-50 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="/breakthroughs/hodgical-test-mode" class="block no-underline">
+              <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center">
+                <div class="text-gray-400 text-center">
+                  <svg class="h-16 w-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                  <p class="text-sm">Hodgical Test Mode</p>
+                </div>
+              </div>
+                              <div class="p-6">
+                  <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:text-yellow-900 transition-colors duration-300">Hodgical Test Mode</h3>
+                    <span class="text-sm text-gray-500 group-hover:text-yellow-600 transition-colors duration-300">Testing & Diagnostics</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">Advanced testing and diagnostic capabilities for comprehensive board validation and troubleshooting.</p>
+                  <ul class="text-sm text-gray-600 mb-4 space-y-1 group-hover:text-gray-700 transition-colors duration-300">
+                    <li>• Comprehensive testing</li>
+                    <li>• Diagnostic tools</li>
+                    <li>• Validation systems</li>
+                    <li>• Troubleshooting aids</li>
+                  </ul>
+                </div>
+            </a>
+          </div>
+
+          <!-- CunningFX -->
+          <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden group hover:shadow-lg hover:border-yellow-300 hover:bg-yellow-50 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="/breakthroughs/cunningfx" class="block no-underline">
+              <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center">
+                <div class="text-gray-400 text-center">
+                  <svg class="h-16 w-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2"></path>
+                  </svg>
+                  <p class="text-sm">CunningFX</p>
+                </div>
+              </div>
+                              <div class="p-6">
+                  <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:text-yellow-900 transition-colors duration-300">CunningFX</h3>
+                    <span class="text-sm text-gray-500 group-hover:text-yellow-600 transition-colors duration-300">Effects Engine</span>
+                  </div>
+                  <p class="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">Revolutionary effects engine that brings stunning visual effects to life with Baldrick boards.</p>
+                  <ul class="text-sm text-gray-600 mb-4 space-y-1 group-hover:text-gray-700 transition-colors duration-300">
+                    <li>• Advanced effects</li>
+                    <li>• Real-time processing</li>
+                    <li>• Creative tools</li>
+                    <li>• Visual innovation</li>
+                  </ul>
+                </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

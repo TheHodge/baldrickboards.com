@@ -1,0 +1,186 @@
+- content_for :title, "Buy BaldrickInput8 - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickInput8', menu_items: board_menu_items('baldrickinput8')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickinput8', 'Buy This Board')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Buy BaldrickInput8', subtitle: '8 Input/8 Output Controller', image_url: '/img/baldrickinput8.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Why Choose the BaldrickInput8?
+
+          .grid.md:grid-cols-2.gap-8.mb-8
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Advanced Multi-Channel Control
+              p.text-lg.text-gray-700
+                | The BaldrickInput8 is an 8-channel input controller with pixel output capabilities for complex interactive installations. 
+                | Perfect for multi-zone displays and sophisticated automation projects.
+
+              .bg-indigo-50.border-l-4.border-indigo-400.p-4
+                p.text-indigo-800.font-medium
+                  | "The BaldrickInput8 is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Key Benefits
+              ul.space-y-3.text-gray-700
+                li • 8 independent input channels
+                li • 8 pixel output channels
+                li • Advanced logic capabilities
+                li • Visual logic builder interface
+                li • Multi-channel coordination
+                li • Professional-grade performance
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 What's Included
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Hardware
+              ul.space-y-2.text-gray-700
+                li • BaldrickInput8 controller board
+                li • Mounting hardware
+                li • Power supply (if included in package)
+                li • Network cable (if included)
+                li • Quick start guide
+                li • Professional documentation
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Software & Support
+              ul.space-y-2.text-gray-700
+                li • Web-based configuration interface
+                li • Visual logic builder
+                li • Multi-channel monitoring tools
+                li • Firmware updates
+                li • Professional support options
+                li • Advanced configuration guides
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Technical Specifications
+
+          .bg-blue-50.rounded-lg.p-6.mb-8
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 Multi-Channel Control
+                ul.text-blue-800.space-y-1
+                  li • 8 independent input channels
+                  li • 8 pixel output channels
+                  li • 3.3V/5V input compatibility
+                  li • WS2811/WS2812B pixel support
+                  li • < 1ms response time per channel
+                  li • Independent channel configuration
+
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 Advanced Features
+                ul.text-blue-800.space-y-1
+                  li • Visual logic builder
+                  li • Cross-channel communication
+                  li • Complex automation rules
+                  li • Real-time monitoring
+                  li • Multi-zone coordination
+                  li • Professional performance
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Perfect For
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Advanced Applications
+              ul.space-y-2.text-gray-700
+                li • Multi-zone interactive displays
+                li • Complex automation systems
+                li • Interactive art installations
+                li • Multi-sensor applications
+                li • Advanced lighting control
+                li • Professional installations
+
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Project Types
+              ul.space-y-2.text-gray-700
+                li • Sophisticated interactive environments
+                li • Multi-zone lighting systems
+                li • Complex automation projects
+                li • Professional venues and spaces
+                li • Advanced interactive exhibits
+                li • Industrial automation applications
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Advanced Capabilities
+
+          .bg-indigo-50.border.border-indigo-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-indigo-900.mb-4 Sophisticated Multi-Channel Control
+            p.text-indigo-800.mb-4
+              | The BaldrickInput8 provides advanced capabilities for complex multi-channel applications.
+            
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-indigo-900.mb-3 Logic & Automation
+                ul.text-indigo-800.space-y-1
+                  li • Visual logic builder
+                  li • Conditional programming
+                  li • Cross-channel communication
+                  li • Complex interaction patterns
+                  li • Event-driven automation
+                  li • State machine capabilities
+
+              div
+                h4.text-lg.font-semibold.text-indigo-900.mb-3 Coordination Features
+                ul.text-indigo-800.space-y-1
+                  li • Multi-channel synchronization
+                  li • Coordinated sequences
+                  li • Priority handling
+                  li • Performance optimization
+                  li • Real-time monitoring
+                  li • Advanced diagnostics
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Pricing & Availability
+
+          .bg-purple-50.border.border-purple-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-purple-900.mb-4 Professional Pricing
+            p.text-purple-800.mb-4
+              | The BaldrickInput8 is competitively priced for professional installations requiring advanced multi-channel control 
+              | and sophisticated automation capabilities.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Contact for Pricing', '/where-to-buy-baldrick-boards', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
+              = link_to 'Technical Specifications', '/boards/baldrickinput8/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Support & Professional Services
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Technical Support
+              ul.space-y-2.text-gray-700
+                li • Comprehensive documentation
+                li • Advanced configuration guides
+                li • Multi-channel setup assistance
+                li • Professional support options
+                li • Integration assistance
+                li • Performance optimization
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Professional Services
+              ul.space-y-2.text-gray-700
+                li • Professional warranty coverage
+                li • Quality assurance testing
+                li • Performance guarantee
+                li • Service and repair options
+                li • Professional installation support
+                li • Long-term commitment
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Ready to Order?
+
+          .bg-indigo-50.border.border-indigo-200.rounded-lg.p-6
+            h3.text-xl.font-semibold.text-indigo-900.mb-4 Get Started Today
+            p.text-indigo-800.mb-6
+              | Ready to take your interactive installations to the next level? The BaldrickInput8 is the perfect choice 
+              | for applications requiring advanced multi-channel control and sophisticated automation capabilities.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Where to Buy', '/where-to-buy-baldrick-boards', class: 'bg-indigo-600 text-white px-8 py-4 rounded-lg hover:bg-indigo-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Contact Sales', '/support', class: 'bg-gray-600 text-white px-8 py-4 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Technical Specs', '/boards/baldrickinput8/tech-specs', class: 'bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'

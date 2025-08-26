@@ -1,0 +1,203 @@
+- content_for :title, "BaldrickSignals Technical Specifications - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickSignals', menu_items: board_menu_items('baldricksignals')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldricksignals', 'Technical Specifications')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'BaldrickSignals Technical Specifications', subtitle: 'Detailed Specifications and Capabilities', image_url: '/img/baldricksignals-board.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 BaldrickSignals Technical Specifications
+          
+          .grid.md:grid-cols-2.gap-8.mb-8
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Physical Specifications
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Dimensions & Weight
+              ul.space-y-1.text-gray-700
+                li • Dimensions: TBD (professional form factor)
+                li • Weight: TBD (industrial construction)
+                li • Enclosure: Professional grade
+                li • Mounting: Multiple mounting options
+                li • Operating Temperature: -20°C to +60°C
+                li • Humidity: 10% to 90% non-condensing
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Power
+              ul.space-y-1.text-gray-700
+                li • Power Input: TBD (professional power requirements)
+                li • Power Consumption: TBD (typical operation)
+                li • Power Management: Advanced power management
+                li • Backup Power: Optional UPS support
+                li • Power Protection: Surge and overcurrent protection
+                li • Efficiency: Optimized for continuous operation
+            
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Signal Specifications
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Input Channels
+              ul.space-y-1.text-gray-700
+                li • Number of Inputs: TBD (multiple channels)
+                li • Signal Types: Analog, digital, serial, network
+                li • Voltage Range: TBD (configurable)
+                li • Frequency Range: TBD (wide bandwidth)
+                li • Impedance: Configurable per channel
+                li • Isolation: Channel-to-channel isolation
+              
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Output Channels
+              ul.space-y-1.text-gray-700
+                li • Number of Outputs: TBD (multiple channels)
+                li • Signal Types: Analog, digital, serial, network
+                li • Voltage Range: TBD (configurable)
+                li • Current Capacity: TBD per channel
+                li • Switching Speed: <1ms (fast response)
+                li • Protection: Overcurrent and short circuit protection
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Signal Processing
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Processing Capabilities
+          ul.space-y-1.text-gray-700.mb-6
+            li • Real-time signal processing
+            li • Multi-protocol signal conversion
+            li • Signal conditioning and filtering
+            li • Pattern recognition algorithms
+            li • Digital signal processing (DSP)
+            li • Adaptive signal routing
+            li • Signal quality monitoring
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Interactive Features
+          ul.space-y-1.text-gray-700.mb-6
+            li • Dynamic signal routing
+            li • Interactive switching control
+            li • Automated signal responses
+            li • Conditional signal processing
+            li • Event-driven signal handling
+            li • User-defined signal logic
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Software & Interface
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Web Interface
+          ul.space-y-1.text-gray-700.mb-6
+            li • Browser-based configuration
+            li • Real-time signal monitoring
+            li • Interactive signal routing
+            li • Signal quality analysis
+            li • Network diagnostics
+            li • Firmware updates
+            li • Configuration backup/restore
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Signal Management
+          ul.space-y-1.text-gray-700.mb-6
+            li • Signal routing configuration
+            li • Protocol conversion settings
+            li • Signal quality monitoring
+            li • Performance optimization
+            li • Diagnostic tools
+            li • Alert and notification system
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 API Support
+          ul.space-y-1.text-gray-700.mb-6
+            li • REST API
+            li • WebSocket support
+            li • JSON data format
+            li • Third-party integration
+            li • Custom protocol support
+            li • Industrial automation protocols
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Performance
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Signal Performance
+          ul.space-y-1.text-gray-700.mb-6
+            li • Signal response time: <1ms
+            li • Processing latency: <10ms
+            li • Signal accuracy: >99.9%
+            li • Crosstalk: <-60dB
+            li • Signal-to-noise ratio: >80dB
+            li • Bandwidth: TBD (wide range)
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Reliability
+          ul.space-y-1.text-gray-700.mb-6
+            li • MTBF: >100,000 hours
+            li • Operating temperature: -20°C to +60°C
+            li • Storage temperature: -40°C to +85°C
+            li • Humidity tolerance: 10% to 90% non-condensing
+            li • Vibration resistance: Industrial standards
+            li • Shock resistance: Industrial standards
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Network & Communication
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Network
+          ul.space-y-1.text-gray-700.mb-6
+            li • Ethernet: 10/100/1000 Mbps
+            li • Protocol Support: TCP/IP, UDP, Modbus
+            li • IP Configuration: DHCP/Static
+            li • Network Security: Industrial-grade
+            li • Redundancy: Network redundancy support
+            li • Remote access: Secure remote configuration
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Industrial Protocols
+          ul.space-y-1.text-gray-700.mb-6
+            li • Modbus TCP support
+            li • SNMP monitoring
+            li • Industrial Ethernet protocols
+            li • Custom protocol support
+            li • Integration with SCADA systems
+            li • Building management system integration
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Applications
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Professional Applications
+          ul.space-y-1.text-gray-700.mb-6
+            li • Traffic control systems
+            li • Industrial automation
+            li • Process control systems
+            li • Audio/video signal management
+            li • Communication systems
+            li • Critical signaling applications
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 System Integration
+          ul.space-y-1.text-gray-700.mb-6
+            li • Building automation systems
+            li • Industrial control systems
+            li • Signal management systems
+            li • Communication networks
+            li • Automation systems
+            li • Smart building integration
+          
+          h2.text-2xl.font-bold.text-gray-900.mb-4 Development & Integration
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Configuration
+          ul.space-y-1.text-gray-700.mb-6
+            li • Web-based configuration
+            li • No programming required
+            li • Visual signal routing interface
+            li • Template-based setup
+            li • Quick start examples
+            li • Advanced customization options
+          
+          h3.text-xl.font-semibold.text-gray-900.mb-3 Integration
+          ul.space-y-1.text-gray-700.mb-6
+            li • Standard signal connections
+            li • Network integration capabilities
+            li • Third-party system compatibility
+            li • API for custom applications
+            li • Modular design for expansion
+            li • Scalable architecture
+          
+          .bg-gray-50.border.border-gray-200.rounded-lg.p-6.mt-8
+            h4.text-xl.font-semibold.text-gray-900.mb-3 Notes
+            ul.text-gray-700.space-y-1
+              li • Specifications subject to change without notice
+              li • Performance may vary based on environmental conditions
+              li • Signal quality depends on proper installation and grounding
+              li • Contact support for custom configurations
+              li • Firmware updates may add new features and capabilities
+              li • Designed for professional signal control and routing applications

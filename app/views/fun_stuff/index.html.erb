@@ -1,0 +1,143 @@
+<% content_for :title, "Fun Stuff - Baldrick Board Documentation" %>
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Breadcrumb -->
+  <nav class="text-sm text-gray-500 mb-6">
+    <div class="flex items-center space-x-2">
+      <a href="/" class="hover:text-gray-700 transition-colors">Home</a>
+      <svg class="h-4 w-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </svg>
+      <span class="text-gray-900 font-medium">Fun Stuff</span>
+    </div>
+  </nav>
+
+  <!-- Main Content Card -->
+  <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <!-- Header Section -->
+    <%= render 'shared/page_header', 
+        title: 'Fun Stuff',
+        subtitle: 'Fun stuff, downloads, and interesting tidbits about Baldrick Boards',
+        image_url: '/img/baldrick.jpg',
+        image_alt: 'Fun Stuff' %>
+
+    <!-- Content Section -->
+    <div class="px-8 py-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Release Notes -->
+          <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden group hover:shadow-lg hover:border-purple-300 hover:bg-purple-50 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="/fun-stuff/release-notes" class="block no-underline">
+              <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center">
+                <div class="text-gray-400 text-center">
+                  <svg class="h-16 w-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  <p class="text-sm">Release Notes</p>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="mb-4">
+                  <h3 class="text-lg font-semibold text-gray-900 group-hover:text-purple-900 transition-colors duration-300">Release Notes</h3>
+                  <span class="text-sm text-gray-500 group-hover:text-purple-600 transition-colors duration-300">Latest Updates</span>
+                </div>
+                <p class="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">Stay up to date with the latest firmware updates, new features, and improvements to Baldrick Boards.</p>
+                <ul class="text-sm text-gray-600 mb-4 space-y-1 group-hover:text-gray-700 transition-colors duration-300">
+                  <li>• Latest firmware releases</li>
+                  <li>• New feature announcements</li>
+                  <li>• Bug fixes and improvements</li>
+                  <li>• Version history</li>
+                </ul>
+              </div>
+            </a>
+          </div>
+
+          <!-- STLs & Mounts -->
+          <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden group hover:shadow-lg hover:border-purple-300 hover:bg-purple-50 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="/fun-stuff/stls-and-mounts" class="block no-underline">
+              <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center">
+                <div class="text-gray-400 text-center">
+                  <svg class="h-16 w-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                  <p class="text-sm">STLs & Mounts</p>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="mb-4">
+                  <h3 class="text-lg font-semibold text-gray-900 group-hover:text-purple-900 transition-colors duration-300">STLs & Mounts</h3>
+                  <span class="text-sm text-gray-500 group-hover:text-purple-600 transition-colors duration-300">3D Printing</span>
+                </div>
+                <p class="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">Download 3D printable mounts, cases, and accessories for your Baldrick Boards.</p>
+                <ul class="text-sm text-gray-600 mb-4 space-y-1 group-hover:text-gray-700 transition-colors duration-300">
+                  <li>• 3D printable mounts</li>
+                  <li>• Protective cases</li>
+                  <li>• Mounting brackets</li>
+                  <li>• Custom accessories</li>
+                </ul>
+              </div>
+            </a>
+          </div>
+
+          <!-- Board Dimensions -->
+          <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden group hover:shadow-lg hover:border-purple-300 hover:bg-purple-50 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="/fun-stuff/board-dimensions" class="block no-underline">
+              <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center">
+                <div class="text-gray-400 text-center">
+                  <svg class="h-16 w-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                  </svg>
+                  <p class="text-sm">Board Dimensions</p>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="mb-4">
+                  <h3 class="text-lg font-semibold text-gray-900 group-hover:text-purple-900 transition-colors duration-300">Board Dimensions</h3>
+                  <span class="text-sm text-gray-500 group-hover:text-purple-600 transition-colors duration-300">Technical Specs</span>
+                </div>
+                <p class="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">Detailed technical specifications and dimensions for all Baldrick Boards.</p>
+                <ul class="text-sm text-gray-600 mb-4 space-y-1 group-hover:text-gray-700 transition-colors duration-300">
+                  <li>• Physical dimensions</li>
+                  <li>• Mounting hole locations</li>
+                  <li>• Connector positions</li>
+                  <li>• Technical drawings</li>
+                </ul>
+              </div>
+            </a>
+          </div>
+
+          <!-- Panic Mode -->
+          <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden group hover:shadow-lg hover:border-purple-300 hover:bg-purple-50 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="/fun-stuff/panic-mode" class="block no-underline">
+              <div class="h-48 bg-gradient-to-br from-red-500 to-orange-500 overflow-hidden flex items-center justify-center">
+                <div class="text-white text-center">
+                  <svg class="h-16 w-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                  </svg>
+                  <p class="text-sm font-semibold">Panic Mode</p>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="mb-4">
+                  <h3 class="text-lg font-semibold text-gray-900 group-hover:text-purple-900 transition-colors duration-300">Panic Mode</h3>
+                  <span class="text-sm text-gray-500 group-hover:text-purple-600 transition-colors duration-300">Holiday Countdown</span>
+                </div>
+                <p class="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">Track the countdown to Halloween and Christmas with a dynamic DEFCON threat level system.</p>
+                <ul class="text-sm text-gray-600 mb-4 space-y-1 group-hover:text-gray-700 transition-colors duration-300">
+                  <li>• Halloween countdown</li>
+                  <li>• Christmas countdown</li>
+                  <li>• Dynamic DEFCON levels</li>
+                  <li>• Real-time updates</li>
+                </ul>
+              </div>
+            </a>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

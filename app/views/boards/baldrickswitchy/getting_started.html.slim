@@ -1,0 +1,100 @@
+- content_for :title, "BaldrickSwitchy Getting Started - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickSwitchy', menu_items: board_menu_items('baldrickswitchy')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickswitchy', 'Getting Started')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Getting Started with BaldrickSwitchy', subtitle: 'Setup and Configuration Guide', image_url: '/img/baldrickswitchy.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickSwitchy
+          
+          p.text-lg.text-gray-600.mb-8
+            | Welcome to the BaldrickSwitchy! This guide will help you get your high-power relay controller up and running safely.
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 What's in the Box
+          ul.space-y-2.text-gray-700.mb-8
+            li • BaldrickSwitchy controller board
+            li • Power supply (if included)
+            li • Mounting hardware
+            li • Quick start guide
+            li • Network cable (if included)
+            li • Relay output cables (if included)
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Quick Setup Steps
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 1. Power Connection
+          p.text-gray-700.mb-4
+            | Connect your power supply to the BaldrickSwitchy. The board requires a stable power supply for reliable relay operation.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 2. Network Connection
+          p.text-gray-700.mb-4
+            | Connect an Ethernet cable to the network port. The BaldrickSwitchy will automatically obtain an IP address via DHCP.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 3. Relay Connections
+          p.text-gray-700.mb-4
+            | Connect your AC devices to the relay outputs. Ensure proper wiring and follow all safety guidelines for high-voltage applications.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 4. Web Interface Access
+          p.text-gray-700.mb-4
+            | Open your web browser and navigate to the BaldrickSwitchy's IP address. You can find this in your router's DHCP client list.
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Configuration
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Network Settings
+          p.text-gray-700.mb-4
+            | The BaldrickSwitchy supports both DHCP and static IP configuration. For production installations, we recommend using static IP addresses.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Relay Configuration
+          p.text-gray-700.mb-4
+            | Configure your relay outputs according to your device requirements. The web interface makes this process straightforward.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Timing and Safety
+          p.text-gray-700.mb-4
+            | Set up timing parameters and safety settings for your specific application requirements.
+          
+          .bg-red-50.border-l-4.border-red-400.p-4.mb-8
+            h4.text-lg.font-semibold.text-red-800.mb-2 Safety Warnings
+            ul.text-red-700.space-y-1
+              li • High voltage can be dangerous - always follow safety guidelines
+              li • Ensure proper grounding for all connections
+              li • Use appropriate wire gauges for your current requirements
+              li • Test connections before powering on
+              li • Consider using a qualified electrician for complex installations
+          
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
+            h4.text-lg.font-semibold.text-yellow-800.mb-2 Important Notes
+            ul.text-yellow-700.space-y-1
+              li • Check relay ratings for your specific application
+              li • Ensure proper ventilation for heat dissipation
+              li • Use quality cables and connectors
+              li • Test each relay individually before running sequences
+              li • Consider environmental factors for outdoor installations
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Next Steps
+          p.text-gray-700.mb-6
+            | Once your BaldrickSwitchy is configured, you can:
+          
+          ul.space-y-2.text-gray-700.mb-8
+            li • Explore the web interface features
+            li • Configure your relay sequences
+            li • Set up network synchronization
+            li • Integrate with your control software
+            li • Test your relay outputs
+          
+          .bg-blue-50.border.border-blue-200.rounded-lg.p-6
+            h4.text-xl.font-semibold.text-blue-900.mb-3 Need Help?
+            p.text-blue-800.mb-4
+              | If you encounter any issues during setup, check our FAQ or contact support.
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'FAQ', '/boards/baldrickswitchy/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+              = link_to 'Web Interface Guide', '/boards/baldrickswitchy/web-interface', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'

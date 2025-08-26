@@ -1,0 +1,154 @@
+- content_for :title, "BaldrickSignals Getting Started - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickSignals', menu_items: board_menu_items('baldricksignals')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldricksignals', 'Getting Started')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Getting Started with BaldrickSignals', subtitle: 'Setup and Configuration Guide', image_url: '/img/baldricksignals-board.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickSignals
+          
+          p.text-lg.text-gray-600.mb-8
+            | Welcome to the BaldrickSignals! This guide will help you set up your interactive signal controller for complex signaling and communication applications. 
+            | Perfect for traffic control, industrial signaling, and interactive display systems.
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 What's in the Box
+          ul.space-y-2.text-gray-700.mb-8
+            li • BaldrickSignals signal controller board
+            li • Power supply (if included)
+            li • Mounting hardware
+            li • Quick start guide
+            li • Network cable (if included)
+            li • Signal connection cables (if included)
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Quick Setup Steps
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 1. Power Connection
+          p.text-gray-700.mb-4
+            | Connect your power supply to the BaldrickSignals. The controller is designed for professional applications and includes comprehensive protection.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 2. Network Connection
+          p.text-gray-700.mb-4
+            | Connect an Ethernet cable to the network port. The BaldrickSignals will automatically obtain an IP address via DHCP for configuration.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 3. Signal Connections
+          p.text-gray-700.mb-4
+            | Connect your signal sources and destinations to the input and output channels. Each channel can be configured for different signal types.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 4. Web Interface Access
+          p.text-gray-700.mb-4
+            | Open your web browser and navigate to the BaldrickSignals's IP address. You can find this in your router's DHCP client list.
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Configuration
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Network Settings
+          p.text-gray-700.mb-4
+            | The BaldrickSignals supports both DHCP and static IP configuration. For professional installations, we recommend using static IP addresses.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Signal Configuration
+          p.text-gray-700.mb-4
+            | Configure each signal channel with appropriate protocols, routing rules, and processing parameters for your specific application.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Interactive Settings
+          p.text-gray-700.mb-4
+            | Set up interactive signal routing, pattern recognition, and automation rules for complex signal management scenarios.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Monitoring Configuration
+          p.text-gray-700.mb-4
+            | Configure real-time monitoring and alerting for signal quality, routing status, and system performance.
+          
+          .bg-teal-50.border-l-4.border-teal-400.p-4.mb-8
+            h4.text-lg.font-semibold.text-teal-800.mb-2 Signal Control Setup Tips
+            ul.text-teal-700.space-y-1
+              li • Plan your signal routing topology before configuration
+              li • Test signal quality and timing for each connection
+              li • Set up redundant signal paths for critical applications
+              li • Configure monitoring and alerting for signal health
+              li • Test all interactive features before final installation
+              li • Document your signal routing configuration
+          
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
+            h4.text-lg.font-semibold.text-yellow-800.mb-2 Important Notes
+            ul.text-yellow-700.space-y-1
+              li • Ensure proper signal grounding for reliable operation
+              li • Test signal integrity and timing requirements
+              li • Verify protocol compatibility for all connected devices
+              li • Monitor signal quality and performance during operation
+              li • Keep firmware updated for best performance
+              li • Follow all signal integrity and safety guidelines
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Next Steps
+          p.text-gray-700.mb-6
+            | Once your BaldrickSignals is configured, you can:
+          
+          ul.space-y-2.text-gray-700.mb-8
+            li • Explore the web interface features
+            li • Configure signal routing and switching
+            li • Set up interactive signal processing
+            li • Test all signal channels and protocols
+            li • Monitor signal quality and performance
+            li • Scale to larger signal networks
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Example Projects
+          
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Traffic Control System
+              p.text-gray-700.mb-3
+                | Manage traffic signals and control systems with interactive signal routing and real-time response.
+              ul.text-gray-600.text-sm.space-y-1
+                li • Traffic signal control
+                li • Interactive routing
+                li • Real-time response
+                li • Safety monitoring
+          
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Industrial Automation
+              p.text-gray-700.mb-3
+                | Control industrial processes with sophisticated signal management and automation capabilities.
+              ul.text-gray-600.text-sm.space-y-1
+                li • Process control signals
+                li • Automation integration
+                li • Multi-protocol support
+                li • Reliability features
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Signal Management Features
+          
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Signal Processing
+              ul.text-gray-700.space-y-1
+                li • Multi-channel signal routing
+                li • Protocol conversion
+                li • Signal conditioning
+                li • Pattern recognition
+                li • Real-time analysis
+                li • Interactive control
+          
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Interactive Features
+              ul.text-gray-700.space-y-1
+                li • Dynamic signal routing
+                li • Interactive switching
+                li • Automated responses
+                li • Signal monitoring
+                li • Performance optimization
+                li • Diagnostic tools
+          
+          .bg-blue-50.border.border-blue-200.rounded-lg.p-6
+            h4.text-xl.font-semibold.text-blue-900.mb-3 Need Help?
+            p.text-blue-800.mb-4
+              | If you encounter any issues during setup, check our FAQ or contact support.
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'FAQ', '/boards/baldricksignals/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+              = link_to 'Web Interface Guide', '/boards/baldricksignals/web-interface', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'

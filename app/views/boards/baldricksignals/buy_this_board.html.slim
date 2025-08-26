@@ -1,0 +1,209 @@
+- content_for :title, "Buy BaldrickSignals - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickSignals', menu_items: board_menu_items('baldricksignals')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldricksignals', 'Buy This Board')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Buy BaldrickSignals', subtitle: 'Interactive Signal Controller', image_url: '/img/baldricksignals-board.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Why Choose the BaldrickSignals?
+
+          .grid.md:grid-cols-2.gap-8.mb-8
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Advanced Signal Control
+              p.text-lg.text-gray-700
+                | The BaldrickSignals is an advanced interactive signal controller designed for complex signaling and communication applications. 
+                | Perfect for traffic control, industrial signaling, and interactive display systems.
+
+              .bg-teal-50.border-l-4.border-teal-400.p-4
+                p.text-teal-800.font-medium
+                  | "The BaldrickSignals is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+
+            .space-y-6
+              h2.text-2xl.font-bold.text-gray-900.mb-4 Key Benefits
+              ul.space-y-3.text-gray-700
+                li • Advanced signal processing and control capabilities
+                li • Multiple signal input and output channels
+                li • Real-time signal analysis and response
+                li • Interactive signal routing and switching
+                li • Professional-grade reliability for critical applications
+                li • Comprehensive monitoring and diagnostic tools
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 What's Included
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Hardware
+              ul.space-y-2.text-gray-700
+                li • BaldrickSignals signal controller board
+                li • Power supply (if included in package)
+                li • Mounting hardware
+                li • Network cable (if included)
+                li • Quick start guide
+                li • Basic documentation
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Software & Support
+              ul.space-y-2.text-gray-700
+                li • Professional-grade web interface
+                li • Signal management tools
+                li • Interactive routing capabilities
+                li • Firmware updates
+                li • Basic documentation
+                li • Community support
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Technical Specifications
+
+          .bg-blue-50.rounded-lg.p-6.mb-8
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 Signal Control
+                ul.text-blue-800.space-y-1
+                  li • Multiple input/output channels
+                  li • Multi-protocol signal support
+                  li • Real-time signal processing
+                  li • Interactive signal routing
+                  li • Pattern recognition
+                  li • Automated responses
+
+              div
+                h4.text-lg.font-semibold.text-blue-900.mb-3 Professional Features
+                ul.text-blue-800.space-y-1
+                  li • Industrial-grade reliability
+                  li • Wide temperature range
+                  li • Comprehensive monitoring
+                  li • Network integration
+                  li • Scalable architecture
+                  li • Professional support
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Perfect For
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Professional Applications
+              ul.space-y-2.text-gray-700
+                li • Traffic control and signaling systems
+                li • Industrial automation and process control
+                li • Interactive display and communication systems
+                li • Signal routing and switching applications
+                li • Professional audio/video signal management
+                li • Complex automation and control systems
+
+            .space-y-4
+              h3.text-xl.font-semibold.text-gray-900 Advanced Projects
+              ul.space-y-2.text-gray-700
+                li • Multi-protocol signal conversion
+                li • Critical signaling applications
+                li • Large-scale signal networks
+                li • Professional installations
+                li • Mission-critical systems
+                li • Industrial control applications
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Signal Management Features
+
+          .bg-teal-50.border.border-teal-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-teal-900.mb-4 Designed for Signal Control
+            p.text-teal-800.mb-4
+              | The BaldrickSignals is specifically designed for advanced signal control and interactive routing applications.
+            
+            .grid.md:grid-cols-2.gap-6
+              div
+                h4.text-lg.font-semibold.text-teal-900.mb-3 Signal Processing
+                ul.text-teal-800.space-y-1
+                  li • Real-time signal processing
+                  li • Multi-protocol conversion
+                  li • Signal conditioning
+                  li • Pattern recognition
+                  li • Digital signal processing
+                  li • Adaptive routing
+
+              div
+                h4.text-lg.font-semibold.text-teal-900.mb-3 Interactive Features
+                ul.text-teal-800.space-y-1
+                  li • Dynamic signal routing
+                  li • Interactive switching
+                  li • Automated responses
+                  li • Conditional processing
+                  li • Event-driven handling
+                  li • User-defined logic
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Pricing & Availability
+
+          .bg-purple-50.border.border-purple-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-purple-900.mb-4 Professional Signal Control
+            p.text-purple-800.mb-4
+              | The BaldrickSignals is competitively priced for professional signal control applications, making it accessible 
+              | for traffic control, industrial automation, and complex signaling projects.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Contact for Pricing', '/where-to-buy-baldrick-boards', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
+              = link_to 'Technical Specifications', '/boards/baldricksignals/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Support & Community
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Professional Support
+              ul.space-y-2.text-gray-700
+                li • Comprehensive documentation
+                li • Professional setup guides
+                li • Signal control expertise
+                li • Technical support
+                li • Professional consultation
+                li • Training resources
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Community & Projects
+              ul.space-y-2.text-gray-700
+                li • Professional user community
+                li • Signal control project sharing
+                li • Technical resources
+                li • Signal processing expertise
+                li • Knowledge sharing
+                li • Collaborative development
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Professional Features
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Reliability & Performance
+              ul.space-y-2.text-gray-700
+                li • Industrial-grade construction
+                li • Professional reliability standards
+                li • Wide temperature range operation
+                li • 24/7 continuous operation
+                li • Comprehensive monitoring
+                li • Fault-tolerant design
+
+            .bg-gray-50.rounded-lg.p-6
+              h3.text-xl.font-semibold.text-gray-900.mb-4 Integration & Monitoring
+              ul.space-y-2.text-gray-700
+                li • Industrial protocol support
+                li • SCADA system integration
+                li • Real-time monitoring
+                li • Comprehensive diagnostics
+                li • Alert and notification systems
+                li • Performance analytics
+
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Ready to Get Started?
+
+          .bg-teal-50.border.border-teal-200.rounded-lg.p-6
+            h3.text-xl.font-semibold.text-teal-900.mb-4 Start Your Signal Control Project Today
+            p.text-teal-800.mb-6
+              | Ready to build advanced signal control systems? The BaldrickSignals is the perfect choice 
+              | for applications requiring sophisticated signal processing, interactive routing, and professional reliability.
+            
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'Where to Buy', '/where-to-buy-baldrick-boards', class: 'bg-teal-600 text-white px-8 py-4 rounded-lg hover:bg-teal-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Contact Sales', '/support', class: 'bg-gray-600 text-white px-8 py-4 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+              = link_to 'Technical Specs', '/boards/baldricksignals/tech-specs', class: 'bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'

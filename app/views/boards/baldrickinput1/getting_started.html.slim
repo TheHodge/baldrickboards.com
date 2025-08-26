@@ -1,0 +1,125 @@
+- content_for :title, "BaldrickInput1 Getting Started - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickInput1', menu_items: board_menu_items('baldrickinput1')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickinput1', 'Getting Started')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Getting Started with BaldrickInput1', subtitle: 'Setup and Configuration Guide', image_url: '/img/baldrickinput1.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickInput1
+          
+          p.text-lg.text-gray-600.mb-8
+            | Welcome to the BaldrickInput1! This guide will help you get your single-input controller up and running quickly. 
+            | Perfect for beginners and simple interactive projects.
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 What's in the Box
+          ul.space-y-2.text-gray-700.mb-8
+            li • BaldrickInput1 controller board
+            li • Power supply (if included)
+            li • Mounting hardware
+            li • Quick start guide
+            li • Network cable (if included)
+            li • Input connection cables (if included)
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Quick Setup Steps
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 1. Power Connection
+          p.text-gray-700.mb-4
+            | Connect your power supply to the BaldrickInput1. The board requires a stable power supply for reliable operation.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 2. Network Connection
+          p.text-gray-700.mb-4
+            | Connect an Ethernet cable to the network port. The BaldrickInput1 will automatically obtain an IP address via DHCP.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 3. Input Connection
+          p.text-gray-700.mb-4
+            | Connect your input device (button, switch, sensor) to the input port. The BaldrickInput1 supports various input types.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 4. Web Interface Access
+          p.text-gray-700.mb-4
+            | Open your web browser and navigate to the BaldrickInput1's IP address. You can find this in your router's DHCP client list.
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Configuration
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Network Settings
+          p.text-gray-700.mb-4
+            | The BaldrickInput1 supports both DHCP and static IP configuration. For most setups, DHCP is sufficient.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Input Configuration
+          p.text-gray-700.mb-4
+            | Configure your input type and behavior through the web interface. Options include button presses, switches, and sensors.
+          
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 Output Configuration
+          p.text-gray-700.mb-4
+            | Set up what happens when your input is triggered. This could be controlling pixels, sending signals, or triggering sequences.
+          
+          .bg-green-50.border-l-4.border-green-400.p-4.mb-8
+            h4.text-lg.font-semibold.text-green-800.mb-2 Simple Setup Tips
+            ul.text-green-700.space-y-1
+              li • Start with basic button input for your first project
+              li • Test your input connection before configuring outputs
+              li • Use the web interface to monitor input status
+              li • Keep your first project simple to learn the basics
+              li • Check the FAQ if you encounter any issues
+          
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
+            h4.text-lg.font-semibold.text-yellow-800.mb-2 Important Notes
+            ul.text-yellow-700.space-y-1
+              li • Ensure proper input wiring for reliable operation
+              li • Use appropriate input devices for your application
+              li • Test your setup before final installation
+              li • Consider environmental factors for outdoor use
+              li • Keep firmware updated for best performance
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Next Steps
+          p.text-gray-700.mb-6
+            | Once your BaldrickInput1 is configured, you can:
+          
+          ul.space-y-2.text-gray-700.mb-8
+            li • Explore the web interface features
+            li • Configure your input triggers
+            li • Set up output responses
+            li • Integrate with other systems
+            li • Test your interactive display
+            li • Expand to more complex projects
+          
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Example Projects
+          
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Simple Button Trigger
+              p.text-gray-700.mb-3
+                | Connect a push button to create a simple interactive display that responds to button presses.
+              ul.text-gray-600.text-sm.space-y-1
+                li • Push button input
+                li • Pixel light response
+                li • Simple timing control
+                li • Easy to modify and expand
+          
+            .bg-gray-50.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Motion Sensor Display
+              p.text-gray-700.mb-3
+                | Use a motion sensor to create an interactive display that activates when someone approaches.
+              ul.text-gray-600.text-sm.space-y-1
+                li • Motion sensor input
+                li • Automatic activation
+                li • Time-based responses
+                li • Energy-efficient operation
+          
+          .bg-blue-50.border.border-blue-200.rounded-lg.p-6
+            h4.text-xl.font-semibold.text-blue-900.mb-3 Need Help?
+            p.text-blue-800.mb-4
+              | If you encounter any issues during setup, check our FAQ or contact support.
+            .flex.flex-col.sm:flex-row.gap-4
+              = link_to 'FAQ', '/boards/baldrickinput1/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+              = link_to 'Web Interface Guide', '/boards/baldrickinput1/web-interface', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'

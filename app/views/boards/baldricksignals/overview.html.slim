@@ -1,0 +1,63 @@
+- content_for :title, "BaldrickSignals - Baldrick Board Documentation"
+
+/ Board Submenu
+= render 'boards/shared/board_submenu', board_name: 'BaldrickSignals', menu_items: board_menu_items('baldricksignals')
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldricksignals')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+= render 'shared/page_header', title: 'BaldrickSignals', subtitle: 'Interactive Signal Controller', image_url: '/img/baldricksignals-board.png'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        / Board Overview for BaldrickSignals - Complete Content
+        .prose.max-w-none
+          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickSignals Overview
+
+          .grid.md:grid-cols-2.gap-8.mb-8
+                                    .flex.items-start
+                          img.w-full.rounded-lg src="/img/baldricksignals-board.png" alt="BaldrickSignals Board Overview"
+            
+            .flex.flex-col.justify-start
+              p.text-lg.text-gray-700.mb-6
+                | The BaldrickSignals is an advanced interactive signal controller designed for complex signaling and communication applications. 
+                | Perfect for traffic control, industrial signaling, and interactive display systems requiring sophisticated signal management.
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 BaldrickSignals Controller Features
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Advanced signal processing and control capabilities
+            li Multiple signal input and output channels
+            li Real-time signal analysis and response
+            li Interactive signal routing and switching
+            li Web-based configuration for complex signal management
+            li Signal pattern recognition and automation
+            li Multi-protocol signal support and conversion
+            li Professional-grade reliability for critical applications
+            li Scalable architecture for large signal networks
+            li Comprehensive monitoring and diagnostic tools
+
+          p.text-gray-700.mb-6
+            | The BaldrickSignals represents our commitment to advanced signal control, designed specifically for 
+            | applications requiring sophisticated signal processing, routing, and interactive management in professional environments.
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Perfect For
+
+          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
+            li Traffic control and signaling systems
+            li Industrial automation and process control
+            li Interactive display and communication systems
+            li Signal routing and switching applications
+            li Professional audio/video signal management
+            li Complex automation and control systems
+            li Multi-protocol signal conversion
+            li Critical signaling applications requiring reliability
+
+          .bg-teal-50.border-l-4.border-teal-400.p-4.mb-6
+            p.text-teal-800.font-medium
+              | "The BaldrickSignals is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
