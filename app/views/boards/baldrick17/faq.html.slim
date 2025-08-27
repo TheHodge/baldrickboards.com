@@ -10,114 +10,180 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'Baldrick17 FAQ', subtitle: 'Frequently Asked Questions', image_url: '/img/baldrick17.png'
+    = render 'shared/page_header', title: 'Baldrick17 FAQ', subtitle: 'Frequently Asked Questions', image_url: 'baldrick17/board.png'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / FAQ for Baldrick17
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Frequently Asked Questions
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Baldrick17 FAQ
+
+          p.text-lg.text-gray-700.mb-6
+            | Find answers to the most commonly asked questions about the Baldrick17 controller.
 
           .space-y-8
             / General Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 General Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What is the Baldrick17?
-                  p.text-gray-700
-                    | The Baldrick17 is our flagship 17-channel pixel controller designed for professional lighting installations. 
-                    | It supports up to 17 independent pixel outputs with massive pixel capacity per channel.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What is the Baldrick17?
+              p.text-gray-700
+                | The Baldrick17 is our flagship 17-channel pixel controller designed for professional lighting installations. 
+                | It supports up to 17 independent pixel outputs with massive pixel capacity per channel.
 
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How many pixels can the Baldrick17 control?
-                  p.text-gray-700
-                    | The Baldrick17 can control up to 750 pixels per channel at 40fps, with a total capacity of over 12,000 pixels 
-                    | across all 17 channels depending on your configuration and refresh rate requirements.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Is this just WLED?
+              p.text-gray-700
+                | No, the Baldrick17 is not WLED. While we love WLED and use it in other projects, we wrote our own firmware 
+                | specifically for seasonal lighting with three core principles: minimum 600 pixels per port at 40FPS (which actually 
+                | ended up being 750 per port!), a really simple and fun UI, and focused core features dedicated to seasonal lighting.
 
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What pixel types are supported?
-                  p.text-gray-700
-                    | The Baldrick17 supports WS2811, WS2812B, SK6812, and other compatible pixel types. 
-                    | Each channel can be configured independently for different pixel types.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Where is the WiFi?
+              p.text-gray-700
+                | You see the ESP32 chip and instantly think WiFi enabled, however after testing latency and throughput over WiFi, 
+                | we are focusing on Ethernet connection at this time. The Baldrick17 has been designed for 750 pixels per port 
+                | at 40FPS and with WiFi we are unable to get close to that. That's not to say we will never support it, just don't 
+                | buy this board for the WiFi support.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How many pixels can the Baldrick17 control?
+              p.text-gray-700
+                | The Baldrick17 can control up to 750 pixels per channel at 40fps, with a total capacity of over 12,000 pixels 
+                | across all 17 channels depending on your configuration and refresh rate requirements.
 
             / Technical Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Technical Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What power supply do I need?
-                  p.text-gray-700
-                    | The Baldrick17 requires a 12V DC power supply. The exact current requirement depends on your pixel load, 
-                    | but we recommend a high-quality power supply capable of delivering sufficient current for your installation.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What power supply do I need?
+              p.text-gray-700
+                | The Baldrick17 requires a 12V DC power supply. The exact current requirement depends on your pixel load, 
+                | but we recommend a high-quality power supply capable of delivering sufficient current for your installation.
 
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I connect to the network?
-                  p.text-gray-700
-                    | Connect an Ethernet cable to the network port. The Baldrick17 will automatically obtain an IP address via DHCP, 
-                    | or you can configure a static IP address through the web interface.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do I connect to the network?
+              p.text-gray-700
+                | Connect an Ethernet cable to the network port. The Baldrick17 will automatically obtain an IP address via DHCP, 
+                | or you can configure a static IP address through the web interface.
 
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What protocols are supported?
-                  p.text-gray-700
-                    | The Baldrick17 supports DDP, Artnet, E1.31 (sACN), and other industry-standard protocols for seamless 
-                    | integration with professional lighting software.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do I expand the network with receivers?
+              p.text-gray-700
+                | The simple answer is that you don't! When designing the Baldrick17, we realized that a receiver requires 
+                | a network connection and power, which is exactly what a Baldrick17 requires. So rather than buy a receiver 
+                | and have to deal with splitting down the maximum pixels allowed per port, you just buy another Baldrick17 
+                | and plug it into your network for the same price!
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What protocols are supported?
+              p.text-gray-700
+                | The Baldrick17 supports DDP, Artnet, E1.31 (sACN), and other industry-standard protocols for seamless 
+                | integration with professional lighting software.
+
+            / Test Mode Questions
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What is Hodgical Test Mode?
+              p.text-gray-700
+                | The Hodgical Test is a mode on the Baldrick17 which allows for easy debugging of pixel and model issues. 
+                | It runs the RGB cycle on each model on a port but each subsequent model starts with the subsequent color. 
+                | This allows us to quickly check if pixels are failing on any specific color value, confirm the models are set up 
+                | correctly, and put something up when someone comes over and wants to see it working.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Why is it called Hodgical?
+              p.text-gray-700
+                | Because it was an idea from Dom Hodgson (although obviously Pete did all the work) and so obviously his ego 
+                | wouldn't let it be named something normal!
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Why RGB instead of a color wash?
+              p.text-gray-700
+                | A color wash starting at different times on props can be overwhelming with color and takes longer to debug issues. 
+                | It also doesn't look as good as you might think!
+
+            / FPP Integration Questions
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do FPP API Commands work?
+              p.text-gray-700
+                | FPP comes with a really useful API which lets us do things like play sequences, change the volume and more remotely. 
+                | Combining that API with the Baldrick button URL boxes is a simple way of adding interactive elements to your show. 
+                | Commands are sent to the URL /api/command/command name/options.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do I start a show with a button?
+              p.text-gray-700
+                | You set your button command to go to http://[FPP_IP]/api/command/Start Playlist/[Playlist Name]. 
+                | To prevent multiple presses, add /false/true to the end of that URL. The false tells FPP not to repeat the playlist 
+                | and the true tells it only to play if it isn't already playing.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do I control volume with a button?
+              p.text-gray-700
+                | Set your button command to go to http://[FPP_IP]/api/command/Volume Set/[Volume Level]. 
+                | Then at the bottom of each playlist (or song in the playlist) you just add an entry for FPP command which sets the volume to 0.
 
             / Setup Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Setup Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I find the IP address?
-                  p.text-gray-700
-                    | Check your router's DHCP client list, use network scanning tools, or look for the Baldrick17 in your 
-                    | network devices. The web interface will also display the current IP address.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do I find the IP address?
+              p.text-gray-700
+                | Check your router's DHCP client list, use network scanning tools, or look for the Baldrick17 in your 
+                | network devices. The web interface will also display the current IP address.
 
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I configure the channels?
-                  p.text-gray-700
-                    | Use the web interface to configure each of the 17 channels. You can set pixel type, count, 
-                    | and other parameters for each channel independently.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do I configure the channels?
+              p.text-gray-700
+                | Use the web interface to configure each of the 17 channels. You can set pixel type, count, 
+                | and other parameters for each channel independently.
 
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can I use different pixel types on different channels?
-                  p.text-gray-700
-                    | Yes! Each channel can be configured independently, allowing you to mix different pixel types 
-                    | and counts across your installation.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Can I use different pixel types on different channels?
+              p.text-gray-700
+                | Yes! Each channel can be configured independently, allowing you to mix different pixel types 
+                | and counts across your installation.
 
             / Troubleshooting
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 My pixels aren't working, what should I check?
-                  p.text-gray-700
-                    | First, verify your power supply is adequate for your pixel load. Check all connections, 
-                    | ensure proper grounding, and verify your pixel configuration in the web interface.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 GS8208 Pixels Data Issues
+              p.text-gray-700
+                | Some batches of 4-wire pixels (double data) require a constant source of data, otherwise they default to a test mode 
+                | on full 100% brightness. The most common of these are GS8208 pixels. You can set your Baldrick17 to the Paint it Black 
+                | test mode which will stop that, but it's a pain to change every time you stop your show. For those using FPP, you can 
+                | configure FPP to output channel data at all times by enabling Advanced UI and ticking "Always Transmit Channel Data".
 
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 The web interface won't load
-                  p.text-gray-700
-                    | Check your network connection and ensure the Baldrick17 is powered on. Try accessing the IP address 
-                    | directly, and verify there are no firewall or network issues blocking the connection.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 My pixels aren't working, what should I check?
+              p.text-gray-700
+                | First, verify your power supply is adequate for your pixel load. Check all connections, 
+                | ensure proper grounding, and verify your pixel configuration in the web interface.
 
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Some channels work but others don't
-                  p.text-gray-700
-                    | Check the configuration for each channel individually. Verify pixel counts, types, and 
-                    | power distribution. Each channel can be configured independently.
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 The web interface won't load
+              p.text-gray-700
+                | Check your network connection and ensure the Baldrick17 is powered on. Try accessing the IP address 
+                | directly, and verify there are no firewall or network issues blocking the connection.
 
-            / Support
-            .bg-blue-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Need More Help?
-              
-              p.text-gray-700.mb-4
-                | If you can't find the answer to your question here, we're here to help!
-              
-              .flex.flex-col.sm:flex-row.gap-4
-                = link_to 'Contact Support', '/support', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-                = link_to 'Getting Started Guide', '/boards/baldrick17/getting-started', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Some channels work but others don't
+              p.text-gray-700
+                | Check the configuration for each channel individually. Verify pixel counts, types, and 
+                | power distribution. Each channel can be configured independently.
+
+            / Asking for Help
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What should I check before asking for help?
+              p.text-gray-700
+                | If pixels are not doing what they should, this is usually a channel overlap issue. Make sure each of your controllers 
+                | has Auto Layout Models and Auto Layout Size enabled. Re-render the sequence and check that the channels in xLights 
+                | match the channels in FPP and on the Baldrick17 controller.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What information should I include when asking for help?
+              p.text-gray-700
+                | Include what issue you're having (be as detailed as possible), what you've tried so far, what versions of xLights, 
+                | FPP &/or Baldrick17 firmware you're using, screenshots of your xLights controller tab, FPP e1.31 Outputs page, 
+                | and xLights Models section, a photo of the controller wired up, and info about your network setup.
+
+          .mt-8.bg-blue-50.border-l-4.border-blue-400.p-4
+            p.text-blue-700
+              strong Need more help? 
+              | If you can't find the answer to your question here, please check our 
+              a.text-blue-800.underline href="/support" support page
+              |  or contact our support team.
