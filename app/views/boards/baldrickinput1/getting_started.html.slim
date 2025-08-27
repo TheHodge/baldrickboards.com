@@ -1,4 +1,4 @@
-- content_for :title, "BaldrickInput1 Getting Started - Baldrick Board Documentation"
+- content_for :title, "Getting Started - BaldrickInput1 - Baldrick Board Documentation"
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'BaldrickInput1', menu_items: board_menu_items('baldrickinput1')
@@ -10,116 +10,216 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'Getting Started with BaldrickInput1', subtitle: 'Setup and Configuration Guide', image_url: 'baldrickinput1/board.png'
+    = render 'shared/page_header', title: 'Getting Started with BaldrickInput1', subtitle: 'Complete setup guide from power to action', image_url: 'baldrickinput1/board.png'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / Getting Started Guide for BaldrickInput1
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickInput1
-          
-          p.text-lg.text-gray-600.mb-8
-            | Welcome to the BaldrickInput1! This guide will help you get your single-input controller up and running quickly. 
-            | Perfect for beginners and simple interactive projects.
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 What's in the Box
-          ul.space-y-2.text-gray-700.mb-8
-            li • BaldrickInput1 controller board
-            li • Power supply (if included)
-            li • Mounting hardware
-            li • Quick start guide
-            li • Network cable (if included)
-            li • Input connection cables (if included)
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Quick Setup Steps
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 1. Power Connection
-          p.text-gray-700.mb-4
-            | Connect your power supply to the BaldrickInput1. The board requires a stable power supply for reliable operation.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 2. Network Connection
-          p.text-gray-700.mb-4
-            | Connect an Ethernet cable to the network port. The BaldrickInput1 will automatically obtain an IP address via DHCP.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 3. Input Connection
-          p.text-gray-700.mb-4
-            | Connect your input device (button, switch, sensor) to the input port. The BaldrickInput1 supports various input types.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 4. Web Interface Access
-          p.text-gray-700.mb-4
-            | Open your web browser and navigate to the BaldrickInput1's IP address. You can find this in your router's DHCP client list.
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Configuration
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Network Settings
-          p.text-gray-700.mb-4
-            | The BaldrickInput1 supports both DHCP and static IP configuration. For most setups, DHCP is sufficient.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Input Configuration
-          p.text-gray-700.mb-4
-            | Configure your input type and behavior through the web interface. Options include button presses, switches, and sensors.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Output Configuration
-          p.text-gray-700.mb-4
-            | Set up what happens when your input is triggered. This could be controlling pixels, sending signals, or triggering sequences.
-          
-          .bg-green-50.border-l-4.border-green-400.p-4.mb-8
-            h4.text-lg.font-semibold.text-green-800.mb-2 Simple Setup Tips
-            ul.text-green-700.space-y-1
-              li • Start with basic button input for your first project
-              li • Test your input connection before configuring outputs
-              li • Use the web interface to monitor input status
-              li • Keep your first project simple to learn the basics
-              li • Check the FAQ if you encounter any issues
-          
-          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
-            h4.text-lg.font-semibold.text-yellow-800.mb-2 Important Notes
-            ul.text-yellow-700.space-y-1
-              li • Ensure proper input wiring for reliable operation
-              li • Use appropriate input devices for your application
-              li • Test your setup before final installation
-              li • Consider environmental factors for outdoor use
-              li • Keep firmware updated for best performance
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Next Steps
-          p.text-gray-700.mb-6
-            | Once your BaldrickInput1 is configured, you can:
-          
-          ul.space-y-2.text-gray-700.mb-8
-            li • Explore the web interface features
-            li • Configure your input triggers
-            li • Set up output responses
-            li • Integrate with other systems
-            li • Test your interactive display
-            li • Expand to more complex projects
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Example Projects
-          
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickInput1
+
+          p.text-lg.text-gray-700.mb-6
+            | Welcome to your new BaldrickInput1! This comprehensive guide will walk you through everything you need to know 
+            | to get your board up and running, from plugging in power to setting up your first interactive trigger.
+
+          .bg-red-50.border-l-4.border-red-400.p-4.mb-8
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-red-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-red-700
+                  strong Safety First: 
+                  | Always ensure your power supply is disconnected before making any connections. 
+                  | Double-check all wiring before powering on.
+
+          / Step 1: Power Connection
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 1: Powering the Board
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Power Requirements
+
+            p.text-gray-700.mb-4
+              | The Input1 has a Barrel Jack for power and can handle 5v-24v, whatever you use for this will be used to power the LAMP so don't choose anything too large!
+
+            p.text-gray-700.mb-4
+              | The Input1 is designed to use minimal power so it's possible to run it from a USB power bank if you wish to make something portable.
+
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-yellow-700
+                    strong Note: 
+                    | The voltage you choose for power will also power the lamp output, so choose an appropriate voltage for your lamp.
+
+          / Step 2: Firmware Installation
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 2: Installing the Firmware
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Initial Firmware Setup
+
+            p.text-gray-700.mb-4
+              | When your controller arrives it will be in a 'sleeping state' - you just need to plug it into your network and head to 
+              a.text-blue-600.hover:text-blue-800 href="http://baldrickinput.local" target="_blank" http://baldrickinput.local
+              |  (if your DNS doesn't accept that then just look for it on your network).
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickinput1/first-firmware.png", class: "w-full rounded mb-4", alt: "First Firmware Screen"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 How to Install
+
+            p.text-gray-700.mb-4
+              | To put it simply, press the button that says 
+              em "Lets Go" 
+              | then go and have a brew, the controller will connect to our server, download the latest firmware and automatically install it, once it's done the page will refresh and you can start connecting your input.
+
+            .bg-blue-50.border-l-4.border-blue-400.p-4.mb-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-blue-700
+                    strong Tip: 
+                    | You must plug the board directly into your network for the initial firmware download (or make sure your computer can give it an IP address and internet access).
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 How Do I Update After That?
+
+            p.text-gray-700
+              | When you go to the Web interface and look at the stats section, you'll see the version number, if there is a new version, you can click that and it will automatically update in a similar interface to how this initial install works.
+
+          / Step 3: Wiring the Input
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 3: Wire it up!
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Connecting Your Input Device
+
+            p.text-gray-700.mb-4
+              | It's time to wire up the input, in this example we are going to use a button but the Input1 will work with many different types of sensors.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickinput1/input-wiring.png", class: "w-full rounded mb-4", alt: "Button Wiring Diagram"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Wiring Connections
+
+            ol.list-decimal.list-inside.space-y-2.text-gray-700
+              li
+                strong Lamp - 
+                | This should be attached to the + side of your button LED (if not using a button with an LED this can be ignored)
+              li
+                strong Button - 
+                | This should be attached to the switch section of the button or input
+              li
+                strong Ground button - 
+                | This should be attached to the ground section of the button or input
+              li
+                strong Ground lamp - 
+                | This should be attached to the ground section of the lamp (normally we just link the ground of the button to this)
+
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-yellow-700
+                    strong Note: 
+                    | The BaldrickInput1 supports various input types including buttons, motion sensors, reed switches, beam breaks, and other input devices.
+
+          / Step 4: Setting up the Action
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 4: Setup the action!
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Configuring Your Input Response
+
+            p.text-gray-700.mb-4
+              | Now it's time to configure what happens when your input is triggered. This is where the magic happens!
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickinput1/config-input.png", class: "w-full rounded mb-4", alt: "Input Configuration"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Available Actions
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 FPP Integration
+                p.text-xs.text-gray-700
+                  | Control FPP (Falcon Pi Player) instances, change volume, play songs/playlists, or call FPP API directly.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Toggle Test Mode
+                p.text-xs.text-gray-700
+                  | Quickly enable any test mode at a specific brightness for quick prop testing.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickSwitchy Control
+                p.text-xs.text-gray-700
+                  | Turn on/off BaldrickSwitchy ports for specific durations (bubble machines, snow machines, etc.).
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickDMX Presets
+                p.text-xs.text-gray-700
+                  | Activate preset commands on your BaldrickDMX for moving heads, effects, etc.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 HTTP URL Calls
+                p.text-xs.text-gray-700
+                  | Call web APIs from simple triggers - perfect for custom integrations.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Do Nothing
+                p.text-xs.text-gray-700
+                  | Sometimes you set an input to do something and think "oh actually no, that's not what I want."
+
+            .bg-blue-50.border-l-4.border-blue-400.p-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-blue-700
+                    strong Tip: 
+                    | The BaldrickInput1 includes lamp control capabilities, so you can also control a physical lamp or LED indicator when your input is triggered.
+
+          / Next Steps
+          h3.text-2xl.font-bold.text-gray-900.mb-4 What's Next?
+
           .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Simple Button Trigger
-              p.text-gray-700.mb-3
-                | Connect a push button to create a simple interactive display that responds to button presses.
-              ul.text-gray-600.text-sm.space-y-1
-                li • Push button input
-                li • Pixel light response
-                li • Simple timing control
-                li • Easy to modify and expand
-          
-            .bg-gray-50.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Motion Sensor Display
-              p.text-gray-700.mb-3
-                | Use a motion sensor to create an interactive display that activates when someone approaches.
-              ul.text-gray-600.text-sm.space-y-1
-                li • Motion sensor input
-                li • Automatic activation
-                li • Time-based responses
-                li • Energy-efficient operation
-          
-          .bg-blue-50.border.border-blue-200.rounded-lg.p-6
-            h4.text-xl.font-semibold.text-blue-900.mb-3 Need Help?
-            p.text-blue-800.mb-4
-              | If you encounter any issues during setup, check our FAQ or contact support.
-            .flex.flex-col.sm:flex-row.gap-4
-              = link_to 'FAQ', '/boards/baldrickinput1/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-              = link_to 'Web Interface Guide', '/boards/baldrickinput1/web-interface', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h4.text-xl.font-semibold.text-gray-900.mb-3 Web Interface
+              ul.space-y-2.text-gray-700
+                li • Configure your network settings
+                li • Set up input triggers and responses
+                li • Test your connections
+                li • Monitor input status
+                li • Create custom actions
+            
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h4.text-xl.font-semibold.text-gray-900.mb-3 Advanced Features
+              ul.space-y-2.text-gray-700
+                li • Integrate with FPP systems
+                li • Set up multiple triggers
+                li • Configure lamp controls
+                li • Create complex automation
+                li • Network integration
+
+          .bg-green-50.border-l-4.border-green-400.p-4.mb-6
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-green-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-green-700
+                  strong Congratulations! 
+                  | Your BaldrickInput1 is now set up and ready to create interactive experiences. 
+                  | Check out our other guides for advanced features and troubleshooting tips.
+
+          / Navigation Links
+          .flex.flex-col.sm:flex-row.gap-4.mt-8
+            = link_to 'Web Interface Guide', '/boards/baldrickinput1/web-interface', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Technical Specifications', '/boards/baldrickinput1/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'FAQ', '/boards/baldrickinput1/faq', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'

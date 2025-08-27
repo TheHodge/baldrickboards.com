@@ -10,198 +10,282 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'BaldrickInput1 Web Interface', subtitle: 'Configuration and Control Guide', image_url: 'baldrickinput1/board.png'
+    = render 'shared/page_header', title: 'BaldrickInput1 Web Interface', subtitle: 'Complete configuration and control guide', image_url: 'baldrickinput1/board.png'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / Web Interface Guide for BaldrickInput1
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Web Interface Guide
+          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickInput1 Web Interface
 
-          p.text-lg.text-gray-600.mb-8
-            | The BaldrickInput1 web interface provides simple and intuitive control for your single-input controller. 
-            | This guide will help you configure your input and output settings easily.
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Accessing the Web Interface
+          p.text-lg.text-gray-700.mb-6
+            | The BaldrickInput1 includes a powerful web-based configuration interface that allows you to set up and control your board from any web browser. 
+            | This comprehensive guide covers every aspect of the web interface.
 
           .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-blue-900.mb-2 Quick Access
-            ol.text-blue-800.space-y-1
-              li 1. Ensure your BaldrickInput1 is powered on and connected to your network
-              li 2. Find the IP address (check your router's DHCP client list)
-              li 3. Open your web browser and navigate to the IP address
-              li 4. The web interface will load automatically
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Access: 
+                  | Connect to your network and navigate to the BaldrickInput1's IP address in your web browser. 
+                  | You can find the IP address in your router's DHCP client list or by using network scanning tools.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Main Dashboard
+          / Stats Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Stats Dashboard
 
-          p.text-gray-700.mb-4
-            | The main dashboard provides an overview of your BaldrickInput1's status and quick access to key functions.
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 System Information
 
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Status Overview
-              ul.text-gray-700.space-y-1
-                li • Power status and voltage monitoring
-                li • Network connection status
-                li • Input status indicator
-                li • Temperature and system health
-                li • Active connections
-                li • System uptime
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickinput1/web-interface-stats.png", class: "w-full rounded mb-4", alt: "BaldrickInput1 Web Interface Stats"
 
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Quick Actions
-              ul.text-gray-700.space-y-1
-                li • Test input functionality
-                li • Trigger output manually
-                li • System reboot options
-                li • Configuration backup/restore
-                li • Input monitoring
-                li • Status reset
+            p.text-gray-700.mb-4
+              | The Stats board gives you a heads up as to what's going on with your controller.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Input Configuration
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Uptime
+                p.text-sm.text-gray-700
+                  | Tells you how long your controller has been powered on 
+                  em
+                    | (this is useful in June to remind you that you forgot to turn it off over christmas)
 
-          p.text-gray-700.mb-4
-            | Configure your single input for your specific application requirements.
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Temperature
+                p.text-sm.text-gray-700
+                  | With a sensor next to the Ethernet connector, this gives you an indication of the board temperature 
+                  em
+                    | (in Celsius because water freezes at 0, not 32.. how does that make sense?)
+                  br
+                  br
+                  | Generally, PCBs and components are good for -40 to +85°C. Anything below 60°C on this board is fine and nothing to worry about. If the temp is above that, try blowing on it like you would a hot chip out of the oven.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Firmware Version
+                p.text-sm.text-gray-700
+                  | The BaldrickInput1 is pretty new in the world of controllers and we've got a LOT of features left to add, this will let you know your current version and if there is a version to upgrade to.
+                  br
+                  br
+                  em
+                    | (clicking the new version will upgrade it in place then restart the controller)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+                p.text-sm.text-gray-700
+                  | It would be pretty silly to have a controller information box without showing you the IP Address of the controller wouldn't it? That would be like launching a controller without being able to manage the networking.
+
+          / Turniput Configuration Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Turniput Configuration
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 External Input Triggers
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickinput1/web-interface-turnip-config.png", class: "w-full rounded mb-4", alt: "BaldrickInput1 Turniput Configuration"
+
+            p.text-gray-700.mb-4
+              | The BaldrickInput1 comes with a single Turniput port to attach external triggers (buttons, beam breaks, motion sensors) 
+              | that can be configured when triggered to do a multitude of tasks.
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Available Actions
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 FPP Integration
+                p.text-xs.text-gray-700
+                  | Control FPP (Falcon Pi Player) instances, change volume, play songs/playlists, or call FPP API directly.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Toggle Test Mode
+                p.text-xs.text-gray-700
+                  | Quickly enable any test mode at a specific brightness for quick prop testing.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickSwitchy Control
+                p.text-xs.text-gray-700
+                  | Turn on/off BaldrickSwitchy ports for specific durations (bubble machines, snow machines, etc.).
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickDMX Presets
+                p.text-xs.text-gray-700
+                  | Activate preset commands on your BaldrickDMX for moving heads, effects, etc.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 HTTP URL Calls
+                p.text-xs.text-gray-700
+                  | Call web APIs from simple triggers - perfect for custom integrations.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Do Nothing
+                p.text-xs.text-gray-700
+                  | Sometimes you set an input to do something and think "oh actually no, that's not what I want."
+
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-yellow-700
+                    strong Note: 
+                    | The main difference between this and the Button input on the Baldrick8 is the addition of Lamp controls.
+
+          / Networking Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Networking Configuration
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Good Defaults, Easy Config
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickinput1/web-interface-networking.png", class: "w-full rounded mb-4", alt: "BaldrickInput1 Web Interface Networking"
+
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-yellow-700
+                    strong Note: 
+                    | WiFi on the Input1 is currently in testing and will be released soon.
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Hostname
+                p.text-sm.text-gray-700
+                  | The default hostname is baldrickboard (hence baldrickboard.local). If you have one BaldrickInput1 then it's completely fine to keep this as it is, however if like us you want to collect a few of them, then we'd recommend you change this to something like 
+                  em
+                    | frontgarden
+                  | or 
+                  em
+                    | upstairsroof
+                  br
+                  br
+                  strong
+                    | (Just a reminder that hostnames should be lowercase without spaces)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DHCP / STATIC
+                p.text-sm.text-gray-700
+                  | The default option is DHCP (which is Dynamic Host Configuration Protocol but you don't need to know that) which basically means your router or computer gives the board an I.P. address. This is great for initial setup but when you want to run a show it's best to switch it to STATIC, that's where your controller tells the router / computer "This is my IP".
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+                p.text-sm.text-gray-700
+                  | Set this to the IP address that you want the controller to be fixed to.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Subnet Mask & Gateway
+                p.text-sm.text-gray-700
+                  | It is more than likely that you can copy the Subnet Mask (the size of your network) and the Default Gateway (the exit point of your network) from the output of an IPconfig check.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DNS Server
+                p.text-sm.text-gray-700
+                  | DNS wise, typically, your default gateway is your router IP, and that more often than not, can provide your network with DNS. However, some people like to use "outside 3rd parties" DNS like google or cloudflares DNS. If you don't know about this, its probably best just to stick to DHCP.
+
+          / Turnip Network Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Turnip Network
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 The Turnip Network
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickinput1/web-interface-turnip-network.png", class: "w-full rounded mb-4", alt: "BaldrickInput1 Turnip Network"
+
+            p.text-gray-700.mb-4
+              | The Baldrick family of boards have developed with 
+              em ease of use 
+              | as one of the core principles, this lead the creation of 'The Turnip Network'.
+
+            p.text-gray-700.mb-4
+              | The BaldrickBoards will find each other on the network, allowing you to easily switch between them when doing configuration.
+
+            p.text-gray-700.mb-4
+              | Test Sync allows you to enable test mode on one Baldrick board and all the others in that series will follow (so when you turn Hodgical Test Mode on one Baldrick8, it will turn on the rest of them).
+
+            p.text-gray-700.mb-4
+              | Some of the Baldrick boards have buttons (or Turniputs) and these allow integration with not only all the other boards in the family, but also FPP and web hooks!
+
+            .bg-blue-50.border-l-4.border-blue-400.p-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-blue-700
+                    strong It's what those people in business suits call 'synergy'!
+
+          / Advanced Settings Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Advanced Settings
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Advanced Configuration Options
+
+            p.text-gray-700.mb-4
+              | Advanced settings provide additional configuration options for power users and complex installations.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              h5.text-md.font-semibold.text-gray-900.mb-2 Coming Soon
+              p.text-sm.text-gray-700
+                | Advanced settings documentation will be added as new features are developed and released.
+
+          / Troubleshooting Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
 
           .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-yellow-900.mb-2 Input Settings
-            ul.text-yellow-800.space-y-1
-              li • Input type selection (Button, Switch, Sensor)
-              li • Input voltage configuration (3.3V/5V)
-              li • Debouncing settings
-              li • Pull-up/Pull-down configuration
-              li • Edge detection (Rising/Falling/Both)
-              li • Input testing tools
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-yellow-700
+                  strong Common Issues: 
+                  | If you can't access the web interface, try refreshing the page, clearing your browser cache, or ensuring you're connected to the correct network.
 
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Configuration Steps
+          .space-y-4.mb-8
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Can't Access Web Interface
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Check network connection to the BaldrickInput1
+                li Try different web browser
+                li Clear browser cache and cookies
+                li Restart the BaldrickInput1
+                li Check if firewall is blocking access
 
-          ol.space-y-4.text-gray-700.mb-8
-            li
-              strong.text-gray-900 1. Access Input Settings
-              p.mt-1 Navigate to the Input Configuration section in the web interface.
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Turniput Configuration Issues
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Verify physical connections to Turniput port
+                li Check input device compatibility
+                li Test Turniput port functionality
+                li Verify action configuration
+                li Check network connectivity for FPP/HTTP calls
 
-            li
-              strong.text-gray-900 2. Select Input Type
-              p.mt-1 Choose the type of input device you're using (button, switch, sensor).
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Network Configuration Problems
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Verify IP address settings
+                li Check subnet mask and gateway
+                li Test network connectivity
+                li Verify DNS server settings
+                li Check for IP address conflicts
 
-            li
-              strong.text-gray-900 3. Configure Parameters
-              p.mt-1 Set voltage, debouncing, and edge detection parameters.
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Turnip Network Issues
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Ensure all boards are on the same network
+                li Check board discovery process
+                li Verify network permissions
+                li Test inter-board communication
+                li Check firmware compatibility
 
-            li
-              strong.text-gray-900 4. Test Configuration
-              p.mt-1 Use the test function to verify your input works correctly.
-
-            li
-              strong.text-gray-900 5. Save Settings
-              p.mt-1 Save your configuration and proceed to output setup.
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Output Configuration
-
-          p.text-gray-700.mb-4
-            | Configure what happens when your input is triggered.
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Output Types
-              ul.text-gray-700.space-y-1
-                li • Pixel lighting control
-                li • Digital signal output
-                li • Network message sending
-                li • Trigger sequence activation
-                li • Status indicator control
-                li • Custom response actions
-
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Output Settings
-              ul.text-gray-700.space-y-1
-                li • Response timing configuration
-                li • Output duration settings
-                li • Repeat behavior options
-                li • Trigger conditions
-                li • Output testing tools
-                li • Status monitoring
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Network Configuration
-
-          p.text-gray-700.mb-4
-            | Configure network settings for optimal performance and integration.
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 IP Configuration
-              ul.text-gray-700.space-y-1
-                li • DHCP (automatic) or Static IP
-                li • Subnet mask and gateway
-                li • DNS server settings
-                li • Network interface status
-                li • Connection speed and duplex
-
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Network Events
-              ul.text-gray-700.space-y-1
-                li • UDP message configuration
-                li • TCP event settings
-                li • Network trigger options
-                li • Message format settings
-                li • Network testing tools
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Advanced Features
-
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Input Monitoring
-          p.text-gray-700.mb-4
-            | Monitor and analyze your input behavior for optimal performance.
-
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Real-time input status monitoring
-            li Input event logging and history
-            li Response time analysis
-            li Input pattern recognition
-            li Performance metrics
-            li Diagnostic tools
-
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Automation
-          p.text-gray-700.mb-4
-            | Set up automated responses and sequences based on input triggers.
-
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Time-based responses
-            li Conditional triggers
-            li Sequence programming
-            li Schedule-based activation
-            li Event-driven actions
-            li Custom automation rules
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Troubleshooting
-
-          .bg-red-50.border-l-4.border-red-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-red-900.mb-2 Common Issues
-            ul.text-red-800.space-y-1
-              li • Web interface not loading - check network connection
-              li • Input not responding - verify wiring and configuration
-              li • Output not working - check output settings and connections
-              li • Network connectivity - verify IP settings
-              li • Input noise - adjust debouncing settings
-              li • Response delays - check timing configuration
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Best Practices
-
-          .bg-green-50.border-l-4.border-green-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-green-900.mb-2 Setup Tips
-            ul.text-green-800.space-y-1
-              li • Start with simple button input for testing
-              li • Use proper wiring and connections
-              li • Test input before configuring outputs
-              li • Monitor input behavior during operation
-              li • Keep configuration simple initially
-              li • Document your setup for future reference
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Support and Resources
-
-          p.text-gray-700.mb-6
-            | For additional help with the web interface, check our resources or contact support.
-
-          .flex.flex-col.sm:flex-row.gap-4
-            = link_to 'FAQ', '/boards/baldrickinput1/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+          / Navigation Links
+          .flex.flex-col.sm:flex-row.gap-4.mt-8
+            = link_to 'Getting Started Guide', '/boards/baldrickinput1/getting-started', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
             = link_to 'Technical Specifications', '/boards/baldrickinput1/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'Contact Support', '/support', class: 'bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'FAQ', '/boards/baldrickinput1/faq', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
