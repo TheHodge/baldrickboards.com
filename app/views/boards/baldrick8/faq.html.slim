@@ -23,6 +23,30 @@
             | Find answers to the most commonly asked questions about the Baldrick8 controller.
 
           .space-y-8
+            / General Questions
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Is this just WLED?
+              p.text-gray-700
+                | No, the Baldrick8 is not WLED. While we love WLED and use it in other projects, we wrote our own firmware 
+                | specifically for seasonal lighting with three core principles: minimum 600 pixels per port at 40FPS (which actually 
+                | ended up being 750 per port!), a really simple and fun UI, and focused core features dedicated to seasonal lighting.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Where is the WiFi?
+              p.text-gray-700
+                | You see the ESP32 chip and instantly think WiFi enabled, however after testing latency and throughput over WiFi, 
+                | we are focusing on Ethernet connection at this time. The Baldrick8 has been designed for 750 pixels per port 
+                | at 40FPS and with WiFi we are unable to get close to that. That's not to say we will never support it, just don't 
+                | buy this board for the WiFi support.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What is the xTreme Edition?
+              p.text-gray-700
+                | The xTreme Edition is a version of the board that is sold by xTreme Sequences exclusively for their members. 
+                | In Ron Howard's mind it is the greatest edition ever made and no other edition comes close, however in reality 
+                | it is NO DIFFERENT from the other boards apart from the name and logo.
+
+            / Technical Questions
             .bg-gray-50.rounded-lg.p-6.border.border-gray-200
               h3.text-xl.font-semibold.text-gray-900.mb-3 How many pixels can I connect to each output?
               p.text-gray-700 Each output can handle up to 750 pixels at 40fps. For optimal performance, we recommend keeping each output under 500 pixels.
@@ -34,6 +58,65 @@
             .bg-gray-50.rounded-lg.p-6.border.border-gray-200
               h3.text-xl.font-semibold.text-gray-900.mb-3 Can I use different voltages on the two power inputs?
               p.text-gray-700 Yes! The Baldrick8 has two power inputs that can accept different voltages. This allows you to power different sections of your display with different voltages if needed.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do I expand the network with receivers?
+              p.text-gray-700
+                | The simple answer is that you don't! When designing the Baldrick8, we realized that a receiver requires 
+                | a network connection and power, which is exactly what a Baldrick8 requires. So rather than buy a receiver 
+                | and have to deal with splitting down the maximum pixels allowed per port, you just buy another Baldrick8 
+                | and plug it into your network for the same price!
+
+            / Test Mode Questions
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What is Hodgical Test Mode?
+              p.text-gray-700
+                | The Hodgical Test is a mode on the Baldrick8 which allows for easy debugging of pixel and model issues. 
+                | It runs the RGB cycle on each model on a port but each subsequent model starts with the subsequent color. 
+                | This allows us to quickly check if pixels are failing on any specific color value, confirm the models are set up 
+                | correctly, and put something up when someone comes over and wants to see it working.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Why is it called Hodgical?
+              p.text-gray-700
+                | Because it was an idea from Dom Hodgson (although obviously Pete did all the work) and so obviously his ego 
+                | wouldn't let it be named something normal!
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Why RGB instead of a color wash?
+              p.text-gray-700
+                | A color wash starting at different times on props can be overwhelming with color and takes longer to debug issues. 
+                | It also doesn't look as good as you might think!
+
+            / FPP Integration Questions
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do FPP API Commands work?
+              p.text-gray-700
+                | FPP comes with a really useful API which lets us do things like play sequences, change the volume and more remotely. 
+                | Combining that API with the Baldrick button URL boxes is a simple way of adding interactive elements to your show. 
+                | Commands are sent to the URL /api/command/command name/options.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do I start a show with a button?
+              p.text-gray-700
+                | You set your button command to go to http://[FPP_IP]/api/command/Start Playlist/[Playlist Name]. 
+                | To prevent multiple presses, add /false/true to the end of that URL. The false tells FPP not to repeat the playlist 
+                | and the true tells it only to play if it isn't already playing.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 How do I control volume with a button?
+              p.text-gray-700
+                | Set your button command to go to http://[FPP_IP]/api/command/Volume Set/[Volume Level]. 
+                | Then at the bottom of each playlist (or song in the playlist) you just add an entry for FPP command which sets the volume to 0.
+
+            / Troubleshooting
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 GS8208 Pixels Data Issues
+              p.text-gray-700
+                | Some batches of 4-wire pixels (double data) require a constant source of data, otherwise they default to a test mode 
+                | on full 100% brightness. The most common of these are GS8208 pixels. You can set your Baldrick8 to the Paint it Black 
+                | test mode which will stop that, but it's a pain to change every time you stop your show. For those using FPP, you can 
+                | configure FPP to output channel data at all times by enabling Advanced UI and ticking "Always Transmit Channel Data".
 
             .bg-gray-50.rounded-lg.p-6.border.border-gray-200
               h3.text-xl.font-semibold.text-gray-900.mb-3 What LED protocols are supported?
@@ -84,6 +167,21 @@
             .bg-gray-50.rounded-lg.p-6.border.border-gray-200
               h3.text-xl.font-semibold.text-gray-900.mb-3 Can I use the Baldrick8 for commercial installations?
               p.text-gray-700 Yes! The Baldrick8 is designed for professional use and can handle commercial installations. It's built with high-quality components for reliability in demanding environments.
+
+            / Asking for Help
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What should I check before asking for help?
+              p.text-gray-700
+                | If pixels are not doing what they should, this is usually a channel overlap issue. Make sure each of your controllers 
+                | has Auto Layout Models and Auto Layout Size enabled. Re-render the sequence and check that the channels in xLights 
+                | match the channels in FPP and on the Baldrick8 controller.
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 What information should I include when asking for help?
+              p.text-gray-700
+                | Include what issue you're having (be as detailed as possible), what you've tried so far, what versions of xLights, 
+                | FPP &/or Baldrick8 firmware you're using, screenshots of your xLights controller tab, FPP e1.31 Outputs page, 
+                | and xLights Models section, a photo of the controller wired up, and info about your network setup.
 
           .mt-8.bg-blue-50.border-l-4.border-blue-400.p-4
             p.text-blue-700
