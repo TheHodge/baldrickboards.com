@@ -10,7 +10,7 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'BaldrickInput1', subtitle: 'Single Input Controller', image_url: '/img/baldrickinput1.png'
+    = render 'shared/page_header', title: 'BaldrickInput1', subtitle: 'Single Input Controller', image_url: 'baldrickinput1/board.png'
 
     / Content Section
     .px-8.py-8
@@ -21,43 +21,20 @@
 
           .grid.md:grid-cols-2.gap-8.mb-8
             .flex.items-start
-              img.w-full.rounded-lg src="/img/baldrickinput1.png" alt="BaldrickInput1 Board Overview"
+              = image_tag "baldrickinput1/board.png", class: "w-full rounded-lg", alt: "BaldrickInput1 Board Overview"
             
             .flex.flex-col.justify-start
               p.text-lg.text-gray-700.mb-6
-                | The BaldrickInput1 is a single-input controller perfect for simple interactive displays and basic triggers. 
-                | Cost-effective and easy to set up, it's ideal for entry-level projects and simple automation.
+                | The BaldrickInput1 is our way of making interactivity to a lightshow as easy as point and click rather than code and solder!
 
           h3.text-2xl.font-bold.text-gray-900.mb-4 BaldrickInput1 Controller Features
 
           ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Single input handling for simple triggers
-            li Interactive display control capabilities
-            li Simple setup process for beginners
-            li Cost-effective solution for basic projects
-            li Web-based configuration interface
-            li Pixel output support for visual feedback
-            li Easy integration with existing systems
-            li Reliable performance for continuous operation
-            li Compact design for space-constrained installations
-            li Low power consumption for energy efficiency
+            li Powerjack accepting 5v - 24v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS)
+            li 1 Turniput allowing full access to the Turnip Network controls and button lamp configuration
+            li Small footprint for easy placement inside a project box
+            li Works over ethernet or Wifi (with antenna)
+            li Turniput allows effects via a button, motion sensor, reed switch, beam break or other input device
 
           p.text-gray-700.mb-6
-            | The BaldrickInput1 represents our commitment to simplicity and accessibility, designed specifically for 
-            | users who need basic input control without the complexity of multi-channel systems.
-
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Perfect For
-
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Simple button triggers and switches
-            li Interactive displays and exhibits
-            li Entry-level automation projects
-            li Educational and learning projects
-            li Prototype development and testing
-            li Basic home automation systems
-            li Simple interactive art installations
-            li Cost-conscious lighting projects
-
-          .bg-red-50.border-l-4.border-red-400.p-4.mb-6
-            p.text-red-800.font-medium
-              | "The BaldrickInput1 is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+            | This board is the perfect way to have a 'push for sound box' or push to 'start show box'.
