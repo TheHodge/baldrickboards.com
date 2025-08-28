@@ -44,6 +44,12 @@ export default class extends Controller {
       case 'halloween':
         this.applyHalloweenTheme()
         break
+      case 'easter':
+        this.applyEasterTheme()
+        break
+      case 'british':
+        this.applyBritishTheme()
+        break
       default:
         // Default theme - no effects
         break
@@ -586,6 +592,387 @@ export default class extends Controller {
         pointer-events: none;
         z-index: 1000;
         animation: spookyTwinkle ${Math.random() * 3 + 2}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 3}s;
+        box-shadow: 0 0 8px currentColor, 0 0 12px currentColor;
+        opacity: 0.8;
+      `
+      nav.appendChild(light)
+    }
+  }
+
+  applyEasterTheme() {
+    document.body.classList.add('easter-theme')
+
+    // Add Easter CSS
+    const style = document.createElement('style')
+    style.id = 'seasonal-theme-style'
+    style.textContent = `
+      .easter-theme {
+        background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 50%, #f5f0ff 100%);
+        position: relative;
+        overflow-x: hidden;
+      }
+      
+      .easter-theme::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        background: 
+          radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 70%, rgba(173, 216, 230, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 50% 50%, rgba(221, 160, 221, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 1;
+      }
+      
+      .easter-theme .bg-purple-900 {
+        background: linear-gradient(135deg, #8b5a8b 0%, #9370db 50%, #8a2be2 100%);
+        box-shadow: 0 0 20px rgba(255, 182, 193, 0.3);
+      }
+      
+      .easter-theme .bg-purple-800 {
+        background: linear-gradient(135deg, #9370db 0%, #8a2be2 50%, #9932cc 100%);
+        box-shadow: 0 0 15px rgba(173, 216, 230, 0.3);
+      }
+      
+      .easter-theme .border-purple-800 {
+        border-color: #8a2be2;
+        box-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
+      }
+      
+      .easter-theme .text-purple-200 {
+        color: #f0f8ff;
+        text-shadow: 0 0 5px rgba(255, 182, 193, 0.4);
+      }
+      
+      .easter-theme .text-purple-300 {
+        color: #e6f3ff;
+        text-shadow: 0 0 5px rgba(173, 216, 230, 0.4);
+      }
+      
+      @keyframes easterBounce {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-20px) rotate(5deg); }
+        50% { transform: translateY(-35px) rotate(0deg); }
+        75% { transform: translateY(-20px) rotate(-5deg); }
+      }
+      
+      @keyframes easterFloat {
+        0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+        25% { transform: translateY(-15px) translateX(10px) rotate(2deg); }
+        50% { transform: translateY(-25px) translateX(-5px) rotate(0deg); }
+        75% { transform: translateY(-15px) translateX(8px) rotate(-2deg); }
+      }
+      
+      @keyframes easterTwinkle {
+        0%, 100% { opacity: 0.8; transform: scale(1); filter: brightness(1); }
+        25% { opacity: 1; transform: scale(1.1); filter: brightness(1.2); }
+        50% { opacity: 0.6; transform: scale(0.9); filter: brightness(0.8); }
+        75% { opacity: 0.9; transform: scale(1.05); filter: brightness(1.1); }
+      }
+      
+      @keyframes easterRainbow {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
+      }
+    `
+    document.head.appendChild(style)
+
+    // Create Easter effects
+    this.createEasterEggs()
+    this.createEasterBunnies()
+    this.createEasterFlowers()
+    this.createEasterNavigationLights()
+    this.createEasterRainbow()
+  }
+
+  applyBritishTheme() {
+    document.body.classList.add('british-theme')
+
+    // Add British CSS
+    const style = document.createElement('style')
+    style.id = 'seasonal-theme-style'
+    style.textContent = `
+      .british-theme {
+        background: linear-gradient(135deg, #012169 0%, #c8102e 50%, #ffffff 100%);
+        position: relative;
+        overflow-x: hidden;
+      }
+      
+      .british-theme::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        background: 
+          radial-gradient(circle at 20% 30%, rgba(1, 33, 105, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 70%, rgba(200, 16, 46, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 1;
+      }
+      
+      .british-theme .bg-purple-900 {
+        background: linear-gradient(135deg, #012169 0%, #1e3a8a 50%, #3730a3 100%);
+        box-shadow: 0 0 20px rgba(200, 16, 46, 0.3);
+      }
+      
+      .british-theme .bg-purple-800 {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #4338ca 100%);
+        box-shadow: 0 0 15px rgba(1, 33, 105, 0.3);
+      }
+      
+      .british-theme .border-purple-800 {
+        border-color: #c8102e;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+      }
+      
+      .british-theme .text-purple-200 {
+        color: #ffffff;
+        text-shadow: 0 0 5px rgba(1, 33, 105, 0.4);
+      }
+      
+      .british-theme .text-purple-300 {
+        color: #f0f8ff;
+        text-shadow: 0 0 5px rgba(200, 16, 46, 0.4);
+      }
+      
+      @keyframes britishFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-20px) rotate(5deg); }
+        50% { transform: translateY(-35px) rotate(0deg); }
+        75% { transform: translateY(-20px) rotate(-5deg); }
+      }
+      
+      @keyframes britishTwinkle {
+        0%, 100% { opacity: 0.8; transform: scale(1); filter: brightness(1); }
+        25% { opacity: 1; transform: scale(1.2); filter: brightness(1.3); }
+        50% { opacity: 0.6; transform: scale(0.8); filter: brightness(0.7); }
+        75% { opacity: 0.9; transform: scale(1.1); filter: brightness(1.1); }
+      }
+      
+      @keyframes britishSparkle {
+        0%, 100% { opacity: 0; transform: scale(0); }
+        50% { opacity: 1; transform: scale(1); }
+      }
+      
+      @keyframes britishFlag {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-10px) rotate(2deg); }
+        50% { transform: translateY(-20px) rotate(0deg); }
+        75% { transform: translateY(-10px) rotate(-2deg); }
+      }
+    `
+    document.head.appendChild(style)
+
+    // Create British effects
+    this.createBritishSymbols()
+    this.createBritishFlags()
+    this.createBritishSparkles()
+    this.createBritishNavigationLights()
+  }
+
+  createEasterEggs() {
+    const easterEggs = ['🥚', '🥚', '🥚', '🥚', '🥚', '🥚', '🥚', '🥚']
+
+    for (let i = 0; i < 15; i++) {
+      const egg = document.createElement('div')
+      egg.className = 'easter-egg'
+      egg.textContent = easterEggs[Math.floor(Math.random() * easterEggs.length)]
+      egg.style.cssText = `
+        position: fixed;
+        top: ${Math.random() * 80 + 10}%;
+        left: ${Math.random() * 80 + 10}%;
+        font-size: ${Math.random() * 15 + 20}px;
+        pointer-events: none;
+        z-index: 9998;
+        animation: easterBounce ${Math.random() * 6 + 4}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 3}s;
+        filter: drop-shadow(0 0 5px rgba(255, 182, 193, 0.5));
+      `
+      this.effectsTarget.appendChild(egg)
+    }
+  }
+
+  createEasterBunnies() {
+    for (let i = 0; i < 8; i++) {
+      const bunny = document.createElement('div')
+      bunny.className = 'easter-bunny'
+      bunny.innerHTML = '🐰'
+      bunny.style.cssText = `
+        position: fixed;
+        top: ${Math.random() * 60 + 20}%;
+        left: ${Math.random() * 60 + 20}%;
+        font-size: ${Math.random() * 20 + 25}px;
+        pointer-events: none;
+        z-index: 9997;
+        animation: easterFloat ${Math.random() * 8 + 6}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 4}s;
+        filter: drop-shadow(0 0 8px rgba(173, 216, 230, 0.6));
+      `
+      this.effectsTarget.appendChild(bunny)
+    }
+  }
+
+  createEasterFlowers() {
+    const flowers = ['🌸', '🌷', '🌼', '🌻', '🌺', '🌹', '💐', '🌿']
+
+    for (let i = 0; i < 12; i++) {
+      const flower = document.createElement('div')
+      flower.className = 'easter-flower'
+      flower.textContent = flowers[Math.floor(Math.random() * flowers.length)]
+      flower.style.cssText = `
+        position: fixed;
+        top: ${Math.random() * 80 + 10}%;
+        left: ${Math.random() * 80 + 10}%;
+        font-size: ${Math.random() * 15 + 18}px;
+        pointer-events: none;
+        z-index: 9996;
+        animation: easterFloat ${Math.random() * 7 + 5}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 3}s;
+        filter: drop-shadow(0 0 5px rgba(221, 160, 221, 0.5));
+      `
+      this.effectsTarget.appendChild(flower)
+    }
+  }
+
+  createEasterNavigationLights() {
+    const nav = document.querySelector('nav')
+    if (!nav) return
+
+    // Easter pastel colors
+    const easterColors = ['#FFB6C1', '#ADD8E6', '#DDA0DD', '#98FB98', '#F0E68C', '#FFA07A', '#87CEEB', '#D8BFD8']
+
+    for (let i = 0; i < 10; i++) {
+      const light = document.createElement('div')
+      light.className = 'twinkle-light'
+      light.style.cssText = `
+        position: absolute;
+        top: ${Math.random() * 100}%;
+        left: ${Math.random() * 100}%;
+        width: ${Math.random() * 6 + 4}px;
+        height: ${Math.random() * 6 + 4}px;
+        background: ${easterColors[Math.floor(Math.random() * easterColors.length)]};
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1000;
+        animation: easterTwinkle ${Math.random() * 3 + 2}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 3}s;
+        box-shadow: 0 0 8px currentColor, 0 0 12px currentColor;
+        opacity: 0.8;
+      `
+      nav.appendChild(light)
+    }
+  }
+
+  createEasterRainbow() {
+    for (let i = 0; i < 5; i++) {
+      const rainbow = document.createElement('div')
+      rainbow.className = 'easter-rainbow'
+      rainbow.innerHTML = '🌈'
+      rainbow.style.cssText = `
+        position: fixed;
+        top: ${Math.random() * 40 + 10}%;
+        left: ${Math.random() * 60 + 20}%;
+        font-size: ${Math.random() * 30 + 40}px;
+        pointer-events: none;
+        z-index: 9995;
+        animation: easterRainbow ${Math.random() * 10 + 8}s linear infinite;
+        animation-delay: ${Math.random() * 5}s;
+        opacity: 0.7;
+      `
+      this.effectsTarget.appendChild(rainbow)
+    }
+  }
+
+  createBritishSymbols() {
+    const britishSymbols = ['👑', '🏰', '☕', '🌹', '🦢', '🐦', '🌧️', '🎭']
+
+    for (let i = 0; i < 12; i++) {
+      const symbol = document.createElement('div')
+      symbol.className = 'british-symbol'
+      symbol.textContent = britishSymbols[Math.floor(Math.random() * britishSymbols.length)]
+      symbol.style.cssText = `
+        position: fixed;
+        top: ${Math.random() * 80 + 10}%;
+        left: ${Math.random() * 80 + 10}%;
+        font-size: ${Math.random() * 20 + 25}px;
+        pointer-events: none;
+        z-index: 9998;
+        animation: britishFloat ${Math.random() * 8 + 6}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 4}s;
+        filter: drop-shadow(0 0 8px rgba(1, 33, 105, 0.6));
+      `
+      this.effectsTarget.appendChild(symbol)
+    }
+  }
+
+  createBritishFlags() {
+    for (let i = 0; i < 8; i++) {
+      const flag = document.createElement('div')
+      flag.className = 'british-flag'
+      flag.innerHTML = '🇬🇧'
+      flag.style.cssText = `
+        position: fixed;
+        top: ${Math.random() * 60 + 20}%;
+        left: ${Math.random() * 60 + 20}%;
+        font-size: ${Math.random() * 25 + 30}px;
+        pointer-events: none;
+        z-index: 9997;
+        animation: britishFlag ${Math.random() * 6 + 4}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 3}s;
+        filter: drop-shadow(0 0 10px rgba(200, 16, 46, 0.6));
+      `
+      this.effectsTarget.appendChild(flag)
+    }
+  }
+
+  createBritishSparkles() {
+    for (let i = 0; i < 20; i++) {
+      const sparkle = document.createElement('div')
+      sparkle.className = 'british-sparkle'
+      sparkle.innerHTML = '✨'
+      sparkle.style.cssText = `
+        position: fixed;
+        top: ${Math.random() * 100}%;
+        left: ${Math.random() * 100}%;
+        font-size: ${Math.random() * 12 + 15}px;
+        pointer-events: none;
+        z-index: 9996;
+        animation: britishSparkle ${Math.random() * 4 + 2}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 3}s;
+        color: ${['#012169', '#c8102e', '#ffffff'][Math.floor(Math.random() * 3)]};
+      `
+      this.effectsTarget.appendChild(sparkle)
+    }
+  }
+
+  createBritishNavigationLights() {
+    const nav = document.querySelector('nav')
+    if (!nav) return
+
+    // British flag colors
+    const britishColors = ['#012169', '#c8102e', '#ffffff', '#012169', '#c8102e', '#ffffff']
+
+    for (let i = 0; i < 12; i++) {
+      const light = document.createElement('div')
+      light.className = 'twinkle-light'
+      light.style.cssText = `
+        position: absolute;
+        top: ${Math.random() * 100}%;
+        left: ${Math.random() * 100}%;
+        width: ${Math.random() * 6 + 4}px;
+        height: ${Math.random() * 6 + 4}px;
+        background: ${britishColors[Math.floor(Math.random() * britishColors.length)]};
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1000;
+        animation: britishTwinkle ${Math.random() * 3 + 2}s ease-in-out infinite;
         animation-delay: ${Math.random() * 3}s;
         box-shadow: 0 0 8px currentColor, 0 0 12px currentColor;
         opacity: 0.8;
