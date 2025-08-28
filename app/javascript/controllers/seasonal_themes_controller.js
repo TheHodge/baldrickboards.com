@@ -761,6 +761,20 @@ export default class extends Controller {
         50% { opacity: 1; transform: scale(1); }
       }
       
+      @keyframes britishFirework {
+        0% { opacity: 0; transform: scale(0) rotate(0deg); }
+        10% { opacity: 1; transform: scale(1) rotate(0deg); }
+        50% { opacity: 1; transform: scale(1.5) rotate(180deg); }
+        100% { opacity: 0; transform: scale(2) rotate(360deg); }
+      }
+      
+      @keyframes britishFireworkBurst {
+        0% { opacity: 0; transform: scale(0); }
+        20% { opacity: 1; transform: scale(1); }
+        60% { opacity: 1; transform: scale(2); }
+        100% { opacity: 0; transform: scale(3); }
+      }
+      
       @keyframes britishFlag {
         0%, 100% { transform: translateY(0px) rotate(0deg); }
         25% { transform: translateY(-10px) rotate(2deg); }
@@ -774,6 +788,7 @@ export default class extends Controller {
     this.createBritishSymbols()
     this.createBritishFlags()
     this.createBritishSparkles()
+    this.createBritishFireworks()
     this.createBritishNavigationLights()
   }
 
@@ -933,7 +948,7 @@ export default class extends Controller {
   }
 
   createBritishSparkles() {
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 35; i++) {
       const sparkle = document.createElement('div')
       sparkle.className = 'british-sparkle'
       sparkle.innerHTML = '✨'
@@ -941,14 +956,78 @@ export default class extends Controller {
         position: fixed;
         top: ${Math.random() * 100}%;
         left: ${Math.random() * 100}%;
-        font-size: ${Math.random() * 12 + 15}px;
+        font-size: ${Math.random() * 20 + 25}px;
         pointer-events: none;
         z-index: 9996;
         animation: britishSparkle ${Math.random() * 4 + 2}s ease-in-out infinite;
         animation-delay: ${Math.random() * 3}s;
         color: ${['#012169', '#c8102e', '#ffffff'][Math.floor(Math.random() * 3)]};
+        filter: drop-shadow(0 0 8px currentColor);
       `
       this.effectsTarget.appendChild(sparkle)
+    }
+  }
+
+  createBritishFireworks() {
+    const fireworkEmojis = ['🎆', '🎇', '✨', '💥', '🌟', '⭐', '💫', '🔥']
+    
+    // Create large firework bursts
+    for (let i = 0; i < 8; i++) {
+      const firework = document.createElement('div')
+      firework.className = 'british-firework'
+      firework.innerHTML = fireworkEmojis[Math.floor(Math.random() * fireworkEmojis.length)]
+      firework.style.cssText = `
+        position: fixed;
+        top: ${Math.random() * 60 + 20}%;
+        left: ${Math.random() * 60 + 20}%;
+        font-size: ${Math.random() * 40 + 60}px;
+        pointer-events: none;
+        z-index: 9999;
+        animation: britishFirework ${Math.random() * 8 + 6}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 5}s;
+        filter: drop-shadow(0 0 15px rgba(200, 16, 46, 0.8));
+      `
+      this.effectsTarget.appendChild(firework)
+    }
+    
+    // Create firework burst effects
+    for (let i = 0; i < 12; i++) {
+      const burst = document.createElement('div')
+      burst.className = 'british-firework-burst'
+      burst.innerHTML = '💥'
+      burst.style.cssText = `
+        position: fixed;
+        top: ${Math.random() * 70 + 15}%;
+        left: ${Math.random() * 70 + 15}%;
+        font-size: ${Math.random() * 30 + 40}px;
+        pointer-events: none;
+        z-index: 9998;
+        animation: britishFireworkBurst ${Math.random() * 6 + 4}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 4}s;
+        filter: drop-shadow(0 0 12px rgba(1, 33, 105, 0.8));
+      `
+      this.effectsTarget.appendChild(burst)
+    }
+    
+    // Create additional sparkle clusters
+    for (let i = 0; i < 15; i++) {
+      const cluster = document.createElement('div')
+      cluster.className = 'british-sparkle-cluster'
+      cluster.innerHTML = '✨✨✨'
+      cluster.style.cssText = `
+        position: fixed;
+        top: ${Math.random() * 80 + 10}%;
+        left: ${Math.random() * 80 + 10}%;
+        font-size: ${Math.random() * 25 + 35}px;
+        pointer-events: none;
+        z-index: 9997;
+        animation: britishSparkle ${Math.random() * 5 + 3}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 3}s;
+        color: ${['#012169', '#c8102e', '#ffffff'][Math.floor(Math.random() * 3)]};
+        filter: drop-shadow(0 0 10px currentColor);
+        opacity: 0.8;
+      `
+      this.effectsTarget.appendChild(cluster)
     }
   }
 
