@@ -1,0 +1,143 @@
+- content_for :title, "The Kluster - About Baldrick"
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: page_breadcrumbs('Home', 'Baldrick Breakthroughs', 'The Kluster')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'The Kluster', subtitle: "To quote a friend, 'This is way too much effort for Christmas Lights'"
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h2.text-3xl.font-bold.text-gray-900.mb-6 The Kluster
+
+          p.text-lg.text-gray-700.mb-6
+            | The Kluster is our state-of-the-art development and testing system where we design, prototype, and validate all Baldrick products before they reach our customers. But it didn't start that way - it began with a customer's problem and some old plywood.
+
+          .mb-8 data-controller="image-modal"
+            = image_tag "kluster-inprocess.jpeg", class: "w-2/3.mx-auto.rounded-lg.shadow-lg.cursor-pointer.transition-transform.duration-300.hover:scale-105.hover:shadow-xl", alt: "The Kluster development system showing multiple Baldrick boards mounted on wooden framework", data: { action: "click->image-modal#open", "image-modal-src-value": asset_path("kluster-inprocess.jpeg"), "image-modal-alt-value": "The Kluster development system showing multiple Baldrick boards mounted on wooden framework" }
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 How The Kluster Came About
+
+          p.text-gray-700.mb-4
+            | The story of The Kluster begins with one of our customers who was having issues with 15 
+            = link_to "Baldrick8 boards", board_path('baldrick8'), class: "text-blue-600 hover:text-blue-800 underline"
+            |  on a large mega tree. When Dom heard about the problem, he knew he needed a way to replicate and test the setup to understand what was going wrong.
+          p.text-gray-700.mb-6
+            | So Dom took some old plywood he had received, cut up a load of positive and negative cables, found 24 Baldrick boards and added a pixel to each. This simple setup became the foundation of what we now call The Kluster.
+
+          .mb-8 data-controller="image-modal"
+            = image_tag "kluster-old.png", class: "w-2/3.mx-auto.rounded-lg.shadow-lg.cursor-pointer.transition-transform.duration-300.hover:scale-105.hover:shadow-xl", alt: "Early version of The Kluster with Baldrick boards mounted on plywood with basic wiring", data: { action: "click->image-modal#open", "image-modal-src-value": asset_path("kluster-old.png"), "image-modal-alt-value": "Early version of The Kluster with Baldrick boards mounted on plywood with basic wiring" }
+            p.text-sm.text-gray-500.mt-2.text-center The early days - Baldrick boards mounted on plywood with basic power distribution
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Evolution: From Simple Testing to Smart Monitoring
+
+          p.text-gray-700.mb-4
+            | After fixing some pixel issues, we then expanded The Kluster to have a monitoring system called Edmund which monitors all development data from the boards and allows us to test new features for issues.
+          p.text-gray-700.mb-4
+            | Being a remote team, we wanted the ability to press buttons and turn off boards without someone physically present, so The Kluster and Edmund were expanded to manage relays and have an API for end-to-end testing.
+          p.text-gray-700.mb-6
+            | Today, Edmund and The Kluster now do pixel color monitoring, allowing us to track and analyze the performance of individual pixels across all our test boards in real-time.
+
+          .mb-8 data-controller="image-modal"
+            = image_tag "kluster-two.png", class: "w-2/3.mx-auto.rounded-lg.shadow-lg.cursor-pointer.transition-transform.duration-300.hover:scale-105.hover:shadow-xl", alt: "Current Kluster setup showing multiple KLUSTER boards with glowing green LEDs in a grid arrangement", data: { action: "click->image-modal#open", "image-modal-src-value": asset_path("kluster-two.png"), "image-modal-alt-value": "Current Kluster setup showing multiple KLUSTER boards with glowing green LEDs in a grid arrangement" }
+            p.text-sm.text-gray-500.mt-2.text-center The current Kluster setup with multiple KLUSTER boards and monitoring systems
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 The Kluster Today
+
+          p.text-gray-700.mb-6
+            | The Kluster now has instances of every board and revision in the Baldrick family (and a few not yet released) and is still under continuous development. We've recently upgraded Dom's old plywood for some good-looking laser cut mounts and we've got some custom PCBs on the way to help us monitor a bit more.
+
+          .mb-8 data-controller="image-modal"
+            = image_tag "kluster-single.png", class: "w-2/3.mx-auto.rounded-lg.shadow-lg.cursor-pointer.transition-transform.duration-300.hover:scale-105.hover:shadow-xl", alt: "Single KLUSTER board showing detailed components and connections", data: { action: "click->image-modal#open", "image-modal-src-value": asset_path("kluster-single.png"), "image-modal-alt-value": "Single KLUSTER board showing detailed components and connections" }
+            p.text-sm.text-gray-500.mt-2.text-center A single KLUSTER board showing the detailed components and monitoring capabilities
+
+          .bg-green-50.border-l-4.border-green-400.p-4.mb-8
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-green-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-green-700
+                  strong Continuous Innovation: 
+                  | The Kluster is constantly evolving, from simple plywood mounts to sophisticated monitoring systems.
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Edmund: Our Smart Monitoring System
+
+          p.text-gray-700.mb-6
+            | Edmund is the brain behind The Kluster - our custom monitoring system that tracks everything from power consumption to pixel performance. It allows our remote team to:
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h4.text-xl.font-semibold.text-gray-900.mb-3 Remote Control
+              ul.space-y-2.text-gray-700
+                li • Power boards on/off remotely
+                li • Monitor real-time performance
+                li • Test new firmware features
+                li • Debug issues from anywhere
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h4.text-xl.font-semibold.text-gray-900.mb-3 Data Collection
+              ul.space-y-2.text-gray-700
+                li • Track power consumption
+                li • Monitor temperature and performance
+                li • Log error conditions
+                li • Generate test reports
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 What We Test
+
+          p.text-gray-700.mb-6
+            | The Kluster houses every Baldrick board variant, allowing us to test new features across our entire product line before release. This ensures that when you buy a Baldrick product, it's been thoroughly tested in real-world conditions.
+
+          .space-y-6.mb-8
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Hardware Testing
+              p.text-gray-700
+                | Every board revision is tested for power efficiency, thermal performance, and reliability under various load conditions.
+
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Firmware Validation
+              p.text-gray-700
+                | New firmware features are tested across all board variants to ensure compatibility and performance.
+
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Real-World Simulation
+              p.text-gray-700
+                | We simulate actual customer setups to catch issues before they reach our customers.
+
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Long-term Reliability
+              p.text-gray-700
+                | Boards run continuously to ensure they can handle the demands of seasonal lighting displays.
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 The Future of The Kluster
+
+          p.text-gray-700.mb-6
+            | We're constantly improving The Kluster. Our latest upgrades include laser-cut mounting systems and custom PCBs designed specifically for monitoring and testing. These improvements help us test more thoroughly and catch issues faster.
+
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Always Evolving: 
+                  | From plywood to laser-cut mounts, The Kluster continues to grow and improve with every iteration.
+
+          .mt-8.bg-gray-50.rounded-lg.p-6.border.border-gray-200
+            h4.text-lg.font-semibold.text-gray-900.mb-3 The Kluster Legacy
+            p.text-gray-700.mb-4
+              | What started as a simple solution to a customer's problem has grown into our most valuable development tool. The Kluster represents our commitment to quality and our willingness to solve problems with whatever materials we have at hand.
+            p.text-gray-700
+              | Every Baldrick product you use has been tested in The Kluster, ensuring it meets our high standards for reliability and performance.
+
+/ Image Modal
+#imageModal.fixed.inset-0.bg-black.bg-opacity-75.hidden.z-50.flex.items-center.justify-center.p-4 data-controller="image-modal"
+  .relative.max-w-4xl.max-h-full
+    img#modalImage.max-w-full.max-h-full.object-contain.rounded-lg data-image-modal-target="image"
+    button.absolute.top-4.right-4.text-white.text-2xl.font-bold.hover:text-gray-300 data-action="click->image-modal#close" &times;
