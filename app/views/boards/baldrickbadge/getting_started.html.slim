@@ -1,4 +1,4 @@
-- content_for :title, "BaldrickBadge Getting Started - Baldrick Board Documentation"
+- content_for :title, "Getting Started - BaldrickBadge - Baldrick Board Documentation"
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'BaldrickBadge', menu_items: board_menu_items('baldrickbadge')
@@ -10,141 +10,141 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'Getting Started with BaldrickBadge', subtitle: 'Setup and Configuration Guide', image_url: '/img/baldrickbadge.png'
+    = render 'shared/page_header', title: 'Getting Started with BaldrickBadge', subtitle: 'Setup and configuration guide for your wearable badge'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / Getting Started Guide for BaldrickBadge
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickBadge
-          
-          p.text-lg.text-gray-600.mb-8
-            | Welcome to the BaldrickBadge! This guide will help you set up your compact badge controller for wearable and portable applications. 
-            | Perfect for portable displays and mobile lighting projects.
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 What's in the Box
-          ul.space-y-2.text-gray-700.mb-8
-            li • BaldrickBadge controller board
-            li • Battery (if included)
-            li • Mounting hardware
-            li • Quick start guide
-            li • USB cable (if included)
-            li • Pixel connection cables (if included)
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Quick Setup Steps
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 1. Power Connection
-          p.text-gray-700.mb-4
-            | Connect your battery to the BaldrickBadge. The board is designed for battery-powered operation and includes power management features.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 2. Network Connection
-          p.text-gray-700.mb-4
-            | Connect to the BaldrickBadge's WiFi network or use USB connection. The badge creates its own network for configuration.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 3. Pixel Connections
-          p.text-gray-700.mb-4
-            | Connect your pixel lighting to the output port. The BaldrickBadge supports various pixel types for portable displays.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 4. Web Interface Access
-          p.text-gray-700.mb-4
-            | Open your web browser and navigate to the BaldrickBadge's IP address or connect to its WiFi network for configuration.
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Configuration
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Network Settings
-          p.text-gray-700.mb-4
-            | The BaldrickBadge can operate in standalone mode or connect to existing networks. Configure based on your application needs.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Pixel Configuration
-          p.text-gray-700.mb-4
-            | Set up your pixel lighting with appropriate counts, patterns, and effects for your portable application.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Power Management
-          p.text-gray-700.mb-4
-            | Configure power-saving features and battery monitoring for optimal portable operation.
-          
-          .bg-pink-50.border-l-4.border-pink-400.p-4.mb-8
-            h4.text-lg.font-semibold.text-pink-800.mb-2 Portable Setup Tips
-            ul.text-pink-700.space-y-1
-              li • Choose appropriate battery capacity for your runtime needs
-              li • Secure mounting for wearable applications
-              li • Consider weather protection for outdoor use
-              li • Test battery life before final installation
-              li • Use lightweight pixel options for wearables
-              li • Plan for easy battery replacement
-          
-          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
-            h4.text-lg.font-semibold.text-yellow-800.mb-2 Important Notes
-            ul.text-yellow-700.space-y-1
-              li • Ensure proper battery connections for reliable operation
-              li • Use appropriate mounting for your application
-              li • Test in your intended environment before final setup
-              li • Consider power consumption for battery life
-              li • Keep firmware updated for best performance
-              li • Monitor battery status during operation
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Next Steps
-          p.text-gray-700.mb-6
-            | Once your BaldrickBadge is configured, you can:
-          
-          ul.space-y-2.text-gray-700.mb-8
-            li • Explore the web interface features
-            li • Configure your lighting patterns
-            li • Set up portable operation modes
-            li • Test battery life and performance
-            li • Mount for your specific application
-            li • Create mobile lighting displays
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Example Projects
-          
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Wearable Costume Lighting
-              p.text-gray-700.mb-3
-                | Create wearable lighting effects for costumes, cosplay, or performance applications.
-              ul.text-gray-600.text-sm.space-y-1
-                li • Compact pixel strips
-                li • Battery-powered operation
-                li • Lightweight mounting
-                li • Portable configuration
-          
-            .bg-gray-50.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Portable Art Installation
-              p.text-gray-700.mb-3
-                | Build portable lighting displays for mobile art installations or temporary exhibits.
-              ul.text-gray-600.text-sm.space-y-1
-                li • Self-contained operation
-                li • Easy transport and setup
-                li • Flexible mounting options
-                li • Battery-powered independence
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Portable Features
-          
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Power Management
-              ul.text-gray-700.space-y-1
-                li • Battery monitoring
-                li • Power-saving modes
-                li • Low-power operation
-                li • Battery life optimization
-                li • Power status indicators
-                li • Efficient pixel control
-          
-            .bg-gray-50.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Portability Features
-              ul.text-gray-700.space-y-1
-                li • Compact form factor
-                li • Lightweight construction
-                li • Easy mounting options
-                li • Weather-resistant design
-                li • Quick setup and teardown
-                li • Mobile configuration
-          
-          .bg-blue-50.border.border-blue-200.rounded-lg.p-6
-            h4.text-xl.font-semibold.text-blue-900.mb-3 Need Help?
-            p.text-blue-800.mb-4
-              | If you encounter any issues during setup, check our FAQ or contact support.
-            .flex.flex-col.sm:flex-row.gap-4
-              = link_to 'FAQ', '/boards/baldrickbadge/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-              = link_to 'Web Interface Guide', '/boards/baldrickbadge/web-interface', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickBadge
+          / Step 1: Badge Setup
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 1: Badge Setup
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Wireless Network Setup
+
+            p.text-gray-700.mb-4
+              | When your badge is plugged into a power supply, it will create a wireless network which starts with 
+              code.bg-gray-100.text-gray-800.px-2.py-1.rounded
+                | baldrickbadge-
+              |  followed by an alphanumeric code on the back of it which matches the one on the sticker on the back of your badge.
+
+            .bg-blue-50.border-l-4.border-blue-400.p-4.mb-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-blue-700
+                    strong Network Password: 
+                    code.bg-blue-100.text-blue-800.px-2.py-1.rounded
+                      | hotplates
+
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-yellow-700
+                    strong Event Tip: 
+                    | For events, we would recommend you do not join the WiFi network as that would give everyone else access to your badge... and we wouldn't want people putting rude messages on them would we?
+
+          / Step 2: The Matrix
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 2: Using the Matrix
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Matrix Display Mode
+
+            p.text-gray-700.mb-4
+              | You can use your badge as a matrix display. As I'm writing this I cannot remember how to do it but I know it works...
+
+            p.text-gray-700
+              | The onboard matrix is 95 x 5 pixels.
+
+          / Step 3: Syncing Badges
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 3: Syncing Multiple Badges
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 ESP-NOW Synchronization
+
+            p.text-gray-700.mb-4
+              | WLED has the ability to use ESP-NOW to synchronize the badge effects between them.
+
+
+            p.text-gray-700.mb-4
+              | If you'd have bought the badges we would have done a really detailed instruction on how to set this up but you didn't so we didn't.
+
+            p.text-gray-700
+              | Figure it out, it will be great!
+
+          / Step 4: xLights Connection
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 4: xLights Connection
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Connecting with xLights
+
+            p.text-gray-700.mb-4
+              | You can connect the badge to xLights and use it as a controller. xLights discover won't work, but if you get the IP address of it, you can use the following settings.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickbadge/xlights.png", class: "w-full rounded mb-4", alt: "xLights Baldrick Badge Configuration"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Port Configuration
+
+            ul.list-disc.list-inside.space-y-2.text-gray-700
+              li
+                strong Port 1 
+                | - Should be the onboard pixels
+              li
+                strong Port 2 
+                | - Should be the one built in
+              li
+                strong Ports 3, 4 and 5 
+                | - Should be the additional ones if you have the upgrade kit
+
+          / Step 5: Button Configuration
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 5: Button Configuration
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Onboard Buttons
+
+            p.text-gray-700.mb-4
+              | We've added two buttons to the board for you to use. We've not quite worked out how to program them in the interface, but these are the default responses.
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Button One
+                ul.text-gray-700.space-y-1
+                  li
+                    strong Short press: 
+                    | Turns LEDs on/off
+                  li
+                    strong Long press: 
+                    | Changes the palette colour (randomly?)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Button Two
+                ul.text-gray-700.space-y-1
+                  li
+                    strong Short press: 
+                    | Cycles through effects (randomly?)
+                  li
+                    strong Long press: 
+                    | Adjusts the brightness (up one press, down the next)
+
+            .bg-blue-50.border-l-4.border-blue-400.p-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-blue-700
+                    strong Future Update: 
+                    | Button programming interface coming soon!
+
+          / Navigation Links
+          .flex.flex-col.sm:flex-row.gap-4.mt-8
+            = link_to 'Technical Specifications', board_page_path('baldrickbadge', 'tech-specs'), class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'FAQ', board_page_path('baldrickbadge', 'faq'), class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'

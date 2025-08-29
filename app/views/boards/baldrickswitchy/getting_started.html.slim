@@ -10,7 +10,7 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'Getting Started with BaldrickSwitchy', subtitle: 'Setup and Configuration Guide', image_url: '/img/baldrickswitchy.png'
+    = render 'shared/page_header', title: 'Getting Started with BaldrickSwitchy', subtitle: 'Setup and Configuration Guide'
 
     / Content Section
     .px-8.py-8
@@ -19,77 +19,183 @@
           h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickSwitchy
           
           p.text-lg.text-gray-600.mb-8
-            | Welcome to the BaldrickSwitchy! This guide will help you get your high-power relay controller up and running safely.
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 What's in the Box
-          ul.space-y-2.text-gray-700.mb-8
-            li • BaldrickSwitchy controller board
-            li • Power supply (if included)
-            li • Mounting hardware
-            li • Quick start guide
-            li • Network cable (if included)
-            li • Relay output cables (if included)
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Quick Setup Steps
+            | You've just got your board through the post and you are really excited about getting started! WE KNOW, We've been there. These easy to follow steps will get you started in minutes!
           
           h3.text-2xl.font-semibold.text-gray-900.mb-3 1. Power Connection
-          p.text-gray-700.mb-4
-            | Connect your power supply to the BaldrickSwitchy. The board requires a stable power supply for reliable relay operation.
           
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 2. Network Connection
-          p.text-gray-700.mb-4
-            | Connect an Ethernet cable to the network port. The BaldrickSwitchy will automatically obtain an IP address via DHCP.
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Plugging in your controller
+            
+            p.text-gray-700.mb-4
+              | The BaldrickSwitchy has a barrel jack connection and can handle voltage from 5v to 24v, this is to make it easier to match whatever you are plugging in.
+            
+            p.text-gray-700.mb-4
+              | For technical users - barrel connector (centre positive) and we use 5.5x2.1mm barrel jacks.
+            
+            p.text-gray-700.mb-4
+              | Please remember you are just powering the board not the devices.
+            
+            .bg-red-50.border-l-4.border-red-400.p-4.mb-4
+              h5.text-lg.font-semibold.text-red-900.mb-2 Always use a power supply
+              p.text-red-800
+                | Never, ever EVER EVER EVER plug your controller directly into the wall outlet, it will go bang and you'll have to buy another one and explain to your partner what that burn mark on the kitchen table is.
+            
+            p.text-gray-700.mb-4
+              | You'll notice that a British plug has three wires and our power jacks inputs only have two that's because you need to put a power supply in between them.
+            
+            p.text-gray-700
+              | We recommend the use of a 
+              = link_to "variable power supply", "https://amzn.to/4c24ApH", class: "text-blue-600 hover:text-blue-800 underline", target: "_blank"
+              | .
           
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 3. Relay Connections
-          p.text-gray-700.mb-4
-            | Connect your AC devices to the relay outputs. Ensure proper wiring and follow all safety guidelines for high-voltage applications.
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 2. Installing Firmware
           
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 4. Web Interface Access
-          p.text-gray-700.mb-4
-            | Open your web browser and navigate to the BaldrickSwitchy's IP address. You can find this in your router's DHCP client list.
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Installing the firmware
+            
+            p.text-gray-700.mb-4
+              | When your controller arrives it will be in a 'sleeping state' you just need to plug it into your network and head to 
+              = link_to "http://baldrickswitchy.local", "http://baldrickswitchy.local", class: "text-blue-600 hover:text-blue-800 underline", target: "_blank"
+              |  (if your DNS doesn't accept that then just look for it on your network)
+            
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/first-firmware.png", class: "w-full rounded mb-4", alt: "First Firmware Installation"
+            
+            h5.text-md.font-semibold.text-gray-900.mb-3 How to install
+            
+            p.text-gray-700.mb-4
+              | To put it simply, press the button that says 
+              em
+                | Lets Go
+              |  then go and have a brew, the controller will connect to our server, download the latest firmware and automatically install it, once it's done the page will refresh and you can start connecting devices.
+            
+            h5.text-md.font-semibold.text-gray-900.mb-3 It's not working?
+            
+            p.text-gray-700.mb-4
+              | You must plug the board directly into your network for the initial firmware download (or make sure your computer can give it an IP address and internet access).
+            
+            h5.text-md.font-semibold.text-gray-900.mb-3 How do I update after that?
+            
+            p.text-gray-700
+              | When you go to the Web interface and look at the stats section, you'll see the version number, if there is a new version, you can click that and it will automatically update in a similar interface to how this initial install works.
           
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Configuration
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 3. Connecting Devices
           
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Network Settings
-          p.text-gray-700.mb-4
-            | The BaldrickSwitchy supports both DHCP and static IP configuration. For production installations, we recommend using static IP addresses.
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Connecting Devices
+            
+            p.text-gray-700.mb-4
+              | The BaldrickySwitchy is pretty much exactly as it says in its name - It is a switch (or a set of switches!). It doesn't provide power, it doesn't change voltages, it doesn't dim - It switches.
+            
+            p.text-gray-700.mb-4
+              em
+                | A Switch makes or breaks a circuit, as seen in this picture:
+            
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/switch.jpeg", class: "w-full rounded mb-4", alt: "An example of a switch"
+            
+            p.text-gray-700.mb-4
+              | So with this in mind, it would be impossible for us to list all the ways that you can connect devices but a very simple way of quickly integrating the BaldrickSwitchy is:
+            
+            p.text-gray-700.mb-4
+              | You can take a wire, cut it, and put each side of the cut wire into one of connectors then use BaldrickSwitchy to make the wire complete again when it is activated (BaldrickSwitchy leaves the circuit open/broken at rest, and closes/makes the circuit when activated).
+            
+            p.text-gray-700.mb-4
+              | That wire you cut could be:
+            
+            ul.list-disc.list-inside.text-gray-700.mb-4
+              li A live wire in a cable feeding a string of mains powered lights
+              li The power wire going into a "dumb" snow/smoke/bubble machine
+              li A 0v signal or control wire on a device that has a "button to activate"
+            
+            p.text-gray-700.mb-4
+              | Here are two example images of integration of the Relay connector one with a USB powered device and the negative line cut:
+            
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/device-connect-usb.png", class: "w-full rounded mb-4", alt: "USB Cable Connection"
+            
+            p.text-gray-700.mb-4
+              | One with a mains powered device and both lines cut and the live connected via a WAGO:
+            
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/device-connect-wago.png", class: "w-full rounded mb-4", alt: "Mains Cable Connection"
+            
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-4
+              h5.text-lg.font-semibold.text-yellow-900.mb-2 Power Limitations
+              p.text-yellow-800
+                | If you are planning to connect something powerful like a snowmachine, make sure that it will not draw more than 
+                strong
+                  | 8amps of power
+                |  (at 240v, that is about 2000w, or at 100v for the US folk, it is about 800w), as the relays on baldrick may get hot, melt or get stuck closed if you pull too much current (thats bad news!).
+            
+            p.text-gray-700.mb-4
+              | It's time to connect a device, now I don't need to say it but I will..
+            
+            .bg-red-50.border-l-4.border-red-400.p-4
+              h5.text-lg.font-semibold.text-red-900.mb-2 Safety Warning
+              p.text-red-800
+                strong
+                  | BE CAREFUL, DO NOT DO ANY OF THIS WITH ANYTHING PLUGGED IN AND DO NOT REMOVE THE DARWINTRAY
           
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Relay Configuration
-          p.text-gray-700.mb-4
-            | Configure your relay outputs according to your device requirements. The web interface makes this process straightforward.
+          h3.text-2xl.font-semibold.text-gray-900.mb-3 4. xLights Setup
           
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Timing and Safety
-          p.text-gray-700.mb-4
-            | Set up timing parameters and safety settings for your specific application requirements.
-          
-          .bg-red-50.border-l-4.border-red-400.p-4.mb-8
-            h4.text-lg.font-semibold.text-red-800.mb-2 Safety Warnings
-            ul.text-red-700.space-y-1
-              li • High voltage can be dangerous - always follow safety guidelines
-              li • Ensure proper grounding for all connections
-              li • Use appropriate wire gauges for your current requirements
-              li • Test connections before powering on
-              li • Consider using a qualified electrician for complex installations
-          
-          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
-            h4.text-lg.font-semibold.text-yellow-800.mb-2 Important Notes
-            ul.text-yellow-700.space-y-1
-              li • Check relay ratings for your specific application
-              li • Ensure proper ventilation for heat dissipation
-              li • Use quality cables and connectors
-              li • Test each relay individually before running sequences
-              li • Consider environmental factors for outdoor installations
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Next Steps
-          p.text-gray-700.mb-6
-            | Once your BaldrickSwitchy is configured, you can:
-          
-          ul.space-y-2.text-gray-700.mb-8
-            li • Explore the web interface features
-            li • Configure your relay sequences
-            li • Set up network synchronization
-            li • Integrate with your control software
-            li • Test your relay outputs
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 xLights Setup
+            
+            h5.text-md.font-semibold.text-gray-900.mb-3 Automatic Detection
+            
+            p.text-gray-700.mb-4
+              | You can connect directly with xLights, look for BaldrickSwitchy under ILightThat.
+            
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/xlights-settings.png", class: "w-full rounded mb-4", alt: "xLights Download and Push"
+            
+            p.text-gray-700.mb-4
+              | From here you can push your model settings directly to the controller and output to lights nice and easily!
+            
+            h5.text-md.font-semibold.text-gray-900.mb-3 Manual Addition
+            
+            p.text-gray-700.mb-4
+              | You can either:
+            
+            ul.list-disc.list-inside.text-gray-700.mb-4
+              li Click 
+                strong
+                  | Discover
+                |  and xLights will automagically find the BaldrickSwitchy.
+              li Add the board manually by selecting 
+                em
+                  | ILightThat
+                |  as a vendor and 
+                em
+                  | BaldrickSwitchy
+                |  as the Model. You will then need to put the IP Address in manually
+            
+            h5.text-md.font-semibold.text-gray-900.mb-3 xLights Visualizer
+            
+            p.text-gray-700.mb-4
+              | The BaldrickSwitchy will have four ports in xLights, surprisingly each one correlates to a relay on the board.
+            
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/xlights-visualiser.png", class: "w-full rounded mb-4", alt: "xLights Visualizer"
+            
+            h5.text-md.font-semibold.text-gray-900.mb-3 Layout Settings
+            
+            p.text-gray-700.mb-4
+              | There are two simple ways to add a device to xLights in the layout, you can either add it as a single pixel or a single channel DMX Prop (we recommend DMX over Pixel to avoid confusion later on).
+            
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/xlights-layout.png", class: "w-full rounded mb-4", alt: "xLights Layout"
+            
+            h5.text-md.font-semibold.text-gray-900.mb-3 Sequencing BaldrickSwitchy
+            
+            p.text-gray-700.mb-4
+              | Sequencing BaldrickSwitchy couldn't be easier, you just turn it on! Oh sure there are fancy things you can do by having it on and off in sequence but at the very basic level, turn it on then 
+              = link_to "turn it off", "https://www.youtube.com/watch?v=5KSBEChzpMM", class: "text-blue-600 hover:text-blue-800 underline", target: "_blank"
+              | .
+            
+            .bg-gray-50.rounded-lg.p-4
+              = image_tag "baldrickswitchy/xlights-sequencing.png", class: "w-full rounded mb-4", alt: "xLights Sequencing"
           
           .bg-blue-50.border.border-blue-200.rounded-lg.p-6
             h4.text-xl.font-semibold.text-blue-900.mb-3 Need Help?

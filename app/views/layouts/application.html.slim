@@ -46,7 +46,7 @@ html
                     a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/boards/relay-controllers" Relay Controllers
                     a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/boards/interactive-controllers" Interactive Controllers
                     a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/boards/portable-controllers" Portable Controllers
-                    a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/boards/power-distribution" Power Distribution
+                    / a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/boards/power-distribution" Power Distribution
                     a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/boards/dmx-controllers" DMX Controllers
               
               / Baldrick Breakthroughs Dropdown
@@ -120,7 +120,7 @@ html
             a.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-6.pr-4.py-2.border-l-4.text-sm.font-medium href="/boards/relay-controllers" Relay Controllers
             a.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-6.pr-4.py-2.border-l-4.text-sm.font-medium href="/boards/interactive-controllers" Interactive Controllers
             a.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-6.pr-4.py-2.border-l-4.text-sm.font-medium href="/boards/portable-controllers" Portable Controllers
-            a.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-6.pr-4.py-2.border-l-4.text-sm.font-medium href="/boards/power-distribution" Power Distribution
+            / a.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-6.pr-4.py-2.border-l-4.text-sm.font-medium href="/boards/power-distribution" Power Distribution
             a.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-6.pr-4.py-2.border-l-4.text-sm.font-medium href="/boards/dmx-controllers" DMX Controllers
 
           / Baldrick Breakthroughs Dropdown
@@ -172,5 +172,11 @@ html
     
     / Seasonal Theme Effects Container
     div.fixed.inset-0.pointer-events-none.z-50 data-seasonal-themes-target="effects"
+    
+    / Back to Top Button
+    div.fixed.bottom-8.right-8.z-40 data-controller="back-to-top"
+      button.back-to-top-button.bg-indigo-600.text-white.p-3.rounded-full.shadow-lg.hover:bg-indigo-700.transition-all.duration-300.opacity-0.pointer-events-none.transform.scale-90.hover:scale-110 data-back-to-top-target="button" data-action="click->back-to-top#scrollToTop" title="Back to top"
+        svg.w-6.h-6 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"
     
     script

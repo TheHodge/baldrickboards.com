@@ -4,9 +4,13 @@ module BoardsHelper
     base_items = [
       { title: 'Overview', path: "/boards/#{board_name}" },
       { title: 'Tech Specs', path: "/boards/#{board_name}/tech-specs" },
-      { title: 'Getting Started', path: "/boards/#{board_name}/getting-started" },
-      { title: 'Web Interface', path: "/boards/#{board_name}/web-interface" }
+      { title: 'Getting Started', path: "/boards/#{board_name}/getting-started" }
     ]
+    
+    # Add Web Interface for all boards except BaldrickBadge
+    unless board_name == 'baldrickbadge'
+      base_items << { title: 'Web Interface', path: "/boards/#{board_name}/web-interface" }
+    end
     
     # Add board-specific custom menu items between Web Interface and FAQ
     custom_items = board_specific_menu_items(board_name)

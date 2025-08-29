@@ -1,4 +1,4 @@
-- content_for :title, "BaldrickSwitchy Web Interface - Baldrick Board Documentation"
+- content_for :title, "Web Interface - BaldrickSwitchy - Baldrick Board Documentation"
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'BaldrickSwitchy', menu_items: board_menu_items('baldrickswitchy')
@@ -10,196 +10,213 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'BaldrickSwitchy Web Interface', subtitle: 'Configuration and Control Guide', image_url: '/img/baldrickswitchy.png'
+    = render 'shared/page_header', title: 'BaldrickSwitchy Web Interface', subtitle: 'Complete configuration and control guide'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / Web Interface Guide for BaldrickSwitchy
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Web Interface Guide
+          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickSwitchy Web Interface
 
-          p.text-lg.text-gray-600.mb-8
-            | The BaldrickSwitchy web interface provides comprehensive control and configuration options for your high-power relay controller. 
-            | This guide will help you navigate and use all the features effectively and safely.
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Accessing the Web Interface
+          p.text-lg.text-gray-700.mb-6
+            | The web interface has been designed to be as simple as possible
 
           .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-blue-900.mb-2 Quick Access
-            ol.text-blue-800.space-y-1
-              li 1. Ensure your BaldrickSwitchy is powered on and connected to your network
-              li 2. Find the IP address (check your router's DHCP client list)
-              li 3. Open your web browser and navigate to the IP address
-              li 4. The web interface will load automatically
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Access: 
+                  | When you first power on your BaldrickSwitchy, it creates a WiFi access point named "BaldrickSwitchy-XXXX". Connect to this network (no password required) and navigate to 
+                  code.bg-blue-100.text-blue-800.px-2.py-1.rounded
+                    | 192.168.4.1
+                  |  in your web browser.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Main Dashboard
+          / Stats Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Stats Dashboard
 
-          p.text-gray-700.mb-4
-            | The main dashboard provides an overview of your BaldrickSwitchy's status and quick access to key functions.
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 System Information
 
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Status Overview
-              ul.text-gray-700.space-y-1
-                li • Power status and voltage monitoring
-                li • Network connection status
-                li • Relay status indicators
-                li • Temperature and system health
-                li • Safety system status
-                li • Active protocols and connections
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/web-interface-stats.png", class: "w-full rounded mb-4", alt: "BaldrickSwitchy Web Interface Stats"
 
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Quick Actions
-              ul.text-gray-700.space-y-1
-                li • Test individual relays
-                li • Emergency stop functionality
-                li • Start/stop sequences
-                li • System reboot options
-                li • Configuration backup/restore
-                li • Safety system reset
+            p.text-gray-700.mb-4
+              | The Stats board gives you a heads up as to what's going on with your controller.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Relay Configuration
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Uptime
+                p.text-sm.text-gray-700
+                  | Tells you how long your controller has been powered on 
+                  em 
+                    | (this is useful in June to remind you that you forgot to turn it off over christmas)
 
-          p.text-gray-700.mb-4
-            | Configure each relay independently for your specific application requirements.
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Frame Rate
+                p.text-sm.text-gray-700
+                  | This lets you know what FPS (Frames Per Second) the controller is currently outputting 
+                  em
+                    | (Why would I need this for a relay board you may ask, and we will let you keep guessing)
 
-          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-yellow-900.mb-2 Relay Settings
-            ul.text-yellow-800.space-y-1
-              li • Relay type and configuration
-              li • Voltage and current ratings
-              li • Switching timing parameters
-              li • Safety interlocks and protection
-              li • Individual relay testing
-              li • Status monitoring setup
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Network Throughput
+                p.text-sm.text-gray-700
+                  | Like the FPS, this gives you an indication of the volume of network traffic passing through the controller, this should help with debugging.
 
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Configuration Steps
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Temperature
+                p.text-sm.text-gray-700
+                  | With a sensor next to the Ethernet connector, this gives you an indication of the board temperature 
+                  em
+                    | (in Celsius because water freezes at 0, not 32.. how does that make sense?)
+                  br
+                  br
+                  | Generally, PCBs and components are good for -40 to +85°C. Anything below 60°C on this board is fine and nothing to worry about. If the temp is above that, try blowing on it like you would a hot chip out of the oven.
 
-          ol.space-y-4.text-gray-700.mb-8
-            li
-              strong.text-gray-900 1. Access Relay Settings
-              p.mt-1 Navigate to the Relay Configuration section in the web interface.
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Firmware Version
+                p.text-sm.text-gray-700
+                  | Let's you know what version firmware your BaldrickSwitchy is currently running.
+                  br
+                  br
+                  em
+                    | (clicking the new version will upgrade it in place then restart the controller)
 
-            li
-              strong.text-gray-900 2. Select Relay
-              p.mt-1 Choose the relay you want to configure.
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+                p.text-sm.text-gray-700
+                  | Tells you the current IP address of the Baldrick Switchy.
 
-            li
-              strong.text-gray-900 3. Set Parameters
-              p.mt-1 Configure voltage, current, timing, and safety parameters.
+          / Test Mode Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Test Mode
 
-            li
-              strong.text-gray-900 4. Test Configuration
-              p.mt-1 Use the test function to verify your settings work correctly.
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Quick Testing & Troubleshooting
 
-            li
-              strong.text-gray-900 5. Save Settings
-              p.mt-1 Save your configuration and repeat for other relays.
+            p.text-gray-700.mb-4
+              | Test mode is one of the most important features of the Baldrick Board. If it's two hours before switch on and something is going wrong, YOU NEED CLEAR INFORMATION QUICKLY.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Safety Configuration
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/web-interface-test.png", class: "w-full rounded mb-4", alt: "BaldrickSwitchy Web Interface Test"
 
-          p.text-gray-700.mb-4
-            | Configure safety features and protection systems for reliable operation.
+            h5.text-md.font-semibold.text-gray-900.mb-3 Presets
 
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Protection Settings
-              ul.text-gray-700.space-y-1
-                li • Overcurrent protection limits
-                li • Overvoltage protection settings
-                li • Thermal protection thresholds
-                li • Emergency stop configuration
-                li • Fault detection parameters
-                li • Safety interlock setup
+            p.text-gray-700.mb-4
+              | At the moment we only have one preset, 
+              strong
+                | Alternate Relay
+              |  which alternates between on and off every second, but you can see we've made that Presets box into a dropdown as we know we'll think of some later.
 
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Monitoring
-              ul.text-gray-700.space-y-1
-                li • Real-time current monitoring
-                li • Voltage level monitoring
-                li • Temperature monitoring
-                li • Relay status monitoring
-                li • Fault logging and alerts
-                li • Performance metrics
+            h5.text-md.font-semibold.text-gray-900.mb-3 Apply to
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Network Configuration
+            p.text-gray-700.mb-4
+              | Select your port (or all ports) you'd like the effect applied to.
 
-          p.text-gray-700.mb-4
-            | Configure network settings for optimal performance and integration.
+          / Relay Configuration Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Relay Configuration
 
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 IP Configuration
-              ul.text-gray-700.space-y-1
-                li • DHCP (automatic) or Static IP
-                li • Subnet mask and gateway
-                li • DNS server settings
-                li • Network interface status
-                li • Connection speed and duplex
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Manual Relay Setup
 
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Protocol Settings
-              ul.text-gray-700.space-y-1
-                li • E1.31 (sACN) configuration
-                li • Art-Net universe settings
-                li • DDP protocol options
-                li • Multicast vs Unicast
-                li • Port configuration
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/web-interface-relay.png", class: "w-full rounded mb-4", alt: "BaldrickSwitchy Web Interface Relay"
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Advanced Features
+            p.text-gray-700.mb-4
+              | Whilst we expect much of the configuration to be pushed from xLights, you can directly add your devices to the BaldrickSwitchy from this section.
 
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Timing and Synchronization
-          p.text-gray-700.mb-4
-            | Configure precise timing parameters for synchronized operations.
+            p.text-gray-700
+              | It's a simple interface with only a name and a trigger threshold.
 
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Control rate settings (up to 60 FPS)
-            li Timing precision adjustments
-            li Synchronization with other controllers
-            li Latency optimization
-            li Buffer management
+          / Networking Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Networking Configuration
 
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Power Management
-          p.text-gray-700.mb-4
-            | Monitor and manage power consumption across all relays.
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Good Defaults, Easy Config
 
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Real-time power monitoring
-            li Current draw per relay
-            li Power limiting and protection
-            li Efficiency optimization
-            li Thermal monitoring
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/web-interface-network.png", class: "w-full rounded mb-4", alt: "BaldrickSwitchy Web Interface Networking"
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Troubleshooting
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Hostname
+                p.text-sm.text-gray-700
+                  | The default hostname is baldrickswitchy (hence baldrickswitchy.local). If you have one BaldrickSwitchy then it's completely fine to keep this as it is, however if like us you want to collect a few of them, then we'd recommend you change this to something like 
+                  em
+                    | frontgarden
+                  | or 
+                  em
+                    | upstairsroof
+                  br
+                  br
+                  strong
+                    | (Just a reminder that hostnames should be lowercase without spaces)
 
-          .bg-red-50.border-l-4.border-red-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-red-900.mb-2 Common Issues
-            ul.text-red-800.space-y-1
-              li • Web interface not loading - check network connection
-              li • Relays not responding - verify configuration and power
-              li • Safety system activation - check protection settings
-              li • Network connectivity - verify IP settings
-              li • Power issues - monitor voltage and current
-              li • Thermal shutdown - check ventilation and cooling
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DHCP / STATIC
+                p.text-sm.text-gray-700
+                  | The default option is DHCP (which is Dynamic Host Configuration Protocol but you don't need to know that) which basically means your router or computer gives the board an I.P. address. This is great for initial setup but when you want to run a show it's best to switch it to STATIC, that's where your controller tells the router / computer "This is my IP".
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Safety Reminders
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+                p.text-sm.text-gray-700
+                  | Set this to the IP address that you want the controller to be fixed to.
 
-          .bg-orange-50.border-l-4.border-orange-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-orange-900.mb-2 Important Safety Notes
-            ul.text-orange-800.space-y-1
-              li • High-voltage work should be performed by qualified personnel
-              li • Always disconnect power before making connections
-              li • Ensure proper grounding for all installations
-              li • Follow local electrical codes and regulations
-              li • Test all safety systems before operation
-              li • Monitor system status during operation
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Subnet Mask & Gateway
+                p.text-sm.text-gray-700
+                  | It is more than likely that you can copy the Subnet Mask (the size of your network) and the Default Gateway (the exit point of your network) from the output of an IPconfig check.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Support and Resources
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DNS Server
+                p.text-sm.text-gray-700
+                  | DNS wise, typically, your default gateway is your router IP, and that more often than not, can provide your network with DNS. However, some people like to use "outside 3rd parties" DNS like google or cloudflares DNS. If you don't know about this, its probably best just to stick to DHCP.
 
-          p.text-gray-700.mb-6
-            | For additional help with the web interface, check our resources or contact support.
+          / Turnip Network Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 The Turnip Network
 
-          .flex.flex-col.sm:flex-row.gap-4
-            = link_to 'FAQ', '/boards/baldrickswitchy/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Network Discovery
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/web-interface-friends.png", class: "w-full rounded mb-4", alt: "BaldrickSwitchy Web Interface Friends"
+
+            p.text-gray-700.mb-4
+              | The Baldrick Boards will keep an eye out on the network for other Baldricks and let you know how they are doing (this is helpful as we don't put an LCD screen on the board).
+
+            p.text-gray-700
+              | You can directly jump to their control panel from this interface and when they appear in this list, more board functionality will become available.
+
+          / Data Settings Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Data Settings
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Protocol Configuration
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickswitchy/web-interface-data-settings.png", class: "w-full rounded mb-4", alt: "BaldrickSwitchy Web Interface Data Settings"
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DDP Start Channel
+                p.text-sm.text-gray-700
+                  | Configure the starting channel for DDP (Distributed Display Protocol) communication.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 sACN/ArtNet Start Universe
+                p.text-sm.text-gray-700
+                  | Set the starting universe for sACN (Streaming ACN) and ArtNet protocols.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 sACN/ArtNet Channels Per Universe
+                p.text-sm.text-gray-700
+                  | Configure how many channels are used per universe for sACN and ArtNet protocols.
+
+          / Navigation Links
+          .flex.flex-col.sm:flex-row.gap-4.mt-8
+            = link_to 'Getting Started Guide', '/boards/baldrickswitchy/getting-started', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
             = link_to 'Technical Specifications', '/boards/baldrickswitchy/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'Contact Support', '/support', class: 'bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'FAQ', '/boards/baldrickswitchy/faq', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'

@@ -1,4 +1,4 @@
-- content_for :title, "BaldrickDMX Getting Started - Baldrick Board Documentation"
+- content_for :title, "Getting Started - BaldrickDMX - Baldrick Board Documentation"
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'BaldrickDMX', menu_items: board_menu_items('baldrickdmx')
@@ -10,82 +10,150 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'Getting Started with BaldrickDMX', subtitle: 'Setup and Configuration Guide', image_url: '/img/baldrickdmx.png'
+    = render 'shared/page_header', title: 'Getting Started with BaldrickDMX', subtitle: 'Complete setup guide from power to DMX'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / Getting Started Guide for BaldrickDMX
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickDMX
-          
-          p.text-lg.text-gray-600.mb-8
-            | Welcome to the BaldrickDMX! This guide will help you get your professional DMX controller up and running quickly.
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 What's in the Box
-          ul.space-y-2.text-gray-700.mb-8
-            li • BaldrickDMX controller board
-            li • Power supply (if included)
-            li • Mounting hardware
-            li • Quick start guide
-            li • Network cable (if included)
-            li • DMX output cables (if included)
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Quick Setup Steps
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 1. Power Connection
-          p.text-gray-700.mb-4
-            | Connect your power supply to the BaldrickDMX. The board requires a stable power supply for reliable DMX output.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 2. Network Connection
-          p.text-gray-700.mb-4
-            | Connect an Ethernet cable to the network port. The BaldrickDMX will automatically obtain an IP address via DHCP.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 3. DMX Connections
-          p.text-gray-700.mb-4
-            | Connect your DMX fixtures to the output ports. Use proper DMX cables and ensure correct termination for reliable signal transmission.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 4. Web Interface Access
-          p.text-gray-700.mb-4
-            | Open your web browser and navigate to the BaldrickDMX's IP address. You can find this in your router's DHCP client list.
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Configuration
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Network Settings
-          p.text-gray-700.mb-4
-            | The BaldrickDMX supports both DHCP and static IP configuration. For production installations, we recommend using static IP addresses.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 DMX Universe Configuration
-          p.text-gray-700.mb-4
-            | Configure your DMX universes and channels according to your fixture requirements. The web interface makes this process straightforward.
-          
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Timing and Synchronization
-          p.text-gray-700.mb-4
-            | Set up timing parameters and synchronization settings for your specific application requirements.
-          
-          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
-            h4.text-lg.font-semibold.text-yellow-800.mb-2 Important Notes
-            ul.text-yellow-700.space-y-1
-              li • Use proper DMX cables for reliable signal transmission
-              li • Ensure correct termination for long DMX runs
-              li • Check fixture addresses and channel assignments
-              li • Test each fixture individually before running shows
-              li • Consider environmental factors for outdoor installations
-          
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Next Steps
-          p.text-gray-700.mb-6
-            | Once your BaldrickDMX is configured, you can:
-          
-          ul.space-y-2.text-gray-700.mb-8
-            li • Explore the web interface features
-            li • Configure your lighting sequences
-            li • Set up network synchronization
-            li • Integrate with your lighting software
-            li • Test your DMX fixtures
-          
-          .bg-blue-50.border.border-blue-200.rounded-lg.p-6
-            h4.text-xl.font-semibold.text-blue-900.mb-3 Need Help?
-            p.text-blue-800.mb-4
-              | If you encounter any issues during setup, check our FAQ or contact support.
-            .flex.flex-col.sm:flex-row.gap-4
-              = link_to 'FAQ', '/boards/baldrickdmx/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-              = link_to 'Web Interface Guide', '/boards/baldrickdmx/web-interface', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickDMX
+
+          p.text-lg.text-gray-700.mb-6
+            | You've just got your board through the post and you are really excited about getting started! WE KNOW, We've been there. These easy to follow steps will get you started in minutes!
+
+          .bg-red-50.border-l-4.border-red-400.p-4.mb-8
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-red-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-red-700
+                  strong Safety First: 
+                  | Always ensure your power supply is disconnected before making any connections. 
+                  | Double-check all wiring before powering on.
+
+          / Step 1: Power Connection
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 1: Plugging in Your Controller
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Always Use a Power Supply
+
+            .bg-red-50.border-l-4.border-red-400.p-4.mb-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-red-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-red-700
+                    strong WARNING: 
+                    | Never, ever EVER EVER plug your controller directly into the wall outlet, it will go bang and you'll have to buy another one and explain to your partner what that burn mark on the kitchen table is.
+
+            p.text-gray-700.mb-4
+              | The BaldrickDMX has a barrel jack connection and a 2 port phoenix connector, these can handle voltage from 5v to 24v, which should make it easier to match whatever you are plugging in.
+
+            p.text-gray-700.mb-4
+              | For technical users - barrel connector (centre positive) and we use 5.5x2.1mm barrel jacks.
+
+            p.text-gray-700.mb-4
+              | Please remember you are just powering the board not the devices so we don't need a tonne of amps.
+
+            p.text-gray-700.mb-4
+              | You'll notice that a British plug has three wires and our power jacks inputs only have two - that's because you need to put a power supply in between them.
+
+            p.text-gray-700
+              | We recommend the use of a 
+              = link_to "variable power supply", "https://amzn.to/4c24ApH", class: "text-blue-600 hover:text-blue-800 underline", target: "_blank"
+              | .
+
+          / Step 2: Firmware Installation
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 2: Installing the Firmware
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Initial Firmware Setup
+
+            p.text-gray-700.mb-4
+              | When your controller arrives it will be in a 'sleeping state' - you just need to plug it into your network and head to 
+              = link_to "http://baldrickdmx.local", "http://baldrickdmx.local", class: "text-blue-600 hover:text-blue-800 underline", target: "_blank"
+              |  (if your DNS doesn't accept that then just look for it on your network).
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickdmx/first-firmware.png", class: "w-full rounded mb-4", alt: "First Firmware Screen"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 How to Install
+
+            p.text-gray-700.mb-4
+              | To put it simply, press the button that says 
+              em "Lets Go" 
+              | then go and have a brew, the controller will connect to our server, download the latest firmware and automatically install it, once it's done the page will refresh and you can start connecting fixtures.
+
+            .bg-blue-50.border-l-4.border-blue-400.p-4.mb-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-blue-700
+                    strong Tip: 
+                    | You must plug the board directly into your network for the initial firmware download (or make sure your computer can give it an IP address and internet access).
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 How Do I Update After That?
+
+            p.text-gray-700
+              | When you go to the Web interface and look at the stats section, you'll see the version number, if there is a new version, you can click that and it will automatically update in a similar interface to how this initial install works.
+
+          / Step 3: Connecting Fixtures
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 3: Connecting Fixtures
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 It's Time to Connect the Fixtures
+
+            p.text-gray-700.mb-4
+              | It's time to connect the fixture, choose a port:
+
+            ul.list-disc.list-inside.space-y-2.text-gray-700.mb-4
+              li RJ45
+              li 3 PIN XLR
+              li 5 PIN XLR
+
+            p.text-gray-700.mb-4
+              | Then take your cable and plug it in. 
+              em
+                | Please don't make me have to record a video on how to do this.
+
+            p.text-gray-700
+              | They all do the same thing so don't get too excited.
+
+          / Step 4: xLights Connection
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Step 4: xLights Connection
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Connecting with xLights
+
+            p.text-gray-700.mb-4
+              | You can connect directly with xLights, look for BaldrickDMX under ilightthat.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickdmx/xlights-settings.png", class: "w-full rounded mb-4", alt: "xLights Download and Push"
+
+            p.text-gray-700.mb-4
+              | From here you can push your model settings directly to the controller and output to lights nice and easily!
+
+            p.text-gray-700.mb-4
+              | You can either:
+
+            ul.list-disc.list-inside.space-y-2.text-gray-700
+              li Click 
+                strong Discover 
+                | and xLights will automagically find the BaldrickDMX.
+              li Add the board manually by selecting 
+                em ILightThat 
+                | as a vendor and 
+                em BaldrickDMX 
+                | as the Model. You will then need to put the IP Address in manually.
+
+          / Navigation Links
+          .flex.flex-col.sm:flex-row.gap-4.mt-8
+            = link_to 'Web Interface Guide', board_page_path('baldrickdmx', 'web-interface'), class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'Technical Specifications', board_page_path('baldrickdmx', 'tech-specs'), class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'FAQ', board_page_path('baldrickdmx', 'faq'), class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'

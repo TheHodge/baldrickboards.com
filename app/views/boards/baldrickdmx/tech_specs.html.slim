@@ -48,10 +48,17 @@
               li
                 strong DMX Termination switch - 
                 | DMX cables need to have their ends properly terminated to prevent any issues with the signal. Sometimes, the cable plugs have this built-in, but if they don't, this switch lets you do it right there. 
-                em On some boards this switch may be hard to shift due to the coating process, a quick push with a flat head screwdriver should move it easily, we've learned from this and will be revising this button placement in the next revision.
+                br
+                em.text-sm.text-gray-600 
+                  | (On some boards this switch may be hard to shift due to the coating process, a quick push with a flat head screwdriver should move it easily, we've learned from this and will be revising this button placement in the next revision.)
               li
                 strong Button - 
-                | Use this to factory reset the board if you break it (press and hold on boot for 5 seconds).
+                | The BaldrickDMX comes with a button on the board for factory reset functionality. 
+                p.mt-1 This button is in case you break the board and need to reset it to factory settings. 
+                p.mt-1 
+                  | When held for 5 seconds 
+                  strong during the board boot process
+                  | , the controller will reset to factory settings, everything will be removed including the latest firmware and it will be in the 'shipping state' where you click to update to the latest firmware.
 
             .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6.mt-4
               .flex
