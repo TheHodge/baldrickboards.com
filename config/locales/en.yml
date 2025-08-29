@@ -29,3 +29,122 @@
 
 en:
   hello: "Hello world"
+  
+  boards:
+    baldrick8:
+      name: "Baldrick8"
+      subtitle: "8 Outputs"
+      description: "An 8 port controller which pushes the boundaries of what's possible with a budget lighting controller."
+      overview:
+        description: "The Baldrick8 is our flagship 8-output pixel controller, designed for professional lighting displays and large-scale installations. With support for up to 750 pixels per port at 40fps and high refresh rates, it's perfect for creating stunning visual effects."
+        features:
+          - "2 ports accepting 5v - 24v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS)"
+          - "8 Ports handling many pixels per port (but 750 pixels per port at 40fps)"
+          - "2 Power inputs (which combined with the included 7.5 amp fuses allows for full pixel runs at 100%)"
+          - "DDP, Artnet, E1.31 & sACN compatible"
+          - "3 Programmable Button ports (Can use the FPP API to start / stop a sequence)"
+          - "Small footprint compatible with other smart receiver mounts"
+          - "No Pi or FPP Licence required"
+          - "Push from xLights integration"
+        additional_info: "In addition, we've tried to add some simple quality of life improvements such as a QR code which links directly to the manual (easy to read on a mobile in the dark) and the three buttons have not only ports but physical buttons onboard to help you test without having to hook everything up."
+    
+    baldrick17:
+      name: "Baldrick17"
+      subtitle: "17 Outputs"
+      description: "With 17 ports at your disposal, you'll be wondering how you ever coped with less. Ideal for big shows, bold ideas, and people who just really like plugging things in."
+      overview:
+        description: "The Baldrick17 is our newest pixel controller to join the Baldrick Family, designed for professional lighting displays and large-scale installations. With support for up to 750 pixels per port at 40fps and high refresh rates, it's perfect for creating stunning visual effects."
+        features:
+          - "5 ports accepting 5v - 48v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS)"
+          - "Power ports are banked (4 + 4 + 4 + 4 + 1)"
+          - "17 Ports handling up to 750 pixels per port at 40fps"
+          - "17 fused connectors which combined with the included 7.5 amp fuses allows for full pixel runs at 100%"
+          - "DDP, Artnet, E1.31 & sACN compatible"
+          - "3 Programmable Turniputs ports (Can use the FPP API to start / stop a sequence and full lamp control)"
+          - "No Pi or FPP Licence required"
+          - "Push from xLights integration"
+        additional_info: "In addition, we've tried to add some simple quality of life improvements such as a QR code which links directly to the manual (easy to read on a mobile in the dark) and the three buttons have not only ports but physical buttons onboard to help you test without having to hook everything up."
+    
+    baldrickswitchy:
+      name: "BaldrickSwitchy"
+      subtitle: "Relay Controller"
+      description: "Turns stuff on and off, what more could you want"
+      overview:
+        description: "The BaldrickSwitchy is a high-power relay controller designed for AC device control and traditional lighting. With precise timing control and safety features, it's perfect for controlling motors, lights, and other high-voltage applications."
+        features:
+          - "5v - 24v with onboard power management"
+          - "4 Relays which can handle with up 8amp and 300v (AC/DC) (also compatible with a zero voltage circuit)"
+          - "DDP, Artnet, E1.31 & SACN compatible"
+          - "Small footprint compatible with other Baldrick Boards & smart receiver mounts"
+          - "Push from xLights integration"
+          - "Controllable by the Turnip Network"
+          - "Scannable QR code direct to the docs"
+    
+    baldrickdmx:
+      name: "BaldrickDMX"
+      subtitle: "DMX Controller"
+      description: "The easiest way to bring DMX to xLights"
+      overview:
+        description: "The BaldrickDMX is the perfect controller for adding DMX to your show."
+        features:
+          - "5v - 24v barrel or 2 pin connector with onboard power management (to avoid any BOOM BOOM BOOM BOOMS)"
+          - "Single output on 3 ports (RJ45, 3 Pin Neutrik XLR, 5 Pin Neutrik XLR)"
+          - "DDP, Artnet, E1.31 & sACN compatible"
+          - "Button / Turnip activated presets"
+          - "Small footprint compatible with other smart receiver mounts and Baldrick Boards"
+          - "Push from xLights integration"
+    
+    baldrickinput1:
+      name: "BaldrickInput1"
+      subtitle: "Single Input"
+      description: "Add advanced interactivity to your show with without any code or soldering!"
+      overview:
+        description: "The BaldrickInput1 is our way of making interactivity to a lightshow as easy as point and click rather than code and solder!"
+        features:
+          - "Powerjack accepting 5v - 24v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS)"
+          - "1 Turniput allowing full access to the Turnip Network controls and button lamp configuration"
+          - "Small footprint for easy placement inside a project box"
+          - "Works over ethernet or Wifi (with antenna)"
+          - "Turniput allows effects via a button, motion sensor, reed switch, beam break or other input device"
+    
+    baldrickinput8:
+      name: "BaldrickInput8"
+      subtitle: "8 Inputs/8 Outputs"
+      description: "8 Buttons, 2 Pixel outputs and a lot of ideas!"
+      overview:
+        description: "The BaldrickInput8 expands on the BaldrickInput1's simple way of adding interactivity to your show, with 8 Turniputs and 2 pixel outputs, this board is perfect for a Selfie station or light tunnel!"
+        features:
+          - "Powerjack accepting 5v - 48v with onboard power management"
+          - "8 Turniputs allowing full access to the Turnip Network controls and button lamp configuration"
+          - "2 Pixel outputs with 750 pixels per port at 40fps"
+          - "Baldrick Medium dimensions so reuse your mounts and prints from other boards"
+          - "Dual ethernet for daisy chaining"
+          - "Turniput allows effects via a button, motion sensor, reed switch, beam break or other input device"
+    
+    baldrickbadge:
+      name: "BaldrickBadge"
+      subtitle: "Badge Style"
+      description: "We've may have gone a little overboard for the ELF Mini this year."
+      overview:
+        description: "The BaldrickBadge is our contribution to the ELF Mini, this namebadge comes preloaded with 95 Programmable LEDS, a 3 port phoenix connector, WLED and 2 onboard buttons powered by USB C."
+        features:
+          - "95 Programmable LEDS preloaded"
+          - "3 port phoenix connector"
+          - "WLED firmware"
+          - "2 onboard buttons"
+          - "USB C powered"
+          - "Expandable to a 4 port WLED controller"
+          - "2 port power input capability"
+        additional_info: "It's also expandable to a 4 port WLED controller with a 2 port power input."
+    
+    baldricksignals:
+      name: "BaldrickSignals"
+      subtitle: "Signal Controller"
+      description: "Not the most useful board we've created but it sure is fun!"
+      overview:
+        description: "The BaldrickSignals is the easy to use board to monitor your display popularity, using outputting device signals (and a configurable modifier) you can estimate your crowd numbers & see your popular times to plan accordingly."
+        features:
+          - "Barrel Powerjack accepting 5v - 24v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS)"
+          - "Small footprint for easy placement inside a project box"
+          - "Turnip Network Integration to allow actions based on crowd sizes (e.g adjusting volume or highlighting donation areas) Coming Soon"
+          - "Simple UI with CSV download and Google docs integration"

@@ -1,4 +1,4 @@
-- content_for :title, "BaldrickInput1 FAQ - Baldrick Board Documentation"
+- content_for :title, "FAQ - BaldrickInput1 - Baldrick Board Documentation"
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'BaldrickInput1', menu_items: board_menu_items('baldrickinput1')
@@ -10,160 +10,29 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'BaldrickInput1 FAQ', subtitle: 'Frequently Asked Questions', image_url: 'baldrickinput1/board.png'
+    = render 'shared/page_header', title: 'Frequently Asked Questions', subtitle: 'Common questions about BaldrickInput1', image_url: 'baldrickinput1/board.png'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / FAQ for BaldrickInput1
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Frequently Asked Questions
+          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickInput1 FAQ
+
+          p.text-lg.text-gray-700.mb-6
+            | Find answers to the most commonly asked questions about the BaldrickInput1 controller.
 
           .space-y-8
-            / General Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 General Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What is the BaldrickInput1?
-                  p.text-gray-700
-                    | The BaldrickInput1 is a single-input controller perfect for simple interactive displays and basic triggers. 
-                    | It's designed for beginners and simple automation projects with easy setup and configuration.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How many inputs does it have?
-                  p.text-gray-700
-                    | The BaldrickInput1 has exactly one input port, making it perfect for simple applications like button triggers, 
-                    | switches, or single sensors.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What can I control with it?
-                  p.text-gray-700
-                    | You can control pixel lighting, send network messages, trigger sequences, or activate other systems 
-                    | when your input is triggered.
-
-            / Technical Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Technical Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What power supply do I need?
-                  p.text-gray-700
-                    | The BaldrickInput1 requires a 12V DC power supply. The exact current requirement depends on your configuration, 
-                    | but it's designed for low power consumption.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I connect to the network?
-                  p.text-gray-700
-                    | Connect an Ethernet cable to the network port. The BaldrickInput1 will automatically obtain an IP address via DHCP, 
-                    | or you can configure a static IP address through the web interface.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What input types are supported?
-                  p.text-gray-700
-                    | The BaldrickInput1 supports buttons, switches, motion sensors, touch sensors, proximity sensors, 
-                    | and other 3.3V/5V compatible input devices.
-
-            / Input Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Input Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What voltage does the input support?
-                  p.text-gray-700
-                    | The input supports both 3.3V and 5V logic levels, making it compatible with most common input devices 
-                    | and sensors.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How fast does it respond to input?
-                  p.text-gray-700
-                    | The BaldrickInput1 responds to input changes in less than 1ms, providing fast and reliable triggering 
-                    | for your applications.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can I configure debouncing?
-                  p.text-gray-700
-                    | Yes, you can configure debouncing settings through the web interface to eliminate noise and ensure 
-                    | reliable input detection.
-
-            / Setup Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Setup Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I find the IP address?
-                  p.text-gray-700
-                    | Check your router's DHCP client list, use network scanning tools, or look for the BaldrickInput1 in your 
-                    | network devices. The web interface will also display the current IP address.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I configure the input?
-                  p.text-gray-700
-                    | Use the web interface to configure your input type, voltage, debouncing, and edge detection settings. 
-                    | The interface is designed to be simple and intuitive.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Do I need to program anything?
-                  p.text-gray-700
-                    | No programming is required! The BaldrickInput1 uses a web-based configuration interface that makes 
-                    | setup simple and straightforward.
-
-            / Troubleshooting
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 My input isn't working, what should I check?
-                  p.text-gray-700
-                    | First, verify your wiring and connections. Check the input configuration in the web interface, 
-                    | ensure proper voltage levels, and test with the built-in input testing tools.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 The output isn't responding to input
-                  p.text-gray-700
-                    | Check your output configuration in the web interface. Verify that the output is properly configured 
-                    | and test the output manually to ensure it's working.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Input is triggering randomly
-                  p.text-gray-700
-                    | This is likely due to input noise. Adjust the debouncing settings in the web interface, 
-                    | check your wiring for interference, and ensure proper grounding.
-
-            / Project Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Project Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What projects can I build with it?
-                  p.text-gray-700
-                    | You can build interactive displays, simple automation systems, educational projects, 
-                    | prototype systems, and basic home automation applications.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Is it good for beginners?
-                  p.text-gray-700
-                    | Absolutely! The BaldrickInput1 is designed specifically for beginners with simple setup, 
-                    | intuitive web interface, and straightforward configuration.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can I expand to more inputs later?
-                  p.text-gray-700
-                    | While the BaldrickInput1 has only one input, you can use multiple units for more complex projects, 
-                    | or upgrade to other Baldrick boards with multiple inputs.
-
-            / Support
-            .bg-blue-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Need More Help?
-              
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Coming Soon
               p.text-gray-700.mb-4
-                | If you can't find the answer to your question here, we're here to help!
-              
-              .flex.flex-col.sm:flex-row.gap-4
-                = link_to 'Contact Support', '/support', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-                = link_to 'Getting Started Guide', '/boards/baldrickinput1/getting-started', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+                | We'll add common questions here as we get asked them. While the BaldrickInput1 has been around for a while, 
+                | we're still collecting the most frequently asked questions from our community.
+              p.text-gray-700
+                | In the meantime, check out our 
+                = link_to "getting started guide", board_page_path('baldrickinput1', 'getting-started'), class: "text-blue-600 hover:text-blue-800 underline"
+                |  and 
+                = link_to "web interface documentation", board_page_path('baldrickinput1', 'web-interface'), class: "text-blue-600 hover:text-blue-800 underline"
+                |  for detailed information about using your BaldrickInput1.
+
+            = render 'boards/shared/faq_ending'

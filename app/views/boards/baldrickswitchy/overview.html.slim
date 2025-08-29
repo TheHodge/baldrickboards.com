@@ -10,54 +10,42 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'BaldrickSwitchy', subtitle: 'Documentation for BaldrickSwitchy', image_url: '/img/baldrickswitchy.png'
+    = render 'shared/page_header', title: 'BaldrickSwitchy', subtitle: 'Documentation for BaldrickSwitchy'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
-        / Board Overview for BaldrickSwitchy - Complete Content
+        / Board Overview for BaldrickSwitchy - Using I18n Data
         .prose.max-w-none
+          - overview_data = board_overview_data('baldrickswitchy')
+          
           h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickSwitchy Overview
 
           .grid.md:grid-cols-2.gap-8.mb-8
             .flex.items-start
-              img.w-full.rounded-lg src="/img/baldrickswitchy.png" alt="BaldrickSwitchy Board Overview"
+              = image_tag "baldrickswitchy/board.png", class: "w-full rounded-lg", alt: "BaldrickSwitchy Board Overview"
             
             .flex.flex-col.justify-start
               p.text-lg.text-gray-700.mb-6
-                | The BaldrickSwitchy is a high-power relay controller designed for AC device control and traditional lighting. 
-                | With precise timing control and safety features, it's perfect for controlling motors, lights, and other high-voltage applications.
+                = overview_data[:description]
 
           h3.text-2xl.font-bold.text-gray-900.mb-4 BaldrickSwitchy Controller Features
 
           ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li High-power relay outputs for AC device control
-            li Precise timing control for synchronized operations
-            li Safety protection features for reliable operation
-            li Web-based configuration for easy setup and management
-            li Real-time status monitoring and diagnostics
-            li Comprehensive web interface for configuration
-            li DDP, Artnet, E1.31 & sACN compatible
-            li High refresh rates for responsive control
-            li Multiple relay outputs for distributed control
-            li Small footprint compatible with standard mounting solutions
+            - overview_data[:features].each do |feature|
+              li = feature
 
-          p.text-gray-700.mb-6
-            | The BaldrickSwitchy represents our commitment to safe and reliable high-power control, designed specifically for 
-            | applications where AC device control and safety are paramount.
+          - if overview_data[:additional_info].present?
+            p.text-gray-700.mb-6
+              = overview_data[:additional_info]
 
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Perfect For
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Video Introduction
 
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li AC lighting control and traditional lighting displays
-            li Motor control applications and automation
-            li Industrial automation and control systems
-            li Safety-critical systems and applications
-            li High-voltage switching and control
-            li Commercial lighting installations
-            li Industrial control applications
-            li Safety-focused automation projects
+          p.text-gray-700.mb-4
+            | Check out our video introduction to see the BaldrickSwitchy in action.
 
-          .bg-green-50.border-l-4.border-green-400.p-4.mb-6
-            p.text-green-800.font-medium
-              | "The BaldrickSwitchy is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+          .bg-gray-100.rounded-lg.p-4.mb-6
+            p.text-sm.text-gray-600.italic
+              | Video: BaldrickSwitchy Overview
+              br
+              em Watch how easy it is to control AC devices with the BaldrickSwitchy

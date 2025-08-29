@@ -10,54 +10,42 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'BaldrickDMX', subtitle: 'Documentation for BaldrickDMX', image_url: '/img/baldrickdmx.png'
+    = render 'shared/page_header', title: 'BaldrickDMX', subtitle: 'Documentation for BaldrickDMX'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
-        / Board Overview for BaldrickDMX - Complete Content
+        / Board Overview for BaldrickDMX - Using I18n Data
         .prose.max-w-none
+          - overview_data = board_overview_data('baldrickdmx')
+          
           h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickDMX Overview
 
           .grid.md:grid-cols-2.gap-8.mb-8
             .flex.items-start
-              img.w-full.rounded-lg src="/img/baldrickdmx.png" alt="BaldrickDMX Board Overview"
+              = image_tag "baldrickdmx/board.png", class: "w-full rounded-lg", alt: "BaldrickDMX Board Overview"
             
             .flex.flex-col.justify-start
               p.text-lg.text-gray-700.mb-6
-                | The BaldrickDMX brings professional DMX512 control to your lighting installations. 
-                | Perfect for stage lighting, moving heads, and theatrical applications with precise timing and industry-standard protocols.
+                = overview_data[:description]
 
           h3.text-2xl.font-bold.text-gray-900.mb-4 BaldrickDMX Controller Features
 
           ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li DMX512 protocol support for industry-standard compatibility
-            li Multiple universe support for complex lighting setups
-            li Professional timing precision for synchronized displays
-            li Web-based configuration for easy setup and management
-            li Real-time control capabilities
-            li Comprehensive web interface for configuration
-            li DDP, Artnet, E1.31 & sACN compatible
-            li High refresh rates for smooth operation
-            li Multiple output ports for distributed control
-            li Small footprint compatible with standard mounting solutions
+            - overview_data[:features].each do |feature|
+              li = feature
 
-          p.text-gray-700.mb-6
-            | The BaldrickDMX represents our commitment to professional lighting control, designed specifically for 
-            | applications where industry-standard protocols and precise timing are essential.
+          - if overview_data[:additional_info].present?
+            p.text-gray-700.mb-6
+              = overview_data[:additional_info]
 
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Perfect For
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Video Introduction
 
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Stage lighting systems and theatrical productions
-            li Moving head fixtures and intelligent lighting
-            li Professional entertainment venues
-            li Architectural lighting installations
-            li Event lighting and production
-            li Commercial lighting applications
-            li Professional event spaces
-            li Entertainment industry applications
+          p.text-gray-700.mb-4
+            | Check out our video introduction to see the BaldrickDMX in action.
 
-          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
-            p.text-yellow-800.font-medium
-              | "The BaldrickDMX is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+          .bg-gray-100.rounded-lg.p-4.mb-6
+            p.text-sm.text-gray-600.italic
+              | Video: BaldrickDMX Overview
+              br
+              em Watch how easy it is to add DMX to your xLights show

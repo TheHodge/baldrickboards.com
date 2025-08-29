@@ -9,3 +9,7 @@
     / Overlapping Image
     .absolute.right-0.top-0.bottom-0.w-1/3.opacity-20
       = image_tag local_assigns[:image_url], alt: (local_assigns[:image_alt] || local_assigns[:title]), class: "w-full h-full object-cover"
+  - elsif params[:controller] == 'boards' && params[:board].present?
+    / Overlapping Image
+    .absolute.right-0.top-0.bottom-0.w-1/3.opacity-20
+      = image_tag "#{params[:board]}/board.png", alt: (local_assigns[:image_alt] || local_assigns[:title]), class: "w-full h-full object-cover"

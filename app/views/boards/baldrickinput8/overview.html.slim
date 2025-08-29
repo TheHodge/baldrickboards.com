@@ -15,8 +15,10 @@
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
-        / Board Overview for BaldrickInput8 - Complete Content
+        / Board Overview for BaldrickInput8 - Using I18n Data
         .prose.max-w-none
+          - overview_data = board_overview_data('baldrickinput8')
+          
           h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickInput8 Overview
 
           .grid.md:grid-cols-2.gap-8.mb-8
@@ -25,19 +27,24 @@
             
             .flex.flex-col.justify-start
               p.text-lg.text-gray-700.mb-6
-                | The BaldrickInput8 expands on the BaldrickInput1's simple way of adding interactivity to your show, 
-                | with 8 Turniputs and 2 pixel outputs, this board is perfect for a Selfie station or light tunnel!
+                = overview_data[:description]
 
           h3.text-2xl.font-bold.text-gray-900.mb-4 BaldrickInput8 Controller Features
 
           ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Powerjack accepting 5v - 48v with onboard power management
-            li 8 Turniputs allowing full access to the Turnip Network controls and button lamp configuration
-            li 2 Pixel outputs with 750 pixels per port at 40fps
-            li Baldrick Medium dimensions so reuse your mounts and prints from other boards
-            li Dual ethernet for daisy chaining
-            li Turniput allows effects via a button, motion sensor, reed switch, beam break or other input device
+            - overview_data[:features].each do |feature|
+              li = feature
+
+          - if overview_data[:additional_info].present?
+            p.text-gray-700.mb-6
+              = overview_data[:additional_info]
 
           .bg-indigo-50.border-l-4.border-indigo-400.p-4.mb-6
-            p.text-indigo-800.font-medium
-              | "The BaldrickInput8 is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-indigo-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-indigo-700
+                  strong Perfect for: 
+                  | Selfie stations, light tunnels, interactive displays, and complex automation projects.

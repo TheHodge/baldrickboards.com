@@ -43,7 +43,7 @@
             .bg-gray-50.rounded-lg.p-4.mb-4
               = image_tag "baldrickinput1/web-interface-stats.png", class: "w-full rounded mb-4", alt: "BaldrickInput1 Web Interface Stats"
 
-            p.text-gray-700.mb-4
+          p.text-gray-700.mb-4
               | The Stats board gives you a heads up as to what's going on with your controller.
 
             .grid.md:grid-cols-2.gap-4.mb-4
@@ -64,7 +64,7 @@
                   br
                   | Generally, PCBs and components are good for -40 to +85°C. Anything below 60°C on this board is fine and nothing to worry about. If the temp is above that, try blowing on it like you would a hot chip out of the oven.
 
-              .bg-gray-50.rounded-lg.p-4
+            .bg-gray-50.rounded-lg.p-4
                 h5.text-md.font-semibold.text-gray-900.mb-2 Firmware Version
                 p.text-sm.text-gray-700
                   | The BaldrickInput1 is pretty new in the world of controllers and we've got a LOT of features left to add, this will let you know your current version and if there is a version to upgrade to.
@@ -73,7 +73,7 @@
                   em
                     | (clicking the new version will upgrade it in place then restart the controller)
 
-              .bg-gray-50.rounded-lg.p-4
+            .bg-gray-50.rounded-lg.p-4
                 h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
                 p.text-sm.text-gray-700
                   | It would be pretty silly to have a controller information box without showing you the IP Address of the controller wouldn't it? That would be like launching a controller without being able to manage the networking.
@@ -87,7 +87,7 @@
             .bg-gray-50.rounded-lg.p-4.mb-4
               = image_tag "baldrickinput1/web-interface-turnip-config.png", class: "w-full rounded mb-4", alt: "BaldrickInput1 Turniput Configuration"
 
-            p.text-gray-700.mb-4
+          p.text-gray-700.mb-4
               | The BaldrickInput1 comes with a single Turniput port to attach external triggers (buttons, beam breaks, motion sensors) 
               | that can be configured when triggered to do a multitude of tasks.
 
@@ -154,7 +154,7 @@
                     | WiFi on the Input1 is currently in testing and will be released soon.
 
             .grid.md:grid-cols-2.gap-4.mb-4
-              .bg-gray-50.rounded-lg.p-4
+            .bg-gray-50.rounded-lg.p-4
                 h5.text-md.font-semibold.text-gray-900.mb-2 Hostname
                 p.text-sm.text-gray-700
                   | The default hostname is baldrickboard (hence baldrickboard.local). If you have one BaldrickInput1 then it's completely fine to keep this as it is, however if like us you want to collect a few of them, then we'd recommend you change this to something like 
@@ -168,7 +168,7 @@
                   strong
                     | (Just a reminder that hostnames should be lowercase without spaces)
 
-              .bg-gray-50.rounded-lg.p-4
+            .bg-gray-50.rounded-lg.p-4
                 h5.text-md.font-semibold.text-gray-900.mb-2 DHCP / STATIC
                 p.text-sm.text-gray-700
                   | The default option is DHCP (which is Dynamic Host Configuration Protocol but you don't need to know that) which basically means your router or computer gives the board an I.P. address. This is great for initial setup but when you want to run a show it's best to switch it to STATIC, that's where your controller tells the router / computer "This is my IP".
@@ -178,12 +178,12 @@
                 p.text-sm.text-gray-700
                   | Set this to the IP address that you want the controller to be fixed to.
 
-              .bg-gray-50.rounded-lg.p-4
+            .bg-gray-50.rounded-lg.p-4
                 h5.text-md.font-semibold.text-gray-900.mb-2 Subnet Mask & Gateway
                 p.text-sm.text-gray-700
                   | It is more than likely that you can copy the Subnet Mask (the size of your network) and the Default Gateway (the exit point of your network) from the output of an IPconfig check.
 
-              .bg-gray-50.rounded-lg.p-4
+            .bg-gray-50.rounded-lg.p-4
                 h5.text-md.font-semibold.text-gray-900.mb-2 DNS Server
                 p.text-sm.text-gray-700
                   | DNS wise, typically, your default gateway is your router IP, and that more often than not, can provide your network with DNS. However, some people like to use "outside 3rd parties" DNS like google or cloudflares DNS. If you don't know about this, its probably best just to stick to DHCP.
@@ -208,7 +208,7 @@
             p.text-gray-700.mb-4
               | Test Sync allows you to enable test mode on one Baldrick board and all the others in that series will follow (so when you turn Hodgical Test Mode on one Baldrick8, it will turn on the rest of them).
 
-            p.text-gray-700.mb-4
+          p.text-gray-700.mb-4
               | Some of the Baldrick boards have buttons (or Turniputs) and these allow integration with not only all the other boards in the family, but also FPP and web hooks!
 
             .bg-blue-50.border-l-4.border-blue-400.p-4
@@ -226,7 +226,7 @@
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 Advanced Configuration Options
 
-            p.text-gray-700.mb-4
+          p.text-gray-700.mb-4
               | Advanced settings provide additional configuration options for power users and complex installations.
 
             .bg-gray-50.rounded-lg.p-4.mb-4

@@ -155,65 +155,25 @@ module BoardsHelper
 
   # Board data for category pages
   def board_data
-    {
-      'baldrick8' => {
-        name: 'Baldrick8',
-        subtitle: '8 Outputs',
-        description: '8-channel pixel controller with precision timing and rock-solid reliability for professional lighting displays.',
-        features: ['8 independent outputs', 'WS2811/WS2812B support', 'High refresh rates', 'Professional grade'],
-        image: '/img/baldrick8-board.png'
-      },
-      'baldrick17' => {
-        name: 'Baldrick17',
-        subtitle: '17 Outputs',
-        description: 'High-density 17-channel pixel controller for large-scale lighting installations and complex displays.',
-        features: ['17 independent outputs', 'Massive pixel capacity', 'Advanced networking', 'Enterprise features'],
-        image: '/img/baldrick17-board.png'
-      },
-      'baldrickswitchy' => {
-        name: 'BaldrickSwitchy',
-        subtitle: 'Relay Controller',
-        description: 'High-power relay controller for AC lighting, motors, and other high-voltage applications with precise timing control.',
-        features: ['AC device control', 'High-power handling', 'Precise timing control', 'Safety features'],
-        image: '/img/baldrickswitchy-board.png'
-      },
-      'baldrickdmx' => {
-        name: 'BaldrickDMX',
-        subtitle: 'DMX Controller',
-        description: 'Professional DMX512 controller for stage lighting, moving heads, and theatrical applications with precise timing.',
-        features: ['DMX512 protocol support', 'Professional lighting control', 'Multiple universe support', 'Industry standard'],
-        image: '/img/baldrickdmx-board.png'
-      },
-      'baldrickinput1' => {
-        name: 'BaldrickInput1',
-        subtitle: 'Single Input',
-        description: 'Single-channel input controller for buttons, sensors, and interactive triggers with pixel output capabilities.',
-        features: ['Single input handling', 'Interactive displays', 'Simple setup', 'Cost-effective'],
-        image: '/img/baldrickinput1-board.png'
-      },
-      'baldrickinput8' => {
-        name: 'BaldrickInput8',
-        subtitle: '8 Inputs/8 Outputs',
-        description: '8-channel input controller with pixel output capabilities for interactive installations.',
-        features: ['8 input channels', 'Pixel output support', 'Interactive displays', 'Complex logic'],
-        image: '/img/baldrickinput8-board.png'
-      },
-      # BaldrickBuck removed - not ready for launch
-      'baldrickbadge' => {
-        name: 'BaldrickBadge',
-        subtitle: 'Badge Style',
-        description: 'Compact badge-style controller for wearable and portable applications.',
-        features: ['Compact form factor', 'Wearable applications', 'Battery powered', 'Portable design'],
-        image: '/img/baldrickbadge-board.png'
-      },
-      'baldricksignals' => {
-        name: 'BaldrickSignals',
-        subtitle: 'Signal Controller',
-        description: 'Advanced interactive signal controller for complex signaling and communication applications.',
-        features: ['Advanced signal processing', 'Multi-protocol support', 'Interactive routing', 'Professional grade'],
-        image: '/img/baldricksignals-board.png'
+    # List of all available boards
+    board_ids = %w[baldrick8 baldrick17 baldrickswitchy baldrickdmx baldrickinput1 baldrickinput8 baldrickbadge baldricksignals]
+    
+    board_ids.each_with_object({}) do |board_id, data|
+      # Get I18n data for this board
+      i18n_data = I18n.t("boards.#{board_id}")
+      
+      data[board_id] = {
+        name: i18n_data[:name],
+        subtitle: i18n_data[:subtitle],
+        description: i18n_data[:description],
+        image: "#{board_id}/board.png"  # Generate image path automatically
       }
-    }
+    end
+  end
+
+  # Get board overview data from I18n
+  def board_overview_data(board_id)
+    I18n.t("boards.#{board_id}.overview")
   end
 
   # Generate a board card HTML
@@ -221,75 +181,56 @@ module BoardsHelper
     data = board_data[board_id]
     return '' unless data
 
-              # Default options
-          options = {
-            show_button: true,
-            hover_effect: true
-          }.merge(options)
+    # Default options
+    options = {
+      show_button: true,
+      hover_effect: true
+    }.merge(options)
 
     # CSS classes
     card_classes = "bg-gray-50 rounded-lg border border-gray-200 overflow-hidden group"
     if options[:hover_effect]
       card_classes += " hover:shadow-lg hover:border-purple-300 hover:bg-purple-50 transition-all duration-300 transform hover:-translate-y-1"
     end
-    
-
 
     # Image section
     image_section = if data[:placeholder]
-      %Q{
-        <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center">
-          <div class="text-gray-400 text-center">
-            <svg class="h-16 w-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="#{data[:icon_svg]}"></path>
-            </svg>
-            <p class="text-sm">Image Coming Soon</p>
-          </div>
-        </div>
-      }
+      content_tag(:div, class: "h-48 bg-gray-200 overflow-hidden flex items-center justify-center") do
+        content_tag(:div, class: "text-gray-400 text-center") do
+          content_tag(:svg, class: "h-16 w-16 mx-auto mb-2", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24") do
+            content_tag(:path, "", stroke_linecap: "round", stroke_linejoin: "round", stroke_width: "2", d: data[:icon_svg])
+          end +
+          content_tag(:p, "Image Coming Soon", class: "text-sm")
+        end
+      end
     else
-      %Q{
-        <div class="h-48 bg-gray-200 overflow-hidden">
-          <img src="#{data[:image]}" alt="#{data[:name]} Controller Board" class="w-full h-full object-cover">
-        </div>
-      }
+      content_tag(:div, class: "h-48 bg-gray-200 overflow-hidden") do
+        image_tag(data[:image], alt: "#{data[:name]} Controller Board", class: "w-full h-full object-cover")
+      end
     end
 
     # Button section
     button_section = if options[:show_button]
-      %Q{
-        <a href="/boards/#{board_id}" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors">Learn More</a>
-      }
+      link_to("Learn More", board_path(board_id), class: "inline-block bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors")
     else
       ''
     end
 
-    # Features list
-    features_list = data[:features].map { |feature| "<li>• #{feature}</li>" }.join("\n")
-
     # Main card content
-    card_content = %Q{
-      <div class="p-6">
-        <div class="mb-4">
-          <h3 class="text-lg font-semibold text-gray-900 group-hover:text-purple-900 transition-colors duration-300">#{data[:name]}</h3>
-          <span class="text-sm text-gray-500 group-hover:text-purple-600 transition-colors duration-300">#{data[:subtitle]}</span>
-        </div>
-        <p class="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">#{data[:description]}</p>
-        <ul class="text-sm text-gray-600 mb-4 space-y-1 group-hover:text-gray-700 transition-colors duration-300">
-          #{features_list}
-        </ul>
-        #{button_section}
-      </div>
-    }
+    card_content = content_tag(:div, class: "p-6") do
+      content_tag(:div, class: "mb-4") do
+        content_tag(:h3, data[:name], class: "text-lg font-semibold text-gray-900 group-hover:text-purple-900 transition-colors duration-300") +
+        content_tag(:span, data[:subtitle], class: "text-sm text-gray-500 group-hover:text-purple-600 transition-colors duration-300")
+      end +
+      content_tag(:p, data[:description], class: "text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300") +
+      button_section
+    end
 
     # Always wrap the entire card content in a link
-    %Q{
-      <div class="#{card_classes}">
-        <a href="/boards/#{board_id}" class="block no-underline">
-          #{image_section}
-          #{card_content}
-        </a>
-      </div>
-    }.html_safe
+    content_tag(:div, class: card_classes) do
+      link_to(board_path(board_id), class: "block no-underline") do
+        image_section + card_content
+      end
+    end
   end
 end

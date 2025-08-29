@@ -1,4 +1,4 @@
-- content_for :title, "BaldrickInput8 FAQ - Baldrick Board Documentation"
+- content_for :title, "FAQ - BaldrickInput8 - Baldrick Board Documentation"
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'BaldrickInput8', menu_items: board_menu_items('baldrickinput8')
@@ -10,183 +10,29 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'BaldrickInput8 FAQ', subtitle: 'Frequently Asked Questions', image_url: 'baldrickinput8/board.png'
+    = render 'shared/page_header', title: 'Frequently Asked Questions', subtitle: 'Common questions about BaldrickInput8'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / FAQ for BaldrickInput8
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Frequently Asked Questions
+          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickInput8 FAQ
+
+          p.text-lg.text-gray-700.mb-6
+            | Find answers to the most commonly asked questions about the BaldrickInput8 controller.
 
           .space-y-8
-            / General Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 General Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What is the BaldrickInput8?
-                  p.text-gray-700
-                    | The BaldrickInput8 is an 8-channel input controller with pixel output capabilities for complex interactive installations. 
-                    | It's designed for multi-zone displays and sophisticated automation projects.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How many inputs and outputs does it have?
-                  p.text-gray-700
-                    | The BaldrickInput8 has exactly 8 input channels and 8 output channels, allowing for complex multi-zone 
-                    | interactions and sophisticated automation.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What can I control with it?
-                  p.text-gray-700
-                    | You can control pixel lighting across 8 zones, create complex interaction patterns, build sophisticated 
-                    | automation systems, and coordinate multi-sensor applications.
-
-            / Technical Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Technical Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What power supply do I need?
-                  p.text-gray-700
-                    | The BaldrickInput8 requires a 12V DC power supply. The exact current requirement depends on your configuration, 
-                    | but it's designed for reliable multi-channel operation.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I connect to the network?
-                  p.text-gray-700
-                    | Connect an Ethernet cable to the network port. The BaldrickInput8 will automatically obtain an IP address via DHCP, 
-                    | or you can configure a static IP address through the web interface.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What input types are supported?
-                  p.text-gray-700
-                    | The BaldrickInput8 supports buttons, switches, motion sensors, touch sensors, proximity sensors, 
-                    | pressure sensors, and other 3.3V/5V compatible input devices across all 8 channels.
-
-            / Multi-Channel Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Multi-Channel Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can I configure each channel independently?
-                  p.text-gray-700
-                    | Yes, each of the 8 input and 8 output channels can be configured independently with different types, 
-                    | settings, and behaviors.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do channels communicate with each other?
-                  p.text-gray-700
-                    | Channels can communicate through the logic builder, allowing for cross-channel communication, 
-                    | synchronized responses, and complex interaction patterns.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What's the logic builder?
-                  p.text-gray-700
-                    | The logic builder is a visual interface that allows you to create complex relationships between inputs and outputs, 
-                    | including conditional statements, timing, and coordination between channels.
-
-            / Setup Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Setup Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I find the IP address?
-                  p.text-gray-700
-                    | Check your router's DHCP client list, use network scanning tools, or look for the BaldrickInput8 in your 
-                    | network devices. The web interface will also display the current IP address.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I configure the channels?
-                  p.text-gray-700
-                    | Use the web interface to configure each of the 8 input and output channels independently. 
-                    | Set input types, output configurations, and use the logic builder for complex interactions.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Do I need to program anything?
-                  p.text-gray-700
-                    | No programming is required! The BaldrickInput8 uses a web-based configuration interface with a visual 
-                    | logic builder that makes complex multi-channel setup straightforward.
-
-            / Troubleshooting
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Some channels aren't working, what should I check?
-                  p.text-gray-700
-                    | First, verify wiring and connections for each channel. Check individual channel configuration in the web interface, 
-                    | ensure proper voltage levels, and test each channel individually.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 The logic between channels isn't working
-                  p.text-gray-700
-                    | Check your logic builder configuration. Verify that input/output relationships are correctly set up, 
-                    | and test the logic step by step using the testing tools.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Channels are interfering with each other
-                  p.text-gray-700
-                    | This could be due to wiring interference or logic conflicts. Check channel isolation, verify logic relationships, 
-                    | and ensure proper grounding for all channels.
-
-            / Project Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Project Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What projects can I build with it?
-                  p.text-gray-700
-                    | You can build multi-zone interactive displays, complex automation systems, sophisticated interactive art installations, 
-                    | multi-sensor applications, and advanced lighting control systems.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Is it suitable for complex installations?
-                  p.text-gray-700
-                    | Absolutely! The BaldrickInput8 is designed specifically for complex installations with its 8-channel architecture, 
-                    | advanced logic capabilities, and sophisticated coordination features.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can I expand beyond 8 channels?
-                  p.text-gray-700
-                    | While the BaldrickInput8 has 8 channels, you can use multiple units for larger installations, 
-                    | or upgrade to other Baldrick boards with different channel configurations.
-
-            / Performance Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Performance Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How fast does it respond to inputs?
-                  p.text-gray-700
-                    | The BaldrickInput8 responds to input changes in less than 1ms per channel, providing fast and reliable 
-                    | triggering for complex multi-channel applications.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can all channels operate simultaneously?
-                  p.text-gray-700
-                    | Yes, all 8 input and 8 output channels can operate simultaneously with independent timing and coordination, 
-                    | allowing for complex multi-zone interactions.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How does it handle complex logic?
-                  p.text-gray-700
-                    | The logic engine is designed to handle complex multi-channel interactions efficiently, with real-time processing 
-                    | and optimized performance for sophisticated automation scenarios.
-
-            / Support
-            .bg-blue-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Need More Help?
-              
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Coming Soon
               p.text-gray-700.mb-4
-                | If you can't find the answer to your question here, we're here to help!
-              
-              .flex.flex-col.sm:flex-row.gap-4
-                = link_to 'Contact Support', '/support', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-                = link_to 'Getting Started Guide', '/boards/baldrickinput8/getting-started', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+                | We'll add common questions here as we get asked them. The BaldrickInput8 is a relatively new addition to our lineup, 
+                | so we're still collecting the most frequently asked questions from our community.
+              p.text-gray-700
+                | In the meantime, check out our 
+                = link_to "getting started guide", board_page_path('baldrickinput8', 'getting-started'), class: "text-blue-600 hover:text-blue-800 underline"
+                |  and 
+                = link_to "web interface documentation", board_page_path('baldrickinput8', 'web-interface'), class: "text-blue-600 hover:text-blue-800 underline"
+                |  for detailed information about using your BaldrickInput8.
+
+            = render 'boards/shared/faq_ending'

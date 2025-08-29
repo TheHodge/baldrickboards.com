@@ -1,4 +1,4 @@
-- content_for :title, "BaldrickDMX FAQ - Baldrick Board Documentation"
+- content_for :title, "FAQ - BaldrickDMX - Baldrick Board Documentation"
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'BaldrickDMX', menu_items: board_menu_items('baldrickdmx')
@@ -10,160 +10,48 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'BaldrickDMX FAQ', subtitle: 'Frequently Asked Questions', image_url: '/img/baldrickdmx.png'
+    = render 'shared/page_header', title: 'Frequently Asked Questions', subtitle: 'Common questions about BaldrickDMX'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / FAQ for BaldrickDMX
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Frequently Asked Questions
+          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickDMX FAQ
+
+          p.text-lg.text-gray-700.mb-6
+            | Find answers to the most commonly asked questions about the BaldrickDMX controller.
+
+          / Table of Contents
+          .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-blue-900.mb-4 Quick Navigation
+            .grid.md:grid-cols-2.gap-4
+              .space-y-2
+                .flex.items-center
+                  = link_to "#why-baldrickdmx", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Why the BaldrickDMX?
+              .space-y-2
+                .flex.items-center
+                  = link_to "#asking-for-help", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Any other questions?
 
           .space-y-8
-            / General Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 General Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What is the BaldrickDMX?
-                  p.text-gray-700
-                    | The BaldrickDMX is a professional DMX512 controller designed for stage lighting, moving heads, and theatrical applications. 
-                    | It provides industry-standard DMX512 protocol support with precise timing and multiple universe capabilities.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How many DMX universes does it support?
-                  p.text-gray-700
-                    | The BaldrickDMX supports multiple DMX universes, with each universe capable of controlling up to 512 channels. 
-                    | The exact number of universes depends on the specific model and configuration.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What fixtures can it control?
-                  p.text-gray-700
-                    | The BaldrickDMX can control any DMX512-compatible fixture including moving heads, LED fixtures, 
-                    | conventional lights, fog machines, and other professional lighting equipment.
-
-            / Technical Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Technical Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What power supply do I need?
-                  p.text-gray-700
-                    | The BaldrickDMX requires a 12V DC power supply. The exact current requirement depends on your configuration, 
-                    | but we recommend a high-quality power supply for reliable operation.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I connect to the network?
-                  p.text-gray-700
-                    | Connect an Ethernet cable to the network port. The BaldrickDMX will automatically obtain an IP address via DHCP, 
-                    | or you can configure a static IP address through the web interface.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What protocols are supported?
-                  p.text-gray-700
-                    | The BaldrickDMX supports DMX512-A, RDM, E1.31 (sACN), Art-Net, DDP, and other industry-standard protocols 
-                    | for seamless integration with professional lighting software.
-
-            / DMX Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 DMX Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What DMX timing does it use?
-                  p.text-gray-700
-                    | The BaldrickDMX uses standard DMX512-A timing with break time of 88-176 microseconds, 
-                    | mark after break of 8-176 microseconds, and frame rates up to 44 Hz.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Does it support RDM?
-                  p.text-gray-700
-                    | Yes, the BaldrickDMX supports RDM (Remote Device Management) for advanced fixture control, 
-                    | device discovery, and remote configuration of compatible fixtures.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What connectors does it use?
-                  p.text-gray-700
-                    | The BaldrickDMX uses standard XLR-5 connectors for DMX output, which is the industry standard 
-                    | for professional lighting applications.
-
-            / Setup Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Setup Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I find the IP address?
-                  p.text-gray-700
-                    | Check your router's DHCP client list, use network scanning tools, or look for the BaldrickDMX in your 
-                    | network devices. The web interface will also display the current IP address.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I configure universes?
-                  p.text-gray-700
-                    | Use the web interface to configure each DMX universe. You can set universe numbers, channel counts, 
-                    | output ports, and timing parameters for each universe independently.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Do I need to terminate the DMX line?
-                  p.text-gray-700
-                    | Yes, you should terminate the last fixture in each DMX universe with a 120-ohm resistor 
-                    | to prevent signal reflections and ensure reliable operation.
-
-            / Troubleshooting
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 My fixtures aren't responding, what should I check?
-                  p.text-gray-700
-                    | First, verify your DMX cable connections and termination. Check universe configuration, 
-                    | fixture addressing, and ensure proper DMX timing settings in the web interface.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 RDM devices aren't being discovered
-                  p.text-gray-700
-                    | Check that your fixtures support RDM and are properly connected. Verify RDM is enabled 
-                    | in the web interface and try the discovery process again.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Some universes work but others don't
-                  p.text-gray-700
-                    | Check the configuration for each universe individually. Verify universe numbers, 
-                    | channel counts, and output port assignments for each universe.
-
-            / Professional Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Professional Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What lighting software is compatible?
-                  p.text-gray-700
-                    | The BaldrickDMX is compatible with professional lighting software including GrandMA, Avolites, 
-                    | Chamsys, ETC Eos, QLab, and other industry-standard consoles and software.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can it handle complex lighting setups?
-                  p.text-gray-700
-                    | Yes, the BaldrickDMX is designed for complex professional lighting setups with multiple universes, 
-                    | advanced routing capabilities, and precise timing control.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Is it suitable for live events?
-                  p.text-gray-700
-                    | Absolutely! The BaldrickDMX is designed for live events, theatrical productions, and professional 
-                    | entertainment applications with reliable performance and industry-standard compatibility.
-
-            / Support
-            .bg-blue-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Need More Help?
-              
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200#why-baldrickdmx
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Why the BaldrickDMX?
               p.text-gray-700.mb-4
-                | If you can't find the answer to your question here, we're here to help!
-              
-              .flex.flex-col.sm:flex-row.gap-4
-                = link_to 'Contact Support', '/support', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-                = link_to 'Getting Started Guide', '/boards/baldrickdmx/getting-started', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+                | There are many many options for running DMX as part of your light show, some are cheaper than the BaldrickDMX and some are much much more expensive!
+              p.text-gray-700.mb-4
+                | Even before this board was launched we were compared to these options so we wrote some of our reasonings into an article.
+              ul.list-disc.list-inside.text-gray-700.space-y-2.mb-4
+                li
+                  | The BaldrickDMX is listed as a controller in xLights and can be found using the discover mode, making it really easy to get started with sequencing with your show using the DMX model rather than as a pixel which can be a bit messy.
+                li
+                  | The BaldrickDMX is equipped with the three main DMX port types, meaning you don't need to spend money on a converter and you know you'll always have the right cable.
+                li
+                  | The BaldrickDMX comes with presets and can be activated over the 
+                  em Turnip Network 
+                  | (i.e. via a button press)
+                li
+                  | The BaldrickDMX has support for DDP
+
+            = render 'boards/shared/faq_ending'

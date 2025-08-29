@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   get 'boards/dmx-controllers', to: 'boards#dmx_controllers'
   
   # Generic board routes - handles all board pages automatically
-  get 'boards/:board', to: 'boards#show'
-  get 'boards/:board/:page', to: 'boards#show'
+  get 'boards/:board', to: 'boards#show', as: :board
+  get 'boards/:board/:page', to: 'boards#show', as: :board_page
   
   # About Baldrick section
   get 'about', to: 'about#index'

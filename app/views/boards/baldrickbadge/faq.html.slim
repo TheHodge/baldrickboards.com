@@ -1,4 +1,4 @@
-- content_for :title, "BaldrickBadge FAQ - Baldrick Board Documentation"
+- content_for :title, "FAQ - BaldrickBadge - Baldrick Board Documentation"
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'BaldrickBadge', menu_items: board_menu_items('baldrickbadge')
@@ -10,183 +10,28 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'BaldrickBadge FAQ', subtitle: 'Frequently Asked Questions', image_url: '/img/baldrickbadge.png'
+    = render 'shared/page_header', title: 'Frequently Asked Questions', subtitle: 'Common questions about BaldrickBadge'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / FAQ for BaldrickBadge
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Frequently Asked Questions
+          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickBadge FAQ
+
+          p.text-lg.text-gray-700.mb-6
+            | Find answers to the most commonly asked questions about the BaldrickBadge controller.
 
           .space-y-8
-            / General Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 General Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What is the BaldrickBadge?
-                  p.text-gray-700
-                    | The BaldrickBadge is a compact badge-style controller perfect for wearable and portable applications. 
-                    | It's battery-powered and designed for mobility, making it ideal for portable displays and wearable projects.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How is it different from other Baldrick boards?
-                  p.text-gray-700
-                    | The BaldrickBadge is specifically designed for portability and wearability with a compact form factor, 
-                    | battery power, and lightweight construction for mobile applications.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What can I control with it?
-                  p.text-gray-700
-                    | You can control pixel lighting for wearable displays, portable art installations, costume applications, 
-                    | and other battery-powered lighting projects.
-
-            / Power Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Power Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What type of battery does it use?
-                  p.text-gray-700
-                    | The BaldrickBadge uses a rechargeable battery (specific type TBD). The exact battery life depends on 
-                    | your usage patterns and pixel configuration.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How long does the battery last?
-                  p.text-gray-700
-                    | Battery life varies based on pixel count, brightness settings, and usage patterns. 
-                    | The web interface provides real-time battery monitoring and power optimization features.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I charge it?
-                  p.text-gray-700
-                    | The BaldrickBadge can be charged via USB connection. The web interface shows charging status 
-                    | and battery health information.
-
-            / Connectivity Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Connectivity Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I connect to it?
-                  p.text-gray-700
-                    | The BaldrickBadge creates its own WiFi network for configuration, or you can connect it to existing WiFi networks. 
-                    | You can also use USB connection for setup.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can it work without WiFi?
-                  p.text-gray-700
-                    | Yes, the BaldrickBadge can operate in standalone mode without external WiFi, 
-                    | making it perfect for portable and mobile applications.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Is the web interface mobile-friendly?
-                  p.text-gray-700
-                    | Yes, the web interface is fully mobile-responsive and optimized for touch devices, 
-                    | making it easy to configure on smartphones and tablets.
-
-            / Setup Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Setup Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I find the IP address?
-                  p.text-gray-700
-                    | Connect to the BaldrickBadge's WiFi network, and the web interface will be available at a default IP address. 
-                    | The interface will guide you through the setup process.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I configure the pixels?
-                  p.text-gray-700
-                    | Use the web interface to select your pixel type, set the pixel count, and configure effects. 
-                    | The interface is designed to be simple and intuitive.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Do I need to program anything?
-                  p.text-gray-700
-                    | No programming is required! The BaldrickBadge uses a web-based configuration interface that makes 
-                    | setup simple and straightforward.
-
-            / Wearable Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Wearable Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Is it comfortable to wear?
-                  p.text-gray-700
-                    | Yes, the BaldrickBadge is designed for comfort with lightweight construction and compact form factor. 
-                    | It includes multiple mounting options for different applications.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can it be used outdoors?
-                  p.text-gray-700
-                    | The BaldrickBadge is designed to be weather-resistant and suitable for outdoor use. 
-                    | Consider additional protection for extreme weather conditions.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 How do I mount it for wearable use?
-                  p.text-gray-700
-                    | The BaldrickBadge includes multiple mounting options and can be attached to clothing, 
-                    | costumes, or other wearable items using the provided hardware.
-
-            / Troubleshooting
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 The battery is draining quickly
-                  p.text-gray-700
-                    | Check your power settings in the web interface. Reduce brightness, use power-saving modes, 
-                    | and optimize your pixel configuration for better battery life.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 I can't connect to the WiFi
-                  p.text-gray-700
-                    | Make sure the BaldrickBadge is powered on and look for its WiFi network. 
-                    | The network name will be displayed on the device or in the documentation.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 The pixels aren't working
-                  p.text-gray-700
-                    | Check your pixel connections and configuration in the web interface. 
-                    | Verify the pixel type and count settings match your hardware.
-
-            / Project Questions
-            .bg-gray-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Project Questions
-              
-              .space-y-6
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 What projects can I build with it?
-                  p.text-gray-700
-                    | You can build wearable lighting projects, portable displays, costume applications, 
-                    | mobile art installations, and other battery-powered lighting projects.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Is it good for costumes?
-                  p.text-gray-700
-                    | Absolutely! The BaldrickBadge is perfect for costume applications with its compact size, 
-                    | battery power, and easy mounting options.
-
-                .border-b.border-gray-200.pb-4
-                  h3.text-lg.font-semibold.text-gray-900.mb-2 Can I use it for portable art?
-                  p.text-gray-700
-                    | Yes, the BaldrickBadge is ideal for portable art installations and mobile displays 
-                    | with its self-contained operation and battery power.
-
-            / Support
-            .bg-blue-50.rounded-lg.p-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Need More Help?
-              
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h3.text-xl.font-semibold.text-gray-900.mb-3 Coming Soon
               p.text-gray-700.mb-4
-                | If you can't find the answer to your question here, we're here to help!
-              
-              .flex.flex-col.sm:flex-row.gap-4
-                = link_to 'Contact Support', '/support', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-                = link_to 'Getting Started Guide', '/boards/baldrickbadge/getting-started', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+                | This is something we designed for a one-off event, so we don't really have any FAQ's for it, but will be sure to add them here if we get some.
+              p.text-gray-700
+                | In the meantime, check out our 
+                = link_to "getting started guide", board_page_path('baldrickbadge', 'getting-started'), class: "text-blue-600 hover:text-blue-800 underline"
+                |  and 
+                = link_to "web interface documentation", board_page_path('baldrickbadge', 'web-interface'), class: "text-blue-600 hover:text-blue-800 underline"
+                |  for detailed information about using your BaldrickBadge.
+
+            = render 'boards/shared/faq_ending'

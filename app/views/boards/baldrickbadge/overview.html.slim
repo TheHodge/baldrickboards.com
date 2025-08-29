@@ -10,54 +10,41 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'BaldrickBadge', subtitle: 'Compact Badge Controller', image_url: '/img/baldrickbadge.png'
+    = render 'shared/page_header', title: 'BaldrickBadge', subtitle: 'Documentation for BaldrickBadge'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
-        / Board Overview for BaldrickBadge - Complete Content
+        / Board Overview for BaldrickBadge - Using I18n Data
         .prose.max-w-none
+          - overview_data = board_overview_data('baldrickbadge')
+          
           h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickBadge Overview
 
           .grid.md:grid-cols-2.gap-8.mb-8
             .flex.items-start
-              img.w-full.rounded-lg src="/img/baldrickbadge.png" alt="BaldrickBadge Board Overview"
+              = image_tag "baldrickbadge/board.png", class: "w-full rounded-lg", alt: "BaldrickBadge Board Overview"
             
             .flex.flex-col.justify-start
               p.text-lg.text-gray-700.mb-6
-                | The BaldrickBadge is a compact badge-style controller perfect for wearable and portable applications. 
-                | Battery-powered and designed for mobility, it's ideal for portable displays and wearable projects.
+                = overview_data[:description]
 
           h3.text-2xl.font-bold.text-gray-900.mb-4 BaldrickBadge Controller Features
 
           ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Compact form factor for wearable applications
-            li Battery-powered operation for portability
-            li Lightweight construction for comfort
-            li Easy mounting options for various applications
-            li Portable design for mobile installations
-            li Web-based configuration for easy setup
-            li Pixel output support for lighting displays
-            li Low power consumption for extended battery life
-            li Durable construction for outdoor use
-            li Simple interface for quick configuration
+            - overview_data[:features].each do |feature|
+              li = feature
 
-          p.text-gray-700.mb-6
-            | The BaldrickBadge represents our commitment to portability and wearability, designed specifically for 
-            | applications where size, weight, and battery life are critical factors.
+          - if overview_data[:additional_info].present?
+            p.text-gray-700.mb-6
+              = overview_data[:additional_info]
 
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Perfect For
-
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Wearable lighting projects and costumes
-            li Portable displays and mobile installations
-            li Costume applications and cosplay
-            li Compact projects with space constraints
-            li Battery-powered lighting displays
-            li Mobile art installations
-            li Portable interactive projects
-            li Wearable technology applications
-
-          .bg-pink-50.border-l-4.border-pink-400.p-4.mb-6
-            p.text-pink-800.font-medium
-              | "The BaldrickBadge is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-yellow-700
+                  strong ⚠️ WARNING: 
+                  | This board contains high voltage components. Always ensure proper safety precautions when working with this device.
