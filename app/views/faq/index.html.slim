@@ -33,13 +33,7 @@
                 .flex.items-center
                   = link_to "#fpp-proxy", class: "text-blue-700 hover:text-blue-900 underline" do
                     | Upgrading Baldrick via FPP Proxy
-                .flex.items-center
-                  = link_to "#baldrick-dimensions", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | Baldrick Dimensions
               .space-y-2
-                .flex.items-center
-                  = link_to "#why-baldrick", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | Baldrick?
                 .flex.items-center
                   = link_to "#why-no-screen", class: "text-blue-700 hover:text-blue-900 underline" do
                     | Why no screen?
@@ -121,59 +115,7 @@
               p.text-gray-700
                 | Job done. Now you can set it up in xLights, with the IP listed above (10.0.0.4 in my case) and the proxy being the Pi's Wifi IP (in my case 192.168.1.57)
 
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200#baldrick-dimensions
-              h3.text-xl.font-semibold.text-gray-900.mb-3 Baldrick Dimensions
-              p.text-gray-700.mb-4
-                | Baldrick Boards are categorised into two board sizes 
-                em small 
-                | and 
-                em medium
-                | , this means that we don't have to keep making new mounts and accessory sizes as we create new boards.
-              p.text-gray-700.mb-4
-                | Mounting holes in all our boards are 
-                strong M3
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Small
-              p.text-gray-700.mb-4
-                | We've designed the Small so it can be hidden inside a small junction or project box.
-              .bg-gray-100.rounded-lg.p-4.mb-4
-                = image_tag "dimensions-small.jpeg", class: "w-full rounded mb-4", alt: "Small Baldrick Board Dimensions"
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Medium
-              p.text-gray-700.mb-4
-                | We based the dimensions of the 
-                em Medium Baldrick boards 
-                | to match similar boards already in the market so you can reuse mounts and 3D printed elements.
-              p.text-gray-700.mb-4
-                | The Baldrick community have created an amazing range of mounts and STLs that you can print and use today.
-              p.text-gray-700.mb-4
-                | The board footprint is just 117mm by 74mm.
-              .bg-gray-100.rounded-lg.p-4.mb-4
-                = image_tag "dimensions-medium.jpeg", class: "w-full rounded mb-4", alt: "Medium Baldrick Board Dimensions"
-              p.text-gray-700
-                | Once again we ask 
-                strong DO NOT ENLARGE THE MOUNTING HOLES
 
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200#why-baldrick
-              h3.text-xl.font-semibold.text-gray-900.mb-3 Baldrick?
-              p.text-gray-700.mb-4
-                | After weeks of debate and thousands of names discussed then dismissed, we finally settled on a name.
-              p.text-gray-700.mb-4
-                | Like proud parents name their firstborn in homage to a family friend, we too bestowed the name of someone who we hold dear to our hearts.
-              .bg-gray-100.rounded-lg.p-4.mb-4
-                = image_tag "baldrick-character.jpg", class: "w-full rounded mb-4", alt: "Baldrick Character"
-              ul.list-disc.list-inside.text-gray-700.mb-4
-                li He is loyal
-                li He is dependable
-                li 
-                  | He is 
-                  = link_to "creative", "https://www.youtube.com/watch?v=uHSvKNQNzc0", class: "text-blue-600 hover:text-blue-800 underline", target: "_blank"
-                li
-                  em 
-                    | He is untrademarked
-                li He is a British Icon
-              p.text-gray-700.mb-4
-                | All those combined made him the perfect choice for our 'assistants' to our light show.
-              p.text-gray-700
-                em Fun fact: the working name for the board was the CUPPA
 
             .bg-gray-50.rounded-lg.p-6.border.border-gray-200#why-no-screen
               h3.text-xl.font-semibold.text-gray-900.mb-3 Why no screen?

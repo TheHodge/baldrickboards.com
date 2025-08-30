@@ -1,0 +1,86 @@
+- content_for :title, "About Baldrick - Baldrick Board Documentation"
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  nav.text-sm.text-gray-500.mb-6
+    .flex.items-center.space-x-2
+      a.hover:text-gray-700.transition-colors href="/" Home
+      svg.h-4.w-4.text-gray-400 fill="currentColor" viewBox="0 0 20 20"
+        path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"
+      span.text-gray-900.font-medium About Baldrick
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', 
+        title: 'About Baldrick',
+        subtitle: 'The story behind the name and the ecosystem',
+        image_url: '/img/baldrick.jpg',
+        image_alt: 'About Baldrick'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h2.text-3xl.font-bold.text-gray-900.mb-6 About Baldrick
+
+          p.text-lg.text-gray-700.mb-8
+            | Baldrick is more than just a name - it's a philosophy. We believe that the best technology should be as cunning as a fox who's just been appointed Professor of Cunning at Oxford University.
+
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-yellow-700
+                  strong Our Mission:
+                  |  To create controller boards that are not just functional, but delightfully clever and surprisingly powerful.
+
+          / The Name Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 The Name
+          
+          p.text-gray-700.mb-6
+            | The name "Baldrick" comes from the cunning character in the classic British comedy "Blackadder." Just like our namesake, our boards are designed to be clever, resourceful, and surprisingly effective despite their humble appearance.
+
+          p.text-gray-700.mb-6
+            | When you choose a Baldrick board, you're not just getting a controller - you're getting a piece of technology that thinks outside the box, finds clever solutions to complex problems, and does it all with a touch of British wit.
+
+          .bg-gray-50.rounded-lg.p-6.mb-8
+            h4.text-lg.font-semibold.text-gray-900.mb-3 What Makes Baldrick Special
+            ul.space-y-2.text-gray-700
+              li 
+                | • 
+                strong Clever Design:
+                |  Every board is designed with intelligence and efficiency in mind
+              li 
+                | • 
+                strong British Engineering:
+                |  Built with the precision and reliability you'd expect from British craftsmanship
+              li 
+                | • 
+                strong Community Focus:
+                |  Created by enthusiasts, for enthusiasts
+              li 
+                | • 
+                strong Innovation:
+                |  Constantly pushing the boundaries of what's possible in lighting control
+
+          / The Boards Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Our Boards
+          
+          p.text-gray-700.mb-6
+            | From pixel controllers to relay boards, from interactive controllers to power distribution units, every Baldrick board is designed with the same philosophy: make it simple, make it clever, make it work.
+
+          p.text-gray-700.mb-6
+            | Whether you're building a small display or a massive installation, there's a Baldrick board that's perfect for your needs. And thanks to our innovative Turnip Network, they all work together seamlessly.
+
+          / Call to Action
+          .bg-blue-50.rounded-lg.p-6.mb-8
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Ready to Get Started?
+            p.text-gray-700.mb-4
+              | Explore our range of boards and discover how Baldrick can bring your lighting projects to life.
+            .flex.flex-wrap.gap-4
+              = link_to "View All Boards", boards_path, class: "inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors"
+              = link_to "Where to Buy", where_to_buy_baldrick_boards_path, class: "inline-block bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors"
+              = link_to "Baldrick Breakthroughs", breakthroughs_path, class: "inline-block bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-700 transition-colors"
