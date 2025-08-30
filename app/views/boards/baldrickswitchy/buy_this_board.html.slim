@@ -1,179 +1,101 @@
-- content_for :title, "Buy BaldrickSwitchy - Baldrick Board Documentation"
+- content_for :title, "Where to Buy the BaldrickSwitchy - Baldrick Board Documentation"
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'BaldrickSwitchy', menu_items: board_menu_items('baldrickswitchy')
 
 .max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
   / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickswitchy', 'Buy This Board')
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickswitchy', 'Where to Buy')
 
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'Buy BaldrickSwitchy', subtitle: 'High-Power Relay Controller', image_url: '/img/baldrickswitchy.png'
+    = render 'shared/page_header', title: 'Where to Buy the BaldrickSwitchy', subtitle: 'Get your high-power relay controller from trusted retailers worldwide', image_url: 'baldrickswitchy/board.png'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
+        / BaldrickSwitchy Purchase Information
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Why Choose the BaldrickSwitchy?
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Where Can I Buy the BaldrickSwitchy?
 
-          .grid.md:grid-cols-2.gap-8.mb-8
-            .space-y-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Professional Safety & Control
-              p.text-lg.text-gray-700
-                | The BaldrickSwitchy is our high-power relay controller, designed for safe and reliable AC device control. 
-                | With comprehensive safety features and precise timing control, it's perfect for controlling motors, lights, and other high-voltage applications.
+          p.text-lg.text-gray-700.mb-8
+            | The BaldrickSwitchy is available from our trusted network of authorized retailers worldwide. Each retailer has been carefully selected to provide excellent service and support.
 
-              .bg-green-50.border-l-4.border-green-400.p-4
-                p.text-green-800.font-medium
-                  | "The BaldrickSwitchy is as cunning as a fox who's just been appointed Professor of Cunning at Oxford University"
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-8
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Global Availability: 
+                  | The BaldrickSwitchy is available through our trusted network of authorized retailers worldwide. Each retailer has been carefully selected to provide excellent service and support.
 
-            .space-y-6
-              h2.text-2xl.font-bold.text-gray-900.mb-4 Key Benefits
-              ul.space-y-3.text-gray-700
-                li • High-power relay outputs for AC control
-                li • Comprehensive safety protection systems
-                li • Precise timing control for synchronized operations
-                li • Professional-grade reliability and safety
-                li • Comprehensive web interface for configuration
-                li • Industry-standard protocols and compatibility
-
-          h2.text-3xl.font-bold.text-gray-900.mb-6 What's Included
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-6
-              h3.text-xl.font-semibold.text-gray-900.mb-4 Hardware
-              ul.space-y-2.text-gray-700
-                li • BaldrickSwitchy controller board
-                li • Mounting hardware
-                li • Power supply (if included in package)
-                li • Network cable (if included)
-                li • Quick start guide
-                li • Safety documentation
-
-            .bg-gray-50.rounded-lg.p-6
-              h3.text-xl.font-semibold.text-gray-900.mb-4 Software & Support
-              ul.space-y-2.text-gray-700
-                li • Web-based configuration interface
-                li • Safety system configuration tools
-                li • Firmware updates
-                li • Technical documentation
-                li • Professional support options
-                li • Safety compliance guidance
-
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Technical Specifications
-
-          .bg-blue-50.rounded-lg.p-6.mb-8
+          / BaldrickSwitchy Retailers
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
+            h3.text-2xl.font-bold.text-gray-900.mb-4.flex.items-center
+              svg.h-6.w-6.text-blue-600.mr-3 fill="currentColor" viewBox="0 0 20 20"
+                path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+              | BaldrickSwitchy
             .grid.md:grid-cols-2.gap-6
-              div
-                h4.text-lg.font-semibold.text-blue-900.mb-3 Relay Control
-                ul.text-blue-800.space-y-1
-                  li • Multiple high-power relay outputs
-                  li • Up to 240V AC voltage handling
-                  li • High current capacity per relay
-                  li • Fast switching speed (< 1ms)
-                  li • Solid state relay technology
+              .space-y-4
+                .flex.items-center
+                  span.text-2xl.mr-3 🇬🇧
+                  div
+                    h4.font-semibold.text-gray-900 United Kingdom
+                    a href="https://buildalightshow.com/baldrick-board/1455-baldrick-switchy.html" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm" Build a Light Show
+                
+                .flex.items-center
+                  span.text-2xl.mr-3 🇺🇸
+                  div
+                    h4.font-semibold.text-gray-900 United States
+                    .space-y-1
+                      a href="https://gilbertengineeringusa.com/products/baldrick-switchy" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm block" Gilbert Engineering
+                      a href="https://www.wiredwatts.com/brswitchy" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm block" Wired Watts
+              .space-y-4
+                .flex.items-center
+                  span.text-2xl.mr-3 🇦🇺
+                  div
+                    h4.font-semibold.text-gray-900 Australia
+                    a href="https://www.hansonelectronics.com.au/product/baldrick-switchy/" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm" Hanson Electronics
+                
+                .flex.items-center
+                  span.text-2xl.mr-3 🇳🇱
+                  div
+                    h4.font-semibold.text-gray-900 Netherlands
+                    a href="https://www.propixeler.nl/product/baldrickswitchy" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm" Propixeler
 
-              div
-                h4.text-lg.font-semibold.text-blue-900.mb-3 Safety Features
-                ul.text-blue-800.space-y-1
-                  li • Overcurrent protection
-                  li • Overvoltage protection
-                  li • Thermal protection
-                  li • Emergency stop functionality
-                  li • Comprehensive fault detection
+          / Why Choose Baldrick Section
+          .bg-gradient-to-r.from-blue-50.to-green-50.rounded-xl.p-8.mb-8.border.border-blue-200
+            h3.text-2xl.font-bold.text-gray-900.mb-6.text-center Why Choose the BaldrickSwitchy?
+            .grid.md:grid-cols-3.gap-6
+              .text-center
+                .bg-white.rounded-full.p-4.w-16.h-16.mx-auto.mb-4.flex.items-center.justify-center
+                  svg.h-8.w-8.text-blue-600 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+                h4.font-semibold.text-gray-900.mb-2 High-Power Control
+                p.text-sm.text-gray-600 Safe and reliable AC device control with comprehensive safety features
+              .text-center
+                .bg-white.rounded-full.p-4.w-16.h-16.mx-auto.mb-4.flex.items-center.justify-center
+                  svg.h-8.w-8.text-green-600 fill="currentColor" viewBox="0 0 20 20"
+                    path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                h4.font-semibold.text-gray-900.mb-2 Safety First
+                p.text-sm.text-gray-600 Built-in safety protection systems for high-voltage applications
+              .text-center
+                .bg-white.rounded-full.p-4.w-16.h-16.mx-auto.mb-4.flex.items-center.justify-center
+                  svg.h-8.w-8.text-purple-600 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+                h4.font-semibold.text-gray-900.mb-2 Expert Support
+                p.text-sm.text-gray-600 Professional support for high-power control applications
 
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Perfect For
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .space-y-4
-              h3.text-xl.font-semibold.text-gray-900 Professional Applications
-              ul.space-y-2.text-gray-700
-                li • AC lighting control systems
-                li • Motor control applications
-                li • Industrial automation
-                li • Safety-critical systems
-                li • High-voltage switching
-                li • Commercial installations
-
-            .space-y-4
-              h3.text-xl.font-semibold.text-gray-900 Installation Types
-              ul.space-y-2.text-gray-700
-                li • Traditional lighting displays
-                li • Industrial control systems
-                li • Commercial automation
-                li • Safety-focused applications
-                li • High-power switching
-                li • Professional installations
-
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Safety & Compliance
-
-          .bg-green-50.border.border-green-200.rounded-lg.p-6.mb-8
-            h3.text-xl.font-semibold.text-green-900.mb-4 Safety Standards
-            p.text-green-800.mb-4
-              | The BaldrickSwitchy is designed to meet the highest safety standards for high-voltage control applications.
-            
-            .grid.md:grid-cols-2.gap-6
-              div
-                h4.text-lg.font-semibold.text-green-900.mb-3 Certifications
-                ul.text-green-800.space-y-1
-                  li • CE certification (European markets)
-                  li • UL listing (North American markets)
-                  li • Safety compliance testing
-                  li • Quality assurance standards
-
-              div
-                h4.text-lg.font-semibold.text-green-900.mb-3 Installation
-                ul.text-green-800.space-y-1
-                  li • Qualified electrician installation
-                  li • Proper grounding requirements
-                  li • Local electrical code compliance
-                  li • Safety system verification
-
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Pricing & Availability
-
-          .bg-purple-50.border.border-purple-200.rounded-lg.p-6.mb-8
-            h3.text-xl.font-semibold.text-purple-900.mb-4 Current Pricing
-            p.text-purple-800.mb-4
-              | The BaldrickSwitchy is available at competitive pricing for professional installations requiring high-power control and safety features.
-            
-            .flex.flex-col.sm:flex-row.gap-4
-              = link_to 'Contact for Pricing', '/where-to-buy-baldrick-boards', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
-              = link_to 'Technical Specifications', '/boards/baldrickswitchy/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
-
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Support & Warranty
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-6
-              h3.text-xl.font-semibold.text-gray-900.mb-4 Technical Support
-              ul.space-y-2.text-gray-700
-                li • Comprehensive documentation
-                li • Safety system configuration guides
-                li • Professional installation support
-                li • Qualified technician assistance
-                li • Integration assistance
-                li • Safety compliance guidance
-
-            .bg-gray-50.rounded-lg.p-6
-              h3.text-xl.font-semibold.text-gray-900.mb-4 Warranty & Service
-              ul.space-y-2.text-gray-700
-                li • Professional warranty coverage
-                li • Safety system testing
-                li • Reliable performance guarantee
-                li • Service and repair options
-                li • Safety compliance verification
-                li • Long-term support commitment
-
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Ready to Order?
-
-          .bg-green-50.border.border-green-200.rounded-lg.p-6
-            h3.text-xl.font-semibold.text-green-900.mb-4 Get Started Today
-            p.text-green-800.mb-6
-              | Ready to take your high-power control applications to the next level? The BaldrickSwitchy is the perfect choice 
-              | for professional applications requiring safety, reliability, and precise control.
-            
-            .flex.flex-col.sm:flex-row.gap-4
-              = link_to 'Where to Buy', '/where-to-buy-baldrick-boards', class: 'bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
-              = link_to 'Contact Sales', '/support', class: 'bg-gray-600 text-white px-8 py-4 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
-              = link_to 'Technical Specs', '/boards/baldrickswitchy/tech-specs', class: 'bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center text-lg font-semibold'
+          / Call to Action
+          .bg-gradient-to-r.from-blue-600.to-green-600.rounded-xl.p-8.text-center.text-white
+            h3.text-2xl.font-bold.mb-4 Ready to Get Your BaldrickSwitchy?
+            p.text-blue-100.mb-6
+              | Choose your preferred retailer and join thousands of satisfied BaldrickSwitchy customers worldwide.
+            .space-x-4
+              a href="/boards/baldrickswitchy/overview" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
+                | Learn More
+              a href="/support" class="inline-block border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition-colors font-semibold"
+                | Get Support

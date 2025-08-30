@@ -1,226 +1,101 @@
-- content_for :title, "Buy This Board! - Baldrick8 - Baldrick Board Documentation"
+- content_for :title, "Where to Buy the Baldrick8 - Baldrick Board Documentation"
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'Baldrick8', menu_items: board_menu_items('baldrick8')
 
 .max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
   / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrick8', 'Buy This Board!')
+  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrick8', 'Where to Buy')
 
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'Buy Baldrick8!', subtitle: 'Get your professional pixel controller today', image_url: 'baldrick8/board.png'
+    = render 'shared/page_header', title: 'Where to Buy the Baldrick8', subtitle: 'Get your professional 8-port pixel controller from trusted retailers worldwide', image_url: 'baldrick8/board.png'
 
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
-        / Why Choose Baldrick8 Content
+        / Baldrick8 Purchase Information
         .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Why Choose the Baldrick8?
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Where Can I Buy the Baldrick8?
 
-          p.text-lg.text-gray-700.mb-6
-            | The Baldrick8 represents the pinnacle of pixel controller technology, designed for professionals who demand 
-            | reliability, performance, and flexibility. Here's why the Baldrick8 should be your controller of choice.
+          p.text-lg.text-gray-700.mb-8
+            | The Baldrick8 is available from our trusted network of authorized retailers worldwide. Each retailer has been carefully selected to provide excellent service and support.
 
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Professional Performance
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-blue-50.rounded-lg.p-6.border.border-blue-200
-              h4.text-xl.font-semibold.text-blue-900.mb-3 High Capacity
-              ul.space-y-2.text-blue-800
-                li Up to 750 pixels per output
-                li 8 independent outputs
-                li Total capacity: 6,000 pixels
-                li 40fps refresh rate
-                li Professional-grade performance
-
-            .bg-green-50.rounded-lg.p-6.border.border-green-200
-              h4.text-xl.font-semibold.text-green-900.mb-3 Reliability
-              ul.space-y-2.text-green-800
-                li Industrial-grade components
-                li Temperature monitoring
-                li Overcurrent protection
-                li Built-in diagnostics
-                li Long-term stability
-
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Advanced Features
-
-          .space-y-6.mb-8
-            .bg-white.border.border-gray-200.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Web-Based Configuration
-              p.text-gray-700.mb-3
-                | The Baldrick8 features an intuitive web interface that makes configuration simple and accessible from any device.
-              ul.list-disc.list-inside.space-y-1.text-gray-700
-                li No software installation required
-                li Works on any web browser
-                li Real-time configuration changes
-                li Network and WiFi setup
-                li Advanced diagnostic tools
-
-            .bg-white.border.border-gray-200.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Flexible Connectivity
-              p.text-gray-700.mb-3
-                | Multiple connectivity options ensure the Baldrick8 integrates seamlessly into any network setup.
-              ul.list-disc.list-inside.space-y-1.text-gray-700
-                li WiFi connectivity
-                li Ethernet port
-                li Access point mode
-                li Client mode
-                li Static or DHCP IP
-
-            .bg-white.border.border-gray-200.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Professional Protocols
-              p.text-gray-700.mb-3
-                | Support for all major pixel protocols ensures compatibility with any LED strip or pixel product.
-              ul.list-disc.list-inside.space-y-1.text-gray-700
-                li WS2811/WS2812B support
-                li SK6812 compatibility
-                li APA102/DotStar support
-                li Custom protocol timing
-                li Multiple color orders
-
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Perfect For
-
-          .grid.md:grid-cols-3.gap-6.mb-8
-            .bg-purple-50.rounded-lg.p-6.border.border-purple-200.text-center
-              .text-purple-600.mb-3
-                svg.h-12.w-12.mx-auto fill="currentColor" viewBox="0 0 20 20"
-                  path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              h4.text-lg.font-semibold.text-purple-900.mb-2 Professional Displays
-              p.text-purple-700.text-sm
-                | Large-scale installations, commercial displays, and professional lighting shows
-
-            .bg-indigo-50.rounded-lg.p-6.border.border-indigo-200.text-center
-              .text-indigo-600.mb-3
-                svg.h-12.w-12.mx-auto fill="currentColor" viewBox="0 0 20 20"
-                  path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
-              h4.text-lg.font-semibold.text-indigo-900.mb-2 Home Automation
-              p.text-indigo-700.text-sm
-                | Smart home lighting, architectural lighting, and residential installations
-
-            .bg-teal-50.rounded-lg.p-6.border.border-teal-200.text-center
-              .text-teal-600.mb-3
-                svg.h-12.w-12.mx-auto fill="currentColor" viewBox="0 0 20 20"
-                  path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
-              h4.text-lg.font-semibold.text-teal-900.mb-2 Events & Shows
-              p.text-teal-700.text-sm
-                | Live events, concerts, theater productions, and special effects
-
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Technical Advantages
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
-              h4.text-xl.font-semibold.text-gray-900.mb-3 Hardware Excellence
-              ul.space-y-2.text-gray-700
-                li High-quality PCB design
-                li Industrial-grade connectors
-                li Robust power distribution
-                li Thermal management
-                li EMI shielding
-
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
-              h4.text-xl.font-semibold.text-gray-900.mb-3 Software Features
-              ul.space-y-2.text-gray-700
-                li Real-time configuration
-                li Remote monitoring
-                li Automatic updates
-                li Backup/restore
-                li Logging and diagnostics
-
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Cost Effectiveness
-
-          .bg-green-50.border-l-4.border-green-400.p-4.mb-6
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-8
             .flex
               .flex-shrink-0
-                svg.h-5.w-5.text-green-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
               .ml-3
-                p.text-sm.text-green-700
-                  strong Value Proposition: 
-                  | The Baldrick8 offers exceptional value with professional features at a competitive price point, 
-                  | making it accessible to both professionals and enthusiasts.
+                p.text-sm.text-blue-700
+                  strong Global Availability: 
+                  | The Baldrick8 is available through our trusted network of authorized retailers worldwide. Each retailer has been carefully selected to provide excellent service and support.
 
-          .grid.md:grid-cols-3.gap-6.mb-8
-            .text-center
-              .text-2xl.font-bold.text-green-600.mb-2 8 Outputs
-              p.text-gray-600.text-sm Maximum flexibility for complex installations
-
-            .text-center
-              .text-2xl.font-bold.text-green-600.mb-2 750 Pixels
-              p.text-gray-600.text-sm Per output for high-density displays
-
-            .text-center
-              .text-2xl.font-bold.text-green-600.mb-2 40fps
-              p.text-gray-600.text-sm Smooth, professional-quality animation
-
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Customer Satisfaction
-
-          .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
-            h4.text-lg.font-semibold.text-blue-900.mb-3 What Our Customers Say
+          / Baldrick8 Retailers
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
+            h3.text-2xl.font-bold.text-gray-900.mb-4.flex.items-center
+              svg.h-6.w-6.text-purple-600.mr-3 fill="currentColor" viewBox="0 0 20 20"
+                path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+              | Baldrick8
             .grid.md:grid-cols-2.gap-6
-              .border-l-4.border-blue-400.pl-4
-                p.text-blue-800.italic.mb-2
-                  | "The Baldrick8 has transformed our lighting setup. The web interface is intuitive and the performance is outstanding."
-                p.text-blue-600.text-sm - Professional Lighting Designer
-              .border-l-4.border-blue-400.pl-4
-                p.text-blue-800.italic.mb-2
-                  | "Reliable, powerful, and easy to configure. Exactly what we needed for our large-scale installation."
-                p.text-blue-600.text-sm - Event Production Company
+              .space-y-4
+                .flex.items-center
+                  span.text-2xl.mr-3 🇬🇧
+                  div
+                    h4.font-semibold.text-gray-900 United Kingdom
+                    a href="https://buildalightshow.com/67-baldrick-board" target="_blank" class="text-purple-600 hover:text-purple-700 text-sm" Build a Light Show
+                
+                .flex.items-center
+                  span.text-2xl.mr-3 🇺🇸
+                  div
+                    h4.font-semibold.text-gray-900 United States
+                    .space-y-1
+                      a href="https://gilbertengineeringusa.com/products/baldrick-8-port-controller" target="_blank" class="text-purple-600 hover:text-purple-700 text-sm block" Gilbert Engineering
+                      a href="https://www.wiredwatts.com/brpixel8" target="_blank" class="text-purple-600 hover:text-purple-700 text-sm block" Wired Watts
+              .space-y-4
+                .flex.items-center
+                  span.text-2xl.mr-3 🇦🇺
+                  div
+                    h4.font-semibold.text-gray-900 Australia
+                    a href="https://www.hansonelectronics.com.au/product/baldrick/" target="_blank" class="text-purple-600 hover:text-purple-700 text-sm" Hanson Electronics
+                
+                .flex.items-center
+                  span.text-2xl.mr-3 🇳🇱
+                  div
+                    h4.font-semibold.text-gray-900 Netherlands
+                    a href="https://www.propixeler.nl/product/baldrick8" target="_blank" class="text-purple-600 hover:text-purple-700 text-sm" Propixeler
 
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Comparison with Alternatives
+          / Why Choose Baldrick Section
+          .bg-gradient-to-r.from-blue-50.to-purple-50.rounded-xl.p-8.mb-8.border.border-blue-200
+            h3.text-2xl.font-bold.text-gray-900.mb-6.text-center Why Choose the Baldrick8?
+            .grid.md:grid-cols-3.gap-6
+              .text-center
+                .bg-white.rounded-full.p-4.w-16.h-16.mx-auto.mb-4.flex.items-center.justify-center
+                  svg.h-8.w-8.text-blue-600 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+                h4.font-semibold.text-gray-900.mb-2 Reliable Quality
+                p.text-sm.text-gray-600 Built with premium components and rigorous testing
+              .text-center
+                .bg-white.rounded-full.p-4.w-16.h-16.mx-auto.mb-4.flex.items-center.justify-center
+                  svg.h-8.w-8.text-purple-600 fill="currentColor" viewBox="0 0 20 20"
+                    path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                h4.font-semibold.text-gray-900.mb-2 Easy Setup
+                p.text-sm.text-gray-600 Intuitive web interface, no complex configuration needed
+              .text-center
+                .bg-white.rounded-full.p-4.w-16.h-16.mx-auto.mb-4.flex.items-center.justify-center
+                  svg.h-8.w-8.text-green-600 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+                h4.font-semibold.text-gray-900.mb-2 Expert Support
+                p.text-sm.text-gray-600 Dedicated support team and active community
 
-          .overflow-x-auto.mb-8
-            table.min-w-full.bg-white.border.border-gray-200
-              thead.bg-gray-50
-                tr
-                  th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider Feature
-                  th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider Baldrick8
-                  th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider Competitor A
-                  th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider Competitor B
-              tbody.divide-y.divide-gray-200
-                tr
-                  td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900 Outputs
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500 8
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500 4
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500 6
-                tr
-                  td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900 Pixels per Output
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500 750
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500 500
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500 600
-                tr
-                  td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900 Web Interface
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
-                    span.inline-flex.items-center.px-2.5.py-0.5.rounded-full.text-xs.font-medium.bg-green-100.text-green-800 Yes
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
-                    span.inline-flex.items-center.px-2.5.py-0.5.rounded-full.text-xs.font-medium.bg-red-100.text-red-800 No
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
-                    span.inline-flex.items-center.px-2.5.py-0.5.rounded-full.text-xs.font-medium.bg-yellow-100.text-yellow-800 Basic
-                tr
-                  td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900 WiFi
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
-                    span.inline-flex.items-center.px-2.5.py-0.5.rounded-full.text-xs.font-medium.bg-green-100.text-green-800 Yes
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
-                    span.inline-flex.items-center.px-2.5.py-0.5.rounded-full.text-xs.font-medium.bg-red-100.text-red-800 No
-                  td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500
-                    span.inline-flex.items-center.px-2.5.py-0.5.rounded-full.text-xs.font-medium.bg-green-100.text-green-800 Yes
-
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Ready to Buy?
-
-          .bg-indigo-50.border.border-indigo-200.rounded-lg.p-6.mb-8
-            h4.text-lg.font-semibold.text-indigo-900.mb-3 Purchase Your Baldrick8
-            p.text-indigo-700.mb-4
-              | Ready to experience the power and flexibility of the Baldrick8? Order your professional pixel controller today.
-            .flex.flex-wrap.gap-4
-              a.bg-green-600.hover:bg-green-700.text-white.font-medium.py-2.px-4.rounded-md.transition-colors href="/where-to-buy-baldrick-boards" Buy Now
-              a.bg-white.hover:bg-gray-50.text-indigo-600.font-medium.py-2.px-4.rounded-md.border.border-indigo-600.transition-colors href="/boards/baldrick8/tech-specs" View Specifications
-              a.bg-white.hover:bg-gray-50.text-indigo-600.font-medium.py-2.px-4.rounded-md.border.border-indigo-600.transition-colors href="/boards/baldrick8/getting-started" Getting Started Guide
-
-          .mt-8.bg-gray-50.rounded-lg.p-6.border.border-gray-200
-            h4.text-lg.font-semibold.text-gray-900.mb-3 Still Have Questions?
-            p.text-gray-700.mb-4
-              | Not sure if the Baldrick8 is right for your project? Our team is here to help you make the best choice.
-            .flex.space-x-4
-              a.text-indigo-600.hover:text-indigo-800.underline href="/boards/baldrick8/faq" View FAQ
-              a.text-indigo-600.hover:text-indigo-800.underline href="/support" Contact Support
+          / Call to Action
+          .bg-gradient-to-r.from-purple-600.to-indigo-600.rounded-xl.p-8.text-center.text-white
+            h3.text-2xl.font-bold.mb-4 Ready to Get Your Baldrick8?
+            p.text-purple-100.mb-6
+              | Choose your preferred retailer and join thousands of satisfied Baldrick8 customers worldwide.
+            .space-x-4
+              a href="/boards/baldrick8/overview" class="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
+                | Learn More
+              a href="/support" class="inline-block border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-purple-600 transition-colors font-semibold"
+                | Get Support
