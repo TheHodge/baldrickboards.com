@@ -1,0 +1,18 @@
+/ Search Component
+div data-controller="search" class="relative"
+  / Search Input
+  .relative
+    input[
+      type="text"
+      data-search-target="input"
+      placeholder="Search boards, breakthroughs, FAQ... (⌘K)"
+      class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+    ]
+    / Search Icon
+    .absolute.inset-y-0.left-0.pl-3.flex.items-center.pointer-events-none
+      svg.h-5.w-5.text-gray-400 fill="currentColor" viewBox="0 0 20 20"
+        path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"
+  
+  / Search Results Dropdown
+  .absolute.z-50.w-full.mt-1.bg-white.border.border-gray-200.rounded-lg.shadow-lg.max-h-96.overflow-y-auto.hidden data-search-target="results"
+    / Results will be populated by JavaScript

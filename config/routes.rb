@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # Home page
   root 'pages#home'
   
+  # Search test page
+  get 'search-test', to: 'pages#search_test'
+  
   # Boards section
   get 'boards', to: 'boards#index'
   

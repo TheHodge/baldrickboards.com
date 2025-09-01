@@ -1,0 +1,234 @@
+[
+  {
+    "title": "Home",
+    "url": "/",
+    "content": "Baldrick Boards - Professional lighting control solutions for advanced displays, automation, and interactive installations. Comprehensive range of controllers including pixel controllers, relay controllers, DMX controllers, and more. Features include: lighting control, pixel controllers, relay controllers, DMX controllers, automation, interactive displays",
+    "category": "main",
+    "tags": [],
+    "excerpt": "Baldrick Boards - Professional lighting control solutions for advanced displays, automation, and interactive installations. Comprehensive range of controllers including pixel controllers, relay control..."
+  },
+  {
+    "title": "About Baldrick",
+    "url": "/about",
+    "content": "About Baldrick Boards and our innovative approach to lighting control. Learn about our philosophy, clever design principles, and commitment to providing professional lighting solutions with a unique sense of humor. Features include: philosophy, clever design, professional solutions, lighting control, innovation",
+    "category": "about",
+    "tags": [],
+    "excerpt": "About Baldrick Boards and our innovative approach to lighting control. Learn about our philosophy, clever design principles, and commitment to providing professional lighting solutions with a unique se..."
+  },
+  {
+    "title": "FAQ",
+    "url": "/faq",
+    "content": "Frequently Asked Questions about Baldrick Boards. Comprehensive answers to common questions about installation, configuration, troubleshooting, and usage of Baldrick controllers. Features include: frequently asked questions, installation, configuration, troubleshooting, usage, common issues",
+    "category": "faq",
+    "tags": [],
+    "excerpt": "Frequently Asked Questions about Baldrick Boards. Comprehensive answers to common questions about installation, configuration, troubleshooting, and usage of Baldrick controllers. Features include: freq..."
+  },
+  {
+    "title": "Fun Stuff",
+    "url": "/fun-stuff",
+    "content": "Fun Stuff and additional resources for Baldrick Boards. Release notes, STL files, board dimensions, panic mode information, and other useful resources for Baldrick enthusiasts. Features include: release notes, STL files, board dimensions, panic mode, resources, enthusiasts",
+    "category": "fun-stuff",
+    "tags": [],
+    "excerpt": "Fun Stuff and additional resources for Baldrick Boards. Release notes, STL files, board dimensions, panic mode information, and other useful resources for Baldrick enthusiasts. Features include: releas..."
+  },
+  {
+    "title": "Pixel Controllers",
+    "url": "/boards/pixel-controllers",
+    "content": "Professional pixel controllers for advanced lighting displays",
+    "category": "boards",
+    "tags": [],
+    "excerpt": "Professional pixel controllers for advanced lighting displays..."
+  },
+  {
+    "title": "Relay Controllers",
+    "url": "/boards/relay-controllers",
+    "content": "Relay controllers for power management and switching",
+    "category": "boards",
+    "tags": [],
+    "excerpt": "Relay controllers for power management and switching..."
+  },
+  {
+    "title": "Interactive Controllers",
+    "url": "/boards/interactive-controllers",
+    "content": "Interactive controllers for engaging displays",
+    "category": "boards",
+    "tags": [],
+    "excerpt": "Interactive controllers for engaging displays..."
+  },
+  {
+    "title": "Portable Controllers",
+    "url": "/boards/portable-controllers",
+    "content": "Portable and mobile lighting control solutions",
+    "category": "boards",
+    "tags": [],
+    "excerpt": "Portable and mobile lighting control solutions..."
+  },
+  {
+    "title": "Power Distribution",
+    "url": "/boards/power-distribution",
+    "content": "Power distribution and management solutions",
+    "category": "boards",
+    "tags": [],
+    "excerpt": "Power distribution and management solutions..."
+  },
+  {
+    "title": "DMX Controllers",
+    "url": "/boards/dmx-controllers",
+    "content": "DMX controllers for professional lighting control",
+    "category": "boards",
+    "tags": [],
+    "excerpt": "DMX controllers for professional lighting control..."
+  },
+  {
+    "title": "Baldrick8",
+    "url": "/boards/baldrick8",
+    "content": "An 8 port controller which pushes the boundaries of what's possible with a budget lighting controller. The Baldrick8 is our flagship 8-output pixel controller, designed for professional lighting displays and large-scale installations. With support for up to 750 pixels per port at 40fps and high refresh rates, it's perfect for creating stunning visual effects. Features include: 2 ports accepting 5v - 24v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS), 8 Ports handling many pixels per port (but 750 pixels per port at 40fps), 2 Power inputs (which combined with the included 7.5 amp fuses allows for full pixel runs at 100%), DDP, Artnet, E1.31 & sACN compatible, 3 Programmable Button ports (Can use the FPP API to start / stop a sequence), Small footprint compatible with other smart receiver mounts, No Pi or FPP Licence required, Push from xLights integration In addition, we've tried to add some simple quality of life improvements such as a QR code which links directly to the manual (easy to read on a mobile in the dark) and the three buttons have not only ports but physical buttons onboard to help you test without having to hook everything up.",
+    "category": "boards",
+    "tags": [
+      "baldrick8"
+    ],
+    "excerpt": "An 8 port controller which pushes the boundaries of what's possible with a budget lighting controller. The Baldrick8 is our flagship 8-output pixel controller, designed for professional lighting displa..."
+  },
+  {
+    "title": "Baldrick17",
+    "url": "/boards/baldrick17",
+    "content": "With 17 ports at your disposal, you'll be wondering how you ever coped with less. Ideal for big shows, bold ideas, and people who just really like plugging things in. The Baldrick17 is our newest pixel controller to join the Baldrick Family, designed for professional lighting displays and large-scale installations. With support for up to 750 pixels per port at 40fps and high refresh rates, it's perfect for creating stunning visual effects. Features include: 5 ports accepting 5v - 48v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS), Power ports are banked (4 + 4 + 4 + 4 + 1), 17 Ports handling up to 750 pixels per port at 40fps, 17 fused connectors which combined with the included 7.5 amp fuses allows for full pixel runs at 100%, DDP, Artnet, E1.31 & sACN compatible, 3 Programmable Turniputs ports (Can use the FPP API to start / stop a sequence and full lamp control), No Pi or FPP Licence required, Push from xLights integration In addition, we've tried to add some simple quality of life improvements such as a QR code which links directly to the manual (easy to read on a mobile in the dark) and the three buttons have not only ports but physical buttons onboard to help you test without having to hook everything up.",
+    "category": "boards",
+    "tags": [
+      "baldrick17"
+    ],
+    "excerpt": "With 17 ports at your disposal, you'll be wondering how you ever coped with less. Ideal for big shows, bold ideas, and people who just really like plugging things in. The Baldrick17 is our newest pixel..."
+  },
+  {
+    "title": "BaldrickBadge",
+    "url": "/boards/baldrickbadge",
+    "content": "We've may have gone a little overboard for the ELF Mini this year. The BaldrickBadge is our contribution to the ELF Mini, this namebadge comes preloaded with 95 Programmable LEDS, a 3 port phoenix connector, WLED and 2 onboard buttons powered by USB C. Features include: 95 Programmable LEDS preloaded, 3 port phoenix connector, WLED firmware, 2 onboard buttons, USB C powered, Expandable to a 4 port WLED controller, 2 port power input capability It's also expandable to a 4 port WLED controller with a 2 port power input.",
+    "category": "boards",
+    "tags": [
+      "baldrickbadge"
+    ],
+    "excerpt": "We've may have gone a little overboard for the ELF Mini this year. The BaldrickBadge is our contribution to the ELF Mini, this namebadge comes preloaded with 95 Programmable LEDS, a 3 port phoenix conn..."
+  },
+  {
+    "title": "BaldrickDMX",
+    "url": "/boards/baldrickdmx",
+    "content": "The easiest way to bring DMX to xLights The BaldrickDMX is the perfect controller for adding DMX to your show. Features include: 5v - 24v barrel or 2 pin connector with onboard power management (to avoid any BOOM BOOM BOOM BOOMS), Single output on 3 ports (RJ45, 3 Pin Neutrik XLR, 5 Pin Neutrik XLR), DDP, Artnet, E1.31 & sACN compatible, Button / Turnip activated presets, Small footprint compatible with other smart receiver mounts and Baldrick Boards, Push from xLights integration",
+    "category": "boards",
+    "tags": [
+      "baldrickdmx"
+    ],
+    "excerpt": "The easiest way to bring DMX to xLights The BaldrickDMX is the perfect controller for adding DMX to your show. Features include: 5v - 24v barrel or 2 pin connector with onboard power management (to avo..."
+  },
+  {
+    "title": "BaldrickInput1",
+    "url": "/boards/baldrickinput1",
+    "content": "Add advanced interactivity to your show with without any code or soldering! The BaldrickInput1 is our way of making interactivity to a lightshow as easy as point and click rather than code and solder! Features include: Powerjack accepting 5v - 24v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS), 1 Turniput allowing full access to the Turnip Network controls and button lamp configuration, Small footprint for easy placement inside a project box, Works over ethernet or Wifi (with antenna), Turniput allows effects via a button, motion sensor, reed switch, beam break or other input device",
+    "category": "boards",
+    "tags": [
+      "baldrickinput1"
+    ],
+    "excerpt": "Add advanced interactivity to your show with without any code or soldering! The BaldrickInput1 is our way of making interactivity to a lightshow as easy as point and click rather than code and solder! ..."
+  },
+  {
+    "title": "BaldrickInput8",
+    "url": "/boards/baldrickinput8",
+    "content": "8 Buttons, 2 Pixel outputs and a lot of ideas! The BaldrickInput8 expands on the BaldrickInput1's simple way of adding interactivity to your show, with 8 Turniputs and 2 pixel outputs, this board is perfect for a Selfie station or light tunnel! Features include: Powerjack accepting 5v - 48v with onboard power management, 8 Turniputs allowing full access to the Turnip Network controls and button lamp configuration, 2 Pixel outputs with 750 pixels per port at 40fps, Baldrick Medium dimensions so reuse your mounts and prints from other boards, Dual ethernet for daisy chaining, Turniput allows effects via a button, motion sensor, reed switch, beam break or other input device",
+    "category": "boards",
+    "tags": [
+      "baldrickinput8"
+    ],
+    "excerpt": "8 Buttons, 2 Pixel outputs and a lot of ideas! The BaldrickInput8 expands on the BaldrickInput1's simple way of adding interactivity to your show, with 8 Turniputs and 2 pixel outputs, this board is pe..."
+  },
+  {
+    "title": "BaldrickSignals",
+    "url": "/boards/baldricksignals",
+    "content": "Not the most useful board we've created but it sure is fun! The BaldrickSignals is the easy to use board to monitor your display popularity, using outputting device signals (and a configurable modifier) you can estimate your crowd numbers & see your popular times to plan accordingly. Features include: Barrel Powerjack accepting 5v - 24v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS), Small footprint for easy placement inside a project box, Turnip Network Integration to allow actions based on crowd sizes (e.g adjusting volume or highlighting donation areas) Coming Soon, Simple UI with CSV download and Google docs integration",
+    "category": "boards",
+    "tags": [
+      "baldricksignals"
+    ],
+    "excerpt": "Not the most useful board we've created but it sure is fun! The BaldrickSignals is the easy to use board to monitor your display popularity, using outputting device signals (and a configurable modifier..."
+  },
+  {
+    "title": "BaldrickSwitchy",
+    "url": "/boards/baldrickswitchy",
+    "content": "Turns stuff on and off, what more could you want The BaldrickSwitchy is a high-power relay controller designed for AC device control and traditional lighting. With precise timing control and safety features, it's perfect for controlling motors, lights, and other high-voltage applications. Features include: 5v - 24v with onboard power management, 4 Relays which can handle with up 8amp and 300v (AC/DC) (also compatible with a zero voltage circuit), DDP, Artnet, E1.31 & SACN compatible, Small footprint compatible with other Baldrick Boards & smart receiver mounts, Push from xLights integration, Controllable by the Turnip Network, Scannable QR code direct to the docs",
+    "category": "boards",
+    "tags": [
+      "baldrickswitchy"
+    ],
+    "excerpt": "Turns stuff on and off, what more could you want The BaldrickSwitchy is a high-power relay controller designed for AC device control and traditional lighting. With precise timing control and safety fea..."
+  },
+  {
+    "title": "The Turnip Network",
+    "url": "/breakthroughs/turnip-network",
+    "content": "Advanced networking capabilities for Baldrick boards. Enables seamless communication and coordination between multiple Baldrick devices for complex lighting installations. Features include: networking, communication, coordination, multiple devices, lighting installations",
+    "category": "breakthroughs",
+    "tags": [],
+    "excerpt": "Advanced networking capabilities for Baldrick boards. Enables seamless communication and coordination between multiple Baldrick devices for complex lighting installations. Features include: networking,..."
+  },
+  {
+    "title": "The Kluster",
+    "url": "/breakthroughs/kluster",
+    "content": "Cluster management and coordination features for Baldrick boards. Provides centralized control and management of multiple Baldrick devices in a cluster configuration. Features include: cluster management, centralized control, multiple devices, coordination",
+    "category": "breakthroughs",
+    "tags": [],
+    "excerpt": "Cluster management and coordination features for Baldrick boards. Provides centralized control and management of multiple Baldrick devices in a cluster configuration. Features include: cluster manageme..."
+  },
+  {
+    "title": "CE UKCA Certification",
+    "url": "/breakthroughs/ce-ukca-certification",
+    "content": "Professional certification and compliance for Baldrick boards. Ensures safety standards and regulatory compliance for professional use in various markets. Features include: certification, compliance, safety standards, professional use, regulatory",
+    "category": "breakthroughs",
+    "tags": [],
+    "excerpt": "Professional certification and compliance for Baldrick boards. Ensures safety standards and regulatory compliance for professional use in various markets. Features include: certification, compliance, s..."
+  },
+  {
+    "title": "Turniput Software",
+    "url": "/breakthroughs/turniput",
+    "content": "Software integration and control features for Baldrick boards. Provides advanced software tools for programming, configuration, and control of Baldrick devices. Features include: software integration, programming, configuration, control tools, advanced features",
+    "category": "breakthroughs",
+    "tags": [],
+    "excerpt": "Software integration and control features for Baldrick boards. Provides advanced software tools for programming, configuration, and control of Baldrick devices. Features include: software integration, ..."
+  },
+  {
+    "title": "Hodgical Test Mode",
+    "url": "/breakthroughs/hodgical-test-mode",
+    "content": "Advanced testing and diagnostic features for Baldrick boards. Comprehensive testing capabilities for troubleshooting and validating board functionality. Features include: testing, diagnostics, troubleshooting, validation, board functionality",
+    "category": "breakthroughs",
+    "tags": [],
+    "excerpt": "Advanced testing and diagnostic features for Baldrick boards. Comprehensive testing capabilities for troubleshooting and validating board functionality. Features include: testing, diagnostics, troubles..."
+  },
+  {
+    "title": "CunningFX",
+    "url": "/breakthroughs/cunningfx",
+    "content": "Advanced web interface features for Baldrick8. Enhanced user interface with beta software releases, original naming options, and cutting-edge capabilities. Features include: web interface, beta releases, original naming, advanced features, user interface",
+    "category": "breakthroughs",
+    "tags": [],
+    "excerpt": "Advanced web interface features for Baldrick8. Enhanced user interface with beta software releases, original naming options, and cutting-edge capabilities. Features include: web interface, beta release..."
+  },
+  {
+    "title": "Support",
+    "url": "/support",
+    "content": "Support and help resources for Baldrick Boards. Comprehensive support documentation, troubleshooting guides, and assistance for all Baldrick products. Features include: support documentation, troubleshooting guides, assistance, help resources",
+    "category": "support",
+    "tags": [],
+    "excerpt": "Support and help resources for Baldrick Boards. Comprehensive support documentation, troubleshooting guides, and assistance for all Baldrick products. Features include: support documentation, troublesh..."
+  },
+  {
+    "title": "Asking for Help",
+    "url": "/support/asking-for-help",
+    "content": "How to get help with Baldrick boards. Guidelines for requesting support, providing information, and getting the most effective assistance for your Baldrick controller issues. Features include: requesting support, guidelines, assistance, troubleshooting, help process",
+    "category": "support",
+    "tags": [],
+    "excerpt": "How to get help with Baldrick boards. Guidelines for requesting support, providing information, and getting the most effective assistance for your Baldrick controller issues. Features include: requesti..."
+  },
+  {
+    "title": "Software",
+    "url": "/support/software",
+    "content": "Software downloads and documentation for Baldrick Boards. Latest firmware updates, software tools, configuration utilities, and comprehensive documentation. Features include: software downloads, firmware updates, configuration tools, documentation, utilities",
+    "category": "support",
+    "tags": [],
+    "excerpt": "Software downloads and documentation for Baldrick Boards. Latest firmware updates, software tools, configuration utilities, and comprehensive documentation. Features include: software downloads, firmwa..."
+  }
+]

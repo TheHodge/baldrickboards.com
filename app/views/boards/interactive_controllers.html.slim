@@ -2,7 +2,7 @@
 
 .max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
   / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: page_breadcrumbs('Home', 'Boards', 'Interactive Controllers')
+  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: '/' }, { title: 'Boards', path: '/boards' }, { title: 'Interactive Controllers', path: nil }]
 
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden

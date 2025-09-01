@@ -4,4 +4,7 @@ class PagesController < ApplicationController
 
   def where_to_buy
   end
+  
+  def search_test
+  end
 end
