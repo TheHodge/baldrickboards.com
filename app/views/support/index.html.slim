@@ -1,0 +1,146 @@
+- content_for :title, "Hardware Support - Get Help with Your Baldrick Board"
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: page_breadcrumbs('Home', 'Support')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Hardware Support', subtitle: 'Get help with hardware issues for your Baldrick Board'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Hardware Support
+
+          p.text-lg.text-gray-700.mb-8
+            | If you are having a hardware issue with your Baldrick Board, please fill in the form below with as much detail as you can.
+
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-yellow-700
+                  strong Important:
+                  |  Our team cannot help with software or sequence issues on this address. We recommend you join our 
+                  = link_to "Facebook Community", "https://www.facebook.com/groups/3626858730963141", target: "_blank", class: "text-yellow-800 underline hover:text-yellow-900"
+                  |  and see if anyone has had a similar issue or can help (we hang out there as well).
+
+          / Hardware Support Form
+          .bg-white.border.border-gray-200.rounded-lg.p-8.mb-8
+            h3.text-xl.font-semibold.text-gray-900.mb-6 Hardware Support Form
+            
+            = form_with url: "https://formspree.io/f/meoqayqq", method: :post, local: true, html: { id: "fs-frm", name: "simple-contact-form", class: "space-y-6" } do |form|
+              fieldset#fs-frm-inputs
+                div
+                  = form.label :name, "Full Name", class: "block text-sm font-medium text-gray-700 mb-2"
+                  = form.text_field :name, id: "full-name", placeholder: "First and Last", required: true, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                
+                div
+                  = form.label :_replyto, "Email Address", class: "block text-sm font-medium text-gray-700 mb-2"
+                  = form.email_field :_replyto, id: "email-address", placeholder: "email@domain.tld", required: true, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                
+                div
+                  = form.label :message, "Message", class: "block text-sm font-medium text-gray-700 mb-2"
+                  = form.text_area :message, id: "message", rows: 5, placeholder: "Hi, I just wanted to say how amazing the Baldrick family is, also is Dom single? he's soooo dreamy.. what do you mean happily married?.", required: true, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                
+                = form.hidden_field :_subject, value: "Contact Form Submission", id: "email-subject"
+              
+              .flex.items-center.justify-end
+                = form.submit "Submit", class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors"
+                  svg.w-5.h-5.mr-2 fill="currentColor" viewBox="0 0 20 20"
+                    path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                    path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+
+          / Support Options
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Other Support Options
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3.flex.items-center
+                svg.h-6.w-6.text-blue-600.mr-3 fill="currentColor" viewBox="0 0 20 20"
+                  path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
+                | Facebook Community
+              p.text-gray-700.mb-4
+                | Join our active Facebook community for software questions, sequence help, and general discussions. Our team and community members are there to help!
+              = link_to "Join Community", "https://www.facebook.com/groups/3626858730963141", target: "_blank", class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3.flex.items-center
+                svg.h-6.w-6.text-green-600.mr-3 fill="currentColor" viewBox="0 0 20 20"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+                | Documentation
+              p.text-gray-700.mb-4
+                | Check our comprehensive documentation for setup guides, troubleshooting tips, and technical specifications.
+              = link_to fun_stuff_path, class: "inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors" do
+                | View Fun Stuff
+
+          / What We Can Help With
+          h3.text-2xl.font-bold.text-gray-900.mb-4 What We Can Help With
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Hardware Issues
+              ul.space-y-2.text-gray-700
+                li • Physical damage or defects
+                li • Power supply problems
+                li • Connection issues
+                li • Component failures
+                li • Manufacturing defects
+                li • Warranty claims
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Software & Sequences
+              p.text-gray-700.mb-3
+                | For these issues, please use our Facebook community:
+              ul.space-y-2.text-gray-700
+                li • xLights configuration
+                li • Sequence creation
+                li • Network setup
+                li • Firmware updates
+                li • Web interface issues
+                li • General questions
+
+          / Before Contacting Support
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Before Contacting Support
+
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Quick Tips:
+                  |  Please check our documentation and Facebook community first. Many common issues have already been solved and documented.
+
+          .space-y-4.mb-8
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Check These First
+              ul.space-y-2.text-gray-700
+                li • Verify power supply connections and voltage
+                li • Check all cable connections
+                li • Ensure proper mounting and ventilation
+                li • Review our troubleshooting guides
+                li • Search the Facebook community for similar issues
+
+          / Response Time
+          .bg-green-50.border-l-4.border-green-400.p-4.mb-8
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-green-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-green-700
+                  strong Response Time:
+                  |  We typically respond to hardware support requests within 24-48 hours during business days.
+
+          .mt-8.bg-gray-50.rounded-lg.p-6.border.border-gray-200
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Need Immediate Help?
+            p.text-gray-700.mb-4
+              | For urgent hardware issues or if you need immediate assistance, our Facebook community is often the fastest way to get help from both our team and experienced community members.
+            = link_to "Join Facebook Community", "https://www.facebook.com/groups/3626858730963141", target: "_blank", class: "inline-block bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-700 transition-colors font-semibold"
