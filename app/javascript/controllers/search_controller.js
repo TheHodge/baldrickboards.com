@@ -164,14 +164,9 @@ export default class extends Controller {
       
       // Special handling for "turnip" search to ensure both Turnip Network and Turniput appear
       if (query.toLowerCase() === 'turnip') {
-        console.log('Processing "turnip" search...')
-        
         // Find the Turnip Network and Turniput results
         const turnipNetworkResult = results.find(r => r.ref === '/breakthroughs/turnip-network')
         const turniputResult = results.find(r => r.ref === '/breakthroughs/turniput')
-        
-        console.log('Turnip Network found:', !!turnipNetworkResult)
-        console.log('Turniput found:', !!turniputResult)
         
         // If either is missing, add them to the top
         if (!turnipNetworkResult || !turniputResult) {
@@ -181,7 +176,6 @@ export default class extends Controller {
             const turnipNetworkDoc = this.searchIndex.find(d => d.url === '/breakthroughs/turnip-network')
             if (turnipNetworkDoc) {
               missingResults.push({ ref: '/breakthroughs/turnip-network', score: 1.0 })
-              console.log('Added Turnip Network to results')
             }
           }
           
@@ -189,7 +183,6 @@ export default class extends Controller {
             const turniputDoc = this.searchIndex.find(d => d.url === '/breakthroughs/turniput')
             if (turniputDoc) {
               missingResults.push({ ref: '/breakthroughs/turniput', score: 1.0 })
-              console.log('Added Turniput to results')
             }
           }
           
