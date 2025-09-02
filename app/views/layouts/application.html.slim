@@ -108,19 +108,18 @@ html
             .hidden.md:flex.items-center.ml-8
               = render 'shared/search'
           
-          / Mobile menu button and search
-          .sm:hidden.flex.items-center.space-x-2
-            / Mobile Search
-            .flex-1.max-w-xs
-              = render 'shared/search'
-            / Mobile Menu Button
+          / Mobile menu button
+          .md:hidden
             button.mobile-menu-button.inline-flex.items-center.justify-center.p-2.rounded-md.text-gray-400.hover:text-gray-500.hover:bg-gray-100.focus:outline-none.focus:ring-2.focus:ring-inset.focus:ring-indigo-500 type="button" data-action="click->mobile-menu#toggle"
               svg.h-6.w-6 fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"
       
       / Mobile menu
-      .mobile-menu.hidden.sm:hidden data-mobile-menu-target="menu"
+      .mobile-menu.hidden.md:hidden data-mobile-menu-target="menu"
         .pt-2.pb-3.space-y-1
+          / Mobile Search
+          .px-3.py-2
+            = render 'shared/search'
           / Boards Dropdown
           button.w-full.text-left.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-3.pr-4.py-2.border-l-4.text-base.font-medium.flex.items-center.justify-between data-action="click->mobile-menu#toggleDropdown"
             span Boards
