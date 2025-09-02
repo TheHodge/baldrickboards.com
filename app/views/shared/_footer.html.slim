@@ -7,43 +7,41 @@ footer.bg-purple-900.text-white
         h3.text-lg.font-semibold.mb-4 Our Boards
         ul.space-y-2.text-purple-200
           li
-            a.hover:text-white.transition-colors href="/boards/baldrick8" Baldrick8 Docs
+            = link_to "Baldrick8 Docs", board_path("baldrick8"), class: "hover:text-white transition-colors"
           li
-            a.hover:text-white.transition-colors href="/boards/baldrickswitchy" BaldrickSwitchy Docs
+            = link_to "Baldrick17 Docs", board_path("baldrick17"), class: "hover:text-white transition-colors"
           li
-            a.hover:text-white.transition-colors href="/boards/baldrickdmx" BaldrickDMX Docs
+            = link_to "BaldrickSwitchy Docs", board_path("baldrickswitchy"), class: "hover:text-white transition-colors"
           li
-            a.hover:text-white.transition-colors href="/boards/baldrickinput1" BaldrickInput1 Docs
+            = link_to "BaldrickDMX Docs", board_path("baldrickdmx"), class: "hover:text-white transition-colors"
           li
-            a.hover:text-white.transition-colors href="/boards/baldricksignals" BaldrickSignals Docs
+            = link_to "BaldrickInput1 Docs", board_path("baldrickinput1"), class: "hover:text-white transition-colors"
+          li
+            = link_to "BaldrickSignals Docs", board_path("baldricksignals"), class: "hover:text-white transition-colors"
       
       / Column 2: Help
       div
         h3.text-lg.font-semibold.mb-4 Help
         ul.space-y-2.text-purple-200
           li
-            a.hover:text-white.transition-colors href="https://www.facebook.com/groups/baldrickboards" target="_blank" Baldrick Boards Facebook Group
+            = link_to "Baldrick Boards Facebook Group", "https://www.facebook.com/groups/baldrickboards", target: "_blank", class: "hover:text-white transition-colors"
           li
-            a.hover:text-white.transition-colors href="/support" Hardware Support Form
+            = link_to "Hardware Support Form", support_path, class: "hover:text-white transition-colors"
           li
-            a.hover:text-white.transition-colors href="/fun-stuff" Fun Stuff
+            = link_to "Fun Stuff", fun_stuff_path, class: "hover:text-white transition-colors"
           li
-            a.hover:text-white.transition-colors href="/faq" FAQ
+            = link_to "FAQ", faq_path, class: "hover:text-white transition-colors"
       
       / Column 3: More
       div
         h3.text-lg.font-semibold.mb-4 More
         ul.space-y-2.text-purple-200
           li
-            a.hover:text-white.transition-colors href="/about" About Baldrick
+            = link_to "About Baldrick", about_path, class: "hover:text-white transition-colors"
           li
-            a.hover:text-white.transition-colors href="/where-to-buy-baldrick-boards" Where to Buy
+            = link_to "Where to Buy", where_to_buy_baldrick_boards_path, class: "hover:text-white transition-colors"
           li
-            a.hover:text-white.transition-colors href="/support" Support
-          li
-            a.hover:text-white.transition-colors href="/contact" Contact
-          li
-            a.hover:text-white.transition-colors href="/complaints" Complaints
+            = link_to "Complaints", "https://www.youtube.com/watch?v=g4IQjUpTNVU", target: "_blank", class: "hover:text-white transition-colors"
         
         / Seasonal Themes Dropdown
         .mt-6
