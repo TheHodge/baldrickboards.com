@@ -1,0 +1,125 @@
+- content_for :title, "Panic Mode?"
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: '/' }, { title: 'Fun Stuff', path: fun_stuff_path }, { title: 'Panic Mode?', path: nil }]
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Custom Header Section
+    .bg-purple-600.px-8.py-12.text-white
+      .max-w-4xl.mx-auto.text-center
+        h1.text-4xl.font-bold.mb-4 Panic Mode?
+        p.text-xl.opacity-90 Should you be panicking about your holiday display?
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto data-controller="panic-mode"
+        
+        / Countdown Grid
+        .grid.md:grid-cols-2.gap-8
+          
+          / Halloween Countdown
+          .bg-white.border.border-gray-200.rounded-lg.p-6.shadow-sm
+            .text-center.mb-6
+              .mb-4
+                / Pumpkin icon
+                svg.h-16.w-16.mx-auto.mb-2.text-orange-500 fill="currentColor" viewBox="0 0 24 24"
+                  path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                  path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
+                  path d="M9 9h2v2H9zm4 0h2v2h-2z"
+                  path d="M12 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"
+                h3.text-2xl.font-bold.text-gray-900 Halloween
+                p.text-gray-600 Show starts week before Oct 31st
+              #halloween-countdown.text-4xl.font-bold.text-gray-900.mb-2 --
+              .text-sm.text-gray-500 Days until show start
+            
+            / Panic Gauge
+            .mb-4
+              h4#halloween-gauge-title.text-lg.font-semibold.text-gray-900.mb-3 Everything's groovy
+              .relative
+                .flex.h-8.bg-gray-200.rounded-full.overflow-hidden
+                  .flex-1.bg-green-400
+                  .flex-1.bg-yellow-400
+                  .flex-1.bg-orange-400
+                  .flex-1.bg-red-400
+                  .flex-1.bg-red-600
+                #halloween-gauge-pointer.absolute.top-0.w-1.h-8.bg-gray-800.transform.-translate-x-1/2.transition-all.duration-500 style="left: 10%"
+              .flex.justify-between.text-xs.text-gray-600.mt-2
+                span Groovy
+                span Hmm
+                span Scary
+                span Really Scary!
+                span DOOM!!!
+
+          / Christmas Countdown
+          .bg-white.border.border-gray-200.rounded-lg.p-6.shadow-sm
+            .text-center.mb-6
+              .mb-4
+                / Christmas tree icon
+                svg.h-16.w-16.mx-auto.mb-2.text-green-600 fill="currentColor" viewBox="0 0 24 24"
+                  path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"
+                  path d="M12 8l-3 2v2l3 2 3-2V10l-3-2z"
+                  path d="M12 12l-2 1v1l2 1 2-1v-1l-2-1z"
+                  path d="M12 16l-1 0.5v0.5l1 0.5 1-0.5v-0.5L12 16z"
+                h3.text-2xl.font-bold.text-gray-900 Christmas
+                p.text-gray-600 Show starts December 1st
+              #christmas-countdown.text-4xl.font-bold.text-gray-900.mb-2 --
+              .text-sm.text-gray-500 Days until show start
+            
+            / Panic Gauge
+            .mb-4
+              h4#christmas-gauge-title.text-lg.font-semibold.text-gray-900.mb-3 Everything's groovy
+              .relative
+                .flex.h-8.bg-gray-200.rounded-full.overflow-hidden
+                  .flex-1.bg-green-400
+                  .flex-1.bg-yellow-400
+                  .flex-1.bg-orange-400
+                  .flex-1.bg-red-400
+                  .flex-1.bg-red-600
+                #christmas-gauge-pointer.absolute.top-0.w-1.h-8.bg-gray-800.transform.-translate-x-1/2.transition-all.duration-500 style="left: 10%"
+              .flex.justify-between.text-xs.text-gray-600.mt-2
+                span Groovy
+                span Hmm
+                span Scary
+                span Really Scary!
+                span DOOM!!!
+
+        / Panic Level Explanation
+        .mt-8.bg-gray-50.rounded-lg.p-6
+          h3.text-xl.font-semibold.text-gray-900.mb-4 Panic Level Guide
+          .grid.md:grid-cols-2.gap-6
+            div
+              h4.font-semibold.text-gray-900.mb-2 Halloween Timing:
+              p.text-gray-600.text-sm
+                strong Groovy:
+                |  More than 30 days to show start
+                br
+                strong Hmm:
+                |  21-30 days to show start
+                br
+                strong Scary:
+                |  14-20 days to show start
+                br
+                strong Really Scary!
+                |  7-13 days to show start
+                br
+                strong DOOM!!!
+                |  Less than 7 days to show start
+            div
+              h4.font-semibold.text-gray-900.mb-2 Christmas Timing:
+              p.text-gray-600.text-sm
+                strong Groovy:
+                |  More than 30 days to Dec 1st
+                br
+                strong Hmm:
+                |  21-30 days to Dec 1st
+                br
+                strong Scary:
+                |  14-20 days to Dec 1st
+                br
+                strong Really Scary!
+                |  7-13 days to Dec 1st
+                br
+                strong DOOM!!!
+                |  Less than 7 days to Dec 1st

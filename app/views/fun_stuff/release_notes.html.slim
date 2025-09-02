@@ -1,0 +1,609 @@
+- content_for :title, "Release Notes - Fun Stuff"
+
+.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+	/ Breadcrumb
+	= render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: '/' }, { title: 'Fun Stuff', path: fun_stuff_path }, { title: 'Release Notes', path: nil }]
+
+	/ Main Content Card
+	.bg-white.rounded-lg.shadow-lg.overflow-hidden
+		/ Header Section
+		= render 'shared/page_header', title: 'Release Notes', subtitle: 'Latest updates and improvements to Baldrick products'
+
+		/ Content Section
+		.px-8.py-8
+			/ Main Content
+			.prose.max-w-none
+				h2.text-3xl.font-bold.text-gray-900.mb-6 Release Notes
+
+				p.text-lg.text-gray-700.mb-6
+					| Stay up to date with the latest firmware updates, software improvements, and new features for all Baldrick products.
+
+				.bg-blue-50.border-l-4.border-blue-400.p-4.mb-8
+					.flex
+						.flex-shrink-0
+							svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+								path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+						.ml-3
+							p.text-sm.text-blue-700
+								strong Update Notification:
+								|  Your board should alert you when a new update is available. Not all updates are available for all boards.
+
+				h3.text-2xl.font-bold.text-gray-900.mb-4 Latest Versions
+				
+				.bg-gradient-to-r.from-purple-50.to-indigo-50.rounded-xl.p-8.border-2.border-purple-200.shadow-lg.mb-8
+					.grid.md:grid-cols-2.gap-6
+						div
+							h4.text-lg.font-bold.text-gray-900.mb-4.flex.items-center
+								svg.h-6.w-6.text-purple-600.mr-2 fill="currentColor" viewBox="0 0 20 20"
+									path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+								| Current Firmware Versions
+							ul.space-y-2.text-gray-700
+								li.flex.items-center
+									span.font-semibold.text-purple-700.mr-2
+										= link_to "Baldrick8", board_path("baldrick8"), class: "hover:text-purple-800 transition-colors"
+										| :
+									span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.1.0
+								li.flex.items-center
+									span.font-semibold.text-purple-700.mr-2
+										= link_to "Baldrick17", board_path("baldrick17"), class: "hover:text-purple-800 transition-colors"
+										| :
+									span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.1.0
+								li.flex.items-center
+									span.font-semibold.text-purple-700.mr-2
+										= link_to "BaldrickDMX", board_path("baldrickdmx"), class: "hover:text-purple-800 transition-colors"
+										| :
+									span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.1.0
+								li.flex.items-center
+									span.font-semibold.text-purple-700.mr-2
+										= link_to "BaldrickSwitchy", board_path("baldrickswitchy"), class: "hover:text-purple-800 transition-colors"
+										| :
+									span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.1.0
+								li.flex.items-center
+									span.font-semibold.text-purple-700.mr-2
+										= link_to "BaldrickInput1", board_path("baldrickinput1"), class: "hover:text-purple-800 transition-colors"
+										| :
+									span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.1.0
+								li.flex.items-center
+									span.font-semibold.text-purple-700.mr-2
+										= link_to "BaldrickSignals", board_path("baldricksignals"), class: "hover:text-purple-800 transition-colors"
+										| :
+									span.bg-white.px-2.py-1.rounded.text-sm.font-medium 0.9.2
+						div
+							h4.text-lg.font-bold.text-gray-900.mb-4.flex.items-center
+								svg.h-6.w-6.text-indigo-600.mr-2 fill="currentColor" viewBox="0 0 20 20"
+									path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+								| Update Status
+							p.text-gray-700.mb-4
+								| All boards are currently running the latest stable firmware. Check your board's web interface for automatic update notifications.
+							.bg-green-100.border.border-green-200.rounded-lg.p-3
+								.flex.items-center
+									svg.h-5.w-5.text-green-600.mr-2 fill="currentColor" viewBox="0 0 20 20"
+										path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+									span.text-sm.font-medium.text-green-800 All systems up to date
+			.flex.gap-8.mt-8
+				.flex-1
+					h3.text-2xl.font-bold.text-gray-900.mb-4#release-history Release History
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v3-1-0
+						h4.text-xl.font-semibold.text-gray-900.mb-3 3.1.0 - Proxy Shmoxy
+						p.text-sm.text-gray-500.mb-4 Latest Release
+						.bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-4
+							ul.space-y-2.text-gray-700
+								li • Nicholas Ramsingh reported an issue with FPP Proxy. I am in no way confirming that there was an issue with our Firmware and we've realised that our testing Kluster doesn't actually monitor FPP proxy but I've just updated my board and it works fine for me.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v3-1
+						h4.text-xl.font-semibold.text-gray-900.mb-3 3.1 - Pause and Effect
+						ul.space-y-2.text-gray-700
+							li • Fixed Switchy test mode issue reported by #{link_to 'Luke Gunton', 'https://www.facebook.com/groups/ilightthat/posts/3984575505191460/', target: '_blank'}
+							li • CunningFX will now pause when pixel data is sent to the board, reported by Jay Underdown
+							li 
+								| • Just a 
+								em slight 
+								| entire rewrite of the backend firmware to ensure that future updates and 
+								em future boards 
+								| become a lot easier to manage.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v3-0-1
+						h4.text-xl.font-semibold.text-gray-900.mb-3 3.0.1 - Just a Gregular update
+						ul.space-y-2.text-gray-700
+							li • To celebrate the release of the #{link_to 'Greg Macaree Firmware 3.0 overview video', 'https://www.youtube.com/watch?v=u20a206EO9U'} we are putting out a quick update to fix a few bugs he spotted over the last week.
+							li • We've also bought some of our own RGBW strip to add to the Kluster for testing so we should have to bug him less for 'does this work for you? in the future' thanks for your help Greg!
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v3-0
+						h4.text-xl.font-semibold.text-gray-900.mb-3 3.0 - Major Release
+						ul.space-y-2.text-gray-700
+							li • CunningFX is our brand new visual generator for artists, architects and those folk who like to turn lights on to mark special occasions, with over 5 (wow) different effects, colour, speed selection and advanced features such as layering and model targeting, we are really excited to evolve this feature as you use it and feedback.
+							li 
+								| • RGBW Support 
+								em Finally.
+							li • CunningFX can be activated over the Turnip network so your Input1 and Baldrick8 buttons can toggle presets, simply lovely.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-7-1
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.7.1 - The Chupdate
+						ul.space-y-2.text-gray-700
+							li 
+								| • Sometimes when feedback comes in strong, there is no choice but send out the company BALDRICKSIGNAL(S). Today that notice went out loud and clear CHUCK NEEDS HELP. The alarm goes off and each member of the team drops what they are doing, family dinners are interrupted, dogs are half walked and Disney+ box sets are paused as the team rushes to Whatsapp to see how they can help put out an update in time. After some furious typing, debates over code quality and over 
+								strong 2 lines of code changed! 
+								| The update was finally complete.
+							li • Test mode now defaults to Rainbow instead of ALL OFF.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-7
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.7 - All Boards
+						p.text-gray-700.mb-3
+							| After our first season we took a look at the crash data and some of the testing results from our Kluster, you'll see a bunch of stability updates over the next few months as we add more and more load to the boards to see what the limits are.
+						ul.space-y-2.text-gray-700
+							li • We've been running 20 boards full pelt with 750 pixels per port for 40 hours at a time, this release is what we've been working on since Christmas and we are very very pleased with it!
+							li • ⁠Fix minor UI bug that was annoying Pete (some cards were different widths) that nobody else noticed.
+							li • Fix minor UI bug that Dom noticed a while back (JS console warnings about IP addresses not being populated).
+							li • If the board crashes (shock) it's designed to instantly restart so you don't notice, sometimes it didn't restart so we've told it off and it's promised us it will be good.
+							li • If the board starts to get low on memory, we reduce the turnip activities until it comes back.
+							li • We ⁠fixed a dumb problem where we can offer to control FPP instances that we can't actually contact.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-6
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.6 - All Boards
+						p.text-gray-700.mb-3
+							| The seasonal freeze is over and we've got some 'none priority' fixes and optimisations for the board ready for you.
+						ul.space-y-2.text-gray-700
+							li • The webserver had a crashing issue when it was loaded more than once and the RAM got low, we've tried to fix that but why do you need the UI loaded in more than one tab... at this point it's you causing the issues.
+							li • ⁠Rework boot sequence to avoid problem bootloops that survive a b3-reset, this has been a pain in the arse for people and we do apologise, I can't even make a sarcastic comment because this one was on us but it took us a while to work out what the hell was going on with our 'bulletproof reset system'.
+							li • ⁠Kill a memory leak that occurred when network traffic got busy and the alternative of 'stop having big shows' wasn't approved.
+							li • Be better behaved in Artnet and E1.31/sACN code to avoid an annoying crash, again crashes are bad.
+							li • We've shuffled a few bits around internally and have found even more RAM for your pixel pleasure, they didn't think it was possible, but it is!
+
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-5-6
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.5.6 - All Boards
+						ul.space-y-2.text-gray-700
+							li • This fixes some freezing issues that were discoverd when using older protocols
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-5
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.5 - All Boards
+						ul.space-y-2.text-gray-700
+							li • Fixed the "relay threshold isn't saving" reported by Robert Milton, I was going to type something sarcastic here but it was an issue and we've fixed it.We've added a new section to the web interface which indicates where streaming data is being received from, what type it is and what the size of data is. The board will also show if you data is being received from multiple IP addresses at once (i.e. xLights & FPP or two FPP installs).
+							li • During the last update some people may have had to reset their board if their network was pretty fast, whilst we appreciate your dedication to good network speed, it did point out a slight error in our networking code and so we've re-written that. If you all could switch back to networking via null modem cables, that would help us out in future.
+						.bg-yellow-50.border-l-4.border-yellow-400.p-4.mt-4
+							p.text-sm.text-yellow-700
+								strong Seasonal Freeze:
+								|  With this feature added, we now enter our 'seasonal freeze period'. No other features will be added to the firmware public release until the season is over - only fixes and improvements will be done.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-4-3
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.4.3 - All Boards
+						ul.space-y-2.text-gray-700
+						li • Blank LEDs on startup, as requested by Derek Jamison whose pixels start blue, so we've sent a signal to cheer them up.
+						li • Rewritten the Turnip network discovery code, you probably won't see a difference unless you run more than 5 BaldrickBoards (You could buy more to test it out).
+						li • Fixed the "relay threshold isn't saving" reported by Robert Milton, I was going to type something sarcastic here but it was an issue and we've fixed it.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-4-2
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.4.2
+						ul.space-y-2.text-gray-700
+							li • An initial fix for a board timeout issue affect some Baldrick8 boards.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-4-1
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.4.1
+						ul.space-y-2.text-gray-700
+							li • I could make up something here like bug fixes, but the truth is we typed a .2 instead of a .1 in the release number column
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-4
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.4
+						ul.space-y-2.text-gray-700
+							li • Fix vendor logo formatting on smaller screens, we wouldn't want you to be unable to use test mode due to a giant BUILD A LIGHT SHOW logo
+							li • We've done some Firmware refactoring and now it looks really pretty and stylish, not that you've noticed.
+							li • BaldrickInput1 support
+							li • New managed update mechanism, so you don't have to upload all the boards when we do a firmware release
+							li • Allow buttons to trigger test modes on remote boards (somebody asked, I guess?)
+							li • Fix supposed rendering glitches, these glitches have still not officially being confirmed but if they were confirmed, they'd be fixed now. Blank unused pixels after test modes, they had a habit of staying on.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-3
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.3
+						ul.space-y-2.text-gray-700
+							li • Tweaked our websockets integration to work across a few more browsers (and implemented a fallback for those people who are running weird or older browsers)
+							li • We've redone the button interface a little, adding timeouts & pressed indicators, laying the groundwork for [REDACTED]
+							li • A secret update hidden... ooOooOOo.. why would I mention this.. because I write the notes.
+							li • Updated the sACN/ArtNet code to run better in certain situations, it's not a sexy feature but since it's the main point of the board, I thought we best mention it.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-2-1
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.2.1
+						ul.space-y-2.text-gray-700
+							li • Turns out FPP Proxy didn't like our Websockets implementation, so we've worked around it (and submitted slight tweak to FPP which should make them (and other websockets) friends).
+							li • Sometimes the Baldrick8 got a bit upset when it couldn't detect the internet, we put it in the naughty corner and told it to learn to stand up on it's own 8 ports..
+							li • Rob Milton broke the UI when editing models, I don't know why he just doesn't edit the models in xLights like everyone else but I guess we should fix it.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-2
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.2
+						ul.space-y-2.text-gray-700
+							li • BaldrickDMX added to button options
+								.bg-red-50.border-l-4.border-red-400.p-4.mt-4
+									p.text-sm.text-red-700
+									strong Warning:
+									| PLEASE DO NOT MAKE A FLAME CANNON GO OFF AT THE TOUCH OF A BALDRICK8 BUTTON.. JUST BECAUSE YOU CAN DOESN'T MEAN YOU SHOULD
+							li • Websockets in UI - Faster, more responsive UI that uses less controller resource, plus it's a fun word to say... Websockets..
+							li • Crashdumps - the board will now send us a small error log when you break it... because as we all know snitches use switches.
+
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-1
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.1
+						ul.space-y-2.text-gray-700
+							li • Rewritten the netcode, improved stability and speed.
+							li • Added the MOST requested feature to the Baldrick UI... A reboot board button.
+							li • Test Sync will now lock out the other boards and point you to the main board for modification.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-0
+						h4.text-xl.font-semibold.text-gray-900.mb-3 2.0 - Major Release
+						p.text-gray-700.mb-3
+							| After months of tweaking and testing, it's time for our 2.0 firmware release!
+						ul.space-y-2.text-gray-700
+							li • We've completely redesigned the way you configure buttons and added more functionality.
+							li • You can now quickly and easily control FPP direct from a Baldrick8 button press.
+							li • With Easy Mode, we've extracted two of the most popular commands (Play something and change the volume) and made the simple do (you can have your button playing Barbie Girl on repeat in less than 30 settings)
+							li • With Advanced Mode, you get full access to the FPP API and related commands and you can play with them till your hearts content.
+							li • Improved BaldrickSwitchy connectivity
+						p.text-gray-700.mb-3 We really are proud of this update and are looking forward to hearing how everyone gets on with it.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-28
+						h4.text-xl.font-semibold.text-gray-900.mb-3 1.28
+						ul.space-y-2.text-gray-700
+							li • We now have an advanced settings dialog... OOoooOOOo. The first advanced setting is the ability to opt-in to beta releases, which are features we've tested but they could do with a few more eyes. You can find out more about it by joining our #{link_to 'Baldrick Beta Facebook Group', 'https://www.facebook.com/groups/baldrickbetatesters'}.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-27
+						h4.text-xl.font-semibold.text-gray-900.mb-3 1.27
+						ul.space-y-2.text-gray-700
+							li • Introduction of BaldrickSwitchy to the Turnip Network, allowing you to control BaldrickSwitchy ports from the buttons on your Baldrick8.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-26-1
+						h4.text-xl.font-semibold.text-gray-900.mb-3 1.26.1
+						ul.space-y-2.text-gray-700
+							li • A small release to handle people with multiple Baldrick Boards or as we call them in the office our favourite people
+							li • We fixed a bug that nobody discovered and whilst most release notes wouldn't even mention but we do because we care.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-26
+						h4.text-xl.font-semibold.text-gray-900.mb-3 1.26
+						ul.space-y-2.text-gray-700
+							li • Added new button config GUI with more exciting options for what buttons can do, let's just call this the base update ;)
+							li • Initial fix for issues with sACN/ArtNet from Enttec LED Mapper, Can you believe some people DON'T want to use xLights.
+							li • Added support for the [REDACTED] board, soon™.
+							li • ⁠Corrected speeling error in UI, sorry.
+							li • Added ILT vendor branding, can you believe we forgot out own logo?
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-25
+						h4.text-xl.font-semibold.text-gray-900.mb-3 1.25
+						ul.space-y-2.text-gray-700
+							li • Added the 'I broke the network mode' inspired from a suggestion by Alan Hanson (look at that two mentions in two updates). When booting the board, if you press and hold button 1, it will reset all the network settings, go back to DHCP and completely forget that you tried to set a static IP address and got the gateway DNS wrong.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-21-4
+						h4.text-xl.font-semibold.text-gray-900.mb-3 1.21.4
+						ul.space-y-2.text-gray-700
+							li • Tweaked the RAINBOWS MODE, it was a bit slow for my liking so it got changed... no the power hasn't totally gone to my head.
+							li • Fixed a Grammar issue which I'm shocked Alan Hanson didn't see.
+							li • Added logos for additional vendors (more countries to Buy the Baldrick8 in!)
+							li • Pixels now start at 1 rather than 0.. causing developers worldwide to cringe but that appears to be the way "It's done"
+							li • When adding a model, the default test colour will now one of several preselected colours rather than just red, is this a laying the groundwork for a new feature coming soon.. who knows.. well, I do but I'm not telling you.
+							li • The board connects to our update server periodically to check for updates, if it cannot do this, we let you know there may be an issue with your network settings. We will never admit that the problem could be on our side.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-21-3
+						h4.text-xl.font-semibold.text-gray-900.mb-3 1.21.3
+						ul.space-y-2.text-gray-700
+							li • During testing for a very soon to be released feature, we noticed that in certain circumstances sending data via DDP looked a bit wonky. So we've pushed this before anyone really notices.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-21-2
+						h4.text-xl.font-semibold.text-gray-900.mb-3 1.21.2
+						ul.space-y-2.text-gray-700
+							li • We've had a report of one Baldrick customer having an off by one pixel issue in some circumstances. Obviously, we had a decision to make; Do we get rid of the customer or do we get rid of the error. This is an update pushed so it looks like we fixed the error #plausibledeniability.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-21-1
+						h4.text-xl.font-semibold.text-gray-900.mb-3 1.21.1
+						ul.space-y-2.text-gray-700
+							li • Preparations for our traitorous cousins receiving their Baldrick8 Boards
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-21
+						h4.text-xl.font-semibold.text-gray-900.mb-3 1.21
+						ul.space-y-2.text-gray-700
+							li • Added vendor mode (oooOooOOoOoOo).
+							li • Friend scanning - Baldrick will now look for other Baldricks on the network and let you know how they are doing, you can also syncronise your test mode with them.
+							li • Board safety and reliability - Factory reset can now recover from entirely broken firmware, not just broken settings, some of our testers did their job well.. and we want to make sure they can't do it again.
+							li • Improved web UI - Faster loading, moved some parts around, definitely not a few hours spent bikeshedding.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-20
+						h4.text-xl.font-semibold.text-gray-900.mb-3 1.20
+						ul.space-y-2.text-gray-700
+							li • Fixes to DDP parser to cope better with packet loss, etc.
+							li • Linking to the brand new Baldrick User Group.
+							li • Add multicast sACN.
+							li • Additions to Artnet / E1.31 compatibility.
+							li • Updating HTTP server to mitigate network packet loss affecting lights output.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-19
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.19
+						ul.space-y-2.text-gray-700
+							li • ArtNet support (if you don't know what this means, don't worry about it.)
+							li • Unicast E1.31/sACN support (so stop asking!)
+							li • Colour pick test mode enabled. You can now make ALL pixels a single colour using colour picker (works better in Chrome and Firefox than Safari ... sorry Mac fans but we are working on it.)
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-18
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.18
+						ul.space-y-2.text-gray-700
+							li • We've added model colour mode which allows you to have a colour per model, as suggested by Ron Howard.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-17
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.17
+						ul.space-y-2.text-gray-700
+							li • With the official release of xLights integration we had to do a few changes to make it work on our side... Update xLights and enjoy!
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-16-3
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.16.3
+						ul.space-y-2.text-gray-700
+							li • Some fixes to the UI around network settings (apparently SOME people wanted to be able to cancel.)
+							li • Removed blank frame between test modes (Looks a bit crap with it.)
+							li • Sped up HTTP responses on button press (don't act like you know what that means.)
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-16-2
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.16.2
+						ul.space-y-2.text-gray-700
+							li • Added base code for secret unannounced, coming soon feature.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-16-1
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.16.1
+						ul.space-y-2.text-gray-700
+							li • Turns out if you switch test mode again and again and again and again and again and again and again and again and again and again there is a SLIGHT memory leak which slows stuff down, gee thanks 'tester' for letting us know about that.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-16
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.16
+						ul.space-y-2.text-gray-700
+							li • Test mode panel redesigned.
+							li • Implemented Hodgical mode.	
+							li • Added Red mode.
+							li • Ability to select brightness.
+							li • Fixed a few bugs that none of you noticed.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-15-3
+						h4.text-xl.font-semibold.text-gray-900.mb-3 BOOTLOADER v1.3
+						ul.space-y-2.text-gray-700
+							li 
+								| • We've updated the bootloader.
+								.bg-red-50.border-l-4.border-red-400.p-4.mb-4
+									strong IMPORTANT:
+										| PLEASE DO NOT TURN OFF THE POWER WHEN YOU UPDATE THIS. If you can schedule your unexpected power cut till AFTER this update, that would be great.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-15-3
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.15.3
+						ul.space-y-2.text-gray-700
+							li • Turns out there was a little bit more JUICE to squeeze in optimisation and we've managed to get a bit more performance out of the board.	
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-15-2
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.15.2
+						ul.space-y-2.text-gray-700
+							li • We didn't like .1
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-15-1
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.15.1
+						ul.space-y-2.text-gray-700
+							li • Look, stop being so nosy, sometimes we just like to increment a number
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-15
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.15
+						ul.space-y-2.text-gray-700
+							li • Add colour order options to the pixels - Model options will be available in future xLights releases, hold your horses.
+							li • Add button support, we've also written a nice guide on what to do with the bloody things.
+							li • Allow bootloader updates, correct factory reset problems, not that any of you noticed...
+							li • ⁠Add release channels for future software testing, but that's for the grown ups.
+							li • Efficieny updates - pixels should be more responsive, switched CPR method.
+							li • Updates to web interface caching - Should be harder to make the lights glitch by hammering reload (but WHY DO YOU KEEP DOING THAT)
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-14
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.14
+						ul.space-y-2.text-gray-700
+							li • Better, more helpful validation of form input, some of you just wouldn't leave it alone!
+							li • Better support for pre-release testing, what does this mean? we'll never tell.	
+							li • Fix for FPP proxy header issue (Thanks Adam!).
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-13
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.13
+						ul.space-y-2.text-gray-700
+							li • Nunya Business, this was in no way an emergency release to fix a bug introduced in 1.12.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-12
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.12
+						ul.space-y-2.text-gray-700
+							li • Input validation, both client and serverside, to stop you cheekly little scamps from setting 6000% brightness and starting pixel channel -100.
+							li • Prevent crash when rapidly cycling test mode, the board got a little excited so we've given it a peppermint tea and told it to calm down.
+							li • Move jquery/bootstrap to device-hosted, for closed networks, SOME people want to use this board in a place WITHOUT internet.. can you imagine?
+							li • Network config - Static IP and device hostname now configurable, so STOP COMPLAINING!
+							li • Fixed links in footer to open in new window, because you promised us you'd never leave.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-11
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.11
+						ul.space-y-2.text-gray-700
+							li • Turn off pixels when exiting test mode.
+							li • Fixed problems saving channel start.
+							li • DDP start channels now 1-based as in xLights, FPP, etc.
+							li • Requires update to xLights (Built 28-03-24).
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-10
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.10
+						ul.space-y-2.text-gray-700
+							li • Rename "Everything off" test mode (Thanks Rob Milton).
+							li • Allow B1 to disable test mode with long press (Thanks Kevin Barker).
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-9
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.9
+						ul.space-y-2.text-gray-700
+							li • Fix dumb DDP parse bug which would leave gaps in px output.
+							li • Adapt version checks slightly.
+							li • Fix up links on Web UI.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-8
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.8
+						ul.space-y-2.text-gray-700
+							li • Fixed issue if you pushed from xLights without first uploading firmware.	
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-7
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.7
+						ul.space-y-2.text-gray-700
+							li • Fix issue with config uploads and large configs.
+							li • Add periodic version check. Now every 10 minutes, rather than once at boot.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-6
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.6
+						ul.space-y-2.text-gray-700
+							li • Stop UI state table twitchily resizing
+							li • Make test "Apply to" thing more clear.
+							li • Mark some UI fields as numbers.
+							li • Refresh system settings on UI when changed.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-5
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.5
+						ul.space-y-2.text-gray-700
+							li • Rewrite test mode handling, add new test modes.
+							li • Add button handler - Press B1 for 5 seconds to activate rainbows on all configured props.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-4
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.4
+						ul.space-y-2.text-gray-700
+							li • Move to component for OTA, share with factory firmware
+							li • Secure firmware releases
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-3
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.3
+						ul.space-y-2.text-gray-700
+							li • Fix stupid build issue.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-2
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.2
+						ul.space-y-2.text-gray-700
+							li • Fix UI weirdness if version check hasn't completed.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-1
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.1
+						ul.space-y-2.text-gray-700
+							li • Add factory reset - Hold B3 for 5 seconds and power cycle.
+						li • Ruin Dom's hard work on the interface and replace with a bootstrap interface.
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-0
+						h4.text-xl.font-semibold.text-gray-900.mb-3 v1.0
+						ul.space-y-2.text-gray-700
+							li • Add flash encryption to SDK Config.
+							li • Fix CI config for SDK.
+							li • First real release :)
+
+						h3.text-2xl.font-bold.text-gray-900.mb-4#how-to-update How to Update
+
+						.bg-green-50.border-l-4.border-green-400.p-4.mb-6
+							.flex
+								.flex-shrink-0
+									svg.h-5.w-5.text-green-400 viewBox="0 0 20 20" fill="currentColor"
+										path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+								.ml-3
+									p.text-sm.text-green-700
+										strong Easy Updates:
+										|  All firmware updates can be installed through the web interface without any special tools or equipment.
+
+						.space-y-4.mb-8
+							.bg-white.border.border-gray-200.rounded-lg.p-6
+								h4.text-lg.font-semibold.text-gray-900.mb-3 Step-by-Step Update Process
+								ol.list-decimal.list-inside.space-y-2.text-gray-700
+									li Access your Baldrick board's web interface
+									li Navigate to the System section
+									li Click on "Firmware Update"
+									li Download the latest firmware file
+									li Upload and install the update
+									li Wait for the installation to complete
+									li Restart your board when prompted
+
+							.bg-yellow-50.border-l-4.border-yellow-400.p-4
+								.flex
+									.flex-shrink-0
+										svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+											path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+									.ml-3
+										p.text-sm.text-yellow-700
+											strong Important:
+											|  Always backup your configuration before updating firmware. While updates are designed to preserve settings, it's best to be safe.
+
+				.hidden.lg:block.w-80.flex-shrink-0
+					.sticky.top-8
+						.bg-white.rounded-lg.shadow-lg.p-6
+							h3.text-lg.font-semibold.text-gray-900.mb-4 Version Navigation
+							.space-y-2 data-controller="smooth-scroll"
+								= link_to "Release History", "#release-history", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "3.1.0 - Proxy Shmoxy", "#v3-1-0", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "3.1 - Pause and Effect", "#v3-1", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "3.0.1 - Just a Gregular update", "#v3-0-1", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "3.0 - Major Release", "#v3-0", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.7.1 - The Chupdate", "#v2-7-1", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.7 - All Boards", "#v2-7", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.6 - All Boards", "#v2-6", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.5.6 - All Boards", "#v2-5-6", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.5 - All Boards", "#v2-5", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.4.3 - All Boards", "#v2-4-3", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.4.2", "#v2-4-2", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.4.1", "#v2-4-1", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.4", "#v2-4", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.3", "#v2-3", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.2.1", "#v2-2-1", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.2", "#v2-2", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.1", "#v2-1", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "2.0 - Major Release", "#v2-0", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "1.28", "#v1-28", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "1.27", "#v1-27", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "1.26.1", "#v1-26-1", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "1.26", "#v1-26", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "1.25", "#v1-25", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "1.21.4", "#v1-21-4", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "1.21.3", "#v1-21-3", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "1.21.2", "#v1-21-2", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "1.21.1", "#v1-21-1", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "1.21", "#v1-21", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "1.20", "#v1-20", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.19", "#v1-19", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.18", "#v1-18", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.17", "#v1-17", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.16.3", "#v1-16-3", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.16.2", "#v1-16-2", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.16.1", "#v1-16-1", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.16", "#v1-16", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.15.3", "#v1-15-3", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.15.2", "#v1-15-2", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.15.1", "#v1-15-1", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.15", "#v1-15", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.14", "#v1-14", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.13", "#v1-13", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.12", "#v1-12", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.11", "#v1-11", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.10", "#v1-10", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.9", "#v1-9", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.8", "#v1-8", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.7", "#v1-7", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.6", "#v1-6", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.5", "#v1-5", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.4", "#v1-4", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.3", "#v1-3", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.2", "#v1-2", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.1", "#v1-1", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "v1.0", "#v1-0", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1", data: { action: "click->smooth-scroll#handleClick" }
+								= link_to "How to Update", "#how-to-update", class: "block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1 mt-4 pt-4 border-t border-gray-200", data: { action: "click->smooth-scroll#handleClick" }
+
+			.mt-8
+				h3.text-2xl.font-bold.text-gray-900.mb-4 Support & Troubleshooting
+
+				p.text-gray-700.mb-6
+					| If you encounter any issues during the update process or have questions about new features, our support team is here to help.
+
+				.grid.md:grid-cols-2.gap-6.mb-8
+					.bg-gray-50.rounded-lg.p-6.border.border-gray-200
+						h4.text-xl.font-semibold.text-gray-900.mb-3 Need Help?
+						p.text-gray-700.mb-3
+							| Our support team can assist with any update issues or questions about new features.
+						= link_to support_path, class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors" do
+							| Contact Support
+
+					.bg-gray-50.rounded-lg.p-6.border.border-gray-200
+						h4.text-xl.font-semibold.text-gray-900.mb-3 Community
+						p.text-gray-700.mb-3
+							| Join our Facebook group to discuss updates and share experiences with other users.
+						= link_to "https://www.facebook.com/groups/baldrickboards", target: "_blank", class: "inline-block bg-purple-600 text-white px-6 py-2 rounded-md hover:bg-purple-700 transition-colors" do
+							| Join Group
+
+				.mt-8.bg-gray-50.rounded-lg.p-6.border.border-gray-200
+					h4.text-lg.font-semibold.text-gray-900.mb-3 Stay Updated
+					p.text-gray-700.mb-4
+						| We regularly release updates to improve performance, add features, and fix issues. Keep your Baldrick products up to date for the best experience.
+					= link_to fun_stuff_path, class: "inline-block bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors" do
+						| View All Fun Stuff

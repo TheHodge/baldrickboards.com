@@ -1,0 +1,200 @@
+- content_for :title, "Asking for Help Checklist - Get Better Support for Baldrick Boards"
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: page_breadcrumbs('Home', 'Support', 'Asking for Help')
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'The Asking for Help Checklist', subtitle: 'Get answers to your questions quicker with this handy checklist'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h2.text-3xl.font-bold.text-gray-900.mb-6 The Asking for Help Checklist
+
+          p.text-lg.text-gray-700.mb-8
+            | If you are reading this, it means someone has sent you this link to help you get answers to your question quicker.
+
+          p.text-gray-700.mb-8
+            | We know that with showtime looming it can be stressful when things go wrong, so here is a handy checklist for you to quickly run through and double check.
+
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-8
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Quick Fix:
+                  |  Most issues can be resolved by following these simple steps. Try them before asking for help!
+
+          / If the pixels are not doing what they should
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
+            h3.text-2xl.font-bold.text-gray-900.mb-4 If the pixels are not doing what they should
+            p.text-gray-700.mb-4
+              | This is usually a channel overlap issue and easily sortable.
+            
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-4
+              p.text-sm.text-yellow-700
+                strong Important:
+                |  Make sure each of your controllers has Auto Layout Models and Auto Layout Size and if possible full xLights Control enabled. 
+                em If you are unable to do that, make sure all your controllers have separate channels and universes
+
+            ol.space-y-3.text-gray-700
+              li.flex.items-start
+                span.bg-purple-100.text-purple-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 1
+                span Re-render the sequence
+              li.flex.items-start
+                span.bg-purple-100.text-purple-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 2
+                span In xLights on the controller tab, click 'output to lights' on each of your controllers and keep an eye on the bottom left that they all succeed (sometimes they can fail)
+              li.flex.items-start
+                span.bg-purple-100.text-purple-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 3
+                span Then in xLights click FPP Connect and do an upload with 
+                strong UDP Out
+                |  set to 
+                em ALL
+                |  on your main show controller
+              li.flex.items-start
+                span.bg-purple-100.text-purple-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 4
+                span Check that the channels in xLights match the channels in FPP and on the Baldrick8 controller
+
+          / If the pixels are not outputting via FPP
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
+            h3.text-2xl.font-bold.text-gray-900.mb-4 If the pixels are not outputting via FPP
+            
+            ol.space-y-3.text-gray-700
+              li.flex.items-start
+                span.bg-blue-100.text-blue-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 1
+                span Make sure test mode isn't enabled on the Baldrick8
+              li.flex.items-start
+                span.bg-blue-100.text-blue-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 2
+                span Check the E1.31 Outputs tab in FPP and ensure the I.P. address matches your controller IP address
+              li.flex.items-start
+                span.bg-blue-100.text-blue-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 3
+                span Check the E1.31 Outputs tab in FPP and ensure the channels match the ones in the xLights controller tab
+              li.flex.items-start
+                span.bg-blue-100.text-blue-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 4
+                span Enable test mode on FPP and look at the stats box on the Baldrick8 - is it receiving data?
+
+          / If the pixels are not outputting via xLights
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
+            h3.text-2xl.font-bold.text-gray-900.mb-4 If the pixels are not outputting via xLights
+            
+            ol.space-y-3.text-gray-700
+              li.flex.items-start
+                span.bg-green-100.text-green-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 1
+                span Make sure test mode isn't enabled on the Baldrick8
+              li.flex.items-start
+                span.bg-green-100.text-green-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 2
+                span Check the controller tab in xLights and ensure the I.P. address matches your controller IP address
+              li.flex.items-start
+                span.bg-green-100.text-green-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 3
+                span Push outputs to the controller and make sure it's successful
+              li.flex.items-start
+                span.bg-green-100.text-green-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 4
+                span Enable test mode on FPP and look at the stats box on the Baldrick8 - is it receiving data?
+
+          / That didn't help
+          .bg-red-50.border-l-4.border-red-400.p-6.mb-8
+            h3.text-2xl.font-bold.text-gray-900.mb-4 That didn't help
+            p.text-gray-700.mb-6
+              | If the checklist didn't solve it, then it's time to ask for help. If you are going to post on the 
+              = link_to "Baldrick Community Facebook Group", "https://www.facebook.com/groups/3626858730963141", target: "_blank", class: "text-red-600 hover:text-red-700 underline"
+              | , then here are some things that are really helpful to include (and will almost certainly be asked for, so posting them now will get you help quicker):
+
+            .bg-white.rounded-lg.p-6.border.border-red-200
+              h4.text-lg.font-semibold.text-gray-900.mb-4 Essential Information to Include
+              ul.space-y-3.text-gray-700
+                li.flex.items-start
+                  svg.h-5.w-5.text-red-500.mr-3.mt-0.5.flex-shrink-0 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+                  span
+                    strong What is the issue you are having
+                    |  (be as detailed as possible)
+                li.flex.items-start
+                  svg.h-5.w-5.text-red-500.mr-3.mt-0.5.flex-shrink-0 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+                  span
+                    strong What have you tried so far
+                li.flex.items-start
+                  svg.h-5.w-5.text-red-500.mr-3.mt-0.5.flex-shrink-0 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+                  span
+                    strong What version of xLights, FPP &/or Baldrick8 firmware
+                    |  are you using
+                li.flex.items-start
+                  svg.h-5.w-5.text-red-500.mr-3.mt-0.5.flex-shrink-0 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+                  span
+                    strong Please include screenshots
+                    |  of your xLights controller tab (with the Baldrick8 selected), your FPP e1.31 Outputs page & your xLights Models section
+                li.flex.items-start
+                  svg.h-5.w-5.text-red-500.mr-3.mt-0.5.flex-shrink-0 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+                  span
+                    strong If possible, a photo of the controller
+                    |  wired up
+                li.flex.items-start
+                  svg.h-5.w-5.text-red-500.mr-3.mt-0.5.flex-shrink-0 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+                  span
+                    strong A bit of info about your network setup!
+
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4.mt-6
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-yellow-700
+                    strong Pro Tip:
+                    |  These might seem like a pain in the arse to gather, but trust us, it will get you a solution quicker. There is no such thing as too much information.
+
+          / Quick Actions
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Ready to Get Help?
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3.flex.items-center
+                svg.h-6.w-6.text-blue-600.mr-3 fill="currentColor" viewBox="0 0 20 20"
+                  path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
+                | Facebook Community
+              p.text-gray-700.mb-4
+                | Post your question with all the information from the checklist above for the fastest response.
+              = link_to "Join Community", "https://www.facebook.com/groups/3626858730963141", target: "_blank", class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3.flex.items-center
+                svg.h-6.w-6.text-purple-600.mr-3 fill="currentColor" viewBox="0 0 20 20"
+                  path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+                | Hardware Support
+              p.text-gray-700.mb-4
+                | For physical hardware issues, defects, or warranty claims, use our direct support form.
+              = link_to support_path, class: "inline-block bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors" do
+                | Contact Support
+
+          / Additional Fun Stuff
+          .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Additional Fun Stuff
+            p.text-gray-700.mb-4
+              | Before asking for help, check these resources as they might already contain the solution to your problem.
+            .grid.md:grid-cols-2.gap-4
+              div
+                h5.font-medium.text-gray-900.mb-2 Documentation
+                ul.space-y-1.text-sm.text-gray-600
+                  li • 
+                    = link_to "Board Documentation", boards_path, class: "text-purple-600 hover:text-purple-700"
+                  li • 
+                    = link_to "FAQ Section", fun_stuff_faq_path, class: "text-purple-600 hover:text-purple-700"
+                  li • 
+                    = link_to "Release Notes", fun_stuff_release_notes_path, class: "text-purple-600 hover:text-purple-700"
+              div
+                h5.font-medium.text-gray-900.mb-2 External Fun Stuff
+                ul.space-y-1.text-sm.text-gray-600
+                  li • xLights Documentation
+                  li • FPP Documentation
+                  li • YouTube Tutorials
+                  li • Community Videos

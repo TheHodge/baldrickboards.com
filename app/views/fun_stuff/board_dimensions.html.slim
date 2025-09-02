@@ -1,0 +1,220 @@
+- content_for :title, "Board Dimensions - Fun Stuff"
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: '/' }, { title: 'Fun Stuff', path: fun_stuff_path }, { title: 'Board Dimensions', path: nil }]
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Board Dimensions', subtitle: 'Technical specifications and mounting information for all Baldrick boards'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .prose.max-w-none
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Baldrick Dimensions
+
+          p.text-lg.text-gray-700.mb-6
+            | Baldrick Boards are categorized into two board sizes: 
+            strong small
+            |  and 
+            strong medium
+            | . This means that we don't have to keep making new mounts and accessory sizes as we create new boards.
+
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-8
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Important:
+                  |  Mounting holes in all our boards are 
+                  strong M3
+                  | . Please use the correct hardware for secure mounting.
+
+          / Small Boards
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
+            h3.text-2xl.font-bold.text-gray-900.mb-4 Small Boards
+            p.text-gray-700.mb-6
+              | We've designed the Small boards so they can be hidden inside a small junction or project box.
+            
+            .grid.md:grid-cols-2.gap-6.items-center
+              div
+                h4.text-lg.font-semibold.text-gray-900.mb-3 Small Board Specifications
+                ul.space-y-2.text-gray-700
+                  li • 
+                    strong Category:
+                    |  Small form factor
+                  li • 
+                    strong Mounting Holes:
+                    |  M3
+                  li • 
+                    strong Typical Use:
+                    |  Junction boxes, small enclosures
+                  li • 
+                    strong Installation:
+                    |  Hidden installations
+              .bg-gray-50.rounded-lg.p-4
+                img src="/img/dimensions-small.jpeg" alt="Small Baldrick Board Dimensions" class="w-full h-auto rounded-lg"
+                p.text-sm.text-gray-600.mt-2.text-center Small Baldrick Board Dimensions
+
+          / Medium Boards
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
+            h3.text-2xl.font-bold.text-gray-900.mb-4 Medium Boards
+            p.text-gray-700.mb-6
+              | We based the dimensions of the 
+              strong Medium Baldrick boards
+              |  to match similar boards already in the market so you can reuse mounts and 3D printed elements.
+            
+            .bg-purple-50.border-l-4.border-purple-400.p-4.mb-6
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-purple-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-purple-700
+                    strong Community Fun Stuff:
+                    |  The Baldrick community have created an amazing range of mounts and STLs that you can print and use today.
+
+            .grid.md:grid-cols-2.gap-6.items-center
+              div
+                h4.text-lg.font-semibold.text-gray-900.mb-3 Medium Board Specifications
+                ul.space-y-2.text-gray-700
+                  li • 
+                    strong Category:
+                    |  Medium form factor
+                  li • 
+                    strong Board Footprint:
+                    |  117mm × 74mm
+                  li • 
+                    strong Mounting Holes:
+                    |  M3
+                  li • 
+                    strong Compatibility:
+                    |  Matches similar boards in market
+                  li • 
+                    strong Typical Use:
+                    |  Standard installations, existing mounts
+              .bg-gray-50.rounded-lg.p-4
+                img src="/img/dimensions-medium.jpeg" alt="Medium Baldrick Board Dimensions" class="w-full h-auto rounded-lg"
+                p.text-sm.text-gray-600.mt-2.text-center Medium Baldrick Board Dimensions
+
+          / Mounting Guidelines
+          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-yellow-700
+                  strong Important Warning:
+                  |  Once again we ask 
+                  strong DO NOT ENLARGE THE MOUNTING HOLES
+                  | . Use the correct M3 hardware for secure mounting.
+
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Mounting Guidelines
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Hardware Requirements
+              ul.space-y-2.text-gray-700
+                li • 
+                  strong Screw Size:
+                  |  M3 (metric)
+                li • 
+                  strong Thread Pitch:
+                  |  0.5mm
+                li • 
+                  strong Length:
+                  |  6-8mm recommended
+                li • 
+                  strong Head Type:
+                  |  Pan head or countersunk
+                li • 
+                  strong Material:
+                  |  Stainless steel recommended
+                li • 
+                  strong Quantity:
+                  |  4 screws per board
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Installation Tips
+              ul.space-y-2.text-gray-700
+                li • Use proper M3 hardware - do not substitute
+                li • Ensure adequate clearance around the board
+                li • Consider thermal management requirements
+                li • Allow space for cable routing
+                li • Test fit before final installation
+                li • Use thread-locking compound if needed
+
+          / Board Compatibility
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Board Compatibility
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
+            .grid.md:grid-cols-2.gap-8
+              div
+                h4.text-lg.font-semibold.text-gray-900.mb-4 Small Form Factor
+                ul.space-y-2.text-gray-700
+                  li • BaldrickInput1
+                  li • BaldrickSignals
+                  li • Other compact controllers
+                p.text-sm.text-gray-600.mt-3
+                  | Perfect for space-constrained installations and hidden mounting applications.
+              div
+                h4.text-lg.font-semibold.text-gray-900.mb-4 Medium Form Factor
+                ul.space-y-2.text-gray-700
+                  li • Baldrick8
+                  li • Baldrick17
+                  li • BaldrickDMX
+                  li • BaldrickSwitchy
+                p.text-sm.text-gray-600.mt-3
+                  | Standard size compatible with most existing mounting solutions and enclosures.
+
+          / Enclosure Design Guidelines
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Enclosure Design Guidelines
+
+          .space-y-6.mb-8
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Small Board Enclosures
+              ul.space-y-2.text-gray-700
+                li • Minimum internal dimensions: Add 10mm to board size
+                li • Ventilation: Ensure adequate airflow
+                li • Cable entry: Plan for power and data connections
+                li • Mounting: Use M3 hardware with proper clearance
+                li • Access: Consider maintenance and configuration access
+
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Medium Board Enclosures
+              ul.space-y-2.text-gray-700
+                li • Standard footprint: 117mm × 74mm
+                li • Height clearance: Minimum 25mm recommended
+                li • Thermal management: Consider heat dissipation
+                li • Cable management: Plan for multiple connections
+                li • Professional mounting: Compatible with standard racks
+
+          / Related Fun Stuff
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Related Fun Stuff
+
+          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 3D Printed Mounts
+              p.text-gray-700.mb-4
+                | Download community-created STL files for custom mounts and enclosures.
+              = link_to fun_stuff_stls_and_mounts_path, class: "inline-block bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors" do
+                | View STLs & Mounts
+
+            .bg-white.border.border-gray-200.rounded-lg.p-6
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Technical Support
+              p.text-gray-700.mb-4
+                | Need help with mounting or enclosure design? Our support team can assist.
+              = link_to support_path, class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors" do
+                | Contact Support
+
+          .mt-8.bg-gray-50.rounded-lg.p-6.border.border-gray-200
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Community Designs
+            p.text-gray-700.mb-4
+              | The Baldrick community has created an amazing range of mounts, enclosures, and accessories. Check out our STLs & Mounts page to see what's available, or share your own designs with the community.
+            = link_to fun_stuff_path, class: "inline-block bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors" do
+              | View All Fun Stuff

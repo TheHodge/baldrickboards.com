@@ -1,0 +1,96 @@
+- content_for :title, "Fun Stuff - Baldrick Board Documentation"
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  nav.text-sm.text-gray-500.mb-6
+    .flex.items-center.space-x-2
+      = link_to "Home", "/", class: "hover:text-gray-700 transition-colors"
+      svg.h-4.w-4.text-gray-400 fill="currentColor" viewBox="0 0 20 20"
+        path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"
+      span.text-gray-900.font-medium Fun Stuff
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Fun Stuff', subtitle: 'Fun stuff, downloads, and interesting tidbits about Baldrick Boards', image_url: '/img/baldrick.jpg', image_alt: 'Fun Stuff'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        .grid.md:grid-cols-2.lg:grid-cols-3.gap-6
+          
+          / Release Notes
+          .bg-gray-50.rounded-lg.border.border-gray-200.overflow-hidden.group.hover:shadow-lg.hover:border-purple-300.hover:bg-purple-50.transition-all.duration-300.transform.hover:-translate-y-1
+            = link_to fun_stuff_release_notes_path, class: "block no-underline" do
+              .h-48.bg-gray-200.overflow-hidden.flex.items-center.justify-center
+                .text-gray-400.text-center
+                  svg.h-16.w-16.mx-auto.mb-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  p.text-sm Release Notes
+              .p-6
+                .mb-4
+                  h3.text-lg.font-semibold.text-gray-900.group-hover:text-purple-900.transition-colors.duration-300 Release Notes
+                  span.text-sm.text-gray-500.group-hover:text-purple-600.transition-colors.duration-300 Latest Updates
+                p.text-gray-600.mb-4.group-hover:text-gray-700.transition-colors.duration-300 Stay up to date with the latest firmware updates, new features, and improvements to Baldrick Boards.
+                ul.text-sm.text-gray-600.mb-4.space-y-1.group-hover:text-gray-700.transition-colors.duration-300
+                  li • Latest firmware releases
+                  li • New feature announcements
+                  li • Bug fixes and improvements
+                  li • Version history
+
+          / STLs & Mounts
+          .bg-gray-50.rounded-lg.border.border-gray-200.overflow-hidden.group.hover:shadow-lg.hover:border-purple-300.hover:bg-purple-50.transition-all.duration-300.transform.hover:-translate-y-1
+            = link_to fun_stuff_stls_and_mounts_path, class: "block no-underline" do
+              .h-48.bg-gray-200.overflow-hidden.flex.items-center.justify-center
+                .text-gray-400.text-center
+                  svg.h-16.w-16.mx-auto.mb-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                  p.text-sm STLs & Mounts
+              .p-6
+                .mb-4
+                  h3.text-lg.font-semibold.text-gray-900.group-hover:text-purple-900.transition-colors.duration-300 STLs & Mounts
+                  span.text-sm.text-gray-500.group-hover:text-purple-600.transition-colors.duration-300 3D Printing
+                p.text-gray-600.mb-4.group-hover:text-gray-700.transition-colors.duration-300 Download 3D printable mounts, cases, and accessories for your Baldrick Boards.
+                ul.text-sm.text-gray-600.mb-4.space-y-1.group-hover:text-gray-700.transition-colors.duration-300
+                  li • 3D printable mounts
+                  li • Protective cases
+                  li • Mounting brackets
+                  li • Custom accessories
+
+          / Board Dimensions
+          .bg-gray-50.rounded-lg.border.border-gray-200.overflow-hidden.group.hover:shadow-lg.hover:border-purple-300.hover:bg-purple-50.transition-all.duration-300.transform.hover:-translate-y-1
+            = link_to fun_stuff_board_dimensions_path, class: "block no-underline" do
+              .h-48.bg-gray-200.overflow-hidden.flex.items-center.justify-center
+                .text-gray-400.text-center
+                  svg.h-16.w-16.mx-auto.mb-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                  p.text-sm Board Dimensions
+              .p-6
+                .mb-4
+                  h3.text-lg.font-semibold.text-gray-900.group-hover:text-purple-900.transition-colors.duration-300 Board Dimensions
+                  span.text-sm.text-gray-500.group-hover:text-purple-600.transition-colors.duration-300 Technical Specs
+                p.text-gray-600.mb-4.group-hover:text-gray-700.transition-colors.duration-300 Detailed technical specifications and dimensions for all Baldrick Boards.
+                ul.text-sm.text-gray-600.mb-4.space-y-1.group-hover:text-gray-700.transition-colors.duration-300
+                  li • Physical dimensions
+                  li • Mounting hole locations
+                  li • Connector positions
+                  li • Technical drawings
+
+          / Panic Mode
+          .bg-gray-50.rounded-lg.border.border-gray-200.overflow-hidden.group.hover:shadow-lg.hover:border-purple-300.hover:bg-purple-50.transition-all.duration-300.transform.hover:-translate-y-1
+            = link_to fun_stuff_panic_mode_path, class: "block no-underline" do
+              .h-48.bg-gradient-to-br.from-red-500.to-orange-500.overflow-hidden.flex.items-center.justify-center
+                .text-white.text-center
+                  svg.h-16.w-16.mx-auto.mb-2 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                  p.text-sm.font-semibold Panic Mode
+              .p-6
+                .mb-4
+                  h3.text-lg.font-semibold.text-gray-900.group-hover:text-purple-900.transition-colors.duration-300 Panic Mode
+                  span.text-sm.text-gray-500.group-hover:text-purple-600.transition-colors.duration-300 Holiday Countdown
+                p.text-gray-600.mb-4.group-hover:text-gray-700.transition-colors.duration-300 Track the countdown to Halloween and Christmas with a dynamic DEFCON threat level system.
+                ul.text-sm.text-gray-600.mb-4.space-y-1.group-hover:text-gray-700.transition-colors.duration-300
+                  li • Halloween countdown
+                  li • Christmas countdown
+                  li • Dynamic DEFCON levels
+                  li • Real-time updates
