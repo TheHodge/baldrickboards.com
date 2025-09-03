@@ -16,190 +16,337 @@
     .px-8.py-8
       .max-w-4xl.mx-auto
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Web Interface Guide
+          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickDMX Web Interface
 
-          p.text-lg.text-gray-600.mb-8
-            | The BaldrickDMX web interface provides comprehensive control and configuration options for your professional DMX512 controller. 
-            | This guide will help you navigate and use all the features effectively for professional lighting applications.
+          p.text-lg.text-gray-700.mb-6
+            | The BaldrickDMX includes a powerful web-based configuration interface that allows you to set up and control your board from any web browser. 
+            | This comprehensive guide covers every aspect of the web interface.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Accessing the Web Interface
+          / Table of Contents
+          .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-blue-900.mb-4 Quick Navigation
+            .grid.md:grid-cols-2.gap-4
+              .space-y-2
+                .flex.items-center
+                  = link_to "#stats-dashboard", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Stats Dashboard
+                .flex.items-center
+                  = link_to "#test-mode", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Test Mode
+                .flex.items-center
+                  = link_to "#networking", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Networking Configuration
+                .flex.items-center
+                  = link_to "#presets", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | DMX Presets
+              .space-y-2
+                .flex.items-center
+                  = link_to "#turnip-network", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | The Turnip Network
+                .flex.items-center
+                  = link_to "#data-settings", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Data Settings
+                .flex.items-center
+                  = link_to "#advanced-settings", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Advanced Settings
+                .flex.items-center
+                  = link_to "#troubleshooting", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Troubleshooting
 
           .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-blue-900.mb-2 Quick Access
-            ol.text-blue-800.space-y-1
-              li 1. Ensure your BaldrickDMX is powered on and connected to your network
-              li 2. Find the IP address (check your router's DHCP client list)
-              li 3. Open your web browser and navigate to the IP address
-              li 4. The web interface will load automatically
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Access: 
+                  | Connect to your network and navigate to the BaldrickDMX's IP address in your web browser. 
+                  | You can find the IP address in your router's DHCP client list or by using network scanning tools.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Main Dashboard
+          / Stats Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#stats-dashboard Stats Dashboard
 
-          p.text-gray-700.mb-4
-            | The main dashboard provides an overview of your BaldrickDMX's status and quick access to key functions.
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 System Information
 
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Status Overview
-              ul.text-gray-700.space-y-1
-                li • Power status and voltage monitoring
-                li • Network connection status
-                li • DMX universe status indicators
-                li • Temperature and system health
-                li • Active protocols and connections
-                li • RDM device status
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickdmx/web-interface-stats.png", class: "w-full rounded mb-4", alt: "BaldrickDMX Web Interface Stats"
 
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Quick Actions
-              ul.text-gray-700.space-y-1
-                li • Test individual universes
-                li • Start/stop DMX output
-                li • Emergency stop functionality
-                li • System reboot options
-                li • Configuration backup/restore
-                li • RDM discovery
+            p.text-gray-700.mb-4
+              | The Stats board gives you a heads up as to what's going on with your controller.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 DMX Universe Configuration
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Uptime
+                p.text-sm.text-gray-700
+                  | Tells you how long your controller has been powered on 
+                  em
+                    | (this is useful in June to remind you that you forgot to turn it off over christmas)
 
-          p.text-gray-700.mb-4
-            | Configure each DMX universe independently for your specific lighting setup.
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Frame Rate
+                p.text-sm.text-gray-700
+                  | This lets you know what the FPS (Frames Per Second) the controller is currently outputting.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Network Throughput
+                p.text-sm.text-gray-700
+                  | Like the FPS, this gives you an indication of the volume of network traffic passing through the controller, this should help with debugging.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Temperature
+                p.text-sm.text-gray-700
+                  | With a sensor next to the Ethernet connector, this gives you an indication of the board temperature 
+                  em
+                    | (in Celsius because water freezes at 0, not 32.. how does that make sense?)
+                  br
+                  br
+                  | Generally, PCBs and components are good for -40 to +85°C. Anything below 60°C on this board is fine and nothing to worry about. If the temp is above that, try blowing on it like you would a hot chip out of the oven.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Firmware Version
+                p.text-sm.text-gray-700
+                  | The BaldrickDMX is pretty new in the world of controllers and we've got a LOT of features left to add, this will let you know your current version and if there is a version to upgrade to.
+                  br
+                  br
+                  em
+                    | (clicking the new version will upgrade it in place then restart the controller)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+                p.text-sm.text-gray-700
+                  | It would be pretty silly to have a controller information box without showing you the IP Address of the controller wouldn't it? That would be like launching a controller without being able to manage the networking.
+
+          / Test Mode Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#test-mode Test Mode
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Quick Testing & Troubleshooting
+
+            p.text-gray-700.mb-4
+              | Test Mode allows you to, well, test the board.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickdmx/web-interface-test.png", class: "w-full rounded mb-4", alt: "BaldrickDMX Web Interface Test"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Test Patterns
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Alternate Channels
+                p.text-xs.text-gray-700
+                  | Alternates between channels for testing individual DMX outputs.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Slow Sine Wave
+                p.text-xs.text-gray-700
+                  | All channels start at zero, go to 255, and back to zero in a slow sine wave pattern.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Fast Sine Wave
+                p.text-xs.text-gray-700
+                  | Same as slow sine wave but at a faster speed for more dynamic testing.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Sine Ripple
+                p.text-xs.text-gray-700
+                  | Creates a sine wave that moves across channels over time, each channel moving between 0 and 255.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 DMX Preset
+                p.text-xs.text-gray-700
+                  | Allows you to select a DMX preset that you've created as a test mode.
+
+          / Networking Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#networking Networking Configuration
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Good Defaults, Easy Config
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickdmx/web-interface-network.png", class: "w-full rounded mb-4", alt: "BaldrickDMX Web Interface Networking"
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Hostname
+                p.text-sm.text-gray-700
+                  | The default hostname is baldrickdmx (hence baldrickdmx.local). If you have one BaldrickDMX then it's completely fine to keep this as it is, however if like us you want to collect a few of them, then we'd recommend you change this to something like 
+                  em
+                    | frontgarden
+                  | or 
+                  em
+                    | upstairsroof
+                  br
+                  br
+                  strong
+                    | (Just a reminder that hostnames should be lowercase without spaces)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DHCP / STATIC
+                p.text-sm.text-gray-700
+                  | The default option is DHCP (which is Dynamic Host Configuration Protocol but you don't need to know that) which basically means your router or computer gives the board an I.P. address. This is great for initial setup but when you want to run a show it's best to switch it to STATIC, that's where your controller tells the router / computer "This is my IP".
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+                p.text-sm.text-gray-700
+                  | Set this to the IP address that you want the controller to be fixed to.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Subnet Mask & Gateway
+                p.text-sm.text-gray-700
+                  | It is more than likely that you can copy the Subnet Mask (the size of your network) and the Default Gateway (the exit point of your network) from the output of an IPconfig check.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DNS Server
+                p.text-sm.text-gray-700
+                  | DNS wise, typically, your default gateway is your router IP, and that more often than not, can provide your network with DNS. However, some people like to use "outside 3rd parties" DNS like google or cloudflares DNS. If you don't know about this, its probably best just to stick to DHCP.
+
+          / DMX Presets Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#presets DMX Presets
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Preset Management
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickdmx/dmx-presets.png", class: "w-full rounded mb-4", alt: "BaldrickDMX Presets"
+
+            p.text-gray-700.mb-4
+              | The BaldrickDMX lets you define Presets of set channels and values that can be used either in a test mode or via an action over the "turnip network".
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Adding a Preset
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickdmx/dmx-preset-add.png", class: "w-full rounded mb-4", alt: "Add a BaldrickDMX Preset"
+
+            p.text-gray-700.mb-4
+              | When you add a preset, you are asked for the channels and a value, you can add as many channels and values as you like.
+
+            p.text-gray-700.mb-4
+              | The channels input takes comma separated values such as 
+              em
+                | 11,16,19,21
+              | but also can take ranges such as 
+              em
+                | 100-150
+              | this will include all the numbers between 100 and 150 (including 100 and 150).
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Mark Mode
+
+            p.text-gray-700.mb-4
+              | Coming soon...
+
+          / Turnip Network Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#turnip-network The Turnip Network
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Network Discovery
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickdmx/web-interface-friends.png", class: "w-full rounded mb-4", alt: "BaldrickDMX Web Interface Friends"
+
+            p.text-gray-700.mb-4
+              | The BaldrickDMX will keep an eye out on the network for other Baldricks and let you know how they are doing (this is helpful as we don't put an LCD screen on the board).
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Test Sync
+
+            p.text-gray-700.mb-4
+              | Ticking this box will sync the test mode between all compatible boards, meaning if you are doing something on the house and want all your baldricks in Test Mode, it's very easy to do!
+
+          / Data Settings Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#data-settings Data Settings
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Protocol Configuration
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickdmx/web-interface-data-settings.png", class: "w-full rounded mb-4", alt: "BaldrickDMX Web Interface Data Settings"
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DDP Start Channel
+                p.text-sm.text-gray-700
+                  | Configure the starting channel for DDP (Distributed Display Protocol) communication.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 sACN/ArtNet Start Universe
+                p.text-sm.text-gray-700
+                  | Set the starting universe for sACN (Streaming ACN) and ArtNet protocols.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 sACN/ArtNet Channels Per Universe
+                p.text-sm.text-gray-700
+                  | Configure how many channels are used per universe for sACN and ArtNet protocols.
+
+          / Advanced Settings Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#advanced-settings Advanced Settings
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Advanced Configuration Options
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrickdmx/web-interface-advanced.png", class: "w-full rounded mb-4", alt: "BaldrickDMX Web Interface Advanced"
+
+            p.text-gray-700.mb-4
+              | We avoided it for so long but it's finally time to have a "box to stick stuff that doesn't fit in the other categories" and here it is, Advanced Settings.
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Launch Preset at Boot
+
+            p.text-gray-700.mb-4
+              | This allows you to select a preset to be loaded by default when the board is loaded, if a signal is detected from the network then this preset is overridden.
+
+          / Troubleshooting Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#troubleshooting Troubleshooting
 
           .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-yellow-900.mb-2 Universe Settings
-            ul.text-yellow-800.space-y-1
-              li • Universe number assignment
-              li • Channel count configuration (1-512)
-              li • Output port assignment
-              li • Timing and refresh rate settings
-              li • Priority and failover configuration
-              li • Individual universe testing
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-yellow-700
+                  strong Common Issues: 
+                  | If you can't access the web interface, try refreshing the page, clearing your browser cache, or ensuring you're connected to the correct network.
 
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Configuration Steps
+          .space-y-4.mb-8
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Can't Access Web Interface
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Check network connection to the BaldrickDMX
+                li Try different web browser
+                li Clear browser cache and cookies
+                li Restart the BaldrickDMX
+                li Check if firewall is blocking access
 
-          ol.space-y-4.text-gray-700.mb-8
-            li
-              strong.text-gray-900 1. Access Universe Settings
-              p.mt-1 Navigate to the DMX Universe Configuration section in the web interface.
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 DMX Output Issues
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Verify universe configuration
+                li Check DMX cable connections
+                li Test with different fixtures
+                li Verify channel assignments
+                li Check DMX timing parameters
 
-            li
-              strong.text-gray-900 2. Select Universe
-              p.mt-1 Choose the universe you want to configure.
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Network Configuration Problems
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Verify IP address settings
+                li Check subnet mask and gateway
+                li Test network connectivity
+                li Verify DNS server settings
+                li Check for IP address conflicts
 
-            li
-              strong.text-gray-900 3. Set Parameters
-              p.mt-1 Configure universe number, channel count, output port, and timing parameters.
+            .bg-white.border.border-gray-200.rounded-lg.p-4
+              h4.text-lg.font-semibold.text-gray-900.mb-2 Preset Configuration Issues
+              ul.list-disc.list-inside.space-y-1.text-gray-700
+                li Verify channel assignments
+                li Check value ranges (0-255)
+                li Test preset functionality
+                li Verify preset naming
+                li Check for duplicate presets
 
-            li
-              strong.text-gray-900 4. Test Configuration
-              p.mt-1 Use the test function to verify your settings work correctly.
-
-            li
-              strong.text-gray-900 5. Save Settings
-              p.mt-1 Save your configuration and repeat for other universes.
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 RDM Management
-
-          p.text-gray-700.mb-4
-            | Manage RDM (Remote Device Management) devices for advanced fixture control.
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 RDM Discovery
-              ul.text-gray-700.space-y-1
-                li • Automatic device discovery
-                li • Device information display
-                li • Manufacturer and model identification
-                li • Device addressing management
-                li • RDM parameter configuration
-                li • Device status monitoring
-
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 RDM Control
-              ul.text-gray-700.space-y-1
-                li • Remote device configuration
-                li • Parameter reading and writing
-                li • Device reset capabilities
-                li • Firmware update support
-                li • Device diagnostics
-                li • Error reporting
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Network Configuration
-
-          p.text-gray-700.mb-4
-            | Configure network settings for optimal performance and integration.
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 IP Configuration
-              ul.text-gray-700.space-y-1
-                li • DHCP (automatic) or Static IP
-                li • Subnet mask and gateway
-                li • DNS server settings
-                li • Network interface status
-                li • Connection speed and duplex
-
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Protocol Settings
-              ul.text-gray-700.space-y-1
-                li • E1.31 (sACN) configuration
-                li • Art-Net universe settings
-                li • DDP protocol options
-                li • Multicast vs Unicast
-                li • Port configuration
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Advanced Features
-
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Timing and Synchronization
-          p.text-gray-700.mb-4
-            | Configure precise timing parameters for professional DMX applications.
-
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li DMX timing compliance settings
-            li Frame rate configuration (up to 44 Hz)
-            li Break time and mark after break timing
-            li Inter-slot timing adjustments
-            li Synchronization with other controllers
-
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Universe Management
-          p.text-gray-700.mb-4
-            | Manage multiple universes and advanced routing capabilities.
-
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Universe merging and splitting
-            li Priority handling and failover
-            li Backup universe configuration
-            li Real-time universe switching
-            li Performance monitoring
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Troubleshooting
-
-          .bg-red-50.border-l-4.border-red-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-red-900.mb-2 Common Issues
-            ul.text-red-800.space-y-1
-              li • Web interface not loading - check network connection
-              li • DMX output not working - verify universe configuration
-              li • RDM devices not responding - check device addressing
-              li • Network connectivity - verify IP settings
-              li • Timing issues - check DMX timing parameters
-              li • Signal quality - verify cable connections and termination
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Professional Tips
-
-          .bg-purple-50.border-l-4.border-purple-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-purple-900.mb-2 Best Practices
-            ul.text-purple-800.space-y-1
-              li • Use proper DMX cables with XLR-5 connectors
-              li • Terminate the last fixture in each universe
-              li • Keep DMX runs under 300 meters for optimal performance
-              li • Use DMX splitters for complex setups
-              li • Test all universes before live operation
-              li • Monitor signal quality during operation
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Support and Resources
-
-          p.text-gray-700.mb-6
-            | For additional help with the web interface, check our resources or contact support.
-
-          .flex.flex-col.sm:flex-row.gap-4
-            = link_to 'FAQ', '/boards/baldrickdmx/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+          / Navigation Links
+          .flex.flex-col.sm:flex-row.gap-4.mt-8
+            = link_to 'Getting Started Guide', '/boards/baldrickdmx/getting-started', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
             = link_to 'Technical Specifications', '/boards/baldrickdmx/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'Contact Support', '/support', class: 'bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'FAQ', '/boards/baldrickdmx/faq', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'

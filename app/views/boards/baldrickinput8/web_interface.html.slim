@@ -23,6 +23,37 @@
             | The BaldrickInput8 includes a powerful web-based configuration interface that allows you to set up and control your board from any web browser. 
             | This comprehensive guide covers every aspect of the web interface.
 
+          / Table of Contents
+          .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-blue-900.mb-4 Quick Navigation
+            .grid.md:grid-cols-2.gap-4
+              .space-y-2
+                .flex.items-center
+                  = link_to "#stats-dashboard", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Stats Dashboard
+                .flex.items-center
+                  = link_to "#turniput-configuration", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Turniput Configuration
+                .flex.items-center
+                  = link_to "#networking", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Networking Configuration
+                .flex.items-center
+                  = link_to "#turnip-network", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Turnip Network
+              .space-y-2
+                .flex.items-center
+                  = link_to "#advanced-settings", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Advanced Settings
+                .flex.items-center
+                  = link_to "#troubleshooting", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Troubleshooting
+                .flex.items-center
+                  = link_to "#fpp-integration", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | FPP Integration
+                .flex.items-center
+                  = link_to "#http-url-calls", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | HTTP URL Calls
+
           .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
             .flex
               .flex-shrink-0
@@ -35,7 +66,7 @@
                   | You can find the IP address in your router's DHCP client list or by using network scanning tools.
 
           / Stats Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Stats Dashboard
+          h3.text-2xl.font-bold.text-gray-900.mb-4#stats-dashboard Stats Dashboard
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 System Information
@@ -79,7 +110,7 @@
                   | It would be pretty silly to have a controller information box without showing you the IP Address of the controller wouldn't it? That would be like launching a controller without being able to manage the networking.
 
           / Turniput Configuration Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Turniput Configuration
+          h3.text-2xl.font-bold.text-gray-900.mb-4#turniput-configuration Turniput Configuration
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 External Input Triggers
@@ -95,7 +126,7 @@
 
             .grid.md:grid-cols-2.gap-4.mb-4
               .bg-gray-50.rounded-lg.p-4
-                h6.text-sm.font-semibold.text-gray-900.mb-2 FPP Integration
+                h6.text-sm.font-semibold.text-gray-900.mb-2#fpp-integration FPP Integration
                 p.text-xs.text-gray-700
                   | Control FPP (Falcon Pi Player) instances, change volume, play songs/playlists, or call FPP API directly.
 
@@ -115,7 +146,7 @@
                   | Activate preset commands on your BaldrickDMX for moving heads, effects, etc.
 
               .bg-gray-50.rounded-lg.p-4
-                h6.text-sm.font-semibold.text-gray-900.mb-2 HTTP URL Calls
+                h6.text-sm.font-semibold.text-gray-900.mb-2#http-url-calls HTTP URL Calls
                 p.text-xs.text-gray-700
                   | Call web APIs from simple triggers - perfect for custom integrations.
 
@@ -135,7 +166,7 @@
                     | The main difference between this and the Button input on the Baldrick8 is the addition of Lamp controls.
 
           / Networking Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Networking Configuration
+          h3.text-2xl.font-bold.text-gray-900.mb-4#networking Networking Configuration
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 Good Defaults, Easy Config
@@ -189,7 +220,7 @@
                   | DNS wise, typically, your default gateway is your router IP, and that more often than not, can provide your network with DNS. However, some people like to use "outside 3rd parties" DNS like google or cloudflares DNS. If you don't know about this, its probably best just to stick to DHCP.
 
           / Turnip Network Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Turnip Network
+          h3.text-2xl.font-bold.text-gray-900.mb-4#turnip-network Turnip Network
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 The Turnip Network
@@ -221,7 +252,7 @@
                     strong It's what those people in business suits call 'synergy'!
 
           / Advanced Settings Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Advanced Settings
+          h3.text-2xl.font-bold.text-gray-900.mb-4#advanced-settings Advanced Settings
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 Advanced Configuration Options
@@ -235,7 +266,7 @@
                 | Advanced settings documentation will be added as new features are developed and released.
 
           / Troubleshooting Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
+          h3.text-2xl.font-bold.text-gray-900.mb-4#troubleshooting Troubleshooting
 
           .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
             .flex

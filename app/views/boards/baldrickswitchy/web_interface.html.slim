@@ -22,6 +22,37 @@
           p.text-lg.text-gray-700.mb-6
             | The web interface has been designed to be as simple as possible
 
+          / Table of Contents
+          .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-blue-900.mb-4 Quick Navigation
+            .grid.md:grid-cols-2.gap-4
+              .space-y-2
+                .flex.items-center
+                  = link_to "#stats-dashboard", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Stats Dashboard
+                .flex.items-center
+                  = link_to "#test-mode", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Test Mode
+                .flex.items-center
+                  = link_to "#relay-configuration", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Relay Configuration
+                .flex.items-center
+                  = link_to "#networking", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Networking Configuration
+              .space-y-2
+                .flex.items-center
+                  = link_to "#turnip-network", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | The Turnip Network
+                .flex.items-center
+                  = link_to "#data-settings", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Data Settings
+                .flex.items-center
+                  = link_to "#ddp-start-channel", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | DDP Start Channel
+                .flex.items-center
+                  = link_to "#sacn-artnet", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | sACN/ArtNet Settings
+
           .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
             .flex
               .flex-shrink-0
@@ -36,7 +67,7 @@
                   |  in your web browser.
 
           / Stats Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Stats Dashboard
+          h3.text-2xl.font-bold.text-gray-900.mb-4#stats-dashboard Stats Dashboard
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 System Information
@@ -92,7 +123,7 @@
                   | Tells you the current IP address of the Baldrick Switchy.
 
           / Test Mode Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Test Mode
+          h3.text-2xl.font-bold.text-gray-900.mb-4#test-mode Test Mode
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 Quick Testing & Troubleshooting
@@ -117,7 +148,7 @@
               | Select your port (or all ports) you'd like the effect applied to.
 
           / Relay Configuration Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Relay Configuration
+          h3.text-2xl.font-bold.text-gray-900.mb-4#relay-configuration Relay Configuration
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 Manual Relay Setup
@@ -132,7 +163,7 @@
               | It's a simple interface with only a name and a trigger threshold.
 
           / Networking Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Networking Configuration
+          h3.text-2xl.font-bold.text-gray-900.mb-4#networking Networking Configuration
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 Good Defaults, Easy Config
@@ -176,7 +207,7 @@
                   | DNS wise, typically, your default gateway is your router IP, and that more often than not, can provide your network with DNS. However, some people like to use "outside 3rd parties" DNS like google or cloudflares DNS. If you don't know about this, its probably best just to stick to DHCP.
 
           / Turnip Network Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 The Turnip Network
+          h3.text-2xl.font-bold.text-gray-900.mb-4#turnip-network The Turnip Network
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 Network Discovery
@@ -191,7 +222,7 @@
               | You can directly jump to their control panel from this interface and when they appear in this list, more board functionality will become available.
 
           / Data Settings Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Data Settings
+          h3.text-2xl.font-bold.text-gray-900.mb-4#data-settings Data Settings
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 Protocol Configuration
@@ -201,12 +232,12 @@
 
             .grid.md:grid-cols-2.gap-4.mb-4
               .bg-gray-50.rounded-lg.p-4
-                h5.text-md.font-semibold.text-gray-900.mb-2 DDP Start Channel
+                h5.text-md.font-semibold.text-gray-900.mb-2#ddp-start-channel DDP Start Channel
                 p.text-sm.text-gray-700
                   | Configure the starting channel for DDP (Distributed Display Protocol) communication.
 
               .bg-gray-50.rounded-lg.p-4
-                h5.text-md.font-semibold.text-gray-900.mb-2 sACN/ArtNet Start Universe
+                h5.text-md.font-semibold.text-gray-900.mb-2#sacn-artnet sACN/ArtNet Start Universe
                 p.text-sm.text-gray-700
                   | Set the starting universe for sACN (Streaming ACN) and ArtNet protocols.
 

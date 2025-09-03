@@ -23,6 +23,37 @@
             | The Baldrick8 includes a powerful web-based configuration interface that allows you to set up and control your board from any web browser. 
             | This comprehensive guide covers every aspect of the web interface.
 
+          / Table of Contents
+          .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-blue-900.mb-4 Quick Navigation
+            .grid.md:grid-cols-2.gap-4
+              .space-y-2
+                .flex.items-center
+                  = link_to "#stats-dashboard", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Stats Dashboard
+                .flex.items-center
+                  = link_to "#test-mode", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Test Mode
+                .flex.items-center
+                  = link_to "#port-configuration", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Port Configuration
+                .flex.items-center
+                  = link_to "#networking", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Networking Configuration
+              .space-y-2
+                .flex.items-center
+                  = link_to "#button-configuration", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Button Configuration
+                .flex.items-center
+                  = link_to "#troubleshooting", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Troubleshooting
+                .flex.items-center
+                  = link_to "#fpp-integration", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | FPP Integration
+                .flex.items-center
+                  = link_to "#http-url-calls", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | HTTP URL Calls
+
           .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
             .flex
               .flex-shrink-0
@@ -37,7 +68,7 @@
                   |  in your web browser.
 
           / Stats Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Stats Dashboard
+          h3.text-2xl.font-bold.text-gray-900.mb-4#stats-dashboard Stats Dashboard
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 System Information
@@ -100,7 +131,7 @@
                   | It would be pretty silly to have a controller information box without showing you the IP Address of the controller wouldn't it? That would be like launching a controller without being able to manage the networking.
 
           / Test Mode Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Test Mode
+          h3.text-2xl.font-bold.text-gray-900.mb-4#test-mode Test Mode
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 Quick Testing & Troubleshooting
@@ -139,7 +170,7 @@
               = image_tag "baldrick8/test-apply.png", class: "w-full rounded mb-4", alt: "Apply to Specific Areas"
 
           / Port Configuration Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Port Configuration
+          h3.text-2xl.font-bold.text-gray-900.mb-4#port-configuration Port Configuration
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 Manual Port Setup
@@ -157,7 +188,7 @@
               | But if you do, you can drill down into each port, monitor and configure the models, the pixel count and brightness.
 
           / Networking Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Networking Configuration
+          h3.text-2xl.font-bold.text-gray-900.mb-4#networking Networking Configuration
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 Good Defaults, Easy Config
@@ -201,7 +232,7 @@
                   | DNS wise, typically, your default gateway is your router IP, and that more often than not, can provide your network with DNS. However, some people like to use "outside 3rd parties" DNS like google or cloudflares DNS. If you don't know about this, its probably best just to stick to DHCP.
 
           / Buttons Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Button Configuration
+          h3.text-2xl.font-bold.text-gray-900.mb-4#button-configuration Button Configuration
 
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
             h4.text-lg.font-semibold.text-gray-900.mb-3 External Input Triggers
@@ -251,7 +282,7 @@
                 p.text-xs.text-gray-700
                   | Sometimes you set an input to do something and think "oh actually no, that's not what I want."
 
-            h5.text-md.font-semibold.text-gray-900.mb-3 FPP Integration Details
+            h5.text-md.font-semibold.text-gray-900.mb-3#fpp-integration FPP Integration Details
 
             p.text-gray-700.mb-4
               | FPP (or Falcon Pi Player) is our recommended show player for the holiday lighting hobby. We've two ways of using FPP which have proper names but let's call them 'Easy' (Control an FPP Instance) and 'Advanced' (Call an FPP API Directly).
@@ -286,7 +317,7 @@
             .bg-gray-50.rounded-lg.p-4.mb-4
               = image_tag "baldrick8/web-button-advanced-test-mode.png", class: "w-full rounded mb-4", alt: "Test Mode Configuration"
 
-            h6.text-sm.font-semibold.text-gray-900.mb-2 HTTP URL Calls
+            h6.text-sm.font-semibold.text-gray-900.mb-2#http-url-calls HTTP URL Calls
 
             p.text-gray-700.mb-4
               | When we first launched the Baldrick8, we were so proud of this feature! Imagine being able to call a web API from a simple trigger!
@@ -318,7 +349,7 @@
                     | Technically some have three states as don't forget the physical buttons on the board - these will activate the functionality AND have secret functionality.
 
           / Troubleshooting Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Troubleshooting
+          h3.text-2xl.font-bold.text-gray-900.mb-4#troubleshooting Troubleshooting
 
           .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
             .flex

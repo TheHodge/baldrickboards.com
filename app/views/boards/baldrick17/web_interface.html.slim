@@ -16,130 +16,445 @@
     .px-8.py-8
       .max-w-4xl.mx-auto
         .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Web Interface Guide
+          h2.text-3xl.font-bold.text-gray-900.mb-6 Baldrick17 Web Interface
 
-          p.text-lg.text-gray-600.mb-8
-            | The Baldrick17 web interface provides comprehensive control and configuration options for your 17-channel pixel controller. 
-            | This guide will help you navigate and use all the features effectively.
+          p.text-lg.text-gray-700.mb-6
+            | The Baldrick17 includes a powerful web-based configuration interface that allows you to set up and control your board from any web browser. 
+            | This comprehensive guide covers every aspect of the web interface.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Accessing the Web Interface
+          / Table of Contents
+          .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
+            h3.text-xl.font-semibold.text-blue-900.mb-4 Quick Navigation
+            .grid.md:grid-cols-2.gap-4
+              .space-y-2
+                .flex.items-center
+                  = link_to "#stats-dashboard", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Stats Dashboard
+                .flex.items-center
+                  = link_to "#test-mode", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Test Mode
+                .flex.items-center
+                  = link_to "#cunningfx", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | CunningFX
+                .flex.items-center
+                  = link_to "#port-configuration", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Port Configuration
+              .space-y-2
+                .flex.items-center
+                  = link_to "#inputs", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Turniputs (Inputs)
+                .flex.items-center
+                  = link_to "#networking", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Networking Configuration
+                .flex.items-center
+                  = link_to "#turnip-network", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | The Turnip Network
+                .flex.items-center
+                  = link_to "#data-settings", class: "text-blue-700 hover:text-blue-900 underline" do
+                    | Data Settings
 
           .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-blue-900.mb-2 Quick Access
-            ol.text-blue-800.space-y-1
-              li 1. Ensure your Baldrick17 is powered on and connected to your network
-              li 2. Find the IP address (check your router's DHCP client list)
-              li 3. Open your web browser and navigate to the IP address
-              li 4. The web interface will load automatically
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Access: 
+                  | Connect to your network and navigate to the Baldrick17's IP address in your web browser. 
+                  | You can find the IP address in your router's DHCP client list or by using network scanning tools.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Main Dashboard
+          / Stats Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#stats-dashboard Stats Dashboard
 
-          p.text-gray-700.mb-4
-            | The main dashboard provides an overview of your Baldrick17's status and quick access to key functions.
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 System Information
 
-          .grid.md:grid-cols-2.gap-6.mb-8
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-interface-stats.png", class: "w-full rounded mb-4", alt: "Baldrick17 Web Interface Stats"
+
+            p.text-gray-700.mb-4
+              | The Stats board gives you a heads up as to what's going on with your controller.
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Uptime
+                p.text-sm.text-gray-700
+                  | Tells you how long your controller has been powered on 
+                  em
+                    | (this is useful in June to remind you that you forgot to turn it off over christmas)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Frame Rate
+                p.text-sm.text-gray-700
+                  | This lets you know what the FPS (Frames Per Second) the controller is currently outputting 
+                  em
+                    | (The Baldrick17 has been optimised to output 750 pixels per port at 40fps)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Streaming State
+                p.text-sm.text-gray-700
+                  | Will indicate if the board is receiving data from a specific IP address and what type of data. 
+                  strong
+                    | The board will also show if two IPs are streaming to the board at the same time which is very useful for debugging those pesky problems
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Network Throughput
+                p.text-sm.text-gray-700
+                  | Like the FPS, this gives you an indication of the volume of network traffic passing through the controller, this should help with debugging.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Temperature
+                p.text-sm.text-gray-700
+                  | With a sensor next to the Ethernet connector, this gives you an indication of the board temperature 
+                  em
+                    | (in Celsius because water freezes at 0, not 32.. how does that make sense?)
+                  br
+                  br
+                  | Generally, PCBs and components are good for -40 to +85°C. Anything below 60°C on this board is fine and nothing to worry about. If the temp is above that, try blowing on it like you would a hot chip out of the oven.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Firmware Version
+                p.text-sm.text-gray-700
+                  | We regularly release new firmware updates with features (and sometimes people break our boards and we have to fix it)
+                  br
+                  br
+                  em
+                    | (clicking the new version will upgrade it in place then restart the controller)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+                p.text-sm.text-gray-700
+                  | It would be pretty silly to have a controller information box without showing you the IP Address of the controller wouldn't it? That would be like launching a controller without being able to manage the networking.
+
+          / Test Mode Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#test-mode Test Mode
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Quick Testing & Troubleshooting
+
+            p.text-gray-700.mb-4
+              | Test mode is one of the most important features of the Baldrick Board, if it's two hours before switch on and something is going wrong, YOU NEED CLEAR INFORMATION QUICKLY.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-interface-test.png", class: "w-full rounded mb-4", alt: "Baldrick17 Web Interface Test"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Colour Presets
+
+            p.text-gray-700.mb-4
+              | We've created a bunch of presets to help you with your testing but we got bored with just writing colours so we thought we'd have some fun with the names. You might want to have a look at something special we've introduced called 
+              = link_to "Hodgical Mode", "/breakthroughs/hodgical_test_mode", class: "text-blue-600 hover:text-blue-800 underline"
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/test-presets.png", class: "w-full rounded mb-4", alt: "Test Presets"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Brightness
+
+            p.text-gray-700.mb-4
+              | Sometimes 100% is too much 
+              em
+                | Have you done those power calculations correctly?
+              | so we give you the choice of brightness.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/test-bright.png", class: "w-full rounded mb-4", alt: "Brightness Control"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Apply to
+
+            p.text-gray-700.mb-4
+              | Select your port (or all ports) then select if you want ALL configured pixels, 750 pixels or 50 pixels.
+
             .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Status Overview
-              ul.text-gray-700.space-y-1
-                li • Power status and voltage monitoring
-                li • Network connection status
-                li • Channel status indicators
-                li • Temperature and system health
-                li • Active protocols and connections
+              = image_tag "baldrick17/test-apply.png", class: "w-full rounded mb-4", alt: "Apply to Specific Areas"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Immature Humour
+
+            p.text-gray-700.mb-4
+              | Some of our vendors think their customers are a bit sensitive so have asked us to put the fun stuff behind an option. If you go to 
+              = link_to "Advanced Settings", "#advanced-settings", class: "text-blue-700 hover:text-blue-900 underline"
+              |  you can 
+              em
+                | Enable Immature Humour
+
+          / CunningFX Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#cunningfx CunningFX
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Visual Effects Generator
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/cunningfx.png", class: "w-full rounded mb-4", alt: "Baldrick17 Web Interface CunningFX"
+
+            p.text-gray-700.mb-4
+              | With more and more of our community putting pixels on their house all year round or producing lightart, we've produced CunningFX for you to add pretty stuff to your show without a show player.
+
+            p.text-gray-700.mb-4
+              | A video for this is coming soon.
+
+          / Port Configuration Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#port-configuration Port Configuration
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Manual Port Setup
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-interface-ports.jpeg", class: "w-full rounded mb-4", alt: "Baldrick17 Web Interface Ports"
+
+            p.text-gray-700.mb-4
+              | Let's be honest, most of the time you are going to be using xLights to play with your ports but if you want to be a strong independent person, you can drill down into each port, monitor and configure the models, the pixel count and brightness.
+
+          / Networking Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#networking Networking Configuration
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Good Defaults, Easy Config
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-interface-network.png", class: "w-full rounded mb-4", alt: "Baldrick17 Web Interface Networking"
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Hostname
+                p.text-sm.text-gray-700
+                  | The default hostname is baldrickboard (hence baldrickboard.local). If you have one Baldrick17 then it's completely fine to keep this as it is, however if like us you want to collect a few of them, then we'd recommend you change this to something like 
+                  em
+                    | frontgarden
+                  | or 
+                  em
+                    | upstairsroof
+                  br
+                  br
+                  strong
+                    | (Just a reminder that hostnames should be lowercase without spaces)
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DHCP / STATIC
+                p.text-sm.text-gray-700
+                  | The default option is DHCP (which is Dynamic Host Configuration Protocol but you don't need to know that) which basically means your router or computer gives the board an I.P. address. This is great for initial setup but when you want to run a show it's best to switch it to STATIC, that's where your controller tells the router / computer "This is my IP".
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+                p.text-sm.text-gray-700
+                  | Set this to the IP address that you want the controller to be fixed to.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 Subnet Mask & Gateway
+                p.text-sm.text-gray-700
+                  | It is more than likely that you can copy the Subnet Mask (the size of your network) and the Default Gateway (the exit point of your network) from the output of an IPconfig check.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DNS Server
+                p.text-sm.text-gray-700
+                  | DNS wise, typically, your default gateway is your router IP, and that more often than not, can provide your network with DNS. However, some people like to use "outside 3rd parties" DNS like google or cloudflares DNS. If you don't know about this, its probably best just to stick to DHCP.
+
+          / Turnip Network Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#turnip-network The Turnip Network
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Network Discovery
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-interface-friends.png", class: "w-full rounded mb-4", alt: "Baldrick17 Web Interface Friends"
+
+            p.text-gray-700.mb-4
+              | The Baldrick17 will keep an eye out on the network for other Baldricks and let you know how they are doing (this is helpful as we don't put an LCD screen on the board).
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Test Sync
+
+            p.text-gray-700.mb-4
+              | Ticking this box will sync the test mode between all compatible boards, meaning if you are doing something on the house and want all your baldricks in Test Mode, it's very easy to do!
+
+          / Data Settings Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#data-settings Data Settings
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Protocol Configuration
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-interface-data-settings.png", class: "w-full rounded mb-4", alt: "Baldrick17 Web Interface Data Settings"
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 DDP Start Channel
+                p.text-sm.text-gray-700
+                  | Configure the starting channel for DDP (Distributed Display Protocol) communication.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 sACN/ArtNet Start Universe
+                p.text-sm.text-gray-700
+                  | Set the starting universe for sACN (Streaming ACN) and ArtNet protocols.
+
+              .bg-gray-50.rounded-lg.p-4
+                h5.text-md.font-semibold.text-gray-900.mb-2 sACN/ArtNet Channels Per Universe
+                p.text-sm.text-gray-700
+                  | Configure how many channels are used per universe for sACN and ArtNet protocols.
+
+          / Advanced Settings Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#advanced-settings Advanced Settings
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Advanced Configuration Options
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-interface-advanced.png", class: "w-full rounded mb-4", alt: "Baldrick17 Web Interface Advanced"
+
+            p.text-gray-700.mb-4
+              | We avoided it for so long but it's finally time to have a "box to stick stuff that doesn't fit in the other categories" and here it is, Advanced Settings.
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Receive Beta Software Releases
+
+            p.text-gray-700.mb-4
+              | Sometimes features need a bit more testing before we are ready to push them out to the wider world, if you like living on the edge (or just like being nosey).
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Enable Immature Humour
+
+            p.text-gray-700.mb-4
+              | Some of our vendors love the board but do NOT appreciate our humour and so asked to remove the childish brightness names and test modes. This setting lets those customers WHO BELIEVE IN FREEDOM turn them back on.
+
+          / Inputs Section
+          h3.text-2xl.font-bold.text-gray-900.mb-4#inputs Turniputs (Inputs)
+
+          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+            h4.text-lg.font-semibold.text-gray-900.mb-3 External Input Triggers
+
+            p.text-gray-700.mb-4
+              | The Baldrick17 comes with three turninputs to attach external triggers (buttons, beam breaks, motion sensors) that can be configured when triggered to do a multitude of tasks.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-button-advanced-clean.png", class: "w-full rounded mb-4", alt: "Baldrick17 Web Interface Buttons"
+
+            p.text-gray-700.mb-4
+              | Each input has two action states - either pressed instantly or held. When an input is in the active state, the interface will show the status by highlighting the LED.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-button-pressed.png", class: "w-full rounded mb-4", alt: "Button Pressed State"
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Available Actions
+
+            .grid.md:grid-cols-2.gap-4.mb-4
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 FPP Integration
+                p.text-xs.text-gray-700
+                  | Control FPP (Falcon Pi Player) instances, change volume, play songs/playlists, or call FPP API directly.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Toggle Test Mode
+                p.text-xs.text-gray-700
+                  | Quickly enable any test mode at a specific brightness for quick prop testing.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickSwitchy Control
+                p.text-xs.text-gray-700
+                  | Turn on/off BaldrickSwitchy ports for specific durations (bubble machines, snow machines, etc.).
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickDMX Presets
+                p.text-xs.text-gray-700
+                  | Activate preset commands on your BaldrickDMX for moving heads, effects, etc.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 HTTP URL Calls
+                p.text-xs.text-gray-700
+                  | Call web APIs from simple triggers - perfect for custom integrations.
+
+              .bg-gray-50.rounded-lg.p-4
+                h6.text-sm.font-semibold.text-gray-900.mb-2 Do Nothing
+                p.text-xs.text-gray-700
+                  | Sometimes you set an input to do something and think "oh actually no, that's not what I want."
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 FPP Integration Details
+
+            p.text-gray-700.mb-4
+              | FPP (or Falcon Pi Player) is our recommended show player for the holiday lighting hobby. It has some really powerful functionality and is simple to setup and use, that power also extends to its API which allows people to do some really cool stuff. But we don't think you should have to learn the API to do that cool stuff.
+
+            p.text-gray-700.mb-4
+              | We've two ways of using FPP which have proper names but let's call them 'Easy' (Control an FPP Instance) and 'Advanced' (Call an FPP API Directly).
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-button-fpp-find.png", class: "w-full rounded mb-4", alt: "FPP Instance Discovery"
+
+            p.text-gray-700.mb-4
+              | Both start off the same way by selecting the FPP instance that you'd like to interact with. If we can't find it automatically you can put in an IP address (although it might be worth finding out why we can't find it as it will be pretty hard to send commands to something we cannot find).
+
+            h6.text-sm.font-semibold.text-gray-900.mb-2 Control an FPP Instance
+
+            p.text-gray-700.mb-4
+              | This section takes away having to use the scary API to ask FPP to do some things. For our initial version you can change the volume of FPP (either forever or for a period of seconds) or play a song / playlist / random song from a playlist.
+
+            p.text-gray-700.mb-4
+              | Sorry did I say or I meant AND. You can do both of these, with one input and we will even pull in live your sequences and playlists direct from FPP.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-button-fpp-interface-confirm.png", class: "w-full rounded mb-4", alt: "FPP Instance Control"
+
+            h6.text-sm.font-semibold.text-gray-900.mb-2 Call an FPP API Directly
+
+            p.text-gray-700.mb-4
+              | If you want to get your hands dirty with FPP commands, here it is - almost everything you can do via the API direct and configurable to be executed via a Baldrick17 input!
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-button-fpp-command.png", class: "w-full rounded mb-4", alt: "FPP API Commands"
+
+            h6.text-sm.font-semibold.text-gray-900.mb-2 Test Mode Activation
+
+            p.text-gray-700.mb-4
+              | Sometimes you just want to quickly test how the props look (or put something up when the neighbors pop round to 'see how it's going'). You can quickly enable any of our test modes at a specific brightness with the touch (or activation) of an input.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-button-advanced-test-mode.png", class: "w-full rounded mb-4", alt: "Test Mode Configuration"
+
+            h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickSwitchy Control
+
+            p.text-gray-700.mb-4
+              | Have you heard about BaldrickSwitchy? Do you want to turn on your bubble machine, snow machine, AC lights or anything else via xLights or a Baldrick Button?
+
+            p.text-gray-700.mb-4
+              | From this section you can turn on (or off) a BaldrickSwitchy port for x number of seconds.
+
+            p.text-gray-700.mb-4
+              | Much like FPP, we will automatically detect the board and whilst I'd love to have the screenshot of it here, at the time of writing this documentation my BaldrickSwitchy is in another building and it's far too hot to move from the sofa, did you know Britain is having a bit of a heatwave right now?
+
+            h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickDMX Preset Activation
+
+            p.text-gray-700.mb-4
+              | This function will activate a preset command on your BaldrickDMX, perfect for activating a snow machine, bubble machine or pointing a moving head at one specific spot.
+
+            h6.text-sm.font-semibold.text-gray-900.mb-2 HTTP URL Calls
+
+            p.text-gray-700.mb-4
+              | When we first launched the Baldrick17, we were so proud of this feature! Imagine being able to call a web API from a simple trigger! We even wrote a 
+              = link_to "Quick FPP API Guide", "/faq#fpp-api", class: "text-blue-600 hover:text-blue-800 underline"
+              |  to help someone start and stop sequences.
+
+            .bg-gray-50.rounded-lg.p-4.mb-4
+              = image_tag "baldrick17/web-button-url.png", class: "w-full rounded mb-4", alt: "HTTP URL Configuration"
+
+            h6.text-sm.font-semibold.text-gray-900.mb-2 Do Nothing
+
+            p.text-gray-700.mb-4
+              | Sometimes you set an input to do something and think, oh actually no, that's not what I want, what I actually wanted was it to do nothing.
+
+            p.text-gray-700.mb-4
+              | Now you can, you. are. welcome.
+
+            h5.text-md.font-semibold.text-gray-900.mb-3 Final Result
+
+            p.text-gray-700.mb-4
+              | When that's all done, you might have a little something that looks like this.
 
             .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Quick Actions
-              ul.text-gray-700.space-y-1
-                li • Test individual channels
-                li • Start/stop sequences
-                li • Emergency stop functionality
-                li • System reboot options
-                li • Configuration backup/restore
+              = image_tag "baldrick17/web-interface-buttons-improved.png", class: "w-full rounded mb-4", alt: "Final Button Configuration"
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Channel Configuration
-
-          p.text-gray-700.mb-4
-            | Configure each of the 17 channels independently for your specific pixel setup.
-
-          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
-            h3.text-lg.font-semibold.text-yellow-900.mb-2 Channel Settings
-            ul.text-yellow-800.space-y-1
-              li • Pixel type selection (WS2811, WS2812B, SK6812, etc.)
-              li • Pixel count per channel (up to 750 pixels at 40fps)
-              li • Color order configuration (RGB, GRB, BRG, etc.)
-              li • Brightness and gamma correction
-              li • Individual channel testing
-
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Configuration Steps
-
-          ol.space-y-4.text-gray-700.mb-8
-            li
-              strong.text-gray-900 1. Access Channel Settings
-              p.mt-1 Navigate to the Channel Configuration section in the web interface.
-
-            li
-              strong.text-gray-900 2. Select Channel
-              p.mt-1 Choose the channel you want to configure (1-17).
-
-            li
-              strong.text-gray-900 3. Set Pixel Parameters
-              p.mt-1 Configure pixel type, count, color order, and other settings.
-
-            li
-              strong.text-gray-900 4. Test Configuration
-              p.mt-1 Use the test function to verify your settings work correctly.
-
-            li
-              strong.text-gray-900 5. Save Settings
-              p.mt-1 Save your configuration and repeat for other channels.
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Network Configuration
-
-          p.text-gray-700.mb-4
-            | Configure network settings for optimal performance and integration.
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 IP Configuration
-              ul.text-gray-700.space-y-1
-                li • DHCP (automatic) or Static IP
-                li • Subnet mask and gateway
-                li • DNS server settings
-                li • Network interface status
-                li • Connection speed and duplex
-
-            .bg-gray-50.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Protocol Settings
-              ul.text-gray-700.space-y-1
-                li • E1.31 (sACN) configuration
-                li • Art-Net universe settings
-                li • DDP protocol options
-                li • Multicast vs Unicast
-                li • Port configuration
-
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Advanced Features
-
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Timing and Synchronization
-          p.text-gray-700.mb-4
-            | Configure precise timing parameters for professional installations.
-
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Refresh rate settings (up to 60 FPS)
-            li Timing precision adjustments
-            li Synchronization with other controllers
-            li Latency optimization
-            li Buffer management
-
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 Power Management
-          p.text-gray-700.mb-4
-            | Monitor and manage power consumption across all channels.
-
-          ul.list-disc.list-inside.text-gray-700.space-y-2.mb-6
-            li Real-time power monitoring
-            li Current draw per channel
-            li Power limiting and protection
-            li Efficiency optimization
-            li Thermal monitoring
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+                .ml-3
+                  p.text-sm.text-yellow-700
+                    strong Note: 
+                    | Technically some have three states as don't forget the physical buttons on the board - these will activate the functionality AND have 
+                    = link_to "secret functionality", "/boards/baldrick17/board_buttons", class: "text-blue-600 hover:text-blue-800 underline"
 
           h2.text-3xl.font-bold.text-gray-900.mb-4 Troubleshooting
 
@@ -157,7 +472,8 @@
           p.text-gray-700.mb-6
             | For additional help with the web interface, check our resources or contact support.
 
-          .flex.flex-col.sm:flex-row.gap-4
-            = link_to 'FAQ', '/boards/baldrick17/faq', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+          / Navigation Links
+          .flex.flex-col.sm:flex-row.gap-4.mt-8
+            = link_to 'Getting Started Guide', '/boards/baldrick17/getting-started', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
             = link_to 'Technical Specifications', '/boards/baldrick17/tech-specs', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'Contact Support', '/support', class: 'bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center'
+            = link_to 'FAQ', '/boards/baldrick17/faq', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
