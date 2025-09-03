@@ -1,0 +1,40 @@
+en:
+  views:
+    boards:
+      baldrickswitchy:
+        faq:
+          title: "FAQ - BaldrickSwitchy - Baldrick Board Documentation"
+          header:
+            title: "Frequently Asked Questions"
+            subtitle: "Common questions about BaldrickSwitchy"
+            image_url: "baldrickswitchy/board.png"
+          content:
+            title: "BaldrickSwitchy FAQ"
+            description: "Find answers to the most commonly asked questions about the BaldrickSwitchy controller."
+            quick_navigation: "Quick Navigation"
+            questions:
+              darwin_tray:
+                key: "darwin-tray"
+                question: "What is this tray?"
+                images:
+                  - "baldrickswitchy/darwin-tray.png"
+                answer: |
+                  <p class="text-gray-700 mb-4">The BaldrickSwitchy has been designed to be as flexible as possible with regards to the types of things it can power which means that you can even put mains electricity through the relay connectors <strong>(NOT THE BARREL CONNECTOR)</strong>, which if touched could cause <a href="https://youtu.be/6H5pct0kgD8?si=UTWwq2YwtB9fD38d&t=6" class="text-blue-600 hover:text-blue-800" target="_blank">issues</a>.</p>
+                  <p class="text-gray-700 mb-4">Every BaldrickSwitchy sold comes with a <strong>DarwinTray</strong> to help protect you from accidentally winning a <a href="https://darwinawards.com/" class="text-blue-600 hover:text-blue-800" target="_blank">Darwin award</a>.</p>
+                  <div class="bg-gray-100 rounded-lg p-4 mb-4">
+                    <img src="%{image_1}" class="w-full rounded mb-4" alt="Darwin Tray">
+                  </div>
+                  <p class="text-gray-700">The DarwinTray reduces the risk (but doesn't guarantee!) of you making from any contact with anything that could be live whilst still making it easy to mount to your box.</p>
+              power_consumption:
+                key: "power-consumption"
+                question: "How much power does the BaldrickSwitchy use?"
+                images: []
+                answer: |
+                  <p class="text-gray-700">BaldrickSwitchy consumes 0.07A @ 12v when idle <em>(0.17A @ 5v)</em> and 0.23A @ 12v <em>(0.725A @ 5v)</em> with all relays active.</p>
+              where_is_wifi:
+                key: "where-is-wifi"
+                question: "Where is the WiFi?"
+                images: []
+                answer: |
+                  <p class="text-gray-700 mb-4">You see the ESP32 chip and instantly think WIFI enabled, however the Baldrick family of boards are focusing on the consistency of an ethernet based experience when running your show.</p>
+                  <p class="text-gray-700">So for now, the BaldrickSwitchy is not currently wifi enabled, never say never but we'd rather be upfront if Wifi is a requirement for you.</p>

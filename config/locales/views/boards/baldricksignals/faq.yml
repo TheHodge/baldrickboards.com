@@ -1,0 +1,17 @@
+en:
+  views:
+    boards:
+      baldricksignals:
+        faq:
+          title: "FAQ - BaldrickSignals - Baldrick Board Documentation"
+          header:
+            title: "Frequently Asked Questions"
+            subtitle: "Common questions about BaldrickSignals"
+          content:
+            title: "BaldrickSignals FAQ"
+            description: "Find answers to the most commonly asked questions about the BaldrickSignals controller."
+            coming_soon:
+              title: "Coming Soon"
+              content: |
+                <p class="text-gray-700 mb-4">We'll add common questions here as we get asked them. The BaldrickSignals is a relatively new addition to our lineup, so we're still collecting the most frequently asked questions from our community.</p>
+                <p class="text-gray-700">In the meantime, check out our <a href="/boards/baldricksignals/getting-started" class="text-blue-600 hover:text-blue-800 underline">getting started guide</a> and <a href="/boards/baldricksignals/web-interface" class="text-blue-600 hover:text-blue-800 underline">web interface documentation</a> for detailed information about using your BaldrickSignals.</p>

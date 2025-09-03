@@ -20,10 +20,8 @@ html
     / Includes Tailwind CSS
     = stylesheet_link_tag "tailwind", "data-turbo-track": "reload"
     = javascript_importmap_tags
+    = javascript_include_tag "search-index"
     
-    / Load search index
-    script src="/search-index.js"
-
   body.bg-gray-50.min-h-screen data-controller="easter-egg seasonal-themes"
     / Navigation
     nav.bg-white.shadow-lg.fixed.w-full.top-0.z-50 data-controller="mobile-menu"

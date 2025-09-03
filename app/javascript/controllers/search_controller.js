@@ -14,12 +14,40 @@ export default class extends Controller {
     this.currentResults = []
     this.selectedIndex = -1
     
-    // Wait a bit for the search index script to load
-    setTimeout(() => {
-      this.loadSearchIndex()
-    }, 500)
+    // Wait for the search index to be available
+    this.waitForSearchIndex()
     
     this.setupEventListeners()
+  }
+
+  async waitForSearchIndex() {
+    // Check if search index is already available
+    if (window.searchIndex && Array.isArray(window.searchIndex)) {
+      console.log('Search index already available:', window.searchIndex.length, 'items')
+      this.loadSearchIndex()
+      console.log('Search index:', window.searchIndex);
+      return
+    }
+    
+    // Wait for search index to become available
+    let attempts = 0
+    const maxAttempts = 100 // Wait up to 10 seconds
+    
+    const checkInterval = setInterval(() => {
+      attempts++
+      
+      if (window.searchIndex && Array.isArray(window.searchIndex)) {
+        console.log('Search index became available after', attempts * 100, 'ms:', window.searchIndex.length, 'items')
+        clearInterval(checkInterval)
+        this.loadSearchIndex()
+      } else if (attempts >= maxAttempts) {
+        console.error('Search index not available after', maxAttempts * 100, 'ms, falling back to JSON fetch')
+        clearInterval(checkInterval)
+        this.loadSearchIndex()
+      } else {
+        console.log('Waiting for search index... attempt', attempts, 'of', maxAttempts)
+      }
+    }, 100)
   }
 
   disconnect() {
@@ -47,14 +75,18 @@ export default class extends Controller {
     try {
       // Try to load from window.searchIndex first (embedded)
       if (window.searchIndex && Array.isArray(window.searchIndex)) {
+        console.log('Search index loaded from window.searchIndex:', window.searchIndex.length, 'items')
         this.searchIndex = window.searchIndex
       } else {
+        console.log('Search index not found in window.searchIndex, trying to fetch from JSON...')
         // Fallback to loading from JSON file
         const response = await fetch('/search-index.json')
         this.searchIndex = await response.json()
+        console.log('Search index loaded from JSON:', this.searchIndex.length, 'items')
       }
       
       if (this.searchIndex && Array.isArray(this.searchIndex)) {
+        console.log('Building Lunr index with', this.searchIndex.length, 'items')
         this.buildLunrIndex()
       } else {
         console.error('Search index is not a valid array')
@@ -80,10 +112,19 @@ export default class extends Controller {
       
       this.ref('url')
       
+      // Add pipeline functions for better text processing
+      this.pipeline.add(
+        lunr.trimmer,
+        lunr.stopWordFilter,
+        lunr.stemmer
+      )
+      
       searchData.forEach((doc) => {
         this.add(doc)
       })
     })
+    
+    console.log('Lunr index built successfully')
   }
 
   handleInput(event) {
@@ -140,26 +181,52 @@ export default class extends Controller {
   }
 
   performSearch(query) {
-    if (!this.lunrIndex) return
+    if (!this.lunrIndex) {
+      console.error('Lunr index not available for search:', query)
+      return
+    }
+
+    console.log('Performing search for:', query)
+    console.log('Search index available:', this.searchIndex ? this.searchIndex.length : 'none', 'items')
 
     try {
       // First, try exact search
       let results = this.lunrIndex.search(query)
+      console.log('Exact search results:', results.length)
       
       // If no results or few results, try a more flexible search
       if (results.length < 3) {
         // Try with wildcards for better partial matching
         const wildcardQuery = `*${query}*`
         const wildcardResults = this.lunrIndex.search(wildcardQuery)
+        console.log('Wildcard search results:', wildcardResults.length)
         
-        // Combine and deduplicate results
-        const allResults = [...results, ...wildcardResults]
+        // Also try case-insensitive variations
+        const caseVariations = [
+          query.toLowerCase(),
+          query.toUpperCase(),
+          query.charAt(0).toUpperCase() + query.slice(1).toLowerCase()
+        ]
+        
+        let caseResults = []
+        caseVariations.forEach(variation => {
+          if (variation !== query) {
+            const variationResults = this.lunrIndex.search(variation)
+            caseResults = caseResults.concat(variationResults)
+          }
+        })
+        
+        console.log('Case variation search results:', caseResults.length)
+        
+        // Combine all results and deduplicate
+        const allResults = [...results, ...wildcardResults, ...caseResults]
         const uniqueResults = allResults.filter((result, index, self) => 
           index === self.findIndex(r => r.ref === result.ref)
         )
         
         // Sort by score and take top results
         results = uniqueResults.sort((a, b) => b.score - a.score)
+        console.log('Combined unique results:', results.length)
       }
       
       // Special handling for "turnip" search to ensure both Turnip Network and Turniput appear
@@ -199,6 +266,13 @@ export default class extends Controller {
         }
       }).slice(0, 10) // Limit to 10 results
 
+      console.log('Final search results:', this.currentResults.length, 'items')
+      
+      // Debug: Show what results we found
+      if (this.currentResults.length > 0) {
+        console.log('Search result titles:', this.currentResults.map(r => r.title))
+      }
+      
       this.displayResults()
     } catch (error) {
       console.error('Search error:', error)

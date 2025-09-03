@@ -1,0 +1,27 @@
+en:
+  views:
+    boards:
+      baldrickdmx:
+        faq:
+          title: "FAQ - BaldrickDMX - Baldrick Board Documentation"
+          header:
+            title: "Frequently Asked Questions"
+            subtitle: "Common questions about BaldrickDMX"
+          content:
+            title: "BaldrickDMX FAQ"
+            description: "Find answers to the most commonly asked questions about the BaldrickDMX controller."
+            quick_navigation: "Quick Navigation"
+            questions:
+              why_baldrickdmx:
+                key: "why-baldrickdmx"
+                question: "Why the BaldrickDMX?"
+                images: []
+                answer: |
+                  <p class="text-gray-700 mb-4">There are many many options for running DMX as part of your light show, some are cheaper than the BaldrickDMX and some are much much more expensive!</p>
+                  <p class="text-gray-700 mb-4">Even before this board was launched we were compared to these options so we wrote some of our reasonings into an article.</p>
+                  <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
+                    <li>The BaldrickDMX is listed as a controller in xLights and can be found using the discover mode, making it really easy to get started with sequencing with your show using the DMX model rather than as a pixel which can be a bit messy.</li>
+                    <li>The BaldrickDMX is equipped with the three main DMX port types, meaning you don't need to spend money on a converter and you know you'll always have the right cable.</li>
+                    <li>The BaldrickDMX comes with presets and can be activated over the <em>Turnip Network</em> (i.e. via a button press)</li>
+                    <li>The BaldrickDMX has support for DDP</li>
+                  </ul>

@@ -71,6 +71,24 @@ namespace :search do
       add_page_to_search(search_data, data[:title], data[:url], content, slug == 'home' ? 'main' : slug)
     end
     
+    # Add main FAQ questions using I18n data
+    begin
+      main_faq_data = I18n.t("faq.questions")
+      main_faq_data.each do |key, faq|
+        # Extract text content from HTML answer
+        answer_text = extract_text_content(faq[:answer])
+        
+        # Create FAQ search entry
+        faq_title = "#{faq[:question]} - FAQ"
+        faq_url = "/faq##{faq[:key]}"
+        faq_content = "#{faq[:question]} #{answer_text}"
+        
+        add_page_to_search(search_data, faq_title, faq_url, faq_content, "faq", ["main", "faq"])
+      end
+    rescue => e
+      puts "Warning: Could not load main FAQ data: #{e.message}"
+    end
+    
     # Add board categories
     board_categories = [
       { name: "Pixel Controllers", url: "/boards/pixel-controllers", description: "Professional pixel controllers for advanced lighting displays" },
@@ -107,6 +125,29 @@ namespace :search do
         end
         
         add_page_to_search(search_data, i18n_data[:name], "/boards/#{board_name}", content, "boards", [board_name])
+        
+        # Add FAQ questions for this board if they exist
+        begin
+          faq_data = I18n.t("views.boards.#{board_name}.faq.content.questions")
+          if faq_data.respond_to?(:each)
+            faq_data.each do |key, faq|
+              # Extract text content from HTML answer
+              answer_text = extract_text_content(faq[:answer])
+              
+              # Create FAQ search entry with board-specific category
+              faq_title = "#{faq[:question]} - #{i18n_data[:name]}"
+              faq_url = "/boards/#{board_name}/faq##{faq[:key]}"
+              faq_content = "#{faq[:question]} #{answer_text}"
+              
+              # Use board-specific category like "Baldrick8 FAQ" instead of just "faq"
+              board_category = "#{i18n_data[:name]} FAQ"
+              add_page_to_search(search_data, faq_title, faq_url, faq_content, board_category, [board_name, "faq"])
+            end
+          end
+        rescue => e
+          # Some boards might not have FAQ content yet, that's okay
+          puts "Info: No FAQ content found for #{board_name}: #{e.message}"
+        end
       rescue => e
         puts "Warning: Could not load I18n data for #{board_name}: #{e.message}"
       end

@@ -1,80 +1,48 @@
-- content_for :title, "FAQ - BaldrickSwitchy - Baldrick Board Documentation"
+- content_for :title, t('views.boards.baldrickswitchy.faq.title')
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'BaldrickSwitchy', menu_items: board_menu_items('baldrickswitchy')
 
 .max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
   = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickswitchy', 'FAQ')
 
-  / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'Frequently Asked Questions', subtitle: 'Common questions about BaldrickSwitchy', image_url: 'baldrickswitchy/board.png'
+    = render 'shared/page_header', title: t('views.boards.baldrickswitchy.faq.header.title'), subtitle: t('views.boards.baldrickswitchy.faq.header.subtitle'), image_url: t('views.boards.baldrickswitchy.faq.header.image_url')
 
-    / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
-        / FAQ for BaldrickSwitchy
         .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickSwitchy FAQ
+          h2.text-3xl.font-bold.text-gray-900.mb-6 = t('views.boards.baldrickswitchy.faq.content.title')
 
-          p.text-lg.text-gray-700.mb-6
-            | Find answers to the most commonly asked questions about the BaldrickSwitchy controller.
+          p.text-lg.text-gray-700.mb-6 = t('views.boards.baldrickswitchy.faq.content.description')
 
           / Table of Contents
           .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
-            h3.text-xl.font-semibold.text-blue-900.mb-4 Quick Navigation
+            h3.text-xl.font-semibold.text-blue-900.mb-4 = t('views.boards.baldrickswitchy.faq.content.quick_navigation')
             .grid.md:grid-cols-2.gap-4
               .space-y-2
-                .flex.items-center
-                  = link_to "#darwin-tray", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | What is this tray?
-                .flex.items-center
-                  = link_to "#power-consumption", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | How much power does the BaldrickSwitchy use?
+                - t('views.boards.baldrickswitchy.faq.content.questions').values.first(2).each do |faq|
+                  .flex.items-center
+                    = link_to "##{faq[:key]}", class: "text-blue-700 hover:text-blue-900 underline" do
+                      = faq[:question]
               .space-y-2
-                .flex.items-center
-                  = link_to "#where-is-wifi", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | Where is the WiFi?
-                .flex.items-center
-                  = link_to "#asking-for-help", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | Any other questions?
+                - t('views.boards.baldrickswitchy.faq.content.questions').values.last(1).each do |faq|
+                  .flex.items-center
+                    = link_to "##{faq[:key]}", class: "text-blue-700 hover:text-blue-900 underline" do
+                      = faq[:question]
 
           .space-y-8
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200#darwin-tray
-              h3.text-xl.font-semibold.text-gray-900.mb-3 What is this tray?
-              p.text-gray-700.mb-4
-                | The BaldrickSwitchy has been designed to be as flexible as possible with regards to the types of things it can power which means that you can even put mains electricity through the relay connectors 
-                strong (NOT THE BARREL CONNECTOR)
-                | , which if touched could cause 
-                a.text-blue-600.hover:text-blue-800 href="https://youtu.be/6H5pct0kgD8?si=UTWwq2YwtB9fD38d&t=6" target="_blank" issues
-                | .
-              p.text-gray-700.mb-4
-                | Every BaldrickSwitchy sold comes with a 
-                strong DarwinTray 
-                | to help protect you from accidentally winning a 
-                a.text-blue-600.hover:text-blue-800 href="https://darwinawards.com/" target="_blank" Darwin award
-                | .
-              .bg-gray-100.rounded-lg.p-4.mb-4
-                = image_tag "baldrickswitchy/darwin-tray.png", class: "w-full rounded mb-4", alt: "Darwin Tray"
-              p.text-gray-700
-                | The DarwinTray reduces the risk (but doesn't guarantee!) of you making from any contact with anything that could be live whilst still making it easy to mount to your box.
+            - t('views.boards.baldrickswitchy.faq.content.questions').each do |key, faq|
+              div class="bg-gray-50 rounded-lg p-6 border border-gray-200" id="#{faq[:key]}"
+                h3.text-xl.font-semibold.text-gray-900.mb-3 = faq[:question]
+                .text-gray-700.mb-4
+                  - if faq[:images].any?
+                    - answer = faq[:answer]
+                    - faq[:images].each_with_index do |image, index|
+                      - answer = answer.gsub("%{image_#{index + 1}}", asset_path(image))
+                    == answer
+                  - else
+                    == faq[:answer]
 
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200#power-consumption
-              h3.text-xl.font-semibold.text-gray-900.mb-3 How much power does the BaldrickSwitchy use?
-              p.text-gray-700
-                | BaldrickSwitchy consumes 0.07A @ 12v when idle 
-                em (0.17A @ 5v) 
-                | and 0.23A @ 12v 
-                em (0.725A @ 5v) 
-                | with all relays active.
-
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200#where-is-wifi
-              h3.text-xl.font-semibold.text-gray-900.mb-3 Where is the WiFi?
-              p.text-gray-700.mb-4
-                | You see the ESP32 chip and instantly think WIFI enabled, however the Baldrick family of boards are focusing on the consistency of an ethernet based experience when running your show.
-              p.text-gray-700
-                | So for now, the BaldrickSwitchy is not currently wifi enabled, never say never but we'd rather be upfront if Wifi is a requirement for you.
-
+          .mt-8
             = render 'boards/shared/faq_ending'

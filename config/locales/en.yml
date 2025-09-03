@@ -30,6 +30,107 @@
 en:
   hello: "Hello world"
   
+  faq:
+    title: "Frequently Asked Questions"
+    subtitle: "Common questions and answers about Baldrick products"
+    description: "Find answers to the most commonly asked questions about Baldrick products, setup, troubleshooting, and more."
+    quick_navigation: "Quick Navigation"
+    questions:
+      find_board_ip:
+        key: "find-board-ip"
+        question: "baldrickboard.local not loading"
+        images: []
+        answer: |
+          <p class="text-gray-700 mb-4">We use something called mDNS to make the magical URL appear and respond, however this doesn't work for every operating system <em>(it also doesn't work for those lucky people who have more than one Baldrick Board)</em>.</p>
+          <p class="text-gray-700 mb-4">You'll notice that when you look at the Baldrick Board, there isn't a screen! That's because we used all the ports for pixels, so you will need to find the I.P. Address of the board yourself, luckily this isn't too difficult.</p>
+          <h4 class="text-lg font-semibold text-gray-900 mb-3">Windows</h4>
+          <p class="text-gray-700 mb-4">If you have xLights installed then you can use the included xScanner to look at all the devices on your network, it can be a large list that's a little overwhelming but you are looking for a device called BaldrickBoard (or Baldrick8).</p>
+          <h4 class="text-lg font-semibold text-gray-900 mb-3">Mac</h4>
+          <p class="text-gray-700 mb-4">We recommend the Free Mac App <a href="https://apps.apple.com/gb/app/ip-scanner/id6443819966" class="text-blue-600 hover:text-blue-800 underline" target="_blank">IP Scanner</a> which will search up to 25 devices on your network for free, plenty for most households.</p>
+          <h4 class="text-lg font-semibold text-gray-900 mb-3">Linux</h4>
+          <p class="text-gray-700">If you are using Linux and you need a help document written in a sarcastic tone to tell you how to find the I.P. address of a device added to your network, can we recommend you follow <a href="https://www.youtube.com/watch?v=NAOO8pr5LRE" class="text-blue-600 hover:text-blue-800 underline" target="_blank">this tutorial</a></p>
+      ipconfig_check:
+        key: "ipconfig-check"
+        question: "How to find your network IP information"
+        images: []
+        answer: |
+          <p class="text-gray-700 mb-4">Sometimes you need to find your network information or the IP address of your computer, for this we can use IP/IF Config on most operating systems</p>
+          <h4 class="text-lg font-semibold text-gray-900 mb-3">Windows</h4>
+          <p class="text-gray-700 mb-4">Go to command prompt and type "ipconfig"</p>
+          <h4 class="text-lg font-semibold text-gray-900 mb-3">Mac</h4>
+          <p class="text-gray-700 mb-4">Go to terminal and type "ifconfig"</p>
+          <h4 class="text-lg font-semibold text-gray-900 mb-3">Linux</h4>
+          <p class="text-gray-700">Open a terminal emulator window and type "ip addr show" to list all network interfaces and their IP addresses.</p>
+      fpp_proxy:
+        key: "fpp-proxy"
+        question: "Upgrading Baldrick via FPP Proxy"
+        images:
+          - "fpp-proxy-updates-1.png"
+          - "fpp-proxy-updates-2.png"
+          - "fpp-proxy-updates-3.png"
+          - "fpp-proxy-updates-4.png"
+          - "fpp-proxy-updates-5.png"
+          - "fpp-proxy-updates-6.png"
+        answer: |
+          <p class="text-gray-700 mb-4">Some of you like to make things complicated and run FPP through tethering or proxy mode!</p>
+          <p class="text-gray-700 mb-4">Luckily our good friend Greg Macaree has written a guide on how to still get updates during this method and we've shamelessly stolen it.</p>
+          <p class="text-gray-700 mb-4">First up, we need to ensure your UI is set to advanced.</p>
+          <div class="bg-gray-100 rounded-lg p-4 mb-4">
+            <img src="%{image_1}" class="w-full rounded mb-4" alt="FPP Advanced mode">
+          </div>
+          <p class="text-gray-700 mb-4">Then under Network Configuration (eth0) give it a static IP outside your regular range and setting the Gateway and DNS as your regular WiFi router. I set IP Forwarding to Masquerading/NAT and enabled DHCP server:</p>
+          <div class="bg-gray-100 rounded-lg p-4 mb-4">
+            <img src="%{image_2}" class="w-full rounded mb-4" alt="FPP Network Configuration">
+          </div>
+          <p class="text-gray-700 mb-4">And then on Network Settings (wlan0) I left it on DHCP, but ensured the DNS remained on manual with the settings as above. I set IP Forwarding as Masquerading/NAT once again.</p>
+          <div class="bg-gray-100 rounded-lg p-4 mb-4">
+            <img src="%{image_3}" class="w-full rounded mb-4" alt="FPP WLAN Settings">
+          </div>
+          <p class="text-gray-700 mb-4">Once completed, I save & reboot the Pi. Having rebooted (mine didn't come back the first time and I had to power cycle it). I then plugged Baldrick into it & powered it on.</p>
+          <p class="text-gray-700 mb-4">A few moments later, I checked the Network Settings / Eth0 and It has seen the Baldrick and assigned an IP address to it. I could then check the Enable box to set a DHCP reservation (so it doesn't move IP's).</p>
+          <div class="bg-gray-100 rounded-lg p-4 mb-4">
+            <img src="%{image_4}" class="w-full rounded mb-4" alt="FPP DHCP Reservation">
+          </div>
+          <p class="text-gray-700 mb-4">With that active, I could then go to Status/Control, Proxy Settings and under DHCP hosts was an entry for the Baldrick:</p>
+          <div class="bg-gray-100 rounded-lg p-4 mb-4">
+            <img src="%{image_5}" class="w-full rounded mb-4" alt="FPP Proxy Settings">
+          </div>
+          <p class="text-gray-700 mb-4">Click that link and up comes the Baldrick webpage.</p>
+          <div class="bg-gray-100 rounded-lg p-4 mb-4">
+            <img src="%{image_6}" class="w-full rounded mb-4" alt="Baldrick Web Interface">
+          </div>
+          <p class="text-gray-700 mb-4">That is telling me that v2.5 is available, so that shows it has internet connectivity.</p>
+          <p class="text-gray-700">Job done. Now you can set it up in xLights, with the IP listed above (10.0.0.4 in my case) and the proxy being the Pi's Wifi IP (in my case 192.168.1.57)</p>
+      why_no_screen:
+        key: "why-no-screen"
+        question: "Why no screen?"
+        images: []
+        answer: |
+          <p class="text-gray-700 mb-4"><strong>Finally, a question we actually get a fair amount!</strong></p>
+          <p class="text-gray-700 mb-4">During our prototyping phase we realised that adding an LCD to the boards not only added additional cost, it also reduced functionality as the the screen (and buttons if any) would require more ports and well, we want to use them for core functionaility.</p>
+          <p class="text-gray-700 mb-4">Generally, you only need a screen when setting up the board to work out what IP address it is.</p>
+          <p class="text-gray-700 mb-4">Instead of a screen we've implemented some quality of life features to make that better.</p>
+          <ul class="list-disc list-inside text-gray-700 mb-4">
+            <li>The board will respond to baldrickboard.local in most cases</li>
+            <li>The board will detect other boards on the network and allow you to find out their name, details and sync test mode.</li>
+            <li>If those fail, we have a nice <a href="#find-board-ip" class="text-blue-600 hover:text-blue-800 underline">Guide on finding the IP</a> to help you out.</li>
+          </ul>
+          <h4 class="text-lg font-semibold text-gray-900 mb-3">So no screens ever?</h4>
+          <p class="text-gray-700">We've plenty more boards in development and the decisions and methodologies behind each one are different so never say never</p>
+      antennas:
+        key: "antennas"
+        question: "Antennas?"
+        images:
+          - "antenna.png"
+        answer: |
+          <div class="bg-gray-100 rounded-lg p-4 mb-4">
+            <img src="%{image_1}" class="w-full rounded mb-4" alt="Antenna">
+          </div>
+          <p class="text-gray-700 mb-4">Some of our boards (<strong><a href="/boards/baldrickinput1" class="text-blue-600 hover:text-blue-800 underline">BaldrickInput1</a></strong> & <strong><a href="/boards/baldricksignals" class="text-blue-600 hover:text-blue-800 underline">BaldrickSignals</a></strong>) require an antenna to work.</p>
+          <p class="text-gray-700 mb-4">Typically we supply a 3dBI antenna which (depending on surrounding environment) will have a range of up to 10-15m.</p>
+          <p class="text-gray-700 mb-4">Your vendor may stock larger antenna or you could use amazon / Aliexpress.</p>
+          <p class="text-gray-700">The connection on our wireless chip has many names <strong>uFL/u.FL/IPX/IPEX-1</strong>, these will all fit.</p>
+  
   boards:
     baldrick8:
       name: "Baldrick8"

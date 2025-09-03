@@ -1,38 +1,25 @@
-- content_for :title, "FAQ - BaldrickSignals - Baldrick Board Documentation"
+- content_for :title, t('views.boards.baldricksignals.faq.title')
 
 / Board Submenu
 = render 'boards/shared/board_submenu', board_name: 'BaldrickSignals', menu_items: board_menu_items('baldricksignals')
 
 .max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
   = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldricksignals', 'FAQ')
 
-  / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'Frequently Asked Questions', subtitle: 'Common questions about BaldrickSignals'
+    = render 'shared/page_header', title: t('views.boards.baldricksignals.faq.header.title'), subtitle: t('views.boards.baldricksignals.faq.header.subtitle')
 
-    / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
-        / FAQ for BaldrickSignals
         .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickSignals FAQ
+          h2.text-3xl.font-bold.text-gray-900.mb-6 = t('views.boards.baldricksignals.faq.content.title')
 
-          p.text-lg.text-gray-700.mb-6
-            | Find answers to the most commonly asked questions about the BaldrickSignals controller.
+          p.text-lg.text-gray-700.mb-6 = t('views.boards.baldricksignals.faq.content.description')
 
           .space-y-8
             .bg-gray-50.rounded-lg.p-6.border.border-gray-200
-              h3.text-xl.font-semibold.text-gray-900.mb-3 Coming Soon
-              p.text-gray-700.mb-4
-                | We'll add common questions here as we get asked them. The BaldrickSignals is a relatively new addition to our lineup, 
-                | so we're still collecting the most frequently asked questions from our community.
-              p.text-gray-700
-                | In the meantime, check out our 
-                = link_to "getting started guide", board_page_path('baldricksignals', 'getting-started'), class: "text-blue-600 hover:text-blue-800 underline"
-                |  and 
-                = link_to "web interface documentation", board_page_path('baldricksignals', 'web-interface'), class: "text-blue-600 hover:text-blue-800 underline"
-                |  for detailed information about using your BaldrickSignals.
+              h3.text-xl.font-semibold.text-gray-900.mb-3 = t('views.boards.baldricksignals.faq.content.coming_soon.title')
+              == t('views.boards.baldricksignals.faq.content.coming_soon.content')
 
+          .mt-8
             = render 'boards/shared/faq_ending'
