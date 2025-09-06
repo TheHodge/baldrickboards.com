@@ -35,37 +35,15 @@ test:
 production:
   primary: &primary_production
     <<: *default
-<<<<<<< HEAD
-    database: baldrickboards_production
-    username: <%= ENV.fetch("DATABASE_USERNAME", "heatherhodgson") %>
-    password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
-    host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
-    port: <%= ENV.fetch("DATABASE_PORT", "5432") %>
-=======
     database: baldrickboard
     url: <%= ENV["DATABASE_URL"] %>
->>>>>>> 68f1f93ea066c55b827d81b43f76a25971c72f14
   cache:
     <<: *primary_production
     database: baldrickboards_production_cache
-<<<<<<< HEAD
-    username: <%= ENV.fetch("DATABASE_USERNAME", "heatherhodgson") %>
-    password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
-    host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
-    port: <%= ENV.fetch("DATABASE_PORT", "5432") %>
-=======
->>>>>>> 68f1f93ea066c55b827d81b43f76a25971c72f14
     migrations_paths: db/cache_migrate
     url: <%= ENV["RED_DATABASE_URL"] %>
   queue:
     <<: *primary_production
     database: baldrickboards_production_queue
-<<<<<<< HEAD
-    username: <%= ENV.fetch("DATABASE_USERNAME", "heatherhodgson") %>
-    password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
-    host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
-    port: <%= ENV.fetch("DATABASE_PORT", "5432") %>
-=======
->>>>>>> 68f1f93ea066c55b827d81b43f76a25971c72f14
     migrations_paths: db/queue_migrate
     url: <%= ENV["BLUE_DATABASE_URL"] %>
