@@ -61,6 +61,19 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
   post 'newsletter_subscribers', to: 'newsletter_subscribers#create'
   get 'newsletter_subscribers/unsubscribe', to: 'newsletter_subscribers#unsubscribe'
   
+  # Admin area
+  namespace :admin do
+    get 'login', to: 'sessions#new'
+    post 'login', to: 'sessions#create'
+    delete 'logout', to: 'sessions#destroy'
+    
+    resources :newsletter_subscribers, only: [:index, :destroy] do
+      collection do
+        get :export_csv
+      end
+    end
+  end
+  
   # Catch all unmatched routes and show 404
   match '*path', to: 'application#not_found', via: :all
 end

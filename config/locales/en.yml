@@ -30,6 +30,37 @@
 en:
   hello: "Hello world"
   
+  # Open Graph defaults
+  og:
+    site_name: "Baldrick Boards"
+    type: "website"
+    locale: "en_GB"
+    default_title: "Baldrick Boards - Professional LED Controller Boards"
+    default_description: "Professional LED controller boards for holiday lighting displays. Baldrick8, Baldrick17, BaldrickSwitchy, and more."
+    default_image: "/og-default.jpg"
+    twitter_card: "summary_large_image"
+    twitter_site: "@baldrickboards"
+    
+    # Section-specific Open Graph data
+    pages:
+      home:
+        title: "Baldrick Boards - Professional LED Controller Boards"
+        description: "Professional-grade controller boards for lighting displays, interactive installations, and automated shows. Baldrick8, Baldrick17, BaldrickSwitchy and more."
+        image: "og-homepage"
+      faq:
+        title: "Frequently Asked Questions - Baldrick Boards"
+        description: "Find answers to the most commonly asked questions about Baldrick products, setup, troubleshooting, and more."
+        image: "og-faq"
+      support:
+        title: "Support - Baldrick Boards"
+        description: "Get help with your Baldrick Board. Contact our support team for technical assistance and troubleshooting."
+        image: "og-support"
+      testimonials:
+        title: "Customer Testimonials - Baldrick Boards"
+        description: "Read what our customers say about Baldrick Boards and their experiences with our LED controller products."
+        image: "og-testimonials"
+    
+  
   faq:
     title: "Frequently Asked Questions"
     subtitle: "Common questions and answers about Baldrick products"

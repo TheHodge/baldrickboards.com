@@ -2,6 +2,15 @@ en:
   views:
     boards:
       baldrickdmx:
+        # Open Graph data for BaldrickDMX
+        og:
+          title: "BaldrickDMX - DMX Controller Board"
+          description: "Professional DMX controller board for stage lighting and professional installations. Compatible with industry-standard DMX protocols."
+          image: "og-baldrickdmx"
+          faq:
+            title: "BaldrickDMX FAQ - Frequently Asked Questions"
+            description: "Common questions and answers about the BaldrickDMX controller board, DMX setup, and troubleshooting."
+            image: "og-baldrickdmx-faq"
         faq:
           title: "FAQ - BaldrickDMX - Baldrick Board Documentation"
           header:

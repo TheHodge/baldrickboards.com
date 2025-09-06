@@ -1,31 +1,67 @@
 en:
   views:
     boards:
-      baldrick8:
+      baldrick17:
+        # Open Graph data for Baldrick17
+        og:
+          title: "Baldrick17 - 17-Channel LED Controller Board"
+          description: "Advanced 17-channel LED controller board with enhanced features for complex lighting displays and professional installations."
+          image: "baldrick17/board.png"
+          faq:
+            title: "Baldrick17 FAQ - Frequently Asked Questions"
+            description: "Common questions and answers about the Baldrick17 LED controller board, setup, troubleshooting, and features."
+            image: "baldrick17/board.png"
+          web_interface:
+            title: "Baldrick17 Web Interface Guide"
+            description: "Complete guide to using the Baldrick17 web interface for configuration, monitoring, and control."
+            image: "baldrick17/board.png"
         faq:
-          title: "FAQ - Baldrick8 - Baldrick Board Documentation"
+          title: "FAQ - Baldrick17 - Baldrick Board Documentation"
           header:
             title: "Frequently Asked Questions"
-            subtitle: "Common questions about Baldrick8"
+            subtitle: "Common questions about Baldrick17"
+            image_url: "baldrick17/board.png"
           content:
-            title: "Baldrick8 FAQ"
-            description: "Find answers to the most commonly asked questions about the Baldrick8 controller."
+            title: "Baldrick17 FAQ"
+            description: "Find answers to the most commonly asked questions about the Baldrick17 controller."
             quick_navigation: "Quick Navigation"
             questions:
               hodgical_test_mode:
                 key: "hodgical-test-mode"
                 question: "What is Hodgical Mode?"
-                images: []
+                images:
+                  - "baldrick8/hodgical-test-mode.gif"
                 answer: |
-                  <p class="text-gray-700 mb-4">Hodgical Mode is our special test mode that adds a bit of fun to testing your pixels.</p>
-                  <p class="text-gray-700">It's named after one of our team members who has a particular sense of humor about these things.</p>
+                  <p class="text-gray-700 mb-4">The Hodgical Test is a mode on the Baldrick17 which allows for easy debugging of pixel and model issues.</p>
+                  <p class="text-gray-700 mb-4">The Hodgical Test runs the RGB cycle on each model on a port but each subsequent model starts with the subsequent colour.</p>
+                  <div class="bg-gray-100 rounded-lg p-4 mb-4">
+                    <img src="%{image_1}" class="w-full rounded mb-4" alt="Hodgical Test Mode">
+                  </div>
+                  <p class="text-gray-700 mb-4">You can see here these three stars on the same port.</p>
+                  <ul class="list-disc list-inside text-gray-700 mb-4">
+                    <li>Star 1 starts with RED, then goes GREEN then goes BLUE</li>
+                    <li>Star 2 starts with GREEN, then goes BLUE then goes RED</li>
+                    <li>Star 3 starts with BLUE, then goes RED then goes GREEN</li>
+                  </ul>
+                  <p class="text-gray-700 mb-4"><em>If we had a star four that would go RED then GREEN then BLUE</em></p>
+                  <h4 class="text-lg font-semibold text-gray-900 mb-3">Why Hodgical Mode?</h4>
+                  <p class="text-gray-700 mb-4">This allows us to quickly:</p>
+                  <ul class="list-disc list-inside text-gray-700 mb-4">
+                    <li>Check if pixels are failing on any specific colour value</li>
+                    <li>Confirm the models are set up correctly (is half of your snowflake the wrong colour)</li>
+                    <li>Put something up on the house when someone comes over and 'wants to see it working'</li>
+                  </ul>
+                  <h4 class="text-lg font-semibold text-gray-900 mb-3">No, I mean why did you call it Hodgical?</h4>
+                  <p class="text-gray-700 mb-4">Because it was an idea from Dom Hodgson (although obviously Pete did all the work) and so obvious his ego wouldn't let it be named something NORMAL..</p>
+                  <h4 class="text-lg font-semibold text-gray-900 mb-3">Why RGB, why not a colour wash?</h4>
+                  <p class="text-gray-700">A colour wash starting at different times on props can be overwhelming with colour and takes longer to debug issues (it also doesn't look as good as you might think)</p>
               where_is_wifi:
                 key: "where-is-wifi"
                 question: "Where is the WiFi?"
                 images: []
                 answer: |
                   <p class="text-gray-700 mb-4">You see the ESP32 chip and instantly think WIFI enabled, however at the moment, after testing latency and throughput over WIFI, we are focusing on the Ethernet connection at this time.</p>
-                  <p class="text-gray-700 mb-4">The Baldrick8 has been designed for 750 pixels per port @ 40FPS and with WIFI we are unable to get close to that.</p>
+                  <p class="text-gray-700 mb-4">The Baldrick17 has been designed for 750 pixels per port @ 40FPS and with WIFI we are unable to get close to that.</p>
                   <p class="text-gray-700 mb-4">That's not to say we will never support it, just don't buy this board for the WIFI support.</p>
                   <p class="text-gray-700"><em>If WIFI is a MUST HAVE then one option some of our users are using is via FPP proxy</em></p>
               fpp_api_commands:
@@ -69,7 +105,7 @@ en:
                 answer: |
                   <p class="text-gray-700 mb-4">Some of batches of 4 wire pixels (double data) require a constant source of data, otherwise some genius thought it would be a great idea to have the default to a test mode on full 100% brightness..</p>
                   <p class="text-gray-700 mb-4">The most common of these are GS8208 pixels.</p>
-                  <p class="text-gray-700 mb-4">You can set your Baldrick8 to the Paint it Black test mode which will stop that but its a pain in the arse to change everytime you stop your show.</p>
+                  <p class="text-gray-700 mb-4">You can set your Baldrick17 to the Paint it Black test mode which will stop that but its a pain in the arse to change everytime you stop your show.</p>
                   <p class="text-gray-700 mb-4">For those using FPP you can configure FPP to output channel data at all times.</p>
                   <p class="text-gray-700 mb-4">Firstly you need to enable the Advanced UI by going to Settings > UI > Interface level and switching that to Advanced.</p>
                   <div class="bg-gray-100 rounded-lg p-4 mb-4">
@@ -94,14 +130,8 @@ en:
                     <li>A really simple (& Fun) UI</li>
                     <li>Focused core features dedicated to Seasonal Lighting</li>
                   </ul>
-                  <p class="text-gray-700 mb-4">Whilst it's true that the Baldrick8 doesn't have every feature of some of the other boards, or the WLED software.</p>
+                  <p class="text-gray-700 mb-4">Whilst it's true that the Baldrick17 doesn't have every feature of some of the other boards, or the WLED software.</p>
                   <p class="text-gray-700">In the words of those woodworking siblings Karen and Richard - <strong>We've Only Just Begun</strong></p>
-              xtreme_edition:
-                key: "xtreme-edition"
-                question: "xTreme Edition?"
-                images: []
-                answer: |
-                  <p class="text-gray-700">The xTreme Edition is a version of the board that is sold by <a href="https://xtremesequences.com" class="text-blue-600 hover:text-blue-800" target="_blank">xTreme Sequences</a> exclusively for their members, in Ron Howards mind it is the greatest edition ever made and no other edition comes close however in reality it is NO DIFFERENT from the other boards apart from the name and logo.</p>
               connecting_receiver:
                 key: "connecting-receiver"
                 question: "How do I connect a receiver?"
@@ -109,5 +139,5 @@ en:
                 answer: |
                   <p class="text-gray-700 mb-4">One of the questions that we often get (from the made up conversations we have with fake customers) is how do I expand the network with receivers?</p>
                   <p class="text-gray-700 mb-4"><strong>The simple answer is that you don't</strong></p>
-                  <p class="text-gray-700 mb-4">When designing the Baldrick8 a thought occured to us, a receiver requires a network connection and power, which is exactly what a Baldrick8 requires!</p>
-                  <p class="text-gray-700">So rather than buy a receiver and have to deal with splitting down the maximum pixels allowed per port, you just buy another Baldrick8 and plug it into your network for the same price!</p>
+                  <p class="text-gray-700 mb-4">When designing the Baldrick17 a thought occured to us, a receiver requires a network connection and power, which is exactly what a Baldrick controller requires!</p>
+                  <p class="text-gray-700">So rather than buy a receiver and have to deal with splitting down the maximum pixels allowed per port, you just buy another Baldrick and plug it into your network for the same price!</p>

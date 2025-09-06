@@ -2,6 +2,19 @@ en:
   views:
     boards:
       baldrick8:
+        # Open Graph data for Baldrick8
+        og:
+          title: "Baldrick8 - 8-Channel LED Controller Board"
+          description: "Professional 8-channel LED controller board for holiday lighting displays. Features web interface, xLights integration, and robust construction."
+          image: "og-baldrick8"
+          faq:
+            title: "Baldrick8 FAQ - Frequently Asked Questions"
+            description: "Common questions and answers about the Baldrick8 LED controller board, setup, troubleshooting, and features."
+            image: "og-baldrick8-faq"
+          web_interface:
+            title: "Baldrick8 Web Interface Guide"
+            description: "Complete guide to using the Baldrick8 web interface for configuration, monitoring, and control."
+            image: "og-baldrick8-web"
         faq:
           title: "FAQ - Baldrick8 - Baldrick Board Documentation"
           header:

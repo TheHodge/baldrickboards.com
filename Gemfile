@@ -59,3 +59,6 @@ gem "slim-rails", "~> 3.7"
 # Email functionality
 gem "mail", "~> 2.8"
 gem "actionmailer"
+
+# CSV export functionality
+gem "csv"

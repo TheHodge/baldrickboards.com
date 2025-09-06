@@ -2,6 +2,15 @@ en:
   views:
     boards:
       baldrickswitchy:
+        # Open Graph data for BaldrickSwitchy
+        og:
+          title: "BaldrickSwitchy - Relay Controller Board"
+          description: "Multi-channel relay controller board for switching high-voltage loads. Perfect for controlling lights, motors, and other electrical devices."
+          image: "baldrickswitchy/board.pnghy"
+          faq:
+            title: "BaldrickSwitchy FAQ - Frequently Asked Questions"
+            description: "Common questions and answers about the BaldrickSwitchy relay controller board, setup, and safety considerations."
+            image: "baldrickswitchy/board.png"
         faq:
           title: "FAQ - BaldrickSwitchy - Baldrick Board Documentation"
           header:

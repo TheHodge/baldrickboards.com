@@ -2,6 +2,15 @@ en:
   views:
     boards:
       baldricksignals:
+        # Open Graph data for BaldrickSignals
+        og:
+          title: "BaldrickSignals - Signal Processing Board"
+          description: "Advanced signal processing board for audio-reactive lighting and complex signal manipulation in lighting displays."
+          image: "og-baldricksignals"
+          faq:
+            title: "BaldrickSignals FAQ - Frequently Asked Questions"
+            description: "Common questions and answers about the BaldrickSignals board, audio processing, and signal routing."
+            image: "og-baldricksignals-faq"
         faq:
           title: "FAQ - BaldrickSignals - Baldrick Board Documentation"
           header:

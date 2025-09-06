@@ -2,6 +2,15 @@ en:
   views:
     boards:
       baldrickinput8:
+        # Open Graph data for BaldrickInput8
+        og:
+          title: "BaldrickInput8 - 8-Input Controller Board"
+          description: "8-input controller board for multiple LED strips and complex lighting setups with individual channel control."
+          image: "og-baldrickinput8"
+          faq:
+            title: "BaldrickInput8 FAQ - Frequently Asked Questions"
+            description: "Common questions and answers about the BaldrickInput8 controller board, multi-input setup, and configuration."
+            image: "og-baldrickinput8-faq"
         faq:
           title: "FAQ - BaldrickInput8 - Baldrick Board Documentation"
           header:
