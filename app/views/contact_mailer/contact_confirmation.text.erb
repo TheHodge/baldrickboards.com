@@ -1,11 +1,11 @@
 Thank You for Contacting Baldrick Boards!
 
-Hi #{@contact.name},
+Hi <%= @contact.name %>,
 
 Thank you for reaching out to us! We've received your message and will get back to you as soon as possible.
 
 Your Message:
-#{@contact.message}
+<%= @contact.message %>
 
 ---
 
@@ -17,4 +17,4 @@ The Baldrick Boards Team
 
 ---
 
-This is an automated confirmation. Your message was submitted on #{@contact.created_at.strftime("%B %d, %Y at %I:%M %p")}
+This is an automated confirmation. Your message was submitted on <%= @contact.created_at.strftime("%B %d, %Y at %I:%M %p") %>

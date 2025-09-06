@@ -3,12 +3,12 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     
     if @contact.save
-      # TODO: Send emails when mailer is configured
-      # ContactMailer.contact_submission(@contact).deliver_now
-      # ContactMailer.contact_confirmation(@contact).deliver_now
+      # Send emails
+      ContactMailer.contact_submission(@contact).deliver_now
+      ContactMailer.contact_confirmation(@contact).deliver_now
       
-      # Mark email as sent (for now, just mark as saved)
-      # @contact.mark_email_sent!
+      # Mark email as sent
+      @contact.mark_email_sent!
       
       # Redirect with success message
       redirect_to support_path, notice: 'Thank you for your message! We\'ll get back to you soon.'

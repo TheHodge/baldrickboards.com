@@ -1,13 +1,13 @@
 class ContactMailer < ApplicationMailer
-  default from: ENV.fetch('MAIL_FROM', 'noreply@baldrickboards.com')
-  default reply_to: ENV.fetch('MAIL_REPLY_TO', 'support@baldrickboards.com')
+  default from: Rails.application.credentials[:mail_from] || 'hello@littlewarden.com'
+  default reply_to: Rails.application.credentials[:mail_reply_to] || 'hello@littlewarden.com'
 
   def contact_submission(contact)
     @contact = contact
     @subject = "New Contact Form Submission: #{contact.subject}"
     
     mail(
-      to: ENV.fetch('CONTACT_EMAIL', 'support@baldrickboards.com'),
+      to: Rails.application.credentials[:contact_email] || 'heather@hodgetastic.com',
       subject: @subject,
       reply_to: contact.email
     )
