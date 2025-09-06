@@ -57,6 +57,10 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
   # Contact form
   post 'contacts', to: 'contacts#create'
   
+  # Newsletter signup
+  post 'newsletter_subscribers', to: 'newsletter_subscribers#create'
+  get 'newsletter_subscribers/unsubscribe', to: 'newsletter_subscribers#unsubscribe'
+  
   # Catch all unmatched routes and show 404
   match '*path', to: 'application#not_found', via: :all
 end
