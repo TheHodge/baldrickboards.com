@@ -20,6 +20,12 @@ class FunStuffController < ApplicationController
   def panic_mode
   end
 
+<<<<<<< HEAD
   def testimonials
+
+  end
+=======
+  def customer_showcase
+>>>>>>> 5599d7f3e9d61634a0398d2b20587d76545801d3
   end
 end

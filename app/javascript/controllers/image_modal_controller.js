@@ -1,34 +1,36 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["image"]
-  static values = { src: String, alt: String }
+  static targets = ["modal", "modalImage", "modalCaption"]
 
   connect() {
-    // Close modal when clicking outside the image
-    this.element.addEventListener('click', (e) => {
-      if (e.target === this.element) {
-        this.close()
-      }
-    })
-
     // Close modal with Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        this.close()
+        this.closeModal()
       }
     })
   }
 
-  open() {
-    this.imageTarget.src = this.srcValue
-    this.imageTarget.alt = this.altValue
-    this.element.classList.remove('hidden')
+  openModal(event) {
+    const imageSrc = event.currentTarget.dataset.imageSrc
+    const imageAlt = event.currentTarget.dataset.imageAlt
+    
+    if (!imageSrc) {
+      console.error("No image source found")
+      return
+    }
+    
+    this.modalImageTarget.src = imageSrc
+    this.modalImageTarget.alt = imageAlt
+    this.modalCaptionTarget.textContent = imageAlt
+    
+    this.modalTarget.classList.remove('hidden')
     document.body.style.overflow = 'hidden'
   }
 
-  close() {
-    this.element.classList.add('hidden')
+  closeModal() {
+    this.modalTarget.classList.add('hidden')
     document.body.style.overflow = 'auto'
   }
 }
