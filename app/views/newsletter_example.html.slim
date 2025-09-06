@@ -1,0 +1,19 @@
+/ Example newsletter template showing how to use unsubscribe URLs
+/ This is just for reference - not a real newsletter template
+
+h1 Newsletter Example
+
+p Here's how you would include an unsubscribe link in your newsletter:
+
+p
+  | To unsubscribe from our newsletter, 
+  a href="#{newsletter_unsubscribe_url('user@example.com')}" click here
+  | .
+
+p Or you can copy and paste this URL into your browser:
+p
+  code = newsletter_unsubscribe_url('user@example.com')
+
+p
+  strong Note: 
+  | Replace 'user@example.com' with the actual subscriber's email address when sending newsletters.

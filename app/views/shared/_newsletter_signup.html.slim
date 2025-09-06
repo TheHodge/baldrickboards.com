@@ -1,0 +1,26 @@
+/ Newsletter signup section
+.bg-white.border-t.border-gray-200.py-6
+  .max-w-4xl.mx-auto.px-4.sm:px-6.lg:px-8
+    .text-center
+      h3.text-xl.font-bold.text-gray-900.mb-2
+        | Get the latest Baldrick updates to your email
+      p.text-sm.text-gray-600.mb-4.max-w-2xl.mx-auto
+        | Stay informed about new firmware releases, board updates, and community news.
+      
+      / Newsletter Form
+      .max-w-lg.mx-auto
+        = form_with model: NewsletterSubscriber.new, url: newsletter_subscribers_path, local: true, html: { class: "space-y-3" } do |form|
+          div
+            .flex.flex-col.sm:flex-row.gap-2
+              = form.email_field :email, 
+                placeholder: "Enter your email address", 
+                required: true,
+                class: "flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+              = form.submit "Subscribe", 
+                class: "inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors whitespace-nowrap"
+                  svg.w-5.h-5.mr-2 fill="currentColor" viewBox="0 0 20 20"
+                    path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                    path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+        
+        p.text-xs.text-gray-500.mt-2
+          | We respect your privacy. Unsubscribe at any time.
