@@ -59,4 +59,18 @@ Rails.application.configure do
   config.assets.debug = false
   config.assets.compile = false
   config.public_file_server.enabled = true
+
+  # Email configuration for development using SendGrid
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.sendgrid.net",
+    port: 587,
+    user_name: Rails.application.credentials[:smtp_username],
+    password: Rails.application.credentials[:smtp_password],
+    authentication: "plain",
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3001 }
 end

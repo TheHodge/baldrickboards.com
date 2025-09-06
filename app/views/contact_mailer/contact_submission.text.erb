@@ -1,0 +1,12 @@
+New Contact Form Submission
+
+Name: <%= @contact.name %>
+Email: <%= @contact.email %>
+Subject: <%= @contact.subject %>
+
+Message:
+<%= @contact.message %>
+
+---
+Submitted on <%= @contact.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+Contact ID: <%= @contact.id %>

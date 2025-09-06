@@ -43,6 +43,7 @@ get 'fun-stuff/board-dimensions', to: 'fun_stuff#board_dimensions'
 get 'fun-stuff/faq', to: 'fun_stuff#faq'
 get 'fun-stuff/problem-solver', to: 'fun_stuff#problem_solver'
 get 'fun-stuff/panic-mode', to: 'fun_stuff#panic_mode'
+get 'fun-stuff/testimonials', to: 'fun_stuff#testimonials'
 get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
   
   # Where to buy page
@@ -52,6 +53,9 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
   get 'support', to: 'support#index'
   get 'support/software', to: 'support#software'
   get 'support/asking-for-help', to: 'support#asking_for_help'
+  
+  # Contact form
+  post 'contacts', to: 'contacts#create'
   
   # Catch all unmatched routes and show 404
   match '*path', to: 'application#not_found', via: :all

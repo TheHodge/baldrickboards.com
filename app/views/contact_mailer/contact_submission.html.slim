@@ -1,0 +1,26 @@
+h2 New Contact Form Submission
+
+p
+  strong Name:
+  = @contact.name
+
+p
+  strong Email:
+  = @contact.email
+
+p
+  strong Subject:
+  = @contact.subject
+
+p
+  strong Message:
+  br
+  = simple_format(@contact.message)
+
+hr
+
+p
+  small
+    | Submitted on #{@contact.created_at.strftime("%B %d, %Y at %I:%M %p")}
+    br
+    | Contact ID: #{@contact.id}
