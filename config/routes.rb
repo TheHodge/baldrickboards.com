@@ -54,6 +54,9 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
   get 'support/software', to: 'support#software'
   get 'support/asking-for-help', to: 'support#asking_for_help'
   
+  # Contact form
+  post 'contacts', to: 'contacts#create'
+  
   # Catch all unmatched routes and show 404
   match '*path', to: 'application#not_found', via: :all
 end
