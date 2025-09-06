@@ -1,0 +1,42 @@
+en:
+  views:
+    fun_stuff:
+      testimonials:
+        title: "Testimonials - Baldrick Boards"
+        header:
+          title: "What Our Users Say"
+          subtitle: "Real feedback from the Baldrick community"
+        content:
+          title: "Customer Testimonials"
+          description: "Hear from our community of lighting enthusiasts who are using Baldrick Boards to create amazing displays."
+          testimonials:
+            testimonial_1:
+              quote: "The Baldrick8 has completely transformed my Christmas display. The ease of setup and reliability is unmatched. I can finally run 750 pixels per port without any issues!"
+              author: "Sarah Johnson"
+              location: "Seattle, WA"
+              board: "Baldrick8"
+              rating: 5
+            testimonial_2:
+              quote: "After years of struggling with other controllers, the Baldrick17 is exactly what I needed for my large-scale installation. The Hodgical Test Mode is brilliant for debugging!"
+              author: "Mike Chen"
+              location: "Austin, TX"
+              board: "Baldrick17"
+              rating: 5
+            testimonial_3:
+              quote: "The BaldrickDMX made adding DMX to my show so simple. No more complex converters or compatibility issues. It just works!"
+              author: "Jennifer Martinez"
+              location: "Denver, CO"
+              board: "BaldrickDMX"
+              rating: 5
+            testimonial_4:
+              quote: "I love how the BaldrickSwitchy handles my high-power relays. The safety features and the DarwinTray give me peace of mind when working with mains voltage."
+              author: "David Thompson"
+              location: "Portland, OR"
+              board: "BaldrickSwitchy"
+              rating: 5
+            testimonial_5:
+              quote: "The Turnip Network is a game-changer for coordinating multiple boards. My show has never been more synchronized and reliable."
+              author: "Lisa Wang"
+              location: "San Francisco, CA"
+              board: "Turnip Network"
+              rating: 5
