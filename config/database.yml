@@ -14,6 +14,10 @@ default: &default
 development:
   <<: *default
   database: baldrickboards_development
+  username: <%= ENV.fetch("DATABASE_USERNAME", "heatherhodgson") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
+  host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
+  port: <%= ENV.fetch("DATABASE_PORT", "5432") %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,7 +26,7 @@ test:
   <<: *default
   database: baldrickboards_test
   username: <%= ENV.fetch("DATABASE_USERNAME", "heatherhodgson") %>
-  password: <%= ENV.fetch("DATABASE_PASSWORD", "") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
   host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
   port: <%= ENV.fetch("DATABASE_PORT", "5432") %>
 
@@ -33,14 +37,14 @@ production:
     <<: *default
     database: baldrickboards_production
     username: <%= ENV.fetch("DATABASE_USERNAME", "heatherhodgson") %>
-    password: <%= ENV.fetch("DATABASE_PASSWORD", "") %>
+    password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
     host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
     port: <%= ENV.fetch("DATABASE_PORT", "5432") %>
   cache:
     <<: *default
     database: baldrickboards_production_cache
     username: <%= ENV.fetch("DATABASE_USERNAME", "heatherhodgson") %>
-    password: <%= ENV.fetch("DATABASE_PASSWORD", "") %>
+    password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
     host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
     port: <%= ENV.fetch("DATABASE_PORT", "5432") %>
     migrations_paths: db/cache_migrate
@@ -48,7 +52,7 @@ production:
     <<: *default
     database: baldrickboards_production_queue
     username: <%= ENV.fetch("DATABASE_USERNAME", "heatherhodgson") %>
-    password: <%= ENV.fetch("DATABASE_PASSWORD", "") %>
+    password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
     host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
     port: <%= ENV.fetch("DATABASE_PORT", "5432") %>
     migrations_paths: db/queue_migrate
