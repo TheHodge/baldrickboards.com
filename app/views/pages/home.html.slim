@@ -129,8 +129,8 @@
         .bg-indigo-100.rounded-full.w-16.h-16.flex.items-center.justify-center.mx-auto.mb-4
           svg.h-8.w-8.text-indigo-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
             path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
-        h3.text-xl.font-semibold.text-gray-900.mb-2 Small and Mighty
-        p.text-gray-600 With two board sizes and a maximum board footprint of just 117mm by 74mm, they are the little boards that can.
+        h3.text-xl.font-semibold.text-gray-900.mb-2 Installation Ready
+        p.text-gray-600 Designed for easy installation in any environment. Compact form factors mean more mounting options and cleaner installations for professional lighting setups.
       
       .text-center
         .bg-indigo-100.rounded-full.w-16.h-16.flex.items-center.justify-center.mx-auto.mb-4
@@ -146,99 +146,66 @@
       h2.text-3xl.font-bold.text-gray-900.mb-4 Documentation & Fun Stuff
       p.text-xl.text-gray-600 Everything you need to get the most out of your Baldrick boards
 
-    .grid.md:grid-cols-2.lg:grid-cols-3.gap-8
-      / Boards Section
-      .bg-white.rounded-lg.shadow-md.overflow-hidden.hover:shadow-lg.transition-shadow.duration-200
+    .grid.md:grid-cols-2.lg:grid-cols-3.gap-6
+      / Turniputs Section
+      = link_to breakthroughs_turniput_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
         .p-6
           .flex.items-center.mb-4
-            .bg-blue-100.rounded-lg.p-3.mr-4
-              svg.h-6.w-6.text-blue-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-            h3.text-xl.font-semibold.text-gray-900 Boards
-          p.text-gray-600.mb-4 Explore our range of controller boards for various applications.
-          ul.text-sm.text-gray-600.mb-4.space-y-1
-            li • Pixel Controllers
-            li • Relay Controllers
-            li • Interactive Controllers
-            li • Portable Controllers
-            li • Power Distribution
-            li • DMX Controllers
-          = link_to boards_path, class: "inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium" do
-            | View all boards
-            svg.ml-1.h-4.w-4 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
+            .bg-green-100.rounded-lg.p-3.mr-4.group-hover:bg-green-200.transition-colors.duration-300
+              svg.h-6.w-6.text-green-600.group-hover:text-green-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 Turniputs
+          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 Making lightshow interactivity as simple as pressing a button.
 
-      / Fun Stuff Section
-      .bg-white.rounded-lg.shadow-md.overflow-hidden.hover:shadow-lg.transition-shadow.duration-200
+      / Release Notes Section
+      = link_to fun_stuff_release_notes_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
         .p-6
           .flex.items-center.mb-4
-            .bg-purple-100.rounded-lg.p-3.mr-4
-              svg.h-6.w-6.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            .bg-blue-100.rounded-lg.p-3.mr-4.group-hover:bg-blue-200.transition-colors.duration-300
+              svg.h-6.w-6.text-blue-600.group-hover:text-blue-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 Release Notes
+          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 Stay up to date with the latest features and improvements.
+
+      / Mounts & STLs Section
+      = link_to fun_stuff_stls_and_mounts_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
+        .p-6
+          .flex.items-center.mb-4
+            .bg-purple-100.rounded-lg.p-3.mr-4.group-hover:bg-purple-200.transition-colors.duration-300
+              svg.h-6.w-6.text-purple-600.group-hover:text-purple-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-            h3.text-xl.font-semibold.text-gray-900 Fun Stuff
-          p.text-gray-600.mb-4 Technical fun stuff, downloads, and reference materials.
-          ul.text-sm.text-gray-600.mb-4.space-y-1
-            li • Release Notes
-            li • STLs and Mounts
-            li • Board Dimensions
-            li • Problem Solver
-          = link_to fun_stuff_path, class: "inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium" do
-            | View all fun stuff
-            svg.ml-1.h-4.w-4 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
-
-      / About Section
-      .bg-white.rounded-lg.shadow-md.overflow-hidden.hover:shadow-lg.transition-shadow.duration-200
-        .p-6
-          .flex.items-center.mb-4
-            .bg-yellow-100.rounded-lg.p-3.mr-4
-              svg.h-6.w-6.text-yellow-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            h3.text-xl.font-semibold.text-gray-900 About Baldrick
-          p.text-gray-600.mb-4 Learn more about Baldrick, our philosophy, and innovative breakthroughs.
-          ul.text-sm.text-gray-600.mb-4.space-y-1
-            li • Company philosophy
-            li • The name story
-            li • Baldrick Breakthroughs
-          .flex.space-x-4
-            = link_to about_path, class: "inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium" do
-              | About Baldrick
-              svg.ml-1.h-4.w-4 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
-            = link_to breakthroughs_path, class: "inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium" do
-              | Breakthroughs
-              svg.ml-1.h-4.w-4 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
-
-      / Support Section
-      .bg-white.rounded-lg.shadow-md.overflow-hidden.hover:shadow-lg.transition-shadow.duration-200
-        .p-6
-          .flex.items-center.mb-4
-            .bg-red-100.rounded-lg.p-3.mr-4
-              svg.h-6.w-6.text-red-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z"
-            h3.text-xl.font-semibold.text-gray-900 Support
-          p.text-gray-600.mb-4 Get help and support for your Baldrick products.
-          p.text-sm.text-gray-600.mb-4 Need assistance with your Baldrick board? Our support team is here to help.
-          = link_to support_path, class: "inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium" do
-            | Get support
-            svg.ml-1.h-4.w-4 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
+            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 Mounts & STLs
+          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 3D printable mounts and enclosures for Baldrick boards.
 
       / Where to Buy Section
-      .bg-white.rounded-lg.shadow-md.overflow-hidden.hover:shadow-lg.transition-shadow.duration-200
+      = link_to where_to_buy_baldrick_boards_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
         .p-6
           .flex.items-center.mb-4
-            .bg-indigo-100.rounded-lg.p-3.mr-4
-              svg.h-6.w-6.text-indigo-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            .bg-indigo-100.rounded-lg.p-3.mr-4.group-hover:bg-indigo-200.transition-colors.duration-300
+              svg.h-6.w-6.text-indigo-600.group-hover:text-indigo-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-            h3.text-xl.font-semibold.text-gray-900 Where to Buy
-          p.text-gray-600.mb-4 Find authorized retailers and purchase options for Baldrick boards.
-          p.text-sm.text-gray-600.mb-4 Discover where you can purchase genuine Baldrick products.
-          = link_to where_to_buy_baldrick_boards_path, class: "inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium" do
-            | Find retailers
-            svg.ml-1.h-4.w-4 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
+            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 Where to Buy
+          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 Find authorized retailers and purchase options for Baldrick boards.
+
+      / CunningFX Section
+      = link_to breakthroughs_cunningfx_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
+        .p-6
+          .flex.items-center.mb-4
+            .bg-orange-100.rounded-lg.p-3.mr-4.group-hover:bg-orange-200.transition-colors.duration-300
+              svg.h-6.w-6.text-orange-600.group-hover:text-orange-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"
+            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 CunningFX
+          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 Advanced effects and animations for professional lighting displays.
+
+      / CE & UKCA Certification Section
+      = link_to breakthroughs_ce_ukca_certification_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
+        .p-6
+          .flex.items-center.mb-4
+            .bg-yellow-100.rounded-lg.p-3.mr-4.group-hover:bg-yellow-200.transition-colors.duration-300
+              svg.h-6.w-6.text-yellow-600.group-hover:text-yellow-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 CE & UKCA Certification
+          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 Quality that goes beyond the basics - certified safe and compliant.
 
 / CTA Section
 .bg-indigo-900.text-white.py-16
