@@ -1,0 +1,99 @@
+- content_for :title, "Customer Showcase - Baldrick Board Documentation"
+
+.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb
+  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: '/' }, { title: 'Fun Stuff', path: fun_stuff_path }, { title: 'Customer Showcase', path: nil }]
+
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Customer Showcase', subtitle: 'Amazing displays created by our talented customers using Baldrick Boards', image_url: '/img/baldrick.jpg', image_alt: 'Customer Showcase'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-4xl.mx-auto
+        / Introduction
+        .text-center.mb-12
+          h2.text-3xl.font-bold.text-gray-900.mb-4 Incredible Customer Creations
+          p.text-lg.text-gray-600.mb-6
+            | Our customers never cease to amaze us with their creativity and technical prowess. 
+            | Here are just a few examples of the stunning displays they've built using Baldrick Boards.
+          p.text-gray-500
+            | Have a display you'd like to showcase? 
+            a.text-indigo-600.hover:text-indigo-800.font-medium href="/support" Contact us
+            |  to share your creation, or show it off in our 
+            a.text-indigo-600.hover:text-indigo-800.font-medium href="https://facebook.com/groups/baldrickboards" target="_blank" Facebook group
+            | !
+
+        / Showcase Gallery
+        .relative data-controller="image-modal"
+          .grid.md:grid-cols-2.lg:grid-cols-3.gap-6.mb-12
+          
+            / Decking Display
+            .bg-gray-50.rounded-lg.overflow-hidden.shadow-sm.hover:shadow-md.transition-all.duration-300.cursor-pointer.group data-action="click->image-modal#openModal" data-image-src="#{asset_path('showcase/decking.jpg')}" data-image-alt="Decking display with Baldrick Boards"
+              .relative.bg-gray-200.overflow-hidden style="aspect-ratio: 16/9;"
+                img.w-full.h-full.object-cover.group-hover:scale-105.transition-transform.duration-300 src="#{asset_path('showcase/decking.jpg')}" alt="Decking display with Baldrick Boards"
+              .p-4
+                h3.text-lg.font-semibold.text-gray-900.mb-2 Stunning Decking Display
+                p.text-gray-600.text-sm.mb-3
+                  | This beautiful decking installation showcases the versatility of Baldrick Boards in outdoor environments.
+                .flex.items-center.text-xs.text-gray-500
+                  svg.h-3.w-3.mr-1 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"
+                  span Outdoor Installation
+
+            / Shopping Centre Display
+            .bg-gray-50.rounded-lg.overflow-hidden.shadow-sm.hover:shadow-md.transition-all.duration-300.cursor-pointer.group data-action="click->image-modal#openModal" data-image-src="#{asset_path('showcase/shopping-centre.jpeg')}" data-image-alt="Shopping centre display with Baldrick Boards"
+              .relative.bg-gray-200.overflow-hidden style="aspect-ratio: 16/9;"
+                img.w-full.h-full.object-cover.group-hover:scale-105.transition-transform.duration-300 src="#{asset_path('showcase/shopping-centre.jpeg')}" alt="Shopping centre display with Baldrick Boards"
+              .p-4
+                h3.text-lg.font-semibold.text-gray-900.mb-2 Commercial Shopping Centre
+                p.text-gray-600.text-sm.mb-3
+                  | A large-scale commercial installation proving Baldrick Boards can handle professional lighting applications.
+                .flex.items-center.text-xs.text-gray-500
+                  svg.h-3.w-3.mr-1 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"
+                  span Commercial Installation
+
+            / Yai Yai Display
+            .bg-gray-50.rounded-lg.overflow-hidden.shadow-sm.hover:shadow-md.transition-all.duration-300.cursor-pointer.group data-action="click->image-modal#openModal" data-image-src="#{asset_path('showcase/yai-yai.jpg')}" data-image-alt="Yai Yai display with Baldrick Boards"
+              .relative.bg-gray-200.overflow-hidden style="aspect-ratio: 16/9;"
+                img.w-full.h-full.object-cover.group-hover:scale-105.transition-transform.duration-300 src="#{asset_path('showcase/yai-yai.jpg')}" alt="Yai Yai display with Baldrick Boards"
+              .p-4
+                h3.text-lg.font-semibold.text-gray-900.mb-2 The Yai Yai Display
+                p.text-gray-600.text-sm.mb-3
+                  | This impressive display showcases the creative potential of Baldrick Boards in the hands of talented hobbyists.
+                .flex.items-center.text-xs.text-gray-500
+                  svg.h-3.w-3.mr-1 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"
+                  span Creative Hobbyist Project
+
+          / Image Modal
+          .fixed.inset-0.bg-black.bg-opacity-75.flex.items-center.justify-center.z-50.hidden data-image-modal-target="modal" data-action="click->image-modal#closeModal"
+            .relative.max-w-4xl.max-h-full.m-4
+              button.absolute.top-4.right-4.text-white.hover:text-gray-300.transition-colors.z-10 data-action="click->image-modal#closeModal"
+                svg.h-8.w-8 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"
+              .bg-white.rounded-lg.overflow-hidden.shadow-2xl
+                img.w-full.h-auto.max-h-screen.object-contain data-image-modal-target="modalImage" alt=""
+                .p-4.bg-gray-50
+                  p.text-gray-700.text-center data-image-modal-target="modalCaption"
+
+        / Call to Action
+        .bg-gradient-to-r.from-indigo-50.to-purple-50.rounded-lg.p-8.text-center
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Share Your Creation
+          p.text-gray-600.mb-6
+            | Have you built something amazing with Baldrick Boards? We'd love to feature your work in our showcase!
+          .flex.flex-col.sm:flex-row.gap-4.justify-center
+            a.bg-indigo-600.text-white.px-6.py-3.rounded-lg.font-medium.hover:bg-indigo-700.transition-colors.duration-200 href="/support"
+              svg.h-5.w-5.inline.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              | Contact Us
+            a.bg-blue-600.text-white.px-6.py-3.rounded-lg.font-medium.hover:bg-blue-700.transition-colors.duration-200 href="https://facebook.com/groups/baldrickboards" target="_blank"
+              svg.h-5.w-5.inline.mr-2 fill="currentColor" viewBox="0 0 24 24"
+                path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              | Facebook Group
+            a.bg-white.text-indigo-600.px-6.py-3.rounded-lg.font-medium.border.border-indigo-600.hover:bg-indigo-50.transition-colors.duration-200 href="/fun-stuff"
+              svg.h-5.w-5.inline.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+              | Back to Fun Stuff

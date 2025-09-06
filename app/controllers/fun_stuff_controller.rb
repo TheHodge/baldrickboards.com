@@ -19,4 +19,7 @@ class FunStuffController < ApplicationController
 
   def panic_mode
   end
+
+  def customer_showcase
+  end
 end
