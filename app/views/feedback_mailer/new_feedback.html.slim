@@ -1,2 +1,36 @@
-h1 Feedback#new_feedback
-p = "#{@greeting}, find me in app/views/feedback_mailer/new_feedback.html.slim"
+h1 New #{@feedback.feedback_type.titleize} Submission
+
+p A new #{@feedback.feedback_type} has been submitted through the website:
+
+.space-y-4
+  .bg-gray-50.p-4.rounded-lg
+    h3.text-lg.font-semibold.mb-2 Submission Details
+    p
+      strong Name: 
+      = @feedback.name
+    p
+      strong Email: 
+      = @feedback.email
+    p
+      strong Type: 
+      = @feedback.feedback_type.titleize
+    p
+      strong Submitted: 
+      = @feedback.created_at.strftime("%B %d, %Y at %I:%M %p")
+
+  .bg-white.p-4.border.rounded-lg
+    h3.text-lg.font-semibold.mb-2 Content
+    .prose.max-w-none
+      = simple_format(@feedback.content)
+
+  - if @feedback.image.attached?
+    .bg-white.p-4.border.rounded-lg
+      h3.text-lg.font-semibold.mb-2 Attached Image
+      p.text-sm.text-gray-600.mb-2 = @feedback.image.filename
+      p.text-sm.text-gray-500
+        | Image size: #{number_to_human_size(@feedback.image.byte_size)}
+
+p.text-sm.text-gray-600.mt-6
+  | This feedback was submitted through the Baldrick Boards website feedback form.
+  br
+  | Please review and consider featuring it on the appropriate page.

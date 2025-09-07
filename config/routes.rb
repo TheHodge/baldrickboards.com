@@ -83,8 +83,14 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
     end
     
     resources :search_logs, only: [:index]
+    
+    resources :feedbacks, only: [:index, :show, :destroy] do
+      member do
+        patch :mark_processed
+      end
+    end
   end
   
-  # Catch all unmatched routes and show 404
-  match '*path', to: 'application#not_found', via: :all
+  # Catch all unmatched routes and show 404 (excluding image files)
+  match '*path', to: 'application#not_found', via: :all, constraints: lambda { |req| !req.path.match?(/\.(png|jpg|jpeg|gif|webp|svg|ico)$/i) }
 end
