@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # Search logging endpoints
+  post "search_logs/log_search", to: "search_logs#log_search"
+  post "search_logs/log_click", to: "search_logs#log_click"
+  
   # Home page
   root 'pages#home'
   
@@ -72,6 +76,8 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
         get :export_csv
       end
     end
+    
+    resources :search_logs, only: [:index]
   end
   
   # Catch all unmatched routes and show 404

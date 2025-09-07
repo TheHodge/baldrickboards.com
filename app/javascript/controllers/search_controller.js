@@ -136,6 +136,7 @@ export default class extends Controller {
     }
 
     this.performSearch(query)
+    this.logSearch(query)
   }
 
   handleKeydown(event) {
@@ -185,6 +186,9 @@ export default class extends Controller {
       console.error('Lunr index not available for search:', query)
       return
     }
+
+    // Store current query for logging clicks
+    this.currentQuery = query
 
     console.log('Performing search for:', query)
     console.log('Search index available:', this.searchIndex ? this.searchIndex.length : 'none', 'items')
@@ -296,6 +300,7 @@ export default class extends Controller {
     this.resultItemTargets.forEach((item, index) => {
       item.addEventListener('click', () => {
         const result = this.currentResults[index]
+        this.logClick(this.currentQuery, result.url, result.title)
         window.location.href = result.url
       })
     })
@@ -363,6 +368,7 @@ export default class extends Controller {
   selectCurrent() {
     if (this.selectedIndex >= 0 && this.selectedIndex < this.currentResults.length) {
       const result = this.currentResults[this.selectedIndex]
+      this.logClick(this.currentQuery, result.url, result.title)
       window.location.href = result.url
     }
   }
@@ -392,5 +398,56 @@ export default class extends Controller {
   clear() {
     this.inputTarget.value = ''
     this.hideResults()
+  }
+
+  // Log search query to backend
+  logSearch(query) {
+    // Only log searches with reasonable length (2+ characters)
+    if (!query || query.length < 2) {
+      return
+    }
+
+    // Debounce logging to avoid too many requests
+    if (this.logSearchTimeout) {
+      clearTimeout(this.logSearchTimeout)
+    }
+
+    this.logSearchTimeout = setTimeout(() => {
+      fetch('/search_logs/log_search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
+        },
+        body: JSON.stringify({
+          query: query.trim()
+        })
+      }).catch(error => {
+        console.warn('Failed to log search:', error)
+      })
+    }, 500) // Wait 500ms after user stops typing
+  }
+
+  // Log click on search result
+  logClick(query, resultUrl, resultTitle) {
+    // Only log clicks with reasonable query length and valid result
+    if (!query || query.length < 2 || !resultUrl) {
+      return
+    }
+
+    fetch('/search_logs/log_click', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
+      },
+      body: JSON.stringify({
+        query: query.trim(),
+        result_url: resultUrl,
+        result_title: resultTitle
+      })
+    }).catch(error => {
+      console.warn('Failed to log click:', error)
+    })
   }
 }
