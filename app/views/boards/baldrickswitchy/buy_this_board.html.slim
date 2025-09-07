@@ -90,12 +90,10 @@
                 p.text-sm.text-gray-600 Professional support for high-power control applications
 
           / Call to Action
-          .bg-gradient-to-r.from-blue-600.to-green-600.rounded-xl.p-8.text-center.text-white
+          .bg-gradient-to-r.from-indigo-600.to-purple-600.rounded-xl.p-8.text-center.text-white
             h3.text-2xl.font-bold.mb-4 Ready to Get Your BaldrickSwitchy?
             p.text-blue-100.mb-6
               | Choose your preferred retailer and join thousands of satisfied BaldrickSwitchy customers worldwide.
             .space-x-4
-              a href="/boards/baldrickswitchy/overview" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
-                | Learn More
-              a href="/support" class="inline-block border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition-colors font-semibold"
-                | Get Support
+              = link_to "Learn More", board_page_path('baldrickswitchy', 'overview'), class: "inline-block bg-white text-indigo-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
+              = link_to "Get Support", support_path, class: "inline-block border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-indigo-600 transition-colors font-semibold"
