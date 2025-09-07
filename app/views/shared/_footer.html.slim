@@ -59,7 +59,11 @@ footer.bg-purple-900.text-white
   / Copyright
   .border-t.border-purple-800
     .max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-6
-      .text-center.text-purple-300
+      .flex.flex-col.md:flex-row.justify-between.items-center.text-purple-300
         p 
           | Copyright © 2025 
           = link_to "www.ilightthat.com", "https://www.ilightthat.com", target: "_blank", class: "hover:text-white transition-colors"
+        
+        / Language Switcher (commented out until we have proper translations)
+        / .mt-4.md:mt-0
+        /   = render 'shared/language_switcher'

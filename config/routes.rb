@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  # Search logging endpoints
+  # Search logging endpoints (no locale needed for API endpoints)
   post "search_logs/log_search", to: "search_logs#log_search"
   post "search_logs/log_click", to: "search_logs#log_click"
   
-  # Home page
-  root 'pages#home'
+  # Locale-based routing
+  scope "(:locale)", locale: /en|es|fr|de/ do
+    # Home page
+    root 'pages#home'
   
   # Search test page
   get 'search-test', to: 'pages#search_test'
@@ -94,6 +96,7 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
     end
   end
   
-  # Catch all unmatched routes and show 404 (excluding image files)
-  match '*path', to: 'application#not_found', via: :all, constraints: lambda { |req| !req.path.match?(/\.(png|jpg|jpeg|gif|webp|svg|ico)$/i) }
+    # Catch all unmatched routes and show 404 (excluding image files)
+    match '*path', to: 'application#not_found', via: :all, constraints: lambda { |req| !req.path.match?(/\.(png|jpg|jpeg|gif|webp|svg|ico)$/i) }
+  end
 end
