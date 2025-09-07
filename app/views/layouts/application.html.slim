@@ -101,9 +101,6 @@ html
                     a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/fun-stuff/panic-mode" Panic Mode?
                     a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/fun-stuff/customer-showcase" Customer Showcase
               
-              a class="#{'border-indigo-500 text-gray-900' if controller_name == 'faq'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors" href="/faq"
-                | FAQ
-              
               a class="#{'border-purple-500 text-gray-900' if current_page?('/where-to-buy-baldrick-boards')} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors bg-purple-50 hover:bg-purple-100 rounded-t px-2" href="/where-to-buy-baldrick-boards"
                 svg.w-4.h-4.mr-1 fill="currentColor" viewBox="0 0 20 20"
                   path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
@@ -120,9 +117,10 @@ html
                     a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/support" Hardware Support
                     a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/support/software" Software Support
                     a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/support/asking-for-help" Asking for Help
+                    a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100 href="/faq" FAQ
               
               a class="#{'border-indigo-500 text-gray-900' if controller_name == 'about'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors" href="/about"
-                | About Baldrick
+                | About
             
             / Search Component
             .hidden.md:flex.items-center.ml-8
@@ -188,14 +186,13 @@ html
             a.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-6.pr-4.py-2.border-l-4.text-sm.font-medium href="/support" Hardware Support
             a.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-6.pr-4.py-2.border-l-4.text-sm.font-medium href="/support/software" Software Support
             a.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-6.pr-4.py-2.border-l-4.text-sm.font-medium href="/support/asking-for-help" Asking for Help
+            a.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-6.pr-4.py-2.border-l-4.text-sm.font-medium href="/faq" FAQ
 
           / Single Links
-          a class="#{'bg-indigo-50 border-indigo-500 text-indigo-700' if controller_name == 'faq'} border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" href="/faq"
-            | FAQ
           a class="#{'bg-purple-50 border-purple-500 text-purple-700' if current_page?('/where-to-buy-baldrick-boards')} border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" href="/where-to-buy-baldrick-boards"
             | 🛒 Where to Buy
           a class="#{'bg-indigo-50 border-indigo-500 text-indigo-700' if controller_name == 'about'} border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" href="/about"
-            | About Baldrick
+            | About
 
     main.pt-16
       = yield
