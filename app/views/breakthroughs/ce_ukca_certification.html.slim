@@ -1,4 +1,5 @@
 - content_for :title, "CE & UKCA Certification - About Baldrick"
+- content_for :og_image, asset_url('ce-ukca-rohs.png')
 
 .max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
   / Breadcrumb
@@ -7,7 +8,7 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'CE & UKCA Certification', subtitle: 'Quality that goes beyond the basics - certified safe and compliant'
+    = render 'shared/page_header', title: 'CE & UKCA Certification', subtitle: 'Quality that goes beyond the basics - certified safe and compliant', image_url: 'ce-ukca-rohs.png'
 
     / Content Section
     .px-8.py-8
@@ -25,7 +26,7 @@
             | All Baldrick products meet the highest safety and compliance standards, ensuring they can be safely used in both European and UK markets.
 
           .text-center.mb-8
-            img.max-w-md.mx-auto src="/assets/ce-ukca-rohs-f4dc3d06.png" alt="CE, UKCA, and RoHS Certification Logos"
+            = image_tag "ce-ukca-rohs.png", alt: "CE, UKCA, and RoHS Certification Logos", class: "max-w-md mx-auto"
 
           h3.text-2xl.font-bold.text-gray-900.mb-4 What is CE Certification?
 
