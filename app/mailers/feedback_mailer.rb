@@ -3,7 +3,7 @@ class FeedbackMailer < ApplicationMailer
     @feedback = feedback
     
     mail(
-      to: 'admin@baldrickboards.com', # Update with your admin email
+      to: 'heather@hodgetastic.com', # Update with your admin email
       subject: "New #{feedback.feedback_type.capitalize} Submission - #{feedback.name}"
     )
   end
