@@ -30,6 +30,9 @@
 en:
   hello: "Hello world"
   
+  # Social media links
+  facebook_group_url: "https://www.facebook.com/groups/ilightthat"
+  
   # Open Graph defaults
   og:
     site_name: "Baldrick Boards"
