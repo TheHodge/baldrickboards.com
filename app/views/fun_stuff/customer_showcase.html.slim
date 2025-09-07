@@ -17,10 +17,8 @@
           h2.text-3xl.font-bold.text-gray-900.mb-4 = t('views.fun_stuff.customer_showcase.content.title')
           p.text-lg.text-gray-600.mb-6 = t('views.fun_stuff.customer_showcase.content.description')
           p.text-gray-500
-            = t('views.fun_stuff.customer_showcase.content.contact_text')
-            = link_to "Submit your creation", new_feedback_path, class: "text-indigo-600 hover:text-indigo-800 font-medium"
-            = t('views.fun_stuff.customer_showcase.content.facebook_text')
-            = link_to t('views.fun_stuff.customer_showcase.content.facebook_link'), t('facebook_group_url'), target: "_blank", class: "text-indigo-600 hover:text-indigo-800 font-medium"
+            ' #{t('views.fun_stuff.customer_showcase.content.contact_text')} #{link_to t('views.fun_stuff.customer_showcase.content.contact_link'), new_feedback_path, class: "text-indigo-600 hover:text-indigo-800 font-medium"}
+            ' #{t('views.fun_stuff.customer_showcase.content.facebook_text')} #{link_to t('views.fun_stuff.customer_showcase.content.facebook_link'), t('facebook_group_url'), target: "_blank", class: "text-indigo-600 hover:text-indigo-800 font-medium"}
             | !
 
         / Showcase Gallery

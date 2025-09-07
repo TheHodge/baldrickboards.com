@@ -84,7 +84,7 @@
                 p.text-sm.text-gray-600 Searchable history of solutions
 
             .text-center
-              = link_to "https://www.facebook.com/groups/3626858730963141", target: "_blank", class: "inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg" do
+              = link_to t('facebook_group_url'), target: "_blank", class: "inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg" do
                 svg.w-6.h-6.mr-3 fill="currentColor" viewBox="0 0 20 20"
                   path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
                 | Join Facebook Community
@@ -108,17 +108,20 @@
             .bg-white.border.border-gray-200.rounded-lg.p-6
               h4.text-lg.font-semibold.text-gray-900.mb-3 Alternative Fun Stuff
               ul.space-y-2.text-gray-700
-                li • 
-                  = link_to "Documentation & Fun Stuff", fun_stuff_path, class: "text-purple-600 hover:text-purple-700"
-                li • 
-                  = link_to "FAQ Section", fun_stuff_faq_path, class: "text-purple-600 hover:text-purple-700"
-                li • 
-                  = link_to "Release Notes", fun_stuff_release_notes_path, class: "text-purple-600 hover:text-purple-700"
-                li • 
-                  = link_to "Board Documentation", boards_path, class: "text-purple-600 hover:text-purple-700"
-                li • YouTube tutorials and videos
-                li • xLights documentation
-                li • FPP documentation
+                li 
+                  ' • #{link_to "Documentation & Fun Stuff", fun_stuff_path, class: "text-purple-600 hover:text-purple-700"}
+                li 
+                  ' • #{link_to "FAQ Section", fun_stuff_faq_path, class: "text-purple-600 hover:text-purple-700"}
+                li 
+                  ' • #{link_to "Release Notes", fun_stuff_release_notes_path, class: "text-purple-600 hover:text-purple-700"}
+                li 
+                  ' • #{link_to "Board Documentation", boards_path, class: "text-purple-600 hover:text-purple-700"}
+                / li 
+                /   ' • #{link_to "YouTube tutorials and videos", fun_stuff_youtube_tutorials_and_videos_path, class: "text-purple-600 hover:text-purple-700"}
+                / li 
+                /   ' • #{link_to "xLights documentation", fun_stuff_xlights_documentation_path, class: "text-purple-600 hover:text-purple-700"}
+                / li 
+                /   ' • #{link_to "FPP documentation", fun_stuff_fpp_documentation_path, class: "text-purple-600 hover:text-purple-700"}
 
           / How to Get the Best Help
           h3.text-2xl.font-bold.text-gray-900.mb-4 How to Get the Best Help

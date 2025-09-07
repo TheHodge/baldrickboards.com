@@ -176,16 +176,16 @@
               div
                 h5.font-medium.text-gray-900.mb-2 Documentation
                 ul.space-y-1.text-sm.text-gray-600
-                  li • 
-                    = link_to "Board Documentation", boards_path, class: "text-purple-600 hover:text-purple-700"
-                  li • 
-                    = link_to "FAQ Section", fun_stuff_faq_path, class: "text-purple-600 hover:text-purple-700"
-                  li • 
-                    = link_to "Release Notes", fun_stuff_release_notes_path, class: "text-purple-600 hover:text-purple-700"
-              div
-                h5.font-medium.text-gray-900.mb-2 External Fun Stuff
-                ul.space-y-1.text-sm.text-gray-600
-                  li • xLights Documentation
-                  li • FPP Documentation
-                  li • YouTube Tutorials
-                  li • Community Videos
+                  li 
+                    ' • #{link_to "Board Documentation", boards_path, class: "text-purple-600 hover:text-purple-700"} 
+                  li 
+                    ' • #{link_to "FAQ Section", fun_stuff_faq_path, class: "text-purple-600 hover:text-purple-700"}
+                  li 
+                    ' • #{link_to "Release Notes", fun_stuff_release_notes_path, class: "text-purple-600 hover:text-purple-700"}
+              / div
+              /   h5.font-medium.text-gray-900.mb-2 External Fun Stuff
+              /   ul.space-y-1.text-sm.text-gray-600
+              /     li • xLights Documentation
+              /     li • FPP Documentation
+              /     li • YouTube Tutorials
+              /     li • Community Videos
