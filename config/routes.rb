@@ -61,6 +61,11 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
   # Contact form
   post 'contacts', to: 'contacts#create'
   
+  # Feedback form
+  get 'feedback', to: 'feedbacks#new', as: 'new_feedback'
+  post 'feedback', to: 'feedbacks#create'
+  get 'feedback/success', to: 'feedbacks#success', as: 'feedbacks_success'
+  
   # Newsletter signup
   post 'newsletter_subscribers', to: 'newsletter_subscribers#create'
   get 'newsletter_subscribers/unsubscribe', to: 'newsletter_subscribers#unsubscribe'

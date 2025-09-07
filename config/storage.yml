@@ -1,0 +1,8 @@
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+# Use local storage for all environments
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>

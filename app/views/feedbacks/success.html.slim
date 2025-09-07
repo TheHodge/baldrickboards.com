@@ -1,0 +1,31 @@
+- content_for :title, "Feedback Submitted - Baldrick Boards"
+
+.max-w-4xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Main Content Card
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden
+    / Header Section
+    = render 'shared/page_header', title: 'Thank You!', subtitle: 'Your feedback has been submitted successfully'
+
+    / Content Section
+    .px-8.py-8
+      .max-w-2xl.mx-auto.text-center
+        .mb-8
+          svg.mx-auto.h-16.w-16.text-green-500 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        
+        h2.text-2xl.font-bold.text-gray-900.mb-4 Feedback Received!
+        p.text-lg.text-gray-600.mb-6
+          | Thank you for taking the time to share your feedback with us. We really appreciate hearing from our customers and learning about your experiences with Baldrick Boards.
+        
+        .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
+          h3.text-lg.font-semibold.text-blue-900.mb-3 What happens next?
+          ul.text-blue-800.text-left.space-y-2
+            li • We'll review your submission within a few days
+            li • If we decide to feature it, we'll add it to our testimonials or showcase
+            li • We may contact you if we need any additional information
+            li • You'll be credited for your testimonial or showcase
+        
+        .flex.flex-col.sm:flex-row.gap-4.justify-center
+          = link_to "Submit Another", new_feedback_path, class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          = link_to "View Testimonials", fun_stuff_testimonials_path, class: "inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          = link_to "View Showcase", fun_stuff_customer_showcase_path, class: "inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

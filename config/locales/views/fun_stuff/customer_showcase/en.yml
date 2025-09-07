@@ -1,0 +1,47 @@
+en:
+  views:
+    fun_stuff:
+      customer_showcase:
+        title: "Customer Showcase - Baldrick Board Documentation"
+        header:
+          title: "Customer Showcase"
+          subtitle: "Amazing displays created by our talented customers using Baldrick Boards"
+        content:
+          title: "Incredible Customer Creations"
+          description: "Our customers never cease to amaze us with their creativity and technical prowess. Here are just a few examples of the stunning displays they've built using Baldrick Boards."
+          contact_text: "Have a display you'd like to showcase?"
+          contact_link: "Contact us"
+          facebook_text: "to share your creation, or show it off in our"
+          facebook_link: "Facebook group"
+          call_to_action:
+            title: "Share Your Creation"
+            description: "Have you built something amazing with Baldrick Boards? We'd love to feature your work in our showcase!"
+            contact_button: "Contact Us"
+            facebook_button: "Facebook Group"
+            back_button: "Back to Fun Stuff"
+          footer_note: "All testimonials are from real customers and are used with permission. We're proud of our community and the amazing displays they create!"
+          showcases:
+            decking:
+              title: "Stunning Decking Display"
+              description: "This beautiful decking installation showcases the versatility of Baldrick Boards and CunningFX."
+              author: "Stephen Parberry"
+              image: "showcase/decking.jpg"
+              alt: "Decking display with Baldrick Boards"
+            shopping_centre:
+              title: "Commercial Shopping Centre"
+              description: "When a shopping centre needed to add some lights to their new lift installation, they turned to Baldrick Boards."
+              author: "Paul Walker"
+              image: "showcase/shopping-centre.jpeg"
+              alt: "Shopping centre display with Baldrick Boards"
+            yai_yai:
+              title: "The Yai Yai Display"
+              description: "One of the largest props in available in the world, powered by a single Baldrick8."
+              author: "Jackie & Sean North"
+              image: "showcase/yai-yai.jpg"
+              alt: "Yai Yai display with Baldrick Boards"
+            disco_robot:
+              title: "Giant Disco Robot"
+              description: "The preferred LED controller for any giant Disco Robots creation - featuring advanced LED displays and interactive elements."
+              author: "Michael Beverley"
+              image: "testimonials/518252634_10159777750822537_7497092572611096840_n.jpg"
+              alt: "Giant Disco Robot display with Baldrick Boards"

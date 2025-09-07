@@ -41,8 +41,8 @@
                   / Author Details
                   .flex.flex-col
                     .font-semibold.text-gray-900 = testimonial[:author]
-                    .text-sm.text-gray-600 = testimonial[:location]
-                    .text-sm.text-blue-600.font-medium = testimonial[:board]
+                    .text-sm.text-gray-600 = testimonial[:location].html_safe if testimonial[:location].present? 
+                    .text-sm.text-blue-600.font-medium = testimonial[:board].html_safe if testimonial[:board].present? 
 
           / Call to Action Section
           .bg-blue-50.border-l-4.border-blue-400.p-6.mb-8
@@ -54,7 +54,7 @@
                 h3.text-lg.font-semibold.text-blue-900.mb-2 Share Your Experience
                 p.text-blue-800.mb-4
                   | Have you used Baldrick Boards in your display? We'd love to hear about your experience and feature your testimonial on this page!
-                = link_to "https://www.facebook.com/groups/ilightthat/posts/4000953240220353/", class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors", target: "_blank" do
+                = link_to new_feedback_path, class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors" do
                   | Submit Your Testimonial
 
           / Community Links
