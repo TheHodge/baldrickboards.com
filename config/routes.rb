@@ -81,13 +81,13 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
     # Admin dashboard
     root 'dashboard#index'
     
-    resources :newsletter_subscribers, only: [:index, :destroy] do
+    resources :newsletter_subscribers, only: [:index, :destroy], path: 'newsletter-subscribers' do
       collection do
         get :export_csv
       end
     end
     
-    resources :search_logs, only: [:index]
+    resources :search_logs, only: [:index], path: 'search-logs'
     
     resources :feedbacks, only: [:index, :show, :destroy] do
       member do

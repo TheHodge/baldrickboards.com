@@ -13,6 +13,16 @@ module ApplicationHelper
     Rails.application.routes.url_helpers.newsletter_subscribers_unsubscribe_url(email: email, host: Rails.application.config.action_mailer.default_url_options[:host] || 'localhost:3001')
   end
 
+  # Admin menu helper
+  def admin_menu_items
+    [
+      { title: 'Dashboard', path: admin_root_path },
+      { title: 'Newsletter Subscribers', path: admin_newsletter_subscribers_path },
+      { title: 'Feedback Management', path: admin_feedbacks_path },
+      { title: 'Search Analytics', path: admin_search_logs_path }
+    ]
+  end
+
   # Open Graph helpers with hierarchical I18n fallback
   def og_title
     content_for(:og_title) || og_i18n_value('title') || content_for(:title) || t('og.default_title')

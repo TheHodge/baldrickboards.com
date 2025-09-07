@@ -1,0 +1,215 @@
+doctype html
+html
+  head
+    title = content_for(:title) || "Baldrick Board Documentation"
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    meta name="apple-mobile-web-app-capable" content="yes"
+    meta name="mobile-web-app-capable" content="yes"
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    / Open Graph / Facebook
+    meta property="og:type" content=og_type
+    meta property="og:url" content=og_url
+    meta property="og:title" content=og_title
+    meta property="og:description" content=og_description
+    meta property="og:image" content=og_image
+    meta property="og:site_name" content=og_site_name
+    meta property="og:locale" content=og_locale
+
+    / Twitter
+    meta name="twitter:card" content=twitter_card
+    meta name="twitter:url" content=og_url
+    meta name="twitter:title" content=twitter_title
+    meta name="twitter:description" content=twitter_description
+    meta name="twitter:image" content=twitter_image
+    meta name="twitter:site" content=twitter_site
+
+    / Additional SEO
+    meta name="description" content=og_description
+    meta name="keywords" content="LED controllers, holiday lighting, Baldrick Boards, pixel controllers, xLights, Christmas lights"
+
+    = yield :head
+
+    / Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!)
+    / = tag.link rel: "manifest", href: pwa_manifest_path(format: :json)
+
+    link rel="icon" href="/icon.png" type="image/png"
+    link rel="icon" href="/icon.svg" type="image/svg+xml"
+    link rel="apple-touch-icon" href="/icon.png"
+
+    / Includes Tailwind CSS
+    = stylesheet_link_tag "tailwind", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+    = javascript_include_tag "search-index"
+    
+  body.bg-gray-50.min-h-screen data-controller="easter-egg seasonal-themes"
+    / Navigation
+    nav.bg-white.shadow-lg.fixed.w-full.top-0.z-50 data-controller="mobile-menu"
+      .max-w-8xl.mx-auto.px-4.sm:px-6.lg:px-8
+        .flex.justify-between.h-16
+          / Logo and main nav
+          .flex
+            .flex-shrink-0.flex.items-center
+              = link_to "Baldrick Boards", root_path, class: "text-2xl font-bold text-gray-900 hover:text-indigo-600 transition-colors"
+            
+            .hidden.sm:ml-8.sm:flex.sm:items-center.sm:space-x-8 data-controller="navigation"
+              / Boards dropdown
+              .relative.group
+                button class="#{'border-indigo-500 text-gray-900' if controller_name == 'boards'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+                  span Boards
+                  svg.ml-1.h-4.w-4 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
+                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.opacity-0.invisible.group-hover:opacity-100.group-hover:visible.transition-all.duration-200.z-50
+                  .py-1
+                    = link_to "All Boards", boards_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    .border-t.border-gray-100.my-1
+                    = link_to "Pixel Controllers", boards_pixel_controllers_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "Relay Controllers", boards_relay_controllers_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "Interactive Controllers", boards_interactive_controllers_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "Portable Controllers", boards_portable_controllers_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    / = link_to "Power Distribution", boards_power_distribution_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "DMX Controllers", boards_dmx_controllers_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              
+              / Baldrick Breakthroughs Dropdown
+              .relative.group
+                button class="#{'border-indigo-500 text-gray-900' if controller_name == 'breakthroughs'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+                  | Baldrick Breakthroughs
+                  svg.ml-1.h-4.w-4 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
+                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.opacity-0.invisible.group-hover:opacity-100.group-hover:visible.transition-all.duration-200.z-50
+                  .py-1
+                    = link_to "The Turnip Network", breakthroughs_turnip_network_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "The Kluster", breakthroughs_kluster_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "CE & UKCA Certification", breakthroughs_ce_ukca_certification_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "Turniput", breakthroughs_turniput_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "Hodgical Test Mode", breakthroughs_hodgical_test_mode_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "CunningFX", breakthroughs_cunningfx_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              
+              / Fun Stuff Dropdown
+              .relative.group
+                button class="#{'border-indigo-500 text-gray-900' if controller_name == 'fun_stuff'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+                  | Fun Stuff
+                  svg.ml-1.h-4.w-4 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
+                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.opacity-0.invisible.group-hover:opacity-100.group-hover:visible.transition-all.duration-200.z-50
+                  .py-1
+                    = link_to "Release Notes", fun_stuff_release_notes_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "STLs & Mounts", fun_stuff_stls_and_mounts_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "Board Dimensions", fun_stuff_board_dimensions_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "Panic Mode?", fun_stuff_panic_mode_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "Testimonials", fun_stuff_testimonials_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "Customer Showcase", fun_stuff_customer_showcase_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              
+              a class="#{'border-purple-500 text-gray-900' if current_page?('/where-to-buy-baldrick-boards')} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors bg-purple-50 hover:bg-purple-100 rounded-t px-2" href="/where-to-buy-baldrick-boards"
+                svg.w-4.h-4.mr-1 fill="currentColor" viewBox="0 0 20 20"
+                  path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+                | Where to Buy
+
+              / Support Dropdown
+              .relative.group
+                button class="#{'border-indigo-500 text-gray-900' if controller_name == 'support'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+                  | Support
+                  svg.ml-1.h-4.w-4 fill="currentColor" viewBox="0 0 20 20"
+                    path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
+                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.opacity-0.invisible.group-hover:opacity-100.group-hover:visible.transition-all.duration-200.z-50
+                  .py-1
+                    = link_to "Hardware Support", support_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "Software Support", support_software_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "Asking for Help", support_asking_for_help_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "FAQ", faq_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              
+              = link_to "About", about_path, class: "#{'border-indigo-500 text-gray-900' if controller_name == 'about'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+            
+            / Search Component
+            .hidden.md:flex.items-center.ml-8
+              = render 'shared/search'
+          
+          / Mobile menu button
+          .md:hidden
+            button.mobile-menu-button.inline-flex.items-center.justify-center.p-2.rounded-md.text-gray-400.hover:text-gray-500.hover:bg-gray-100.focus:outline-none.focus:ring-2.focus:ring-inset.focus:ring-indigo-500 type="button" data-action="click->mobile-menu#toggle"
+              svg.h-6.w-6 fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"
+      
+      / Mobile menu
+      .mobile-menu.hidden.md:hidden data-mobile-menu-target="menu"
+        .pt-2.pb-3.space-y-1
+          / Mobile Search
+          .px-3.py-2
+            = render 'shared/search'
+          / Boards Dropdown
+          button.w-full.text-left.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-3.pr-4.py-2.border-l-4.text-base.font-medium.flex.items-center.justify-between data-action="click->mobile-menu#toggleDropdown"
+            span Boards
+            svg.chevron.h-4.w-4.transition-transform.duration-200 fill="currentColor" viewBox="0 0 20 20"
+              path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
+          .mobile-dropdown.hidden data-mobile-menu-target="dropdown"
+            = link_to "All Boards", boards_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Pixel Controllers", boards_pixel_controllers_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Relay Controllers", boards_relay_controllers_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Interactive Controllers", boards_interactive_controllers_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Portable Controllers", boards_portable_controllers_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            / = link_to "Power Distribution", boards_power_distribution_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "DMX Controllers", boards_dmx_controllers_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+
+          / Baldrick Breakthroughs Dropdown
+          button.w-full.text-left.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-3.pr-4.py-2.border-l-4.text-base.font-medium.flex.items-center.justify-between data-action="click->mobile-menu#toggleDropdown"
+            span Baldrick Breakthroughs
+            svg.chevron.h-4.w-4.transition-transform.duration-200 fill="currentColor" viewBox="0 0 20 20"
+              path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
+          .mobile-dropdown.hidden data-mobile-menu-target="dropdown"
+            = link_to "The Turnip Network", breakthroughs_turnip_network_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "The Kluster", breakthroughs_kluster_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "CE & UKCA Certification", breakthroughs_ce_ukca_certification_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Turniput", breakthroughs_turniput_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Hodgical Test Mode", breakthroughs_hodgical_test_mode_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "CunningFX", breakthroughs_cunningfx_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+
+          / Fun Stuff Dropdown
+          button.w-full.text-left.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-3.pr-4.py-2.border-l-4.text-base.font-medium.flex.items-center.justify-between data-action="click->mobile-menu#toggleDropdown"
+            span Fun Stuff
+            svg.chevron.h-4.w-4.transition-transform.duration-200 fill="currentColor" viewBox="0 0 20 20"
+              path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
+          .mobile-dropdown.hidden data-mobile-menu-target="dropdown"
+            = link_to "Release Notes", fun_stuff_release_notes_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "STLs & Mounts", fun_stuff_stls_and_mounts_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Board Dimensions", fun_stuff_board_dimensions_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Panic Mode?", fun_stuff_panic_mode_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Testimonials", fun_stuff_testimonials_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Customer Showcase", fun_stuff_customer_showcase_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+
+          / Support Dropdown
+          button.w-full.text-left.border-transparent.text-gray-500.hover:bg-gray-50.hover:border-gray-300.hover:text-gray-700.block.pl-3.pr-4.py-2.border-l-4.text-base.font-medium.flex.items-center.justify-between data-action="click->mobile-menu#toggleDropdown"
+            span Support
+            svg.chevron.h-4.w-4.transition-transform.duration-200 fill="currentColor" viewBox="0 0 20 20"
+              path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
+          .mobile-dropdown.hidden data-mobile-menu-target="dropdown"
+            = link_to "Hardware Support", support_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Software Support", support_software_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "Asking for Help", support_asking_for_help_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "FAQ", faq_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+
+          / Single Links
+          = link_to where_to_buy_baldrick_boards_path, class: "#{'bg-purple-50 border-purple-500 text-purple-700' if current_page?('/where-to-buy-baldrick-boards')} border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" do
+            | 🛒 Where to Buy
+          = link_to "About Baldrick", about_path, class: "#{'bg-indigo-50 border-indigo-500 text-indigo-700' if controller_name == 'about'} border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+
+    / Admin Submenu
+    
+
+    main.pt-16
+      = render 'shared/admin_submenu', menu_items: admin_menu_items
+      = yield
+    
+    / Newsletter signup    
+    = render 'shared/footer'
+    
+    / Seasonal Theme Effects Container
+    div.fixed.inset-0.pointer-events-none.z-50 data-seasonal-themes-target="effects"
+    
+    / Back to Top Button
+    div.fixed.bottom-8.right-8.z-40 data-controller="back-to-top"
+      button.back-to-top-button.bg-indigo-600.text-white.p-3.rounded-full.shadow-lg.hover:bg-indigo-700.transition-all.duration-300.opacity-0.pointer-events-none.transform.scale-90.hover:scale-110 data-back-to-top-target="button" data-action="click->back-to-top#scrollToTop" title="Back to top"
+        svg.w-6.h-6 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"
+    
+    script
