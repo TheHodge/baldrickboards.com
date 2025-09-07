@@ -11,32 +11,58 @@ en:
           description: "Hear from our community of lighting enthusiasts who are using Baldrick Boards to create amazing displays."
           testimonials:
             testimonial_1:
-              quote: "The Baldrick8 has completely transformed my Christmas display. The ease of setup and reliability is unmatched. I can finally run 750 pixels per port without any issues!"
-              author: "Sarah Johnson"
-              location: "Seattle, WA"
+              quote: "I purchased 2 Baldrick 8's last year. One ran 2 GE baby illusions and a GE shape,shifter. The other ran a GE shapeshifter and a GE Grand illusion. Building the enclosure was super simple with the available STL. The initial setup was easier than other controllers I use. The boards work so well I am in the process of changing out my differential receivers for additional Baldrick 8's. These controllers have exceeded my expectations. Support when needed was very prompt. I highly recommend added these to your shows."
+              author: "Neal Amador"
+              location: "Customer"
               board: "Baldrick8"
-              rating: 5
             testimonial_2:
-              quote: "After years of struggling with other controllers, the Baldrick17 is exactly what I needed for my large-scale installation. The Hodgical Test Mode is brilliant for debugging!"
-              author: "Mike Chen"
-              location: "Austin, TX"
-              board: "Baldrick17"
-              rating: 5
+              quote: "Baldrick8 - I trust it with my Megatree and it has never let me down. 500 pixels per port on seven ports and port 8 for tree topper - Halloween and Xmas about 500 pixels. It's a great board, simple and very effective."
+              author: "Robert John Milton"
+              location: "Customer"
+              board: "Baldrick8"
             testimonial_3:
-              quote: "The BaldrickDMX made adding DMX to my show so simple. No more complex converters or compatibility issues. It just works!"
-              author: "Jennifer Martinez"
-              location: "Denver, CO"
-              board: "BaldrickDMX"
-              rating: 5
+              quote: "For some one that struggles with technology this board is absolutely amazing. It is so so easy to use. One of the only things I haven't needed help with (I think). The customer service looks great though if I do need help in future. Dom's always there to help in the baldrick community. Can't wait for more boards to be released."
+              author: "Jackie North"
+              location: "Customer"
+              board: "Baldrick Boards"
             testimonial_4:
-              quote: "I love how the BaldrickSwitchy handles my high-power relays. The safety features and the DarwinTray give me peace of mind when working with mains voltage."
-              author: "David Thompson"
-              location: "Portland, OR"
-              board: "BaldrickSwitchy"
-              rating: 5
+              quote: "Good products, good prices. But for me, what sets them apart is the support available. Whilst I haven't needed much help, it's always been available, and replies to posts come back very quickly."
+              author: "Howard Greenberg"
+              location: "Customer"
+              board: "Baldrick Boards"
             testimonial_5:
-              quote: "The Turnip Network is a game-changer for coordinating multiple boards. My show has never been more synchronized and reliable."
-              author: "Lisa Wang"
-              location: "San Francisco, CA"
-              board: "Turnip Network"
-              rating: 5
+              quote: "As I'm not very technical minded the idea of having a board that is so simple to use but also has the ability of a work horse, I had to try it. I was amazed how easy set up was and that it just fitted in place straight away with my show. Will definitely be using more of the products in the future."
+              author: "Eddie Armstrong"
+              location: "Customer"
+              board: "Baldrick Boards"
+            testimonial_6:
+              quote: "I am just beginning my Baldrick journey, but once I get the self inflicted bugs worked out. I would be glad to participate. I would like to point out that I love the humor in you website and manuals. And the origin of the name!"
+              author: "Keith Kolasinski"
+              location: "Customer"
+              board: "Baldrick Boards"
+            testimonial_7:
+              quote: "Baldrick boards deliver an out-of-this-world fusion of value, features, and support!"
+              author: "Darren Lattin"
+              location: "Cosmic Controllers"
+              board: "Baldrick Boards"
+            testimonial_8:
+              quote: "The preferred LED controller for any giant Disco Robots creation:"
+              author: "Michael Beverley"
+              location: "Customer"
+              board: "Baldrick Boards"
+              image: "518252634_10159777750822537_7497092572611096840_n.jpg"
+            testimonial_9:
+              quote: "Damnit, I just ordered three more"
+              author: "Mike Smorul"
+              location: "Customer"
+              board: "Baldrick Boards"
+            testimonial_10:
+              quote: "LIke a good beer, it's Fkin awesome!"
+              author: "Mike Ĵūŋeĸ"
+              location: "Customer"
+              board: "Baldrick Boards"
+            testimonial_11:
+              quote: "Baldricks are better than similar boards containing hair. 10 out of 10"
+              author: "Russell McFarland"
+              location: "Customer"
+              board: "Baldrick Boards"
