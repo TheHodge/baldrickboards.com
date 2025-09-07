@@ -209,7 +209,7 @@ module BoardsHelper
       end
     else
       content_tag(:div, class: "h-48 bg-gray-200 overflow-hidden") do
-        image_tag(data[:image], alt: "#{data[:name]} Controller Board", class: "w-full h-full object-cover")
+        image_tag(data[:image], alt: "#{data[:name]} Controller Board", class: "w-full h-full object-cover bg-white")
       end
     end
 
