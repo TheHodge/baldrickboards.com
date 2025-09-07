@@ -1,6 +1,10 @@
 - content_for :title, "Newsletter Subscribers - Admin - Baldrick Boards"
+- breadcrumbs = [{ name: "Newsletter Subscribers" }]
 
 .max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumbs
+  = render 'shared/admin_breadcrumbs'
+  
   / Header
   .flex.justify-between.items-center.mb-8
     div
@@ -8,8 +12,7 @@
       p.text-gray-600 Total subscribers: #{@total_count}
     
     .flex.space-x-4
-      = link_to "Feedback Management", admin_feedbacks_path, class: "bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium"
-      = link_to "Search Analytics", admin_search_logs_path, class: "bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+      = link_to "Admin Dashboard", admin_root_path, class: "bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm font-medium"
       = link_to export_csv_admin_newsletter_subscribers_path(format: :csv), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors" do
         svg.w-4.h-4.mr-2 fill="currentColor" viewBox="0 0 20 20"
           path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"

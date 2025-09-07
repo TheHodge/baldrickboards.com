@@ -76,6 +76,9 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
     post 'login', to: 'sessions#create'
     delete 'logout', to: 'sessions#destroy'
     
+    # Admin dashboard
+    root 'dashboard#index'
+    
     resources :newsletter_subscribers, only: [:index, :destroy] do
       collection do
         get :export_csv

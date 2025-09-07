@@ -1,4 +1,9 @@
+- breadcrumbs = [{ name: "Feedback Management", url: admin_feedbacks_path }, { name: "Feedback Details" }]
+
 .container.mx-auto.px-4.py-8
+  / Breadcrumbs
+  = render 'shared/admin_breadcrumbs'
+  
   .flex.justify-between.items-center.mb-8
     h1.text-3xl.font-bold.text-gray-900 Feedback Details
     = link_to "Back to List", admin_feedbacks_path, class: "bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm font-medium"
