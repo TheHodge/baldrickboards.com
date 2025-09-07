@@ -336,56 +336,6 @@
                     strong Note: 
                     | Technically some have three states as don't forget the physical buttons on the board - these will activate the functionality AND have secret functionality.
 
-          / Troubleshooting Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4#troubleshooting Troubleshooting
-
-          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
-            .flex
-              .flex-shrink-0
-                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
-              .ml-3
-                p.text-sm.text-yellow-700
-                  strong Common Issues: 
-                  | If you can't access the web interface, try refreshing the page, clearing your browser cache, or ensuring you're connected to the correct WiFi network.
-
-          .space-y-4.mb-8
-            .bg-white.border.border-gray-200.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Can't Access Web Interface
-              ul.list-disc.list-inside.space-y-1.text-gray-700
-                li Check WiFi connection to "Baldrick8-XXXX"
-                li Try different web browser
-                li Clear browser cache and cookies
-                li Restart the Baldrick8
-                li Check if firewall is blocking access
-
-            .bg-white.border.border-gray-200.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Configuration Not Saving
-              ul.list-disc.list-inside.space-y-1.text-gray-700
-                li Ensure you click "Save" button
-                li Check for error messages
-                li Verify network connection
-                li Try refreshing the page
-                li Restart the controller
-
-            .bg-white.border.border-gray-200.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 LEDs Not Responding
-              ul.list-disc.list-inside.space-y-1.text-gray-700
-                li Check power connections
-                li Verify pixel count settings
-                li Test with different patterns
-                li Check LED protocol selection
-                li Verify color order settings
-
-            .bg-white.border.border-gray-200.rounded-lg.p-4
-              h4.text-lg.font-semibold.text-gray-900.mb-2 Button Inputs Not Working
-              ul.list-disc.list-inside.space-y-1.text-gray-700
-                li Check physical connections
-                li Verify button configuration
-                li Test with different actions
-                li Check network connectivity for FPP/HTTP calls
-                li Verify target device IP addresses
-
           / Navigation Links
           .flex.flex-col.sm:flex-row.gap-4.mt-8
             = link_to 'Getting Started Guide', '/boards/baldrick8/getting-started', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'

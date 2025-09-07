@@ -256,7 +256,7 @@ en:
     
     baldrickinput8:
       name: "BaldrickInput8"
-      subtitle: "8 Inputs/8 Outputs"
+      subtitle: "8 Inputs / 2 Outputs"
       description: "8 Buttons, 2 Pixel outputs and a lot of ideas!"
       overview:
         description: "The BaldrickInput8 expands on the BaldrickInput1's simple way of adding interactivity to your show, with 8 Turniputs and 2 pixel outputs, this board is perfect for a Selfie station or light tunnel!"
