@@ -101,9 +101,7 @@ html
                     = link_to "Testimonials", fun_stuff_testimonials_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     = link_to "Customer Showcase", fun_stuff_customer_showcase_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               
-              = link_to "FAQ", faq_path, class: "#{'border-indigo-500 text-gray-900' if controller_name == 'faq'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
-              
-              = link_to where_to_buy_baldrick_boards_path, class: "#{'border-purple-500 text-gray-900' if current_page?('/where-to-buy-baldrick-boards')} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors bg-purple-50 hover:bg-purple-100 rounded-t px-2" do
+              a class="#{'border-purple-500 text-gray-900' if current_page?('/where-to-buy-baldrick-boards')} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors bg-purple-50 hover:bg-purple-100 rounded-t px-2" href="/where-to-buy-baldrick-boards"
                 svg.w-4.h-4.mr-1 fill="currentColor" viewBox="0 0 20 20"
                   path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
                 | Where to Buy
@@ -119,8 +117,9 @@ html
                     = link_to "Hardware Support", support_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     = link_to "Software Support", support_software_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     = link_to "Asking for Help", support_asking_for_help_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    = link_to "FAQ", faq_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               
-              = link_to "About Baldrick", about_path, class: "#{'border-indigo-500 text-gray-900' if controller_name == 'about'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+              = link_to "About", about_path, class: "#{'border-indigo-500 text-gray-900' if controller_name == 'about'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
             
             / Search Component
             .hidden.md:flex.items-center.ml-8
@@ -187,9 +186,9 @@ html
             = link_to "Hardware Support", support_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
             = link_to "Software Support", support_software_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
             = link_to "Asking for Help", support_asking_for_help_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            = link_to "FAQ", faq_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
 
           / Single Links
-          = link_to "FAQ", faq_path, class: "#{'bg-indigo-50 border-indigo-500 text-indigo-700' if controller_name == 'faq'} border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
           = link_to where_to_buy_baldrick_boards_path, class: "#{'bg-purple-50 border-purple-500 text-purple-700' if current_page?('/where-to-buy-baldrick-boards')} border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" do
             | 🛒 Where to Buy
           = link_to "About Baldrick", about_path, class: "#{'bg-indigo-50 border-indigo-500 text-indigo-700' if controller_name == 'about'} border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
