@@ -30,6 +30,18 @@
 en:
   hello: "Hello world"
   
+  # Navigation
+  boards: "Boards"
+  fun_stuff: "Fun Stuff"
+  faq: "FAQ"
+  support: "Support"
+  about: "About"
+  
+  # Common terms
+  home: "Home"
+  testimonials: "Testimonials"
+  customer_showcase: "Customer Showcase"
+  
   # Social media links
   facebook_group_url: "https://www.facebook.com/groups/ilightthat"
   

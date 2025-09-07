@@ -1,0 +1,15 @@
+fr:
+  # Navigation
+  boards: "Cartes"
+  fun_stuff: "Amusant"
+  faq: "FAQ"
+  support: "Support"
+  about: "À propos"
+  
+  # Common terms
+  home: "Accueil"
+  testimonials: "Témoignages"
+  customer_showcase: "Galerie Clients"
+  
+  # Facebook group URL (same for all languages)
+  facebook_group_url: "https://www.facebook.com/groups/ilightthat"
