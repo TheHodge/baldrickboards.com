@@ -7,10 +7,26 @@ en:
           title: "BaldrickSignals - Signal Processing Board"
           description: "Advanced signal processing board for audio-reactive lighting and complex signal manipulation in lighting displays."
           image: "og-baldricksignals"
+          buy_this_board:
+            title: "Where to buy the BaldrickSignals"
+            description: "Purchase the BaldrickSignals advanced signal processing board for audio-reactive lighting and complex signal manipulation."
+            image: "og-baldricksignals"
           faq:
             title: "BaldrickSignals FAQ - Frequently Asked Questions"
             description: "Common questions and answers about the BaldrickSignals board, audio processing, and signal routing."
             image: "og-baldricksignals-faq"
+          getting_started:
+            title: "BaldrickSignals Getting Started Guide"
+            description: "Complete getting started guide for the BaldrickSignals signal processing board including setup, configuration, and first steps."
+            image: "og-baldricksignals"
+          tech_specs:
+            title: "BaldrickSignals Technical Specifications"
+            description: "Detailed technical specifications for the BaldrickSignals signal processing board including power requirements, dimensions, and capabilities."
+            image: "og-baldricksignals"
+          web_interface:
+            title: "BaldrickSignals Web Interface Guide"
+            description: "Complete guide to using the BaldrickSignals web interface for configuration, monitoring, and control."
+            image: "og-baldricksignals"
         faq:
           title: "FAQ - BaldrickSignals - Baldrick Board Documentation"
           header:

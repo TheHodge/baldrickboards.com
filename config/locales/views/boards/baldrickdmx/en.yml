@@ -7,10 +7,26 @@ en:
           title: "BaldrickDMX - DMX Controller Board"
           description: "Professional DMX controller board for stage lighting and professional installations. Compatible with industry-standard DMX protocols."
           image: "og-baldrickdmx"
+          buy_this_board:
+            title: "Where to buy the BaldrickDMX"
+            description: "Purchase the BaldrickDMX professional DMX controller board for stage lighting and professional installations."
+            image: "og-baldrickdmx"
           faq:
             title: "BaldrickDMX FAQ - Frequently Asked Questions"
             description: "Common questions and answers about the BaldrickDMX controller board, DMX setup, and troubleshooting."
             image: "og-baldrickdmx-faq"
+          getting_started:
+            title: "BaldrickDMX Getting Started Guide"
+            description: "Complete getting started guide for the BaldrickDMX DMX controller board including setup, configuration, and first steps."
+            image: "og-baldrickdmx"
+          tech_specs:
+            title: "BaldrickDMX Technical Specifications"
+            description: "Detailed technical specifications for the BaldrickDMX controller board including power requirements, dimensions, and DMX capabilities."
+            image: "og-baldrickdmx"
+          web_interface:
+            title: "BaldrickDMX Web Interface Guide"
+            description: "Complete guide to using the BaldrickDMX web interface for configuration, monitoring, and control."
+            image: "og-baldrickdmx"
         faq:
           title: "FAQ - BaldrickDMX - Baldrick Board Documentation"
           header:

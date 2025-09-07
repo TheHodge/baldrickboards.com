@@ -7,9 +7,25 @@ en:
           title: "BaldrickSwitchy - Relay Controller Board"
           description: "Multi-channel relay controller board for switching high-voltage loads. Perfect for controlling lights, motors, and other electrical devices."
           image: "baldrickswitchy/board.pnghy"
+          buy_this_board:
+            title: "Where to buy the BaldrickSwitchy"
+            description: "Purchase the BaldrickSwitchy multi-channel relay controller board for switching high-voltage loads and electrical devices."
+            image: "baldrickswitchy/board.png"
           faq:
             title: "BaldrickSwitchy FAQ - Frequently Asked Questions"
             description: "Common questions and answers about the BaldrickSwitchy relay controller board, setup, and safety considerations."
+            image: "baldrickswitchy/board.png"
+          getting_started:
+            title: "BaldrickSwitchy Getting Started Guide"
+            description: "Complete getting started guide for the BaldrickSwitchy relay controller board including setup, configuration, and safety considerations."
+            image: "baldrickswitchy/board.png"
+          tech_specs:
+            title: "BaldrickSwitchy Technical Specifications"
+            description: "Detailed technical specifications for the BaldrickSwitchy relay controller board including power requirements, dimensions, and relay capabilities."
+            image: "baldrickswitchy/board.png"
+          web_interface:
+            title: "BaldrickSwitchy Web Interface Guide"
+            description: "Complete guide to using the BaldrickSwitchy web interface for configuration, monitoring, and control."
             image: "baldrickswitchy/board.png"
         faq:
           title: "FAQ - BaldrickSwitchy - Baldrick Board Documentation"

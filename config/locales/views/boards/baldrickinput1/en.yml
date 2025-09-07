@@ -7,10 +7,26 @@ en:
           title: "BaldrickInput1 - Single Input Controller Board"
           description: "Compact single input controller board for simple LED strip control and basic lighting applications."
           image: "og-baldrickinput1"
+          buy_this_board:
+            title: "Where to buy the BaldrickInput1"
+            description: "Purchase the BaldrickInput1 compact single input controller board for simple LED strip control and basic lighting applications."
+            image: "og-baldrickinput1"
           faq:
             title: "BaldrickInput1 FAQ - Frequently Asked Questions"
             description: "Common questions and answers about the BaldrickInput1 controller board, setup, and basic usage."
             image: "og-baldrickinput1-faq"
+          getting_started:
+            title: "BaldrickInput1 Getting Started Guide"
+            description: "Complete getting started guide for the BaldrickInput1 single input controller board including setup, configuration, and first steps."
+            image: "og-baldrickinput1"
+          tech_specs:
+            title: "BaldrickInput1 Technical Specifications"
+            description: "Detailed technical specifications for the BaldrickInput1 controller board including power requirements, dimensions, and capabilities."
+            image: "og-baldrickinput1"
+          web_interface:
+            title: "BaldrickInput1 Web Interface Guide"
+            description: "Complete guide to using the BaldrickInput1 web interface for configuration, monitoring, and control."
+            image: "og-baldrickinput1"
         faq:
           title: "FAQ - BaldrickInput1 - Baldrick Board Documentation"
           header:

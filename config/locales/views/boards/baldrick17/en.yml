@@ -7,9 +7,21 @@ en:
           title: "Baldrick17 - 17-Channel LED Controller Board"
           description: "Advanced 17-channel LED controller board with enhanced features for complex lighting displays and professional installations."
           image: "baldrick17/board.png"
+          buy_this_board:
+            title: "Where to buy the Baldrick17"
+            description: "Purchase the Baldrick17 advanced LED controller board with 17 channels for complex lighting displays and professional installations."
+            image: "baldrick17/board.png"
           faq:
             title: "Baldrick17 FAQ - Frequently Asked Questions"
             description: "Common questions and answers about the Baldrick17 LED controller board, setup, troubleshooting, and features."
+            image: "baldrick17/board.png"
+          getting_started:
+            title: "Baldrick17 Getting Started Guide"
+            description: "Complete getting started guide for the Baldrick17 LED controller board including setup, configuration, and first steps."
+            image: "baldrick17/board.png"
+          tech_specs:
+            title: "Baldrick17 Technical Specifications"
+            description: "Detailed technical specifications for the Baldrick17 LED controller board including power requirements, dimensions, and capabilities."
             image: "baldrick17/board.png"
           web_interface:
             title: "Baldrick17 Web Interface Guide"

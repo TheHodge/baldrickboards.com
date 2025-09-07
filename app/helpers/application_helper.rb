@@ -15,11 +15,11 @@ module ApplicationHelper
 
   # Open Graph helpers with hierarchical I18n fallback
   def og_title
-    content_for(:og_title) || og_i18n_value('title') || t('og.default_title')
+    content_for(:og_title) || og_i18n_value('title') || content_for(:title) || t('og.default_title')
   end
 
   def og_description
-    content_for(:og_description) || og_i18n_value('description') || t('og.default_description')
+    content_for(:og_description) || og_i18n_value('description') || content_for(:title) || t('og.default_description')
   end
 
   def og_image
@@ -111,7 +111,9 @@ module ApplicationHelper
       
       # Most specific: board + page from board-specific I18n file (e.g., views.boards.baldrick8.og.faq.title)
       if page_name.present?
-        i18n_keys << "views.boards.#{board_name}.og.#{page_name}.#{field}"
+        # Convert URL format to I18n format: buy-this-board -> buy_this_board
+        i18n_page_name = page_name.gsub('-', '_')
+        i18n_keys << "views.boards.#{board_name}.og.#{i18n_page_name}.#{field}"
       end
       
       # Less specific: board only from board-specific I18n file (e.g., views.boards.baldrick8.og.title)
@@ -124,6 +126,8 @@ module ApplicationHelper
       case action_name
       when 'home'
         i18n_keys << "og.pages.home.#{field}"
+      when 'where_to_buy'
+        i18n_keys << "og.pages.where_to_buy.#{field}"
       end
     when 'faq'
       i18n_keys << "og.pages.faq.#{field}"
@@ -131,6 +135,63 @@ module ApplicationHelper
       i18n_keys << "og.pages.support.#{field}"
     when 'testimonials'
       i18n_keys << "og.pages.testimonials.#{field}"
+    when 'about'
+      i18n_keys << "og.pages.about.#{field}"
+    when 'boards'
+      case action_name
+      when 'index'
+        i18n_keys << "og.pages.boards.#{field}"
+      when 'pixel_controllers'
+        i18n_keys << "og.pages.boards.pixel_controllers.#{field}"
+      when 'relay_controllers'
+        i18n_keys << "og.pages.boards.relay_controllers.#{field}"
+      when 'interactive_controllers'
+        i18n_keys << "og.pages.boards.interactive_controllers.#{field}"
+      when 'portable_controllers'
+        i18n_keys << "og.pages.boards.portable_controllers.#{field}"
+      when 'power_distribution'
+        i18n_keys << "og.pages.boards.power_distribution.#{field}"
+      when 'dmx_controllers'
+        i18n_keys << "og.pages.boards.dmx_controllers.#{field}"
+      end
+    when 'breakthroughs'
+      case action_name
+      when 'index'
+        i18n_keys << "og.pages.breakthroughs.#{field}"
+      when 'turnip_network'
+        i18n_keys << "og.pages.breakthroughs.turnip_network.#{field}"
+      when 'kluster'
+        i18n_keys << "og.pages.breakthroughs.kluster.#{field}"
+      when 'ce_ukca_certification'
+        i18n_keys << "og.pages.breakthroughs.ce_ukca_certification.#{field}"
+      when 'turniput'
+        i18n_keys << "og.pages.breakthroughs.turniput.#{field}"
+      when 'hodgical_test_mode'
+        i18n_keys << "og.pages.breakthroughs.hodgical_test_mode.#{field}"
+      when 'cunningfx'
+        i18n_keys << "og.pages.breakthroughs.cunningfx.#{field}"
+      end
+    when 'fun_stuff'
+      case action_name
+      when 'index'
+        i18n_keys << "og.pages.fun_stuff.#{field}"
+      when 'release_notes'
+        i18n_keys << "og.pages.fun_stuff.release_notes.#{field}"
+      when 'stls_and_mounts'
+        i18n_keys << "og.pages.fun_stuff.stls_and_mounts.#{field}"
+      when 'board_dimensions'
+        i18n_keys << "og.pages.fun_stuff.board_dimensions.#{field}"
+      when 'faq'
+        i18n_keys << "og.pages.fun_stuff.faq.#{field}"
+      when 'problem_solver'
+        i18n_keys << "og.pages.fun_stuff.problem_solver.#{field}"
+      when 'panic_mode'
+        i18n_keys << "og.pages.fun_stuff.panic_mode.#{field}"
+      when 'testimonials'
+        i18n_keys << "og.pages.fun_stuff.testimonials.#{field}"
+      when 'customer_showcase'
+        i18n_keys << "og.pages.fun_stuff.customer_showcase.#{field}"
+      end
     end
     
     # Try each key until we find a value

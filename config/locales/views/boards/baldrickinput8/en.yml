@@ -7,10 +7,26 @@ en:
           title: "BaldrickInput8 - 8-Input Controller Board"
           description: "8-input controller board for multiple LED strips and complex lighting setups with individual channel control."
           image: "og-baldrickinput8"
+          buy_this_board:
+            title: "Where to buy the BaldrickInput8"
+            description: "Purchase the BaldrickInput8 8-input controller board for multiple LED strips and complex lighting setups with individual channel control."
+            image: "og-baldrickinput8"
           faq:
             title: "BaldrickInput8 FAQ - Frequently Asked Questions"
             description: "Common questions and answers about the BaldrickInput8 controller board, multi-input setup, and configuration."
             image: "og-baldrickinput8-faq"
+          getting_started:
+            title: "BaldrickInput8 Getting Started Guide"
+            description: "Complete getting started guide for the BaldrickInput8 8-input controller board including setup, configuration, and first steps."
+            image: "og-baldrickinput8"
+          tech_specs:
+            title: "BaldrickInput8 Technical Specifications"
+            description: "Detailed technical specifications for the BaldrickInput8 controller board including power requirements, dimensions, and capabilities."
+            image: "og-baldrickinput8"
+          web_interface:
+            title: "BaldrickInput8 Web Interface Guide"
+            description: "Complete guide to using the BaldrickInput8 web interface for configuration, monitoring, and control."
+            image: "og-baldrickinput8"
         faq:
           title: "FAQ - BaldrickInput8 - Baldrick Board Documentation"
           header:
