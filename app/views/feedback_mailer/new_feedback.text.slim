@@ -1,3 +1,24 @@
-' Feedback#new_feedback
+' New #{@feedback.feedback_type.titleize} Submission
 = "\r\n" * 2
-' #{@greeting}, find me in app/views/feedback_mailer/new_feedback.text.slim
+' A new #{@feedback.feedback_type} has been submitted through the website:
+= "\r\n" * 2
+' SUBMISSION DETAILS
+' ==================
+' Name: #{@feedback.name}
+' Email: #{@feedback.email}
+' Type: #{@feedback.feedback_type.titleize}
+' Submitted: #{@feedback.created_at.strftime("%B %d, %Y at %I:%M %p")}
+= "\r\n" * 2
+' CONTENT
+' =======
+#{@feedback.content}
+= "\r\n" * 2
+- if @feedback.image.attached?
+  ' ATTACHED IMAGE
+  ' ==============
+  ' Filename: #{@feedback.image.filename}
+  ' Size: #{number_to_human_size(@feedback.image.byte_size)}
+  ' Content Type: #{@feedback.image.content_type}
+  = "\r\n" * 2
+' This feedback was submitted through the Baldrick Boards website feedback form.
+' Please review and consider featuring it on the appropriate page.
