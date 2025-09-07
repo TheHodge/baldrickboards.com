@@ -9,7 +9,7 @@ class Admin::SessionsController < ApplicationController
 
     if password == correct_password
       session[:admin_authenticated] = true
-      redirect_to admin_newsletter_subscribers_path, notice: 'Successfully logged in to admin area.'
+      redirect_to admin_root_path, notice: 'Successfully logged in to admin area.'
     else
       flash.now[:alert] = 'Invalid password. Please try again.'
       render :new, status: :unprocessable_entity
