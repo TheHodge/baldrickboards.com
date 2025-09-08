@@ -111,7 +111,7 @@ module BoardsHelper
     
     # Add board name if we're on a board page
     if board_name.present?
-      breadcrumbs << { title: board_name.titleize, path: "/boards/#{board_name}" }
+      breadcrumbs << { title: t("boards.#{board_name}.name"), path: "/boards/#{board_name}" }
     end
     
     # Add current page if specified
