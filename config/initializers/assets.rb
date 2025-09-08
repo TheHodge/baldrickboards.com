@@ -8,3 +8,6 @@ Rails.application.config.assets.version = "1.0"
 
 # Precompile additional assets
 # Rails.application.config.assets.precompile += %w( showcase/*.jpg showcase/*.jpeg showcase/*.png ce-ukca-rohs.png )
+
+# Include video files in asset pipeline
+Rails.application.config.assets.precompile += %w( *.mp4 *.webm *.ogg )
