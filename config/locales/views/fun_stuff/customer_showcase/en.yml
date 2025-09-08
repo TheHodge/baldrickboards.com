@@ -45,3 +45,9 @@ en:
               author: "Michael Beverley"
               image: "showcase/robot.jpg"
               alt: "Giant Disco Robot display with Baldrick Boards"
+            carnival_float:
+              title: "LED Carnival Float"
+              description: "A stunning LED carnival float with a Baldrick board as the heart of the display."
+              author: "George Farley"
+              image: "showcase/float.jpg"
+              alt: "Pixel Carnival Float with Baldrick Boards"              
