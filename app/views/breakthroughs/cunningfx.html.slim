@@ -15,43 +15,170 @@
         .prose.max-w-none
           h2.text-3xl.font-bold.text-gray-900.mb-6 CunningFX
 
-          / Visual Example
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
-            .bg-gray-50.rounded-lg.p-4.mb-4
-              = image_tag "cunningfx.png", class: "w-full h-auto rounded-lg", alt: "Baldrick8 Web Interface CunningFX"
-            p.text-sm.text-gray-600.text-center CunningFX interface showing advanced features and controls
+          / Navigation Links
+          .mb-12
+            h3.text-xl.font-semibold.text-gray-900.mb-4 Quick Navigation
+            .flex.flex-wrap.gap-4
+              = link_to "#introduction", class: "text-blue-600 hover:text-blue-800 underline" do
+                | Introduction
+              = link_to "#presets", class: "text-blue-600 hover:text-blue-800 underline" do
+                | Presets
+              = link_to "#effects", class: "text-blue-600 hover:text-blue-800 underline" do
+                | Effects Overview
+              = link_to "#colour-splash", class: "text-blue-600 hover:text-blue-800 underline" do
+                | Colour Splash
+              = link_to "#rainbow", class: "text-blue-600 hover:text-blue-800 underline" do
+                | Rainbow
+              = link_to "#twinkle", class: "text-blue-600 hover:text-blue-800 underline" do
+                | Twinkle
+              = link_to "#bounce", class: "text-blue-600 hover:text-blue-800 underline" do
+                | Bounce
+              = link_to "#alternate", class: "text-blue-600 hover:text-blue-800 underline" do
+                | Alternate
+              = link_to "#fader", class: "text-blue-600 hover:text-blue-800 underline" do
+                | Fader
+              = link_to "#on-off", class: "text-blue-600 hover:text-blue-800 underline" do
+                | On/Off
+              = link_to "#turnip-network", class: "text-blue-600 hover:text-blue-800 underline" do
+                | Turnip Network
 
-          p.text-lg.text-gray-700.mb-8
-            | With more and more of our community putting pixels on their house all year round or producing lightart, we've produced CunningFX for you to add pretty stuff to your show without a show player.
+          / Introduction
+          .mb-16
+            h3#introduction.text-3xl.font-bold.text-gray-900.mb-6 Introduction
+            p.text-lg.text-gray-700.mb-6
+              | With more of our customers using Baldrick Boards for everything from house outlines, light art installations and commercial buildings, we needed a way to generate effects without the need for a show player.
+            = image_tag "cunningfx/presets-overview.png", class: "w-full h-auto rounded-lg mb-6", alt: "CunningFX Presets Overview"
 
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Key Features
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-white.border.border-gray-200.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3.flex.items-center
-                svg.h-6.w-6.text-blue-600.mr-3 fill="currentColor" viewBox="0 0 20 20"
-                  path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                | Turnip Network Integration
-              p.text-gray-700
-                | CunningFX can be activated over the Turnip Network so your Input1 and Baldrick8 buttons can toggle presets.
-
-          p.text-lg.text-gray-700.mb-8
-            | A video for this is coming soon.
-
-          .bg-purple-50.border-l-4.border-purple-400.p-4.mb-8
-            .flex
-              .flex-shrink-0
-                svg.h-5.w-5.text-purple-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-              .ml-3
-                p.text-sm.text-purple-700
-                  strong Advanced Features:
-                  |  CunningFX provides cutting-edge capabilities for users who want to push the boundaries of what's possible with their Baldrick boards.
-
-          .mt-8.bg-gray-50.rounded-lg.p-6.border.border-gray-200
-            h4.text-lg.font-semibold.text-gray-900.mb-3 Learn More About Baldrick
+          / Presets Section
+          .mb-16
+            h3#presets.text-3xl.font-bold.text-gray-900.mb-6 Presets
+            p.text-lg.text-gray-700.mb-4
+              | Presets are collections of effects that run at the same time. They work like layers in an image editor, effects are stacked from top to bottom, and the one on top always takes priority. This means you can apply several effects to the same set of pixels.
             p.text-gray-700.mb-4
+              | For example, if you were lighting the outline of a room, you might use a base effect to give everything a single colour, then place another effect on top to highlight the doors.
+
+          / Effects Section
+          .mb-16
+            h3#effects.text-3xl.font-bold.text-gray-900.mb-6 Effects
+            p.text-lg.text-gray-700.mb-6
+              | Effects are the building blocks of CunningFX. You can attach an effect to either the whole controller, a port or a single model. Most effects will have modifiers such as Colour, Speed, Reverse which will change the colours, the speed and reverse the effect.
+            = image_tag "cunningfx/effects-overview.png", class: "w-full h-auto rounded-lg mb-12", alt: "CunningFX Effects Overview"
+
+            / Colour Splash Effect
+            .mb-24.py-8.border-b.border-gray-200
+              h4#colour-splash.text-3xl.font-bold.text-gray-900.mb-8.text-center Colour Splash
+              .max-w-3xl.mx-auto.mb-8
+                p.text-lg.text-gray-700.leading-relaxed
+                  | Colour splash rotates throughout the selected colours evenly fading between each one starting at the top and going down the list.
+              .grid.md:grid-cols-2.gap-12
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = image_tag "cunningfx/colour-splash.png", class: "w-full h-auto rounded-lg", alt: "Colour Splash Effect"
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = video_tag "colour-splash-effect.mp4", controls: true, class: "w-full h-auto rounded-lg", alt: "Colour Splash Effect in Action"
+
+            / Rainbow Effect
+            .mb-24.py-8.border-b.border-gray-200
+              h4#rainbow.text-3xl.font-bold.text-gray-900.mb-8.text-center Rainbow
+              .max-w-3xl.mx-auto.mb-8
+                p.text-lg.text-gray-700.leading-relaxed
+                  | A rainbow effect smoothly cycles through red, orange, yellow, green, blue, indigo, and violet, blending each hue into the next to create a continuous, mesmerising loop of shifting colours.
+              .grid.md:grid-cols-2.gap-12
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = image_tag "cunningfx/rainbow.png", class: "w-full h-auto rounded-lg", alt: "Rainbow Effect"
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = video_tag "rainbow-effect.mp4", controls: true, class: "w-full h-auto rounded-lg", alt: "Rainbow Effect in Action"
+
+            / Twinkle Effect
+            .mb-24.py-8.border-b.border-gray-200
+              h4#twinkle.text-3xl.font-bold.text-gray-900.mb-8.text-center Twinkle
+              .max-w-3xl.mx-auto.mb-8
+                p.text-lg.text-gray-700.leading-relaxed
+                  | You can select a background colour for the pixels and up to five colours to twinkle against that wonderful background colour you've chosen (we recommend black but you do you).
+              .grid.md:grid-cols-2.gap-12
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = image_tag "cunningfx/twinkle.png", class: "w-full h-auto rounded-lg", alt: "Twinkle Effect"
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = video_tag "twinkle-effect.mp4", controls: true, class: "w-full h-auto rounded-lg", alt: "Twinkle Effect in Action"
+
+            / Bounce Effect
+            .mb-24.py-8.border-b.border-gray-200
+              h4#bounce.text-3xl.font-bold.text-gray-900.mb-8.text-center Bounce
+              .max-w-3xl.mx-auto.mb-8
+                p.text-lg.text-gray-700.leading-relaxed
+                  | The pixels will light from one side of the string to the other, imagine a game of pong but in 2D and you can neither win or lose.
+              .grid.md:grid-cols-2.gap-12
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = image_tag "cunningfx/bounce.png", class: "w-full h-auto rounded-lg", alt: "Bounce Effect"
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = video_tag "bounce-effect.mp4", controls: true, class: "w-full h-auto rounded-lg", alt: "Bounce Effect in Action"
+
+            / Alternate Effect
+            .mb-24.py-8.border-b.border-gray-200
+              h4#alternate.text-3xl.font-bold.text-gray-900.mb-8.text-center Alternate
+              .max-w-3xl.mx-auto.mb-8
+                p.text-lg.text-gray-700.leading-relaxed
+                  | Imagine a Can-Can of pixels that you can choose up to five colours and have them as large as you'd like.
+              .grid.md:grid-cols-2.gap-12
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = image_tag "cunningfx/alternate.png", class: "w-full h-auto rounded-lg", alt: "Alternate Effect"
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = video_tag "alternate-effect.mp4", controls: true, class: "w-full h-auto rounded-lg", alt: "Alternate Effect in Action"
+
+            / Fader Effect
+            .mb-24.py-8.border-b.border-gray-200
+              h4#fader.text-3xl.font-bold.text-gray-900.mb-8.text-center Fader
+              .max-w-3xl.mx-auto.mb-8
+                p.text-lg.text-gray-700.leading-relaxed
+                  | Fades smoothly between two colours.
+              .grid.md:grid-cols-2.gap-12
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = image_tag "cunningfx/fader.png", class: "w-full h-auto rounded-lg", alt: "Fader Effect"
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = video_tag "fader-effect.mp4", controls: true, class: "w-full h-auto rounded-lg", alt: "Fader Effect in Action"
+
+            / On/Off Effect
+            .mb-24.py-8
+              h4#on-off.text-3xl.font-bold.text-gray-900.mb-8.text-center On / Off
+              .max-w-3xl.mx-auto.mb-8
+                p.text-lg.text-gray-700.leading-relaxed
+                  | Imagine the fader but with one colour and not fading, yeah it goes on / off / on / off.
+              .grid.md:grid-cols-2.gap-12
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = image_tag "cunningfx/on-off.png", class: "w-full h-auto rounded-lg", alt: "On/Off Effect"
+                .flex.flex-col.justify-center
+                  .bg-gray-50.p-4.rounded-xl.shadow-sm
+                    = video_tag "on-off-effect.mp4", controls: true, class: "w-full h-auto rounded-lg", alt: "On/Off Effect in Action"
+
+          / Turnip Network Integration
+          .mb-16
+            h3#turnip-network.text-3xl.font-bold.text-gray-900.mb-6 Turnip Network Integration
+            .bg-blue-50.border-l-4.border-blue-400.p-6
+              .flex
+                .flex-shrink-0
+                  svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                    path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+                .ml-3
+                  p.text-lg.text-blue-700
+                    | CunningFX can be activated over the Turnip Network so your Input1 and Baldrick8 buttons can toggle presets.
+
+          .mt-16
+            h4.text-2xl.font-bold.text-gray-900.mb-6 Learn More About Baldrick
+            p.text-lg.text-gray-700.mb-8
               | Discover other unique features and the story behind Baldrick's innovative approach to lighting control.
-            .grid.md:grid-cols-2.gap-4
-              = link_to "Hodgical Test Mode", breakthroughs_hodgical_test_mode_path, class: "inline-block bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors"
-              = link_to "Baldrick8 Board", board_path('baldrick8'), class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+           
+            .flex.flex-wrap.gap-4
+              = link_to "Hodgical Test Mode", breakthroughs_hodgical_test_mode_path, class: "inline-block bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-700 transition-colors font-medium"
+              = link_to "Baldrick8 Board", board_path('baldrick8'), class: "inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors font-medium"
