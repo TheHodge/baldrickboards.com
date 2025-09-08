@@ -1,4 +1,5 @@
 - content_for :title, "STLs & Mounts - Fun Stuff"
+- content_for :og_image, asset_url('stl-greg.png')
 
 .max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
   / Breadcrumb
@@ -7,7 +8,7 @@
   / Main Content Card
   .bg-white.rounded-lg.shadow-lg.overflow-hidden
     / Header Section
-    = render 'shared/page_header', title: 'STLs & Mounts', subtitle: '3D printable mounts and enclosures for Baldrick boards'
+    = render 'shared/page_header', title: 'STLs & Mounts', subtitle: '3D printable mounts and enclosures for Baldrick boards', image_url: 'stl-greg.png'
 
     / Content Section
     .px-8.py-8
@@ -45,7 +46,7 @@
                   path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"
                 | Download STL
             .bg-gray-50.rounded-lg.p-4
-              img src="/img/stl-greg.png" alt="Baldrick Mount Default" class="w-full h-auto rounded-lg"
+              = image_tag "stl-greg.png", alt: "Baldrick Mount Default", class: "w-full h-auto rounded-lg"
 
           / Pi + Buck Converter Mount
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
@@ -61,7 +62,7 @@
                   path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"
                 | Download STL
             .bg-gray-50.rounded-lg.p-4
-              img src="/img/stl-stephen.jpg" alt="Baldrick Mount Pi & Buck Converter" class="w-full h-auto rounded-lg"
+              = image_tag "stl-stephen.jpg", alt: "Baldrick Mount Pi & Buck Converter", class: "w-full h-auto rounded-lg"
 
           / Double Stack Meanwell Mounts
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
@@ -77,7 +78,7 @@
                   path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"
                 | Download ZIP
             .bg-gray-50.rounded-lg.p-4
-              img src="/img/stl-matt.jpg" alt="Baldrick Mount Double Stack" class="w-full h-auto rounded-lg"
+              = image_tag "stl-matt.jpg", alt: "Baldrick Mount Double Stack", class: "w-full h-auto rounded-lg"
 
           / Baldrick17 Mount
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
@@ -98,7 +99,7 @@
                     path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"
                   | Download Stackers
             .bg-gray-50.rounded-lg.p-4
-              img src="/img/stl-b17.JPG" alt="Baldrick17 Mount" class="w-full h-auto rounded-lg"
+              = image_tag "stl-b17.JPG", alt: "Baldrick17 Mount", class: "w-full h-auto rounded-lg"
 
           h3.text-2xl.font-bold.text-gray-900.mb-4 Community Contributions
 
