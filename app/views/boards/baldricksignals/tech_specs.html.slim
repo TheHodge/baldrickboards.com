@@ -15,33 +15,77 @@
     / Content Section
     .px-8.py-8
       .max-w-4xl.mx-auto
-        / Board Components
+        / Board Version Tabs
         .prose.max-w-none
           h2.text-3xl.font-bold.text-gray-900.mb-6 Board Components
+          
+          / Tab Container
+          .tabs-container data-controller="tabs"
+            / Tab Navigation
+            .border-b.border-gray-200.mb-6
+              nav.-mb-px.flex.space-x-8
+                button.tab-button.py-2.px-1.border-b-2.font-medium.text-sm.transition-colors.duration-200 data-action="click->tabs#switch" data-tab="v1-1" class="border-purple-500 text-purple-600"
+                  | BaldrickSignals v1.1
+                button.tab-button.py-2.px-1.border-b-2.font-medium.text-sm.transition-colors.duration-200 data-action="click->tabs#switch" data-tab="v1-0" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                  | BaldrickSignals v1.0
 
-          .bg-white.rounded-lg.shadow-md.p-6.mb-6
-            = image_tag "baldricksignals/breakdown.png", class: "w-full rounded-lg mb-6", alt: "BaldrickSignals Board Overview"
-            
-            ol.list-decimal.list-inside.text-gray-700.space-y-3
-              li
-                strong Power Jack - 
-                | Can take 5v to 24v (each side can take different voltages) and will automatically step down to power the components, no jumpers needed. 
-                strong Whatever voltage you used here is also used to power the lamp
-                | .
-              li
-                strong CR2032 Coin cell clip - 
-                | Using this will allow the BaldrickSignals to keep the time even when the board is disconnected from the network (this will not power the board). Your vendor will probably not supply this so make sure you've got one.
-              li
-                strong Wireless Chip - 
-                | The BaldrickSignals uses wifi to detect other devices, you'll need an 
-                = link_to "antenna", "/faq#antennas", class: "text-blue-600 hover:text-blue-800 underline"
-                | .
-              li
-                strong 100mb Ethernet Port - 
-                | You can use this to connect to your show network.
-              li
-                strong QR Code - 
-                | An easy to scan QR code which will take you to these docs for easy troubleshooting.
-              li
-                strong Oh No button - 
-                | Use this to reset the board by holding for 5 seconds when the board is booting.
+            / Tab Content
+            .tab-content
+              / v1.1 Content (Default)
+              .tab-panel data-tab="v1-1"
+                .bg-white.rounded-lg.shadow-md.p-6.mb-6
+                  = image_tag "baldricksignals/breakdown11.png", class: "w-full rounded-lg mb-6", alt: "BaldrickSignals v1.1 Board Overview"
+                  
+                  ul.list-none.text-gray-700.space-y-3
+                    li
+                      strong 1. Power Jack - 
+                      | You can put 5v-48v through a barrel connector (centre positive) and we use 5.5x2.1mm barrel jacks. 
+                    li
+                      strong 2. 2 Pin Pheonix Connector - 
+                      | You can put 5v-48v through this connector. 
+                    li
+                      strong 3. CR2032 Coin cell clip - 
+                      | Using this will allow the BaldrickSignals to keep the time even when the board is disconnected from the network (this will not power the board). Your vendor will probably not supply this so make sure you've got one.
+                    li
+                      strong 4. Wireless Chip - 
+                      | The BaldrickSignals uses wifi to detect other devices, you'll need an 
+                      = link_to "antenna", "/faq#antennas", class: "text-blue-600 hover:text-blue-800 underline"
+                      | .
+                    li
+                      strong 5. 100mb Ethernet Port - 
+                      | You can use this to connect to your show network.
+                    li
+                      strong 6. QR Code - 
+                      | An easy to scan QR code which will take you to these docs for easy troubleshooting.
+                    li
+                      strong 7. Oh No button - 
+                      | Use this to reset the board by holding for 5 seconds when the board is booting.
+
+              / v1.0 Content
+              .tab-panel.hidden data-tab="v1-0"
+                .bg-white.rounded-lg.shadow-md.p-6.mb-6
+                  = image_tag "baldricksignals/breakdown.png", class: "w-full rounded-lg mb-6", alt: "BaldrickSignals v1.0 Board Overview"
+                  
+                  ol.list-decimal.list-inside.text-gray-700.space-y-3
+                    li
+                      strong Power Jack - 
+                      | Can take 5v to 24v (each side can take different voltages) and will automatically step down to power the components, no jumpers needed. 
+                      strong Whatever voltage you used here is also used to power the lamp
+                      | .
+                    li
+                      strong CR2032 Coin cell clip - 
+                      | Using this will allow the BaldrickSignals to keep the time even when the board is disconnected from the network (this will not power the board). Your vendor will probably not supply this so make sure you've got one.
+                    li
+                      strong Wireless Chip - 
+                      | The BaldrickSignals uses wifi to detect other devices, you'll need an 
+                      = link_to "antenna", "/faq#antennas", class: "text-blue-600 hover:text-blue-800 underline"
+                      | .
+                    li
+                      strong 100mb Ethernet Port - 
+                      | You can use this to connect to your show network.
+                    li
+                      strong QR Code - 
+                      | An easy to scan QR code which will take you to these docs for easy troubleshooting.
+                    li
+                      strong Oh No button - 
+                      | Use this to reset the board by holding for 5 seconds when the board is booting.
