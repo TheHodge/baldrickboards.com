@@ -72,6 +72,9 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
   post 'newsletter_subscribers', to: 'newsletter_subscribers#create'
   get 'newsletter_subscribers/unsubscribe', to: 'newsletter_subscribers#unsubscribe'
   
+  # Sitemap
+  get 'sitemap.xml', to: 'sitemaps#index', defaults: { format: 'xml' }
+  
   # Admin area
   namespace :admin do
     get 'login', to: 'sessions#new'

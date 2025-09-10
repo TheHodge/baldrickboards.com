@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 
 
-# Sitemap location (when available)
-# Sitemap: https://www.baldrickboard.com/sitemap.xml
+# Sitemap location
+Sitemap: https://www.baldrickboard.com/sitemap.xml

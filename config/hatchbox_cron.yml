@@ -1,0 +1,17 @@
+# Hatchbox Cron Jobs Configuration
+# Add these cron jobs in your Hatchbox dashboard under "Cron Jobs"
+
+# Daily sitemap generation and search engine pinging
+# Schedule: 0 2 * * * (Daily at 2 AM)
+# Command: bundle exec rake sitemap:ping RAILS_ENV=production
+# Description: Generate sitemap and ping search engines
+
+# Weekly cleanup of old sitemap files
+# Schedule: 0 3 * * 0 (Weekly on Sunday at 3 AM)
+# Command: bundle exec rake sitemap:clean RAILS_ENV=production
+# Description: Clean old sitemap files to save disk space
+
+# Optional: Generate sitemap on deployment
+# Schedule: @reboot (Run once on server restart)
+# Command: bundle exec rake sitemap:generate RAILS_ENV=production
+# Description: Generate initial sitemap after deployment
