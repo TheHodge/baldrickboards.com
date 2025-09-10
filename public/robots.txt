@@ -1,1 +1,6 @@
-# test 2
+User-agent: *
+Allow: /
+
+
+# Sitemap location
+Sitemap: https://www.baldrickboard.com/sitemap.xml

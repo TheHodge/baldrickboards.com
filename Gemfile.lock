@@ -279,6 +279,8 @@ GEM
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
+    sitemap_generator (6.3.0)
+      builder (~> 3.0)
     slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
@@ -374,6 +376,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.2)
   rubocop-rails-omakase
+  sitemap_generator
   slim-rails (~> 3.7)
   solid_cache
   solid_queue

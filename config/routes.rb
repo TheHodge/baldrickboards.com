@@ -1,8 +1,41 @@
 Rails.application.routes.draw do
+  # Legacy docs redirects (permanent)
+  get '/docs/baldrick8/qr', to: redirect('/en/boards/baldrick8'), status: 301
+  get '/docs/baldrick17/introduction', to: redirect('/en/boards/baldrick17'), status: 301
+  get '/docs/switchy/introduction', to: redirect('/en/boards/baldrickswitchy'), status: 301
+  get '/docs/input8/', to: redirect('/en/boards/baldrickinput8'), status: 301
+  get '/docs/baldrickdmx/introduction', to: redirect('/en/boards/baldrickdmx'), status: 301
+  get '/docs/signals/introduction', to: redirect('/en/boards/baldricksignals'), status: 301
+  get '/docs/input1/introduction', to: redirect('/en/boards/baldrickinput1'), status: 301
+  get 'docs/baldrick8/first-boot/installing-firmware', to: redirect('/boards/baldrick8/getting-started'), status: 301
+
   # Search logging endpoints (no locale needed for API endpoints)
   post "search_logs/log_search", to: "search_logs#log_search"
   post "search_logs/log_click", to: "search_logs#log_click"
   
+  namespace :admin do
+    get 'login', to: 'sessions#new'
+    post 'login', to: 'sessions#create'
+    delete 'logout', to: 'sessions#destroy'
+    
+    # Admin dashboard
+    root 'dashboard#index'
+    
+    resources :newsletter_subscribers, only: [:index, :destroy], path: 'newsletter-subscribers' do
+      collection do
+        get :export_csv
+      end
+    end
+    
+    resources :search_logs, only: [:index], path: 'search-logs'
+    
+    resources :feedbacks, only: [:index, :show, :destroy] do
+      member do
+        patch :mark_processed
+      end
+    end
+  end
+
   # Locale-based routing
   scope "(:locale)", locale: /en|es|fr|de/ do
     # Home page
@@ -72,31 +105,12 @@ Rails.application.routes.draw do
     post 'newsletter_subscribers', to: 'newsletter_subscribers#create'
     get 'newsletter_subscribers/unsubscribe', to: 'newsletter_subscribers#unsubscribe'
     
-    # Admin area
-    namespace :admin do
-      get 'login', to: 'sessions#new'
-      post 'login', to: 'sessions#create'
-      delete 'logout', to: 'sessions#destroy'
-      
-      # Admin dashboard
-      root 'dashboard#index'
-      
-      resources :newsletter_subscribers, only: [:index, :destroy], path: 'newsletter-subscribers' do
-        collection do
-          get :export_csv
-        end
-      end
-      
-      resources :search_logs, only: [:index], path: 'search-logs'
-      
-      resources :feedbacks, only: [:index, :show, :destroy] do
-        member do
-          patch :mark_processed
-        end
-      end
-    end
+    # Sitemap
+    get 'sitemap.xml', to: 'sitemaps#index', defaults: { format: 'xml' }
   
-    get 'docs/baldrick8/first-boot/installing-firmware', to: redirect('/boards/baldrick8/getting-started')
+    # Admin area
+
+  
     # Catch all unmatched routes and show 404 (excluding image files)
     match '*path', to: 'application#not_found', via: :all, constraints: lambda { |req| !req.path.match?(/\.(png|jpg|jpeg|gif|webp|svg|ico)$/i) }
   end

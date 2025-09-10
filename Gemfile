@@ -62,3 +62,6 @@ gem "actionmailer"
 
 # CSV export functionality
 gem "csv"
+
+# Sitemap generation
+gem "sitemap_generator"
