@@ -18,7 +18,7 @@ RSpec.describe "Forms", type: :request do
         }
       }
       expect(response).to have_http_status(:redirect)
-      expect(response).to redirect_to("/en/contacts")
+      expect(response).to redirect_to("/en/support")
     end
 
     it "handles contact form validation errors" do
@@ -96,8 +96,8 @@ RSpec.describe "Forms", type: :request do
       post "/search_logs/log_search", params: {
         query: "test search"
       }
-      # Search logs redirect due to locale enforcement
-      expect(response).to have_http_status(:redirect)
+      # Search logs now work without locale redirect
+      expect(response).to have_http_status(:success)
     end
 
     it "logs search click" do
@@ -106,8 +106,8 @@ RSpec.describe "Forms", type: :request do
         result_url: "/en/boards/baldrick8",
         result_title: "Baldrick8"
       }
-      # Search logs redirect due to locale enforcement
-      expect(response).to have_http_status(:redirect)
+      # Search logs now work without locale redirect
+      expect(response).to have_http_status(:success)
     end
   end
 end

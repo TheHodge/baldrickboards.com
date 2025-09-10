@@ -21,9 +21,32 @@ class ApplicationController < ActionController::Base
     if params[:locale].present?
       I18n.locale = params[:locale]
     else
-      # Redirect to default locale to avoid duplicate content
-      redirect_to url_for(locale: I18n.default_locale, only_path: false), status: :moved_permanently
+      # Skip locale redirect for API routes (search logging, etc.)
+      if api_route?
+        I18n.locale = I18n.default_locale
+      else
+        # Redirect to default locale to avoid duplicate content
+        redirect_to url_for(locale: I18n.default_locale, only_path: false), status: :moved_permanently
+      end
     end
+  end
+
+  def api_route?
+    # Routes that should not be redirected for locale
+    api_paths = %w[
+      /search_logs/log_search
+      /search_logs/log_click
+      /sitemap.xml
+    ]
+    
+    # Also check for common API patterns
+    api_patterns = [
+      /^\/search_logs\//,  # All search logging routes
+      /^\/sitemap\.xml$/,  # Sitemap
+    ]
+    
+    api_paths.any? { |path| request.path.start_with?(path) } ||
+    api_patterns.any? { |pattern| request.path.match?(pattern) }
   end
 
   def default_url_options
