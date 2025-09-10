@@ -65,3 +65,4 @@ gem "csv"
 
 # Sitemap generation
 gem "sitemap_generator"
+gem "ahoy_matey"

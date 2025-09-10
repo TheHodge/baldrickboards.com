@@ -5,6 +5,9 @@ class Admin::BaseController < ApplicationController
   private
 
   def authenticate_admin!
+    # Skip authentication in development
+    return if Rails.env.development?
+    
     unless admin_authenticated?
       session[:admin_return_to] = request.fullpath
       redirect_to admin_login_path, alert: 'Please log in to access the admin area.'
