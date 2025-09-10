@@ -13,12 +13,10 @@ en:
             testimonial_1:
               quote: "I purchased 2 Baldrick 8's last year. One ran 2 GE baby illusions and a GE shape,shifter. The other ran a GE shapeshifter and a GE Grand illusion. Building the enclosure was super simple with the available STL. The initial setup was easier than other controllers I use. The boards work so well I am in the process of changing out my differential receivers for additional Baldrick 8's. These controllers have exceeded my expectations. Support when needed was very prompt. I highly recommend added these to your shows."
               author: "Neal Amador"
-              location: "Customer"
               board: "Baldrick8"
             testimonial_2:
               quote: "Baldrick8 - I trust it with my Megatree and it has never let me down. 500 pixels per port on seven ports and port 8 for tree topper - Halloween and Xmas about 500 pixels. It's a great board, simple and very effective."
               author: "Robert John Milton"
-              location: "Customer"
               board: "Baldrick8"
             testimonial_3:
               quote: "For some one that struggles with technology this board is absolutely amazing. It is so so easy to use. One of the only things I haven't needed help with (I think). The customer service looks great though if I do need help in future. Dom's always there to help in the baldrick community. Can't wait for more boards to be released."
@@ -45,3 +43,7 @@ en:
             testimonial_11:
               quote: "Baldricks are better than similar boards containing hair. 10 out of 10"
               author: "Russell McFarland"
+            testimonial_12:
+              quote: "I really like the Baldrick8 and the BaldrickDMX. It's very easy to use, regularly updates with new features like for permanent lighting. The Baldrick Team is really acting fast when there is an issue with the firmware. On top of this there is a helpful community on Facebook, for all questions around the Baldrick boards. And in Europe the boards have a good availability – you don't need to import controller boards from US – buy it in Europe with no hassle of customs and taxes."
+              author: "Chris Niklas"
+              board: "Baldrick8, BaldrickDMX"
