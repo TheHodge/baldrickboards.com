@@ -107,6 +107,11 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
     
     resources :search_logs, only: [:index, :destroy], path: 'search-logs'
     
+    resources :error_logs, only: [:index, :show, :destroy], path: 'error-logs' do
+      collection do
+        delete :clear_all
+      end
+    end    
     resources :feedbacks, only: [:index, :show, :destroy] do
       member do
         patch :mark_processed

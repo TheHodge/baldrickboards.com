@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
 
   # Custom 404 handling
   def not_found
+    # Track 404 errors for admin analysis
+    ErrorLog.track_404(
+      request.url,
+      referrer: request.referrer,
+      user_agent: request.user_agent,
+      ip: request.remote_ip
+    )
+    
     render 'errors/not_found', status: :not_found, layout: 'application'
   end
 
