@@ -84,6 +84,7 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
   # Sitemap
   get 'sitemap.xml', to: 'sitemaps#index', defaults: { format: 'xml' }
   
+  # Analytics with Ahoy
   # Analytics handled by custom admin controller
   
   # Admin area
@@ -95,7 +96,7 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
     # Admin dashboard
     root 'dashboard#index'
     
-    # Analytics dashboard
+    # Analytics redirect
     get 'analytics', to: 'analytics#index'
     
     resources :newsletter_subscribers, only: [:index, :destroy], path: 'newsletter-subscribers' do
@@ -104,7 +105,7 @@ get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
       end
     end
     
-    resources :search_logs, only: [:index], path: 'search-logs'
+    resources :search_logs, only: [:index, :destroy], path: 'search-logs'
     
     resources :feedbacks, only: [:index, :show, :destroy] do
       member do
