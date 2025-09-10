@@ -27,6 +27,13 @@ class Admin::AnalyticsController < Admin::BaseController
       .count
       .sort_by { |date, _| date }
 
+    # Get hourly visits for last 48 hours
+    @hourly_visits_48h = Ahoy::Visit
+      .where(started_at: 48.hours.ago..Time.current)
+      .group("DATE_TRUNC('hour', started_at)")
+      .count
+      .sort_by { |hour, _| hour }
+
     # Get top referrers
     @top_referrers = Ahoy::Visit
       .where(started_at: @start_date..@end_date)
