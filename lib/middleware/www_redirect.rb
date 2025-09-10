@@ -1,4 +1,5 @@
-class WwwRedirect
+module Middleware
+  class WwwRedirect
   def initialize(app)
     @app = app
   end
@@ -23,5 +24,6 @@ class WwwRedirect
     end
     
     @app.call(env)
+  end
   end
 end
