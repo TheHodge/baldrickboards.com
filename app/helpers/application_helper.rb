@@ -24,6 +24,30 @@ module ApplicationHelper
     ]
   end
 
+  # Country flag helper for analytics
+  def country_flag(country_code)
+    return '🌍' if country_code.blank? || country_code == 'Unknown'
+    
+    # Map common country codes to flag emojis
+    flag_map = {
+      'US' => '🇺🇸', 'GB' => '🇬🇧', 'CA' => '🇨🇦', 'AU' => '🇦🇺', 'DE' => '🇩🇪',
+      'FR' => '🇫🇷', 'ES' => '🇪🇸', 'IT' => '🇮🇹', 'NL' => '🇳🇱', 'SE' => '🇸🇪',
+      'NO' => '🇳🇴', 'DK' => '🇩🇰', 'FI' => '🇫🇮', 'CH' => '🇨🇭', 'AT' => '🇦🇹',
+      'BE' => '🇧🇪', 'IE' => '🇮🇪', 'PT' => '🇵🇹', 'PL' => '🇵🇱', 'CZ' => '🇨🇿',
+      'HU' => '🇭🇺', 'SK' => '🇸🇰', 'SI' => '🇸🇮', 'HR' => '🇭🇷', 'BG' => '🇧🇬',
+      'RO' => '🇷🇴', 'GR' => '🇬🇷', 'CY' => '🇨🇾', 'MT' => '🇲🇹', 'LU' => '🇱🇺',
+      'EE' => '🇪🇪', 'LV' => '🇱🇻', 'LT' => '🇱🇹', 'JP' => '🇯🇵', 'KR' => '🇰🇷',
+      'CN' => '🇨🇳', 'IN' => '🇮🇳', 'BR' => '🇧🇷', 'MX' => '🇲🇽', 'AR' => '🇦🇷',
+      'CL' => '🇨🇱', 'CO' => '🇨🇴', 'PE' => '🇵🇪', 'VE' => '🇻🇪', 'UY' => '🇺🇾',
+      'ZA' => '🇿🇦', 'EG' => '🇪🇬', 'NG' => '🇳🇬', 'KE' => '🇰🇪', 'MA' => '🇲🇦',
+      'RU' => '🇷🇺', 'TR' => '🇹🇷', 'IL' => '🇮🇱', 'AE' => '🇦🇪', 'SA' => '🇸🇦',
+      'TH' => '🇹🇭', 'VN' => '🇻🇳', 'ID' => '🇮🇩', 'MY' => '🇲🇾', 'SG' => '🇸🇬',
+      'PH' => '🇵🇭', 'NZ' => '🇳🇿'
+    }
+    
+    flag_map[country_code.upcase] || '🌍'
+  end
+
   # Open Graph helpers with hierarchical I18n fallback
   def og_title
     content_for(:og_title) || og_i18n_value('title') || content_for(:title) || t('og.default_title')
