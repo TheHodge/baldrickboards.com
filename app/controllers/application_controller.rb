@@ -61,10 +61,11 @@ class ApplicationController < ActionController::Base
   end
 
   def should_track_page?
-    # Only track HTML responses and exclude admin pages
+    # Only track HTML responses and exclude admin pages and specific URLs
     return false unless response.content_type&.start_with?("text/html")
     return false if request.path.start_with?("/admin")
     return false if request.path.start_with?("/en/admin")
+    return false if request.path.start_with?("/search_logs")
     
     true
   end
