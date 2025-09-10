@@ -27,12 +27,17 @@ SitemapGenerator::Sitemap.verbose = Rails.env.production?
 SitemapGenerator::Sitemap.compress = false
 
 SitemapGenerator::Sitemap.create do
-  # Available locales
-  locales = [:en, :es, :fr, :de]
+  # Available locales - configure based on environment or feature flag
+  # Set ENV['SITEMAP_ALL_LOCALES']=true to include all locales
+  if ENV['SITEMAP_ALL_LOCALES'] == 'true'
+    locales = [:en, :es, :fr, :de]
+  else
+    locales = [:en]  # Only English for now
+  end
   
   # Static pages for each locale
   locales.each do |locale|
-    locale_prefix = locale == :en ? '' : "/#{locale}"
+    locale_prefix = locale == :en ? '/en' : "/#{locale}"
     
     # Home page
     add "#{locale_prefix}/", changefreq: 'weekly', priority: 1.0
