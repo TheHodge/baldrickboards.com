@@ -60,11 +60,12 @@
       .text-sm.text-gray-500.font-medium = "#{@hourly_visits_48h.count} hours"
     - if @hourly_visits_48h.any?
       .overflow-x-auto
-        .flex.items-end.space-x-1.min-h-32.py-4
+        .flex.items-end.space-x-1.min-h-40.py-4
           - max_count = @hourly_visits_48h.max_by { |_, count| count }&.last || 1
           - @hourly_visits_48h.each do |hour, count|
-            .flex.flex-col.items-center.flex-1.min-w-0
-              .bg-gradient-to-t.from-blue-500.to-blue-400.rounded-t.transition-all.duration-300.hover:from-blue-600.hover:to-blue-500 style="height: #{max_count > 0 ? (count.to_f / max_count * 100).round : 0}px; min-height: #{count > 0 ? '4px' : '0px'}"
+            .flex.flex-col.items-center.flex-1.min-w-0.group
+              - bar_height = max_count > 0 ? [(count.to_f / max_count * 120).round, 4].max : 0
+              .bg-gradient-to-t.from-blue-500.to-blue-400.rounded-t.transition-all.duration-300.hover:from-blue-600.hover:to-blue-500.w-full.max-w-8 style="height: #{bar_height}px; min-height: #{count > 0 ? '4px' : '0px'}"
               .text-xs.text-gray-500.mt-2.text-center.break-words = hour.strftime("%m/%d")
               .text-xs.text-gray-400.text-center = hour.strftime("%H:%M")
               .text-xs.font-semibold.text-gray-700.mt-1 = count
