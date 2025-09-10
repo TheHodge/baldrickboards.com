@@ -31,12 +31,11 @@ html
 
     = yield :head
 
-    / Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!)
-    / = tag.link rel: "manifest", href: pwa_manifest_path(format: :json)
-
-    link rel="icon" href="/icon.png" type="image/png"
-    link rel="icon" href="/icon.svg" type="image/svg+xml"
-    link rel="apple-touch-icon" href="/icon.png"
+    / Favicon and PWA manifest
+    link rel="icon" href="/favicon.svg" type="image/svg+xml"
+    link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96"
+    link rel="apple-touch-icon" href="/apple-touch-icon.png"
+    link rel="manifest" href="/site.webmanifest"
 
     / Includes Tailwind CSS
     = stylesheet_link_tag "tailwind", "data-turbo-track": "reload"
