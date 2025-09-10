@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   get '/docs/baldrick8/qr', to: redirect('/en/boards/baldrick8'), status: 301
   get '/docs/baldrick17/introduction', to: redirect('/en/boards/baldrick17'), status: 301
   get '/docs/switchy/introduction', to: redirect('/en/boards/baldrickswitchy'), status: 301
-  get '/docs/input8/', to: redirect('/en/boards/input8'), status: 301
+  get '/docs/input8/', to: redirect('/en/boards/baldrickinput8'), status: 301
   get '/docs/baldrickdmx/introduction', to: redirect('/en/boards/baldrickdmx'), status: 301
   get '/docs/signals/introduction', to: redirect('/en/boards/baldricksignals'), status: 301
   get '/docs/input1/introduction', to: redirect('/en/boards/baldrickinput1'), status: 301
+  
   # Search logging endpoints (no locale needed for API endpoints)
   post "search_logs/log_search", to: "search_logs#log_search"
   post "search_logs/log_click", to: "search_logs#log_click"
