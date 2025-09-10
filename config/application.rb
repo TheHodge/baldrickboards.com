@@ -43,5 +43,8 @@ module Docs
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Add WWW redirect middleware
+    config.middleware.use WwwRedirect
   end
 end

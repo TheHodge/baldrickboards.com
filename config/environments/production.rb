@@ -64,10 +64,10 @@ Rails.application.configure do
   config.active_record.attributes_for_inspect = [ :id ]
 
   # Enable DNS rebinding protection and other `Host` header attacks.
-  # config.hosts = [
-  #   "example.com",     # Allow requests from example.com
-  #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
-  # ]
+  config.hosts = [
+    "www.baldrickboard.com",     # Allow requests from www.baldrickboard.com
+    "baldrickboard.com"          # Allow requests from baldrickboard.com (for redirect)
+  ]
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
@@ -84,5 +84,5 @@ Rails.application.configure do
     authentication: "plain",
     enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = { host: ENV.fetch('MAIL_HOST', 'baldrickboards.com') }
+  config.action_mailer.default_url_options = { host: ENV.fetch('MAIL_HOST', 'www.baldrickboard.com') }
 end
