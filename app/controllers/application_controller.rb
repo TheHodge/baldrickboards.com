@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       request.url,
       referrer: request.referrer,
       user_agent: request.user_agent,
-      ip: request.remote_ip
+      ip: real_client_ip
     )
     
     render 'errors/not_found', status: :not_found, layout: 'application'
@@ -53,7 +53,9 @@ class ApplicationController < ActionController::Base
       /^\/sitemap\.xml$/,  # Sitemap
     ]
     
-    api_paths.any? { |path| request.path.start_with?(path) } ||
+    # Check exact path matches first
+    api_paths.include?(request.path) ||
+    # Then check pattern matches
     api_patterns.any? { |pattern| request.path.match?(pattern) }
   end
 
@@ -103,6 +105,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def real_client_ip
+    # Get the real client IP from Cloudflare headers
+    # CF-Connecting-IP is the most reliable header from Cloudflare
+    request.headers['CF-Connecting-IP'] || 
+    request.headers['X-Forwarded-For']&.split(',')&.first&.strip ||
+    request.remote_ip
+  end
+
   def find_or_create_visit
     # Get or create a visit for this session
     # Only create visits for non-admin pages
@@ -119,7 +129,7 @@ class ApplicationController < ActionController::Base
         visit_token: SecureRandom.uuid,
         visitor_token: session[:ahoy_visitor_token] ||= SecureRandom.uuid,
         started_at: Time.current,
-        ip: request.remote_ip,
+        ip: real_client_ip,
         user_agent: request.user_agent,
         referrer: request.referrer,
         landing_page: request.url,

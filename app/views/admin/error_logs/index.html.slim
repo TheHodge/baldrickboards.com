@@ -13,7 +13,8 @@
             option value="90" Last 90 days
             option value="365" Last year
           input type="submit" name="commit" value="Update" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 text-sm font-medium transition-colors" data-disable-with="Update"
-        = link_to "Clear All", clear_all_admin_error_logs_path, method: :delete, confirm: "Are you sure? This will delete all error logs.", class: "bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 text-sm font-medium transition-colors"
+        = form_with url: clear_all_admin_error_logs_path, method: :delete, local: true, class: "inline", data: { confirm: "Are you sure? This will delete all error logs." } do |f|
+          = f.submit "Clear All", class: "bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 text-sm font-medium transition-colors cursor-pointer"
 
 / Summary cards
 .grid.grid-cols-1.md:grid-cols-3.gap-8.mb-16

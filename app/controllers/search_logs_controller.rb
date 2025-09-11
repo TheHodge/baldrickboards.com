@@ -9,7 +9,7 @@ class SearchLogsController < ApplicationController
     if query.present? && query.length >= 2
       SearchLog.log_search(
         query,
-        ip_address: request.remote_ip,
+        ip_address: real_client_ip,
         user_agent: request.user_agent
       )
     end
@@ -28,7 +28,7 @@ class SearchLogsController < ApplicationController
         query,
         result_url,
         result_title,
-        ip_address: request.remote_ip,
+        ip_address: real_client_ip,
         user_agent: request.user_agent
       )
     end
