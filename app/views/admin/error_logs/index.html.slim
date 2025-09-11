@@ -135,7 +135,7 @@
           - @top_browsers.each do |user_agent, count|
             .flex.items-center.justify-between.p-3.rounded-lg.hover:bg-gray-50.transition-colors
               .flex-1.min-w-0.mr-3
-                p.text-sm.font-medium.text-gray-900.break-words = user_agent.split(' ').first(2).join(' ')
+                p.text-sm.font-medium.text-gray-900.break-words = user_agent&.split(' ')&.first(2)&.join(' ') || 'Unknown'
               .flex-shrink-0
                 span.inline-flex.items-center.px-2.py-1.rounded-full.text-xs.font-bold.bg-green-100.text-green-800 = count
       - else
