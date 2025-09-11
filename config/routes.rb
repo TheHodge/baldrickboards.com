@@ -1,54 +1,60 @@
 Rails.application.routes.draw do
   # Legacy docs redirects (permanent)
-  legacy_redirects = [
-    ['/docs/baldrick8/qr', '/en/boards/baldrick8'],
-    ['/docs/baldrick17/introduction', '/en/boards/baldrick17'],
-    ['/docs/switchy/introduction', '/en/boards/baldrickswitchy'],
-    ['/docs/input8/', '/en/boards/baldrickinput8'],
-    ['/docs/baldrickdmx/introduction', '/en/boards/baldrickdmx'],
-    ['/docs/signals/introduction', '/en/boards/baldricksignals'],
-    ['/docs/input1/introduction', '/en/boards/baldrickinput1'],
+  
+  # Board name mappings (old_name => new_name)
+  board_mappings = {
+    'baldrick8' => 'baldrick8',
+    'baldrick17' => 'baldrick17', 
+    'switchy' => 'baldrickswitchy',
+    'input8' => 'baldrickinput8',
+    'baldrickdmx' => 'baldrickdmx',
+    'signals' => 'baldricksignals',
+    'input1' => 'baldrickinput1'
+  }
+  
+  # Page type mappings (old_page => new_page)
+  page_mappings = {
+    'introduction' => 'overview',
+    'common-questions' => 'faq',
+    'first-boot' => 'getting-started',
+    'where-to-buy' => 'buy-this-board',
+    'web-interface/stats' => 'web-interface#stats-dashboard',
+    'web-interface/turninput-configuration' => 'web-interface#turninput-configuration',
+    'web-interface/networking' => 'web-interface#networking',
+    'web-interface/advanced-settings' => 'web-interface#advanced-settings',
+    'web-interface/turnip-network' => 'web-interface#turnip-network'
+  }
+  
+  # Build redirects array
+  legacy_redirects = []
+  
+  # General redirects
+  legacy_redirects += [
     ['/docs/', '/en/boards/'],
     ['/en/docs/our-boards/', '/en/boards/'],
-    ['/docs/baldrick8/web-interface', '/en/boards/baldrick8/web-interface'],
-    ['/docs/baldrick17/web-interface', '/en/boards/baldrick17/web-interface'],
-    ['/docs/switchy/web-interface', '/en/boards/baldrickswitchy/web-interface'],
-    ['/docs/input8/web-interface', '/en/boards/baldrickinput8/web-interface'],
-    ['/docs/baldrickdmx/web-interface', '/en/boards/baldrickdmx/web-interface'],
-    ['/docs/signals/web-interface', '/en/boards/baldricksignals/web-interface'],
-    ['/docs/input1/web-interface', '/en/boards/baldrickinput1/web-interface'],
-    ['/docs/baldrick8/getting-started', '/en/boards/baldrick8/getting-started'],
-    ['/docs/baldrick17/common-questions', '/en/boards/baldrick17/faq'],
-    ['/docs/baldrickdmx/common-questions', '/en/boards/baldrickdmx/faq'],
-    ['/docs/signals/common-questions', '/en/boards/baldricksignals/faq'],
-    ['/docs/input1/common-questions', '/en/boards/baldrickinput1/faq'],
-    ['/docs/input8/common-questions', '/en/boards/baldrickinput8/faq'],
-    ['/docs/switchy/common-questions', '/en/boards/baldrickswitchy/faq'],
-    ['/docs/baldrick8/common-questions', '/en/boards/baldrick8/faq'],
-    ['/docs/baldrick17/common-questions', '/en/boards/baldrick17/faq'],
-    ['/en/docs/switchy/first-boot', '/en/boards/baldrickdmx/getting-started'],
-    ['/en/docs/input8/first-boot', '/en/boards/baldrickinput8/getting-started'],
-    ['/en/docs/baldrickdmx/first-boot', '/en/boards/baldrickdmx/getting-started'],
-    ['/en/docs/signals/first-boot', '/en/boards/baldricksignals/getting-started'],
-    ['/en/docs/input1/first-boot', '/en/boards/baldrickinput1/getting-started'],
-    ['/en/docs/baldrick8/first-boot', '/en/boards/baldrick8/getting-started'],
-    ['/en/docs/baldrick17/first-boot', '/en/boards/baldrick17/getting-started'],
-    ['/en/docs/category/baldrickswitchy', '/en/boards/baldrickswitchy'],
-    ['/en/docs/category/baldrickdmx', '/en/boards/baldrickdmx'],
-    ['/en/docs/category/baldricksignals', '/en/boards/baldricksignals'],
-    ['/en/docs/category/baldrickinput1', '/en/boards/baldrickinput1'],
-    ['/en/docs/category/baldrickinput8', '/en/boards/baldrickinput8'],
-    ['/en/docs/category/baldrick8', '/en/boards/baldrick8'],
-    ['/en/docs/category/baldrick17', '/en/boards/baldrick17'],
-    ['/en/docs/baldrick8/where-to-buy', '/en/boards/baldrick8/where-to-buy'],
-    ['/en/docs/baldrick17/where-to-buy', '/en/boards/baldrick17/where-to-buy'],
-    ['/en/docs/switchy/where-to-buy', '/en/boards/baldrickswitchy/where-to-buy'],
-    ['/en/docs/input8/where-to-buy', '/en/boards/baldrickinput8/where-to-buy'],
-    ['/en/docs/baldrickdmx/where-to-buy', '/en/boards/baldrickdmx/where-to-buy'],
-    ['/en/docs/signals/where-to-buy', '/en/boards/baldricksignals/where-to-buy'],
-    ['/en/docs/input1/where-to-buy', '/en/boards/baldrickinput1/where-to-buy'],
+    ['/en/docs/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode']
   ]
   
+  # Board-specific redirects
+  board_mappings.each do |old_board, new_board|
+    # Introduction pages
+    legacy_redirects << ["/docs/#{old_board}/introduction", "/en/boards/#{new_board}"]
+    legacy_redirects << ["/docs/#{old_board}/", "/en/boards/#{new_board}"] if old_board == 'input8'
+    legacy_redirects << ["/docs/#{old_board}/qr", "/en/boards/#{new_board}"] if old_board == 'baldrick8'
+    
+    # Category pages
+    legacy_redirects << ["/en/docs/category/#{new_board}", "/en/boards/#{new_board}"]
+    
+    # Page type redirects
+    page_mappings.each do |old_page, new_page|
+      legacy_redirects << ["/docs/#{old_board}/#{old_page}", "/en/boards/#{new_board}/#{new_page}"]
+      legacy_redirects << ["/en/docs/#{old_board}/#{old_page}", "/en/boards/#{new_board}/#{new_page}"]
+    end
+    
+    # Web interface pages
+    legacy_redirects << ["/docs/#{old_board}/web-interface", "/en/boards/#{new_board}/web-interface"]
+  end
+    
   legacy_redirects.each do |old_path, new_path|
     get old_path, to: redirect(new_path), status: 301
     get "/en#{old_path}", to: redirect(new_path), status: 301
