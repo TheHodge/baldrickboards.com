@@ -6,5 +6,16 @@ class Admin::DashboardController < Admin::BaseController
     @new_feedbacks = Feedback.new_feedback.count
     @total_searches = SearchLog.count
     @recent_searches = SearchLog.recent(7).count
+    
+    # Analytics statistics
+    @total_visits = Ahoy::Visit.count
+    @recent_visits = Ahoy::Visit.where(started_at: 7.days.ago..Time.current).count
+    @total_events = Ahoy::Event.count
+    @recent_events = Ahoy::Event.where(time: 7.days.ago..Time.current).count
+    
+    # 404 Error statistics
+    @total_404_errors = ErrorLog.sum(:count)
+    @unique_404_errors = ErrorLog.count
+    @recent_404_errors = ErrorLog.where(last_seen: 7.days.ago..Time.current).sum(:count)
   end
 end

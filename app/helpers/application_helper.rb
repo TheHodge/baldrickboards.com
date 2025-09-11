@@ -20,7 +20,8 @@ module ApplicationHelper
       { title: 'Newsletter Subscribers', path: admin_newsletter_subscribers_path },
       { title: 'Feedback Management', path: admin_feedbacks_path },
       { title: 'Search Analytics', path: admin_search_logs_path },
-      { title: 'Website Analytics', path: admin_analytics_path }
+      { title: 'Website Analytics', path: admin_analytics_path },
+      { title: '404 Error Logs', path: admin_error_logs_path }
     ]
   end
 
