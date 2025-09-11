@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     'introduction' => 'overview',
     'common-questions' => 'faq',
     'first-boot' => 'getting-started',
+    'first-boot/xlights_connection' => 'getting-started',
     'where-to-buy' => 'buy-this-board',
     'web-interface/stats' => 'web-interface#stats-dashboard',
     'web-interface/turninput-configuration' => 'web-interface#turninput-configuration',
