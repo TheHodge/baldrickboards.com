@@ -14,19 +14,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_10_231755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
-  create_table "active_analytics_views_per_days", force: :cascade do |t|
-    t.string "site", null: false
-    t.string "page", null: false
-    t.date "date", null: false
-    t.bigint "total", default: 1, null: false
-    t.string "referrer_host"
-    t.string "referrer_path"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["date", "site", "page"], name: "index_active_analytics_views_per_days_on_date_and_site_and_page"
-    t.index ["date", "site", "referrer_host", "referrer_path"], name: "index_views_per_days_on_date_site_referrer_host_referrer_path"
-  end
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
