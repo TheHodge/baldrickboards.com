@@ -28,7 +28,8 @@ Rails.application.routes.draw do
     'web-interface/networking' => 'web-interface#networking',
     'web-interface/advanced-settings' => 'web-interface#advanced-settings',
     'web-interface/ports' => 'web-interface#port-configuration',
-    'web-interface/turnip-network' => 'web-interface#turnip-network'
+    'web-interface/turnip-network' => 'web-interface#turnip-network',
+    'common-questions/fpp_api_commands' => 'faq#fpp-api-commands'
   }
   
   # Build redirects array
@@ -38,10 +39,11 @@ Rails.application.routes.draw do
   legacy_redirects += [
     ['/docs/', '/en/boards/'],
     ['/en/docs/', '/en/boards/'],
+    ['/en/docs/release-notes', '/en/fun-stuff/release-notes'],
     ['/en/docs/our-boards/', '/en/boards/'],
     ['/en/docs/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode'],
-    ['/en/docs/common-questions/baldrick-stl-mounts', '/fun-stuff/stls-and-mounts',],
-    ['en/docs/category/common-questions', '/en/faq'] 
+    ['/en/docs/common-questions/baldrick-stl-mounts', '/en/fun-stuff/stls-and-mounts',],
+    ['/en/docs/category/common-questions', '/en/faq'] 
   ]
   
   # Board-specific redirects
