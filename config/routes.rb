@@ -48,6 +48,10 @@ Rails.application.routes.draw do
     ['/en/docs/where-to-buy', '/en/where-to-buy-baldrick-boards'],
     ['/en/docs/common-questions/ipconfig_check', '/en/faq#ipconfig-check'],
     ['/en/docs/baldrick17/common-questions/gs8208-data', '/en/boards/baldrick8/faq#gs8208-data'],
+    ['/en/docs/baldrick17/common-questions/where_is_wifi', '/en/boards/baldrick8/faq#where-is-wifi'],
+    ['/en/docs/baldrick17/common-questions/is_this_wled', '/en/boards/baldrick8/faq#is-this-wled'],
+    ['/en/docs/signals/web-interface/crowd', '/en/boards/baldricksignals/web-interface#crowd-control'],
+    ['/en/docs/signals/export-data', '/en/boards/baldricksignals/getting-started'],
   ]
   
   # Board-specific redirects
