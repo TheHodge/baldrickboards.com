@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     'first-boot' => 'getting-started',
     'first-boot/xlights_connection' => 'getting-started',
     'first-boot/connecting_pixels' => 'getting-started',
-    'first-boot/attaching-power' => 'getting-started',
+    'first-boot/attaching-power' => 'getting-started',  
     'where-to-buy' => 'buy-this-board',
     'web-interface/stats' => 'web-interface#stats-dashboard',
     'web-interface/turninput-configuration' => 'web-interface#turninput-configuration',
@@ -44,6 +44,10 @@ Rails.application.routes.draw do
     ['/en/docs/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode'],
     ['/en/docs/common-questions/baldrick-stl-mounts', '/en/fun-stuff/stls-and-mounts',],
     ['/en/docs/category/common-questions', '/en/faq'] 
+    ['/en/docs/turnip-network', '/en/breakthroughs/turnip-network'],
+    ['/en/docs/where-to-buy', '/en/where-to-buy-baldrick-boards'],
+    ['/en/docs/common-questions/ipconfig_check', '/en/faq#ipconfig-check'],
+    ['/en/docs/baldrick17/common-questions/gs8208-data', '/en/boards/baldrick8/faq#gs8208-data'],
   ]
   
   # Board-specific redirects
