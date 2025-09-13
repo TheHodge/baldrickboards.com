@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     'input8' => 'baldrickinput8',
     'baldrickdmx' => 'baldrickdmx',
     'signals' => 'baldricksignals',
-    'input1' => 'baldrickinput1'
+    'input1' => 'baldrickinput1',
+    'baldrickbadge' => 'baldrickbadge'
   }
   
   # Page type mappings (old_page => new_page)
