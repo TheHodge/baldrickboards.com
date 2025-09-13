@@ -17,13 +17,17 @@ Rails.application.routes.draw do
   page_mappings = {
     'introduction' => 'overview',
     'common-questions' => 'faq',
+    'board-overview' => 'tech-specs',
     'first-boot' => 'getting-started',
     'first-boot/xlights_connection' => 'getting-started',
+    'first-boot/connecting_pixels' => 'getting-started',
+    'first-boot/attaching-power' => 'getting-started',
     'where-to-buy' => 'buy-this-board',
     'web-interface/stats' => 'web-interface#stats-dashboard',
     'web-interface/turninput-configuration' => 'web-interface#turninput-configuration',
     'web-interface/networking' => 'web-interface#networking',
     'web-interface/advanced-settings' => 'web-interface#advanced-settings',
+    'web-interface/ports' => 'web-interface#port-configuration',
     'web-interface/turnip-network' => 'web-interface#turnip-network'
   }
   
@@ -33,8 +37,11 @@ Rails.application.routes.draw do
   # General redirects
   legacy_redirects += [
     ['/docs/', '/en/boards/'],
+    ['/en/docs/', '/en/boards/'],
     ['/en/docs/our-boards/', '/en/boards/'],
-    ['/en/docs/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode']
+    ['/en/docs/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode'],
+    ['/en/docs/common-questions/baldrick-stl-mounts', '/fun-stuff/stls-and-mounts',],
+    ['en/docs/category/common-questions', '/en/faq'] 
   ]
   
   # Board-specific redirects
