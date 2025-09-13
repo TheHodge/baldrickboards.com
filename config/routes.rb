@@ -52,6 +52,13 @@ Rails.application.routes.draw do
     ['/en/docs/baldrick17/common-questions/is_this_wled', '/en/boards/baldrick8/faq#is-this-wled'],
     ['/en/docs/signals/web-interface/crowd', '/en/boards/baldricksignals/web-interface#crowd-control'],
     ['/en/docs/signals/export-data', '/en/boards/baldricksignals/getting-started'],
+    ['/en/docs/switchy/web-interface/relay-config', '/en/boards/baldrickswitchy/web-interface#relay-configuration'],
+    ['/en/docs/switchy/web-interface/wled-config', '/en/boards/baldrickswitchy/web-interface#wled-configuration'],
+    ['/en/docs/switchy/web-interface/network-config', '/en/boards/baldrickswitchy/web-interface#network-configuration'],
+    ['/en/docs/switchy/web-interface/advanced-settings', '/en/boards/baldrickswitchy/web-interface#advanced-settings'],
+    ['/en/docs/switchy/web-interface/ports', '/en/boards/baldrickswitchy/web-interface#port-configuration'],
+    ['/en/docs/switchy/web-interface/turnip-network', '/en/boards/baldrickswitchy/web-interface#turnip-network'],
+    ['/en/docs/switchy/common-questions/fpp_api_commands', '/en/boards/baldrickswitchy/faq#fpp-api-commands'],
   ]
   
   # Board-specific redirects
