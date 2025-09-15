@@ -47,6 +47,10 @@ Rails.application.routes.draw do
     ['/docs/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode'],
     ['/docs/common-questions/baldrick-stl-mounts', '/en/fun-stuff/stls-and-mounts',],
     ['/docs/category/common-questions', '/en/faq'],
+    ['/docs/category/common-questions-1', '/en/faq'],
+    ['/docs/category/common-questions-2', '/en/faq'],
+    ['/docs/category/common-questions-3', '/en/faq'],
+    ['/docs/category/common-questions-4', '/en/faq'],
     ['/docs/turnip-network', '/en/breakthroughs/turnip-network'],
     ['/docs/where-to-buy', '/en/where-to-buy-baldrick-boards'],
     ['/docs/common-questions/ipconfig_check', '/en/faq#ipconfig-check'],
@@ -68,6 +72,8 @@ Rails.application.routes.draw do
     ['/docs/baldrick8/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode'],
     ['/docs/common-questions/antennas', '/en/faq#antennas'],
     ['/docs/hardware-support', '/en/support'],
+    ['/docs/beginners-guide', '/en/beginners-guide'],
+    ['/docs/beginners-guide/hardware-basics', '/en/beginners-guide'],
     ['/17', 'en/boards/baldrick17'],
     ['docs/baldrickbadge/matrix', 'en/boards/baldrickbadge/getting-started']
   ]
@@ -133,6 +139,9 @@ Rails.application.routes.draw do
   
   # FAQ section
   get 'faq', to: 'faq#index'
+  
+  # Beginners Guide section
+  get 'beginners-guide', to: 'pages#beginners_guide'
     
     # Fun Stuff section
   get 'fun-stuff', to: 'fun_stuff#index'
