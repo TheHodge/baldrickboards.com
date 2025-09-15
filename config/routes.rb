@@ -68,7 +68,8 @@ Rails.application.routes.draw do
     ['/docs/baldrick8/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode'],
     ['/docs/common-questions/antennas', '/en/faq#antennas'],
     ['/docs/hardware-support', '/en/support'],
-    ['/17', 'en/boards/baldrick17']
+    ['/17', 'en/boards/baldrick17'],
+    ['docs/baldrickbadge/matrix', 'en/boards/baldrickbadge/getting-started']
   ]
   
   # Board-specific redirects
