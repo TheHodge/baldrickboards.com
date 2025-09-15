@@ -43,14 +43,20 @@
                 span In xLights on the controller tab, click 'output to lights' on each of your controllers and keep an eye on the bottom left that they all succeed (sometimes they can fail)
               li.flex.items-start
                 span.bg-purple-100.text-purple-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 3
-                span Then in xLights click FPP Connect and do an upload with 
-                strong UDP Out
-                |  set to 
-                em ALL
-                |  on your main show controller
+                p
+                  span Then in xLights click FPP Connect and do an upload with 
+                  strong 
+                    ' UDP Out
+                  span set to 
+                  em 
+                    ' ALL
+                  span on your main show controller
               li.flex.items-start
                 span.bg-purple-100.text-purple-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 4
-                span Check that the channels in xLights match the channels in FPP and on the Baldrick8 controller
+                span 
+                  | Check that the channels in xLights match the channels in FPP and on the 
+                  = link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+                  |  controller
 
           / If the pixels are not outputting via FPP
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
@@ -59,7 +65,9 @@
             ol.space-y-3.text-gray-700
               li.flex.items-start
                 span.bg-blue-100.text-blue-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 1
-                span Make sure test mode isn't enabled on the Baldrick8
+                span 
+                  | Make sure test mode isn't enabled on the 
+                  = link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium" 
               li.flex.items-start
                 span.bg-blue-100.text-blue-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 2
                 span Check the E1.31 Outputs tab in FPP and ensure the I.P. address matches your controller IP address
@@ -68,7 +76,10 @@
                 span Check the E1.31 Outputs tab in FPP and ensure the channels match the ones in the xLights controller tab
               li.flex.items-start
                 span.bg-blue-100.text-blue-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 4
-                span Enable test mode on FPP and look at the stats box on the Baldrick8 - is it receiving data?
+                span 
+                  | Enable test mode on FPP and look at the stats box on the 
+                  = link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+                  |  - is it receiving data?
 
           / If the pixels are not outputting via xLights
           .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
@@ -77,7 +88,9 @@
             ol.space-y-3.text-gray-700
               li.flex.items-start
                 span.bg-green-100.text-green-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 1
-                span Make sure test mode isn't enabled on the Baldrick8
+                span 
+                  | Make sure test mode isn't enabled on the 
+                  = link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
               li.flex.items-start
                 span.bg-green-100.text-green-800.text-sm.font-medium.px-2.py-1.rounded.mr-3.mt-0.5 2
                 span Check the controller tab in xLights and ensure the I.P. address matches your controller IP address
@@ -114,14 +127,19 @@
                   svg.h-5.w-5.text-red-500.mr-3.mt-0.5.flex-shrink-0 fill="currentColor" viewBox="0 0 20 20"
                     path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
                   span
-                    strong What version of xLights, FPP &/or Baldrick8 firmware
+                    strong 
+                      | What version of xLights, FPP &/or 
+                      = link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+                      |  firmware
                     |  are you using
                 li.flex.items-start
                   svg.h-5.w-5.text-red-500.mr-3.mt-0.5.flex-shrink-0 fill="currentColor" viewBox="0 0 20 20"
                     path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
                   span
                     strong Please include screenshots
-                    |  of your xLights controller tab (with the Baldrick8 selected), your FPP e1.31 Outputs page & your xLights Models section
+                    |  of your xLights controller tab (with the 
+                    = link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+                    |  selected), your FPP e1.31 Outputs page & your xLights Models section
                 li.flex.items-start
                   svg.h-5.w-5.text-red-500.mr-3.mt-0.5.flex-shrink-0 fill="currentColor" viewBox="0 0 20 20"
                     path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"

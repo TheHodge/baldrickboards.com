@@ -172,7 +172,11 @@
                     path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
                 .ml-3
                   p.text-lg.text-blue-700
-                    | CunningFX can be activated over the Turnip Network so your Input1 and Baldrick8 buttons can toggle presets.
+                    | CunningFX can be activated over the Turnip Network so your 
+                    = link_to "Input1", board_path('baldrickinput1'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+                    |  and 
+                    = link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+                    |  buttons can toggle presets.
 
           .mt-16
             h4.text-2xl.font-bold.text-gray-900.mb-6 Learn More About Baldrick
