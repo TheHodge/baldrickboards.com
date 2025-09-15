@@ -9,21 +9,27 @@ Rails.application.routes.draw do
     'input8' => 'baldrickinput8',
     'baldrickdmx' => 'baldrickdmx',
     'signals' => 'baldricksignals',
-    'input1' => 'baldrickinput1'
+    'input1' => 'baldrickinput1',
+    'baldrickbadge' => 'baldrickbadge'
   }
   
   # Page type mappings (old_page => new_page)
   page_mappings = {
     'introduction' => 'overview',
     'common-questions' => 'faq',
+    'board-overview' => 'tech-specs',
     'first-boot' => 'getting-started',
     'first-boot/xlights_connection' => 'getting-started',
+    'first-boot/connecting_pixels' => 'getting-started',
+    'first-boot/attaching-power' => 'getting-started',  
     'where-to-buy' => 'buy-this-board',
     'web-interface/stats' => 'web-interface#stats-dashboard',
     'web-interface/turninput-configuration' => 'web-interface#turninput-configuration',
     'web-interface/networking' => 'web-interface#networking',
     'web-interface/advanced-settings' => 'web-interface#advanced-settings',
-    'web-interface/turnip-network' => 'web-interface#turnip-network'
+    'web-interface/ports' => 'web-interface#port-configuration',
+    'web-interface/turnip-network' => 'web-interface#turnip-network',
+    'common-questions/fpp_api_commands' => 'faq#fpp-api-commands'
   }
   
   # Build redirects array
@@ -32,8 +38,27 @@ Rails.application.routes.draw do
   # General redirects
   legacy_redirects += [
     ['/docs/', '/en/boards/'],
-    ['/en/docs/our-boards/', '/en/boards/'],
-    ['/en/docs/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode']
+    ['/docs/', '/en/boards/'],
+    ['/docs/release-notes', '/en/fun-stuff/release-notes'],
+    ['/docs/our-boards/', '/en/boards/'],
+    ['/docs/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode'],
+    ['/docs/common-questions/baldrick-stl-mounts', '/en/fun-stuff/stls-and-mounts',],
+    ['/docs/category/common-questions', '/en/faq'],
+    ['/docs/turnip-network', '/en/breakthroughs/turnip-network'],
+    ['/docs/where-to-buy', '/en/where-to-buy-baldrick-boards'],
+    ['/docs/common-questions/ipconfig_check', '/en/faq#ipconfig-check'],
+    ['/docs/baldrick17/common-questions/gs8208-data', '/en/boards/baldrick8/faq#gs8208-data'],
+    ['/docs/baldrick17/common-questions/where_is_wifi', '/en/boards/baldrick8/faq#where-is-wifi'],
+    ['/docs/baldrick17/common-questions/is_this_wled', '/en/boards/baldrick8/faq#is-this-wled'],
+    ['/docs/signals/web-interface/crowd', '/en/boards/baldricksignals/web-interface#crowd-control'],
+    ['/docs/signals/export-data', '/en/boards/baldricksignals/getting-started'],
+    ['/docs/switchy/web-interface/relay-config', '/en/boards/baldrickswitchy/web-interface#relay-configuration'],
+    ['/docs/switchy/web-interface/wled-config', '/en/boards/baldrickswitchy/web-interface#wled-configuration'],
+    ['/docs/switchy/web-interface/network-config', '/en/boards/baldrickswitchy/web-interface#network-configuration'],
+    ['/docs/switchy/web-interface/advanced-settings', '/en/boards/baldrickswitchy/web-interface#advanced-settings'],
+    ['/docs/switchy/web-interface/ports', '/en/boards/baldrickswitchy/web-interface#port-configuration'],
+    ['/docs/switchy/web-interface/turnip-network', '/en/boards/baldrickswitchy/web-interface#turnip-network'],
+    ['/docs/switchy/common-questions/fpp_api_commands', '/en/boards/baldrickswitchy/faq#fpp-api-commands'],
   ]
   
   # Board-specific redirects
