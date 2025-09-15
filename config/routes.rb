@@ -66,7 +66,11 @@ Rails.application.routes.draw do
     ['/docs/switchy/web-interface/network-config', '/en/boards/baldrickswitchy/web-interface#network-configuration'],
     ['/docs/switchy/web-interface/ports', '/en/boards/baldrickswitchy/web-interface#port-configuration'],
     ['/docs/switchy/web-interface/turnip-network', '/en/boards/baldrickswitchy/web-interface#turnip-network'],
+    ['/docs/switchy/web-interface/test', '/en/boards/baldrickswitchy/web-interface#test-mode'],
     ['/docs/switchy/common-questions/fpp_api_commands', '/en/boards/baldrickswitchy/faq#fpp-api-commands'],
+    ['/docs/switchy/first-boot/connecting_devices', '/en/boards/baldrickswitchy/getting-started'],
+    ['/docs/switchy/board_overview', '/en/boards/baldrickswitchy'],
+    ['/docs/switchy/release_notes', '/en/fun-stuff/release-notes'],
     ['/docs/baldrickdmx/web-interface/presets', '/en/boards/baldrickdmx/web-interface#presets'],
     ['/docs/common-questions/fpp-proxy', '/en/faq#fpp-proxy'],
     ['/docs/category/baldrick16', '/en/boards/baldrick17'],
@@ -77,7 +81,10 @@ Rails.application.routes.draw do
     ['/docs/beginners-guide/hardware-basics', '/en/beginners-guide'],
     ['/docs/beginners-guide/shopping-list', '/en/beginners-guide'],
     ['/17', 'en/boards/baldrick17'],
-    ['docs/baldrickbadge/matrix', 'en/boards/baldrickbadge/getting-started']
+    ['/docs/baldrickbadge/matrix', 'en/boards/baldrickbadge/getting-started'],
+    ['/docs/input1/turniput', 'en/boards/breakthroughs/turniput'],
+    ['/docs/input1/getting-started/power-the-board', 'en/boards/baldrickinput1/getting-started'],
+    ['/docs/input1/getting-started/install-firmware','en/boards/baldrickinput1/getting-started']
   ]
   
   # Board-specific redirects
