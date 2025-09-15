@@ -131,19 +131,19 @@ Rails.application.routes.draw do
   get 'breakthroughs/cunningfx', to: 'breakthroughs#cunningfx'
   
   # FAQ section
-get 'faq', to: 'faq#index'
-  
-  # Fun Stuff section
-get 'fun-stuff', to: 'fun_stuff#index'
-get 'fun-stuff/release-notes', to: 'fun_stuff#release_notes'
-get 'fun-stuff/stls-and-mounts', to: 'fun_stuff#stls_and_mounts'
-get 'fun-stuff/board-dimensions', to: 'fun_stuff#board_dimensions'
-get 'fun-stuff/faq', to: 'fun_stuff#faq'
-get 'fun-stuff/problem-solver', to: 'fun_stuff#problem_solver'
-get 'fun-stuff/panic-mode', to: 'fun_stuff#panic_mode'
-get 'fun-stuff/testimonials', to: 'fun_stuff#testimonials'
-get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
-  
+  get 'faq', to: 'faq#index'
+    
+    # Fun Stuff section
+  get 'fun-stuff', to: 'fun_stuff#index'
+  get 'fun-stuff/release-notes', to: 'fun_stuff#release_notes'
+  get 'fun-stuff/stls-and-mounts', to: 'fun_stuff#stls_and_mounts'
+  get 'fun-stuff/board-dimensions', to: 'fun_stuff#board_dimensions'
+  get 'fun-stuff/faq', to: 'fun_stuff#faq'
+  get 'fun-stuff/problem-solver', to: 'fun_stuff#problem_solver'
+  get 'fun-stuff/panic-mode', to: 'fun_stuff#panic_mode'
+  get 'fun-stuff/testimonials', to: 'fun_stuff#testimonials'
+  get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
+    
   # Where to buy page
   get 'where-to-buy-baldrick-boards', to: 'pages#where_to_buy'
   

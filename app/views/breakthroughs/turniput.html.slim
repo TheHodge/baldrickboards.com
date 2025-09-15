@@ -46,10 +46,14 @@
               p.text-lg.text-gray-700.mb-6
                 | That led us to create the 
                 = link_to "BaldrickInput1", board_path('baldrickinput1'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
-                | , a standalone controller dedicated to interactivity, with lamp control built in and improved Turnip Network integration.
+                | , a standalone controller dedicated to interactivity, with lamp control built in and improved 
+                = link_to "Turnip Network", breakthroughs_turnip_network_path, class: "text-indigo-600 hover:text-indigo-800 font-medium"
+                |  integration.
               
               p.text-lg.text-gray-700.mb-6
-                | And from there, an Input fully powered by the Turnip Network was born: the 
+                | And from there, an Input fully powered by the 
+                = link_to "Turnip Network", breakthroughs_turnip_network_path, class: "text-indigo-600 hover:text-indigo-800 font-medium"
+                |  was born: the 
                 strong Turniput
                 | .
               

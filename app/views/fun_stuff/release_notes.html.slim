@@ -108,7 +108,14 @@
 							li 
 								| • RGBW Support 
 								em Finally.
-							li • CunningFX can be activated over the Turnip network so your Input1 and Baldrick8 buttons can toggle presets, simply lovely.
+							li 
+								| • CunningFX can be activated over the 
+								= link_to "Turnip Network", breakthroughs_turnip_network_path, class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  so your 
+								= link_to "Input1", board_path('baldrickinput1'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  and 
+								= link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  buttons can toggle presets, simply lovely.
 
 					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-7-1
 						h4.text-xl.font-semibold.text-gray-900.mb-3 2.7.1 - The Chupdate
@@ -162,13 +169,19 @@
 						h4.text-xl.font-semibold.text-gray-900.mb-3 2.4.3 - All Boards
 						ul.space-y-2.text-gray-700
 						li • Blank LEDs on startup, as requested by Derek Jamison whose pixels start blue, so we've sent a signal to cheer them up.
-						li • Rewritten the Turnip network discovery code, you probably won't see a difference unless you run more than 5 BaldrickBoards (You could buy more to test it out).
+						li 
+							| • Rewritten the 
+							= link_to "Turnip Network", breakthroughs_turnip_network_path, class: "text-indigo-600 hover:text-indigo-800 font-medium"
+							|  discovery code, you probably won't see a difference unless you run more than 5 BaldrickBoards (You could buy more to test it out).
 						li • Fixed the "relay threshold isn't saving" reported by Robert Milton, I was going to type something sarcastic here but it was an issue and we've fixed it.
 
 					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-4-2
 						h4.text-xl.font-semibold.text-gray-900.mb-3 2.4.2
 						ul.space-y-2.text-gray-700
-							li • An initial fix for a board timeout issue affect some Baldrick8 boards.
+							li 
+								| • An initial fix for a board timeout issue affect some 
+								= link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  boards.
 
 					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-4-1
 						h4.text-xl.font-semibold.text-gray-900.mb-3 2.4.1
@@ -180,7 +193,10 @@
 						ul.space-y-2.text-gray-700
 							li • Fix vendor logo formatting on smaller screens, we wouldn't want you to be unable to use test mode due to a giant BUILD A LIGHT SHOW logo
 							li • We've done some Firmware refactoring and now it looks really pretty and stylish, not that you've noticed.
-							li • BaldrickInput1 support
+							li 
+								| • 
+								= link_to "BaldrickInput1", board_path('baldrickinput1'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  support
 							li • New managed update mechanism, so you don't have to upload all the boards when we do a firmware release
 							li • Allow buttons to trigger test modes on remote boards (somebody asked, I guess?)
 							li • Fix supposed rendering glitches, these glitches have still not officially being confirmed but if they were confirmed, they'd be fixed now. Blank unused pixels after test modes, they had a habit of staying on.
@@ -197,13 +213,19 @@
 						h4.text-xl.font-semibold.text-gray-900.mb-3 2.2.1
 						ul.space-y-2.text-gray-700
 							li • Turns out FPP Proxy didn't like our Websockets implementation, so we've worked around it (and submitted slight tweak to FPP which should make them (and other websockets) friends).
-							li • Sometimes the Baldrick8 got a bit upset when it couldn't detect the internet, we put it in the naughty corner and told it to learn to stand up on it's own 8 ports..
+							li 
+								| • Sometimes the 
+								= link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  got a bit upset when it couldn't detect the internet, we put it in the naughty corner and told it to learn to stand up on it's own 8 ports..
 							li • Rob Milton broke the UI when editing models, I don't know why he just doesn't edit the models in xLights like everyone else but I guess we should fix it.
 
 					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v2-2
 						h4.text-xl.font-semibold.text-gray-900.mb-3 2.2
 						ul.space-y-2.text-gray-700
-							li • BaldrickDMX added to button options
+							li 
+								| • 
+								= link_to "BaldrickDMX", board_path('baldrickdmx'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  added to button options
 								.bg-red-50.border-l-4.border-red-400.p-4.mt-4
 									p.text-sm.text-red-700
 									strong Warning:
@@ -227,10 +249,17 @@
 							| After months of tweaking and testing, it's time for our 2.0 firmware release!
 						ul.space-y-2.text-gray-700
 							li • We've completely redesigned the way you configure buttons and added more functionality.
-							li • You can now quickly and easily control FPP direct from a Baldrick8 button press.
+							li 
+								| • You can now quickly and easily control FPP direct from a 
+								= link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  button press.
 							li • With Easy Mode, we've extracted two of the most popular commands (Play something and change the volume) and made the simple do (you can have your button playing Barbie Girl on repeat in less than 30 settings)
 							li • With Advanced Mode, you get full access to the FPP API and related commands and you can play with them till your hearts content.
-							li • Improved BaldrickSwitchy connectivity
+							li 
+								| • Improved 
+								= link_to "BaldrickSwitchy", board_path('baldrickswitchy'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  connectivity
+								
 						p.text-gray-700.mb-3 We really are proud of this update and are looking forward to hearing how everyone gets on with it.
 
 					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-28
@@ -241,7 +270,16 @@
 					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-27
 						h4.text-xl.font-semibold.text-gray-900.mb-3 1.27
 						ul.space-y-2.text-gray-700
-							li • Introduction of BaldrickSwitchy to the Turnip Network, allowing you to control BaldrickSwitchy ports from the buttons on your Baldrick8.
+							li 
+								| • Introduction of 
+								= link_to "BaldrickSwitchy", board_path('baldrickswitchy'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  to the 
+								= link_to "Turnip Network", breakthroughs_turnip_network_path, class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								| , allowing you to control 
+								= link_to "BaldrickSwitchy", board_path('baldrickswitchy'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  ports from the buttons on your 
+								= link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								| .
 
 					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-26-1
 						h4.text-xl.font-semibold.text-gray-900.mb-3 1.26.1
@@ -268,7 +306,10 @@
 						ul.space-y-2.text-gray-700
 							li • Tweaked the RAINBOWS MODE, it was a bit slow for my liking so it got changed... no the power hasn't totally gone to my head.
 							li • Fixed a Grammar issue which I'm shocked Alan Hanson didn't see.
-							li • Added logos for additional vendors (more countries to Buy the Baldrick8 in!)
+							li 
+								| • Added logos for additional vendors (more countries to Buy the 
+								= link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  in!)
 							li • Pixels now start at 1 rather than 0.. causing developers worldwide to cringe but that appears to be the way "It's done"
 							li • When adding a model, the default test colour will now one of several preselected colours rather than just red, is this a laying the groundwork for a new feature coming soon.. who knows.. well, I do but I'm not telling you.
 							li • The board connects to our update server periodically to check for updates, if it cannot do this, we let you know there may be an issue with your network settings. We will never admit that the problem could be on our side.
@@ -286,7 +327,10 @@
 					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-21-1
 						h4.text-xl.font-semibold.text-gray-900.mb-3 1.21.1
 						ul.space-y-2.text-gray-700
-							li • Preparations for our traitorous cousins receiving their Baldrick8 Boards
+							li 
+								| • Preparations for our traitorous cousins receiving their 
+								= link_to "Baldrick8", board_path('baldrick8'), class: "text-indigo-600 hover:text-indigo-800 font-medium"
+								|  Boards
 
 					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v1-21
 						h4.text-xl.font-semibold.text-gray-900.mb-3 1.21
