@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   
   # General redirects
   legacy_redirects += [
-    ['/docs/intro', '/en']
+    ['/docs/intro', '/en'],
     ['/docs/', '/en/boards/'],
     ['/docs/', '/en/boards/'],
     ['/docs/release-notes', '/en/fun-stuff/release-notes'],
