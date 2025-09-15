@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   
   # Page type mappings (old_page => new_page)
   page_mappings = {
-    'introduction' => 'overview',
     'common-questions' => 'faq',
     'board-overview' => 'tech-specs',
     'first-boot' => 'getting-started',
@@ -24,6 +23,7 @@ Rails.application.routes.draw do
     'first-boot/attaching-power' => 'getting-started',
     'first-boot/installing-firmware' => 'getting-started',
     'where-to-buy' => 'buy-this-board',
+    'web-interface' => 'web-interface',
     'web-interface/stats' => 'web-interface#stats-dashboard',
     'web-interface/turninput-configuration' => 'web-interface#turninput-configuration',
     'web-interface/networking' => 'web-interface#networking',
@@ -59,12 +59,10 @@ Rails.application.routes.draw do
     ['/docs/switchy/web-interface/relay-config', '/en/boards/baldrickswitchy/web-interface#relay-configuration'],
     ['/docs/switchy/web-interface/wled-config', '/en/boards/baldrickswitchy/web-interface#wled-configuration'],
     ['/docs/switchy/web-interface/network-config', '/en/boards/baldrickswitchy/web-interface#network-configuration'],
-    ['/docs/switchy/web-interface/advanced-settings', '/en/boards/baldrickswitchy/web-interface#advanced-settings'],
     ['/docs/switchy/web-interface/ports', '/en/boards/baldrickswitchy/web-interface#port-configuration'],
     ['/docs/switchy/web-interface/turnip-network', '/en/boards/baldrickswitchy/web-interface#turnip-network'],
     ['/docs/switchy/common-questions/fpp_api_commands', '/en/boards/baldrickswitchy/faq#fpp-api-commands'],
     ['/docs/baldrickdmx/web-interface/presets', '/en/boards/baldrickdmx/web-interface#presets'],
-    ['/docs/baldrickdmx/web-interface/advanced', '/en/boards/baldrickdmx/web-interface#advanced-settings'],
     ['/docs/common-questions/fpp-proxy', '/en/faq#fpp-proxy'],
     ['/docs/category/baldrick16', '/en/boards/baldrick17'],
     ['/docs/baldrick8/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode'],
@@ -75,20 +73,15 @@ Rails.application.routes.draw do
   board_mappings.each do |old_board, new_board|
     # Introduction pages
     legacy_redirects << ["/docs/#{old_board}/introduction", "/en/boards/#{new_board}"]
-    legacy_redirects << ["/docs/#{old_board}/", "/en/boards/#{new_board}"] if old_board == 'input8'
-    legacy_redirects << ["/docs/#{old_board}/qr", "/en/boards/#{new_board}"] if old_board == 'baldrick8'
-    
+    legacy_redirects << ["/docs/#{old_board}/", "/en/boards/#{new_board}"]
+    legacy_redirects << ["/docs/#{old_board}/qr", "/en/boards/#{new_board}"]
     # Category pages
-    legacy_redirects << ["/en/docs/category/#{new_board}", "/en/boards/#{new_board}"]
+    legacy_redirects << ["/docs/category/#{new_board}", "/en/boards/#{new_board}"]
     
     # Page type redirects
     page_mappings.each do |old_page, new_page|
       legacy_redirects << ["/docs/#{old_board}/#{old_page}", "/en/boards/#{new_board}/#{new_page}"]
-      legacy_redirects << ["/en/docs/#{old_board}/#{old_page}", "/en/boards/#{new_board}/#{new_page}"]
-    end
-    
-    # Web interface pages
-    legacy_redirects << ["/docs/#{old_board}/web-interface", "/en/boards/#{new_board}/web-interface"]
+    end    
   end
     
   legacy_redirects.each do |old_path, new_path|
