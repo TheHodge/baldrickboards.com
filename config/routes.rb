@@ -84,7 +84,10 @@ Rails.application.routes.draw do
     ['/docs/baldrickbadge/matrix', 'en/boards/baldrickbadge/getting-started'],
     ['/docs/input1/turniput', 'en/boards/breakthroughs/turniput'],
     ['/docs/input1/getting-started/power-the-board', 'en/boards/baldrickinput1/getting-started'],
-    ['/docs/input1/getting-started/install-firmware','en/boards/baldrickinput1/getting-started']
+    ['/docs/input1/getting-started/install-firmware','en/boards/baldrickinput1/getting-started'],
+    ['/docs/input1/getting-started/action', 'en/boards/baldrickinput1/getting-started'],
+    ['/docs/input1/getting-started/button-wire', 'en/boards/baldrickinput1/getting-started'],
+    ['/docs/common-questions/why_no_screen', 'en/faq#why-no-screen'],
   ]
   
   # Board-specific redirects
