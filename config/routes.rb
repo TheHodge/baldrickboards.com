@@ -77,6 +77,7 @@ Rails.application.routes.draw do
     ['/docs/switchy/common-questions/what_is_the_power_consumption', '/en/boards/baldrickswitchy/faq#power-consumption'],
     ['/docs/switchy/common-questions/where-is-wifi', '/en/boards/baldrickswitchy/faq#where-is-wifi'],
     ['/docs/baldrickdmx/web-interface/presets', '/en/boards/baldrickdmx/web-interface#presets'],
+    ['/docs/switchy/web-interface/data-settings', '/en/boards/baldrickswitchy/web-interface#data-settings'],
     ['/docs/common-questions/fpp-proxy', '/en/faq#fpp-proxy'],
     ['/docs/category/baldrick16', '/en/boards/baldrick17'],
     ['/docs/baldrick8/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode'],
@@ -96,6 +97,7 @@ Rails.application.routes.draw do
     ['/docs/input1/getting-started/button-wire', 'en/boards/baldrickinput1/getting-started'],
     ['/docs/common-questions/why_no_screen', 'en/faq#why-no-screen'],
     ['/docs/baldrick8/common-questions/asking-for-help', 'en/support#asking-for-help'],
+    ['/docs/common-questions/baldrick-dimensions', 'en/fun-stuff/board-dimensions']
   ]
   
   # Board-specific redirects
