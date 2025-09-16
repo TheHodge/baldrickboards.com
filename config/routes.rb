@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     ['/docs/baldrick17/common-questions/gs8208-data', '/en/boards/baldrick8/faq#gs8208-data'],
     ['/docs/baldrick17/common-questions/where_is_wifi', '/en/boards/baldrick8/faq#where-is-wifi'],
     ['/docs/baldrick17/common-questions/is_this_wled', '/en/boards/baldrick8/faq#is-this-wled'],
+    ['/docs/baldrick8/common-questions/is_this_wled', '/en/boards/baldrick8/faq#is-this-wled'],
     ['/docs/signals/web-interface/crowd', '/en/boards/baldricksignals/web-interface#crowd-control'],
     ['/docs/signals/export-data', '/en/boards/baldricksignals/getting-started'],
     ['/docs/switchy/web-interface/relay-config', '/en/boards/baldrickswitchy/web-interface#relay-configuration'],
@@ -80,8 +81,10 @@ Rails.application.routes.draw do
     ['/docs/baldrick8/common-questions/hodgical-test-mode', '/en/breakthroughs/hodgical-test-mode'],
     ['/docs/common-questions/antennas', '/en/faq#antennas'],
     ['/docs/hardware-support', '/en/support'],
+    ['/docs/category/beginners-guide', '/en/beginners-guide'],
     ['/docs/beginners-guide', '/en/beginners-guide'],
     ['/docs/beginners-guide/hardware-basics', '/en/beginners-guide'],
+    ['/docs/beginners-guide/how-to-start', '/en/beginners-guide'],
     ['/docs/beginners-guide/shopping-list', '/en/beginners-guide'],
     ['/17', 'en/boards/baldrick17'],
     ['/docs/baldrickbadge/matrix', 'en/boards/baldrickbadge/getting-started'],
@@ -91,6 +94,7 @@ Rails.application.routes.draw do
     ['/docs/input1/getting-started/action', 'en/boards/baldrickinput1/getting-started'],
     ['/docs/input1/getting-started/button-wire', 'en/boards/baldrickinput1/getting-started'],
     ['/docs/common-questions/why_no_screen', 'en/faq#why-no-screen'],
+    ['/docs/baldrick8/common-questions/asking-for-help', 'en/support#asking-for-help'],
   ]
   
   # Board-specific redirects
