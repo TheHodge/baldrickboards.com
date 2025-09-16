@@ -52,7 +52,7 @@ en:
     locale: "en_GB"
     default_title: "Baldrick Boards - Professional LED Controller Boards"
     default_description: "Professional LED controller boards for holiday lighting displays. Baldrick8, Baldrick17, BaldrickSwitchy, and more."
-    default_image: "/og-default.jpg"
+    default_image: "og-default"
     twitter_card: "summary_large_image"
     twitter_site: "@baldrickboards"
     

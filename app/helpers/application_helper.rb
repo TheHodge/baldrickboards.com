@@ -114,20 +114,26 @@ module ApplicationHelper
 
   private
 
-  # Helper to generate Open Graph image URLs using public directory
+  # Helper to generate Open Graph image URLs using asset pipeline with full URLs
   def og_image_url(image_key)
     return nil if image_key.blank?
     
-    # If it's already a full URL or starts with /, return as-is
-    return image_key if image_key.start_with?('http') || image_key.start_with?('/')
+    # If it's already a full URL, return as-is
+    return image_key if image_key.start_with?('http')
     
-    # Use public directory for Open Graph images
+    # Use asset pipeline for Open Graph images with full URL
     begin
-      "/images/#{image_key}.jpg"
+      if image_key.start_with?('/')
+        # Handle absolute paths (legacy support)
+        image_key
+      else
+        # Use asset pipeline to generate full URL
+        asset_url("#{image_key}.jpg")
+      end
     rescue => e
       # Fallback to default if image doesn't exist
       Rails.logger.warn "Open Graph image not found: #{image_key}.jpg, falling back to default. Error: #{e.message}"
-      "/images/og-default.jpg"
+      asset_url("og-default.jpg")
     end
   end
 
