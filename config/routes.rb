@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     ['/docs/common-questions/ipconfig_check', '/en/faq#ipconfig-check'],
     ['/docs/baldrick8/web-interface/inputs', '/en/breakthroughs/turniput'],
     ['/docs/baldrick8/common-questions/what-is-the-difference-of-the-xtreme-edition', '/en/boards/baldrick8/faq#xtreme-edition'],
+    ['/docs/baldrick8/common-questions/where_is_wifi', '/en/boards/baldrick8/faq#where-is-wifi'],
     ['/docs/baldrick17/common-questions/gs8208-data', '/en/boards/baldrick8/faq#gs8208-data'],
     ['/docs/baldrick17/common-questions/where_is_wifi', '/en/boards/baldrick8/faq#where-is-wifi'],
     ['/docs/baldrick17/common-questions/is_this_wled', '/en/boards/baldrick8/faq#is-this-wled'],
