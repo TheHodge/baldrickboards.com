@@ -7,4 +7,7 @@ class PagesController < ApplicationController
   
   def search_test
   end
+  
+  def beginners_guide
+  end
 end
