@@ -7,7 +7,7 @@ class ContactMailer < ApplicationMailer
     @subject = "New Contact Form Submission: #{contact.subject}"
     
     mail(
-      to: Rails.application.credentials[:contact_email] || 'heather@hodgetastic.com',
+      to: Rails.application.credentials[:contact_email] || 'dom@ilightthat.com',
       subject: @subject,
       reply_to: contact.email
     )
