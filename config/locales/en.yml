@@ -50,8 +50,8 @@ en:
     site_name: "Baldrick Boards"
     type: "website"
     locale: "en_GB"
-    default_title: "Baldrick Boards - Professional LED Controller Boards"
-    default_description: "Professional LED controller boards for holiday lighting displays. Baldrick8, Baldrick17, BaldrickSwitchy, and more."
+    default_title: "Baldrick Boards - Reliable Hardware, Questionable Sense of Humour"
+    default_description: "Professional controller boards for lighting displays. Baldrick8, Baldrick17, BaldrickSwitchy, and more."
     default_image: "og-default"
     twitter_card: "summary_large_image"
     twitter_site: "@baldrickboards"
@@ -59,7 +59,7 @@ en:
     # Section-specific Open Graph data
     pages:
       home:
-        title: "Baldrick Boards - Professional LED Controller Boards"
+        title: "Baldrick Boards - Reliable Hardware, Questionable Sense of Humour"
         description: "Professional-grade controller boards for lighting displays, interactive installations, and automated shows. Baldrick8, Baldrick17, BaldrickSwitchy and more."
         image: "og-homepage"
       faq:
