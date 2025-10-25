@@ -43,29 +43,29 @@
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "Baldrick8", board_path("baldrick8"), class: "hover:text-purple-800 transition-colors"
 											| :
-										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.1.0										
+										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.4.0										
 									li.flex.items-center
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "Baldrick17", board_path("baldrick17"), class: "hover:text-purple-800 transition-colors"
 											| :
-										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.1.0
+										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.4.0
 									li.flex.items-center
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "BaldrickDMX", board_path("baldrickdmx"), class: "hover:text-purple-800 transition-colors"
 											| :
-										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.1.0
+										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.4.0
 							div
 								ul.space-y-2.text-gray-700
 									li.flex.items-center
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "BaldrickSwitchy", board_path("baldrickswitchy"), class: "hover:text-purple-800 transition-colors"
 											| :
-										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.1.0
+										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.4.0
 									li.flex.items-center
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "BaldrickInput1", board_path("baldrickinput1"), class: "hover:text-purple-800 transition-colors"
 											| :
-										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.1.0
+										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.4.0
 									li.flex.items-center
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "BaldrickInput8", board_path("baldrickinput8"), class: "hover:text-purple-800 transition-colors"
@@ -79,9 +79,21 @@
 			.flex.gap-8.mt-8.items-start
 				.flex-1
 					h3.text-2xl.font-bold.text-gray-900.mb-4#release-history Release History
+							.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v3-4-0
+						h4.text-xl.font-semibold.text-gray-900.mb-3 3.5 - Quality of afterlife improvements.. 
+						p.text-sm.text-gray-500.mb-4 Latest Release
+						ul.space-y-2.text-gray-700
+							li Pressing and holding B1 for 5 seconds on boot will now reset network settings on both the B17 and B8. 
+							li The updates we made to the Input8 last time for multiple FPP instances are now available for all boards. 
+							li Some people using annoying pixel colour orders were complaining that they were not working, so we did an intense overview of the firmware and realised someone got the GBR mixed up with BGR but it's all sorted now.
+							li We've added some performance improvements to the B17, I know this sounds like a generic app update description but there are so many little tweaks that Pete listed to me, I'll admit I switched off and started scrolling TikTok. 
+							li Test mode now defaults to the first 50 pixels rather than all configured pixels, this should reduce my support tickets by about 30%.
+							li We now stop you adding hostnames with spaces in them, because it tends to break things. 
+							li In the VERY VERY slight chance that your board crashes, it sends a small crash report to us with what happened. 
+							li Sometimes the B17 would say that a system update was available, but it wasn't. We've taken the board to one side and told it that it needs to sort itself out.
+						
 					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v3-4-0
 						h4.text-xl.font-semibold.text-gray-900.mb-3 3.4.0 - Augustly Delivered
-						p.text-sm.text-gray-500.mb-4 Latest Release
 						ul.space-y-2.text-gray-700
 							li Pixel Extrodinare August Thede reported a bug with the input8 board and multiple FPP instances and we were SHOCKED, SHOCKED I TELL YOU!.. Once we'd recovered from the horror that our board had a software issue, we realised that it was a simple fix and we've released it to you all.
 							li You may be wondering why the jump from 3.1.0 to 3.4.0 and we were wondering why you were wondering, if we had a good answer for this we'd have obviously told you.
