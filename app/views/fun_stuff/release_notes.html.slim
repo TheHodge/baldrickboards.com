@@ -43,34 +43,34 @@
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "Baldrick8", board_path("baldrick8"), class: "hover:text-purple-800 transition-colors"
 											| :
-										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.4.0										
+										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.5.0									
 									li.flex.items-center
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "Baldrick17", board_path("baldrick17"), class: "hover:text-purple-800 transition-colors"
 											| :
-										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.4.0
+										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.5.0
 									li.flex.items-center
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "BaldrickDMX", board_path("baldrickdmx"), class: "hover:text-purple-800 transition-colors"
 											| :
-										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.4.0
+										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.5.0
 							div
 								ul.space-y-2.text-gray-700
 									li.flex.items-center
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "BaldrickSwitchy", board_path("baldrickswitchy"), class: "hover:text-purple-800 transition-colors"
 											| :
-										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.4.0
+										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.5.0
 									li.flex.items-center
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "BaldrickInput1", board_path("baldrickinput1"), class: "hover:text-purple-800 transition-colors"
 											| :
-										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.4.0
+										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.5.0
 									li.flex.items-center
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "BaldrickInput8", board_path("baldrickinput8"), class: "hover:text-purple-800 transition-colors"
 											| :
-										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.4.0										
+										span.bg-white.px-2.py-1.rounded.text-sm.font-medium 3.5.0										
 									li.flex.items-center
 										span.font-semibold.text-purple-700.mr-2
 											= link_to "BaldrickSignals", board_path("baldricksignals"), class: "hover:text-purple-800 transition-colors"
@@ -80,8 +80,18 @@
 				.flex-1
 					h3.text-2xl.font-bold.text-gray-900.mb-4#release-history Release History
 					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v3-4-0
-						h4.text-xl.font-semibold.text-gray-900.mb-3 3.5 - Quality of afterlife improvements.. 
+						h4.text-xl.font-semibold.text-gray-900.mb-3 3.5.0 - Ghost of Pixels Past
 						p.text-sm.text-gray-500.mb-4 Latest Release
+						ul.space-y-2.text-gray-700
+							li Turns out when people opt into the beta release, it really didn't want you to opt out, you now can.
+							li The BaldrickDMX board had an issue with test mode, Dom used this as an excuse to buy a new smoke machine to test it and now it's fixed.
+							li Input1 can finally control CunningFX on other boards
+							li Michael Floyd reported an issue with the B17 and large config files with lots of models, that is now fixed.
+							li Unlike previous updates, we will actually let people on the Baldrick8 update to this one! (someone forgot to tick a checkbox last time)
+
+
+					.bg-white.border.border-gray-200.rounded-lg.p-6.mb-6#v3-4-0
+						h4.text-xl.font-semibold.text-gray-900.mb-3 3.5 - Quality of afterlife improvements.. 
 						ul.space-y-2.text-gray-700
 							li Pressing and holding B1 for 5 seconds on boot will now reset network settings on both the B17 and B8. 
 							li The updates we made to the Input8 last time for multiple FPP instances are now available for all boards. 
