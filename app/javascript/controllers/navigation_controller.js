@@ -1,110 +1,47 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["dropdown", "trigger"]
-  static values = {
-    openOnHover: { type: Boolean, default: false }
-  }
-
   connect() {
-    this.boundHandleClickOutside = this.handleClickOutside.bind(this)
-    document.addEventListener("click", this.boundHandleClickOutside)
+    this.prefersHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    this.updateSummary(this.element.hasAttribute("open"))
   }
 
-  disconnect() {
-    document.removeEventListener("click", this.boundHandleClickOutside)
+  openOnHover(event) {
+    if (!this.prefersHover) return
+    const dropdown = event.currentTarget
+    dropdown.setAttribute("open", "true")
+    this.updateSummary(true)
   }
 
-  toggleDropdown(event) {
-    event.preventDefault()
-    event.stopPropagation()
+  closeOnHover(event) {
+    if (!this.prefersHover) return
+    const dropdown = event.currentTarget
+    dropdown.removeAttribute("open")
+    this.updateSummary(false)
+  }
 
-    const trigger = event.currentTarget
-    const dropdown = this.findDropdown(trigger)
+  handleToggle(event) {
+    const dropdown = event.currentTarget
+    const isOpen = dropdown.hasAttribute("open")
+    this.updateSummary(isOpen)
 
-    if (!dropdown) return
-
-    const isOpen = dropdown.classList.contains("show")
-    this.closeDropdowns()
-
-    if (!isOpen) {
-      dropdown.classList.add("show")
-      trigger.setAttribute("aria-expanded", "true")
-    } else {
-      trigger.setAttribute("aria-expanded", "false")
+    if (isOpen) {
+      this.closeOtherDropdowns(dropdown)
     }
   }
 
-  closeDropdowns() {
-    this.dropdownTargets.forEach((dropdown) => {
-      dropdown.classList.remove("show")
-      const trigger = this.findTriggerForDropdown(dropdown)
-      trigger?.setAttribute("aria-expanded", "false")
+  closeOtherDropdowns(currentDropdown) {
+    document.querySelectorAll("details.nav-dropdown[open]").forEach((dropdown) => {
+      if (dropdown !== currentDropdown) {
+        dropdown.removeAttribute("open")
+        const summary = dropdown.querySelector("summary")
+        summary?.setAttribute("aria-expanded", "false")
+      }
     })
   }
 
-  handleClickOutside(event) {
-    if (!this.element.contains(event.target)) {
-      this.closeDropdowns()
-    }
-  }
-
-  handleMouseEnter(event) {
-    if (!this.openOnHoverValue) return
-
-    const trigger = event.currentTarget
-    const dropdown = this.findDropdown(trigger)
-    if (!dropdown) return
-
-    this.closeDropdowns()
-    dropdown.classList.add("show")
-    trigger.setAttribute("aria-expanded", "true")
-  }
-
-  handleMouseLeave(event) {
-    if (!this.openOnHoverValue) return
-
-    const trigger = event.currentTarget
-    const dropdown = this.findDropdown(trigger)
-    if (!dropdown) return
-
-    dropdown.classList.remove("show")
-    trigger.setAttribute("aria-expanded", "false")
-  }
-
-  findDropdown(trigger) {
-    if (!trigger) return null
-    const wrapper = trigger.closest("[data-navigation-target='trigger']")
-    if (!wrapper) return trigger.nextElementSibling
-
-    const dropdownId = wrapper.getAttribute("data-navigation-dropdown-id")
-    if (dropdownId) {
-      return this.dropdownTargets.find(
-        (dropdown) => dropdown.dataset.navigationDropdownId === dropdownId
-      )
-    }
-
-    const dropdown = wrapper.querySelector("[data-navigation-target='dropdown']")
-    if (dropdown) return dropdown
-
-    return trigger.nextElementSibling?.classList?.contains("dropdown-menu")
-      ? trigger.nextElementSibling
-      : null
-  }
-
-  findTriggerForDropdown(dropdown) {
-    if (!dropdown) return null
-    const dropdownId = dropdown.dataset.navigationDropdownId
-    if (!dropdownId) {
-      const trigger =
-        dropdown.previousElementSibling?.tagName === "BUTTON"
-          ? dropdown.previousElementSibling
-          : dropdown.parentElement?.querySelector("button")
-      return trigger || null
-    }
-
-    return this.triggerTargets.find(
-      (trigger) => trigger.dataset.navigationDropdownId === dropdownId
-    )
+  updateSummary(expanded) {
+    const summary = this.element.querySelector("summary")
+    summary?.setAttribute("aria-expanded", expanded ? "true" : "false")
   }
 }

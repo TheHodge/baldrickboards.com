@@ -37,14 +37,18 @@
   pointer-events: none;
 }
 
-.dropdown-menu.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
+.nav-dropdown summary {
+  list-style: none;
+  cursor: pointer;
 }
 
-.relative.group:focus-within .dropdown-menu {
+.nav-dropdown summary::-webkit-details-marker,
+.nav-dropdown summary::marker {
+  display: none;
+}
+
+.nav-dropdown[open] > .dropdown-menu,
+.nav-dropdown:focus-within > .dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
