@@ -29,28 +29,12 @@
   overflow: hidden;
 }
 
-.dropdown-menu {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(0.25rem);
-  transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
-  pointer-events: none;
-}
-
-.nav-dropdown summary {
-  list-style: none;
-  cursor: pointer;
-}
-
-.nav-dropdown summary::-webkit-details-marker,
-.nav-dropdown summary::marker {
+.dropdown-menu,
+[data-navigation-target="dropdown"] {
   display: none;
 }
 
-.nav-dropdown[open] > .dropdown-menu,
-.nav-dropdown:focus-within > .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
+.dropdown-menu.show,
+[data-navigation-target="dropdown"].show {
+  display: block;
 }

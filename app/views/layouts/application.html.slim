@@ -53,14 +53,14 @@ html
             .flex-shrink-0.flex.items-center
               = link_to "Baldrick Boards", root_path, class: "text-2xl font-bold text-gray-900 hover:text-indigo-600 transition-colors"
             
-            .hidden.sm:ml-8.sm:flex.sm:items-center.sm:space-x-8
+            .hidden.sm:ml-8.sm:flex.sm:items-center.sm:space-x-8 data-controller="navigation"
               / Boards dropdown
-              details.relative.group.nav-dropdown data-controller="navigation" data-action="mouseenter->navigation#openOnHover mouseleave->navigation#closeOnHover toggle->navigation#handleToggle"
-                summary role="button" aria-haspopup="true" aria-expanded="false" data-action="click->navigation#handleSummaryClick" class="#{'border-indigo-500 text-gray-900' if controller_name == 'boards'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:rounded"
+              .relative.group data-navigation-target="dropdownWrapper"
+                button type="button" class="#{'border-indigo-500 text-gray-900' if controller_name == 'boards'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors" data-action="click->navigation#toggleDropdown" aria-haspopup="true" aria-expanded="false"
                   span Boards
-                  svg.ml-1.h-4.w-4 fill="currentColor" viewBox="0 0 20 20"
+                  svg.ml-1.h-4.w-4.fill-current viewBox="0 0 20 20"
                     path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
-                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.opacity-0.invisible.transition-all.duration-200.z-50.dropdown-menu
+                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.hidden data-navigation-target="dropdown"
                   .py-1
                     = link_to "All Boards", boards_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     .border-t.border-gray-100.my-1
@@ -72,12 +72,12 @@ html
                     = link_to "DMX Controllers", boards_dmx_controllers_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               
               / Baldrick Breakthroughs Dropdown
-              details.relative.group.nav-dropdown data-controller="navigation" data-action="mouseenter->navigation#openOnHover mouseleave->navigation#closeOnHover toggle->navigation#handleToggle"
-                summary role="button" aria-haspopup="true" aria-expanded="false" data-action="click->navigation#handleSummaryClick" class="#{'border-indigo-500 text-gray-900' if controller_name == 'breakthroughs'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex.items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:rounded"
+              .relative.group data-navigation-target="dropdownWrapper"
+                button type="button" class="#{'border-indigo-500 text-gray-900' if controller_name == 'breakthroughs'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex.items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors" data-action="click->navigation#toggleDropdown" aria-haspopup="true" aria-expanded="false"
                   | Baldrick Breakthroughs
                   svg.ml-1.h-4.w-4 fill="currentColor" viewBox="0 0 20 20"
                     path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
-                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.opacity-0.invisible.transition-all.duration-200.z-50.dropdown-menu
+                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.hidden data-navigation-target="dropdown"
                   .py-1
                     = link_to "The Turnip Network", breakthroughs_turnip_network_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     = link_to "The Kluster", breakthroughs_kluster_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -87,12 +87,12 @@ html
                     = link_to "CunningFX", breakthroughs_cunningfx_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               
               / Fun Stuff Dropdown
-              details.relative.group.nav-dropdown data-controller="navigation" data-action="mouseenter->navigation#openOnHover mouseleave->navigation#closeOnHover toggle->navigation#handleToggle"
-                summary role="button" aria-haspopup="true" aria-expanded="false" data-action="click->navigation#handleSummaryClick" class="#{'border-indigo-500 text-gray-900' if controller_name == 'fun_stuff'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:rounded"
+              .relative.group data-navigation-target="dropdownWrapper"
+                button type="button" class="#{'border-indigo-500 text-gray-900' if controller_name == 'fun_stuff'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors" data-action="click->navigation#toggleDropdown" aria-haspopup="true" aria-expanded="false"
                   | Fun Stuff
                   svg.ml-1.h-4.w-4 fill="currentColor" viewBox="0 0 20 20"
                     path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
-                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.opacity-0.invisible.transition-all.duration-200.z-50.dropdown-menu
+                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.hidden data-navigation-target="dropdown"
                   .py-1
                     = link_to "Release Notes", fun_stuff_release_notes_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     = link_to "STLs & Mounts", fun_stuff_stls_and_mounts_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -107,12 +107,12 @@ html
                 | Where to Buy
 
               / Support Dropdown
-              details.relative.group.nav-dropdown data-controller="navigation" data-action="mouseenter->navigation#openOnHover mouseleave->navigation#closeOnHover toggle->navigation#handleToggle"
-                summary role="button" aria-haspopup="true" aria-expanded="false" data-action="click->navigation#handleSummaryClick" class="#{'border-indigo-500 text-gray-900' if controller_name == 'support'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:rounded"
+              .relative.group data-navigation-target="dropdownWrapper"
+                button type="button" class="#{'border-indigo-500 text-gray-900' if controller_name == 'support'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors" data-action="click->navigation#toggleDropdown" aria-haspopup="true" aria-expanded="false"
                   | Support
                   svg.ml-1.h-4.w-4 fill="currentColor" viewBox="0 0 20 20"
                     path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
-                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.opacity-0.invisible.transition-all.duration-200.z-50.dropdown-menu
+                .absolute.left-0.mt-2.w-64.bg-white.rounded-md.shadow-lg.hidden data-navigation-target="dropdown"
                   .py-1
                     = link_to "Hardware Support", support_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     = link_to "Software Support", support_software_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"

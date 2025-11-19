@@ -1,9 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+  static targets = ["dropdown", "dropdownWrapper"]
+
   connect() {
-    this.prefersHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches
-    this.updateSummary(this.element.hasAttribute("open"))
     this.boundOutsideClick = this.handleOutsideClick.bind(this)
     document.addEventListener("click", this.boundOutsideClick)
   }
@@ -12,68 +12,35 @@ export default class extends Controller {
     document.removeEventListener("click", this.boundOutsideClick)
   }
 
-  handleSummaryClick(event) {
+  toggleDropdown(event) {
     event.preventDefault()
     event.stopPropagation()
 
-    const dropdown = this.element
-    const isOpen = dropdown.hasAttribute("open")
+    const wrapper = event.currentTarget.closest("[data-navigation-target='dropdownWrapper']")
+    const dropdown = wrapper?.querySelector("[data-navigation-target='dropdown']")
+    if (!dropdown) return
 
-    if (isOpen) {
-      dropdown.removeAttribute("open")
-      this.updateSummary(false)
+    const isOpen = dropdown.classList.contains("show")
+    this.closeAllDropdowns()
+
+    if (!isOpen) {
+      dropdown.classList.add("show")
+      event.currentTarget.setAttribute("aria-expanded", "true")
     } else {
-      this.closeOtherDropdowns(dropdown)
-      dropdown.setAttribute("open", "true")
-      this.updateSummary(true)
+      event.currentTarget.setAttribute("aria-expanded", "false")
     }
   }
 
-  openOnHover(event) {
-    if (!this.prefersHover) return
-    const dropdown = this.element
-    this.closeOtherDropdowns(dropdown)
-    dropdown.setAttribute("open", "true")
-    this.updateSummary(true)
-  }
-
-  closeOnHover(event) {
-    if (!this.prefersHover) return
-    const dropdown = this.element
-    dropdown.removeAttribute("open")
-    this.updateSummary(false)
-  }
-
-  handleToggle(event) {
-    const dropdown = this.element
-    const isOpen = dropdown.hasAttribute("open")
-    this.updateSummary(isOpen)
-
-    if (isOpen) {
-      this.closeOtherDropdowns(dropdown)
-    }
+  closeAllDropdowns() {
+    this.dropdownTargets.forEach((dropdown) => {
+      dropdown.classList.remove("show")
+      const trigger = dropdown.previousElementSibling
+      trigger?.setAttribute("aria-expanded", "false")
+    })
   }
 
   handleOutsideClick(event) {
     if (this.element.contains(event.target)) return
-    if (!this.element.hasAttribute("open")) return
-
-    this.element.removeAttribute("open")
-    this.updateSummary(false)
-  }
-
-  closeOtherDropdowns(currentDropdown) {
-    document.querySelectorAll("details.nav-dropdown[open]").forEach((dropdown) => {
-      if (dropdown !== currentDropdown) {
-        dropdown.removeAttribute("open")
-        const summary = dropdown.querySelector("summary")
-        summary?.setAttribute("aria-expanded", "false")
-      }
-    })
-  }
-
-  updateSummary(expanded) {
-    const summary = this.element.querySelector("summary")
-    summary?.setAttribute("aria-expanded", expanded ? "true" : "false")
+    this.closeAllDropdowns()
   }
 }
