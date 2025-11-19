@@ -38,3 +38,13 @@
 [data-navigation-target="dropdown"].show {
   display: block;
 }
+
+[data-navigation-target="dropdownWrapper"] {
+  margin-right: 0.75rem;
+}
+
+@media (min-width: 1280px) {
+  [data-navigation-target="dropdownWrapper"] {
+    margin-right: 2rem;
+  }
+}
