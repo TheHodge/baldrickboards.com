@@ -4,6 +4,23 @@ export default class extends Controller {
   connect() {
     this.prefersHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches
     this.updateSummary(this.element.hasAttribute("open"))
+    this.boundOutsideClick = this.handleOutsideClick.bind(this)
+    document.addEventListener("click", this.boundOutsideClick)
+  }
+
+  disconnect() {
+    document.removeEventListener("click", this.boundOutsideClick)
+  }
+
+  handleClick(event) {
+    // For touch devices, ensure tapping summary toggles without closing immediately
+    if (event.target.tagName.toLowerCase() === "a") return
+    const dropdown = event.currentTarget
+    if (!dropdown.hasAttribute("open")) {
+      this.closeOtherDropdowns(dropdown)
+      dropdown.setAttribute("open", "true")
+      this.updateSummary(true)
+    }
   }
 
   openOnHover(event) {
@@ -27,6 +44,14 @@ export default class extends Controller {
 
     if (isOpen) {
       this.closeOtherDropdowns(dropdown)
+    }
+  }
+
+  handleOutsideClick(event) {
+    if (this.element.contains(event.target)) return
+    if (this.element.hasAttribute("open")) {
+      this.element.removeAttribute("open")
+      this.updateSummary(false)
     }
   }
 
