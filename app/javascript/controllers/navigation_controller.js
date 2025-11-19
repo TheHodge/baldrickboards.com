@@ -1,7 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["dropdown"]
+  static targets = ["dropdown", "trigger"]
+  static values = {
+    openOnHover: { type: Boolean, default: false }
+  }
 
   connect() {
     this.boundHandleClickOutside = this.handleClickOutside.bind(this)
@@ -17,9 +20,9 @@ export default class extends Controller {
     event.stopPropagation()
 
     const trigger = event.currentTarget
-    const dropdown = trigger.nextElementSibling
+    const dropdown = this.findDropdown(trigger)
 
-    if (!dropdown || !dropdown.classList.contains("dropdown-menu")) return
+    if (!dropdown) return
 
     const isOpen = dropdown.classList.contains("show")
     this.closeDropdowns()
@@ -35,10 +38,8 @@ export default class extends Controller {
   closeDropdowns() {
     this.dropdownTargets.forEach((dropdown) => {
       dropdown.classList.remove("show")
-      const trigger = dropdown.previousElementSibling
-      if (trigger?.tagName === "BUTTON") {
-        trigger.setAttribute("aria-expanded", "false")
-      }
+      const trigger = this.findTriggerForDropdown(dropdown)
+      trigger?.setAttribute("aria-expanded", "false")
     })
   }
 
@@ -46,5 +47,64 @@ export default class extends Controller {
     if (!this.element.contains(event.target)) {
       this.closeDropdowns()
     }
+  }
+
+  handleMouseEnter(event) {
+    if (!this.openOnHoverValue) return
+
+    const trigger = event.currentTarget
+    const dropdown = this.findDropdown(trigger)
+    if (!dropdown) return
+
+    this.closeDropdowns()
+    dropdown.classList.add("show")
+    trigger.setAttribute("aria-expanded", "true")
+  }
+
+  handleMouseLeave(event) {
+    if (!this.openOnHoverValue) return
+
+    const trigger = event.currentTarget
+    const dropdown = this.findDropdown(trigger)
+    if (!dropdown) return
+
+    dropdown.classList.remove("show")
+    trigger.setAttribute("aria-expanded", "false")
+  }
+
+  findDropdown(trigger) {
+    if (!trigger) return null
+    const wrapper = trigger.closest("[data-navigation-target='trigger']")
+    if (!wrapper) return trigger.nextElementSibling
+
+    const dropdownId = wrapper.getAttribute("data-navigation-dropdown-id")
+    if (dropdownId) {
+      return this.dropdownTargets.find(
+        (dropdown) => dropdown.dataset.navigationDropdownId === dropdownId
+      )
+    }
+
+    const dropdown = wrapper.querySelector("[data-navigation-target='dropdown']")
+    if (dropdown) return dropdown
+
+    return trigger.nextElementSibling?.classList?.contains("dropdown-menu")
+      ? trigger.nextElementSibling
+      : null
+  }
+
+  findTriggerForDropdown(dropdown) {
+    if (!dropdown) return null
+    const dropdownId = dropdown.dataset.navigationDropdownId
+    if (!dropdownId) {
+      const trigger =
+        dropdown.previousElementSibling?.tagName === "BUTTON"
+          ? dropdown.previousElementSibling
+          : dropdown.parentElement?.querySelector("button")
+      return trigger || null
+    }
+
+    return this.triggerTargets.find(
+      (trigger) => trigger.dataset.navigationDropdownId === dropdownId
+    )
   }
 }
