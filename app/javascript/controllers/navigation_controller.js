@@ -25,8 +25,10 @@ export default class extends Controller {
 
     if (!isOpen) {
       dropdown.classList.add("show")
+      dropdown.classList.remove("hidden")
       event.currentTarget.setAttribute("aria-expanded", "true")
     } else {
+      dropdown.classList.add("hidden")
       event.currentTarget.setAttribute("aria-expanded", "false")
     }
   }
@@ -34,6 +36,7 @@ export default class extends Controller {
   closeAllDropdowns() {
     this.dropdownTargets.forEach((dropdown) => {
       dropdown.classList.remove("show")
+      dropdown.classList.add("hidden")
       const trigger = dropdown.previousElementSibling
       trigger?.setAttribute("aria-expanded", "false")
     })
