@@ -12,11 +12,17 @@ export default class extends Controller {
     document.removeEventListener("click", this.boundOutsideClick)
   }
 
-  handleClick(event) {
-    // For touch devices, ensure tapping summary toggles without closing immediately
-    if (event.target.tagName.toLowerCase() === "a") return
-    const dropdown = event.currentTarget
-    if (!dropdown.hasAttribute("open")) {
+  handleSummaryClick(event) {
+    event.preventDefault()
+    event.stopPropagation()
+
+    const dropdown = this.element
+    const isOpen = dropdown.hasAttribute("open")
+
+    if (isOpen) {
+      dropdown.removeAttribute("open")
+      this.updateSummary(false)
+    } else {
       this.closeOtherDropdowns(dropdown)
       dropdown.setAttribute("open", "true")
       this.updateSummary(true)
@@ -25,20 +31,21 @@ export default class extends Controller {
 
   openOnHover(event) {
     if (!this.prefersHover) return
-    const dropdown = event.currentTarget
+    const dropdown = this.element
+    this.closeOtherDropdowns(dropdown)
     dropdown.setAttribute("open", "true")
     this.updateSummary(true)
   }
 
   closeOnHover(event) {
     if (!this.prefersHover) return
-    const dropdown = event.currentTarget
+    const dropdown = this.element
     dropdown.removeAttribute("open")
     this.updateSummary(false)
   }
 
   handleToggle(event) {
-    const dropdown = event.currentTarget
+    const dropdown = this.element
     const isOpen = dropdown.hasAttribute("open")
     this.updateSummary(isOpen)
 
@@ -49,10 +56,10 @@ export default class extends Controller {
 
   handleOutsideClick(event) {
     if (this.element.contains(event.target)) return
-    if (this.element.hasAttribute("open")) {
-      this.element.removeAttribute("open")
-      this.updateSummary(false)
-    }
+    if (!this.element.hasAttribute("open")) return
+
+    this.element.removeAttribute("open")
+    this.updateSummary(false)
   }
 
   closeOtherDropdowns(currentDropdown) {
