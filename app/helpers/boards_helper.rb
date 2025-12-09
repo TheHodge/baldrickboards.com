@@ -147,7 +147,7 @@ module BoardsHelper
   def baldrick8_tech_specs
     [
       { feature: 'Outputs', value: '8 independent pixel outputs' },
-      { feature: 'Pixels per Output', value: 'Up to 750 pixels at 40fps' },
+      { feature: 'Pixels per Output', value: 'Up to 750 RGB pixels at 40fps' },
       { feature: 'Protocol Support', value: 'WS2811, WS2812B, SK6812' },
       { feature: 'Power Input', value: '5V-24V DC, 2 power inputs' },
       { feature: 'Communication', value: 'Ethernet, WiFi' },
