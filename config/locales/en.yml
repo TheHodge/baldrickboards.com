@@ -183,10 +183,10 @@ en:
       subtitle: "8 Outputs"
       description: "An 8 port controller which pushes the boundaries of what's possible with a budget lighting controller."
       overview:
-        description: "The Baldrick8 is our flagship 8-output pixel controller, designed for professional lighting displays and large-scale installations. With support for up to 750 pixels per port at 40fps and high refresh rates, it's perfect for creating stunning visual effects."
+        description: "The Baldrick8 is our flagship 8-output pixel controller, designed for professional lighting displays and large-scale installations. With support for up to 2250 channels per port (which is 750 RGB pixels at 40fps) and high refresh rates, it's perfect for creating stunning visual effects."
         features:
           - "2 ports accepting 5v–24v (or up to 48v on version 1.1) with onboard power management and the option for individual voltages (to avoid any BOOM BOOM BOOM BOOMS)."
-          - "8 Ports handling many pixels per port (but 750 pixels per port at 40fps)"
+          - "8 Ports handling many pixels per port (up to 2250 channels per port (which is 750 RGB pixels at 40fps)"
           - "2 Power inputs (which combined with the included 7.5 amp fuses allows for full pixel runs at 100%)"
           - "DDP, Artnet, E1.31 & sACN compatible"
           - "3 Programmable Button ports (Can use the FPP API to start / stop a sequence)"
@@ -200,11 +200,11 @@ en:
       subtitle: "17 Outputs"
       description: "With 17 ports at your disposal, you'll be wondering how you ever coped with less. Ideal for big shows, bold ideas, and people who just really like plugging things in."
       overview:
-        description: "The Baldrick17 is our newest pixel controller to join the Baldrick Family, designed for professional lighting displays and large-scale installations. With support for up to 750 pixels per port at 40fps and high refresh rates, it's perfect for creating stunning visual effects."
+        description: "The Baldrick17 is our newest pixel controller to join the Baldrick Family, designed for professional lighting displays and large-scale installations. With support for up to 750 RBG pixels per port at 40fps and high refresh rates, it's perfect for creating stunning visual effects."
         features:
           - "5 ports accepting 5v - 48v with onboard power management and able to accept individual voltages (to avoid any BOOM BOOM BOOM BOOMS)"
           - "Power ports are banked (4 + 4 + 4 + 4 + 1)"
-          - "17 Ports handling up to 750 pixels per port at 40fps"
+          - "17 Ports handling up to 750 RGB pixels per port at 40fps"
           - "17 fused connectors which combined with the included 7.5 amp fuses allows for full pixel runs at 100%"
           - "DDP, Artnet, E1.31 & sACN compatible"
           - "3 Programmable Turniputs ports (Can use the FPP API to start / stop a sequence and full lamp control)"
@@ -263,7 +263,7 @@ en:
         features:
           - "Powerjack accepting 5v - 48v with onboard power management"
           - "8 Turniputs allowing full access to the Turnip Network controls and button lamp configuration"
-          - "2 Pixel outputs with 750 pixels per port at 40fps"
+          - "2 Pixel outputs with up to 2250 channels per port (which is 750 RGB pixels at 40fps)"
           - "Baldrick Medium dimensions so reuse your mounts and prints from other boards"
           - "Dual ethernet for daisy chaining"
           - "Turniput allows effects via a button, motion sensor, reed switch, beam break or other input device"

@@ -73,7 +73,7 @@ en:
                 images: []
                 answer: |
                   <p class="text-gray-700 mb-4">You see the ESP32 chip and instantly think WIFI enabled, however at the moment, after testing latency and throughput over WIFI, we are focusing on the Ethernet connection at this time.</p>
-                  <p class="text-gray-700 mb-4">The Baldrick17 has been designed for 750 pixels per port @ 40FPS and with WIFI we are unable to get close to that.</p>
+                  <p class="text-gray-700 mb-4">The Baldrick17 has been designed for up to 2250 channels per port (which is 750 RGB pixels at 40fps)</p>
                   <p class="text-gray-700 mb-4">That's not to say we will never support it, just don't buy this board for the WIFI support.</p>
                   <p class="text-gray-700"><em>If WIFI is a MUST HAVE then one option some of our users are using is via FPP proxy</em></p>
               fpp_api_commands:
@@ -134,11 +134,11 @@ en:
                 question: "Is This Just WLED?"
                 images: []
                 answer: |
-                  <p class="text-gray-700 mb-4">We've had a lot of questions <em>(3)</em> asking just how we've got 750 pixels at 40FPS on WLED and the honest answer is that <strong>we don't.</strong></p>
+                  <p class="text-gray-700 mb-4">We've had a lot of questions <em>(3)</em> asking just how we've got 750 RGB pixels at 40FPS on WLED and the honest answer is that <strong>we don't.</strong></p>
                   <p class="text-gray-700 mb-4">We <em>love</em> WLED and use it in our other projects, early versions of the Baldrick used it as well however we realised that there was a <em>lot</em> of functionality in WLED that we were never going to use and those functions take RAM and storage.</p>
                   <p class="text-gray-700 mb-4">With that in mind we made the decision to write our own firmware with three principles in mind;</p>
                   <ul class="list-disc list-inside text-gray-700 mb-4">
-                    <li>A minimum 600 Pixels per port at 40FPS <em>(which actually ended up being 750 per port!)</em></li>
+                    <li>A minimum 600 Pixels per port at 40FPS <em>(which actually ended up being 750 RGB per port!)</em></li>
                     <li>A really simple (& Fun) UI</li>
                     <li>Focused core features dedicated to Seasonal Lighting</li>
                   </ul>
