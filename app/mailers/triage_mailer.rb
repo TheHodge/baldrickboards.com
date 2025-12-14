@@ -4,7 +4,8 @@ class TriageMailer < ApplicationMailer
 
   def case_created(case_record)
     @case = case_record
-    @case_url = triage_case_url(@case.case_number, access_token: @case.access_token, locale: I18n.locale)
+    # No longer including access_token in URL - users should use access code or magic link
+    @case_url = triage_case_url(@case.case_number, locale: I18n.locale)
     
     mail(
       to: @case.email,

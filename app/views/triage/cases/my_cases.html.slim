@@ -34,7 +34,7 @@
               .flex-1
                 .flex.items-center.gap-3.mb-2
                   h3.text-lg.font-semibold.text-gray-900
-                    = link_to "Case ##{case_record.case_number}", triage_case_path(case_record.case_number, access_token: case_record.access_token), class: "text-purple-600 hover:text-purple-800"
+                    = link_to "Case ##{case_record.case_number}", triage_case_path(case_record.case_number), class: "text-purple-600 hover:text-purple-800"
                   - case case_record.status
                   - when 'open'
                     span.inline-flex.items-center.px-2.5.py-0.5.rounded-full.text-xs.font-medium.bg-blue-100.text-blue-800 Open
@@ -52,7 +52,7 @@
                   p.text-gray-700.mt-2 = truncate(case_record.problem_description, length: 200)
               
               .flex.flex-col.items-end.gap-2
-                = link_to "View Case", triage_case_path(case_record.case_number, access_token: case_record.access_token), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors"
+                = link_to "View Case", triage_case_path(case_record.case_number), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors"
   - else
     .bg-white.rounded-lg.shadow.border.border-gray-200.p-12.text-center
       p.text-gray-500.mb-4 You haven't submitted any cases yet.

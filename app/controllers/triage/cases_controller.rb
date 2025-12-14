@@ -117,6 +117,12 @@ class Triage::CasesController < ApplicationController
       # Match solutions
       matched_solutions = @case.match_solutions
 
+      # Automatically grant session access to the case creator
+      # This allows them to edit the case without needing to enter access code
+      session["case_#{@case.id}_verified"] = true
+      session["case_#{@case.id}_verified_at"] = Time.current
+      session["case_#{@case.id}_verified_email"] = @case.email.downcase
+
       # Send emails
       TriageMailer.case_created(@case).deliver_now
       TriageMailer.case_created_admin(@case).deliver_now
@@ -247,8 +253,8 @@ class Triage::CasesController < ApplicationController
   private
 
   def set_case
-    # Try to find by case_number first (most common), then by access_token
-    @case = Case.find_by(case_number: params[:id]) || Case.find_by(access_token: params[:id])
+    # Find by case_number only (no longer using access_token in URLs)
+    @case = Case.find_by(case_number: params[:id])
     
     unless @case
       redirect_to new_triage_case_path, alert: 'Case not found.'
@@ -269,15 +275,7 @@ class Triage::CasesController < ApplicationController
     #   return # Allow access
     # end
 
-    # Check if access token is provided in params
-    if params[:access_token] == @case.access_token
-      session["case_#{@case.id}_verified"] = true
-      session["case_#{@case.id}_verified_at"] = Time.current
-      session["case_#{@case.id}_verified_email"] = @case.email.downcase
-      return
-    end
-
-    # Check if already verified in session
+    # Check if already verified in session (no longer checking URL params for access_token)
     if session["case_#{@case.id}_verified"]
       # Check if verification is still valid (24 hours)
       verified_at = session["case_#{@case.id}_verified_at"]
@@ -334,12 +332,7 @@ class Triage::CasesController < ApplicationController
       return true if @case.belongs_to_email?(triage_user_email)
     end
     
-    # Check if access token is provided in params (case creator with access token)
-    if params[:access_token] == @case.access_token
-      return true
-    end
-    
-    # Check if already verified in session (via access code) and email matches
+    # Check if already verified in session (via access code or case creation) and email matches
     if session["case_#{@case.id}_verified"]
       verified_at = session["case_#{@case.id}_verified_at"]
       if verified_at && Time.parse(verified_at) > 24.hours.ago
@@ -348,7 +341,7 @@ class Triage::CasesController < ApplicationController
         return true if verified_email.present? && @case.belongs_to_email?(verified_email)
       end
     end
-    
+
     false
   end
 

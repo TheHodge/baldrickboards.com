@@ -129,4 +129,4 @@
           div
             strong Case URL:
             p.text-xs.break-all
-              = link_to triage_case_url(@case, access_token: @case.access_token), triage_case_url(@case, access_token: @case.access_token), target: "_blank", class: "text-blue-600 hover:text-blue-800"
+              = link_to triage_case_url(@case.case_number), triage_case_url(@case.case_number), target: "_blank", class: "text-blue-600 hover:text-blue-800"
