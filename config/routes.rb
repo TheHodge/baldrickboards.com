@@ -187,6 +187,23 @@ Rails.application.routes.draw do
   get 'support/software', to: 'support#software'
   get 'support/asking-for-help', to: 'support#asking_for_help'
   
+  # Christmas Triage
+  namespace :triage do
+    resources :cases, only: [:index, :new, :create, :show, :update] do
+      collection do
+        get :my_cases
+        post :send_magic_link
+        get :magic_link_login
+        delete :logout
+      end
+      member do
+        get :verify_access
+        post :verify_access
+        patch :mark_solution_fixed
+      end
+    end
+  end
+  
   # Contact form
   post 'contacts', to: 'contacts#create'
   
@@ -235,9 +252,20 @@ Rails.application.routes.draw do
         patch :mark_processed
       end
     end
+    
+    # Triage management
+    resources :triage_cases, path: 'triage/cases', only: [:index, :show, :update, :destroy] do
+      member do
+        patch :update_status
+      end
+    end
+    resources :triage_solutions, path: 'triage/solutions'
   end
   
-    # Catch all unmatched routes and show 404 (excluding image files)
-    match '*path', to: 'application#not_found', via: :all, constraints: lambda { |req| !req.path.match?(/\.(png|jpg|jpeg|gif|webp|svg|ico)$/i) }
+    # Catch all unmatched routes and show 404 (excluding image files and Active Storage)
+    match '*path', to: 'application#not_found', via: :all, constraints: lambda { |req| 
+      !req.path.match?(/\.(png|jpg|jpeg|gif|webp|svg|ico)$/i) && 
+      !req.path.start_with?('/rails/active_storage')
+    }
   end
 end

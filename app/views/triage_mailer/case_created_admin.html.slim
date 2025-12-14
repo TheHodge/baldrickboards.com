@@ -1,0 +1,62 @@
+h2 New Christmas Triage Case
+
+p
+  strong Case Number:
+  |  ##{@case.case_number}
+
+p
+  strong Name:
+  |  #{@case.name}
+
+p
+  strong Email:
+  |  #{@case.email}
+
+p
+  strong Problem:
+  br
+  = simple_format(@case.problem_description)
+
+- if @case.tried_solutions.present?
+  p
+    strong What they tried:
+    br
+    = simple_format(@case.tried_solutions)
+
+- if @case.affected_boards.any?
+  p
+    strong Affected Boards:
+    |  #{@case.affected_boards.join(', ')}
+
+- if @case.baldrick_version.present? || @case.fpp_version.present? || @case.xlights_version.present?
+  p
+    strong System Information:
+    br
+    - if @case.baldrick_version.present?
+      | Baldrick Version: #{@case.baldrick_version}
+      br
+    - if @case.fpp_version.present?
+      | FPP Version: #{@case.fpp_version}
+      br
+    - if @case.xlights_version.present?
+      | xLights Version: #{@case.xlights_version}
+      br
+    - if @case.operating_system.present?
+      | OS: #{@case.operating_system}
+
+- if @case.solutions.any?
+  p
+    strong Matched Solutions (#{@case.solutions.count}):
+    br
+    - @case.solutions.each do |solution|
+      | - #{solution.problem_title}
+      br
+
+p
+  = link_to "View Case in Admin", @case_url
+
+hr
+
+p
+  small
+    | Case created on #{@case.created_at.strftime("%B %d, %Y at %I:%M %p")}

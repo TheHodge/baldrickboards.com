@@ -117,6 +117,11 @@ html
                     = link_to "Hardware Support", support_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     = link_to "Software Support", support_software_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     = link_to "Asking for Help", support_asking_for_help_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    .border-t.border-gray-200.my-1
+                    = link_to triage_cases_path, class: "block px-4 py-2 text-sm text-indigo-700 hover:bg-indigo-50 font-semibold" do
+                      .flex.items-center.justify-between
+                        span Christmas Triage
+                        span.text-xs.bg-indigo-600.text-white.px-2.py-1.rounded Create Case
                     = link_to "FAQ", faq_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               
               = link_to "About", about_path, class: "#{'border-indigo-500 text-gray-900' if controller_name == 'about'} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
@@ -187,6 +192,11 @@ html
             = link_to "Hardware Support", support_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
             = link_to "Software Support", support_software_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
             = link_to "Asking for Help", support_asking_for_help_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
+            .border-t.border-gray-200.my-1
+            = link_to triage_cases_path, class: "border-transparent text-indigo-600 hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-semibold" do
+              .flex.items-center.justify-between
+                span Christmas Triage
+                span.text-xs.bg-indigo-600.text-white.px-2.py-1.rounded Create Case
             = link_to "FAQ", faq_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-6 pr-4 py-2 border-l-4 text-sm font-medium"
 
           / Single Links

@@ -1,0 +1,50 @@
+h2 Christmas Triage - Case Created!
+
+p
+  | Hi #{@case.name},
+
+p
+  | Your case has been created successfully! Here's your case information:
+
+div style="border: 2px solid #000; padding: 20px; margin: 20px 0;"
+  p
+    strong Case Number:
+    |  ##{@case.case_number}
+  
+  p
+    strong Problem:
+    br
+    = simple_format(@case.problem_description)
+
+  - if @case.solutions.any?
+    p
+      strong Suggested Solutions:
+      br
+      - @case.solutions.limit(3).each do |solution|
+        div style="margin: 15px 0; padding: 10px; border-left: 3px solid #4CAF50;"
+          p
+            strong = solution.problem_title
+          p = simple_format(solution.solution_text)
+
+p
+  strong Your Access Code:
+  |  #{@case.access_code}
+  br
+  small
+    | (Keep this code safe - you'll need it to access your case)
+
+p
+  | You can view your case and any suggested solutions at:
+  br
+  = link_to @case_url, @case_url
+
+p
+  | We've also emailed you a code to be able to log back into this page to update with further information or mark it as solved in future.
+
+hr
+
+p
+  small
+    | Case created on #{@case.created_at.strftime("%B %d, %Y at %I:%M %p")}
+    br
+    | If you have any questions, please contact us at #{Rails.application.credentials[:contact_email] || 'support@baldrickboards.com'}

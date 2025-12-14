@@ -1,0 +1,31 @@
+Christmas Triage - Case Created!
+
+Hi <%= @case.name %>,
+
+Your case has been created successfully! Here's your case information:
+
+Case Number: #<%= @case.case_number %>
+
+Problem:
+<%= @case.problem_description %>
+
+<% if @case.solutions.any? %>
+Suggested Solutions:
+
+<% @case.solutions.limit(3).each do |solution| %>
+Problem: <%= solution.problem_title %>
+Solution: <%= solution.solution_text %>
+
+<% end %>
+<% end %>
+
+Your Access Code: <%= @case.access_code %>
+(Keep this code safe - you'll need it to access your case)
+
+View your case: <%= @case_url %>
+
+We've also emailed you a code to be able to log back into this page to update with further information or mark it as solved in future.
+
+---
+Case created on <%= @case.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+If you have any questions, please contact us at <%= Rails.application.credentials[:contact_email] || 'support@baldrickboards.com' %>

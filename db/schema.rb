@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_10_231755) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_13_213519) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "active_analytics_views_per_days", force: :cascade do |t|
+    t.string "site", null: false
+    t.string "page", null: false
+    t.date "date", null: false
+    t.bigint "total", default: 1, null: false
+    t.string "referrer_host"
+    t.string "referrer_path"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["date", "site", "page"], name: "index_active_analytics_views_per_days_on_date_and_site_and_page"
+    t.index ["date", "site", "referrer_host", "referrer_path"], name: "index_views_per_days_on_date_site_referrer_host_referrer_path"
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -85,6 +98,47 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_10_231755) do
     t.index ["visitor_token", "started_at"], name: "index_ahoy_visits_on_visitor_token_and_started_at"
   end
 
+  create_table "case_solutions", force: :cascade do |t|
+    t.bigint "case_id", null: false
+    t.bigint "solution_id", null: false
+    t.integer "match_score", null: false
+    t.datetime "presented_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id", "solution_id"], name: "index_case_solutions_on_case_id_and_solution_id", unique: true
+    t.index ["case_id"], name: "index_case_solutions_on_case_id"
+    t.index ["match_score"], name: "index_case_solutions_on_match_score"
+    t.index ["solution_id"], name: "index_case_solutions_on_solution_id"
+  end
+
+  create_table "cases", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.bigint "user_id"
+    t.text "problem_description", null: false
+    t.text "tried_solutions"
+    t.integer "knowledge_level"
+    t.string "status", default: "open", null: false
+    t.string "access_token", null: false
+    t.string "access_code", null: false
+    t.string "affected_boards", default: [], array: true
+    t.string "baldrick_version"
+    t.string "fpp_version"
+    t.string "xlights_version"
+    t.string "operating_system"
+    t.text "system_state"
+    t.text "fpp_outputs_state"
+    t.bigint "solved_by_solution_id"
+    t.integer "case_number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["access_token"], name: "index_cases_on_access_token", unique: true
+    t.index ["case_number"], name: "index_cases_on_case_number", unique: true
+    t.index ["email"], name: "index_cases_on_email"
+    t.index ["status"], name: "index_cases_on_status"
+    t.index ["user_id"], name: "index_cases_on_user_id"
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -150,6 +204,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_10_231755) do
     t.index ["query"], name: "index_search_logs_on_query"
   end
 
+  create_table "solutions", force: :cascade do |t|
+    t.string "problem_keywords", default: [], array: true
+    t.string "problem_title", null: false
+    t.text "solution_text", null: false
+    t.string "board_types", default: [], array: true
+    t.boolean "active", default: true, null: false
+    t.integer "match_count", default: 0, null: false
+    t.integer "success_count", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_solutions_on_active"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "case_solutions", "cases"
+  add_foreign_key "case_solutions", "solutions"
+  add_foreign_key "cases", "solutions", column: "solved_by_solution_id"
 end
