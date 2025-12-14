@@ -10,6 +10,7 @@ class Case < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2, maximum: 100 }
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :problem_description, presence: true, length: { minimum: 10 }
+  validates :baldrick_version, presence: true
   validates :status, inclusion: { in: %w[open solved closed] }
   validates :access_token, presence: true, uniqueness: true
   validates :access_code, presence: true, length: { is: 6 }
