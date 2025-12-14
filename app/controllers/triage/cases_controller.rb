@@ -129,6 +129,7 @@ class Triage::CasesController < ApplicationController
         # Store verified access in session
         session["case_#{@case.id}_verified"] = true
         session["case_#{@case.id}_verified_at"] = Time.current
+        session["case_#{@case.id}_verified_email"] = @case.email.downcase
 
         redirect_to triage_case_path(@case.case_number),
                     notice: 'Access granted!'
@@ -142,6 +143,13 @@ class Triage::CasesController < ApplicationController
   end
 
   def mark_solution_fixed
+    # Check authorization: only case creator or admin can mark solutions as fixed
+    unless can_mark_solution_fixed?
+      redirect_to triage_case_path(@case.case_number),
+                  alert: 'You do not have permission to mark this case as solved.'
+      return
+    end
+
     solution_id = params[:solution_id]
 
     unless solution_id.present?
@@ -202,6 +210,7 @@ class Triage::CasesController < ApplicationController
     if params[:access_token] == @case.access_token
       session["case_#{@case.id}_verified"] = true
       session["case_#{@case.id}_verified_at"] = Time.current
+      session["case_#{@case.id}_verified_email"] = @case.email.downcase
       return
     end
 
@@ -248,6 +257,37 @@ class Triage::CasesController < ApplicationController
     Time.parse(logged_in_at) > 30.days.ago
   end
 
-  helper_method :triage_user_email, :triage_user_logged_in?
+  def can_mark_solution_fixed?
+    # Check if user is an admin
+    return true if admin_authenticated?
+    
+    # Check if access token is provided in params (case creator with access token)
+    if params[:access_token] == @case.access_token
+      return true
+    end
+    
+    # Check if user is logged in via triage email and case belongs to that email
+    if triage_user_logged_in? && triage_user_email.present?
+      return true if @case.belongs_to_email?(triage_user_email)
+    end
+    
+    # Check if already verified in session (via access code) and email matches
+    if session["case_#{@case.id}_verified"]
+      verified_at = session["case_#{@case.id}_verified_at"]
+      if verified_at && Time.parse(verified_at) > 24.hours.ago
+        # Only allow if the verified email matches the case email
+        verified_email = session["case_#{@case.id}_verified_email"]
+        return true if verified_email.present? && @case.belongs_to_email?(verified_email)
+      end
+    end
+    
+    false
+  end
+
+  def admin_authenticated?
+    session[:admin_authenticated] == true
+  end
+
+  helper_method :triage_user_email, :triage_user_logged_in?, :can_mark_solution_fixed?
 
 end
