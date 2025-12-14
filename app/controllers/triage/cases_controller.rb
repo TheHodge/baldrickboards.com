@@ -148,6 +148,9 @@ class Triage::CasesController < ApplicationController
     # Remove media from params to prevent automatic attachment
     case_params_without_media = case_params.except(:media)
     @case = Case.new(case_params_without_media)
+    
+    # Capture IP address for admin tracking
+    @case.ip_address = real_client_ip
 
     if @case.save
       # Attach media files manually (images and videos)

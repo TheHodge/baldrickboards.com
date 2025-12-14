@@ -126,6 +126,10 @@
           div
             strong Access Code:
             p.font-mono = @case.access_code
+          - if @case.ip_address.present?
+            div
+              strong IP Address:
+              p.font-mono.text-xs = @case.ip_address
           div
             strong Case URL:
             p.text-xs.break-all
