@@ -1,5 +1,18 @@
 - content_for :title, "Christmas Triage - Case ##{@case.case_number}"
 
+/ Open Graph Meta Tags for Social Media Sharing
+- case_url = triage_case_url(@case.case_number, locale: I18n.locale)
+- case_title = "Case ##{@case.case_number} - Christmas Triage - Baldrick Boards"
+- case_description = @case.problem_summary.present? ? @case.problem_summary : truncate(@case.problem_description, length: 200)
+- og_image_url = nil
+- if @case.media.attached?
+  - first_image = @case.media.find { |m| m.image? }
+  - if first_image
+    - # Generate full URL for Open Graph (must be absolute URL with domain)
+    - og_image_url = rails_blob_url(first_image, only_path: false)
+- set_og_data title: case_title, description: case_description, url: case_url, image: og_image_url, type: "article"
+- content_for :og_url, case_url
+
 .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
   / Case Created Success Box - Only show on case creation (when flash notice is present)
   - if flash[:notice].present? && flash[:notice].include?('Case created successfully')
