@@ -1,62 +1,76 @@
-h2 New Christmas Triage Case
+.email-header
+  h1 New Support Case
 
-p
-  strong Case Number:
-  |  ##{@case.case_number}
+.email-content
+  .info-box
+    h2 style="margin-top: 0; margin-bottom: 16px; color: #1f2937; font-size: 20px;"
+      | Case ##{@case.case_number}
+    
+    p style="margin-bottom: 8px;"
+      strong style="color: #374151;"
+        | Name:
+      span style="color: #4b5563; margin-left: 8px;"
+        = @case.name
+    
+    p style="margin-bottom: 8px;"
+      strong style="color: #374151;"
+        | Email:
+      span style="color: #4b5563; margin-left: 8px;"
+        = @case.email
+    
+    p style="margin-bottom: 8px;"
+      strong style="color: #374151;"
+        | Status:
+      span style="color: #4b5563; margin-left: 8px;"
+        = @case.status.titleize
 
-p
-  strong Name:
-  |  #{@case.name}
+  .info-box
+    h3 style="margin-top: 0; margin-bottom: 12px; color: #1f2937; font-size: 18px;"
+      | Problem Description
+    p style="color: #4b5563; margin: 0;"
+      = simple_format(@case.problem_description)
 
-p
-  strong Email:
-  |  #{@case.email}
+  - if @case.tried_solutions.present?
+    .info-box
+      h3 style="margin-top: 0; margin-bottom: 12px; color: #1f2937; font-size: 18px;"
+        | What They Tried
+      p style="color: #4b5563; margin: 0;"
+        = simple_format(@case.tried_solutions)
 
-p
-  strong Problem:
-  br
-  = simple_format(@case.problem_description)
+  - if @case.affected_boards.any?
+    .info-box style="background-color: #fef3c7; border-left-color: #f59e0b;"
+      h3 style="margin-top: 0; margin-bottom: 12px; color: #1f2937; font-size: 18px;"
+        | Affected Boards
+      p style="color: #92400e; margin: 0; font-weight: 600;"
+        = @case.affected_boards.join(', ')
 
-- if @case.tried_solutions.present?
-  p
-    strong What they tried:
-    br
-    = simple_format(@case.tried_solutions)
+  - if @case.baldrick_version.present? || @case.fpp_version.present? || @case.xlights_version.present? || @case.operating_system.present?
+    .info-box
+      h3 style="margin-top: 0; margin-bottom: 12px; color: #1f2937; font-size: 18px;"
+        | System Information
+      p style="color: #4b5563; margin: 0; line-height: 1.8;"
+        - if @case.baldrick_version.present?
+          | Baldrick Version: #{@case.baldrick_version}
+          br
+        - if @case.fpp_version.present?
+          | FPP Version: #{@case.fpp_version}
+          br
+        - if @case.xlights_version.present?
+          | xLights Version: #{@case.xlights_version}
+          br
+        - if @case.operating_system.present?
+          | OS: #{@case.operating_system}
 
-- if @case.affected_boards.any?
-  p
-    strong Affected Boards:
-    |  #{@case.affected_boards.join(', ')}
+  - if @case.solutions.any?
+    .info-box style="background-color: #f0fdf4; border-left-color: #10b981;"
+      h3 style="margin-top: 0; margin-bottom: 12px; color: #1f2937; font-size: 18px;"
+        | Matched Solutions (#{@case.solutions.count})
+      - @case.solutions.each do |solution|
+        p style="color: #065f46; margin: 8px 0;"
+          | • #{solution.problem_title}
 
-- if @case.baldrick_version.present? || @case.fpp_version.present? || @case.xlights_version.present?
-  p
-    strong System Information:
-    br
-    - if @case.baldrick_version.present?
-      | Baldrick Version: #{@case.baldrick_version}
-      br
-    - if @case.fpp_version.present?
-      | FPP Version: #{@case.fpp_version}
-      br
-    - if @case.xlights_version.present?
-      | xLights Version: #{@case.xlights_version}
-      br
-    - if @case.operating_system.present?
-      | OS: #{@case.operating_system}
+  .text-center style="margin: 32px 0;"
+    = link_to "View Case in Admin", @case_url, class: "button", style: "display: inline-block; padding: 14px 32px; background-color: #7c3aed; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px;"
 
-- if @case.solutions.any?
-  p
-    strong Matched Solutions (#{@case.solutions.count}):
-    br
-    - @case.solutions.each do |solution|
-      | - #{solution.problem_title}
-      br
-
-p
-  = link_to "View Case in Admin", @case_url
-
-hr
-
-p
-  small
+  p style="font-size: 14px; color: #6b7280; margin-top: 24px;"
     | Case created on #{@case.created_at.strftime("%B %d, %Y at %I:%M %p")}

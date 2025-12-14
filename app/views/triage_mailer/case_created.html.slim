@@ -1,50 +1,49 @@
-h2 Christmas Triage - Case Created!
+.email-header
+  h1 Case Created Successfully!
 
-p
-  | Hi #{@case.name},
-
-p
-  | Your case has been created successfully! Here's your case information:
-
-div style="border: 2px solid #000; padding: 20px; margin: 20px 0;"
-  p
-    strong Case Number:
-    |  ##{@case.case_number}
+.email-content
+  p style="font-size: 16px; margin-bottom: 24px;"
+    | Hi #{@case.name},
   
-  p
-    strong Problem:
-    br
-    = simple_format(@case.problem_description)
+  p style="font-size: 16px; margin-bottom: 24px;"
+    | Your case has been created successfully! We've received your support request and our team has been notified.
+
+  .info-box
+    h2 style="margin-top: 0; margin-bottom: 16px; color: #1f2937; font-size: 20px;"
+      | Case ##{@case.case_number}
+    
+    p style="margin-bottom: 12px;"
+      strong style="color: #374151;"
+        | Problem:
+    p style="color: #4b5563; margin-top: 8px;"
+      = simple_format(@case.problem_description)
 
   - if @case.solutions.any?
-    p
-      strong Suggested Solutions:
-      br
+    .info-box style="background-color: #f0fdf4; border-left-color: #10b981;"
+      h3 style="margin-top: 0; margin-bottom: 12px; color: #1f2937; font-size: 18px;"
+        | Suggested Solutions
+      p style="color: #4b5563; margin-bottom: 16px;"
+        | We've found some possible solutions that might help:
       - @case.solutions.limit(3).each do |solution|
-        div style="margin: 15px 0; padding: 10px; border-left: 3px solid #4CAF50;"
-          p
-            strong = solution.problem_title
-          p = simple_format(solution.solution_text)
+        div style="margin-bottom: 20px; padding: 12px; background-color: #ffffff; border-radius: 4px;"
+          p style="margin: 0 0 8px 0; font-weight: 600; color: #1f2937;"
+            = solution.problem_title
+          p style="margin: 0; color: #4b5563; font-size: 14px;"
+            = simple_format(solution.solution_text)
 
-p
-  strong Your Access Code:
-  |  #{@case.access_code}
-  br
-  small
-    | (Keep this code safe - you'll need it to access your case)
+  .code-box
+    p style="margin: 0 0 8px 0; font-size: 14px; color: #92400e; font-weight: normal;"
+      | Your Access Code:
+    p style="margin: 0;"
+      = @case.access_code
+    p style="margin: 12px 0 0 0; font-size: 12px; color: #92400e; font-weight: normal; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;"
+      | Keep this code safe - you'll need it to access your case
 
-p
-  | You can view your case and any suggested solutions at:
-  br
-  = link_to @case_url, @case_url
+  .text-center style="margin: 32px 0;"
+    = link_to "View Your Case", @case_url, class: "button", style: "display: inline-block; padding: 14px 32px; background-color: #7c3aed; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px;"
 
-p
-  | We've also emailed you a code to be able to log back into this page to update with further information or mark it as solved in future.
+  p style="font-size: 14px; color: #6b7280; margin-top: 24px;"
+    | You can use the link above to view your case and any suggested solutions. If you find a solution that works, you can mark it as solved directly from the case page.
 
-hr
-
-p
-  small
+  p style="font-size: 14px; color: #6b7280; margin-top: 16px;"
     | Case created on #{@case.created_at.strftime("%B %d, %Y at %I:%M %p")}
-    br
-    | If you have any questions, please contact us at #{Rails.application.credentials[:contact_email] || 'support@baldrickboards.com'}

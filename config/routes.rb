@@ -189,16 +189,18 @@ Rails.application.routes.draw do
   
   # Christmas Triage
   namespace :triage do
-    resources :cases, only: [:index, :new, :create, :show, :update] do
+    resources :cases, only: [:index, :new, :create, :show, :edit, :update] do
       collection do
         get :my_cases
         post :send_magic_link
         get :magic_link_login
+        get :magic_link_sent
         delete :logout
       end
       member do
         get :verify_access
         post :verify_access
+        get :mark_solved
         patch :mark_solution_fixed
       end
     end

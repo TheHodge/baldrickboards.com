@@ -4,6 +4,21 @@
   / Breadcrumb Navigation
   = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: root_path }, { title: 'Christmas Triage', path: nil }]
 
+  / Flash Messages
+  - if flash[:notice].present?
+    .mb-6.bg-green-50.border.border-green-200.rounded-lg.p-4
+      .flex.items-center
+        svg.w-5.h-5.text-green-600.mr-3 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        p.text-sm.font-medium.text-green-800 = flash[:notice]
+  
+  - if flash[:alert].present?
+    .mb-6.bg-red-50.border.border-red-200.rounded-lg.p-4
+      .flex.items-center
+        svg.w-5.h-5.text-red-600.mr-3 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        p.text-sm.font-medium.text-red-800 = flash[:alert]
+
   .mb-8
     .mb-6
       h1.text-3xl.font-bold.text-gray-900.mb-2 Christmas Triage
@@ -21,7 +36,7 @@
             svg.w-5.h-5.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
               path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
             | My Cases
-          = link_to logout_triage_cases_path, method: :delete, class: "inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors" do
+          = link_to logout_triage_cases_path, data: { turbo_method: :delete }, class: "inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors" do
             | Logout
       
       - unless triage_user_logged_in?
@@ -54,9 +69,12 @@
                     span.inline-flex.items-center.px-2.5.py-0.5.rounded-full.text-xs.font-medium.bg-gray-100.text-gray-800 Closed
                 
                 p.text-sm.text-gray-500.mb-2
-                  | Submitted by #{case_record.name} (#{case_record.email}) on #{case_record.created_at.strftime('%B %d, %Y at %I:%M %p')}
+                  | Submitted by #{case_record.name} on #{case_record.created_at.strftime('%B %d, %Y at %I:%M %p')}
                 
-                p.text-gray-700.mt-2 = truncate(case_record.problem_description, length: 200)
+                - if case_record.problem_summary.present?
+                  p.text-gray-700.mt-2 = case_record.problem_summary
+                - else
+                  p.text-gray-700.mt-2 = truncate(case_record.problem_description, length: 200)
               
               .flex.flex-col.items-end.gap-2
                 = link_to "View Case", triage_case_path(case_record.case_number), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors"

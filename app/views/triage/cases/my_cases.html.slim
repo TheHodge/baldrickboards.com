@@ -19,7 +19,7 @@
         = link_to triage_cases_path, class: "inline-flex items-center justify-center px-6 py-3 border border-purple-600 text-base font-medium rounded-md text-purple-600 bg-white hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors" do
           | All Cases
         
-        = link_to logout_triage_cases_path, method: :delete, class: "inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors" do
+        = link_to logout_triage_cases_path, data: { turbo_method: :delete }, class: "inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors" do
           | Logout
 
   / Cases List
@@ -46,7 +46,10 @@
                 p.text-sm.text-gray-500.mb-2
                   | Submitted on #{case_record.created_at.strftime('%B %d, %Y at %I:%M %p')}
                 
-                p.text-gray-700.mt-2 = truncate(case_record.problem_description, length: 200)
+                - if case_record.problem_summary.present?
+                  p.text-gray-700.mt-2 = case_record.problem_summary
+                - else
+                  p.text-gray-700.mt-2 = truncate(case_record.problem_description, length: 200)
               
               .flex.flex-col.items-end.gap-2
                 = link_to "View Case", triage_case_path(case_record.case_number, access_token: case_record.access_token), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors"

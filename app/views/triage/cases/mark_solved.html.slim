@@ -1,0 +1,53 @@
+- content_for :title, "Mark Case as Solved - Christmas Triage"
+
+.max-w-3xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb Navigation
+  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: root_path }, { title: 'Christmas Triage', path: triage_cases_path }, { title: "Case ##{@case.case_number}", path: triage_case_path(@case.case_number) }, { title: 'Mark as Solved', path: nil }]
+
+  / Header
+  .text-center.mb-8
+    h1.text-4xl.font-bold.text-gray-900.mb-2 Mark Case as Solved
+    p.text-xl.text-gray-600.mb-2 Case ##{@case.case_number}
+
+  / Main Form
+  .bg-white.rounded-lg.shadow-lg.overflow-hidden.border.border-gray-200
+    .px-8.py-8
+      = form_with url: mark_solution_fixed_triage_case_path(@case.case_number), method: :patch, local: true, data: { turbo_method: :patch }, class: "space-y-6" do |form|
+        - if @case.errors.any?
+          .bg-red-50.border.border-red-200.rounded-md.p-4.mb-6
+            h3.text-sm.font-medium.text-red-800.mb-2 There were some problems:
+            ul.text-sm.text-red-700.list-disc.list-inside.space-y-1
+              - @case.errors.full_messages.each do |message|
+                li = message
+
+        / Suggested Solutions (if any)
+        - if @solutions.any?
+          .space-y-4.pb-6.border-b.border-gray-200
+            h2.text-lg.font-semibold.text-gray-900.mb-4 Suggested Solutions
+            p.text-sm.text-gray-600.mb-4 If one of these solutions fixed your issue, select it below. Otherwise, you can write your own solution.
+            
+            .space-y-3
+              - @solutions.each do |solution|
+                .bg-gray-50.rounded-lg.border.border-gray-200.p-4
+                  .flex.items-start
+                    = form.radio_button :solution_id, solution.id, class: "mt-1 mr-3 text-indigo-600 focus:ring-indigo-500"
+                    div.flex-1
+                      h3.text-base.font-semibold.text-gray-900.mb-2 = solution.problem_title
+                      p.text-sm.text-gray-700 = simple_format(solution.solution_text)
+            
+            .mt-4.pt-4.border-t.border-gray-200
+              p.text-sm.font-medium.text-gray-700.mb-2 Or write your own solution:
+        - else
+          .pb-6.border-b.border-gray-200
+            p.text-sm.text-gray-600.mb-4 Please describe what fixed your issue. This will help others who might have the same problem.
+
+        / Custom Solution
+        .space-y-2
+          = form.label :custom_solution, "Your Solution", class: "block text-sm font-medium text-gray-700 mb-2"
+          = form.text_area :custom_solution, rows: 8, placeholder: "Describe what you did to fix the issue...", class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          p.text-xs.text-gray-500.mt-1 This field is required if you don't select a suggested solution above.
+
+        / Submit Buttons
+        .pt-6.mt-6.flex.justify-between.items-center
+          = link_to "Cancel", triage_case_path(@case.case_number), class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+          = form.submit "Mark Case as Solved", class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors"

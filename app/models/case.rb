@@ -48,6 +48,7 @@ class Case < ApplicationRecord
   before_validation :generate_access_token, on: :create
   before_validation :generate_access_code, on: :create
   before_validation :assign_case_number, on: :create
+  before_save :generate_problem_summary, if: -> { problem_description.present? && (new_record? || problem_description_changed?) }
 
   # Instance methods
   def open?
@@ -62,8 +63,8 @@ class Case < ApplicationRecord
     status == 'closed'
   end
 
-  def mark_as_solved!(solution_id = nil)
-    update!(status: 'solved', solved_by_solution_id: solution_id)
+  def mark_as_solved!(solution_id = nil, custom_solution = nil)
+    update!(status: 'solved', solved_by_solution_id: solution_id, custom_solution: custom_solution)
   end
 
   def mark_as_closed!
@@ -168,5 +169,72 @@ class Case < ApplicationRecord
     end
 
     score
+  end
+
+  def generate_problem_summary
+    return unless problem_description.present?
+    
+    # Use extractive summarization: select most important sentences
+    summary = extractive_summarize(problem_description, max_length: 150)
+    self.problem_summary = summary
+  end
+
+  def extractive_summarize(text, max_length: 150)
+    # Split into sentences (handle common punctuation)
+    sentences = text.split(/[.!?]+/).map(&:strip).reject(&:empty?)
+    return truncate_text(text, max_length) if sentences.length <= 1
+    
+    # Calculate word frequencies (excluding stop words)
+    stop_words = %w[the a an and or but in on at to for of with by from as is was are were been be have has had do does did will would should could may might must can this that these those i you he she it we they]
+    words = text.downcase.scan(/\b[a-z]{2,}\b/).reject { |w| stop_words.include?(w) }
+    word_freq = words.each_with_object(Hash.new(0)) { |word, freq| freq[word] += 1 }
+    max_freq = word_freq.values.max.to_f
+    return truncate_text(text, max_length) if max_freq.zero?
+    
+    # Normalize frequencies
+    word_freq.transform_values! { |v| v / max_freq }
+    
+    # Score each sentence
+    sentence_scores = sentences.map do |sentence|
+      sentence_words = sentence.downcase.scan(/\b[a-z]{2,}\b/).reject { |w| stop_words.include?(w) }
+      score = sentence_words.sum { |w| word_freq[w] || 0 }
+      # Boost score for sentences at the beginning (first 30% of text)
+      position_boost = sentences.index(sentence) < (sentences.length * 0.3) ? 1.2 : 1.0
+      { sentence: sentence, score: score * position_boost }
+    end
+    
+    # Sort by score and select top sentences
+    sorted_sentences = sentence_scores.sort_by { |s| -s[:score] }
+    
+    # Build summary by adding sentences until we reach max_length
+    summary = ''
+    sorted_sentences.each do |item|
+      candidate = summary.empty? ? item[:sentence] : "#{summary}. #{item[:sentence]}"
+      if candidate.length <= max_length
+        summary = candidate
+      else
+        break
+      end
+    end
+    
+    # If we have a summary, return it (truncate if slightly over)
+    if summary.present? && summary.length > max_length
+      summary = truncate_text(summary, max_length)
+    elsif summary.present?
+      summary
+    else
+      # Fallback to truncation
+      truncate_text(text, max_length)
+    end
+  end
+
+  def truncate_text(text, max_length)
+    words = text.split(/\s+/)
+    summary = ''
+    words.each do |word|
+      break if (summary + ' ' + word).length > max_length
+      summary += ' ' + word
+    end
+    summary.strip + (summary.length < text.length ? '...' : '')
   end
 end

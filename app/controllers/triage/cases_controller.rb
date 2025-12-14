@@ -1,6 +1,6 @@
 class Triage::CasesController < ApplicationController
-  before_action :set_case, only: [:show, :verify_access, :mark_solution_fixed, :update]
-  before_action :check_case_access, only: [:mark_solution_fixed, :update]
+  before_action :set_case, only: [:show, :edit, :verify_access, :mark_solved, :mark_solution_fixed, :update]
+  before_action :check_edit_access, only: [:edit, :update, :mark_solved, :mark_solution_fixed]
 
   def index
     @cases = Case.recent.limit(50)
@@ -39,8 +39,16 @@ class Triage::CasesController < ApplicationController
     # Send magic link email
     TriageMailer.magic_link(email, magic_link_login_triage_cases_url(token: token)).deliver_now
 
-    flash[:notice] = 'Magic link sent! Check your email for the login link.'
-    redirect_to triage_cases_path
+    # Redirect to a confirmation page
+    redirect_to magic_link_sent_triage_cases_path(email: email)
+  end
+
+  def magic_link_sent
+    @email = params[:email]
+    unless @email.present?
+      redirect_to triage_cases_path, alert: 'Invalid request.'
+      return
+    end
   end
 
   def magic_link_login
@@ -73,6 +81,15 @@ class Triage::CasesController < ApplicationController
 
   def new
     @case = Case.new
+    # Pre-populate email and name if user is logged in
+    if triage_user_logged_in? && triage_user_email.present?
+      @case.email = triage_user_email
+      # Try to get name from most recent case
+      recent_case = Case.by_email(triage_user_email).order(created_at: :desc).first
+      @case.name = recent_case.name if recent_case&.name.present?
+      # If no name found, use email username as fallback
+      @case.name ||= triage_user_email.split('@').first.titleize
+    end
   end
 
   def create
@@ -118,6 +135,8 @@ class Triage::CasesController < ApplicationController
     @solutions = @case.solutions.includes(:case_solutions)
                       .order('case_solutions.match_score DESC')
                       .limit(5)
+    # Eager load solved_by_solution association
+    @case = Case.includes(:solved_by_solution).find(@case.id)
   end
 
   def verify_access
@@ -142,44 +161,80 @@ class Triage::CasesController < ApplicationController
     end
   end
 
-  def mark_solution_fixed
-    # Check authorization: only case creator or admin can mark solutions as fixed
-    unless can_mark_solution_fixed?
+  def mark_solved
+    # Authorization checked in before_action
+    # Only allow if case is open
+    unless @case.open?
       redirect_to triage_case_path(@case.case_number),
-                  alert: 'You do not have permission to mark this case as solved.'
+                  alert: 'This case is already solved or closed.'
+      return
+    end
+    
+    # Load solutions for the form
+    @solutions = @case.solutions.includes(:case_solutions)
+                      .order('case_solutions.match_score DESC')
+                      .limit(5)
+  end
+
+  def mark_solution_fixed
+    # Authorization checked in before_action (check_edit_access)
+
+    # Only allow if case is open
+    unless @case.open?
+      redirect_to triage_case_path(@case.case_number),
+                  alert: 'This case is already solved or closed.'
       return
     end
 
     solution_id = params[:solution_id]
+    custom_solution = params[:custom_solution]&.strip
 
-    unless solution_id.present?
-      redirect_to triage_case_path(@case.case_number),
-                  alert: 'No solution specified.'
+    # Either solution_id or custom_solution must be provided
+    if solution_id.blank? && custom_solution.blank?
+      @solutions = @case.solutions.includes(:case_solutions)
+                        .order('case_solutions.match_score DESC')
+                        .limit(5)
+      flash.now[:alert] = 'Please select a solution or provide your own solution.'
+      render :mark_solved, status: :unprocessable_entity
       return
     end
 
-    solution = Solution.find_by(id: solution_id)
-
-    unless solution
-      redirect_to triage_case_path(@case.case_number),
-                  alert: 'Solution not found.'
-      return
+    if solution_id.present?
+      solution = Solution.find_by(id: solution_id)
+      unless solution
+        @solutions = @case.solutions.includes(:case_solutions)
+                          .order('case_solutions.match_score DESC')
+                          .limit(5)
+        flash.now[:alert] = 'Solution not found.'
+        render :mark_solved, status: :unprocessable_entity
+        return
+      end
+      # Mark case as solved with suggested solution
+      @case.update!(status: 'solved', solved_by_solution_id: solution.id, custom_solution: nil)
+      # Increment success count on solution
+      solution.increment_success!
+    else
+      # Mark case as solved with custom solution
+      @case.update!(status: 'solved', solved_by_solution_id: nil, custom_solution: custom_solution)
     end
-
-    # Mark case as solved
-    @case.mark_as_solved!(solution.id)
-
-    # Increment success count on solution
-    solution.increment_success!
 
     redirect_to triage_case_path(@case.case_number),
                 notice: 'Thank you for letting us know! Your case has been marked as solved.'
   end
 
+  def edit
+    # Authorization checked in before_action
+  end
+
   def update
-    # This action would be for editing case details - requires access token
-    # Implementation can be added later if needed
-    redirect_to triage_case_path(@case.case_number)
+    # Authorization checked in before_action
+    if @case.update(case_params)
+      redirect_to triage_case_path(@case.case_number),
+                  notice: 'Case updated successfully.'
+    else
+      flash.now[:alert] = 'There were errors updating your case.'
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def logout
@@ -197,6 +252,14 @@ class Triage::CasesController < ApplicationController
     
     unless @case
       redirect_to new_triage_case_path, alert: 'Case not found.'
+    end
+  end
+
+  def check_edit_access
+    # Check authorization: only case creator (logged in) or admin can edit
+    unless can_edit_case?
+      redirect_to triage_case_path(@case.case_number),
+                  alert: 'You do not have permission to edit this case.'
     end
   end
 
@@ -241,6 +304,7 @@ class Triage::CasesController < ApplicationController
       :operating_system,
       :system_state,
       :fpp_outputs_state,
+      :custom_solution,
       affected_boards: [],
       media: []
     )
@@ -258,17 +322,21 @@ class Triage::CasesController < ApplicationController
   end
 
   def can_mark_solution_fixed?
+    can_edit_case?
+  end
+
+  def can_edit_case?
     # Check if user is an admin
     return true if admin_authenticated?
-    
-    # Check if access token is provided in params (case creator with access token)
-    if params[:access_token] == @case.access_token
-      return true
-    end
     
     # Check if user is logged in via triage email and case belongs to that email
     if triage_user_logged_in? && triage_user_email.present?
       return true if @case.belongs_to_email?(triage_user_email)
+    end
+    
+    # Check if access token is provided in params (case creator with access token)
+    if params[:access_token] == @case.access_token
+      return true
     end
     
     # Check if already verified in session (via access code) and email matches
@@ -288,6 +356,6 @@ class Triage::CasesController < ApplicationController
     session[:admin_authenticated] == true
   end
 
-  helper_method :triage_user_email, :triage_user_logged_in?, :can_mark_solution_fixed?
+  helper_method :triage_user_email, :triage_user_logged_in?, :can_mark_solution_fixed?, :can_edit_case?
 
 end

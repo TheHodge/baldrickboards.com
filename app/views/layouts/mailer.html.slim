@@ -1,3 +1,25 @@
+doctype html
 html
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    style
+      | /* Email-specific styles */
+      | body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #374151; background-color: #f9fafb; margin: 0; padding: 0; }
+      | .email-container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
+      | .email-header { background: linear-gradient(to right, #7c3aed, #6366f1); padding: 32px 24px; text-align: center; }
+      | .email-header h1 { color: #ffffff; font-size: 28px; font-weight: bold; margin: 0; }
+      | .email-content { padding: 32px 24px; }
+      | .button { display: inline-block; padding: 12px 24px; background-color: #7c3aed; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 16px 0; }
+      | .button:hover { background-color: #6d28d9; }
+      | .info-box { background-color: #f3f4f6; border-left: 4px solid #7c3aed; padding: 16px; margin: 20px 0; border-radius: 4px; }
+      | .code-box { background-color: #fef3c7; border: 2px solid #fbbf24; padding: 16px; margin: 20px 0; border-radius: 6px; text-align: center; font-family: monospace; font-size: 24px; font-weight: bold; color: #92400e; }
+      | .footer { background-color: #f9fafb; padding: 24px; text-align: center; font-size: 12px; color: #6b7280; border-top: 1px solid #e5e7eb; }
   body
-    = yield
+    .email-container
+      = yield
+      .footer
+        p
+          | This email was sent from Christmas Triage - Baldrick Boards
+          br
+          | If you have any questions, please contact us at #{Rails.application.credentials[:contact_email] || 'support@baldrickboards.com'}

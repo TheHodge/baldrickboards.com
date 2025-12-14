@@ -74,3 +74,5 @@ gem "ahoy_matey"
 # Use mini_magick (ImageMagick) instead of ruby-vips
 gem "image_processing", "~> 1.2"
 gem "mini_magick", "~> 5.3"
+
+# Text summarization - using custom implementation (no gem needed)
