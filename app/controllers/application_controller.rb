@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
 
   # Ahoy analytics tracking will be implemented directly
 
-  # Set locale from URL parameter
-  before_action :set_locale
+  # Set locale from URL parameter (skip for Active Storage and API routes)
+  before_action :set_locale, unless: :skip_locale?
   
   # Record page views for analytics
   after_action :record_page_view
@@ -37,6 +37,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def skip_locale?
+    api_route? || active_storage_route?
+  end
+
   def api_route?
     # Routes that should not be redirected for locale
     api_paths = %w[
@@ -57,8 +61,17 @@ class ApplicationController < ActionController::Base
     api_patterns.any? { |pattern| request.path.match?(pattern) }
   end
 
-  def default_url_options
-    { locale: I18n.locale }
+  def active_storage_route?
+    request.path.start_with?('/rails/active_storage')
+  end
+
+  def default_url_options(options = {})
+    # Don't add locale to Active Storage URLs
+    if request&.path&.start_with?('/rails/active_storage')
+      {}
+    else
+      { locale: I18n.locale }
+    end
   end
   
   def record_page_view

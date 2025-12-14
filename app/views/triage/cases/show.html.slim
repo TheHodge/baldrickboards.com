@@ -1,0 +1,256 @@
+- content_for :title, "Christmas Triage - Case ##{@case.case_number}"
+
+.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Case Created Success Box - Only show on case creation (when flash notice is present)
+  - if flash[:notice].present? && flash[:notice].include?('Case created successfully')
+    - case_url = triage_case_url(@case.case_number, locale: I18n.locale)
+    .mb-8.bg-gradient-to-r.from-indigo-50.to-purple-50.rounded-lg.shadow-sm.border.border-indigo-200.overflow-hidden
+      .p-6
+        h3.text-lg.font-bold.text-gray-900.mb-4.flex.items-center
+          svg.w-5.h-5.mr-2.text-indigo-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          | Case created!
+        p.text-gray-700.mb-4 You can now use this URL to get help in the Baldrick community or other resources (it's also pinged our team with the information):
+        .bg-white.border.border-gray-300.rounded-md.p-3.mb-4.flex.items-center.justify-between.gap-3
+          = link_to case_url, case_url, id: "case-url-link", class: "text-sm font-mono text-indigo-600 hover:text-indigo-800 break-all flex-1", target: "_blank", data: { url: case_url }
+          button#copy-url-btn.inline-flex.items-center.px-3.py-2.bg-gray-100.text-gray-700.rounded-md.hover:bg-gray-200.focus:outline-none.focus:ring-2.focus:ring-offset-2.focus:ring-indigo-500.transition-colors.text-sm.font-medium type="button" data-url=case_url
+            svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+            span#copy-btn-text Copy
+        - community_url = 'https://www.facebook.com/groups/ilightthat'
+        = link_to community_url, target: "_blank", class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors font-medium mb-4" do
+          svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+          | Visit Baldrick Community
+        p.text-sm.text-gray-600 At the bottom of the case we have some possible solutions for you to look at. If you find a solution, please update the case to say solved and let us know what fixed it!
+
+  / Breadcrumb Navigation
+  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: root_path }, { title: 'Christmas Triage', path: triage_cases_path }, { title: "Case ##{@case.case_number}", path: nil }]
+
+  / Header
+  .mb-8
+    .grid.lg:grid-cols-3.gap-6
+      .lg:col-span-2
+        h1.text-3xl.font-bold.text-gray-900.mb-2 Case ##{@case.case_number}
+        - if @case.affected_boards.present?
+          p.text-lg.text-gray-600 = "#{@case.name} is having issues with their #{@case.affected_boards.join(' & ')}"
+        - else
+          p.text-lg.text-gray-600 = "#{@case.name} has submitted a support case"
+      .flex.items-start.justify-end
+        - case @case.status
+        - when 'open'
+          span.inline-flex.items-center.px-4.py-2.rounded-full.text-sm.font-semibold.bg-blue-100.text-blue-800.border.border-blue-200
+            svg.w-4.h-4.mr-2 fill="currentColor" viewBox="0 0 20 20"
+              path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"
+            | Open
+        - when 'solved'
+          span.inline-flex.items-center.px-4.py-2.rounded-full.text-sm.font-semibold.bg-green-100.text-green-800.border.border-green-200
+            svg.w-4.h-4.mr-2 fill="currentColor" viewBox="0 0 20 20"
+              path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
+            | Solved
+        - when 'closed'
+          span.inline-flex.items-center.px-4.py-2.rounded-full.text-sm.font-semibold.bg-gray-100.text-gray-800.border.border-gray-200
+            svg.w-4.h-4.mr-2 fill="currentColor" viewBox="0 0 20 20"
+              path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"
+            | Closed
+
+  .grid.lg:grid-cols-3.gap-6
+    / Main Content
+    .lg:col-span-2.space-y-6
+      / Current Issue
+      .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
+        .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
+          h2.text-xl.font-bold.text-gray-900.flex.items-center
+            svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            | Current Issue
+        .p-6
+          .prose.max-w-none
+            p.text-gray-700.whitespace-pre-wrap = @case.problem_description
+
+      / What have they tried
+      - if @case.tried_solutions.present?
+        .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
+          .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
+            h2.text-xl.font-bold.text-gray-900.flex.items-center
+              svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+              | What have they tried?
+          .p-6
+            .prose.max-w-none
+              p.text-gray-700.whitespace-pre-wrap = @case.tried_solutions
+
+      / Photos & Media
+      - if @case.media.attached?
+        .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden data-controller="image-modal"
+          .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
+            h2.text-xl.font-bold.text-gray-900.flex.items-center
+              svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              | Photos & Media
+          .p-6
+            .grid.grid-cols-2.sm:grid-cols-3.md:grid-cols-4.gap-4
+              - @case.media.each do |media|
+                - if media.image?
+                  - thumbnail_variant = media.variant(resize_to_limit: [400, 400])
+                  .relative.group.rounded-lg.overflow-hidden.border.border-gray-200.bg-gray-50.shadow-sm.cursor-pointer.hover:shadow-md.transition-all data-action="click->image-modal#openModal" data-image-src=blob_url_without_locale(media) data-image-alt=media.filename.to_s
+                    = image_tag blob_url_without_locale(thumbnail_variant), class: "w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300", alt: media.filename.to_s
+                    .absolute.bottom-0.left-0.right-0.bg-gradient-to-t.from-black.via-black.to-transparent.p-2.pointer-events-none
+                      p.text-white.text-xs.font-medium.truncate = media.filename.to_s
+                - elsif media.video?
+                  .relative.group.rounded-lg.overflow-hidden.border.border-gray-200.bg-gray-50.shadow-sm
+                    = video_tag blob_url_without_locale(media), controls: true, class: "w-full h-48", preload: "metadata", playsinline: true, style: "object-fit: contain; background: black;"
+                    .absolute.bottom-0.left-0.right-0.bg-gradient-to-t.from-black.via-black.to-transparent.p-2.pointer-events-none
+                      p.text-white.text-xs.font-medium.truncate = media.filename.to_s
+          
+          / Image Modal
+          .fixed.inset-0.bg-black.bg-opacity-75.flex.items-center.justify-center.z-50.hidden data-image-modal-target="modal" data-action="click->image-modal#closeModal"
+            .relative.max-w-5xl.max-h-full.m-4
+              button.absolute.top-4.right-4.text-white.hover:text-gray-300.transition-colors.z-10.bg-black.bg-opacity-50.rounded-full.p-2 data-action="click->image-modal#closeModal"
+                svg.h-6.w-6 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"
+              .bg-white.rounded-lg.overflow-hidden.shadow-2xl
+                img.w-full.h-auto.max-h-screen.object-contain data-image-modal-target="modalImage" alt=""
+                .p-4.bg-gray-50
+                  p.text-gray-700.text-center.text-sm data-image-modal-target="modalCaption"
+
+    / Sidebar
+    .space-y-6
+      / Affected Boards
+      - if @case.affected_boards.present? && @case.affected_boards.any?
+        .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
+          .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
+            h3.text-lg.font-bold.text-gray-900 Affected Boards
+          .p-6
+            .flex.flex-wrap.gap-2
+              - @case.affected_boards.each do |board|
+                span.inline-flex.items-center.px-3.py-1.rounded-full.text-sm.font-medium.bg-purple-100.text-purple-800.border.border-purple-200
+                  = board
+      
+      / Case Details
+      .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
+        .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
+          h3.text-lg.font-bold.text-gray-900 Case Details
+        .p-6.space-y-4
+          div
+            .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 Submitted By
+            p.text-gray-900.font-medium = @case.name
+          - if @case.knowledge_level.present?
+            div
+              .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 Knowledge Level
+              p.text-gray-900.font-medium = "#{@case.knowledge_level}/10"
+          div
+            .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 Case Opened
+            p.text-gray-900.font-medium = @case.created_at.strftime("%A, %B %-d, %Y")
+            p.text-sm.text-gray-500 = @case.created_at.strftime("at %I:%M %p")
+
+      / System Information
+      - if @case.baldrick_version.present? || @case.fpp_version.present? || @case.xlights_version.present? || @case.operating_system.present?
+        .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
+          .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
+            h3.text-lg.font-bold.text-gray-900 System Information
+          .p-6.space-y-4
+            - if @case.baldrick_version.present?
+              div
+                .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 Baldrick Version
+                p.text-gray-900.font-medium = @case.baldrick_version
+            - if @case.fpp_version.present?
+              div
+                .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 FPP Version
+                p.text-gray-900.font-medium = @case.fpp_version
+            - if @case.xlights_version.present?
+              div
+                .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 xLights Version
+                p.text-gray-900.font-medium = @case.xlights_version
+            - if @case.operating_system.present?
+              div
+                .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 Operating System
+                p.text-gray-900.font-medium = @case.operating_system
+
+  / Solutions Section
+  - if @solutions.any?
+    .mt-8.bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
+      .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
+        h2.text-xl.font-bold.text-gray-900.flex.items-center
+          svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          | Suggested Solutions
+      .p-6
+        p.text-gray-700.mb-6 Here are some related solutions that might help you with this case:
+        
+        .space-y-4
+          - @solutions.each do |solution|
+            .bg-white.rounded-lg.border.border-gray-200.p-5.shadow-sm.hover:shadow-md.transition-shadow
+              .flex.flex-col.sm:flex-row.sm:items-start.sm:justify-between.gap-4
+                .flex-1
+                  h3.text-lg.font-semibold.text-gray-900.mb-2 = solution.problem_title
+                  .prose.max-w-none
+                    p.text-gray-700 = simple_format(solution.solution_text)
+                .flex-shrink-0
+                  = button_to mark_solution_fixed_triage_case_path(@case.case_number, solution_id: solution.id), method: :patch, class: "inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors font-medium text-sm whitespace-nowrap" do
+                    svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                      path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"
+                    | This fixed it!
+        
+        p.text-sm.text-gray-600.mt-6.flex.items-start
+          svg.w-4.h-4.mr-2.mt-0.5.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          | If any of these solutions worked, please click "This fixed it!" next to the appropriate one.
+
+- if flash[:notice].present? && flash[:notice].include?('Case created successfully')
+  script
+    | (function() {
+    |   function initCopyButton() {
+    |     var copyBtn = document.getElementById('copy-url-btn');
+    |     var copyBtnText = document.getElementById('copy-btn-text');
+    |     if (copyBtn && !copyBtn.dataset.initialized) {
+    |       copyBtn.dataset.initialized = 'true';
+    |       copyBtn.addEventListener('click', function() {
+    |         var url = copyBtn.getAttribute('data-url');
+    |         if (navigator.clipboard && navigator.clipboard.writeText) {
+    |           navigator.clipboard.writeText(url).then(function() {
+    |             copyBtnText.textContent = 'Copied!';
+    |             copyBtn.classList.remove('bg-gray-100', 'text-gray-700');
+    |             copyBtn.classList.add('bg-green-100', 'text-green-700');
+    |             setTimeout(function() {
+    |               copyBtnText.textContent = 'Copy';
+    |               copyBtn.classList.remove('bg-green-100', 'text-green-700');
+    |               copyBtn.classList.add('bg-gray-100', 'text-gray-700');
+    |             }, 2000);
+    |           }).catch(function(err) {
+    |             console.error('Failed to copy:', err);
+    |             copyBtnText.textContent = 'Error';
+    |           });
+    |         } else {
+    |           var textArea = document.createElement('textarea');
+    |           textArea.value = url;
+    |           textArea.style.position = 'fixed';
+    |           textArea.style.opacity = '0';
+    |           document.body.appendChild(textArea);
+    |           textArea.select();
+    |           try {
+    |             document.execCommand('copy');
+    |             copyBtnText.textContent = 'Copied!';
+    |             copyBtn.classList.remove('bg-gray-100', 'text-gray-700');
+    |             copyBtn.classList.add('bg-green-100', 'text-green-700');
+    |             setTimeout(function() {
+    |               copyBtnText.textContent = 'Copy';
+    |               copyBtn.classList.remove('bg-green-100', 'text-green-700');
+    |               copyBtn.classList.add('bg-gray-100', 'text-gray-700');
+    |             }, 2000);
+    |           } catch (err) {
+    |             console.error('Fallback copy failed:', err);
+    |             copyBtnText.textContent = 'Error';
+    |           }
+    |           document.body.removeChild(textArea);
+    |         }
+    |       });
+    |     }
+    |   }
+    |   if (document.readyState === 'loading') {
+    |     document.addEventListener('DOMContentLoaded', initCopyButton);
+    |   } else {
+    |     initCopyButton();
+    |   }
+    |   document.addEventListener('turbo:load', initCopyButton);
+    | })();

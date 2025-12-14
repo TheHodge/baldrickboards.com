@@ -47,5 +47,8 @@ module Docs
     # Add WWW redirect middleware
     require_relative '../lib/middleware/www_redirect'
     config.middleware.use Middleware::WwwRedirect
+    
+    # Configure image_processing to use mini_magick instead of ruby-vips
+    config.active_storage.variant_processor = :mini_magick
   end
 end

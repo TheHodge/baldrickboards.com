@@ -1,0 +1,56 @@
+- content_for :title, "My Cases - Christmas Triage"
+
+.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  / Breadcrumb Navigation
+  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: root_path }, { title: 'Christmas Triage', path: triage_cases_path }, { title: 'My Cases', path: nil }]
+
+  .mb-8
+    .flex.flex-col.md:flex-row.md:items-center.md:justify-between.gap-4.mb-6
+      div
+        h1.text-3xl.font-bold.text-gray-900.mb-2 My Cases
+        p.text-lg.text-gray-600 View all cases submitted from #{triage_user_email}
+      
+      .flex.flex-col.sm:flex-row.gap-3
+        = link_to new_triage_case_path, class: "inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors" do
+          svg.w-5.h-5.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"
+          | Create New Case
+        
+        = link_to triage_cases_path, class: "inline-flex items-center justify-center px-6 py-3 border border-purple-600 text-base font-medium rounded-md text-purple-600 bg-white hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors" do
+          | All Cases
+        
+        = link_to logout_triage_cases_path, method: :delete, class: "inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors" do
+          | Logout
+
+  / Cases List
+  - if @cases.any?
+    .bg-white.rounded-lg.shadow.border.border-gray-200.overflow-hidden
+      .px-6.py-4.bg-gray-50.border-b.border-gray-200
+        h2.text-xl.font-semibold.text-gray-900 Your Cases (#{@cases.count})
+      .divide-y.divide-gray-200
+        - @cases.each do |case_record|
+          .px-6.py-4.hover:bg-gray-50.transition-colors
+            .flex.flex-col.md:flex-row.md:items-start.md:justify-between.gap-4
+              .flex-1
+                .flex.items-center.gap-3.mb-2
+                  h3.text-lg.font-semibold.text-gray-900
+                    = link_to "Case ##{case_record.case_number}", triage_case_path(case_record.case_number, access_token: case_record.access_token), class: "text-purple-600 hover:text-purple-800"
+                  - case case_record.status
+                  - when 'open'
+                    span.inline-flex.items-center.px-2.5.py-0.5.rounded-full.text-xs.font-medium.bg-blue-100.text-blue-800 Open
+                  - when 'solved'
+                    span.inline-flex.items-center.px-2.5.py-0.5.rounded-full.text-xs.font-medium.bg-green-100.text-green-800 Solved
+                  - when 'closed'
+                    span.inline-flex.items-center.px-2.5.py-0.5.rounded-full.text-xs.font-medium.bg-gray-100.text-gray-800 Closed
+                
+                p.text-sm.text-gray-500.mb-2
+                  | Submitted on #{case_record.created_at.strftime('%B %d, %Y at %I:%M %p')}
+                
+                p.text-gray-700.mt-2 = truncate(case_record.problem_description, length: 200)
+              
+              .flex.flex-col.items-end.gap-2
+                = link_to "View Case", triage_case_path(case_record.case_number, access_token: case_record.access_token), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors"
+  - else
+    .bg-white.rounded-lg.shadow.border.border-gray-200.p-12.text-center
+      p.text-gray-500.mb-4 You haven't submitted any cases yet.
+      = link_to "Create your first case", new_triage_case_path, class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700"

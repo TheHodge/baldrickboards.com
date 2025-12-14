@@ -1,4 +1,19 @@
 module ApplicationHelper
+  # Generate Active Storage blob URL without locale parameter
+  # Uses Rails URL helpers directly to bypass default_url_options
+  # Supports both blobs and variants
+  def blob_url_without_locale(blob_or_variant)
+    # Check if it's a variant (ActiveStorage::VariantWithRecord or similar)
+    if blob_or_variant.respond_to?(:blob) && blob_or_variant.respond_to?(:variation)
+      # For variants, use Rails' representation path helper
+      # Use routes directly to bypass default_url_options
+      Rails.application.routes.url_helpers.rails_representation_path(blob_or_variant, only_path: true)
+    else
+      # For regular blobs, use Rails' blob path helper
+      # Use routes directly to bypass default_url_options
+      Rails.application.routes.url_helpers.rails_blob_path(blob_or_variant, only_path: true)
+    end
+  end
   def page_breadcrumbs(*breadcrumbs)
     breadcrumbs.map.with_index do |crumb, index|
       if index == breadcrumbs.length - 1
@@ -19,6 +34,8 @@ module ApplicationHelper
       { title: 'Dashboard', path: admin_root_path },
       { title: 'Newsletter Subscribers', path: admin_newsletter_subscribers_path },
       { title: 'Feedback Management', path: admin_feedbacks_path },
+      { title: 'Triage Cases', path: admin_triage_cases_path },
+      { title: 'Triage Solutions', path: admin_triage_solutions_path },
       { title: 'Search Analytics', path: admin_search_logs_path },
       { title: 'Website Analytics', path: admin_analytics_path },
       { title: '404 Error Logs', path: admin_error_logs_path }
