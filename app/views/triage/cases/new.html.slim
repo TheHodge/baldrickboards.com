@@ -29,10 +29,12 @@
           
           div
             = form.label :email, "Your Email", class: "block text-sm font-medium text-gray-700 mb-2"
+            p.text-xs.text-gray-500.mb-2 So we can send you updates and you can edit / mark as solved
             = form.email_field :email, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500", required: true
           
           div
             = form.label :problem_description, "What seems to be the problem", class: "block text-sm font-medium text-gray-700 mb-2"
+            p.text-xs.text-gray-500.mb-2 Please be as descriptive as possible - LIGHTS DO NOT WORK is not helpful, but lights on port 5 are showing the wrong colours when FPP is playing does,
             = form.text_area :problem_description, rows: 5, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500", required: true, minlength: 10
 
         / Affected Boards
@@ -46,7 +48,9 @@
 
         / Media Upload
         .space-y-2.pb-6.border-b.border-gray-200
-          = form.label :media, "Please add some screenshots / videos", class: "block text-sm font-medium text-gray-700 mb-2"
+          .flex.items-center.justify-between.mb-2
+            = form.label :media, "Please add some screenshots / videos", class: "block text-sm font-medium text-gray-700"
+            span#file-count.text-xs.text-gray-500.font-medium 0 / 10 files (max 100MB each)
           .grid.md:grid-cols-2.gap-6.items-start
             / Left side - Text content
             div
@@ -303,6 +307,8 @@ javascript:
     const mediaPreview = document.getElementById('media-preview');
     let selectedFiles = [];
     let isProcessing = false;
+    const MAX_FILES = 10;
+    const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB in bytes
     
     if (!mediaUpload || !mediaPreview) return;
     
@@ -334,10 +340,26 @@ javascript:
       }
     }
     
-    // Store files before form submission
+    // Store files before form submission and validate
     const form = mediaUpload.closest('form');
     if (form) {
-      form.addEventListener('submit', function() {
+      form.addEventListener('submit', function(e) {
+        // Validate file count
+        if (selectedFiles.length > MAX_FILES) {
+          e.preventDefault();
+          alert('Maximum of ' + MAX_FILES + ' files allowed. Please remove some files first.');
+          return false;
+        }
+        
+        // Validate file sizes
+        const oversizedFiles = selectedFiles.filter(f => f.file.size > MAX_FILE_SIZE);
+        if (oversizedFiles.length > 0) {
+          e.preventDefault();
+          const fileNames = oversizedFiles.map(f => f.file.name).join(', ');
+          alert('The following files are too large (maximum 100MB per file):\n' + fileNames);
+          return false;
+        }
+        
         // Only store if there are actually files selected
         if (selectedFiles.length > 0) {
           const fileData = selectedFiles.map(f => ({
@@ -356,6 +378,9 @@ javascript:
     // Clear storage on page load if no errors (fresh form)
     // Restore only if validation errors are present
     restoreFilesFromStorage();
+    
+    // Initialize file count display
+    updateFileCount();
     
     function addFileToPreview(file) {
       const fileId = Date.now() + Math.random();
@@ -399,6 +424,23 @@ javascript:
       
       reader.readAsDataURL(file);
       selectedFiles.push({ id: fileId, file: file });
+      updateFileCount();
+    }
+    
+    function updateFileCount() {
+      const fileCountEl = document.getElementById('file-count');
+      if (fileCountEl) {
+        const count = selectedFiles.length;
+        const maxFiles = MAX_FILES;
+        fileCountEl.textContent = count + ' / ' + maxFiles + ' files (max 100MB each)';
+        if (count >= maxFiles) {
+          fileCountEl.classList.remove('text-gray-500');
+          fileCountEl.classList.add('text-red-600', 'font-semibold');
+        } else {
+          fileCountEl.classList.remove('text-red-600', 'font-semibold');
+          fileCountEl.classList.add('text-gray-500');
+        }
+      }
     }
     
     function addFileToPreviewFromMetadata(filename, contentType, size) {
@@ -434,6 +476,8 @@ javascript:
       div.appendChild(removeButton);
       
       mediaPreview.appendChild(div);
+      selectedFiles.push({ id: fileId, file: null, metadata: { name: filename, type: contentType, size: size } });
+      updateFileCount();
     }
     
     function removeFile(fileId) {
@@ -443,6 +487,7 @@ javascript:
         element.remove();
       }
       updateFileInput();
+      updateFileCount();
     }
     
     function updateFileInput() {
@@ -496,8 +541,29 @@ javascript:
       }
       
       const filesToAdd = [];
+      const errors = [];
+      
+      // Check total file count limit
+      if (selectedFiles.length >= MAX_FILES) {
+        alert('Maximum of ' + MAX_FILES + ' files allowed. Please remove some files first.');
+        e.target.value = '';
+        isProcessing = false;
+        return;
+      }
       
       newFiles.forEach(file => {
+        // Check file size
+        if (file.size > MAX_FILE_SIZE) {
+          errors.push(file.name + ' is too large (maximum 100MB per file)');
+          return;
+        }
+        
+        // Check total count after adding this file
+        if (selectedFiles.length + filesToAdd.length >= MAX_FILES) {
+          errors.push('Maximum of ' + MAX_FILES + ' files allowed');
+          return;
+        }
+        
         // More robust duplicate check - check all three properties
         const isDuplicate = selectedFiles.some(f => {
           return f.file.name === file.name && 
@@ -509,6 +575,14 @@ javascript:
           filesToAdd.push(file);
         }
       });
+      
+      // Show errors if any
+      if (errors.length > 0) {
+        alert(errors.join('\n'));
+        e.target.value = '';
+        isProcessing = false;
+        return;
+      }
       
       // Add all new files at once
       filesToAdd.forEach(file => {
@@ -560,8 +634,28 @@ javascript:
           file.type.startsWith('image/') || file.type.startsWith('video/')
         );
         
+        // Check total file count limit
+        if (selectedFiles.length >= MAX_FILES) {
+          alert('Maximum of ' + MAX_FILES + ' files allowed. Please remove some files first.');
+          isProcessing = false;
+          return;
+        }
+        
         const filesToAdd = [];
+        const errors = [];
         files.forEach(file => {
+          // Check file size
+          if (file.size > MAX_FILE_SIZE) {
+            errors.push(file.name + ' is too large (maximum 100MB per file)');
+            return;
+          }
+          
+          // Check total count after adding this file
+          if (selectedFiles.length + filesToAdd.length >= MAX_FILES) {
+            errors.push('Maximum of ' + MAX_FILES + ' files allowed');
+            return;
+          }
+          
           const isDuplicate = selectedFiles.some(f => {
             const sameName = f.file.name === file.name;
             const sameSize = f.file.size === file.size;
@@ -572,6 +666,13 @@ javascript:
             filesToAdd.push(file);
           }
         });
+        
+        // Show errors if any
+        if (errors.length > 0) {
+          alert(errors.join('\n'));
+          isProcessing = false;
+          return;
+        }
         
         filesToAdd.forEach(file => {
           addFileToPreview(file);

@@ -15,6 +15,25 @@ class Case < ApplicationRecord
   validates :access_code, presence: true, length: { is: 6 }
   validates :case_number, presence: true, uniqueness: true
   validates :knowledge_level, inclusion: { in: 1..10 }, allow_nil: true
+  validate :validate_media_attachments
+
+  def validate_media_attachments
+    return unless media.attached?
+
+    # Check file count
+    if media.count > 10
+      errors.add(:media, "cannot have more than 10 files")
+      return
+    end
+
+    # Check individual file sizes (100MB = 100 * 1024 * 1024 bytes)
+    max_size = 100.megabytes
+    media.each do |file|
+      if file.byte_size > max_size
+        errors.add(:media, "#{file.filename} is too large (maximum 100MB per file)")
+      end
+    end
+  end
 
   # Scopes
   scope :open, -> { where(status: 'open') }
