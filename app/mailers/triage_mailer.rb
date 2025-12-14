@@ -4,8 +4,22 @@ class TriageMailer < ApplicationMailer
 
   def case_created(case_record)
     @case = case_record
-    # No longer including access_token in URL - users should use access code or magic link
-    @case_url = triage_case_url(@case.case_number, locale: I18n.locale)
+    
+    # Generate a signed token that includes email and case_number
+    # This can be verified without storing anything in session/database
+    verifier = Rails.application.message_verifier('triage_case_magic_link')
+    token_data = {
+      email: @case.email.downcase,
+      case_number: @case.case_number,
+      expires_at: 30.days.from_now.to_i
+    }
+    signed_token = verifier.generate(token_data)
+    
+    # Create magic link that logs them in and redirects to their case
+    @magic_link = magic_link_login_triage_cases_url(
+      token: signed_token,
+      locale: I18n.locale
+    )
     
     mail(
       to: @case.email,

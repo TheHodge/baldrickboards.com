@@ -19,12 +19,9 @@ Solution: <%= solution.solution_text %>
 <% end %>
 <% end %>
 
-Your Access Code: <%= @case.access_code %>
-(Keep this code safe - you'll need it to access your case)
+View your case: <%= @magic_link %>
 
-View your case: <%= @case_url %>
-
-We've also emailed you a code to be able to log back into this page to update with further information or mark it as solved in future.
+This link will automatically log you in and take you directly to your case. If you need to edit your case later, you can use your access code: <%= @case.access_code %>. You can also request a magic link from the Christmas Triage page.
 
 ---
 Case created on <%= @case.created_at.strftime("%B %d, %Y at %I:%M %p") %>

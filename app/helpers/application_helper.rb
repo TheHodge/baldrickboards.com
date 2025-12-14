@@ -1,4 +1,24 @@
 module ApplicationHelper
+  # Knowledge level descriptions for triage cases
+  def knowledge_level_descriptions
+    {
+      1 => "I saw this on a youtube video and thought this looks easy",
+      2 => "I've got as far as plugging it in",
+      3 => "I've got a show that works, but I don't know how",
+      4 => "I still have to google which end of the pigtail to plugin",
+      5 => "I'm alright at this actually",
+      6 => "I've helped out others with their issues",
+      7 => "I once went 5 days without crashing xLights",
+      8 => "I don't even turn my show off to change pixels",
+      9 => "TBG wishes he had my show",
+      10 => "I know more than you"
+    }
+  end
+
+  def knowledge_level_description(level)
+    knowledge_level_descriptions[level] || "Unknown"
+  end
+
   # Generate Active Storage blob URL without locale parameter
   # Uses Rails URL helpers directly to bypass default_url_options
   # Supports both blobs and variants

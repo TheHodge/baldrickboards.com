@@ -53,6 +53,51 @@ class Triage::CasesController < ApplicationController
 
   def magic_link_login
     token = params[:token]
+    
+    # Try to verify signed token (from case creation email)
+    begin
+      verifier = Rails.application.message_verifier('triage_case_magic_link')
+      token_data = verifier.verify(token)
+      
+      # Token data comes back with string keys, not symbols
+      email = token_data['email'] || token_data[:email]
+      case_number = token_data['case_number'] || token_data[:case_number]
+      expires_at_timestamp = token_data['expires_at'] || token_data[:expires_at]
+      
+      # Handle expires_at - it might be a Time object or a timestamp
+      expires_at = if expires_at_timestamp.is_a?(Time)
+        expires_at_timestamp
+      elsif expires_at_timestamp.is_a?(Integer) || expires_at_timestamp.is_a?(Float)
+        Time.at(expires_at_timestamp)
+      else
+        # Default to 30 days from now if not provided
+        30.days.from_now
+      end
+      
+      if expires_at > Time.current && email.present? && case_number.present?
+        # Login successful
+        session[:triage_user_email] = email
+        session[:triage_user_logged_in_at] = Time.current
+        
+        # Grant access to the specific case
+        case_record = Case.find_by(case_number: case_number)
+        if case_record
+          session["case_#{case_record.id}_verified"] = true
+          session["case_#{case_record.id}_verified_at"] = Time.current
+          session["case_#{case_record.id}_verified_email"] = email
+          
+          redirect_to triage_case_path(case_number), notice: 'Successfully logged in!'
+        else
+          redirect_to my_cases_triage_cases_path, notice: 'Successfully logged in!'
+        end
+        return
+      end
+    rescue ActiveSupport::MessageVerifier::InvalidSignature, ArgumentError => e
+      # Token is invalid, try session-based token (from send_magic_link)
+      Rails.logger.debug "Signed token verification failed: #{e.message}"
+    end
+    
+    # Fallback to session-based token (for send_magic_link flow)
     stored_token = session[:triage_magic_link_token]
     stored_email = session[:triage_magic_link_email]
     expires_at = session[:triage_magic_link_expires_at]
