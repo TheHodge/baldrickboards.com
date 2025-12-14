@@ -199,14 +199,9 @@
                           h4.text-base.font-semibold.text-gray-900.mb-2 = solution.problem_title
                           .prose.max-w-none.text-sm
                             p.text-gray-700 = simple_format(solution.solution_text)
-                        .flex-shrink-0
-                          - if can_mark_solution_fixed?
+                        - if can_mark_solution_fixed?
+                          .flex-shrink-0
                             = button_to mark_solution_fixed_triage_case_path(@case.case_number, solution_id: solution.id), method: :patch, class: "inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors font-medium text-sm whitespace-nowrap" do
-                              svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"
-                              | This fixed it!
-                          - else
-                            .inline-flex.items-center.px-4.py-2.bg-gray-300.text-gray-500.rounded-md.cursor-not-allowed.font-medium.text-sm.whitespace-nowrap title="Only the case creator can mark solutions as fixed"
                               svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"
                               | This fixed it!
