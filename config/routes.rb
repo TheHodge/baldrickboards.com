@@ -259,6 +259,8 @@ Rails.application.routes.draw do
     resources :triage_cases, path: 'triage/cases', only: [:index, :show, :update, :destroy] do
       member do
         patch :update_status
+        patch :mark_spam
+        patch :force_solution
       end
     end
     resources :triage_solutions, path: 'triage/solutions'

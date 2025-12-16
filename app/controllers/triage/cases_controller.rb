@@ -3,12 +3,12 @@ class Triage::CasesController < ApplicationController
   before_action :check_edit_access, only: [:edit, :update, :mark_solved, :mark_solution_fixed]
 
   def index
-    @cases = Case.recent.limit(50)
+    @cases = Case.not_spam.recent.limit(50)
   end
 
   def my_cases
     if triage_user_email.present?
-      @cases = Case.by_email(triage_user_email).recent
+      @cases = Case.by_email(triage_user_email).not_spam.recent
     else
       redirect_to triage_cases_path, alert: 'Please log in to view your cases.'
     end
@@ -186,6 +186,12 @@ class Triage::CasesController < ApplicationController
   end
 
   def show
+    # Check if case is spam - redirect if so (unless admin)
+    if @case.spam? && !admin_authenticated?
+      redirect_to triage_cases_path, alert: 'Case not found.'
+      return
+    end
+    
     @solutions = @case.solutions.includes(:case_solutions)
                       .order('case_solutions.match_score DESC')
                       .limit(5)

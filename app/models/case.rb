@@ -44,6 +44,8 @@ class Case < ApplicationRecord
   scope :by_status, ->(status) { where(status: status) }
   scope :by_user, ->(user) { where(user_id: user.id) } # For future login
   scope :by_email, ->(email) { where(email: email) } # For access code fallback
+  scope :not_spam, -> { where(spam: false) } # Exclude spam cases from public views
+  scope :spam, -> { where(spam: true) } # Only spam cases
 
   # Callbacks
   before_validation :generate_access_token, on: :create
