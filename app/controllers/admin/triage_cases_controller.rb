@@ -64,9 +64,9 @@ class Admin::TriageCasesController < Admin::BaseController
       end
       format.turbo_stream do
         if spam_value
-          redirect_to admin_triage_case_path(@case, format: :html), notice: 'Case marked as spam and hidden from public views.'
+          redirect_to admin_triage_case_path(@case), notice: 'Case marked as spam and hidden from public views.', status: :see_other
         else
-          redirect_to admin_triage_case_path(@case, format: :html), notice: 'Case unmarked as spam and visible in public views.'
+          redirect_to admin_triage_case_path(@case), notice: 'Case unmarked as spam and visible in public views.', status: :see_other
         end
       end
     end
