@@ -114,9 +114,9 @@
         h3.text-xl.font-bold.mb-4 Quick Actions
         .space-y-2
           - if @case.spam?
-            = button_to "Unmark as Spam", mark_spam_admin_triage_case_path(@case, spam: false), method: :patch, local: true, class: "w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm"
+            = button_to "Unmark as Spam", mark_spam_admin_triage_case_path(@case, spam: false), method: :patch, data: { turbo: false }, class: "w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm"
           - else
-            = button_to "Mark as Spam", mark_spam_admin_triage_case_path(@case, spam: true), method: :patch, local: true, class: "w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm"
+            = button_to "Mark as Spam", mark_spam_admin_triage_case_path(@case, spam: true), method: :patch, data: { turbo: false }, class: "w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm"
           - if @case.open?
             = button_to "Mark as Solved", update_status_admin_triage_case_path(@case, status: 'solved'), method: :patch, class: "w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm"
           - if @case.solved?

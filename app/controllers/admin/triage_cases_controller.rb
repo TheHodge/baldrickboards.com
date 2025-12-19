@@ -54,21 +54,10 @@ class Admin::TriageCasesController < Admin::BaseController
     spam_value = params[:spam] == 'true'
     @case.update(spam: spam_value)
     
-    respond_to do |format|
-      format.html do
-        if spam_value
-          redirect_to admin_triage_case_path(@case), notice: 'Case marked as spam and hidden from public views.'
-        else
-          redirect_to admin_triage_case_path(@case), notice: 'Case unmarked as spam and visible in public views.'
-        end
-      end
-      format.turbo_stream do
-        if spam_value
-          redirect_to admin_triage_case_path(@case), notice: 'Case marked as spam and hidden from public views.', status: :see_other
-        else
-          redirect_to admin_triage_case_path(@case), notice: 'Case unmarked as spam and visible in public views.', status: :see_other
-        end
-      end
+    if spam_value
+      redirect_to admin_triage_case_path(@case), notice: 'Case marked as spam and hidden from public views.'
+    else
+      redirect_to admin_triage_case_path(@case), notice: 'Case unmarked as spam and visible in public views.'
     end
   end
 
