@@ -52,12 +52,19 @@ class Admin::TriageCasesController < Admin::BaseController
 
   def mark_spam
     spam_value = params[:spam] == 'true'
-    @case.update(spam: spam_value)
     
-    if spam_value
-      redirect_to admin_triage_case_path(@case), notice: 'Case marked as spam and hidden from public views.'
-    else
-      redirect_to admin_triage_case_path(@case), notice: 'Case unmarked as spam and visible in public views.'
+    begin
+      @case.update!(spam: spam_value)
+      @case.reload
+      
+      if spam_value
+        redirect_to admin_triage_case_path(@case), notice: 'Case marked as spam and hidden from public views.'
+      else
+        redirect_to admin_triage_case_path(@case), notice: 'Case unmarked as spam and visible in public views.'
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      Rails.logger.error "Failed to update spam status: #{e.message}"
+      redirect_to admin_triage_case_path(@case), alert: "Failed to update spam status: #{e.message}"
     end
   end
 
