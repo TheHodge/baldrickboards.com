@@ -11,3 +11,4 @@ class CaseSolution < ApplicationRecord
   scope :by_score, -> { order(match_score: :desc) }
   scope :presented, -> { where.not(presented_at: nil) }
 end
+

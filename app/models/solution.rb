@@ -31,3 +31,4 @@ class Solution < ApplicationRecord
     increment!(:success_count)
   end
 end
+

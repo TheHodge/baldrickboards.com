@@ -31,3 +31,4 @@ class CreateCases < ActiveRecord::Migration[8.0]
     # Foreign key to solutions will be added after solutions table is created
   end
 end
+

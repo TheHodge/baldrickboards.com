@@ -15,3 +15,4 @@ class CreateSolutions < ActiveRecord::Migration[8.0]
     add_index :solutions, :active
   end
 end
+

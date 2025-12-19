@@ -74,3 +74,4 @@ class Admin::TriageSolutionsController < Admin::BaseController
     permitted
   end
 end
+
