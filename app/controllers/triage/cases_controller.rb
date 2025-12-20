@@ -191,10 +191,12 @@ class Triage::CasesController < ApplicationController
       redirect_to triage_cases_path, alert: 'Case not found.'
       return
     end
-    
+
     @solutions = @case.solutions.includes(:case_solutions)
                       .order('case_solutions.match_score DESC')
                       .limit(5)
+    # Eager load comments for display
+    @case.case_comments.load
     # Eager load solved_by_solution association
     @case = Case.includes(:solved_by_solution).find(@case.id)
   end
