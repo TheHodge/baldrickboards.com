@@ -46,4 +46,28 @@ class TriageMailer < ApplicationMailer
       subject: "Christmas Triage - Magic Link Login"
     )
   end
+
+  def admin_comment(case_record, comment)
+    @case = case_record
+    @comment = comment
+    
+    # Generate a magic link so they can view their case
+    verifier = Rails.application.message_verifier('triage_case_magic_link')
+    token_data = {
+      email: @case.email.downcase,
+      case_number: @case.case_number,
+      expires_at: 30.days.from_now.to_i
+    }
+    signed_token = verifier.generate(token_data)
+    
+    @case_url = magic_link_login_triage_cases_url(
+      token: signed_token,
+      locale: I18n.locale
+    )
+    
+    mail(
+      to: @case.email,
+      subject: "Update on Your Christmas Triage Case ##{@case.case_number}"
+    )
+  end
 end

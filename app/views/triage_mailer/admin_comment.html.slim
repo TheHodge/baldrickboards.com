@@ -1,0 +1,37 @@
+.container style="max-width: 600px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;"
+  .header style="background: linear-gradient(to right, #6366f1, #8b5cf6); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;"
+    h1 style="color: white; margin: 0; font-size: 24px;" Christmas Triage - Admin Update
+
+  .content style="background: white; padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;"
+    p style="color: #374151; font-size: 16px; line-height: 1.6; margin: 0 0 20px 0;" 
+      | Hi #{@case.name},
+    
+    p style="color: #374151; font-size: 16px; line-height: 1.6; margin: 0 0 20px 0;"
+      | We have an update on your support case:
+    
+    .case-info style="background: #f9fafb; border-left: 4px solid #6366f1; padding: 20px; margin: 20px 0; border-radius: 4px;"
+      p style="margin: 0 0 10px 0; color: #6b7280; font-size: 14px;"
+        strong style="color: #374151;" Case Number: 
+        | ##{@case.case_number}
+      - if @case.problem_summary.present?
+        p style="margin: 0; color: #6b7280; font-size: 14px;"
+          strong style="color: #374151;" Issue: 
+          = @case.problem_summary
+      - else
+        p style="margin: 0; color: #6b7280; font-size: 14px;"
+          strong style="color: #374151;" Issue: 
+          = truncate(@case.problem_description, length: 100)
+    
+    .comment-box style="background: #fef3c7; border: 2px solid #fbbf24; padding: 20px; margin: 20px 0; border-radius: 8px;"
+      p style="margin: 0 0 10px 0; color: #92400e; font-size: 14px; font-weight: bold;"
+        | Message from #{@comment.admin_name}:
+      p style="margin: 0; color: #78350f; font-size: 16px; line-height: 1.6; white-space: pre-wrap;" = @comment.content
+    
+    .button-container style="text-align: center; margin: 30px 0;"
+      = link_to "View Your Case", @case_url, style: "display: inline-block; background: #6366f1; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px;"
+    
+    p style="color: #6b7280; font-size: 14px; line-height: 1.6; margin: 20px 0 0 0;"
+      | You can reply to this email or use the link above to view your case and add more information if needed.
+    
+    p style="color: #9ca3af; font-size: 12px; line-height: 1.6; margin: 30px 0 0 0; border-top: 1px solid #e5e7eb; padding-top: 20px;"
+      | This is an automated message from the Christmas Triage support system.

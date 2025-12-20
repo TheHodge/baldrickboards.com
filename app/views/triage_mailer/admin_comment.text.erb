@@ -1,0 +1,21 @@
+Hi <%= @case.name %>,
+
+We have an update on your support case:
+
+Case Number: #<%= @case.case_number %>
+<% if @case.problem_summary.present? %>
+Issue: <%= @case.problem_summary %>
+<% else %>
+Issue: <%= truncate(@case.problem_description, length: 100) %>
+<% end %>
+
+Message from <%= @comment.admin_name %>:
+
+<%= @comment.content %>
+
+View your case: <%= @case_url %>
+
+You can reply to this email or use the link above to view your case and add more information if needed.
+
+---
+This is an automated message from the Christmas Triage support system.

@@ -261,6 +261,7 @@ Rails.application.routes.draw do
         patch :update_status
         patch :mark_spam
         patch :force_solution
+        post :add_comment
       end
     end
     resources :triage_solutions, path: 'triage/solutions'

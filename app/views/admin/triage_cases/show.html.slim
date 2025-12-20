@@ -58,6 +58,35 @@
           .flex.justify-end
             = form.submit "Update Case", class: "bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md"
 
+      / Admin Comments Section
+      .bg-white.shadow.rounded-lg.p-6
+        h2.text-2xl.font-bold.mb-4 Admin Comments
+        p.text-sm.text-gray-600.mb-4 Add a comment that will be emailed to the user.
+        
+        = form_with url: add_comment_admin_triage_case_path(@case), method: :post, local: true, class: "space-y-4" do |form|
+          div
+            = form.label :admin_name, "Your Name", class: "block text-sm font-medium text-gray-700 mb-1"
+            = form.text_field :admin_name, placeholder: "Admin name", class: "w-full px-3 py-2 border border-gray-300 rounded-md", required: true
+          
+          div
+            = form.label :content, "Comment", class: "block text-sm font-medium text-gray-700 mb-1"
+            = form.text_area :content, rows: 5, placeholder: "Enter your comment...", class: "w-full px-3 py-2 border border-gray-300 rounded-md", required: true
+          
+          .flex.justify-end
+            = form.submit "Send Comment to User", class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
+      
+      / Previous Comments
+      - if @case.case_comments.any?
+        .bg-white.shadow.rounded-lg.p-6
+          h2.text-2xl.font-bold.mb-4 Previous Comments
+          .space-y-4
+            - @case.case_comments.order(created_at: :desc).each do |comment|
+              .border.border-gray-200.rounded-lg.p-4
+                .flex.justify-between.items-start.mb-2
+                  p.text-sm.font-semibold.text-gray-900 = comment.admin_name
+                  p.text-xs.text-gray-500 = comment.created_at.strftime("%B %-d, %Y at %I:%M %p")
+                p.text-gray-700.whitespace-pre-wrap = comment.content
+
       / Force Solution Section
       .bg-white.shadow.rounded-lg.p-6
         h2.text-2xl.font-bold.mb-4 Force Solution

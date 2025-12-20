@@ -1,5 +1,5 @@
 class Admin::TriageCasesController < Admin::BaseController
-  before_action :set_case, only: [:show, :update, :destroy, :update_status, :mark_spam, :force_solution]
+  before_action :set_case, only: [:show, :update, :destroy, :update_status, :mark_spam, :force_solution, :add_comment]
 
   def index
     @cases = Case.includes(:solutions, :solved_by_solution)
@@ -29,6 +29,8 @@ class Admin::TriageCasesController < Admin::BaseController
                       .order('case_solutions.match_score DESC')
     # Get all active solutions for force solution dropdown
     @all_solutions = Solution.where(active: true).order(:problem_title)
+    # Load comments for display
+    @case.case_comments.load
   end
 
   def update
@@ -61,6 +63,21 @@ class Admin::TriageCasesController < Admin::BaseController
       redirect_to admin_triage_case_path(@case), notice: 'Case marked as spam and hidden from public views.'
     else
       redirect_to admin_triage_case_path(@case), notice: 'Case unmarked as spam and visible in public views.'
+    end
+  end
+
+  def add_comment
+    comment = @case.case_comments.build(
+      content: params[:content],
+      admin_name: params[:admin_name]
+    )
+    
+    if comment.save
+      # Send email to the user
+      TriageMailer.admin_comment(@case, comment).deliver_later
+      redirect_to admin_triage_case_path(@case), notice: 'Comment added and email sent to user.'
+    else
+      redirect_to admin_triage_case_path(@case), alert: "Failed to add comment: #{comment.errors.full_messages.join(', ')}"
     end
   end
 

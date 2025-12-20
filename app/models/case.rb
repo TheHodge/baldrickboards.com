@@ -4,6 +4,7 @@ class Case < ApplicationRecord
   belongs_to :solved_by_solution, class_name: 'Solution', foreign_key: 'solved_by_solution_id', optional: true
   has_many :case_solutions, dependent: :destroy
   has_many :solutions, through: :case_solutions
+  has_many :case_comments, dependent: :destroy
   has_many_attached :media
 
   # Validations
