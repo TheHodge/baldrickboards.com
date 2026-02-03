@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_16_161720) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_20_231943) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -96,6 +96,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_16_161720) do
     t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
     t.index ["visitor_token", "started_at"], name: "index_ahoy_visits_on_visitor_token_and_started_at"
+  end
+
+  create_table "case_comments", force: :cascade do |t|
+    t.bigint "case_id", null: false
+    t.text "content"
+    t.string "admin_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id"], name: "index_case_comments_on_case_id"
   end
 
   create_table "case_solutions", force: :cascade do |t|
@@ -223,6 +232,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_16_161720) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "case_comments", "cases"
   add_foreign_key "case_solutions", "cases"
   add_foreign_key "case_solutions", "solutions"
   add_foreign_key "cases", "solutions", column: "solved_by_solution_id"

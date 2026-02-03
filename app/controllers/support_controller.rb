@@ -1,6 +1,5 @@
 class SupportController < ApplicationController
   def index
-    @contact = Contact.new
   end
 
   def software

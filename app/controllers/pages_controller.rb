@@ -10,4 +10,8 @@ class PagesController < ApplicationController
   
   def beginners_guide
   end
+
+  def everyones_business
+    render layout: "application"
+  end
 end

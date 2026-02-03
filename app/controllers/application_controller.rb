@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def skip_locale?
-    api_route? || active_storage_route?
+    api_route? || active_storage_route? || request.path == "/qr-code-sticker"
   end
 
   def api_route?

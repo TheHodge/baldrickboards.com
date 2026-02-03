@@ -126,6 +126,9 @@ Rails.application.routes.draw do
   # Search logging endpoints (no locale needed for API endpoints)
   post "search_logs/log_search", to: "search_logs#log_search"
   post "search_logs/log_click", to: "search_logs#log_click"
+
+  # Secret QR code page (no locale, short URL for easy scanning)
+  get "qr-code-sticker", to: "pages#everyones_business", as: :qr_code_sticker
   
   # Locale-based routing
   scope "(:locale)", locale: /en|es|fr|de/ do
