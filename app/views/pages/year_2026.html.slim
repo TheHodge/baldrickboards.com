@@ -1,0 +1,20 @@
+- content_for :title, "A Baldrick April Fools Announcement??"
+
+.max-w-4xl.mx-auto.px-4.sm:px-6.lg:px-8.py-10.sm:py-14
+  .text-center.mb-8
+    h1.text-2xl.sm:text-3xl.font-bold.text-gray-900.mb-3.leading-tight
+      | A BALDRICK APRIL FOOLS ANNOUNCEMENT??
+    p.text-lg.text-gray-600.max-w-2xl.mx-auto
+      | Watch the video below and subscribe for updates on firmware, boards, and community news.
+
+  .bg-white.rounded-xl.shadow-lg.overflow-hidden.mb-10
+    / 16:9 embed (aspect-w-* is not in our Tailwind build; padding-bottom keeps ratio)
+    .relative.w-full.h-0.overflow-hidden.bg-black style="padding-bottom: 56.25%;"
+      iframe.absolute.top-0.left-0.w-full.h-full src="https://www.youtube.com/embed/d3PKE8uTSp8" title="Baldrick April Fools announcement" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen
+    .px-6.sm:px-8.py-6
+      p.text-lg.text-gray-700.text-center.max-w-2xl.mx-auto.leading-relaxed
+        | Yep, we've got a bit of an announcement with our friends at Build a Light Show.
+    .relative.w-full.h-0.overflow-hidden.bg-black.border-t.border-gray-200 style="padding-bottom: 56.25%;"
+      iframe.absolute.top-0.left-0.w-full.h-full src="https://www.youtube.com/embed/_Vxtu50_kb4" title="Baldrick Boards video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen
+
+  = render "shared/newsletter_signup"

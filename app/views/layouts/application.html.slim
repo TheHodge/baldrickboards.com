@@ -207,8 +207,9 @@ html
     main.pt-16
       = yield
     
-    / Newsletter signup
-    = render 'shared/newsletter_signup'
+    / Newsletter signup (pages can set @hide_newsletter_footer to show it inline instead)
+    - unless @hide_newsletter_footer
+      = render 'shared/newsletter_signup'
     
     = render 'shared/footer'
     

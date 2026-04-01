@@ -282,4 +282,15 @@ RSpec.describe "Pages", type: :request do
       expect(response.body).to include("Unsubscribe")
     end
   end
+
+  describe "GET /2026" do
+    it "loads landing page with embedded video and newsletter form" do
+      get "/2026"
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include("youtube.com/embed/d3PKE8uTSp8")
+      expect(response.body).to include("youtube.com/embed/_Vxtu50_kb4")
+      expect(response.body).to include("newsletter_subscriber")
+      expect(response.body.scan("Get the latest Baldrick updates").size).to eq(1)
+    end
+  end
 end

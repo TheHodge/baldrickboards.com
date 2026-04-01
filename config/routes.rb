@@ -129,6 +129,9 @@ Rails.application.routes.draw do
 
   # Secret QR code page (no locale, short URL for easy scanning)
   get "qr-code-sticker", to: "pages#everyones_business", as: :qr_code_sticker
+
+  # Campaign / content landing (no locale prefix)
+  get "2026", to: "pages#year_2026", as: :year_2026
   
   # Locale-based routing
   scope "(:locale)", locale: /en|es|fr|de/ do

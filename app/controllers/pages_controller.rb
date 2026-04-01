@@ -14,4 +14,8 @@ class PagesController < ApplicationController
   def everyones_business
     render layout: "application"
   end
+
+  def year_2026
+    @hide_newsletter_footer = true
+  end
 end
