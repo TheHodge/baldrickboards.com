@@ -290,7 +290,8 @@ RSpec.describe "Pages", type: :request do
       expect(response.body).to include("youtube.com/embed/d3PKE8uTSp8")
       expect(response.body).to include("youtube.com/embed/_Vxtu50_kb4")
       expect(response.body).to include("newsletter_subscriber")
-      expect(response.body.scan("Get the latest Baldrick updates").size).to eq(1)
+      expect(response.body).to include("Join our mailing list")
+      expect(response.body).to include("Find out when we make our announcements.")
     end
   end
 end

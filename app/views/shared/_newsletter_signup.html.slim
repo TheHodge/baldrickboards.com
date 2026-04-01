@@ -1,11 +1,13 @@
-/ Newsletter signup section
+/ Newsletter signup section (optional locals: heading, description)
+- newsletter_heading = local_assigns[:heading] || "Get the latest Baldrick updates to your email"
+- newsletter_description = local_assigns[:description] || "Stay informed about new firmware releases, board updates, and community news."
 .bg-white.border-t.border-gray-200.py-6
   .max-w-4xl.mx-auto.px-4.sm:px-6.lg:px-8
     .text-center
       h3.text-xl.font-bold.text-gray-900.mb-2
-        | Get the latest Baldrick updates to your email
+        = newsletter_heading
       p.text-sm.text-gray-600.mb-4.max-w-2xl.mx-auto
-        | Stay informed about new firmware releases, board updates, and community news.
+        = newsletter_description
       
       / Newsletter Form
       .max-w-lg.mx-auto
