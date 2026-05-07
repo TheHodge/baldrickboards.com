@@ -39,7 +39,7 @@ RSpec.describe "Todoist webhooks", type: :request do
 
   before do
     allow(Todoist::Config).to receive(:webhook_secret).and_return("test-secret")
-    allow(TriageMailer).to receive(:admin_comment).and_return(double(deliver_later: true))
+    allow(TriageMailer).to receive(:admin_comment).and_return(double(deliver_now: true))
   end
 
   context "with comment webhook event" do
@@ -78,6 +78,7 @@ RSpec.describe "Todoist webhooks", type: :request do
       end.to change(CaseComment, :count).by(1)
 
       expect(response).to have_http_status(:ok)
+      expect(CaseComment.last.admin_name).to eq("Baldrick Team")
     end
   end
 

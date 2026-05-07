@@ -77,7 +77,7 @@ class Admin::TriageCasesController < Admin::BaseController
     if comment.save
       Todoist::CaseSync.sync_comment(@case, comment)
       # Send email to the user
-      TriageMailer.admin_comment(@case, comment).deliver_later
+      TriageMailer.admin_comment(@case, comment).deliver_now
       redirect_to admin_triage_case_path(@case), notice: 'Comment added and email sent to user.'
     else
       redirect_to admin_triage_case_path(@case), alert: "Failed to add comment: #{comment.errors.full_messages.join(', ')}"

@@ -54,9 +54,9 @@ module Todoist
 
         comment = case_record.case_comments.create!(
           content: content,
-          admin_name: "Todoist Admin"
+          admin_name: "Baldrick Team"
         )
-        TriageMailer.admin_comment(case_record, comment).deliver_later
+        TriageMailer.admin_comment(case_record, comment).deliver_now
       elsif completed_event?(event)
         case_record.update!(status: "closed", todoist_last_event_at: Time.current)
       elsif deleted_event?(event)
