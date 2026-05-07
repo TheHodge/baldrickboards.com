@@ -22,6 +22,10 @@ module Todoist
       ENV.fetch("TODOIST_PROJECT_NAME", "Support Issues")
     end
 
+    def needs_reply_label
+      "triage-needs-reply"
+    end
+
     def base_url
       ENV.fetch("TODOIST_API_BASE_URL", "https://api.todoist.com/api/v1")
     end

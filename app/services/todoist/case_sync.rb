@@ -54,6 +54,7 @@ module Todoist
           end
         end
 
+        set_needs_reply_label(case_record, client, enabled: source == "User reply")
         touch_synced(case_record)
       rescue StandardError => e
         mark_sync_error(case_record, e)
@@ -65,6 +66,7 @@ module Todoist
         client = Todoist::Client.new
         if %w[solved closed].include?(status)
           client.close_task!(task_id: case_record.todoist_task_id)
+          set_needs_reply_label(case_record, client, enabled: false)
         elsif status == "open"
           client.reopen_task!(task_id: case_record.todoist_task_id)
         else
@@ -147,7 +149,18 @@ module Todoist
         return if case_record.open?
 
         client.close_task!(task_id: case_record.todoist_task_id)
+        set_needs_reply_label(case_record, client, enabled: false)
         touch_synced(case_record)
+      end
+
+      def clear_needs_reply_label(case_record)
+        return unless syncable_case?(case_record)
+
+        client = Todoist::Client.new
+        set_needs_reply_label(case_record, client, enabled: false)
+        touch_synced(case_record)
+      rescue StandardError => e
+        mark_sync_error(case_record, e)
       end
 
       def task_title(case_record)
@@ -182,6 +195,23 @@ module Todoist
         case_record.update_columns(todoist_sync_status: "failed", todoist_sync_error: error.message)
       rescue StandardError
         nil
+      end
+
+      def set_needs_reply_label(case_record, client, enabled:)
+        task = client.get_task!(task_id: case_record.todoist_task_id)
+        existing_labels = Array(task["labels"]).map(&:to_s)
+        label = Todoist::Config.needs_reply_label
+        updated_labels = if enabled
+          (existing_labels + [label]).uniq
+        else
+          existing_labels - [label]
+        end
+        return if updated_labels.sort == existing_labels.sort
+
+        client.update_task!(
+          task_id: case_record.todoist_task_id,
+          attributes: { labels: updated_labels }
+        )
       end
 
       def syncable_case?(case_record)

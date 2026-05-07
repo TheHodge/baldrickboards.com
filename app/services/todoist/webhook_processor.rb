@@ -57,6 +57,11 @@ module Todoist
           content: content,
           admin_name: "Baldrick Team"
         )
+        begin
+          Todoist::CaseSync.clear_needs_reply_label(case_record)
+        rescue StandardError => e
+          Rails.logger.error("[TodoistWebhook] Failed clearing needs-reply label for case ##{case_record.case_number}: #{e.message}")
+        end
         TriageMailer.admin_comment(case_record, comment).deliver_now
       elsif reopened_event?(event)
         case_record.update!(status: "open", todoist_last_event_at: Time.current)

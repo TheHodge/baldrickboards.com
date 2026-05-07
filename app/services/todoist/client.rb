@@ -36,6 +36,10 @@ module Todoist
       post_json("/tasks/#{task_id}", attributes)
     end
 
+    def get_task!(task_id:)
+      get("/tasks/#{task_id}")
+    end
+
     def close_task!(task_id:)
       post_json("/tasks/#{task_id}/close", {})
     end
