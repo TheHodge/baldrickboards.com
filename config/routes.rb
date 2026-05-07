@@ -134,6 +134,7 @@ Rails.application.routes.draw do
   get "2026", to: "pages#year_2026", as: :year_2026
 
   namespace :integrations do
+    match "todoist/webhook", to: "todoist_webhooks#verify", via: [:get, :head]
     post "todoist/webhook", to: "todoist_webhooks#create"
   end
   

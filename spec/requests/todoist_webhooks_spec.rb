@@ -1,6 +1,18 @@
 require "rails_helper"
 
 RSpec.describe "Todoist webhooks", type: :request do
+  describe "verification endpoint" do
+    it "returns ok for GET" do
+      get "/integrations/todoist/webhook"
+      expect(response).to have_http_status(:ok)
+    end
+
+    it "returns ok for HEAD" do
+      head "/integrations/todoist/webhook"
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   let!(:case_record) do
     Case.create!(
       name: "Webhook User",

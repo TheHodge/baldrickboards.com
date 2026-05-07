@@ -1,4 +1,8 @@
 class Integrations::TodoistWebhooksController < ActionController::API
+  def verify
+    head :ok
+  end
+
   def create
     raw_payload = request.raw_post
     signature = request.headers["X-Todoist-Hmac-SHA256"]
