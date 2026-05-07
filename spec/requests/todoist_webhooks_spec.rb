@@ -35,7 +35,7 @@ RSpec.describe "Todoist webhooks", type: :request do
     }
   end
   let(:payload) { payload_hash.to_json }
-  let(:signature) { OpenSSL::HMAC.hexdigest("SHA256", "test-secret", payload) }
+  let(:signature) { Base64.strict_encode64(OpenSSL::HMAC.digest("SHA256", "test-secret", payload)) }
 
   before do
     allow(Todoist::Config).to receive(:webhook_secret).and_return("test-secret")
@@ -93,6 +93,19 @@ RSpec.describe "Todoist webhooks", type: :request do
            headers: { "CONTENT_TYPE" => "application/json", "X-Todoist-Hmac-SHA256" => "wrong" }
 
       expect(response).to have_http_status(:unauthorized)
+    end
+  end
+
+  context "with hex signature format" do
+    let(:event_name) { "task:comment_added" }
+    let(:hex_signature) { OpenSSL::HMAC.hexdigest("SHA256", "test-secret", payload) }
+
+    it "accepts hex signature for compatibility" do
+      post "/integrations/todoist/webhook",
+           params: payload,
+           headers: { "CONTENT_TYPE" => "application/json", "X-Todoist-Hmac-SHA256" => hex_signature }
+
+      expect(response).to have_http_status(:ok)
     end
   end
 end
