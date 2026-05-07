@@ -213,6 +213,7 @@ Rails.application.routes.draw do
         post :verify_access
         get :mark_solved
         patch :mark_solution_fixed
+        post :add_comment
       end
     end
   end

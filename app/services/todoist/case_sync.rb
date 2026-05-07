@@ -29,13 +29,13 @@ module Todoist
         mark_sync_error(case_record, e)
       end
 
-      def sync_comment(case_record, comment)
+      def sync_comment(case_record, comment, source: "Admin comment")
         return unless syncable_case?(case_record)
 
         client = Todoist::Client.new
         client.create_comment!(
           task_id: case_record.todoist_task_id,
-          content: "Admin comment from #{comment.admin_name}: #{comment.content}"
+          content: "#{source} from #{comment.admin_name}: #{comment.content}"
         )
         touch_synced(case_record)
       rescue StandardError => e
@@ -87,22 +87,40 @@ module Todoist
           end
         end
 
-        return if case_record.system_state.blank?
+        if case_record.system_state.present?
+          Tempfile.create(["case-#{case_record.case_number}-system-state", ".txt"]) do |tmp|
+            tmp.write(case_record.system_state)
+            tmp.rewind
 
-        Tempfile.create(["case-#{case_record.case_number}-system-state", ".txt"]) do |tmp|
-          tmp.write(case_record.system_state)
-          tmp.rewind
+            uploaded = client.upload_file!(
+              io: tmp,
+              filename: "case-#{case_record.case_number}-system-state.txt",
+              content_type: "text/plain"
+            )
+            client.create_comment!(
+              task_id: case_record.todoist_task_id,
+              content: "System state attached from Christmas Triage",
+              attachment: uploaded
+            )
+          end
+        end
 
-          uploaded = client.upload_file!(
-            io: tmp,
-            filename: "case-#{case_record.case_number}-system-state.txt",
-            content_type: "text/plain"
-          )
-          client.create_comment!(
-            task_id: case_record.todoist_task_id,
-            content: "System state attached from Christmas Triage",
-            attachment: uploaded
-          )
+        if case_record.fpp_outputs_state.present?
+          Tempfile.create(["case-#{case_record.case_number}-fpp-outputs-state", ".txt"]) do |tmp|
+            tmp.write(case_record.fpp_outputs_state)
+            tmp.rewind
+
+            uploaded = client.upload_file!(
+              io: tmp,
+              filename: "case-#{case_record.case_number}-fpp-outputs-state.txt",
+              content_type: "text/plain"
+            )
+            client.create_comment!(
+              task_id: case_record.todoist_task_id,
+              content: "FPP outputs state attached from Christmas Triage",
+              attachment: uploaded
+            )
+          end
         end
 
         touch_synced(case_record)

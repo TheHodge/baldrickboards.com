@@ -170,5 +170,35 @@ RSpec.describe 'Triage Cases', type: :request do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe 'POST /triage/cases/:id/add_comment' do
+    let!(:case_record) do
+      Case.create!(
+        name: 'Test User',
+        email: 'test@example.com',
+        problem_description: 'Test problem description',
+        baldrick_version: '1.0.0',
+        status: 'open',
+        access_token: SecureRandom.urlsafe_base64(32),
+        access_code: '123456',
+        case_number: rand(100000..999999)
+      )
+    end
+
+    before do
+      allow(Todoist::CaseSync).to receive(:sync_comment)
+    end
+
+    it 'creates a threaded case comment for authorized case owner' do
+      post verify_access_triage_case_path(case_record.case_number, locale: :en), params: { access_code: '123456' }
+
+      expect do
+        post add_comment_triage_case_path(case_record.case_number, locale: :en), params: { content: 'Any updates from my side' }
+      end.to change(CaseComment, :count).by(1)
+
+      expect(response).to redirect_to(triage_case_path(case_record.case_number, locale: :en))
+      expect(CaseComment.last.content).to eq('Any updates from my side')
+    end
+  end
 end
 

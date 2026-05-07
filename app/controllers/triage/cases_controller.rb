@@ -1,6 +1,6 @@
 class Triage::CasesController < ApplicationController
-  before_action :set_case, only: [:show, :edit, :verify_access, :mark_solved, :mark_solution_fixed, :update]
-  before_action :check_edit_access, only: [:edit, :update, :mark_solved, :mark_solution_fixed]
+  before_action :set_case, only: [:show, :edit, :verify_access, :mark_solved, :mark_solution_fixed, :update, :add_comment]
+  before_action :check_edit_access, only: [:edit, :update, :mark_solved, :mark_solution_fixed, :add_comment]
 
   def index
     @cases = Case.not_spam.recent.limit(50)
@@ -301,6 +301,24 @@ class Triage::CasesController < ApplicationController
     else
       flash.now[:alert] = 'There were errors updating your case.'
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def add_comment
+    content = params[:content]&.strip
+    if content.blank?
+      redirect_to triage_case_path(@case.case_number), alert: "Please enter a comment before sending."
+      return
+    end
+
+    commenter_name = @case.name.presence || "Case Owner"
+    comment = @case.case_comments.build(content: content, admin_name: commenter_name)
+
+    if comment.save
+      Todoist::CaseSync.sync_comment(@case, comment, source: "User reply")
+      redirect_to triage_case_path(@case.case_number), notice: "Reply sent to the support team."
+    else
+      redirect_to triage_case_path(@case.case_number), alert: "Failed to send reply: #{comment.errors.full_messages.join(', ')}"
     end
   end
 
