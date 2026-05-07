@@ -131,6 +131,21 @@ The old documentation (in the `old/` directory) was built with Docusaurus. To mi
 
 The application is configured for deployment using Kamal. See `config/deploy.yml` for deployment settings.
 
+## Todoist Integration Configuration
+
+Set these environment variables (or Rails credentials equivalents) when enabling Christmas Triage sync:
+
+- `TODOIST_SYNC_ENABLED` (`true` / `false`)
+- `TODOIST_API_TOKEN`
+- `TODOIST_WEBHOOK_SECRET`
+- `TODOIST_WORKSPACE_NAME` (default: `iLightThat`)
+- `TODOIST_PROJECT_NAME` (default: `Support Issues`)
+
+Webhook endpoint:
+
+- `POST /integrations/todoist/webhook`
+- Header: `X-Todoist-Hmac-SHA256` (HMAC SHA-256 signature of raw payload)
+
 ## Contributing
 
 1. Create a new branch for your changes

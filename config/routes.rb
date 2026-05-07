@@ -132,6 +132,10 @@ Rails.application.routes.draw do
 
   # Campaign / content landing (no locale prefix)
   get "2026", to: "pages#year_2026", as: :year_2026
+
+  namespace :integrations do
+    post "todoist/webhook", to: "todoist_webhooks#create"
+  end
   
   # Locale-based routing
   scope "(:locale)", locale: /en|es|fr|de/ do

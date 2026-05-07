@@ -35,6 +35,7 @@ class Admin::TriageCasesController < Admin::BaseController
 
   def update
     if @case.update(case_params)
+      Todoist::CaseSync.sync_status(@case, @case.status) if case_params.key?(:status)
       redirect_to admin_triage_case_path(@case), notice: 'Case updated successfully.'
     else
       render :show, status: :unprocessable_entity
@@ -46,6 +47,7 @@ class Admin::TriageCasesController < Admin::BaseController
     
     if %w[open solved closed].include?(new_status)
       @case.update(status: new_status)
+      Todoist::CaseSync.sync_status(@case, new_status)
       redirect_to admin_triage_case_path(@case), notice: "Case status updated to #{new_status}."
     else
       redirect_to admin_triage_case_path(@case), alert: 'Invalid status.'
@@ -73,6 +75,7 @@ class Admin::TriageCasesController < Admin::BaseController
     )
     
     if comment.save
+      Todoist::CaseSync.sync_comment(@case, comment)
       # Send email to the user
       TriageMailer.admin_comment(@case, comment).deliver_later
       redirect_to admin_triage_case_path(@case), notice: 'Comment added and email sent to user.'
@@ -92,9 +95,11 @@ class Admin::TriageCasesController < Admin::BaseController
         return
       end
       @case.mark_as_solved!(solution.id, nil)
+      Todoist::CaseSync.sync_status(@case, @case.status)
       redirect_to admin_triage_case_path(@case), notice: "Case marked as solved with solution: #{solution.problem_title}"
     elsif custom_solution.present?
       @case.mark_as_solved!(nil, custom_solution)
+      Todoist::CaseSync.sync_status(@case, @case.status)
       redirect_to admin_triage_case_path(@case), notice: 'Case marked as solved with custom solution.'
     else
       redirect_to admin_triage_case_path(@case), alert: 'Please select a solution or provide a custom solution.'
@@ -102,6 +107,7 @@ class Admin::TriageCasesController < Admin::BaseController
   end
 
   def destroy
+    Todoist::CaseSync.sync_delete(@case)
     @case.destroy
     redirect_to admin_triage_cases_path, notice: 'Case deleted successfully.'
   end

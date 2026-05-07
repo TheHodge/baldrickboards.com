@@ -175,6 +175,9 @@ class Triage::CasesController < ApplicationController
       TriageMailer.case_created(@case).deliver_now
       TriageMailer.case_created_admin(@case).deliver_now
 
+      # Sync to Todoist (non-blocking for user flow)
+      Todoist::CaseSync.sync_create(@case)
+
       # Redirect to case show page (no access token needed for viewing)
       redirect_to triage_case_path(@case.case_number),
                   notice: 'Case created successfully! Check your email for access code.',
@@ -279,6 +282,8 @@ class Triage::CasesController < ApplicationController
       # Mark case as solved with custom solution
       @case.update!(status: 'solved', solved_by_solution_id: nil, custom_solution: custom_solution)
     end
+
+    Todoist::CaseSync.sync_status(@case, @case.status)
 
     redirect_to triage_case_path(@case.case_number),
                 notice: 'Thank you for letting us know! Your case has been marked as solved.'

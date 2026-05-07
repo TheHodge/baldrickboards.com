@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_20_231943) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_07_134100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -145,10 +145,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_20_231943) do
     t.text "problem_summary"
     t.string "ip_address"
     t.boolean "spam"
+    t.string "todoist_task_id"
+    t.string "todoist_project_id"
+    t.datetime "todoist_synced_at"
+    t.string "todoist_sync_status", default: "pending", null: false
+    t.text "todoist_sync_error"
+    t.datetime "todoist_last_event_at"
     t.index ["access_token"], name: "index_cases_on_access_token", unique: true
     t.index ["case_number"], name: "index_cases_on_case_number", unique: true
     t.index ["email"], name: "index_cases_on_email"
     t.index ["status"], name: "index_cases_on_status"
+    t.index ["todoist_sync_status"], name: "index_cases_on_todoist_sync_status"
+    t.index ["todoist_task_id"], name: "index_cases_on_todoist_task_id", unique: true
     t.index ["user_id"], name: "index_cases_on_user_id"
   end
 
@@ -228,6 +236,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_20_231943) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["active"], name: "index_solutions_on_active"
+  end
+
+  create_table "todoist_webhook_events", force: :cascade do |t|
+    t.string "event_key", null: false
+    t.string "event_name"
+    t.jsonb "payload", default: {}, null: false
+    t.datetime "processed_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_key"], name: "index_todoist_webhook_events_on_event_key", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

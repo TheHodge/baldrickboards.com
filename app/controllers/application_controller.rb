@@ -47,12 +47,14 @@ class ApplicationController < ActionController::Base
       /search_logs/log_search
       /search_logs/log_click
       /sitemap.xml
+      /integrations/todoist/webhook
     ]
     
     # Also check for common API patterns
     api_patterns = [
       /^\/search_logs\//,  # All search logging routes
       /^\/sitemap\.xml$/,  # Sitemap
+      /^\/integrations\/todoist\/webhook$/,
     ]
     
     # Check exact path matches first

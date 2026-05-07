@@ -9,6 +9,7 @@ RSpec.describe 'Triage Cases', type: :request do
           email: 'test@example.com',
           problem_description: 'This is a test problem description that is long enough',
           affected_boards: ['Baldrick8'],
+          baldrick_version: '1.0.0',
           status: 'open'
         }
       }
@@ -34,6 +35,7 @@ RSpec.describe 'Triage Cases', type: :request do
         # Mock mailers
         allow(TriageMailer).to receive(:case_created).and_return(double(deliver_now: true))
         allow(TriageMailer).to receive(:case_created_admin).and_return(double(deliver_now: true))
+        allow(Todoist::CaseSync).to receive(:sync_create)
       end
 
       after do
@@ -155,6 +157,7 @@ RSpec.describe 'Triage Cases', type: :request do
         name: 'Test User',
         email: 'test@example.com',
         problem_description: 'Test problem description',
+        baldrick_version: '1.0.0',
         status: 'open',
         access_token: SecureRandom.urlsafe_base64(32),
         access_code: '123456',

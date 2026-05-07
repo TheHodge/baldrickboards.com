@@ -47,6 +47,8 @@ class Case < ApplicationRecord
   scope :by_email, ->(email) { where(email: email) } # For access code fallback
   scope :not_spam, -> { where(spam: false) } # Exclude spam cases from public views
   scope :spam, -> { where(spam: true) } # Only spam cases
+  scope :todoist_synced, -> { where.not(todoist_task_id: nil) }
+  scope :todoist_unsynced, -> { where(todoist_task_id: nil) }
 
   # Callbacks
   before_validation :generate_access_token, on: :create
