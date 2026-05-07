@@ -57,6 +57,30 @@ RSpec.describe "Todoist webhooks", type: :request do
     end
   end
 
+  context "with Todoist note:added payload shape" do
+    let(:event_name) { "note:added" }
+    let(:payload_hash) do
+      {
+        event_name: event_name,
+        event_data: {
+          item_id: "task-123",
+          item: { id: "task-123" },
+          content: "Todoist note payload comment"
+        }
+      }
+    end
+
+    it "maps item_id to case and creates comment" do
+      expect do
+        post "/integrations/todoist/webhook",
+             params: payload,
+             headers: { "CONTENT_TYPE" => "application/json", "X-Todoist-Hmac-SHA256" => signature }
+      end.to change(CaseComment, :count).by(1)
+
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   context "with close webhook event" do
     let(:event_name) { "task:closed" }
 

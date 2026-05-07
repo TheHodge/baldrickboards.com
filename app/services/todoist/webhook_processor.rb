@@ -73,6 +73,8 @@ module Todoist
     def extract_task_id(event)
       event[:task_id].presence ||
         event.dig(:event_data, :task_id).presence ||
+        event.dig(:event_data, :item_id).presence ||
+        event.dig(:event_data, :item, :id).presence ||
         event.dig(:event_data, :id).presence ||
         event.dig(:task, :id).presence ||
         event[:id].presence
@@ -87,7 +89,8 @@ module Todoist
     end
 
     def comment_event?(event)
-      event_name(event).include?("comment")
+      name = event_name(event)
+      name.include?("comment") || name.include?("note:added")
     end
 
     def completed_event?(event)
