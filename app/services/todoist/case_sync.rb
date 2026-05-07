@@ -25,11 +25,12 @@ module Todoist
         )
 
         sync_attachments(case_record, client)
+        sync_initial_status(case_record, client)
       rescue StandardError => e
         mark_sync_error(case_record, e)
       end
 
-      def sync_comment(case_record, comment, source: "Admin comment")
+      def sync_comment(case_record, comment, source: "Admin comment", attachments: [])
         return unless syncable_case?(case_record)
 
         client = Todoist::Client.new
@@ -37,6 +38,22 @@ module Todoist
           task_id: case_record.todoist_task_id,
           content: "#{source} from #{comment.admin_name}: #{comment.content}"
         )
+
+        Array(attachments).each do |attachment|
+          attachment.blob.open do |file|
+            uploaded = client.upload_file!(
+              io: file,
+              filename: attachment.filename.to_s,
+              content_type: attachment.blob.content_type || "application/octet-stream"
+            )
+            client.create_comment!(
+              task_id: case_record.todoist_task_id,
+              content: "Attachment uploaded from Christmas Triage reply",
+              attachment: uploaded
+            )
+          end
+        end
+
         touch_synced(case_record)
       rescue StandardError => e
         mark_sync_error(case_record, e)
@@ -46,7 +63,7 @@ module Todoist
         return unless syncable_case?(case_record)
 
         client = Todoist::Client.new
-        if status == "closed"
+        if %w[solved closed].include?(status)
           client.close_task!(task_id: case_record.todoist_task_id)
         elsif status == "open"
           client.reopen_task!(task_id: case_record.todoist_task_id)
@@ -126,6 +143,13 @@ module Todoist
         touch_synced(case_record)
       end
 
+      def sync_initial_status(case_record, client)
+        return if case_record.open?
+
+        client.close_task!(task_id: case_record.todoist_task_id)
+        touch_synced(case_record)
+      end
+
       def task_title(case_record)
         "Triage ##{case_record.case_number} - #{case_record.problem_summary.presence || case_record.problem_description.to_s.truncate(80)}"
       end
@@ -138,6 +162,7 @@ module Todoist
           "Boards: #{Array(case_record.affected_boards).join(', ')}",
           "Versions: Baldrick #{case_record.baldrick_version}, FPP #{case_record.fpp_version}, xLights #{case_record.xlights_version}",
           "OS: #{case_record.operating_system}",
+          "Tried solutions: #{case_record.tried_solutions.presence || 'Not provided'}",
           "",
           "Problem:",
           case_record.problem_description

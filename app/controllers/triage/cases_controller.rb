@@ -306,6 +306,12 @@ class Triage::CasesController < ApplicationController
 
   def add_comment
     content = params[:content]&.strip
+    media_files = if params[:media].present?
+      Array(params[:media]).reject(&:blank?).select { |f| f.is_a?(ActionDispatch::Http::UploadedFile) }
+    else
+      []
+    end
+
     if content.blank?
       redirect_to triage_case_path(@case.case_number), alert: "Please enter a comment before sending."
       return
@@ -315,7 +321,15 @@ class Triage::CasesController < ApplicationController
     comment = @case.case_comments.build(content: content, admin_name: commenter_name)
 
     if comment.save
-      Todoist::CaseSync.sync_comment(@case, comment, source: "User reply")
+      attached_media = []
+      if media_files.present?
+        media_files.each do |file|
+          @case.media.attach(file)
+        end
+        attached_media = @case.media.attachments.order(created_at: :desc).limit(media_files.length)
+      end
+
+      Todoist::CaseSync.sync_comment(@case, comment, source: "User reply", attachments: attached_media)
       redirect_to triage_case_path(@case.case_number), notice: "Reply sent to the support team."
     else
       redirect_to triage_case_path(@case.case_number), alert: "Failed to send reply: #{comment.errors.full_messages.join(', ')}"

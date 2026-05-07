@@ -199,6 +199,23 @@ RSpec.describe 'Triage Cases', type: :request do
       expect(response).to redirect_to(triage_case_path(case_record.case_number, locale: :en))
       expect(CaseComment.last.content).to eq('Any updates from my side')
     end
+
+    it 'allows image attachments with a reply' do
+      image_path = Rails.root.join('tmp', 'reply_image.png')
+      FileUtils.mkdir_p(Rails.root.join('tmp'))
+      File.write(image_path, "\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x02\x00\x00\x00\x90wS\xde\x00\x00\x00\tpHYs\x00\x00\x0b\x13\x00\x00\x0b\x13\x01\x00\x9a\x9c\x18\x00\x00\x00\nIDATx\x9cc\xf8\x00\x00\x00\x01\x00\x01\x00\x00\x00\x00IEND\xaeB`\x82")
+      image_file = Rack::Test::UploadedFile.new(image_path, 'image/png')
+
+      post verify_access_triage_case_path(case_record.case_number, locale: :en), params: { access_code: '123456' }
+
+      expect do
+        post add_comment_triage_case_path(case_record.case_number, locale: :en),
+             params: { content: 'Sharing screenshot', media: [image_file] }
+      end.to change(CaseComment, :count).by(1)
+        .and change { case_record.reload.media.count }.by(1)
+
+      File.delete(image_path) if File.exist?(image_path)
+    end
   end
 end
 
