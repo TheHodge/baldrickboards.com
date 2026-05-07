@@ -48,6 +48,20 @@ module ApplicationHelper
     Rails.application.routes.url_helpers.newsletter_subscribers_unsubscribe_url(email: email, host: Rails.application.config.action_mailer.default_url_options[:host] || 'localhost:3001')
   end
 
+  # Render plain text comments with safe link support.
+  # Supports markdown links like [label](https://example.com) and bare URLs.
+  def render_comment_content(text)
+    escaped = ERB::Util.html_escape(text.to_s)
+    markdown_linked = escaped.gsub(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/) do
+      label = Regexp.last_match(1)
+      url = Regexp.last_match(2)
+      %(<a href="#{url}" target="_blank" rel="noopener noreferrer">#{label}</a>)
+    end
+
+    linked = auto_link(markdown_linked, html: { target: "_blank", rel: "noopener noreferrer" })
+    sanitize(linked, tags: %w[a br], attributes: %w[href target rel])
+  end
+
   # Admin menu helper
   def admin_menu_items
     [
