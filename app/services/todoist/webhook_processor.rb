@@ -51,12 +51,15 @@ module Todoist
       if comment_event?(event)
         content = extract_comment_content(event)
         return if content.blank?
+        return if outbound_sync_comment?(content)
 
         comment = case_record.case_comments.create!(
           content: content,
           admin_name: "Baldrick Team"
         )
         TriageMailer.admin_comment(case_record, comment).deliver_now
+      elsif reopened_event?(event)
+        case_record.update!(status: "open", todoist_last_event_at: Time.current)
       elsif completed_event?(event)
         case_record.update!(status: "closed", todoist_last_event_at: Time.current)
       elsif deleted_event?(event)
@@ -93,8 +96,17 @@ module Todoist
       name.include?("comment") || name.include?("note:added")
     end
 
+    def outbound_sync_comment?(content)
+      content.start_with?("Admin comment from ", "User reply from ")
+    end
+
     def completed_event?(event)
       event_name(event).include?("complete") || event_name(event).include?("close")
+    end
+
+    def reopened_event?(event)
+      name = event_name(event)
+      name.include?("reopen") || name.include?("uncomplete") || name.include?("uncompleted")
     end
 
     def deleted_event?(event)
