@@ -58,7 +58,7 @@ module ApplicationHelper
       %(<a href="#{url}" target="_blank" rel="noopener noreferrer">#{label}</a>)
     end
 
-    linked = auto_link(markdown_linked, html: { target: "_blank", rel: "noopener noreferrer" })
+    linked = link_plain_urls(markdown_linked)
     sanitize(linked, tags: %w[a br], attributes: %w[href target rel])
   end
 
@@ -164,6 +164,13 @@ module ApplicationHelper
   end
 
   private
+
+  def link_plain_urls(text)
+    text.gsub(%r{(?<!["'>])(https?://[^\s<]+)}) do
+      url = Regexp.last_match(1)
+      %(<a href="#{url}" target="_blank" rel="noopener noreferrer">#{url}</a>)
+    end
+  end
 
   # Helper to generate Open Graph image URLs using asset pipeline with full URLs
   def og_image_url(image_key)
