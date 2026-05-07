@@ -318,7 +318,13 @@ class Triage::CasesController < ApplicationController
     end
 
     commenter_name = @case.name.presence || "Case Owner"
-    comment = @case.case_comments.build(content: content, admin_name: commenter_name)
+    comment_content = content
+    if media_files.present?
+      attached_names = media_files.map(&:original_filename).join(", ")
+      comment_content = "#{content}\n\nAttached images: #{attached_names}"
+    end
+
+    comment = @case.case_comments.build(content: comment_content, admin_name: commenter_name)
 
     if comment.save
       attached_media = []

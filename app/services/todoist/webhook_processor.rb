@@ -97,7 +97,13 @@ module Todoist
     end
 
     def outbound_sync_comment?(content)
-      content.start_with?("Admin comment from ", "User reply from ")
+      content.start_with?(
+        "Admin comment from ",
+        "User reply from ",
+        "Attachment uploaded from Christmas Triage",
+        "System state attached from Christmas Triage",
+        "FPP outputs state attached from Christmas Triage"
+      )
     end
 
     def completed_event?(event)
