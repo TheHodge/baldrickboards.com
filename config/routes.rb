@@ -132,6 +132,7 @@ Rails.application.routes.draw do
 
   # Campaign / content landing (no locale prefix)
   get "2026", to: "pages#year_2026", as: :year_2026
+  get "zoom", to: redirect("https://us06web.zoom.us/j/81821174924"), status: 302
 
   namespace :integrations do
     match "todoist/webhook", to: "todoist_webhooks#verify", via: [:get, :head]
