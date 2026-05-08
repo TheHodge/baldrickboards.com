@@ -327,6 +327,11 @@ class Triage::CasesController < ApplicationController
     comment = @case.case_comments.build(content: comment_content, admin_name: commenter_name)
 
     if comment.save
+      if !@case.open?
+        @case.update!(status: "open")
+        Todoist::CaseSync.sync_status(@case, "open")
+      end
+
       attached_media = []
       if media_files.present?
         media_files.each do |file|

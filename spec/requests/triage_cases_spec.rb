@@ -216,6 +216,17 @@ RSpec.describe 'Triage Cases', type: :request do
 
       File.delete(image_path) if File.exist?(image_path)
     end
+
+    it 'reopens a closed case when user replies' do
+      case_record.update!(status: 'closed')
+      post verify_access_triage_case_path(case_record.case_number, locale: :en), params: { access_code: '123456' }
+
+      expect(Todoist::CaseSync).to receive(:sync_status).with(instance_of(Case), 'open')
+
+      post add_comment_triage_case_path(case_record.case_number, locale: :en), params: { content: 'I still need help' }
+
+      expect(case_record.reload.status).to eq('open')
+    end
   end
 end
 
