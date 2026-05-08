@@ -3,7 +3,9 @@ class Triage::CasesController < ApplicationController
   before_action :check_edit_access, only: [:edit, :update, :mark_solved, :mark_solution_fixed, :add_comment]
 
   def index
-    @cases = Case.not_spam.recent.limit(50)
+    # Public index no longer exposes a browseable case list.
+    # Users can create a new case, log in to view their own cases,
+    # or access a specific case via its direct link.
   end
 
   def my_cases
