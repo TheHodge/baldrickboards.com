@@ -24,6 +24,7 @@ module Todoist
           todoist_sync_error: nil
         )
 
+        set_needs_reply_label(case_record, client, enabled: true)
         sync_attachments(case_record, client)
         sync_initial_status(case_record, client)
       rescue StandardError => e
