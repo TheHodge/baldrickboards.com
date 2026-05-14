@@ -101,6 +101,35 @@ RSpec.describe WikiPage, type: :model do
     end
   end
 
+  describe "#breadcrumb_chain" do
+    before { WikiPage.destroy_all }
+
+    it "returns root only for a top-level page" do
+      page = WikiPage.create!(title: "Root", position: 0)
+      expect(page.breadcrumb_chain).to eq([page])
+    end
+
+    it "returns root through leaf in order" do
+      root = WikiPage.create!(title: "Boards", position: 0)
+      leaf = WikiPage.create!(title: "Child", parent: root, position: 0)
+      expect(leaf.breadcrumb_chain).to eq([root, leaf])
+    end
+  end
+
+  describe ".breadcrumb_chain_for_parent_id" do
+    before { WikiPage.destroy_all }
+
+    it "returns empty when id is blank" do
+      expect(WikiPage.breadcrumb_chain_for_parent_id(nil)).to eq([])
+    end
+
+    it "returns chain through the given parent" do
+      root = WikiPage.create!(title: "Boards", position: 0)
+      leaf = WikiPage.create!(title: "Child", parent: root, position: 0)
+      expect(WikiPage.breadcrumb_chain_for_parent_id(leaf.id)).to eq([root, leaf])
+    end
+  end
+
   describe "reserved slugs" do
     before { WikiPage.destroy_all }
 

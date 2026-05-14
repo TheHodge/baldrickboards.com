@@ -1,8 +1,10 @@
 - content_for :title, "Edit #{@wiki_page.title} - Knowledge"
 
-.flex.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8.gap-8
-  = render "sidebar", current_page: @wiki_page
-  .flex-1.min-w-0
-    .bg-white.rounded-xl.shadow.border.border-gray-100.p-8
-      h1.text-2xl.font-bold.text-gray-900.mb-6 Edit page
-      = render "form"
+.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  = render "breadcrumb_bar", mode: :edit, wiki_page: @wiki_page
+  .flex.gap-8
+    = render "sidebar", current_page: @wiki_page
+    .flex-1.min-w-0
+      .bg-white.rounded-xl.shadow.border.border-gray-100.p-8
+        h1.text-2xl.font-bold.text-gray-900.mb-6 Edit page
+        = render "form"

@@ -1,15 +1,17 @@
 - content_for :title, "Knowledge - Admin"
 
-.flex.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8.gap-8
-  = render "sidebar", current_page: nil
-  .flex-1.min-w-0
-    .bg-white.rounded-xl.shadow.p-8.border.border-gray-100
-      h1.text-2xl.font-bold.text-gray-900.mb-2 Internal knowledge
-      p.text-gray-600.mb-6
-        | Shared internal docs for your team. Pages are only available under the admin area
-        |  (
-        code.text-sm = "(e.g. /en/admin/knowledge)"
-        | ).
-      .flex.flex-wrap.items-center.gap-3
-        = link_to "New page", new_admin_wiki_page_path, class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700"
-        = link_to "Formatting guide", admin_knowledge_formatting_guide_path, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-50"
+.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  = render "breadcrumb_bar", mode: :index
+  .flex.gap-8
+    = render "sidebar", current_page: nil
+    .flex-1.min-w-0
+      .bg-white.rounded-xl.shadow.p-8.border.border-gray-100
+        h1.text-2xl.font-bold.text-gray-900.mb-2 Internal knowledge
+        p.text-gray-600.mb-6
+          | Shared internal docs for your team. Pages are only available under the admin area
+          |  (
+          code.text-sm = "(e.g. /en/admin/knowledge)"
+          | ).
+        .flex.flex-wrap.items-center.gap-3
+          = link_to "New page", new_admin_wiki_page_path, class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700"
+          = link_to "Formatting guide", admin_knowledge_formatting_guide_path, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-50"

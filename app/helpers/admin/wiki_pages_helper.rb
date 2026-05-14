@@ -9,6 +9,45 @@ module Admin::WikiPagesHelper
     html.html_safe
   end
 
+  # Builds `breadcrumbs` for `shared/admin_breadcrumbs` (Admin > …).
+  def admin_knowledge_breadcrumbs(mode:, wiki_page: nil)
+    case mode.to_sym
+    when :index
+      [{ name: "Knowledge", url: nil }]
+    when :formatting_guide
+      [
+        { name: "Knowledge", url: admin_wiki_pages_path },
+        { name: "Formatting guide", url: nil }
+      ]
+    when :show
+      chain = wiki_page.breadcrumb_chain
+      items = [{ name: "Knowledge", url: admin_wiki_pages_path }]
+      chain[0..-2].each do |p|
+        items << { name: p.title, url: admin_wiki_page_path(wiki_path: p.url_path) }
+      end
+      items << { name: wiki_page.title, url: nil }
+      items
+    when :edit
+      chain = wiki_page.breadcrumb_chain
+      items = [{ name: "Knowledge", url: admin_wiki_pages_path }]
+      chain[0..-2].each do |p|
+        items << { name: p.title, url: admin_wiki_page_path(wiki_path: p.url_path) }
+      end
+      items << { name: wiki_page.title, url: admin_wiki_page_path(wiki_path: wiki_page.url_path) }
+      items << { name: "Edit", url: nil }
+      items
+    when :new
+      items = [{ name: "Knowledge", url: admin_wiki_pages_path }]
+      WikiPage.breadcrumb_chain_for_parent_id(wiki_page&.parent_id).each do |p|
+        items << { name: p.title, url: admin_wiki_page_path(wiki_path: p.url_path) }
+      end
+      items << { name: "New page", url: nil }
+      items
+    else
+      [{ name: "Knowledge", url: admin_wiki_pages_path }]
+    end
+  end
+
   private
 
   def transform_wiki_links_in_html(html)

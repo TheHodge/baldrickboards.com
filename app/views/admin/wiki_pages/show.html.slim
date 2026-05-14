@@ -1,22 +1,24 @@
 - content_for :title, "#{@wiki_page.title} - Knowledge"
 
-.flex.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8.gap-8
-  = render "sidebar", current_page: @wiki_page
-  .flex-1.min-w-0
-    .bg-white.rounded-xl.shadow.border.border-gray-100.overflow-hidden
-      .px-6.py-4.border-b.border-gray-100.flex.flex-wrap.items-center.justify-between.gap-3
-        div
-          h1.text-2xl.font-bold.text-gray-900 = @wiki_page.title
-          p.text-xs.text-gray-500.mt-1
-            | Wiki link:
-            code.text-xs.ml-1
-              | [[#{@wiki_page.url_path}]]
-        .flex.gap-2
-          = link_to "Edit", admin_edit_wiki_page_path(wiki_path: @wiki_page.url_path), class: "px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700"
-          = link_to "Create subpage", new_admin_wiki_page_path(parent_id: @wiki_page.id), class: "px-4 py-2 border border-gray-300 text-sm text-gray-700 rounded-md hover:bg-gray-50"
-      .px-6.py-8.max-w-3xl
-        - if @wiki_page.body.to_plain_text.strip.blank?
-          p.text-gray-500 This page has no content yet. Use Edit to add text and attachments.
-        - else
-          .prose.max-w-none
-            == render_wiki_page_body(@wiki_page)
+.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
+  = render "breadcrumb_bar", mode: :show, wiki_page: @wiki_page
+  .flex.gap-8
+    = render "sidebar", current_page: @wiki_page
+    .flex-1.min-w-0
+      .bg-white.rounded-xl.shadow.border.border-gray-100.overflow-hidden
+        .px-6.py-4.border-b.border-gray-100.flex.flex-wrap.items-center.justify-between.gap-3
+          div
+            h1.text-2xl.font-bold.text-gray-900 = @wiki_page.title
+            p.text-xs.text-gray-500.mt-1
+              | Wiki link:
+              code.text-xs.ml-1
+                | [[#{@wiki_page.url_path}]]
+          .flex.gap-2
+            = link_to "Edit", admin_edit_wiki_page_path(wiki_path: @wiki_page.url_path), class: "px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700"
+            = link_to "Create subpage", new_admin_wiki_page_path(parent_id: @wiki_page.id), class: "px-4 py-2 border border-gray-300 text-sm text-gray-700 rounded-md hover:bg-gray-50"
+        .px-6.py-8.max-w-3xl
+          - if @wiki_page.body.to_plain_text.strip.blank?
+            p.text-gray-500 This page has no content yet. Use Edit to add text and attachments.
+          - else
+            .prose.max-w-none
+              == render_wiki_page_body(@wiki_page)

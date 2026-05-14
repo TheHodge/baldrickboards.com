@@ -111,6 +111,17 @@ RSpec.describe "Admin", type: :request do
         expect(response.body).to include("Create subpage")
         expect(response.body).to include("/en/admin/knowledge/new?parent_id=#{parent.id}")
       end
+
+      it "renders breadcrumbs for a nested knowledge page" do
+        WikiPage.destroy_all
+        root = WikiPage.create!(title: "Boards", position: 0)
+        child = WikiPage.create!(title: "Child", parent: root, position: 0)
+        get "/en/admin/knowledge/#{root.slug}/#{child.slug}"
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include('aria-label="Breadcrumb"')
+        expect(response.body).to include(">Boards</a>")
+        expect(response.body).to include(">Child</span>")
+      end
     end
   end
 

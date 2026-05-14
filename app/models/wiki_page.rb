@@ -93,6 +93,24 @@ class WikiPage < ApplicationRecord
     segment.to_s.tr("-", " ").squeeze(" ").strip.titleize
   end
 
+  # Ancestors and self, root first (for breadcrumbs).
+  def breadcrumb_chain
+    chain = []
+    node = self
+    while node
+      chain.unshift(node)
+      node = node.parent
+    end
+    chain
+  end
+
+  # Root through the persisted parent of a new page (parent_id on an unsaved record).
+  def self.breadcrumb_chain_for_parent_id(parent_id)
+    return [] if parent_id.blank?
+
+    find_by(id: parent_id)&.breadcrumb_chain || []
+  end
+
   def subtree_ids
     WikiPage.where(parent_id: id).flat_map { |c| [c.id] + c.subtree_ids }
   end
