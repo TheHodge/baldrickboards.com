@@ -5,4 +5,11 @@
   .flex-1.min-w-0
     .bg-white.rounded-xl.shadow.border.border-gray-100.p-8
       h1.text-2xl.font-bold.text-gray-900.mb-6 New knowledge page
+      - if @prefilled_missing_wiki_target.present?
+        .mb-6.rounded-lg.border.border-amber-200.bg-amber-50.p-4.text-sm.text-amber-900
+          p.font-medium.mb-1 Creating a page for a link that does not exist yet
+          p
+            | You followed a wiki link to
+            code.mx-1.rounded.bg-amber-100.px-1.5.py-0.5.text-amber-950 = "[[#{@prefilled_missing_wiki_target}]]"
+            | . The title and parent below were guessed from that text—change them if needed, add your body, then save.
       = render "form"

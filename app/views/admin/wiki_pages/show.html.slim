@@ -8,13 +8,8 @@
         div
           h1.text-2xl.font-bold.text-gray-900 = @wiki_page.title
           p.text-xs.text-gray-500.mt-1
-            | Slug (this page): #{@wiki_page.slug}
-            br
-            | Path (with locale):
-            code.text-xs = admin_wiki_page_path(wiki_path: @wiki_page.url_path)
-            br
-            | Wiki link shorthand:
-            code.text-xs
+            | Wiki link:
+            code.text-xs.ml-1
               | [[#{@wiki_page.url_path}]]
         .flex.gap-2
           = link_to "Edit", admin_edit_wiki_page_path(wiki_path: @wiki_page.url_path), class: "px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700"

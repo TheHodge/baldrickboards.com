@@ -41,8 +41,9 @@ module Admin::WikiPagesHelper
         href = admin_wiki_page_path(wiki_path: page.url_path)
         %(<a href="#{ERB::Util.html_escape(href)}" class="wiki-internal-link text-indigo-600 underline hover:text-indigo-800">#{ERB::Util.html_escape(display)}</a>)
       else
-        tip = ERB::Util.html_escape("No page matches: #{target}")
-        %(<span class="wiki-broken-link text-amber-800 border-b border-dotted border-amber-600 cursor-help" title="#{tip}">#{ERB::Util.html_escape(display)}</span>)
+        href = ERB::Util.html_escape(new_admin_wiki_page_path(missing_wiki_target: target))
+        tip = ERB::Util.html_escape("No page yet — click to create: #{target}")
+        %(<a href="#{href}" class="wiki-missing-page-link text-amber-800 underline decoration-dotted decoration-amber-600 hover:text-amber-950" title="#{tip}">#{ERB::Util.html_escape(display)}</a>)
       end
     end
   end

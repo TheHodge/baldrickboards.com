@@ -12,7 +12,12 @@ class Admin::WikiPagesController < Admin::BaseController
   end
 
   def new
-    @wiki_page = WikiPage.new(parent_id: params[:parent_id])
+    @wiki_page = if params[:missing_wiki_target].present?
+      WikiPage.new_from_missing_wiki_target(params[:missing_wiki_target])
+    else
+      WikiPage.new(parent_id: params[:parent_id])
+    end
+    @prefilled_missing_wiki_target = WikiPage.sanitize_missing_wiki_target_param(params[:missing_wiki_target]) if params[:missing_wiki_target].present?
   end
 
   def create

@@ -73,6 +73,34 @@ RSpec.describe WikiPage, type: :model do
     end
   end
 
+  describe ".new_from_missing_wiki_target" do
+    before { WikiPage.destroy_all }
+
+    it "prefills title from a single segment" do
+      page = WikiPage.new_from_missing_wiki_target("my-new-page")
+      expect(page.title).to eq("My New Page")
+      expect(page.parent_id).to be_nil
+    end
+
+    it "sets parent when the path prefix exists" do
+      boards = WikiPage.create!(title: "Boards", position: 0)
+      page = WikiPage.new_from_missing_wiki_target("#{boards.slug}/baldrick8")
+      expect(page.parent_id).to eq(boards.id)
+      expect(page.title).to eq("Baldrick8")
+    end
+
+    it "strips disallowed characters from the param" do
+      page = WikiPage.new_from_missing_wiki_target("safe-page<script>")
+      expect(page.title).to eq("Safe Pagescript")
+    end
+  end
+
+  describe ".sanitize_missing_wiki_target_param" do
+    it "returns empty for blank" do
+      expect(WikiPage.sanitize_missing_wiki_target_param("")).to eq("")
+    end
+  end
+
   describe "reserved slugs" do
     before { WikiPage.destroy_all }
 

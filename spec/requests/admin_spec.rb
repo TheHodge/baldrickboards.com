@@ -80,6 +80,16 @@ RSpec.describe "Admin", type: :request do
         expect(response).to have_http_status(:success)
         expect(response.body).to include("Knowledge formatting guide")
       end
+
+      it "prefills new knowledge page when following a broken wiki link" do
+        WikiPage.destroy_all
+        boards = WikiPage.create!(title: "Boards", position: 0)
+        get "/en/admin/knowledge/new", params: { missing_wiki_target: "#{boards.slug}/baldrick8" }
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include("Creating a page for a link that does not exist yet")
+        expect(response.body).to include("[[#{boards.slug}/baldrick8]]")
+        expect(response.body.scan('value="Baldrick8"').size).to eq(1)
+      end
     end
   end
 

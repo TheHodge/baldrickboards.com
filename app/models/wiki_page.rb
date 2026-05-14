@@ -64,6 +64,35 @@ class WikiPage < ApplicationRecord
       where("LOWER(TRIM(title)) = ?", target.downcase.strip).first
   end
 
+  # Unsaved page prefilled when following a broken wiki link (missing_wiki_target on "new").
+  def self.new_from_missing_wiki_target(raw)
+    cleaned = sanitize_missing_wiki_target_param(raw)
+    return new if cleaned.blank?
+
+    segments = cleaned.split("/").map(&:presence).compact
+    return new if segments.empty?
+
+    page = new
+    if segments.one?
+      page.title = title_hint_from_link_segment(segments.first)
+    else
+      parent_path = segments[0..-2].join("/")
+      parent = find_by_url_path(parent_path)
+      page.parent = parent if parent
+      page.title = title_hint_from_link_segment(segments.last)
+    end
+    page
+  end
+
+  def self.sanitize_missing_wiki_target_param(raw)
+    s = raw.to_s.strip[0, 240]
+    s.gsub(/[^a-zA-Z0-9\/_.\- ]+/, "")
+  end
+
+  def self.title_hint_from_link_segment(segment)
+    segment.to_s.tr("-", " ").squeeze(" ").strip.titleize
+  end
+
   def subtree_ids
     WikiPage.where(parent_id: id).flat_map { |c| [c.id] + c.subtree_ids }
   end

@@ -25,14 +25,18 @@
       = form.label :body, "Content", class: "block text-sm font-medium text-gray-700 mb-1"
       p.text-xs.text-gray-600.mb-2
         | Link to another page with wiki-style markers (no full URL needed):
-        code.mx-0.5.rounded.bg-gray-100.px-1.py-0.5.text-gray-800 [[page-slug]]
+        code.mx-0.5.rounded.bg-gray-100.px-1.py-0.5.text-gray-800
+          | [[page-slug]]
         | ,
-        code.mx-0.5.rounded.bg-gray-100.px-1.py-0.5.text-gray-800 [[parent/child]]
+        code.mx-0.5.rounded.bg-gray-100.px-1.py-0.5.text-gray-800
+          | [[parent/child]]
         | ,
-        code.mx-0.5.rounded.bg-gray-100.px-1.py-0.5.text-gray-800 [[Page title]]
+        code.mx-0.5.rounded.bg-gray-100.px-1.py-0.5.text-gray-800
+          | [[Page title]]
         | , or
-        code.mx-0.5.rounded.bg-gray-100.px-1.py-0.5.text-gray-800 [[slug|Custom label]]
-        | . The page header shows slug, path, and a ready-made wiki link snippet.
+        code.mx-0.5.rounded.bg-gray-100.px-1.py-0.5.text-gray-800
+          | [[slug|Custom label]]
+        | . The page header shows a ready-made wiki link snippet.
         = link_to "Full formatting guide", admin_knowledge_formatting_guide_path, class: "ml-1 text-indigo-600 hover:text-indigo-800 font-medium"
         | .
       .max-w-3xl.border.border-gray-200.rounded-lg.overflow-hidden.bg-white.shadow-sm
