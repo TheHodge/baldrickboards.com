@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_07_134100) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_14_182237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_analytics_views_per_days", force: :cascade do |t|
     t.string "site", null: false
@@ -248,10 +258,22 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_07_134100) do
     t.index ["event_key"], name: "index_todoist_webhook_events_on_event_key", unique: true
   end
 
+  create_table "wiki_pages", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "slug", null: false
+    t.bigint "parent_id"
+    t.integer "position", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_wiki_pages_on_parent_id"
+    t.index ["slug"], name: "index_wiki_pages_on_slug", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "case_comments", "cases"
   add_foreign_key "case_solutions", "cases"
   add_foreign_key "case_solutions", "solutions"
   add_foreign_key "cases", "solutions", column: "solved_by_solution_id"
+  add_foreign_key "wiki_pages", "wiki_pages", column: "parent_id", on_delete: :nullify
 end

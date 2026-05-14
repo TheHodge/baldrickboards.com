@@ -278,6 +278,8 @@ Rails.application.routes.draw do
       end
     end
     resources :triage_solutions, path: 'triage/solutions'
+
+    resources :wiki_pages, path: 'knowledge'
   end
   
     # Catch all unmatched routes and show 404 (excluding image files and Active Storage)

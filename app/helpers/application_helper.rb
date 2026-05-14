@@ -72,7 +72,8 @@ module ApplicationHelper
       { title: 'Triage Solutions', path: admin_triage_solutions_path },
       { title: 'Search Analytics', path: admin_search_logs_path },
       { title: 'Website Analytics', path: admin_analytics_path },
-      { title: '404 Error Logs', path: admin_error_logs_path }
+      { title: '404 Error Logs', path: admin_error_logs_path },
+      { title: 'Knowledge', path: admin_wiki_pages_path }
     ]
   end
 
