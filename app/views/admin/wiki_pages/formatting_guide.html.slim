@@ -1,0 +1,124 @@
+- content_for :title, "Knowledge formatting guide - Admin"
+
+.flex.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8.gap-8
+  = render "sidebar", current_page: nil
+  .flex-1.min-w-0
+    .bg-white.rounded-xl.shadow.border.border-gray-100.overflow-hidden
+      .px-6.py-4.border-b.border-gray-100.flex.flex-wrap.items-center.justify-between.gap-3
+        div
+          h1.text-2xl.font-bold.text-gray-900 Knowledge formatting guide
+          p.text-sm.text-gray-600.mt-1 How to write pages, use the editor, and link between them.
+        = link_to "All pages", admin_wiki_pages_path, class: "px-4 py-2 border border-gray-300 text-sm text-gray-700 rounded-md hover:bg-gray-50"
+
+      .px-6.py-8.prose.max-w-none.text-gray-800
+        h2.text-xl.font-semibold.text-gray-900 Editor (Trix)
+
+        p
+          | The content area is a rich text editor. Use the toolbar for
+          strong  bold
+          | ,
+          em  italic
+          | , headings, bullet and numbered lists, quotes, code, links, and file attachments (images and documents upload through the paperclip icon).
+
+        p
+          strong  External links:
+          |  Use the link button and paste a full URL (
+          code.text-sm https://…
+          | ). Those open like normal web links.
+
+        h2.text-xl.font-semibold.text-gray-900.mt-10 Internal wiki links
+
+        p
+          | To point readers at another knowledge page
+          strong  without typing the site URL
+          | , use double square brackets. The site turns these into links when someone
+          strong  views
+          |  the page (they stay as plain text while you edit).
+
+        h3.text-lg.font-semibold.text-gray-900.mt-6 Page addresses
+
+        p
+          | Each page has a path built from its parent chain and slug, for example a URL ending with
+          code.text-sm
+            | /en/admin/knowledge/boards/baldrick8
+          |  for a page with slug
+          code.text-sm baldrick8
+          |  under a parent whose slug is
+          code.text-sm boards
+          | . Root pages use a single segment (just their slug).
+
+        h3.text-lg.font-semibold.text-gray-900.mt-6 Syntax
+
+        table.w-full.text-sm.border-collapse.my-4
+          thead
+            tr.border-b.border-gray-200
+              th.text-left.py-2.pr-4 Write
+              th.text-left.py-2 Meaning
+          tbody
+            tr.border-b.border-gray-100
+              td.py-2.pr-4
+                code.bg-gray-100.rounded.px-1.5.py-0.5
+                  | [[parent-slug/child-slug]]
+              td.py-2
+                | Link using the full path when you need a specific nested page (same order as in the browser address bar, omitting the locale and
+                code.text-xs
+                  | /admin/knowledge/
+                | prefix).
+            tr.border-b.border-gray-100
+              td.py-2.pr-4
+                code.bg-gray-100.rounded.px-1.5.py-0.5
+                  | [[page-slug]]
+              td.py-2
+                | Link using the target page’s
+                strong slug
+                |  (shown under the title when you view that page). Slugs only need to be unique among siblings; use a path row above when the same slug exists under different parents.
+            tr.border-b.border-gray-100
+              td.py-2.pr-4
+                code.bg-gray-100.rounded.px-1.5.py-0.5
+                  | [[Page title]]
+              td.py-2
+                | Link by
+                strong title
+                | , case-insensitive. If two pages share the same title, the first match wins—prefer a slug in that case.
+            tr.border-b.border-gray-100
+              td.py-2.pr-4
+                code.bg-gray-100.rounded.px-1.5.py-0.5
+                  | [[slug|Label shown]]
+              td.py-2
+                | Same as a slug or title link, but the visible text is
+                strong Label shown
+                |  (MediaWiki-style:
+                code.text-xs
+                  | target|label
+                | ).
+
+        h3.text-lg.font-semibold.text-gray-900.mt-6 Where markers work
+
+        ul.list-disc.pl-5.space-y-1
+          li Normal paragraphs and most body text.
+          li
+            strong Not
+            |  expanded inside preformatted or code blocks, inside existing hyperlinks, or in a few other special regions—so you can show literal
+            code.bg-gray-100.rounded.px-1
+              | [[brackets]]
+            |  in examples if you put them in a preformatted block.
+
+        h3.text-lg.font-semibold.text-gray-900.mt-6 Broken links
+
+        p
+          | If nothing matches the name you put in the brackets, the text still appears but styled as a
+          strong  dotted warning
+          |  line; hover for a short explanation. Fix the slug or title, or create the missing page.
+
+        h2.text-xl.font-semibold.text-gray-900.mt-10 Page tree
+
+        ul.list-disc.pl-5.space-y-1
+          li
+            strong  Parent page
+            |  — choose a parent to nest this page under the sidebar. Leave as “Top level” for a root page.
+          li
+            strong  Position
+            |  — lower numbers sort earlier among siblings in the sidebar.
+
+        p.mt-6
+          = link_to "Back to knowledge home", admin_wiki_pages_path, class: "text-indigo-600 font-medium hover:text-indigo-800"

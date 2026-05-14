@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_14_182237) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_15_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -265,8 +265,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_14_182237) do
     t.integer "position", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["parent_id", "slug"], name: "index_wiki_pages_parent_and_slug", unique: true, where: "(parent_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_wiki_pages_on_parent_id"
-    t.index ["slug"], name: "index_wiki_pages_on_slug", unique: true
+    t.index ["slug"], name: "index_wiki_pages_slug_on_roots", unique: true, where: "(parent_id IS NULL)"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

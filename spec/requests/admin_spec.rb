@@ -32,6 +32,12 @@ RSpec.describe "Admin", type: :request do
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to("/admin/login")
       end
+
+      it "redirects knowledge formatting guide to login" do
+        get "/en/admin/knowledge/help"
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to("/admin/login")
+      end
     end
 
     context "when authenticated as admin" do
@@ -67,6 +73,12 @@ RSpec.describe "Admin", type: :request do
         get "/en/admin/knowledge"
         expect(response).to have_http_status(:success)
         expect(response.body).to include("Internal knowledge")
+      end
+
+      it "allows access to knowledge formatting guide" do
+        get "/en/admin/knowledge/help"
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include("Knowledge formatting guide")
       end
     end
   end

@@ -279,7 +279,14 @@ Rails.application.routes.draw do
     end
     resources :triage_solutions, path: 'triage/solutions'
 
-    resources :wiki_pages, path: 'knowledge'
+    get 'knowledge/help', to: 'wiki_pages#formatting_guide', as: :knowledge_formatting_guide
+
+    resources :wiki_pages, path: 'knowledge', except: [:show, :edit, :update, :destroy]
+    get 'knowledge/*wiki_path/edit', to: 'wiki_pages#edit', as: :edit_wiki_page
+    get 'knowledge/*wiki_path', to: 'wiki_pages#show', as: :wiki_page
+    patch 'knowledge/*wiki_path', to: 'wiki_pages#update'
+    put 'knowledge/*wiki_path', to: 'wiki_pages#update'
+    delete 'knowledge/*wiki_path', to: 'wiki_pages#destroy'
   end
   
     # Catch all unmatched routes and show 404 (excluding image files and Active Storage)

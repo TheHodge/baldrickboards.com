@@ -5,7 +5,8 @@ aside.w-full.md:w-64.flex-shrink-0
       h3.text-xs.font-semibold.text-gray-500.uppercase.tracking-wide Knowledge
       = link_to new_admin_wiki_page_path, class: "text-indigo-600 hover:text-indigo-800 text-sm font-medium", title: "New page" do
         | + New
-    = link_to "All pages", admin_wiki_pages_path, class: "block text-xs text-gray-500 hover:text-gray-700 mb-3"
+    = link_to "All pages", admin_wiki_pages_path, class: "block text-xs text-gray-500 hover:text-gray-700 mb-1"
+    = link_to "Formatting guide", admin_knowledge_formatting_guide_path, class: "block text-xs text-indigo-600 hover:text-indigo-800 mb-3"
     - if @wiki_nav_roots.empty?
       p.text-sm.text-gray-500 No pages yet.
     - else

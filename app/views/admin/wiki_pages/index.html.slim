@@ -10,4 +10,6 @@
         |  (
         code.text-sm = "(e.g. /en/admin/knowledge)"
         | ).
-      = link_to "New page", new_admin_wiki_page_path, class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700"
+      .flex.flex-wrap.items-center.gap-3
+        = link_to "New page", new_admin_wiki_page_path, class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700"
+        = link_to "Formatting guide", admin_knowledge_formatting_guide_path, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-50"
