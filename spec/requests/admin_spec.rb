@@ -90,6 +90,27 @@ RSpec.describe "Admin", type: :request do
         expect(response.body).to include("[[#{boards.slug}/baldrick8]]")
         expect(response.body.scan('value="Baldrick8"').size).to eq(1)
       end
+
+      it "pre-selects parent when opening new page with parent_id" do
+        WikiPage.destroy_all
+        parent = WikiPage.create!(title: "Boards", position: 0)
+        get "/en/admin/knowledge/new", params: { parent_id: parent.id }
+        expect(response).to have_http_status(:success)
+        doc = Nokogiri::HTML(response.body)
+        select = doc.at_css("select[name='wiki_page[parent_id]']")
+        expect(select).to be_present
+        selected = select.css("option[selected]").first
+        expect(selected["value"].to_i).to eq(parent.id)
+      end
+
+      it "shows create subpage link on knowledge page show" do
+        WikiPage.destroy_all
+        parent = WikiPage.create!(title: "Boards", position: 0)
+        get "/en/admin/knowledge/#{parent.slug}"
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include("Create subpage")
+        expect(response.body).to include("/en/admin/knowledge/new?parent_id=#{parent.id}")
+      end
     end
   end
 

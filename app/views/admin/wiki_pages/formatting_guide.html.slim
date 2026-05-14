@@ -35,17 +35,17 @@
           strong  views
           |  the page (they stay as plain text while you edit).
 
-        h3.text-lg.font-semibold.text-gray-900.mt-6 Page addresses
+        h3.text-lg.font-semibold.text-gray-900.mt-6 Page paths
 
         p
-          | Each page has a path built from its parent chain and slug, for example a URL ending with
+          | Each page sits in the tree under an optional parent. Its wiki path is slugs joined with
+          code.text-sm /
+          | , for example
+          code.text-sm boards/baldrick8
+          |  for “Baldrick8” under “Boards”. Root pages are a single segment. When you view a page, copy the exact
           code.text-sm
-            | /en/admin/knowledge/boards/baldrick8
-          |  for a page with slug
-          code.text-sm baldrick8
-          |  under a parent whose slug is
-          code.text-sm boards
-          | . Root pages use a single segment (just their slug).
+            | [[…]]
+          |  line under the title.
 
         h3.text-lg.font-semibold.text-gray-900.mt-6 Syntax
 
@@ -60,18 +60,13 @@
                 code.bg-gray-100.rounded.px-1.5.py-0.5
                   | [[parent-slug/child-slug]]
               td.py-2
-                | Link using the full path when you need a specific nested page (same order as in the browser address bar, omitting the locale and
-                code.text-xs
-                  | /admin/knowledge/
-                | prefix).
+                | Link to a nested page using each segment’s slug from the root down (same order as in the wiki link under that page’s title).
             tr.border-b.border-gray-100
               td.py-2.pr-4
                 code.bg-gray-100.rounded.px-1.5.py-0.5
                   | [[page-slug]]
               td.py-2
-                | Link using the target page’s
-                strong slug
-                |  (shown under the title when you view that page). Slugs only need to be unique among siblings; use a path row above when the same slug exists under different parents.
+                | Link using the page’s slug alone when that’s enough—usually the last segment of its wiki path (see the line under the title when you view that page). Slugs are unique among siblings; use a multi-segment path when the same slug exists under different parents.
             tr.border-b.border-gray-100
               td.py-2.pr-4
                 code.bg-gray-100.rounded.px-1.5.py-0.5
