@@ -36,6 +36,7 @@ RSpec.describe 'Triage Cases', type: :request do
         allow(TriageMailer).to receive(:case_created).and_return(double(deliver_now: true))
         allow(TriageMailer).to receive(:case_created_admin).and_return(double(deliver_now: true))
         allow(Todoist::CaseSync).to receive(:sync_create)
+        allow(Triage::MattermostNotifier).to receive(:case_created)
       end
 
       after do
@@ -187,6 +188,8 @@ RSpec.describe 'Triage Cases', type: :request do
 
     before do
       allow(Todoist::CaseSync).to receive(:sync_comment)
+      allow(Triage::MattermostNotifier).to receive(:comment_added)
+      allow(Triage::MattermostNotifier).to receive(:case_updated)
     end
 
     it 'creates a threaded case comment for authorized case owner' do
@@ -198,6 +201,7 @@ RSpec.describe 'Triage Cases', type: :request do
 
       expect(response).to redirect_to(triage_case_path(case_record.case_number, locale: :en))
       expect(CaseComment.last.content).to eq('Any updates from my side')
+      expect(Triage::MattermostNotifier).to have_received(:comment_added).with(case_record, instance_of(CaseComment))
     end
 
     it 'allows image attachments with a reply' do
@@ -226,6 +230,7 @@ RSpec.describe 'Triage Cases', type: :request do
       post add_comment_triage_case_path(case_record.case_number, locale: :en), params: { content: 'I still need help' }
 
       expect(case_record.reload.status).to eq('open')
+      expect(Triage::MattermostNotifier).to have_received(:case_updated).with(case_record)
     end
   end
 end

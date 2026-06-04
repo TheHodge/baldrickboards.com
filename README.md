@@ -146,6 +146,25 @@ Webhook endpoint:
 - `POST /integrations/todoist/webhook`
 - Header: `X-Todoist-Hmac-SHA256` (HMAC SHA-256 signature of raw payload)
 
+## Mattermost Integration (Christmas Triage)
+
+Posts triage activity to the Mattermost channel (default team `ilightthat`, channel `christmas-triage` on Waffle). Links in messages point at the synced Todoist task, not the docs site.
+
+Set these environment variables (or Rails credentials equivalents):
+
+- `MATTERMOST_ENABLED` (`true` / `false`)
+- `MATTERMOST_BOT_TOKEN`
+- `MATTERMOST_BASE_URL` (optional, default: `https://waffle.ilightthat.com`)
+- `MATTERMOST_TEAM_NAME` (optional, default: `ilightthat`)
+- `MATTERMOST_CHANNEL_NAME` (optional, default: `christmas-triage`)
+- `MATTERMOST_CHANNEL_ID` (optional; skips channel name lookup if set)
+
+Verify connectivity (bot must be a member of the channel):
+
+```bash
+MATTERMOST_BOT_TOKEN=your-token bin/rails mattermost:smoke_test
+```
+
 ## Contributing
 
 1. Create a new branch for your changes

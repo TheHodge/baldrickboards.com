@@ -63,10 +63,17 @@ module Todoist
           Rails.logger.error("[TodoistWebhook] Failed clearing needs-reply label for case ##{case_record.case_number}: #{e.message}")
         end
         TriageMailer.admin_comment(case_record, comment).deliver_now
+        Triage::MattermostNotifier.comment_added(case_record, comment)
       elsif reopened_event?(event)
-        case_record.update!(status: "open", todoist_last_event_at: Time.current)
+        if case_record.status != "open"
+          case_record.update!(status: "open", todoist_last_event_at: Time.current)
+          Triage::MattermostNotifier.case_updated(case_record)
+        end
       elsif completed_event?(event)
-        case_record.update!(status: "closed", todoist_last_event_at: Time.current)
+        if case_record.status != "closed"
+          case_record.update!(status: "closed", todoist_last_event_at: Time.current)
+          Triage::MattermostNotifier.case_updated(case_record)
+        end
       elsif deleted_event?(event)
         case_record.destroy!
       end

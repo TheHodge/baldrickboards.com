@@ -179,6 +179,7 @@ class Triage::CasesController < ApplicationController
 
       # Sync to Todoist (non-blocking for user flow)
       Todoist::CaseSync.sync_create(@case)
+      Triage::MattermostNotifier.case_created(@case)
 
       # Redirect to case show page (no access token needed for viewing)
       redirect_to triage_case_path(@case.case_number),
@@ -286,6 +287,7 @@ class Triage::CasesController < ApplicationController
     end
 
     Todoist::CaseSync.sync_status(@case, @case.status)
+    Triage::MattermostNotifier.case_updated(@case)
 
     redirect_to triage_case_path(@case.case_number),
                 notice: 'Thank you for letting us know! Your case has been marked as solved.'
@@ -298,6 +300,7 @@ class Triage::CasesController < ApplicationController
   def update
     # Authorization checked in before_action
     if @case.update(case_params)
+      Triage::MattermostNotifier.case_updated(@case)
       redirect_to triage_case_path(@case.case_number),
                   notice: 'Case updated successfully.'
     else
@@ -329,9 +332,11 @@ class Triage::CasesController < ApplicationController
     comment = @case.case_comments.build(content: comment_content, admin_name: commenter_name)
 
     if comment.save
+      status_reopened = false
       if !@case.open?
         @case.update!(status: "open")
         Todoist::CaseSync.sync_status(@case, "open")
+        status_reopened = true
       end
 
       attached_media = []
@@ -343,6 +348,8 @@ class Triage::CasesController < ApplicationController
       end
 
       Todoist::CaseSync.sync_comment(@case, comment, source: "User reply", attachments: attached_media)
+      Triage::MattermostNotifier.comment_added(@case, comment)
+      Triage::MattermostNotifier.case_updated(@case) if status_reopened
       redirect_to triage_case_path(@case.case_number), notice: "Reply sent to the support team."
     else
       redirect_to triage_case_path(@case.case_number), alert: "Failed to send reply: #{comment.errors.full_messages.join(', ')}"

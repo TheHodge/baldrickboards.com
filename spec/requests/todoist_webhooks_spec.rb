@@ -40,6 +40,8 @@ RSpec.describe "Todoist webhooks", type: :request do
   before do
     allow(Todoist::Config).to receive(:webhook_secret).and_return("test-secret")
     allow(TriageMailer).to receive(:admin_comment).and_return(double(deliver_now: true))
+    allow(Triage::MattermostNotifier).to receive(:comment_added)
+    allow(Triage::MattermostNotifier).to receive(:case_updated)
   end
 
   context "with comment webhook event" do
@@ -54,6 +56,7 @@ RSpec.describe "Todoist webhooks", type: :request do
         .and change(TodoistWebhookEvent, :count).by(1)
 
       expect(response).to have_http_status(:ok)
+      expect(Triage::MattermostNotifier).to have_received(:comment_added).with(case_record, instance_of(CaseComment))
     end
   end
 
@@ -140,6 +143,7 @@ RSpec.describe "Todoist webhooks", type: :request do
 
       expect(response).to have_http_status(:ok)
       expect(case_record.reload.status).to eq("closed")
+      expect(Triage::MattermostNotifier).to have_received(:case_updated).with(case_record)
     end
   end
 
@@ -155,6 +159,7 @@ RSpec.describe "Todoist webhooks", type: :request do
 
       expect(response).to have_http_status(:ok)
       expect(case_record.reload.status).to eq("open")
+      expect(Triage::MattermostNotifier).to have_received(:case_updated).with(case_record)
     end
   end
 

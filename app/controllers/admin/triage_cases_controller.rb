@@ -36,6 +36,7 @@ class Admin::TriageCasesController < Admin::BaseController
   def update
     if @case.update(case_params)
       Todoist::CaseSync.sync_status(@case, @case.status) if case_params.key?(:status)
+      Triage::MattermostNotifier.case_updated(@case)
       redirect_to admin_triage_case_path(@case), notice: 'Case updated successfully.'
     else
       render :show, status: :unprocessable_entity
@@ -48,6 +49,7 @@ class Admin::TriageCasesController < Admin::BaseController
     if %w[open solved closed].include?(new_status)
       @case.update(status: new_status)
       Todoist::CaseSync.sync_status(@case, new_status)
+      Triage::MattermostNotifier.case_updated(@case)
       redirect_to admin_triage_case_path(@case), notice: "Case status updated to #{new_status}."
     else
       redirect_to admin_triage_case_path(@case), alert: 'Invalid status.'
@@ -60,7 +62,8 @@ class Admin::TriageCasesController < Admin::BaseController
     # Use update_column to bypass validations since we're only updating the spam field
     @case.update_column(:spam, spam_value)
     @case.reload
-    
+    Triage::MattermostNotifier.case_updated(@case, changes: { "spam" => [!spam_value, spam_value] })
+
     if spam_value
       redirect_to admin_triage_case_path(@case), notice: 'Case marked as spam and hidden from public views.'
     else
@@ -76,6 +79,7 @@ class Admin::TriageCasesController < Admin::BaseController
     
     if comment.save
       Todoist::CaseSync.sync_comment(@case, comment)
+      Triage::MattermostNotifier.comment_added(@case, comment)
       # Send email to the user
       TriageMailer.admin_comment(@case, comment).deliver_now
       redirect_to admin_triage_case_path(@case), notice: 'Comment added and email sent to user.'
@@ -96,10 +100,12 @@ class Admin::TriageCasesController < Admin::BaseController
       end
       @case.mark_as_solved!(solution.id, nil)
       Todoist::CaseSync.sync_status(@case, @case.status)
+      Triage::MattermostNotifier.case_updated(@case)
       redirect_to admin_triage_case_path(@case), notice: "Case marked as solved with solution: #{solution.problem_title}"
     elsif custom_solution.present?
       @case.mark_as_solved!(nil, custom_solution)
       Todoist::CaseSync.sync_status(@case, @case.status)
+      Triage::MattermostNotifier.case_updated(@case)
       redirect_to admin_triage_case_path(@case), notice: 'Case marked as solved with custom solution.'
     else
       redirect_to admin_triage_case_path(@case), alert: 'Please select a solution or provide a custom solution.'
