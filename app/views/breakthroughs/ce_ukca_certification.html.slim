@@ -45,8 +45,55 @@
           p.text-gray-700.mb-6
             | RoHS (Restriction of Hazardous Substances) is a directive that restricts the use of specific hazardous materials in electrical and electronic equipment. It ensures products are free from substances like lead, mercury, cadmium, and other harmful chemicals, making them safer for both users and the environment.
 
+          h3.text-2xl.font-bold.text-gray-900.mb-4 Certification Documents
+
+          p.text-gray-700.mb-6
+            | Our Baldrick Board Family has been independently tested and certified. The certificates below cover the full product range, including Baldrick8, Baldrick17, BaldrickSwitchy, BaldrickDMX, BaldrickSignals, BaldrickInput8, BaldrickInput1, Baldrick2, BaldrickCue, and BaldrickScene.
+
+          .grid.md:grid-cols-3.gap-6.mb-8
+            .bg-blue-50.rounded-lg.p-6.border.border-blue-200
+              h4.text-lg.font-semibold.text-gray-900.mb-3 CE Marking
+              ul.space-y-3
+                li
+                  = link_to '/certificates/ce-lvd-certificate.pdf', class: 'text-indigo-600 hover:text-indigo-800 font-medium', target: '_blank', rel: 'noopener' do
+                    | LVD Certificate
+                    span.text-sm.text-gray-500.block BS EN IEC 62368-1
+                li
+                  = link_to '/certificates/ce-emc-certificate.pdf', class: 'text-indigo-600 hover:text-indigo-800 font-medium', target: '_blank', rel: 'noopener' do
+                    | EMC Certificate
+                    span.text-sm.text-gray-500.block EN 55032 / EN 55035
+                li
+                  = link_to '/certificates/eu-rohs-certificate.pdf', class: 'text-indigo-600 hover:text-indigo-800 font-medium', target: '_blank', rel: 'noopener' do
+                    | EU RoHS Certificate
+
+            .bg-red-50.rounded-lg.p-6.border.border-red-200
+              h4.text-lg.font-semibold.text-gray-900.mb-3 UKCA Marking
+              ul.space-y-3
+                li
+                  = link_to '/certificates/ukca-lvd-certificate.pdf', class: 'text-indigo-600 hover:text-indigo-800 font-medium', target: '_blank', rel: 'noopener' do
+                    | LVD Certificate
+                    span.text-sm.text-gray-500.block BS EN IEC 62368-1
+                li
+                  = link_to '/certificates/ukca-emc-certificate.pdf', class: 'text-indigo-600 hover:text-indigo-800 font-medium', target: '_blank', rel: 'noopener' do
+                    | EMC Certificate
+                    span.text-sm.text-gray-500.block EN 55032 / EN 55035
+                li
+                  = link_to '/certificates/uk-rohs-certificate.pdf', class: 'text-indigo-600 hover:text-indigo-800 font-medium', target: '_blank', rel: 'noopener' do
+                    | UK RoHS Certificate
+
+            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
+              h4.text-lg.font-semibold.text-gray-900.mb-3 Test Reports
+              p.text-sm.text-gray-600.mb-3 Full laboratory test reports for technical compliance review.
+              ul.space-y-3.text-sm
+                li = link_to 'CE safety report', '/certificates/reports/ce-en-62368-safety-report.pdf', class: 'text-indigo-600 hover:text-indigo-800', target: '_blank', rel: 'noopener'
+                li = link_to 'UK safety report', '/certificates/reports/uk-bs-en-62368-safety-report.pdf', class: 'text-indigo-600 hover:text-indigo-800', target: '_blank', rel: 'noopener'
+                li = link_to 'CE EMC report', '/certificates/reports/ce-emc-test-report.pdf', class: 'text-indigo-600 hover:text-indigo-800', target: '_blank', rel: 'noopener'
+                li = link_to 'UKCA EMC report', '/certificates/reports/ukca-emc-test-report.pdf', class: 'text-indigo-600 hover:text-indigo-800', target: '_blank', rel: 'noopener'
+                li = link_to 'EU RoHS report', '/certificates/reports/eu-rohs-test-report.pdf', class: 'text-indigo-600 hover:text-indigo-800', target: '_blank', rel: 'noopener'
+                li = link_to 'UK RoHS report', '/certificates/reports/uk-rohs-test-report.pdf', class: 'text-indigo-600 hover:text-indigo-800', target: '_blank', rel: 'noopener'
+
           .mt-8.bg-gray-50.rounded-lg.p-6.border.border-gray-200
-            h4.text-lg.font-semibold.text-gray-900.mb-3 Need Certification Documents?
+            h4.text-lg.font-semibold.text-gray-900.mb-3 Need Something Else?
             p.text-gray-700.mb-4
-              | If you require copies of our CE or UKCA certificates for compliance purposes, our support team can provide them upon request.
+              | If you need additional compliance documentation or have questions about certification for a specific product, our support team can help.
             = link_to 'Contact Support', '/support#hardware-support', class: 'inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors'

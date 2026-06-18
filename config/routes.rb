@@ -291,7 +291,7 @@ Rails.application.routes.draw do
   
     # Catch all unmatched routes and show 404 (excluding image files and Active Storage)
     match '*path', to: 'application#not_found', via: :all, constraints: lambda { |req| 
-      !req.path.match?(/\.(png|jpg|jpeg|gif|webp|svg|ico)$/i) && 
+      !req.path.match?(/\.(png|jpg|jpeg|gif|webp|svg|ico|pdf)$/i) && 
       !req.path.start_with?('/rails/active_storage')
     }
   end
