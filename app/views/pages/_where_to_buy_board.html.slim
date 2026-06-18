@@ -1,0 +1,21 @@
+- board = local_assigns.fetch(:board)
+
+section.buy-board id=board[:id]
+  .buy-board-head
+    = image_tag "#{board[:id]}.png", alt: "#{board[:name]} board", class: 'buy-board-img'
+    div
+      h2 = board[:name]
+      = link_to 'Board overview', board_path(board[:id]), class: 'lnk'
+
+  - board[:regions].each do |region|
+    section.vendor-region id="#{board[:id]}-#{region[:key]}"
+      .vendor-region-head
+        span.vendor-flag
+          = render 'shared/country_flag', code: region[:code], size: :md
+        h3 = region[:country]
+      ul.vendor-links
+        - region[:vendors].each do |vendor|
+          li
+            = link_to vendor[:url], target: '_blank', rel: 'noopener', class: 'lnk ext' do
+              = vendor[:name]
+              span.ar ↗

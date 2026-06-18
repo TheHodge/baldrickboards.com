@@ -1,0 +1,8 @@
+.mobile-menu#mobileMenu data-baldrickboard-menu-target="menu"
+  .wrap
+    = render "shared/search", variant: :mobile
+    = link_to "Boards", boards_path, class: "mm-link", data: { action: "click->baldrickboard-menu#close" }
+    = link_to "Breakthroughs", breakthroughs_turnip_network_path, class: "mm-link", data: { action: "click->baldrickboard-menu#close" }
+    = link_to "Fun Stuff", fun_stuff_release_notes_path, class: "mm-link", data: { action: "click->baldrickboard-menu#close" }
+    = link_to "Where to Buy", where_to_buy_baldrick_boards_path, class: "mm-link", data: { action: "click->baldrickboard-menu#close" }
+    = link_to "Support", support_path, class: "mm-link", data: { action: "click->baldrickboard-menu#close" }

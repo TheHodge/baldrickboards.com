@@ -1,700 +1,421 @@
-- content_for :title, "Christmas Triage - Baldrick Boards"
+= render 'shared/triage_page', page_title: 'Christmas Triage', current_page: 'New case', parent_page: true, page_subtitle: "Let's get you back up and running as quick as possible", document_title: 'Christmas Triage - Baldrick Boards' do
+  p.lead Filling in this form will give you a URL to share and some possible solutions.
 
-.max-w-4xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb Navigation
-  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: root_path }, { title: 'Christmas Triage', path: triage_cases_path }, { title: 'Create New Case', path: nil }]
+  .triage-form-panel
+    = form_with model: @case, url: triage_cases_path, local: true, multipart: true, class: 'triage-form', data: { has_errors: @case.errors.any? } do |form|
+      - if @case.errors.any?
+        .triage-errors data-validation-errors="true"
+          h3 There were some problems with your submission:
+          ul
+            - @case.errors.full_messages.each do |message|
+              li = message
 
-  / Header
-  .text-center.mb-8
-    h1.text-4xl.font-bold.text-gray-900.mb-2 Christmas Triage
-    p.text-xl.text-gray-600.mb-2 Let's get you back up and running as quick as possible
-    p.text-sm.text-purple-600.font-medium (Filling in this form will give you a URL to share and some possible solutions)
+      .triage-section
+        - unless triage_user_logged_in?
+          .triage-field
+            = form.label :name, 'Your name', class: 'triage-label'
+            = form.text_field :name, class: 'triage-input', required: true, minlength: 2, maxlength: 100
 
-  / Main Form
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden.border.border-gray-200
-    .px-8.py-8
-      = form_with model: @case, url: triage_cases_path, local: true, multipart: true, class: "space-y-6", data: { has_errors: @case.errors.any? } do |form|
-        - if @case.errors.any?
-          .bg-red-50.border.border-red-200.rounded-md.p-4.mb-6 data-validation-errors="true"
-            h3.text-sm.font-medium.text-red-800.mb-2 There were some problems with your submission:
-            ul.text-sm.text-red-700.list-disc.list-inside.space-y-1
-              - @case.errors.full_messages.each do |message|
-                li = message
+        - if triage_user_logged_in?
+          = form.hidden_field :name, value: @case.name
+          = form.hidden_field :email, value: @case.email
+        - else
+          .triage-field
+            = form.label :email, 'Your Email', class: 'triage-label'
+            p.triage-hint So we can send you updates and you can edit / mark as solved
+            = form.email_field :email, class: 'triage-input', required: true
 
-        / Basic Information
-        .space-y-4.pb-6.border-b.border-gray-200
-          - unless triage_user_logged_in?
-            div
-              = form.label :name, "Your name", class: "block text-sm font-medium text-gray-700 mb-2"
-              = form.text_field :name, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500", required: true, minlength: 2, maxlength: 100, minlength: 2, maxlength: 100
-          
-          - if triage_user_logged_in?
-            / Hidden fields for logged-in users
-            = form.hidden_field :name, value: @case.name
-            = form.hidden_field :email, value: @case.email
-          - else
-            div
-              = form.label :email, "Your Email", class: "block text-sm font-medium text-gray-700 mb-2"
-              p.text-xs.text-gray-500.mb-2 So we can send you updates and you can edit / mark as solved
-              = form.email_field :email, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500", required: true
-          
-          div
-            = form.label :problem_description, "What seems to be the problem", class: "block text-sm font-medium text-gray-700 mb-2"
-            p.text-xs.text-gray-500.mb-2 Please be as descriptive as possible - LIGHTS DO NOT WORK is not helpful, but lights on port 5 are showing the wrong colours when FPP is playing does,
-            = form.text_area :problem_description, rows: 5, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500", required: true, minlength: 10
+        .triage-field
+          = form.label :problem_description, 'What seems to be the problem', class: 'triage-label'
+          p.triage-hint Please be as descriptive as possible — LIGHTS DO NOT WORK is not helpful, but lights on port 5 are showing the wrong colours when FPP is playing does.
+          = form.text_area :problem_description, rows: 5, class: 'triage-input', required: true, minlength: 10
 
-        / Affected Boards
-        .space-y-2.pb-6.border-b.border-gray-200
-          = form.label :affected_boards, "What board / boards does this affect?", class: "block text-sm font-medium text-gray-700 mb-2"
-          .grid style="grid-template-columns: repeat(4, 1fr);" class="gap-3"
-            - %w[Baldrick8 Baldrick17 BaldrickDMX BaldrickSwitchy BaldrickInput1 BaldrickInput8 BaldrickSignals].each do |board|
-              .flex.items-center.p-2.rounded.hover:bg-purple-50.transition-colors
-                = form.check_box :affected_boards, { multiple: true, checked: false, class: "text-purple-600 focus:ring-purple-500" }, board, nil
-                = form.label "affected_boards_#{board.downcase}", board, class: "ml-2 text-sm text-gray-700 cursor-pointer"
+      .triage-section
+        = form.label :affected_boards, 'What board / boards does this affect?', class: 'triage-label'
+        .triage-board-grid
+          - %w[Baldrick8 Baldrick17 BaldrickDMX BaldrickSwitchy BaldrickInput1 BaldrickInput8 BaldrickSignals].each do |board|
+            .triage-check
+              = form.check_box :affected_boards, { multiple: true, checked: false }, board, nil
+              = form.label "affected_boards_#{board.downcase}", board
 
-        / Media Upload
-        .space-y-2.pb-6.border-b.border-gray-200
-          .flex.items-center.justify-between.mb-2
-            = form.label :media, "Please add some screenshots / videos", class: "block text-sm font-medium text-gray-700"
-            span#file-count.text-xs.text-gray-500.font-medium 0 / 10 files (max 100MB each)
-          .grid.md:grid-cols-2.gap-6.items-start
-            / Left side - Text content
-            div
-              p.text-sm.text-gray-600.mb-2 Things that are normally helpful to include:
-              ul.text-sm.text-gray-600.list-disc.list-inside.ml-4
+      .triage-section
+        .triage-field
+          .triage-label-row
+            = form.label :media, 'Please add some screenshots / videos', class: 'triage-label'
+            span#file-count.triage-file-count 0 / 10 files (max 100MB each)
+          .triage-media-grid
+            .triage-media-help
+              p.triage-hint Things that are normally helpful to include:
+              ul
                 li Baldrick Interface (the Status section and Ports)
                 li FPP Outputs page (If Relevant)
                 li xLights Settings of the relevant controller
                 li xLights Visuliser of the relevant controller
                 li An example of the issue (flickering or slowness)
-            / Right side - Upload box
-            .bg-purple-50.border.border-purple-200.rounded-lg.p-6.hover:bg-purple-100.transition-colors
-              = form.file_field :media, multiple: true, accept: "image/*,video/*", class: "hidden", id: "media-upload", data: { multiple: true }
-              label for="media-upload" class="cursor-pointer flex items-center justify-center gap-4"
-                .w-16.h-16.bg-purple-600.rounded-full.flex.items-center.justify-center.hover:bg-purple-700.transition-colors
-                  svg.w-8.h-8.text-white fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            #triage-upload-box.triage-upload
+              = form.file_field :media, multiple: true, accept: 'image/*,video/*', class: 'hidden', id: 'media-upload', data: { multiple: true }
+              label.triage-upload-inner for="media-upload"
+                .triage-upload-icon
+                  svg fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                p.text-sm.text-gray-700.whitespace-nowrap.font-medium Drag & Drop media here Or Click to upload
-          #media-preview.mt-4.space-y-3
+                p.triage-upload-cta Drag & drop media here or click to upload
+          #media-preview
 
-        / Version Information
-        .grid.md:grid-cols-2.gap-4.pb-6.border-b.border-gray-200
+      .triage-section
+        .triage-grid-2
+          .triage-field
+            = form.label :baldrick_version, 'Baldrick Firmware Version', class: 'triage-label'
+            = form.text_field :baldrick_version, class: 'triage-input', required: true
+          .triage-field
+            = form.label :xlights_version, 'xLights Version (If Relevant)', class: 'triage-label'
+            = form.text_field :xlights_version, class: 'triage-input'
+          .triage-field
+            = form.label :fpp_version, 'FPP Version (If Relevant)', class: 'triage-label'
+            = form.text_field :fpp_version, class: 'triage-input'
+          .triage-field
+            = form.label :operating_system, 'OS', class: 'triage-label'
+            = form.text_field :operating_system, value: 'Windows', class: 'triage-input'
+
+      .triage-section
+        = form.label :tried_solutions, 'What have you tried so far?', class: 'triage-label'
+        = form.text_area :tried_solutions, rows: 4, class: 'triage-input'
+
+      .triage-section
+        = form.label :knowledge_level, 'And finally, how would you rate your knowledge level', class: 'triage-label'
+        = form.select :knowledge_level, options_for_select((1..10).map { |i| ["#{i}/10 - #{knowledge_level_description(i)}", i] }, @case.knowledge_level), { prompt: 'Select your knowledge level...' }, { class: 'triage-input' }
+
+      .triage-submit
+        p This is enough basic information to start with, so you can create a case now.
+        = form.submit 'Create a Case', class: 'btn btn-solid'
+        p.triage-submit-note Or continue below to add more information which will help us
+
+      .triage-section
+        .triage-media-grid
           div
-            = form.label :baldrick_version, "Baldrick Firmware Version", class: "block text-sm font-medium text-gray-700 mb-2"
-            = form.text_field :baldrick_version, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500", required: true
-          
+            = form.label :system_state, 'The Baldrick Board System State', class: 'triage-label'
+            p.triage-hint If you load up the IP address of your Baldrick Board and put /system_state at the end of the URL, you'll be given a bunch of text, paste it into here.
+          = form.text_area :system_state, rows: 6, class: 'triage-input triage-input--mono'
+
+        .triage-media-grid.triage-media-grid--spaced
           div
-            = form.label :xlights_version, "xLights Version (If Relevant)", class: "block text-sm font-medium text-gray-700 mb-2"
-            = form.text_field :xlights_version, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
-          
-          div
-            = form.label :fpp_version, "FPP Version (If Relevant)", class: "block text-sm font-medium text-gray-700 mb-2"
-            = form.text_field :fpp_version, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
-          
-          div
-            = form.label :operating_system, "OS", class: "block text-sm font-medium text-gray-700 mb-2"
-            = form.text_field :operating_system, value: "Windows", class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+            = form.label :fpp_outputs_state, 'FPP Outputs state', class: 'triage-label'
+            p.triage-hint If you load up the IP address of your Main FPP instance and put /api/configfile/co-universes.json at the end of the URL, you'll be given a bunch of text, paste it into here.
+          = form.text_area :fpp_outputs_state, rows: 6, class: 'triage-input triage-input--mono'
 
-        / Tried Solutions
-        .space-y-2.pb-6.border-b.border-gray-200
-          = form.label :tried_solutions, "What have you tried so far?", class: "block text-sm font-medium text-gray-700 mb-2"
-          = form.text_area :tried_solutions, rows: 4, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
-
-        / Knowledge Level
-        .space-y-2.pb-6.border-b.border-gray-200
-          = form.label :knowledge_level, "And finally, how would you rate your knowledge level", class: "block text-sm font-medium text-gray-700 mb-2"
-          = form.select :knowledge_level, options_for_select((1..10).map { |i| ["#{i}/10 - #{knowledge_level_description(i)}", i] }, @case.knowledge_level), { prompt: "Select your knowledge level..." }, { class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500" }
-
-        / Initial Submit Section
-        .pt-8.mt-6
-          .text-center.space-y-4
-            p.text-sm.text-gray-600 This is enough basic information to start with, so you can create a case now.
-            .flex.justify-center
-              = form.submit "Create a Case", class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors"
-                svg.w-5.h-5.mr-2 fill="currentColor" viewBox="0 0 20 20"
-                  path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-                  path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-            p.text-sm.text-purple-600.font-medium Or continue below to add more information which will help us
-
-        / Additional Information (Optional)
-        .mt-6.space-y-6
-          / Baldrick Board System State
-          .grid.md:grid-cols-2.gap-6.items-start
-            / Left side - Instructions
-            div
-              = form.label :system_state, "The Baldrick Board System State", class: "block text-sm font-medium text-gray-700 mb-2 font-bold"
-              p.text-sm.text-gray-600 If you load up the IP address of your Baldrick Board and put /system_state at the end of the URL, you'll be given a bunch of text, paste it into here.
-            / Right side - Input field
-            = form.text_area :system_state, rows: 6, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 font-mono text-xs"
-          
-          / FPP Outputs state
-          .grid.md:grid-cols-2.gap-6.items-start
-            / Left side - Instructions
-            div
-              = form.label :fpp_outputs_state, "FPP Outputs state", class: "block text-sm font-medium text-gray-700 mb-2 font-bold"
-              p.text-sm.text-gray-600 If you load up the IP address of your Main FPP instance and put /api/configfile/co-universes.json at the end of the URL, you'll be given a bunch of text, paste it into here.
-            / Right side - Input field
-            = form.text_area :fpp_outputs_state, rows: 6, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 font-mono text-xs"
-          
-          / Final submit button
-          .pt-8.mt-6
-            .text-center.space-y-4
-              p.text-sm.text-gray-600 That will do for now, let's create your case.
-              .flex.justify-center
-                = form.submit "Create a Case", class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors"
-                  svg.w-5.h-5.mr-2 fill="currentColor" viewBox="0 0 20 20"
-                    path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-                    path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+        .triage-submit style="margin-top:28px"
+          p That will do for now, let's create your case.
+          = form.submit 'Create a Case', class: 'btn btn-solid'
 
 javascript:
-  // Form Validation
   document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form[action*="triage_cases"]');
     if (!form) return;
-    
-    // Validation rules
+
     const validations = {
-      'case[name]': {
-        required: true,
-        minLength: 2,
-        maxLength: 100,
-        message: 'Name must be between 2 and 100 characters'
-      },
-      'case[email]': {
-        required: true,
-        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        message: 'Please enter a valid email address'
-      },
-      'case[problem_description]': {
-        required: true,
-        minLength: 10,
-        message: 'Problem description must be at least 10 characters'
-      },
-      'case[baldrick_version]': {
-        required: true,
-        message: 'Baldrick firmware version is required'
-      }
+      'case[name]': { required: true, minLength: 2, maxLength: 100, message: 'Name must be between 2 and 100 characters' },
+      'case[email]': { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Please enter a valid email address' },
+      'case[problem_description]': { required: true, minLength: 10, message: 'Problem description must be at least 10 characters' },
+      'case[baldrick_version]': { required: true, message: 'Baldrick firmware version is required' }
     };
-    
+
     function showFieldError(field, message) {
-      // Remove existing error
       const existingError = field.parentElement.querySelector('.field-error');
-      if (existingError) {
-        existingError.remove();
-      }
-      
-      // Add error styling
-      field.classList.remove('border-gray-300');
-      field.classList.add('border-red-500', 'ring-2', 'ring-red-500');
-      
-      // Add error message
+      if (existingError) existingError.remove();
+      field.classList.add('is-invalid');
       const errorDiv = document.createElement('div');
-      errorDiv.className = 'field-error text-sm text-red-600 mt-1';
+      errorDiv.className = 'field-error';
       errorDiv.textContent = message;
       field.parentElement.appendChild(errorDiv);
     }
-    
+
     function clearFieldError(field) {
       const errorDiv = field.parentElement.querySelector('.field-error');
-      if (errorDiv) {
-        errorDiv.remove();
-      }
-      field.classList.remove('border-red-500', 'ring-red-500', 'ring-2');
-      field.classList.add('border-gray-300');
+      if (errorDiv) errorDiv.remove();
+      field.classList.remove('is-invalid');
     }
-    
+
     function validateField(field) {
-      const fieldName = field.name;
-      const rules = validations[fieldName];
+      const rules = validations[field.name];
       if (!rules) return true;
-      
       const value = field.value.trim();
-      
-      // Check required
-      if (rules.required && !value) {
-        showFieldError(field, 'This field is required');
-        return false;
-      }
-      
-      if (!value) {
-        clearFieldError(field);
-        return true; // Empty optional field is valid
-      }
-      
-      // Check min length
-      if (rules.minLength && value.length < rules.minLength) {
-        showFieldError(field, rules.message || `Must be at least ${rules.minLength} characters`);
-        return false;
-      }
-      
-      // Check max length
-      if (rules.maxLength && value.length > rules.maxLength) {
-        showFieldError(field, rules.message || `Must be no more than ${rules.maxLength} characters`);
-        return false;
-      }
-      
-      // Check pattern
-      if (rules.pattern && !rules.pattern.test(value)) {
-        showFieldError(field, rules.message || 'Invalid format');
-        return false;
-      }
-      
+      if (rules.required && !value) { showFieldError(field, 'This field is required'); return false; }
+      if (!value) { clearFieldError(field); return true; }
+      if (rules.minLength && value.length < rules.minLength) { showFieldError(field, rules.message || 'Must be at least ' + rules.minLength + ' characters'); return false; }
+      if (rules.maxLength && value.length > rules.maxLength) { showFieldError(field, rules.message || 'Must be no more than ' + rules.maxLength + ' characters'); return false; }
+      if (rules.pattern && !rules.pattern.test(value)) { showFieldError(field, rules.message || 'Invalid format'); return false; }
       clearFieldError(field);
       return true;
     }
-    
+
     function validateForm() {
       let isValid = true;
-      const fieldsToValidate = Object.keys(validations);
-      
-      fieldsToValidate.forEach(fieldName => {
-        const field = form.querySelector(`[name="${fieldName}"]`);
-        if (field) {
-          if (!validateField(field)) {
-            isValid = false;
-          }
-        }
+      Object.keys(validations).forEach(function(fieldName) {
+        const field = form.querySelector('[name="' + fieldName + '"]');
+        if (field && !validateField(field)) isValid = false;
       });
-      
       return isValid;
     }
-    
-    // Add real-time validation on blur
-    Object.keys(validations).forEach(fieldName => {
-      const field = form.querySelector(`[name="${fieldName}"]`);
+
+    Object.keys(validations).forEach(function(fieldName) {
+      const field = form.querySelector('[name="' + fieldName + '"]');
       if (field) {
-        field.addEventListener('blur', function() {
-          validateField(this);
-        });
-        
-        field.addEventListener('input', function() {
-          // Clear error on input if field becomes valid
-          if (this.value.trim()) {
-            validateField(this);
-          }
-        });
+        field.addEventListener('blur', function() { validateField(this); });
+        field.addEventListener('input', function() { if (this.value.trim()) validateField(this); });
       }
     });
-    
-    // Validate on form submit
+
     form.addEventListener('submit', function(e) {
       if (!validateForm()) {
         e.preventDefault();
         e.stopPropagation();
-        
-        // Scroll to first error
-        const firstError = form.querySelector('.border-red-500');
+        const firstError = form.querySelector('.is-invalid');
         if (firstError) {
           firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          setTimeout(function() {
-            firstError.focus();
-          }, 300);
+          setTimeout(function() { firstError.focus(); }, 300);
         }
-        
-        // Show general error message
-        const generalError = form.querySelector('.validation-error-general');
-        if (!generalError) {
+        if (!form.querySelector('.validation-error-general')) {
           const errorDiv = document.createElement('div');
-          errorDiv.className = 'validation-error-general bg-red-50 border border-red-200 rounded-md p-4 mb-6';
-          errorDiv.innerHTML = '<p class="text-sm font-medium text-red-800">Please fix the errors below before submitting.</p>';
-          const formContent = form.querySelector('.space-y-6') || form.firstElementChild;
-          if (formContent) {
-            formContent.insertBefore(errorDiv, formContent.firstChild);
-          } else {
-            form.insertBefore(errorDiv, form.firstChild);
-          }
+          errorDiv.className = 'validation-error-general triage-errors';
+          errorDiv.innerHTML = '<h3>Please fix the errors below before submitting.</h3>';
+          const formContent = form.querySelector('.triage-form') || form;
+          formContent.insertBefore(errorDiv, formContent.firstChild);
         }
-        
         return false;
       }
     });
   });
-  
-  // Media Upload
+
   (function() {
     const mediaUpload = document.getElementById('media-upload');
     const mediaPreview = document.getElementById('media-preview');
     let selectedFiles = [];
     let isProcessing = false;
     const MAX_FILES = 10;
-    const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB in bytes
-    
+    const MAX_FILE_SIZE = 100 * 1024 * 1024;
+
     if (!mediaUpload || !mediaPreview) return;
-    
-    // Restore files from sessionStorage only if validation failed
+
     function restoreFilesFromStorage() {
-      // Check if form has validation errors attribute or error elements
       const form = mediaUpload.closest('form');
       const hasErrors = form && (form.dataset.hasErrors === 'true' || document.querySelector('[data-validation-errors="true"]'));
-      
       if (!hasErrors) {
-        // No errors, clear any stored files (fresh form or successful submission)
         sessionStorage.removeItem('triage_case_media_files');
         return;
       }
-      
-      // Only restore if validation errors are present
       try {
         const stored = sessionStorage.getItem('triage_case_media_files');
         if (stored) {
-          const files = JSON.parse(stored);
-          files.forEach(function(fileData) {
+          JSON.parse(stored).forEach(function(fileData) {
             addFileToPreviewFromMetadata(fileData.name, fileData.type, fileData.size);
           });
-          // Keep in storage in case of another validation error
         }
       } catch (e) {
-        console.warn('Could not restore files from storage:', e);
         sessionStorage.removeItem('triage_case_media_files');
       }
     }
-    
-    // Store files before form submission and validate
+
     const form = mediaUpload.closest('form');
     if (form) {
       form.addEventListener('submit', function(e) {
-        // Validate file count
         if (selectedFiles.length > MAX_FILES) {
           e.preventDefault();
           alert('Maximum of ' + MAX_FILES + ' files allowed. Please remove some files first.');
           return false;
         }
-        
-        // Validate file sizes
-        const oversizedFiles = selectedFiles.filter(f => f.file.size > MAX_FILE_SIZE);
+        const oversizedFiles = selectedFiles.filter(function(f) { return f.file && f.file.size > MAX_FILE_SIZE; });
         if (oversizedFiles.length > 0) {
           e.preventDefault();
-          const fileNames = oversizedFiles.map(f => f.file.name).join(', ');
-          alert('The following files are too large (maximum 100MB per file):\n' + fileNames);
+          alert('The following files are too large (maximum 100MB per file):\n' + oversizedFiles.map(function(f) { return f.file.name; }).join(', '));
           return false;
         }
-        
-        // Only store if there are actually files selected
         if (selectedFiles.length > 0) {
-          const fileData = selectedFiles.map(f => ({
-            name: f.file.name,
-            type: f.file.type,
-            size: f.file.size
-          }));
-          sessionStorage.setItem('triage_case_media_files', JSON.stringify(fileData));
+          sessionStorage.setItem('triage_case_media_files', JSON.stringify(selectedFiles.filter(function(f) { return f.file; }).map(function(f) {
+            return { name: f.file.name, type: f.file.type, size: f.file.size };
+          })));
         } else {
-          // Clear storage if no files
           sessionStorage.removeItem('triage_case_media_files');
         }
       });
     }
-    
-    // Clear storage on page load if no errors (fresh form)
-    // Restore only if validation errors are present
+
     restoreFilesFromStorage();
-    
-    // Initialize file count display
     updateFileCount();
-    
+
     function addFileToPreview(file) {
       const fileId = Date.now() + Math.random();
       const reader = new FileReader();
-      
       reader.onload = function(e) {
         const div = document.createElement('div');
-        div.className = 'flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200';
+        div.className = 'triage-media-item';
         div.dataset.fileId = fileId;
-        
         let previewContent = '';
         if (file.type.startsWith('image/')) {
-          previewContent = `<img src="${e.target.result}" class="w-20 h-20 object-cover rounded" alt="${escapeHtml(file.name)}" />`;
+          previewContent = '<img src="' + e.target.result + '" alt="' + escapeHtml(file.name) + '" />';
         } else if (file.type.startsWith('video/')) {
-          previewContent = `<video src="${e.target.result}" class="w-20 h-20 object-cover rounded" controls preload="metadata" muted></video>`;
+          previewContent = '<video src="' + e.target.result + '" controls preload="metadata" muted></video>';
         } else {
-          previewContent = `<div class="w-20 h-20 bg-gray-200 rounded flex items-center justify-center"><svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></div>`;
+          previewContent = '<div style="width:72px;height:72px;background:var(--line-p);border-radius:8px"></div>';
         }
-        
         const removeButton = document.createElement('button');
         removeButton.type = 'button';
-        removeButton.className = 'text-red-600 hover:text-red-800 p-2';
-        removeButton.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+        removeButton.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
         removeButton.onclick = function() { removeFile(fileId); };
-        
-        div.innerHTML = `
-          ${previewContent}
-          <div class="flex-1 min-w-0">
-            <p class="text-sm font-medium text-gray-900 truncate">${escapeHtml(file.name)}</p>
-            <p class="text-xs text-gray-500">${formatFileSize(file.size)}</p>
-          </div>
-        `;
+        div.innerHTML = previewContent + '<div class="meta"><p class="name">' + escapeHtml(file.name) + '</p><p class="size">' + formatFileSize(file.size) + '</p></div>';
         div.appendChild(removeButton);
-        
         mediaPreview.appendChild(div);
       };
-      
-      reader.onerror = function() {
-        console.error('Error reading file:', file.name);
-      };
-      
       reader.readAsDataURL(file);
       selectedFiles.push({ id: fileId, file: file });
       updateFileCount();
     }
-    
+
     function updateFileCount() {
       const fileCountEl = document.getElementById('file-count');
-      if (fileCountEl) {
-        const count = selectedFiles.length;
-        const maxFiles = MAX_FILES;
-        fileCountEl.textContent = count + ' / ' + maxFiles + ' files (max 100MB each)';
-        if (count >= maxFiles) {
-          fileCountEl.classList.remove('text-gray-500');
-          fileCountEl.classList.add('text-red-600', 'font-semibold');
-        } else {
-          fileCountEl.classList.remove('text-red-600', 'font-semibold');
-          fileCountEl.classList.add('text-gray-500');
-        }
-      }
+      if (!fileCountEl) return;
+      const count = selectedFiles.length;
+      fileCountEl.textContent = count + ' / ' + MAX_FILES + ' files (max 100MB each)';
+      fileCountEl.classList.toggle('is-max', count >= MAX_FILES);
     }
-    
+
     function addFileToPreviewFromMetadata(filename, contentType, size) {
       const fileId = Date.now() + Math.random();
       const div = document.createElement('div');
-      div.className = 'flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200 border-dashed';
+      div.className = 'triage-media-item is-restored';
       div.dataset.fileId = fileId;
       div.dataset.restored = 'true';
-      
-      let previewContent = '';
-      if (contentType && contentType.startsWith('image/')) {
-        previewContent = `<div class="w-20 h-20 bg-gray-200 rounded flex items-center justify-center"><svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></div>`;
-      } else if (contentType && contentType.startsWith('video/')) {
-        previewContent = `<div class="w-20 h-20 bg-gray-200 rounded flex items-center justify-center"><svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></div>`;
-      } else {
-        previewContent = `<div class="w-20 h-20 bg-gray-200 rounded flex items-center justify-center"><svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></div>`;
-      }
-      
       const removeButton = document.createElement('button');
       removeButton.type = 'button';
-      removeButton.className = 'text-red-600 hover:text-red-800 p-2';
-      removeButton.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+      removeButton.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
       removeButton.onclick = function() { removeFile(fileId); };
-      
-      div.innerHTML = `
-        ${previewContent}
-        <div class="flex-1 min-w-0">
-          <p class="text-sm font-medium text-gray-900 truncate">${escapeHtml(filename)}</p>
-          <p class="text-xs text-gray-500">${formatFileSize(parseInt(size || 0))}</p>
-          <p class="text-xs text-yellow-600 mt-1">Please re-select this file</p>
-        </div>
-      `;
+      div.innerHTML = '<div style="width:72px;height:72px;background:var(--line-p);border-radius:8px;flex-shrink:0"></div><div class="meta"><p class="name">' + escapeHtml(filename) + '</p><p class="size">' + formatFileSize(parseInt(size || 0)) + '</p><p class="warn">Please re-select this file</p></div>';
       div.appendChild(removeButton);
-      
       mediaPreview.appendChild(div);
       selectedFiles.push({ id: fileId, file: null, metadata: { name: filename, type: contentType, size: size } });
       updateFileCount();
     }
-    
+
     function removeFile(fileId) {
-      selectedFiles = selectedFiles.filter(f => f.id !== fileId);
-      const element = document.querySelector(`[data-file-id="${fileId}"]`);
-      if (element) {
-        element.remove();
-      }
+      selectedFiles = selectedFiles.filter(function(f) { return f.id !== fileId; });
+      const element = document.querySelector('[data-file-id="' + fileId + '"]');
+      if (element) element.remove();
       updateFileInput();
       updateFileCount();
     }
-    
+
     function updateFileInput() {
       if (typeof DataTransfer !== 'undefined' && selectedFiles.length > 0) {
         try {
           const dt = new DataTransfer();
-          selectedFiles.forEach(f => {
-            dt.items.add(f.file);
-          });
-          // Temporarily remove event listener to prevent duplicate triggers
+          selectedFiles.forEach(function(f) { if (f.file) dt.items.add(f.file); });
           mediaUpload.removeEventListener('change', handleFileChange, true);
           mediaUpload.files = dt.files;
-          // Re-add event listener after a delay to ensure it doesn't fire
           setTimeout(function() {
             mediaUpload.addEventListener('change', handleFileChange, true);
             isProcessing = false;
           }, 300);
         } catch (e) {
-          console.warn('DataTransfer not supported, files will be submitted on form submit');
           isProcessing = false;
         }
       } else {
         isProcessing = false;
       }
     }
-    
+
     function escapeHtml(text) {
       const div = document.createElement('div');
       div.textContent = text;
       return div.innerHTML;
     }
-    
+
     function formatFileSize(bytes) {
       if (bytes < 1024) return bytes + ' B';
       if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
       return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
     }
-    
+
     function handleFileChange(e) {
-      if (isProcessing) {
-        // Reset input to prevent duplicate processing
-        e.target.value = '';
-        return;
-      }
+      if (isProcessing) { e.target.value = ''; return; }
       isProcessing = true;
-      
       const newFiles = Array.from(e.target.files || []);
-      if (newFiles.length === 0) {
-        isProcessing = false;
-        return;
-      }
-      
-      const filesToAdd = [];
-      const errors = [];
-      
-      // Check total file count limit
+      if (newFiles.length === 0) { isProcessing = false; return; }
       if (selectedFiles.length >= MAX_FILES) {
         alert('Maximum of ' + MAX_FILES + ' files allowed. Please remove some files first.');
         e.target.value = '';
         isProcessing = false;
         return;
       }
-      
-      newFiles.forEach(file => {
-        // Check file size
-        if (file.size > MAX_FILE_SIZE) {
-          errors.push(file.name + ' is too large (maximum 100MB per file)');
-          return;
-        }
-        
-        // Check total count after adding this file
-        if (selectedFiles.length + filesToAdd.length >= MAX_FILES) {
-          errors.push('Maximum of ' + MAX_FILES + ' files allowed');
-          return;
-        }
-        
-        // More robust duplicate check - check all three properties
-        const isDuplicate = selectedFiles.some(f => {
-          return f.file.name === file.name && 
-                 f.file.size === file.size && 
-                 f.file.lastModified === file.lastModified;
+      const filesToAdd = [];
+      const errors = [];
+      newFiles.forEach(function(file) {
+        if (file.size > MAX_FILE_SIZE) { errors.push(file.name + ' is too large (maximum 100MB per file)'); return; }
+        if (selectedFiles.length + filesToAdd.length >= MAX_FILES) { errors.push('Maximum of ' + MAX_FILES + ' files allowed'); return; }
+        const isDuplicate = selectedFiles.some(function(f) {
+          return f.file && f.file.name === file.name && f.file.size === file.size && f.file.lastModified === file.lastModified;
         });
-        
-        if (!isDuplicate) {
-          filesToAdd.push(file);
-        }
+        if (!isDuplicate) filesToAdd.push(file);
       });
-      
-      // Show errors if any
       if (errors.length > 0) {
         alert(errors.join('\n'));
         e.target.value = '';
         isProcessing = false;
         return;
       }
-      
-      // Add all new files at once
-      filesToAdd.forEach(file => {
-        addFileToPreview(file);
-      });
-      
-      // Only update file input if we added new files, and do it after a delay
+      filesToAdd.forEach(function(file) { addFileToPreview(file); });
       if (filesToAdd.length > 0) {
-        setTimeout(function() {
-          updateFileInput();
-          isProcessing = false;
-        }, 200);
+        setTimeout(function() { updateFileInput(); isProcessing = false; }, 200);
       } else {
-        // Reset input if no new files
         e.target.value = '';
         isProcessing = false;
       }
     }
-    
+
     window.removeFile = removeFile;
-    
-    // Use capture phase to prevent duplicate triggers
     mediaUpload.addEventListener('change', handleFileChange, true);
-    
-    // Handle drag and drop
-    const uploadBox = mediaUpload.closest('.bg-purple-50');
+
+    const uploadBox = document.getElementById('triage-upload-box');
     if (uploadBox) {
       uploadBox.addEventListener('dragover', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        uploadBox.classList.add('bg-purple-100');
+        uploadBox.classList.add('is-dragover');
       });
-      
       uploadBox.addEventListener('dragleave', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        uploadBox.classList.remove('bg-purple-100');
+        uploadBox.classList.remove('is-dragover');
       });
-      
       uploadBox.addEventListener('drop', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        uploadBox.classList.remove('bg-purple-100');
-        
+        uploadBox.classList.remove('is-dragover');
         if (isProcessing) return;
         isProcessing = true;
-        
-        const files = Array.from(e.dataTransfer.files).filter(file => 
-          file.type.startsWith('image/') || file.type.startsWith('video/')
-        );
-        
-        // Check total file count limit
+        const files = Array.from(e.dataTransfer.files).filter(function(file) {
+          return file.type.startsWith('image/') || file.type.startsWith('video/');
+        });
         if (selectedFiles.length >= MAX_FILES) {
           alert('Maximum of ' + MAX_FILES + ' files allowed. Please remove some files first.');
           isProcessing = false;
           return;
         }
-        
         const filesToAdd = [];
         const errors = [];
-        files.forEach(file => {
-          // Check file size
-          if (file.size > MAX_FILE_SIZE) {
-            errors.push(file.name + ' is too large (maximum 100MB per file)');
-            return;
-          }
-          
-          // Check total count after adding this file
-          if (selectedFiles.length + filesToAdd.length >= MAX_FILES) {
-            errors.push('Maximum of ' + MAX_FILES + ' files allowed');
-            return;
-          }
-          
-          const isDuplicate = selectedFiles.some(f => {
-            const sameName = f.file.name === file.name;
-            const sameSize = f.file.size === file.size;
-            const sameModified = f.file.lastModified === file.lastModified;
-            return sameName && sameSize && sameModified;
+        files.forEach(function(file) {
+          if (file.size > MAX_FILE_SIZE) { errors.push(file.name + ' is too large (maximum 100MB per file)'); return; }
+          if (selectedFiles.length + filesToAdd.length >= MAX_FILES) { errors.push('Maximum of ' + MAX_FILES + ' files allowed'); return; }
+          const isDuplicate = selectedFiles.some(function(f) {
+            return f.file && f.file.name === file.name && f.file.size === file.size && f.file.lastModified === file.lastModified;
           });
-          if (!isDuplicate) {
-            filesToAdd.push(file);
-          }
+          if (!isDuplicate) filesToAdd.push(file);
         });
-        
-        // Show errors if any
         if (errors.length > 0) {
           alert(errors.join('\n'));
           isProcessing = false;
           return;
         }
-        
-        filesToAdd.forEach(file => {
-          addFileToPreview(file);
-        });
-        
-        if (filesToAdd.length > 0) {
-          updateFileInput();
-        }
-        
-        setTimeout(function() {
-          isProcessing = false;
-        }, 100);
+        filesToAdd.forEach(function(file) { addFileToPreview(file); });
+        if (filesToAdd.length > 0) updateFileInput();
+        setTimeout(function() { isProcessing = false; }, 100);
       });
     }
   })();
-

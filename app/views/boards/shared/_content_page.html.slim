@@ -1,0 +1,31 @@
+- data = board_data.fetch(board_id)
+- board_name = data[:name]
+- content_for :title, local_assigns[:document_title] if local_assigns[:document_title].present?
+
+- content_for :boardbar do
+  = render 'boards/shared/board_submenu', board_name: board_name, board_id: board_id, menu_items: board_menu_items(board_id)
+
+section.hero-blueprint
+  .wrap.inner
+    nav.crumb
+      = link_to "Home", root_path
+      span.sep= "/"
+      = link_to "Boards", boards_path
+      span.sep= "/"
+      = link_to board_name, board_path(board_id)
+      span.sep= "/"
+      span.cur= current_page
+    .eye
+      span.bar
+      span.annot= (local_assigns[:eye_label] || board_category_label(board_id))
+    h1= page_title
+    - if local_assigns[:page_subtitle].present?
+      p.sub= page_subtitle
+    - if local_assigns[:meta].present?
+      .meta
+        - meta.each do |item|
+          span= item
+
+article.page
+  .col
+    = yield

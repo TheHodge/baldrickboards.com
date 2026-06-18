@@ -1,0 +1,72 @@
+div data-controller="baldrickboard-menu"
+  header.nav
+    .wrap.nav-inner
+      = link_to root_path, class: "brand" do
+        span.bm
+          = image_tag "bb-mark-white.png", alt: ""
+        span.wm
+          b Baldrick Boards
+          i Factory tested funny.
+      nav.nav-links
+        .nav-item
+          button.nav-trigger type="button"
+            | Boards
+            svg width="11" height="11" viewBox="0 0 20 20" fill="currentColor"
+              path d="M5.3 7.3a1 1 0 011.4 0L10 10.6l3.3-3.3a1 1 0 111.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 010-1.4z"
+          .nav-drop
+            = link_to "All Boards", boards_path, class: "all"
+            .drop-sep
+            = link_to "Pixel Controllers", boards_pixel_controllers_path
+            = link_to "Relay Controllers", boards_relay_controllers_path
+            = link_to "Interactive Controllers", boards_interactive_controllers_path
+            = link_to "Portable Controllers", boards_portable_controllers_path
+            = link_to "DMX Controllers", boards_dmx_controllers_path
+        .nav-item
+          button.nav-trigger type="button"
+            | Breakthroughs
+            svg width="11" height="11" viewBox="0 0 20 20" fill="currentColor"
+              path d="M5.3 7.3a1 1 0 011.4 0L10 10.6l3.3-3.3a1 1 0 111.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 010-1.4z"
+          .nav-drop
+            = link_to "The Turnip Network", breakthroughs_turnip_network_path
+            = link_to "The Kluster", breakthroughs_kluster_path
+            = link_to "CE & UKCA Certification", breakthroughs_ce_ukca_certification_path
+            = link_to "Turniput", breakthroughs_turniput_path
+            = link_to "Hodgical Test Mode", breakthroughs_hodgical_test_mode_path
+            = link_to "CunningFX", breakthroughs_cunningfx_path
+        .nav-item
+          button.nav-trigger type="button"
+            | Fun Stuff
+            svg width="11" height="11" viewBox="0 0 20 20" fill="currentColor"
+              path d="M5.3 7.3a1 1 0 011.4 0L10 10.6l3.3-3.3a1 1 0 111.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 010-1.4z"
+          .nav-drop
+            = link_to "Release Notes", fun_stuff_release_notes_path
+            = link_to "STLs & Mounts", fun_stuff_stls_and_mounts_path
+            = link_to "Board Dimensions", fun_stuff_board_dimensions_path
+            = link_to "Panic Mode?", fun_stuff_panic_mode_path
+            = link_to "Testimonials", fun_stuff_testimonials_path
+            = link_to "Customer Showcase", fun_stuff_customer_showcase_path
+        = link_to where_to_buy_baldrick_boards_path, class: "nav-plain accent #{'on' if current_page?(where_to_buy_baldrick_boards_path)}"
+          svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"
+            path d="M3 1a1 1 0 000 2h1.22l.305 1.222.01.042 1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+          | Where to Buy
+        .nav-item
+          button.nav-trigger type="button"
+            | Support
+            svg width="11" height="11" viewBox="0 0 20 20" fill="currentColor"
+              path d="M5.3 7.3a1 1 0 011.4 0L10 10.6l3.3-3.3a1 1 0 111.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 010-1.4z"
+          .nav-drop
+            = link_to "Hardware Support", support_path
+            = link_to "Software Support", support_software_path
+            = link_to "Asking for Help", support_asking_for_help_path
+            .drop-sep
+            = link_to new_triage_case_path, class: "feat"
+              span Christmas Triage
+              span.pill Create Case
+            = link_to "FAQ", faq_path
+      span.nav-sp
+      = render "shared/search", variant: :nav
+      button.nav-toggle type="button" aria-label="Menu" data-action="click->baldrickboard-menu#toggle"
+        svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          path d="M3 6h18M3 12h18M3 18h18"
+
+  = render "shared/mobile_menu"

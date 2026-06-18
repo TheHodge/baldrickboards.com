@@ -1,0 +1,30 @@
+- content_for :title, local_assigns.fetch(:document_title, page_title)
+
+section.hero-blueprint
+  .wrap.inner
+    nav.crumb
+      = link_to 'Home', root_path
+      span.sep= '/'
+      span.cur= current_page
+    .eye
+      span.bar
+      span.annot= local_assigns.fetch(:eye_label, 'Baldrick Boards')
+    h1= page_title
+    - if local_assigns[:page_subtitle].present?
+      p.sub= page_subtitle
+    - if local_assigns[:meta].present?
+      .meta
+        - meta.each do |item|
+          span= item
+
+- sidebar = local_assigns[:toc].present?
+
+article.page class=("page--sidebar" if sidebar)
+  - if sidebar
+    .wrap.doc-wrap
+      = render 'shared/breakthrough_toc', toc: toc, toc_class: local_assigns[:toc_class]
+      .col
+        = yield
+  - else
+    .col
+      = yield

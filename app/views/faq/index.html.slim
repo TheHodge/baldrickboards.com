@@ -1,44 +1,17 @@
-- content_for :title, t('faq.title')
+= render 'shared/support_page', page_title: t('faq.title'), current_page: 'FAQ', parent_page: true, page_subtitle: t('faq.subtitle'), document_title: t('og.pages.faq.title'), eye_label: 'FAQ', meta: ['Setup & troubleshooting', 'Networking', 'Firmware'], toc: site_faq_toc do
+  p.lead= t('faq.description')
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  = render 'shared/breadcrumbs', breadcrumbs: page_breadcrumbs('Home', 'FAQ')
+  .prose.faq-prose
+    = render 'boards/shared/faq_accordion', questions: site_faq_questions, anchors: true
 
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    = render 'shared/page_header', title: t('faq.title'), subtitle: t('faq.subtitle')
+    = render 'boards/shared/faq_foot'
 
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 = t('faq.title')
-
-          p.text-lg.text-gray-700.mb-6 = t('faq.description')
-
-          / Table of Contents
-          .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
-            h3.text-xl.font-semibold.text-blue-900.mb-4 = t('faq.quick_navigation')
-            .grid.md:grid-cols-2.gap-4
-              .space-y-2
-                - t('faq.questions').values.first(3).each do |faq|
-                  .flex.items-center
-                    = link_to "##{faq[:key]}", class: "text-blue-700 hover:text-blue-900 underline" do
-                      = faq[:question]
-              .space-y-2
-                - t('faq.questions').values.last(2).each do |faq|
-                  .flex.items-center
-                    = link_to "##{faq[:key]}", class: "text-blue-700 hover:text-blue-900 underline" do
-                      = faq[:question]
-
-          .space-y-8
-            - t('faq.questions').each do |key, faq|
-              div class="bg-gray-50 rounded-lg p-6 border border-gray-200" id="#{faq[:key]}"
-                h3.text-xl.font-semibold.text-gray-900.mb-3 = faq[:question]
-                .text-gray-700.mb-4
-                  - if faq[:images].any?
-                    - answer = faq[:answer]
-                    - faq[:images].each_with_index do |image, index|
-                      - answer = answer.gsub("%{image_#{index + 1}}", asset_path(image))
-                    == answer
-                  - else
-                    == faq[:answer]
-          .mt-8
-            = render 'boards/shared/faq_ending'
+    .callout.note.faq-help
+      svg.ci viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        path d="M12 16v-4m0-4h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"
+      div
+        b Any other questions?
+        p
+          | Board-specific answers live on each controller's FAQ page. For troubleshooting steps and what to include when posting, read the
+          = link_to ' Asking for Help checklist', support_asking_for_help_path, class: 'lnk'
+          | .

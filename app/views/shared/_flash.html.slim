@@ -1,0 +1,6 @@
+- if flash[:notice].present?
+  .flash-bar.flash-ok role="status"
+    = flash[:notice]
+- if flash[:alert].present?
+  .flash-bar.flash-err role="alert"
+    = flash[:alert]

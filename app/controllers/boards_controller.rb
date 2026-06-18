@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+  before_action :set_baldrickboard_page
+
   def index
   end
 
@@ -21,6 +23,12 @@ class BoardsController < ApplicationController
   def dmx_controllers
   end
 
+  MANUAL_REDIRECTS = {
+    'tech-specs' => 'tech-specs',
+    'getting-started' => 'getting-started',
+    'web-interface' => 'web-interface'
+  }.freeze
+
   # Generic method to handle all board pages
   def show
     @board_name = params[:board]
@@ -28,6 +36,11 @@ class BoardsController < ApplicationController
     
     # Set the view template based on the URL
     if @page.present?
+      if (anchor = MANUAL_REDIRECTS[@page])
+        redirect_to "#{board_page_path(@board_name, 'manual')}##{anchor}", allow_other_host: false
+        return
+      end
+
       # Sub-page like /boards/baldrick8/getting-started
       # Convert URL format to template format: getting-started -> getting_started
       template_name = @page.gsub('-', '_')
@@ -57,5 +70,11 @@ class BoardsController < ApplicationController
 
   def respond_to_missing?(method_name, include_private = false)
     method_name.to_s.match?(/^baldrick\w+(_\w+)?$/) || super
+  end
+
+  private
+
+  def set_baldrickboard_page
+    @baldrickboard_page = true
   end
 end

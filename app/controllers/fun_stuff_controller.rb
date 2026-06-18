@@ -1,4 +1,6 @@
 class FunStuffController < ApplicationController
+  before_action :set_baldrickboard_page
+
   def index
   end
 
@@ -24,5 +26,11 @@ class FunStuffController < ApplicationController
   end
 
   def customer_showcase
+  end
+
+  private
+
+  def set_baldrickboard_page
+    @baldrickboard_page = true
   end
 end

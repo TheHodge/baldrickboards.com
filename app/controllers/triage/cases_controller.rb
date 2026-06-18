@@ -1,4 +1,5 @@
 class Triage::CasesController < ApplicationController
+  before_action :set_baldrickboard_page
   before_action :set_case, only: [:show, :edit, :verify_access, :mark_solved, :mark_solution_fixed, :update, :add_comment]
   before_action :check_edit_access, only: [:edit, :update, :mark_solved, :mark_solution_fixed, :add_comment]
 
@@ -460,6 +461,10 @@ class Triage::CasesController < ApplicationController
 
   def admin_authenticated?
     session[:admin_authenticated] == true
+  end
+
+  def set_baldrickboard_page
+    @baldrickboard_page = true
   end
 
   helper_method :triage_user_email, :triage_user_logged_in?, :can_mark_solution_fixed?, :can_edit_case?

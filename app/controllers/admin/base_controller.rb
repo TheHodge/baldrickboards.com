@@ -1,6 +1,7 @@
 class Admin::BaseController < ApplicationController
   layout 'admin'
   before_action :authenticate_admin!
+  before_action { @hide_newsletter_footer = true }
 
   private
 

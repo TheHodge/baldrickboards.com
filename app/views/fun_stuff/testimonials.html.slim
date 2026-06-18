@@ -1,85 +1,55 @@
-- content_for :title, t('views.fun_stuff.testimonials.title')
+= render 'shared/fun_stuff_page', page_title: t('views.fun_stuff.testimonials.header.title'), current_page: 'Testimonials', page_subtitle: t('views.fun_stuff.testimonials.header.subtitle'), document_title: t('views.fun_stuff.testimonials.title'), meta: ['Customer stories', 'Real displays', 'Community voices'] do
+  p.lead = t('views.fun_stuff.testimonials.content.description')
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: '/' }, { title: 'Fun Stuff', path: fun_stuff_path }, { title: 'Testimonials', path: nil }]
+  .prose
+    .testimonial-grid
+      - t('views.fun_stuff.testimonials.content.testimonials').each do |_key, testimonial|
+        .testimonial-card
+          - if testimonial[:image].present?
+            .testimonial-img
+              = image_tag "testimonials/#{testimonial[:image]}", alt: "Testimonial from #{testimonial[:author]}"
+          blockquote = "\"#{testimonial[:quote]}\""
+          .testimonial-author
+            .avatar = testimonial[:author].split(' ').map(&:first).join
+            div
+              strong = testimonial[:author]
+              - if testimonial[:location].present?
+                span = testimonial[:location].html_safe
+              - if testimonial[:board].present?
+                span.board = testimonial[:board].html_safe
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: t('views.fun_stuff.testimonials.header.title'), subtitle: t('views.fun_stuff.testimonials.header.subtitle')
+    .callout.info
+      span.ic
+        svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          path d="M12 20h9M8 4h9M5 9h14M5 14h14"
+      div
+        span.lbl Share your experience
+        p.bd
+          | Have you used Baldrick Boards in your display? We'd love to hear about it —
+          = link_to ' submit your testimonial', new_feedback_path
+          | .
 
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 = t('views.fun_stuff.testimonials.content.title')
+    .next-grid
+      = link_to t('facebook_group_url'), class: 'next-card', target: '_blank' do
+        .top
+          span.kind Community
+          span.go →
+        h4 Join our group
+        p Connect with other Baldrick users and share your projects.
+      = link_to fun_stuff_customer_showcase_path, class: 'next-card' do
+        .top
+          span.kind Gallery
+          span.go →
+        h4 Customer showcase
+        p See the incredible displays our talented customers have created.
 
-          p.text-lg.text-gray-700.mb-8 = t('views.fun_stuff.testimonials.content.description')
-
-          / Testimonials Grid
-          .grid.md:grid-cols-2.gap-8.mb-8
-            - t('views.fun_stuff.testimonials.content.testimonials').each do |key, testimonial|
-              .bg-gray-50.rounded-lg.p-6.border.border-gray-200.shadow-sm
-                / Testimonial Image (if available)
-                - if testimonial[:image].present?
-                  .mb-4
-                    = image_tag "testimonials/#{testimonial[:image]}", alt: "Testimonial from #{testimonial[:author]}", class: "w-full h-auto max-h-64 object-contain rounded-lg shadow-sm bg-gray-100"
-                
-                / Quote
-                .mb-4
-                  .text-gray-800.text-lg.leading-relaxed.italic
-                    | "#{testimonial[:quote]}"
-                
-                / Author Info
-                .flex.items-center.space-x-4
-                  / Author Avatar (placeholder)
-                  .w-12.h-12.bg-blue-100.rounded-full.flex.items-center.justify-center
-                    .text-blue-600.font-semibold.text-lg
-                      = testimonial[:author].split(' ').map(&:first).join
-                  
-                  / Author Details
-                  .flex.flex-col
-                    .font-semibold.text-gray-900 = testimonial[:author]
-                    .text-sm.text-gray-600 = testimonial[:location].html_safe if testimonial[:location].present? 
-                    .text-sm.text-blue-600.font-medium = testimonial[:board].html_safe if testimonial[:board].present? 
-
-          / Call to Action Section
-          .bg-blue-50.border-l-4.border-blue-400.p-6.mb-8
-            .flex
-              .flex-shrink-0
-                svg.h-6.w-6.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-              .ml-3
-                h3.text-lg.font-semibold.text-blue-900.mb-2 Share Your Experience
-                p.text-blue-800.mb-4
-                  | Have you used Baldrick Boards in your display? We'd love to hear about your experience and feature your testimonial on this page!
-                = link_to new_feedback_path, class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors" do
-                  | Submit Your Testimonial
-
-          / Community Links
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
-              h4.text-xl.font-semibold.text-gray-900.mb-3 Join Our Community
-              p.text-gray-700.mb-3
-                | Connect with other Baldrick users, share your projects, and get help from the community.
-              = link_to t('facebook_group_url'), target: "_blank", class: "inline-block bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors" do
-                | Join Facebook Group
-
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
-              h4.text-xl.font-semibold.text-gray-900.mb-3 See More Projects
-              p.text-gray-700.mb-3
-                | Check out our gallery of amazing displays created with Baldrick Boards.
-              = link_to fun_stuff_customer_showcase_path, class: "inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors" do
-                | View Gallery
-
-          / Footer Note
-          .bg-yellow-50.border-l-4.border-yellow-400.p-4
-            .flex
-              .flex-shrink-0
-                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
-              .ml-3
-                p.text-sm.text-yellow-700
-                  strong Note:
-                  |  All testimonials are from real customers and are used with permission. We're proud of our community and the amazing displays they create!
+section.cta
+  .wrap
+    h2 Want to be featured?
+    p Send us photos of your show — we love seeing what you build.
+    .cta-btns
+      = link_to new_feedback_path, class: 'btn btn-bone' do
+        | Get in touch
+        span.ar →
+      = link_to fun_stuff_customer_showcase_path, class: 'btn btn-clear' do
+        | View gallery

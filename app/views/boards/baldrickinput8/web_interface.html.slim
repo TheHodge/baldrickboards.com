@@ -1,272 +1,257 @@
 - content_for :title, "BaldrickInput8 Web Interface - Baldrick Board Documentation"
 
-/ Board Submenu
-= render 'boards/shared/board_submenu', board_name: 'BaldrickInput8', menu_items: board_menu_items('baldrickinput8')
+= render 'boards/shared/content_page', board_id: 'baldrickinput8', page_title: 'BaldrickInput8 Web Interface', current_page: 'Web Interface', page_subtitle: 'Complete configuration and control guide', document_title: "BaldrickInput8 Web Interface - Baldrick Board Documentation" do
+  .prose.max-w-none
+    h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickInput8 Web Interface
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickinput8', 'Web Interface')
+    p.text-lg.text-gray-700.mb-6
+      | The BaldrickInput8 includes a powerful web-based configuration interface that allows you to set up and control your board from any web browser. 
+      | This comprehensive guide covers every aspect of the web interface.
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'BaldrickInput8 Web Interface', subtitle: 'Complete configuration and control guide', image_url: 'baldrickinput8/board.png'
+    / Table of Contents
+    .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
+      h3.text-xl.font-semibold.text-blue-900.mb-4 Quick Navigation
+      .grid.md:grid-cols-2.gap-4
+        .space-y-2
+          .flex.items-center
+            = link_to "#stats-dashboard", class: "text-blue-700 hover:text-blue-900 underline" do
+              | Stats Dashboard
+          .flex.items-center
+            = link_to "#turniput-configuration", class: "text-blue-700 hover:text-blue-900 underline" do
+              | Turniput Configuration
+          .flex.items-center
+            = link_to "#networking", class: "text-blue-700 hover:text-blue-900 underline" do
+              | Networking Configuration
+          .flex.items-center
+            = link_to "#turnip-network", class: "text-blue-700 hover:text-blue-900 underline" do
+              | Turnip Network
+        .space-y-2
+          .flex.items-center
+            = link_to "#advanced-settings", class: "text-blue-700 hover:text-blue-900 underline" do
+              | Advanced Settings
+          .flex.items-center
+            = link_to "#troubleshooting", class: "text-blue-700 hover:text-blue-900 underline" do
+              | Troubleshooting
+          .flex.items-center
+            = link_to "#fpp-integration", class: "text-blue-700 hover:text-blue-900 underline" do
+              | FPP Integration
+          .flex.items-center
+            = link_to "#http-url-calls", class: "text-blue-700 hover:text-blue-900 underline" do
+              | HTTP URL Calls
 
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        / Web Interface Guide for BaldrickInput8
-        .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 BaldrickInput8 Web Interface
+    .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+      .flex
+        .flex-shrink-0
+          svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+            path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+        .ml-3
+          p.text-sm.text-blue-700
+            strong Access: 
+            | Connect to your network and navigate to the BaldrickInput8's IP address in your web browser. 
+            | You can find the IP address in your router's DHCP client list or by using network scanning tools.
 
-          p.text-lg.text-gray-700.mb-6
-            | The BaldrickInput8 includes a powerful web-based configuration interface that allows you to set up and control your board from any web browser. 
-            | This comprehensive guide covers every aspect of the web interface.
+    / Stats Section
+    h3.text-2xl.font-bold.text-gray-900.mb-4#stats-dashboard Stats Dashboard
 
-          / Table of Contents
-          .bg-blue-50.border.border-blue-200.rounded-lg.p-6.mb-8
-            h3.text-xl.font-semibold.text-blue-900.mb-4 Quick Navigation
-            .grid.md:grid-cols-2.gap-4
-              .space-y-2
-                .flex.items-center
-                  = link_to "#stats-dashboard", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | Stats Dashboard
-                .flex.items-center
-                  = link_to "#turniput-configuration", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | Turniput Configuration
-                .flex.items-center
-                  = link_to "#networking", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | Networking Configuration
-                .flex.items-center
-                  = link_to "#turnip-network", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | Turnip Network
-              .space-y-2
-                .flex.items-center
-                  = link_to "#advanced-settings", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | Advanced Settings
-                .flex.items-center
-                  = link_to "#troubleshooting", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | Troubleshooting
-                .flex.items-center
-                  = link_to "#fpp-integration", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | FPP Integration
-                .flex.items-center
-                  = link_to "#http-url-calls", class: "text-blue-700 hover:text-blue-900 underline" do
-                    | HTTP URL Calls
+    .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+      h4.text-lg.font-semibold.text-gray-900.mb-3 System Information
 
-          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
-            .flex
-              .flex-shrink-0
-                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-              .ml-3
-                p.text-sm.text-blue-700
-                  strong Access: 
-                  | Connect to your network and navigate to the BaldrickInput8's IP address in your web browser. 
-                  | You can find the IP address in your router's DHCP client list or by using network scanning tools.
+      .bg-gray-50.rounded-lg.p-4.mb-4
+        = image_tag "baldrickinput8/web-interface-stats.png", class: "w-full rounded mb-4", alt: "BaldrickInput8 Web Interface Stats"
 
-          / Stats Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4#stats-dashboard Stats Dashboard
+      p.text-gray-700.mb-4
+        | The Stats board gives you a heads up as to what's going on with your controller.
 
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
-            h4.text-lg.font-semibold.text-gray-900.mb-3 System Information
+      .grid.md:grid-cols-2.gap-4.mb-4
+        .bg-gray-50.rounded-lg.p-4
+          h5.text-md.font-semibold.text-gray-900.mb-2 Uptime
+          p.text-sm.text-gray-700
+            | Tells you how long your controller has been powered on 
+            em
+              | (this is useful in June to remind you that you forgot to turn it off over christmas)
 
-            .bg-gray-50.rounded-lg.p-4.mb-4
-              = image_tag "baldrickinput8/web-interface-stats.png", class: "w-full rounded mb-4", alt: "BaldrickInput8 Web Interface Stats"
+        .bg-gray-50.rounded-lg.p-4
+          h5.text-md.font-semibold.text-gray-900.mb-2 Temperature
+          p.text-sm.text-gray-700
+            | With a sensor next to the Ethernet connector, this gives you an indication of the board temperature 
+            em
+              | (in Celsius because water freezes at 0, not 32.. how does that make sense?)
+            br
+            br
+            | Generally, PCBs and components are good for -40 to +85°C. Anything below 60°C on this board is fine and nothing to worry about. If the temp is above that, try blowing on it like you would a hot chip out of the oven.
 
-            p.text-gray-700.mb-4
-              | The Stats board gives you a heads up as to what's going on with your controller.
+        .bg-gray-50.rounded-lg.p-4
+          h5.text-md.font-semibold.text-gray-900.mb-2 Firmware Version
+          p.text-sm.text-gray-700
+            | The BaldrickInput8 is pretty new in the world of controllers and we've got a LOT of features left to add, this will let you know your current version and if there is a version to upgrade to.
+            br
+            br
+            em
+              | (clicking the new version will upgrade it in place then restart the controller)
 
-            .grid.md:grid-cols-2.gap-4.mb-4
-              .bg-gray-50.rounded-lg.p-4
-                h5.text-md.font-semibold.text-gray-900.mb-2 Uptime
-                p.text-sm.text-gray-700
-                  | Tells you how long your controller has been powered on 
-                  em
-                    | (this is useful in June to remind you that you forgot to turn it off over christmas)
+        .bg-gray-50.rounded-lg.p-4
+          h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+          p.text-sm.text-gray-700
+            | It would be pretty silly to have a controller information box without showing you the IP Address of the controller wouldn't it? That would be like launching a controller without being able to manage the networking.
 
-              .bg-gray-50.rounded-lg.p-4
-                h5.text-md.font-semibold.text-gray-900.mb-2 Temperature
-                p.text-sm.text-gray-700
-                  | With a sensor next to the Ethernet connector, this gives you an indication of the board temperature 
-                  em
-                    | (in Celsius because water freezes at 0, not 32.. how does that make sense?)
-                  br
-                  br
-                  | Generally, PCBs and components are good for -40 to +85°C. Anything below 60°C on this board is fine and nothing to worry about. If the temp is above that, try blowing on it like you would a hot chip out of the oven.
+    / Turniput Configuration Section
+    h3.text-2xl.font-bold.text-gray-900.mb-4#turniput-configuration Turniput Configuration
 
-              .bg-gray-50.rounded-lg.p-4
-                h5.text-md.font-semibold.text-gray-900.mb-2 Firmware Version
-                p.text-sm.text-gray-700
-                  | The BaldrickInput8 is pretty new in the world of controllers and we've got a LOT of features left to add, this will let you know your current version and if there is a version to upgrade to.
-                  br
-                  br
-                  em
-                    | (clicking the new version will upgrade it in place then restart the controller)
+    .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+      h4.text-lg.font-semibold.text-gray-900.mb-3 External Input Triggers
 
-              .bg-gray-50.rounded-lg.p-4
-                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
-                p.text-sm.text-gray-700
-                  | It would be pretty silly to have a controller information box without showing you the IP Address of the controller wouldn't it? That would be like launching a controller without being able to manage the networking.
+      .bg-gray-50.rounded-lg.p-4.mb-4
+        = image_tag "baldrickinput8/web-interface-turnip-config.png", class: "w-full rounded mb-4", alt: "BaldrickInput8 Turniput Configuration"
 
-          / Turniput Configuration Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4#turniput-configuration Turniput Configuration
+      p.text-gray-700.mb-4
+        | The BaldrickInput8 comes with eight Turniput ports to attach external triggers (buttons, beam breaks, motion sensors) 
+        | that can be configured when triggered to do a multitude of tasks.
 
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
-            h4.text-lg.font-semibold.text-gray-900.mb-3 External Input Triggers
+      h5.text-md.font-semibold.text-gray-900.mb-3 Available Actions
 
-            .bg-gray-50.rounded-lg.p-4.mb-4
-              = image_tag "baldrickinput8/web-interface-turnip-config.png", class: "w-full rounded mb-4", alt: "BaldrickInput8 Turniput Configuration"
+      .grid.md:grid-cols-2.gap-4.mb-4
+        .bg-gray-50.rounded-lg.p-4
+          h6.text-sm.font-semibold.text-gray-900.mb-2#fpp-integration FPP Integration
+          p.text-xs.text-gray-700
+            | Control FPP (Falcon Pi Player) instances, change volume, play songs/playlists, or call FPP API directly.
 
-            p.text-gray-700.mb-4
-              | The BaldrickInput8 comes with eight Turniput ports to attach external triggers (buttons, beam breaks, motion sensors) 
-              | that can be configured when triggered to do a multitude of tasks.
+        .bg-gray-50.rounded-lg.p-4
+          h6.text-sm.font-semibold.text-gray-900.mb-2 Toggle Test Mode
+          p.text-xs.text-gray-700
+            | Quickly enable any test mode at a specific brightness for quick prop testing.
 
-            h5.text-md.font-semibold.text-gray-900.mb-3 Available Actions
+        .bg-gray-50.rounded-lg.p-4
+          h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickSwitchy Control
+          p.text-xs.text-gray-700
+            | Turn on/off BaldrickSwitchy ports for specific durations (bubble machines, snow machines, etc.).
 
-            .grid.md:grid-cols-2.gap-4.mb-4
-              .bg-gray-50.rounded-lg.p-4
-                h6.text-sm.font-semibold.text-gray-900.mb-2#fpp-integration FPP Integration
-                p.text-xs.text-gray-700
-                  | Control FPP (Falcon Pi Player) instances, change volume, play songs/playlists, or call FPP API directly.
+        .bg-gray-50.rounded-lg.p-4
+          h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickDMX Presets
+          p.text-xs.text-gray-700
+            | Activate preset commands on your BaldrickDMX for moving heads, effects, etc.
 
-              .bg-gray-50.rounded-lg.p-4
-                h6.text-sm.font-semibold.text-gray-900.mb-2 Toggle Test Mode
-                p.text-xs.text-gray-700
-                  | Quickly enable any test mode at a specific brightness for quick prop testing.
+        .bg-gray-50.rounded-lg.p-4
+          h6.text-sm.font-semibold.text-gray-900.mb-2#http-url-calls HTTP URL Calls
+          p.text-xs.text-gray-700
+            | Call web APIs from simple triggers - perfect for custom integrations.
 
-              .bg-gray-50.rounded-lg.p-4
-                h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickSwitchy Control
-                p.text-xs.text-gray-700
-                  | Turn on/off BaldrickSwitchy ports for specific durations (bubble machines, snow machines, etc.).
+        .bg-gray-50.rounded-lg.p-4
+          h6.text-sm.font-semibold.text-gray-900.mb-2 Do Nothing
+          p.text-xs.text-gray-700
+            | Sometimes you set an input to do something and think "oh actually no, that's not what I want."
 
-              .bg-gray-50.rounded-lg.p-4
-                h6.text-sm.font-semibold.text-gray-900.mb-2 BaldrickDMX Presets
-                p.text-xs.text-gray-700
-                  | Activate preset commands on your BaldrickDMX for moving heads, effects, etc.
+      .bg-yellow-50.border-l-4.border-yellow-400.p-4
+        .flex
+          .flex-shrink-0
+            svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+              path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+          .ml-3
+            p.text-sm.text-yellow-700
+              strong Note: 
+              | The main difference between this and the Button input on the Baldrick8 is the addition of Lamp controls.
 
-              .bg-gray-50.rounded-lg.p-4
-                h6.text-sm.font-semibold.text-gray-900.mb-2#http-url-calls HTTP URL Calls
-                p.text-xs.text-gray-700
-                  | Call web APIs from simple triggers - perfect for custom integrations.
+    / Networking Section
+    h3.text-2xl.font-bold.text-gray-900.mb-4#networking Networking Configuration
 
-              .bg-gray-50.rounded-lg.p-4
-                h6.text-sm.font-semibold.text-gray-900.mb-2 Do Nothing
-                p.text-xs.text-gray-700
-                  | Sometimes you set an input to do something and think "oh actually no, that's not what I want."
+    .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+      h4.text-lg.font-semibold.text-gray-900.mb-3 Good Defaults, Easy Config
 
-            .bg-yellow-50.border-l-4.border-yellow-400.p-4
-              .flex
-                .flex-shrink-0
-                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
-                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
-                .ml-3
-                  p.text-sm.text-yellow-700
-                    strong Note: 
-                    | The main difference between this and the Button input on the Baldrick8 is the addition of Lamp controls.
+      .bg-gray-50.rounded-lg.p-4.mb-4
+        = image_tag "baldrickinput8/web-interface-networking.png", class: "w-full rounded mb-4", alt: "BaldrickInput8 Web Interface Networking"
 
-          / Networking Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4#networking Networking Configuration
+      .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-4
+        .flex
+          .flex-shrink-0
+            svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+              path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+          .ml-3
+            p.text-sm.text-yellow-700
+              strong Note: 
+              | WiFi on the Input8 is currently in testing and will be released soon.
 
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
-            h4.text-lg.font-semibold.text-gray-900.mb-3 Good Defaults, Easy Config
+      .grid.md:grid-cols-2.gap-4.mb-4
+        .bg-gray-50.rounded-lg.p-4
+          h5.text-md.font-semibold.text-gray-900.mb-2 Hostname
+          p.text-sm.text-gray-700
+            | The default hostname is baldrickboard (hence baldrickboard.local). If you have one BaldrickInput8 then it's completely fine to keep this as it is, however if like us you want to collect a few of them, then we'd recommend you change this to something like 
+            em
+              | frontgarden
+            | or 
+            em
+              | upstairsroof
+            br
+            br
+            strong
+              | (Just a reminder that hostnames should be lowercase without spaces)
 
-            .bg-gray-50.rounded-lg.p-4.mb-4
-              = image_tag "baldrickinput8/web-interface-networking.png", class: "w-full rounded mb-4", alt: "BaldrickInput8 Web Interface Networking"
+        .bg-gray-50.rounded-lg.p-4
+          h5.text-md.font-semibold.text-gray-900.mb-2 DHCP / STATIC
+          p.text-sm.text-gray-700
+            | The default option is DHCP (which is Dynamic Host Configuration Protocol but you don't need to know that) which basically means your router or computer gives the board an I.P. address. This is great for initial setup but when you want to run a show it's best to switch it to STATIC, that's where your controller tells the router / computer "This is my IP".
 
-            .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-4
-              .flex
-                .flex-shrink-0
-                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
-                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
-                .ml-3
-                  p.text-sm.text-yellow-700
-                    strong Note: 
-                    | WiFi on the Input8 is currently in testing and will be released soon.
+        .bg-gray-50.rounded-lg.p-4
+          h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
+          p.text-sm.text-gray-700
+            | Set this to the IP address that you want the controller to be fixed to.
 
-            .grid.md:grid-cols-2.gap-4.mb-4
-              .bg-gray-50.rounded-lg.p-4
-                h5.text-md.font-semibold.text-gray-900.mb-2 Hostname
-                p.text-sm.text-gray-700
-                  | The default hostname is baldrickboard (hence baldrickboard.local). If you have one BaldrickInput8 then it's completely fine to keep this as it is, however if like us you want to collect a few of them, then we'd recommend you change this to something like 
-                  em
-                    | frontgarden
-                  | or 
-                  em
-                    | upstairsroof
-                  br
-                  br
-                  strong
-                    | (Just a reminder that hostnames should be lowercase without spaces)
+        .bg-gray-50.rounded-lg.p-4
+          h5.text-md.font-semibold.text-gray-900.mb-2 Subnet Mask & Gateway
+          p.text-sm.text-gray-700
+            | It is more than likely that you can copy the Subnet Mask (the size of your network) and the Default Gateway (the exit point of your network) from the output of an IPconfig check.
 
-              .bg-gray-50.rounded-lg.p-4
-                h5.text-md.font-semibold.text-gray-900.mb-2 DHCP / STATIC
-                p.text-sm.text-gray-700
-                  | The default option is DHCP (which is Dynamic Host Configuration Protocol but you don't need to know that) which basically means your router or computer gives the board an I.P. address. This is great for initial setup but when you want to run a show it's best to switch it to STATIC, that's where your controller tells the router / computer "This is my IP".
+        .bg-gray-50.rounded-lg.p-4
+          h5.text-md.font-semibold.text-gray-900.mb-2 DNS Server
+          p.text-sm.text-gray-700
+            | DNS wise, typically, your default gateway is your router IP, and that more often than not, can provide your network with DNS. However, some people like to use "outside 3rd parties" DNS like google or cloudflares DNS. If you don't know about this, its probably best just to stick to DHCP.
 
-              .bg-gray-50.rounded-lg.p-4
-                h5.text-md.font-semibold.text-gray-900.mb-2 IP Address
-                p.text-sm.text-gray-700
-                  | Set this to the IP address that you want the controller to be fixed to.
+    / Turnip Network Section
+    h3.text-2xl.font-bold.text-gray-900.mb-4#turnip-network Turnip Network
 
-              .bg-gray-50.rounded-lg.p-4
-                h5.text-md.font-semibold.text-gray-900.mb-2 Subnet Mask & Gateway
-                p.text-sm.text-gray-700
-                  | It is more than likely that you can copy the Subnet Mask (the size of your network) and the Default Gateway (the exit point of your network) from the output of an IPconfig check.
+    .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+      h4.text-lg.font-semibold.text-gray-900.mb-3 The Turnip Network
 
-              .bg-gray-50.rounded-lg.p-4
-                h5.text-md.font-semibold.text-gray-900.mb-2 DNS Server
-                p.text-sm.text-gray-700
-                  | DNS wise, typically, your default gateway is your router IP, and that more often than not, can provide your network with DNS. However, some people like to use "outside 3rd parties" DNS like google or cloudflares DNS. If you don't know about this, its probably best just to stick to DHCP.
+      .bg-gray-50.rounded-lg.p-4.mb-4
+        = image_tag "baldrickinput8/web-interface-turnip-network.png", class: "w-full rounded mb-4", alt: "BaldrickInput8 Turnip Network"
 
-          / Turnip Network Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4#turnip-network Turnip Network
+      p.text-gray-700.mb-4
+        | The Baldrick family of boards have developed with 
+        em ease of use 
+        | as one of the core principles, this lead the creation of 'The Turnip Network'.
 
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
-            h4.text-lg.font-semibold.text-gray-900.mb-3 The Turnip Network
+      p.text-gray-700.mb-4
+        | The BaldrickBoards will find each other on the network, allowing you to easily switch between them when doing configuration.
 
-            .bg-gray-50.rounded-lg.p-4.mb-4
-              = image_tag "baldrickinput8/web-interface-turnip-network.png", class: "w-full rounded mb-4", alt: "BaldrickInput8 Turnip Network"
+      p.text-gray-700.mb-4
+        | Test Sync allows you to enable test mode on one Baldrick board and all the others in that series will follow (so when you turn Hodgical Test Mode on one Baldrick8, it will turn on the rest of them).
 
-            p.text-gray-700.mb-4
-              | The Baldrick family of boards have developed with 
-              em ease of use 
-              | as one of the core principles, this lead the creation of 'The Turnip Network'.
+      p.text-gray-700.mb-4
+        | Some of the Baldrick boards have buttons (or Turniputs) and these allow integration with not only all the other boards in the family, but also FPP and web hooks!
 
-            p.text-gray-700.mb-4
-              | The BaldrickBoards will find each other on the network, allowing you to easily switch between them when doing configuration.
+      .bg-blue-50.border-l-4.border-blue-400.p-4
+        .flex
+          .flex-shrink-0
+            svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+              path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+          .ml-3
+            p.text-sm.text-blue-700
+              strong It's what those people in business suits call 'synergy'!
 
-            p.text-gray-700.mb-4
-              | Test Sync allows you to enable test mode on one Baldrick board and all the others in that series will follow (so when you turn Hodgical Test Mode on one Baldrick8, it will turn on the rest of them).
+    / Advanced Settings Section
+    h3.text-2xl.font-bold.text-gray-900.mb-4#advanced-settings Advanced Settings
 
-            p.text-gray-700.mb-4
-              | Some of the Baldrick boards have buttons (or Turniputs) and these allow integration with not only all the other boards in the family, but also FPP and web hooks!
+    .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
+      h4.text-lg.font-semibold.text-gray-900.mb-3 Advanced Configuration Options
 
-            .bg-blue-50.border-l-4.border-blue-400.p-4
-              .flex
-                .flex-shrink-0
-                  svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
-                    path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-                .ml-3
-                  p.text-sm.text-blue-700
-                    strong It's what those people in business suits call 'synergy'!
+      p.text-gray-700.mb-4
+        | Advanced settings provide additional configuration options for power users and complex installations.
 
-          / Advanced Settings Section
-          h3.text-2xl.font-bold.text-gray-900.mb-4#advanced-settings Advanced Settings
+      .bg-gray-50.rounded-lg.p-4.mb-4
+        h5.text-md.font-semibold.text-gray-900.mb-2 Coming Soon
+        p.text-sm.text-gray-700
+          | Advanced settings documentation will be added as new features are developed and released.
 
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-6
-            h4.text-lg.font-semibold.text-gray-900.mb-3 Advanced Configuration Options
-
-            p.text-gray-700.mb-4
-              | Advanced settings provide additional configuration options for power users and complex installations.
-
-            .bg-gray-50.rounded-lg.p-4.mb-4
-              h5.text-md.font-semibold.text-gray-900.mb-2 Coming Soon
-              p.text-sm.text-gray-700
-                | Advanced settings documentation will be added as new features are developed and released.
-
-          / Navigation Links
-          .flex.flex-col.sm:flex-row.gap-4.mt-8
-            = link_to 'Getting Started Guide', board_page_path('baldrickinput8', 'getting-started'), class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'Technical Specifications', board_page_path('baldrickinput8', 'tech-specs'), class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'FAQ', board_page_path('baldrickinput8', 'faq'), class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
+    / Navigation Links
+    .flex.flex-col.sm:flex-row.gap-4.mt-8
+      = link_to 'Getting Started Guide', board_page_path('baldrickinput8', 'getting-started'), class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+      = link_to 'Technical Specifications', board_page_path('baldrickinput8', 'tech-specs'), class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+      = link_to 'FAQ', board_page_path('baldrickinput8', 'faq'), class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'

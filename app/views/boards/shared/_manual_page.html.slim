@@ -1,0 +1,52 @@
+- data = board_data.fetch(board_id)
+- board_name = data[:name]
+- sections = board_manual_sections(board_id)
+- toc = board_manual_toc(board_id)
+
+- content_for :title, "#{board_name} Manual - Baldrick Board Documentation"
+
+- content_for :boardbar do
+  = render 'boards/shared/board_submenu', board_name: board_name, board_id: board_id, menu_items: board_menu_items(board_id)
+
+section.dhead
+  .wrap
+    nav.crumb
+      = link_to "Home", root_path
+      span.sep= "/"
+      = link_to "Boards", boards_path
+      span.sep= "/"
+      = link_to board_name, board_path(board_id)
+      span.sep= "/"
+      span.cur Manual
+    .dhead-in
+      div
+        .dhead-eye
+          span.bar
+          span.annot Manual & Docs
+        h1 = "#{board_name} Manual"
+        p.sub = board_manual_subtitle(board_id)
+        .dhead-meta
+          span = data[:subtitle]
+          - if (updated = board_manual_updated_label(board_id))
+            span = "Last updated #{updated}"
+      .dhead-actions
+        = link_to board_page_path(board_id, 'faq'), class: "btn btn-line" do
+          | FAQ
+
+.docpage
+  .wrap.doc-wrap
+    aside.toc data-controller="manual-toc"
+      h6 On this page
+      nav#toc
+        - toc.each do |group|
+          a.toc-section href="##{group[:id]}" data-manual-toc-target="link" data-action="click->manual-toc#jump" = group[:title]
+          - group[:items].each do |item|
+            a.toc-sub href="##{item[:id]}" data-manual-toc-target="link" data-action="click->manual-toc#jump" = item[:title]
+    article.prose.manual-prose
+      = render "boards/shared/manual_hero", board_id: board_id, board_name: board_name
+      - sections.each do |section|
+        section id=section[:id]
+          h2 = section[:title]
+          - if section[:specs_table]
+            = render 'boards/shared/manual_specs_table', board_id: board_id
+          = render_board_manual_section(section)

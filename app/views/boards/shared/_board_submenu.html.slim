@@ -1,26 +1,17 @@
-/ Board Submenu
-.bg-purple-900.text-white.sticky.top-16.z-40 data-controller="mobile-menu"
-  .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8
-    .flex.items-center.justify-between.h-12
-      / Board Name
-      .flex.items-center
-        h2.text-lg.font-semibold = board_name
-      
-      / Navigation Links
-      nav.hidden.md:flex.space-x-8
-        - menu_items.each do |item|
-          = link_to item[:path], class: "#{current_page?(item[:path]) ? 'text-purple-200 border-purple-200' : 'text-purple-300 hover:text-white'} border-transparent hover:border-white px-1 pt-1 border-b-2 text-sm font-medium transition-colors" do
-            = item[:title]
-      
-      / Mobile menu button
-      .md:hidden
-        button.board-submenu-button.inline-flex.items-center.justify-center.p-2.rounded-md.text-purple-300.hover:text-white.hover:bg-purple-800.focus:outline-none.focus:ring-2.focus:ring-inset.focus:ring-white type="button" data-action="click->mobile-menu#toggle"
-          svg.h-6.w-6 fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"
-    
-    / Mobile menu
-    .board-submenu-mobile.hidden.md:hidden data-mobile-menu-target="menu"
-      .pt-2.pb-3.space-y-1
-        - menu_items.each do |item|
-          = link_to item[:path], class: "#{current_page?(item[:path]) ? 'bg-purple-800 border-purple-200 text-purple-200' : 'border-transparent text-purple-300 hover:bg-purple-800 hover:border-purple-300 hover:text-white'} block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-colors" do
-            = item[:title]
+/ Board bar (pinned sub-nav — rendered via content_for :boardbar in layout)
+- board_id = local_assigns[:board_id] || board_name.to_s.downcase.gsub(/\s+/, '')
+- buy_path = board_page_path(board_id, 'buy-this-board')
+
+.boardbar
+  .wrap.boardbar-inner
+    span.bb-name
+      span.chipdot
+      = board_name
+    nav.bb-tabs
+      - menu_items.each do |item|
+        = link_to item[:title], item[:path], class: "bb-tab#{' active' if current_page?(item[:path])}"
+    span.bb-sp
+    = link_to buy_path, class: "btn btn-green btn-sm bb-buy" do
+      svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"
+        path d="M3 1a1 1 0 000 2h1.22l.305 1.222.01.042 1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+      span.txt Where to Buy

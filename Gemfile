@@ -76,3 +76,5 @@ gem "image_processing", "~> 1.2"
 gem "mini_magick", "~> 5.3"
 
 # Text summarization - using custom implementation (no gem needed)
+
+gem "kramdown", "~> 2.5"

@@ -1,0 +1,7 @@
+aside.toc class=(local_assigns[:toc_class]) data-controller="manual-toc"
+  h6 On this page
+  nav
+    - toc.each do |group|
+      a.toc-section href="##{group[:id]}" data-manual-toc-target="link" data-action="click->manual-toc#jump" = group[:title]
+      - Array(group[:items]).each do |item|
+        a.toc-sub href="##{item[:id]}" data-manual-toc-target="link" data-action="click->manual-toc#jump" = item[:title]

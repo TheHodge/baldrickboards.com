@@ -1,0 +1,589 @@
+        h2 Release Notes
+
+        p
+          | Stay up to date with the latest firmware updates, software improvements, and new features for all Baldrick products.
+
+        .callout.info
+          span.ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              circle cx="12" cy="12" r="10"
+              path d="M12 16v-4M12 8h.01"
+          div
+            span.lbl Update notification
+            p.bd Your board should alert you when a new update is available. Not all updates are available for all boards.
+
+        h3#release-history Releases
+
+        .rn-entry#v3-7-0
+          .rn-entry-head
+            h4 3.7 - Don't go chasing Protocols
+            span.rn-badge Latest release
+
+          h5.rn-label What's new
+          ul.mb-8
+            li • Added support for UCS1903, SM16703P & UCS2904 pixel types.
+            li • Added Static IP Mode to all boards
+            li • Added Network reset mode to all non pixel boards.
+            li • LLDP support - No one will care, but we now have LLDP support
+
+          h5.rn-label Special modes
+          p Each board now has three special modes that you can activate with button presses:
+
+          .rn-grid.rn-grid--3
+            .rn-subcard
+              h6 Reset to factory settings
+              p Resets the board to factory settings, because sometimes you break it so much, the only way to make progress is to begin again.
+            .rn-subcard
+              h6 Reset network settings
+              p Sometimes you only break it MOSTLY and doing this will reset JUST the network settings.
+            .rn-subcard
+              h6 Set static IP
+              p
+                | Sometimes you don't have a DHCP server and you need the damn board to appear on the network (and we don't want to deal with 169. addresses). This sets the IP address to
+                strong  192.168.68.68
+                | .
+
+          h5.rn-label How to activate
+          .rn-stack
+            .rn-subcard
+              h6 Baldrick8 & Baldrick17
+              p
+                | Press and hold a certain button and power cycle the board. Hold
+                strong  B1
+                |  for about 10 seconds to reset network settings,
+                strong  B2
+                |  to set a static IP address, and
+                strong  B3
+                |  for a reset to factory settings.
+            .rn-subcard
+              h6 All other boards
+              p
+                | Press and hold the 'oh no' button and power cycle for about 10 seconds to reset to factory settings. Press 'oh no'
+                strong  3 times in 3 seconds
+                |  to reset network settings, or
+                strong  5 times in 3 seconds
+                |  to set the static IP address.
+
+          .rn-subcard
+            h5.rn-label Frequently asked (ish) questions
+            .rn-stack
+              div
+                p
+                  strong Why can't I set the static IP address it resets to?
+                p HOW… A COMBINATION OF DOTS AND DASHES ON THE OH NO BUTTON.. GET A GRIP SAMANTHA, WHY CAN'T YOU JUST BE HAPPY THAT WE CREATED A FEATURE YOU WANTED, WHY IS IT NEVER GOOD ENOUGH?? WHY??..
+              div
+                p
+                  strong Why 192.168.68.68?
+                p Three reasons: 1) it works better on Dom's local network, 2) ending in 168.68.68 is easy to remember, 3) he couldn't get an IP that worked with 8008135.
+        .rn-entry#v3-6-0
+            h4 3.6 - Signalling the start of Christmas
+            ul
+              li This update will only affect the BaldrickSignals, if you don't have one, you don't need to update (but updating won't break anything)
+              li The BaldrickSignals is now using the same firmware branch as it's brothers and sisters! 
+              li We've added the modifiers in to allow you to account for visitors without mobile phones and those devices that are always in your vicinity .
+              li The graph library has changed and theres now a download data button to get the data in CSV, JSON or XML format. 
+              li 
+                b As the title suggests we will soon be implementing our seasonal freeze period, where only URGENT fixes are released via the main channel but we've got one more update first.
+        .rn-entry#v3-5-4
+          h4 3.5.4 - Test Mode Stability 
+          ul
+            li If you enabled test mode and refreshed and refreshed and refreshed and refreshed and refreshed and refreshed and refreshed and refreshed and refreshed and refreshed and refreshed and refreshed the page it would cause a bit of an issue with the board, I don't know why someone would want to do this but they did, reported the issue and we've fixed it the best we can.
+            li I'm going to have to add please don't use the web interface like ticketmaster on Taylor Swift ticket release day to the docs aren't I?    
+        .rn-entry#v3-5-3-0
+          h4 3.5.3.0 - Internal 
+          ul
+            li  This release is for our internal monitoring system for board testing, normally we can hide these changes within other updates but some of the things we are testing require us to do a production release.
+            li This is not a required update, don't rush out to do it, it will change NOTHING for you.
+        .rn-entry#v3-5-3
+          h4 3.5.3 - Testing My Patience 
+          ul
+            li  More Universal Addressing modifications (This time with Artnet)
+            li  Our new build system was not including the JS files, this was an issue for anyone wanting to use the boards web UI. 
+            li  Test mode will now default to 50 pixels per port if there are no models and all configured models if not.
+            li  We've moved the pixel amount box to the top because people kept missing it.
+        .rn-entry#v3-5-2
+          h4 3.5.2 - Internal
+          ul
+            li  This release is for an internal system fix and was not available for public download.            
+        .rn-entry#v3-5-1
+          h4 3.5.1
+          ul
+            li  RGBW uploads from xLights should now be in the correct order, the reason this took so long for us to fix is that nobody has bought Dom any RGBW pixels.
+            li  ⁠CunningFX will now switch betwen effects rather than just toggling.
+            li  ⁠More Absolute Universe addressing changes, we still aren't fully announcing this feature yet as it needs some changes but it's been requested and people are using it.
+            li  ⁠DHCP will no longer report BALDRICKBOARD as the hostname everytime.
+            li  ⁠Allow people to update when on FPP Proxy 
+
+        .rn-entry#v3-5-0
+          h4 3.5.0 - Ghost of Pixels Past
+          ul
+            li Turns out when people opt into the beta release, it really didn't want you to opt out, you now can.
+            li The BaldrickDMX board had an issue with test mode, Dom used this as an excuse to buy a new smoke machine to test it and now it's fixed.
+            li Input1 can finally control CunningFX on other boards, please stop messaging me now. 
+            li Michael Floyd reported an issue with the B17 and large config files with lots of models, that is now fixed after our initial suggestion of buying more boards to have one port per port was ignored
+            li Unlike previous updates, we will actually let people on the Baldrick8 update to this one! (someone forgot to tick a checkbox last time)
+
+        .rn-entry#v3-5
+          h4 3.5 - Quality of afterlife improvements.. 
+          ul
+            li Pressing and holding B1 for 5 seconds on boot will now reset network settings on both the B17 and B8. 
+            li The updates we made to the Input8 last time for multiple FPP instances are now available for all boards. 
+            li Some people using annoying pixel colour orders were complaining that they were not working, so we did an intense overview of the firmware and realised someone got the GBR mixed up with BGR but it's all sorted now.
+            li We've added some performance improvements to the B17, I know this sounds like a generic app update description but there are so many little tweaks that Pete listed to me, I'll admit I switched off and started scrolling TikTok. 
+            li Test mode now defaults to the first 50 pixels rather than all configured pixels, this should reduce my support tickets by about 30%.
+            li We now stop you adding hostnames with spaces in them, because it tends to break things. 
+            li In the VERY VERY slight chance that your board crashes, it sends a small crash report to us with what happened. 
+            li Sometimes the B17 would say that a system update was available, but it wasn't. We've taken the board to one side and told it that it needs to sort itself out.
+            
+        .rn-entry#v3-4-0
+          h4 3.4.0 - Augustly Delivered
+          ul
+            li Pixel Extrodinare August Thede reported a bug with the input8 board and multiple FPP instances and we were SHOCKED, SHOCKED I TELL YOU!.. Once we'd recovered from the horror that our board had a software issue, we realised that it was a simple fix and we've released it to you all.
+            li You may be wondering why the jump from 3.1.0 to 3.4.0 and we were wondering why you were wondering, if we had a good answer for this we'd have obviously told you.
+        .rn-entry#v3-1-0
+            h4 3.1.0 - Proxy Shmoxy
+            .callout.warn
+              ul
+                li • Nicholas Ramsingh reported an issue with FPP Proxy. I am in no way confirming that there was an issue with our Firmware and we've realised that our testing Kluster doesn't actually monitor FPP proxy but I've just updated my board and it works fine for me.
+
+        .rn-entry#v3-1
+            h4 3.1 - Pause and Effect
+            ul
+              li • Fixed Switchy test mode issue reported by #{link_to 'Luke Gunton', 'https://www.facebook.com/groups/ilightthat/posts/3984575505191460/', target: '_blank'}
+              li • CunningFX will now pause when pixel data is sent to the board, reported by Jay Underdown
+              li 
+                | • Just a 
+                em slight 
+                | entire rewrite of the backend firmware to ensure that future updates and 
+                em future boards 
+                | become a lot easier to manage.
+
+        .rn-entry#v3-0-1
+            h4 3.0.1 - Just a Gregular update
+            ul
+              li • To celebrate the release of the #{link_to 'Greg Macaree Firmware 3.0 overview video', 'https://www.youtube.com/watch?v=u20a206EO9U'} we are putting out a quick update to fix a few bugs he spotted over the last week.
+              li • We've also bought some of our own RGBW strip to add to the Kluster for testing so we should have to bug him less for 'does this work for you? in the future' thanks for your help Greg!
+
+        .rn-entry#v3-0
+            h4 3.0 - Major Release
+            .rn-img-wrap
+              = image_tag "firmware3pointoh.png", alt: "Baldrick 3.0 firmware release", class: 'rn-img'
+            ul
+              li • CunningFX is our brand new visual generator for artists, architects and those folk who like to turn lights on to mark special occasions, with over 5 (wow) different effects, colour, speed selection and advanced features such as layering and model targeting, we are really excited to evolve this feature as you use it and feedback.
+              li 
+                | • RGBW Support 
+                em Finally.
+              li 
+                | • CunningFX can be activated over the 
+                = link_to "Turnip Network", breakthroughs_turnip_network_path, class: 'lnk'
+                |  so your 
+                = link_to "Input1", board_path('baldrickinput1'), class: 'lnk'
+                |  and 
+                = link_to "Baldrick8", board_path('baldrick8'), class: 'lnk'
+                |  buttons can toggle presets, simply lovely.
+
+        .rn-entry#v2-7-1
+            h4 2.7.1 - The Chupdate
+            ul
+              li 
+                | • Sometimes when feedback comes in strong, there is no choice but send out the company BALDRICKSIGNAL(S). Today that notice went out loud and clear CHUCK NEEDS HELP. The alarm goes off and each member of the team drops what they are doing, family dinners are interrupted, dogs are half walked and Disney+ box sets are paused as the team rushes to Whatsapp to see how they can help put out an update in time. After some furious typing, debates over code quality and over 
+                strong 2 lines of code changed! 
+                | The update was finally complete.
+              li • Test mode now defaults to Rainbow instead of ALL OFF.
+
+        .rn-entry#v2-7
+            h4 2.7 - All Boards
+            p.text-gray-700.mb-3
+              | After our first season we took a look at the crash data and some of the testing results from our Kluster, you'll see a bunch of stability updates over the next few months as we add more and more load to the boards to see what the limits are.
+            ul
+              li • We've been running 20 boards full pelt with 750 RGB pixels per port for 40 hours at a time, this release is what we've been working on since Christmas and we are very very pleased with it!
+              li • ⁠Fix minor UI bug that was annoying Pete (some cards were different widths) that nobody else noticed.
+              li • Fix minor UI bug that Dom noticed a while back (JS console warnings about IP addresses not being populated).
+              li • If the board crashes (shock) it's designed to instantly restart so you don't notice, sometimes it didn't restart so we've told it off and it's promised us it will be good.
+              li • If the board starts to get low on memory, we reduce the turnip activities until it comes back.
+              li • We ⁠fixed a dumb problem where we can offer to control FPP instances that we can't actually contact.
+
+        .rn-entry#v2-6
+            h4 2.6 - All Boards
+            p.text-gray-700.mb-3
+              | The seasonal freeze is over and we've got some 'none priority' fixes and optimisations for the board ready for you.
+            ul
+              li • The webserver had a crashing issue when it was loaded more than once and the RAM got low, we've tried to fix that but why do you need the UI loaded in more than one tab... at this point it's you causing the issues.
+              li • ⁠Rework boot sequence to avoid problem bootloops that survive a b3-reset, this has been a pain in the arse for people and we do apologise, I can't even make a sarcastic comment because this one was on us but it took us a while to work out what the hell was going on with our 'bulletproof reset system'.
+              li • ⁠Kill a memory leak that occurred when network traffic got busy and the alternative of 'stop having big shows' wasn't approved.
+              li • Be better behaved in Artnet and E1.31/sACN code to avoid an annoying crash, again crashes are bad.
+              li • We've shuffled a few bits around internally and have found even more RAM for your pixel pleasure, they didn't think it was possible, but it is!
+
+
+        .rn-entry#v2-5-6
+            h4 2.5.6 - All Boards
+            ul
+              li • This fixes some freezing issues that were discoverd when using older protocols
+
+        .rn-entry#v2-5
+            h4 2.5 - All Boards
+            ul
+              li • Fixed the "relay threshold isn't saving" reported by Robert Milton, I was going to type something sarcastic here but it was an issue and we've fixed it.We've added a new section to the web interface which indicates where streaming data is being received from, what type it is and what the size of data is. The board will also show if you data is being received from multiple IP addresses at once (i.e. xLights & FPP or two FPP installs).
+              li • During the last update some people may have had to reset their board if their network was pretty fast, whilst we appreciate your dedication to good network speed, it did point out a slight error in our networking code and so we've re-written that. If you all could switch back to networking via null modem cables, that would help us out in future.
+            .bg-yellow-50.border-l-4.border-yellow-400.p-4.mt-4
+              p.text-sm.text-yellow-700
+                strong Seasonal Freeze:
+                |  With this feature added, we now enter our 'seasonal freeze period'. No other features will be added to the firmware public release until the season is over - only fixes and improvements will be done.
+
+        .rn-entry#v2-4-3
+            h4 2.4.3 - All Boards
+            ul
+              li • Blank LEDs on startup, as requested by Derek Jamison whose pixels start blue, so we've sent a signal to cheer them up.
+              li 
+                | • Rewritten the 
+                = link_to "Turnip Network", breakthroughs_turnip_network_path, class: 'lnk'
+                |  discovery code, you probably won't see a difference unless you run more than 5 BaldrickBoards (You could buy more to test it out).
+              li • Fixed the "relay threshold isn't saving" reported by Robert Milton, I was going to type something sarcastic here but it was an issue and we've fixed it.
+
+        .rn-entry#v2-4-2
+            h4 2.4.2
+            ul
+              li 
+                | • An initial fix for a board timeout issue affect some 
+                = link_to "Baldrick8", board_path('baldrick8'), class: 'lnk'
+                |  boards.
+
+        .rn-entry#v2-4-1
+            h4 2.4.1
+            ul
+              li • I could make up something here like bug fixes, but the truth is we typed a .2 instead of a .1 in the release number column
+
+        .rn-entry#v2-4
+            h4 2.4
+            ul
+              li • Fix vendor logo formatting on smaller screens, we wouldn't want you to be unable to use test mode due to a giant BUILD A LIGHT SHOW logo
+              li • We've done some Firmware refactoring and now it looks really pretty and stylish, not that you've noticed.
+              li 
+                | • 
+                = link_to "BaldrickInput1", board_path('baldrickinput1'), class: 'lnk'
+                |  support
+              li • New managed update mechanism, so you don't have to upload all the boards when we do a firmware release
+              li • Allow buttons to trigger test modes on remote boards (somebody asked, I guess?)
+              li • Fix supposed rendering glitches, these glitches have still not officially being confirmed but if they were confirmed, they'd be fixed now. Blank unused pixels after test modes, they had a habit of staying on.
+
+        .rn-entry#v2-3
+            h4 2.3
+            ul
+              li • Tweaked our websockets integration to work across a few more browsers (and implemented a fallback for those people who are running weird or older browsers)
+              li • We've redone the button interface a little, adding timeouts & pressed indicators, laying the groundwork for [REDACTED]
+              li • A secret update hidden... ooOooOOo.. why would I mention this.. because I write the notes.
+              li • Updated the sACN/ArtNet code to run better in certain situations, it's not a sexy feature but since it's the main point of the board, I thought we best mention it.
+
+        .rn-entry#v2-2-1
+            h4 2.2.1
+            ul
+              li • Turns out FPP Proxy didn't like our Websockets implementation, so we've worked around it (and submitted slight tweak to FPP which should make them (and other websockets) friends).
+              li 
+                | • Sometimes the 
+                = link_to "Baldrick8", board_path('baldrick8'), class: 'lnk'
+                |  got a bit upset when it couldn't detect the internet, we put it in the naughty corner and told it to learn to stand up on it's own 8 ports..
+              li • Rob Milton broke the UI when editing models, I don't know why he just doesn't edit the models in xLights like everyone else but I guess we should fix it.
+
+        .rn-entry#v2-2
+            h4 2.2
+            ul
+              li 
+                | • 
+                = link_to "BaldrickDMX", board_path('baldrickdmx'), class: 'lnk'
+                |  added to button options
+                .bg-red-50.border-l-4.border-red-400.p-4.mt-4
+                  p.text-sm.text-red-700
+                  strong Warning:
+                  | PLEASE DO NOT MAKE A FLAME CANNON GO OFF AT THE TOUCH OF A BALDRICK8 BUTTON.. JUST BECAUSE YOU CAN DOESN'T MEAN YOU SHOULD
+              li • Websockets in UI - Faster, more responsive UI that uses less controller resource, plus it's a fun word to say... Websockets..
+              li • Crashdumps - the board will now send us a small error log when you break it... because as we all know snitches use switches.
+
+
+        .rn-entry#v2-1
+            h4 2.1
+            ul
+              li • Rewritten the netcode, improved stability and speed.
+              li • Added the MOST requested feature to the Baldrick UI... A reboot board button.
+              li • Test Sync will now lock out the other boards and point you to the main board for modification.
+
+        .rn-entry#v2-0
+            h4 2.0 - Major Release
+            .rn-img-wrap
+              = image_tag "firmware2pointoh.png", alt: "Baldrick8 2.0 firmware release", class: 'rn-img'
+            p.text-gray-700.mb-3
+              | After months of tweaking and testing, it's time for our 2.0 firmware release!
+            ul
+              li • We've completely redesigned the way you configure buttons and added more functionality.
+              li 
+                | • You can now quickly and easily control FPP direct from a 
+                = link_to "Baldrick8", board_path('baldrick8'), class: 'lnk'
+                |  button press.
+              li • With Easy Mode, we've extracted two of the most popular commands (Play something and change the volume) and made the simple do (you can have your button playing Barbie Girl on repeat in less than 30 settings)
+              li • With Advanced Mode, you get full access to the FPP API and related commands and you can play with them till your hearts content.
+              li 
+                | • Improved 
+                = link_to "BaldrickSwitchy", board_path('baldrickswitchy'), class: 'lnk'
+                |  connectivity
+                
+            p.text-gray-700.mb-3 We really are proud of this update and are looking forward to hearing how everyone gets on with it.
+
+        .rn-entry#v1-28
+            h4 1.28
+            ul
+              li • We now have an advanced settings dialog... OOoooOOOo. The first advanced setting is the ability to opt-in to beta releases, which are features we've tested but they could do with a few more eyes. You can find out more about it by joining our #{link_to 'Baldrick Beta Facebook Group', 'https://www.facebook.com/groups/baldrickbetatesters'}.
+
+        .rn-entry#v1-27
+            h4 1.27
+            ul
+              li 
+                | • Introduction of 
+                = link_to "BaldrickSwitchy", board_path('baldrickswitchy'), class: 'lnk'
+                |  to the 
+                = link_to "Turnip Network", breakthroughs_turnip_network_path, class: 'lnk'
+                | , allowing you to control 
+                = link_to "BaldrickSwitchy", board_path('baldrickswitchy'), class: 'lnk'
+                |  ports from the buttons on your 
+                = link_to "Baldrick8", board_path('baldrick8'), class: 'lnk'
+                | .
+
+        .rn-entry#v1-26-1
+            h4 1.26.1
+            ul
+              li • A small release to handle people with multiple Baldrick Boards or as we call them in the office our favourite people
+              li • We fixed a bug that nobody discovered and whilst most release notes wouldn't even mention but we do because we care.
+
+        .rn-entry#v1-26
+            h4 1.26
+            ul
+              li • Added new button config GUI with more exciting options for what buttons can do, let's just call this the base update ;)
+              li • Initial fix for issues with sACN/ArtNet from Enttec LED Mapper, Can you believe some people DON'T want to use xLights.
+              li • Added support for the [REDACTED] board, soon™.
+              li • ⁠Corrected speeling error in UI, sorry.
+              li • Added ILT vendor branding, can you believe we forgot out own logo?
+
+        .rn-entry#v1-25
+            h4 1.25
+            ul
+              li • Added the 'I broke the network mode' inspired from a suggestion by Alan Hanson (look at that two mentions in two updates). When booting the board, if you press and hold button 1, it will reset all the network settings, go back to DHCP and completely forget that you tried to set a static IP address and got the gateway DNS wrong.
+
+        .rn-entry#v1-21-4
+            h4 1.21.4
+            ul
+              li • Tweaked the RAINBOWS MODE, it was a bit slow for my liking so it got changed... no the power hasn't totally gone to my head.
+              li • Fixed a Grammar issue which I'm shocked Alan Hanson didn't see.
+              li 
+                | • Added logos for additional vendors (more countries to Buy the 
+                = link_to "Baldrick8", board_path('baldrick8'), class: 'lnk'
+                |  in!)
+              li • Pixels now start at 1 rather than 0.. causing developers worldwide to cringe but that appears to be the way "It's done"
+              li • When adding a model, the default test colour will now one of several preselected colours rather than just red, is this a laying the groundwork for a new feature coming soon.. who knows.. well, I do but I'm not telling you.
+              li • The board connects to our update server periodically to check for updates, if it cannot do this, we let you know there may be an issue with your network settings. We will never admit that the problem could be on our side.
+
+        .rn-entry#v1-21-3
+            h4 1.21.3
+            ul
+              li • During testing for a very soon to be released feature, we noticed that in certain circumstances sending data via DDP looked a bit wonky. So we've pushed this before anyone really notices.
+
+        .rn-entry#v1-21-2
+            h4 1.21.2
+            ul
+              li • We've had a report of one Baldrick customer having an off by one pixel issue in some circumstances. Obviously, we had a decision to make; Do we get rid of the customer or do we get rid of the error. This is an update pushed so it looks like we fixed the error #plausibledeniability.
+
+        .rn-entry#v1-21-1
+            h4 1.21.1
+            ul
+              li 
+                | • Preparations for our traitorous cousins receiving their 
+                = link_to "Baldrick8", board_path('baldrick8'), class: 'lnk'
+                |  Boards
+
+        .rn-entry#v1-21
+            h4 1.21
+            ul
+              li • Added vendor mode (oooOooOOoOoOo).
+              li • Friend scanning - Baldrick will now look for other Baldricks on the network and let you know how they are doing, you can also syncronise your test mode with them.
+              li • Board safety and reliability - Factory reset can now recover from entirely broken firmware, not just broken settings, some of our testers did their job well.. and we want to make sure they can't do it again.
+              li • Improved web UI - Faster loading, moved some parts around, definitely not a few hours spent bikeshedding.
+
+        .rn-entry#v1-20
+            h4 1.20
+            ul
+              li • Fixes to DDP parser to cope better with packet loss, etc.
+              li • Linking to the brand new Baldrick User Group.
+              li • Add multicast sACN.
+              li • Additions to Artnet / E1.31 compatibility.
+              li • Updating HTTP server to mitigate network packet loss affecting lights output.
+
+        .rn-entry#v1-19
+            h4 v1.19
+            ul
+              li • ArtNet support (if you don't know what this means, don't worry about it.)
+              li • Unicast E1.31/sACN support (so stop asking!)
+              li • Colour pick test mode enabled. You can now make ALL pixels a single colour using colour picker (works better in Chrome and Firefox than Safari ... sorry Mac fans but we are working on it.)
+
+        .rn-entry#v1-18
+            h4 v1.18
+            ul
+              li • We've added model colour mode which allows you to have a colour per model, as suggested by Ron Howard.
+
+        .rn-entry#v1-17
+            h4 v1.17
+            ul
+              li • With the official release of xLights integration we had to do a few changes to make it work on our side... Update xLights and enjoy!
+
+        .rn-entry#v1-16-3
+            h4 v1.16.3
+            ul
+              li • Some fixes to the UI around network settings (apparently SOME people wanted to be able to cancel.)
+              li • Removed blank frame between test modes (Looks a bit crap with it.)
+              li • Sped up HTTP responses on button press (don't act like you know what that means.)
+
+        .rn-entry#v1-16-2
+            h4 v1.16.2
+            ul
+              li • Added base code for secret unannounced, coming soon feature.
+
+        .rn-entry#v1-16-1
+            h4 v1.16.1
+            ul
+              li • Turns out if you switch test mode again and again and again and again and again and again and again and again and again and again there is a SLIGHT memory leak which slows stuff down, gee thanks 'tester' for letting us know about that.
+
+        .rn-entry#v1-16
+            h4 v1.16
+            ul
+              li • Test mode panel redesigned.
+              li • Implemented Hodgical mode.  
+              li • Added Red mode.
+              li • Ability to select brightness.
+              li • Fixed a few bugs that none of you noticed.
+
+        .rn-entry#v-boot-1-3
+          h4 BOOTLOADER v1.3
+          ul
+            li 
+              | • We've updated the bootloader.
+              .bg-red-50.border-l-4.border-red-400.p-4.mb-4
+                strong IMPORTANT:
+                  | PLEASE DO NOT TURN OFF THE POWER WHEN YOU UPDATE THIS. If you can schedule your unexpected power cut till AFTER this update, that would be great.
+
+        .rn-entry#v1-15-3
+            h4 v1.15.3
+            ul
+              li • Turns out there was a little bit more JUICE to squeeze in optimisation and we've managed to get a bit more performance out of the board.  
+
+        .rn-entry#v1-15-2
+            h4 v1.15.2
+            ul
+              li • We didn't like .1
+
+        .rn-entry#v1-15-1
+            h4 v1.15.1
+            ul
+              li • Look, stop being so nosy, sometimes we just like to increment a number
+
+        .rn-entry#v1-15
+            h4 v1.15
+            ul
+              li • Add colour order options to the pixels - Model options will be available in future xLights releases, hold your horses.
+              li • Add button support, we've also written a nice guide on what to do with the bloody things.
+              li • Allow bootloader updates, correct factory reset problems, not that any of you noticed...
+              li • ⁠Add release channels for future software testing, but that's for the grown ups.
+              li • Efficieny updates - pixels should be more responsive, switched CPR method.
+              li • Updates to web interface caching - Should be harder to make the lights glitch by hammering reload (but WHY DO YOU KEEP DOING THAT)
+
+        .rn-entry#v1-14
+            h4 v1.14
+            ul
+              li • Better, more helpful validation of form input, some of you just wouldn't leave it alone!
+              li • Better support for pre-release testing, what does this mean? we'll never tell.  
+              li • Fix for FPP proxy header issue (Thanks Adam!).
+
+        .rn-entry#v1-13
+            h4 v1.13
+            ul
+              li • Nunya Business, this was in no way an emergency release to fix a bug introduced in 1.12.
+
+        .rn-entry#v1-12
+            h4 v1.12
+            ul
+              li • Input validation, both client and serverside, to stop you cheekly little scamps from setting 6000% brightness and starting pixel channel -100.
+              li • Prevent crash when rapidly cycling test mode, the board got a little excited so we've given it a peppermint tea and told it to calm down.
+              li • Move jquery/bootstrap to device-hosted, for closed networks, SOME people want to use this board in a place WITHOUT internet.. can you imagine?
+              li • Network config - Static IP and device hostname now configurable, so STOP COMPLAINING!
+              li • Fixed links in footer to open in new window, because you promised us you'd never leave.
+
+        .rn-entry#v1-11
+            h4 v1.11
+            ul
+              li • Turn off pixels when exiting test mode.
+              li • Fixed problems saving channel start.
+              li • DDP start channels now 1-based as in xLights, FPP, etc.
+              li • Requires update to xLights (Built 28-03-24).
+
+        .rn-entry#v1-10
+            h4 v1.10
+            ul
+              li • Rename "Everything off" test mode (Thanks Rob Milton).
+              li • Allow B1 to disable test mode with long press (Thanks Kevin Barker).
+
+        .rn-entry#v1-9
+            h4 v1.9
+            ul
+              li • Fix dumb DDP parse bug which would leave gaps in px output.
+              li • Adapt version checks slightly.
+              li • Fix up links on Web UI.
+
+        .rn-entry#v1-8
+            h4 v1.8
+            ul
+              li • Fixed issue if you pushed from xLights without first uploading firmware.  
+
+        .rn-entry#v1-7
+            h4 v1.7
+            ul
+              li • Fix issue with config uploads and large configs.
+              li • Add periodic version check. Now every 10 minutes, rather than once at boot.
+
+        .rn-entry#v1-6
+            h4 v1.6
+            ul
+              li • Stop UI state table twitchily resizing
+              li • Make test "Apply to" thing more clear.
+              li • Mark some UI fields as numbers.
+              li • Refresh system settings on UI when changed.
+
+        .rn-entry#v1-5
+            h4 v1.5
+            ul
+              li • Rewrite test mode handling, add new test modes.
+              li • Add button handler - Press B1 for 5 seconds to activate rainbows on all configured props.
+
+        .rn-entry#v1-4
+            h4 v1.4
+            ul
+              li • Move to component for OTA, share with factory firmware
+              li • Secure firmware releases
+
+        .rn-entry#v1-3
+            h4 v1.3
+            ul
+              li • Fix stupid build issue.
+
+        .rn-entry#v1-2
+            h4 v1.2
+            ul
+              li • Fix UI weirdness if version check hasn't completed.
+
+        .rn-entry#v1-1
+            h4 v1.1
+            ul
+              li • Add factory reset - Hold B3 for 5 seconds and power cycle.
+              li • Ruin Dom's hard work on the interface and replace with a bootstrap interface.
+
+        .rn-entry#v1-0
+            h4 v1.0
+            ul
+              li • Add flash encryption to SDK Config.
+              li • Fix CI config for SDK.
+              li • First real release :)
+

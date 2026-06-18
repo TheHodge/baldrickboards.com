@@ -1,129 +1,142 @@
-- content_for :title, "Hardware Support - Get Help with Your Baldrick Board"
+= render 'shared/support_page', page_title: 'Hardware Support', current_page: 'Hardware Support', page_subtitle: 'Get help with hardware issues for your Baldrick board', document_title: 'Hardware Support', meta: ['Christmas Triage', 'Hardware only', '24–48 hour response'], toc: support_hardware_toc do
+  p.lead If you are having a hardware issue with your Baldrick board, open a case in Christmas Triage. You'll describe the problem, we'll triage it, and you can track progress and replies in one place.
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: page_breadcrumbs('Home', 'Support')
+  .prose.support-prose
+    section#triage
+      .callout.info
+        span.ic
+          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            path d="M12 5v14M5 12h14"
+        div
+          span.lbl Open a support case
+          p.bd Use Christmas Triage to report hardware issues, get help from our team, and see suggested solutions. Create a case with your email and problem details — no separate form to fill.
+          = link_to new_triage_case_path, class: 'btn btn-solid btn-sm' do
+            | Open a triage case
+            span.ar →
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'Hardware Support', subtitle: 'Get help with hardware issues for your Baldrick Board'
+      .callout.warn
+        span.ic
+          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"
+        div
+          span.lbl Important
+          p.bd
+            | Our team cannot help with software or sequence issues via triage. Join our
+            = link_to ' Facebook community', t('facebook_group_url'), target: '_blank', rel: 'noopener', class: 'lnk'
+            |  for software questions, sequences and general help.
 
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Hardware Support
+    section#options
+      h2
+        span.hk
+          span.bar
+          span.annot Alternatives
+        | Other support options
 
-          p.text-lg.text-gray-700.mb-6
-            | If you are having a hardware issue with your Baldrick Board, open a case in Christmas Triage. You’ll describe the problem, we’ll triage it, and you can track progress and replies in one place.
+      .next-grid
+        = link_to t('facebook_group_url'), class: 'next-card', target: '_blank', rel: 'noopener' do
+          .top
+            span.kind Community
+            span.go →
+          h4 Facebook group
+          p Software questions, sequence help and discussions — our team hangs out there too.
+        = link_to fun_stuff_path, class: 'next-card' do
+          .top
+            span.kind Docs
+            span.go →
+          h4 Fun stuff & FAQ
+          p Setup guides, release notes, dimensions and the general FAQ.
+        = link_to support_software_path, class: 'next-card' do
+          .top
+            span.kind Software
+            span.go →
+          h4 Software support
+          p Why we route setup questions through the community.
+        = link_to support_asking_for_help_path, class: 'next-card' do
+          .top
+            span.kind Checklist
+            span.go →
+          h4 Asking for help
+          p Run through this before posting for faster answers.
 
-          .bg-indigo-50.border.border-indigo-200.rounded-lg.p-6.mb-8
-            h3.text-xl.font-semibold.text-gray-900.mb-3 Open a support case
-            p.text-gray-700.mb-4
-              | Use Christmas Triage to report hardware issues, get help from our team, and see suggested solutions. Create a case with your email and problem details—no separate form to fill.
-            = link_to new_triage_case_path, class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors" do
-              svg.w-5.h-5.mr-2 fill="currentColor" viewBox="0 0 20 20"
-                path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"
-              | Open a triage case
+    section#scope
+      h2
+        span.hk
+          span.bar
+          span.annot Scope
+        | What we can help with
 
-          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-8
-            .flex
-              .flex-shrink-0
-                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
-              .ml-3
-                p.text-sm.text-yellow-700
-                  strong Important:
-                  |  Our team cannot help with software or sequence issues via triage. We recommend you join our 
-                  = link_to "Facebook Community", "https://www.facebook.com/groups/3626858730963141", target: "_blank", class: "text-yellow-800 underline hover:text-yellow-900"
-                  |  for software questions, sequences, and general help (we hang out there too).
+      .spec-grid
+        .spec
+          span.ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77A6 6 0 0 1 21 12v1M4 11h7M4 15h4"
+          h4 Hardware issues
+          ul
+            li Physical damage or defects
+            li Power supply problems
+            li Connection issues
+            li Component failures
+            li Manufacturing defects
+            li Warranty claims
+        .spec
+          span.ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              path d="M9.5 9.5a2.5 2.5 0 1 1 4.2 1.8c-.8.7-1.7 1.2-1.7 2.7M12 17h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"
+          h4 Software & sequences
+          p For these issues, please use our Facebook community:
+          ul
+            li xLights configuration
+            li Sequence creation
+            li Network setup
+            li Firmware updates
+            li Web interface issues
+            li General questions
 
-          / Support Options
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Other Support Options
+    section#before
+      h2
+        span.hk
+          span.bar
+          span.annot Prep
+        | Before contacting support
 
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-white.border.border-gray-200.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3.flex.items-center
-                svg.h-6.w-6.text-blue-600.mr-3 fill="currentColor" viewBox="0 0 20 20"
-                  path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
-                | Facebook Community
-              p.text-gray-700.mb-4
-                | Join our active Facebook community for software questions, sequence help, and general discussions. Our team and community members are there to help!
-              = link_to "Join Community", "https://www.facebook.com/groups/3626858730963141", target: "_blank", class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+      .callout.info
+        span.ic
+          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            circle cx="12" cy="12" r="10"
+            path d="M12 16v-4M12 8h.01"
+        div
+          span.lbl Quick tips
+          p.bd Check our documentation and Facebook community first. Many common issues have already been solved and documented.
 
-            .bg-white.border.border-gray-200.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3.flex.items-center
-                svg.h-6.w-6.text-green-600.mr-3 fill="currentColor" viewBox="0 0 20 20"
-                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-                | Documentation
-              p.text-gray-700.mb-4
-                | Check our comprehensive documentation for setup guides, troubleshooting tips, and technical specifications.
-              = link_to fun_stuff_path, class: "inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors" do
-                | View Fun Stuff
+      .rn-subcard
+        h4 Check these first
+        ul
+          li Verify power supply connections and voltage
+          li Check all cable connections
+          li Ensure proper mounting and ventilation
+          li Review our troubleshooting guides
+          li Search the Facebook community for similar issues
 
-          / What We Can Help With
-          h3.text-2xl.font-bold.text-gray-900.mb-4 What We Can Help With
+      .callout.info
+        span.ic
+          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            path d="M9 12l2 2 4-4"
+        div
+          span.lbl Response time
+          p.bd We typically respond to triage cases within 24–48 hours during business days.
 
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Hardware Issues
-              ul.space-y-2.text-gray-700
-                li • Physical damage or defects
-                li • Power supply problems
-                li • Connection issues
-                li • Component failures
-                li • Manufacturing defects
-                li • Warranty claims
+      .pullquote
+        span.qm “
+        blockquote For urgent hardware issues, the Facebook community is often the fastest way to get help from both our team and experienced builders.
+        cite — The Baldrick team
 
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Software & Sequences
-              p.text-gray-700.mb-3
-                | For these issues, please use our Facebook community:
-              ul.space-y-2.text-gray-700
-                li • xLights configuration
-                li • Sequence creation
-                li • Network setup
-                li • Firmware updates
-                li • Web interface issues
-                li • General questions
-
-          / Before Contacting Support
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Before Contacting Support
-
-          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
-            .flex
-              .flex-shrink-0
-                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-              .ml-3
-                p.text-sm.text-blue-700
-                  strong Quick Tips:
-                  |  Please check our documentation and Facebook community first. Many common issues have already been solved and documented.
-
-          .space-y-4.mb-8
-            .bg-white.border.border-gray-200.rounded-lg.p-6
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Check These First
-              ul.space-y-2.text-gray-700
-                li • Verify power supply connections and voltage
-                li • Check all cable connections
-                li • Ensure proper mounting and ventilation
-                li • Review our troubleshooting guides
-                li • Search the Facebook community for similar issues
-
-          / Response Time
-          .bg-green-50.border-l-4.border-green-400.p-4.mb-8
-            .flex
-              .flex-shrink-0
-                svg.h-5.w-5.text-green-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
-              .ml-3
-                p.text-sm.text-green-700
-                  strong Response Time:
-                  |  We typically respond to triage cases within 24-48 hours during business days.
-
-          .mt-8.bg-gray-50.rounded-lg.p-6.border.border-gray-200
-            h4.text-lg.font-semibold.text-gray-900.mb-3 Need Immediate Help?
-            p.text-gray-700.mb-4
-              | For urgent hardware issues or if you need immediate assistance, our Facebook community is often the fastest way to get help from both our team and experienced community members.
-            = link_to "Join Facebook Community", "https://www.facebook.com/groups/3626858730963141", target: "_blank", class: "inline-block bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-700 transition-colors font-semibold"
+section.cta
+  .wrap
+    h2 Need software help instead?
+    p Setup and sequence questions are best handled in the community.
+    .cta-btns
+      = link_to support_software_path, class: 'btn btn-bone' do
+        | Software support
+        span.ar →
+      = link_to t('facebook_group_url'), class: 'btn btn-clear', target: '_blank', rel: 'noopener' do
+        | Join Facebook group

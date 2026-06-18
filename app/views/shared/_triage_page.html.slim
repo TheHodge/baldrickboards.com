@@ -1,0 +1,29 @@
+- content_for :title, local_assigns.fetch(:document_title, page_title)
+
+section.hero-blueprint
+  .wrap.inner
+    nav.crumb
+      = link_to 'Home', root_path
+      span.sep= '/'
+      = link_to 'Support', support_path
+      span.sep= '/'
+      - if local_assigns[:parent_page]
+        = link_to 'Christmas Triage', triage_cases_path
+        span.sep= '/'
+        span.cur= current_page
+      - else
+        span.cur= current_page
+    .eye
+      span.bar
+      span.annot= local_assigns.fetch(:eye_label, 'Christmas Triage')
+    h1= page_title
+    - if local_assigns[:page_subtitle].present?
+      p.sub= page_subtitle
+    - if local_assigns[:meta].present?
+      .meta
+        - meta.each do |item|
+          span= item
+
+article.page
+  .col
+    = yield

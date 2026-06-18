@@ -1,110 +1,35 @@
-- content_for :title, "Baldrick Breakthroughs - Baldrick Board Documentation"
+- content_for :title, 'Baldrick Breakthroughs - Baldrick Board Documentation'
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: '/' }, { title: 'Baldrick Breakthroughs', path: nil }]
+section.hero-blueprint
+  .wrap.inner
+    nav.crumb
+      = link_to 'Home', root_path
+      span.sep= '/'
+      span.cur Baldrick Breakthroughs
+    .eye
+      span.bar
+      span.annot Baldrick Breakthroughs
+    h1 Baldrick Breakthroughs
+    p.sub Innovation, ecosystem features and the infrastructure that makes Baldrick boards a bit special.
+    .meta
+      span 6 breakthroughs
+      span Networking · effects · compliance
+      span Updated for Baldrickboard
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'Baldrick Breakthroughs', subtitle: 'Innovation, ecosystem, and cutting-edge developments'
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        .grid.md:grid-cols-2.lg:grid-cols-3.gap-6
-          
-          / The Turnip Network
-          .bg-gray-50.rounded-lg.border.border-gray-200.overflow-hidden.group.hover:shadow-lg.hover:border-yellow-300.hover:bg-yellow-50.transition-all.duration-300.transform.hover:-translate-y-1
-            = link_to breakthroughs_turnip_network_path, class: "block no-underline" do
-              .h-48.bg-gray-200.overflow-hidden
-                = image_tag "baldrick8/web-interface-turnip-network.png", alt: "The Turnip Network", class: "w-full h-full object-cover"
-              .p-6
-                .mb-4
-                  h3.text-lg.font-semibold.text-gray-900.group-hover:text-yellow-900.transition-colors.duration-300 The Turnip Network
-                  span.text-sm.text-gray-500.group-hover:text-yellow-600.transition-colors.duration-300 Network Innovation
-                p.text-gray-600.mb-4.group-hover:text-gray-700.transition-colors.duration-300 Revolutionary networking technology that connects Baldrick boards in ways never before possible.
-                ul.text-sm.text-gray-600.mb-4.space-y-1.group-hover:text-gray-700.transition-colors.duration-300
-                  li • Advanced networking protocols
-                  li • Seamless board communication
-                  li • Scalable architecture
-                  li • Future-proof technology
+section.catalog
+  .wrap
+    p.catalog-lead From board-to-board networking to built-in effects and formal certification — the breakthroughs are the glue that turns a pile of controllers into a show.
+    .cat-grid
+      - breakthrough_pages.each do |page|
+        = breakthrough_card(page)
 
-          / The Kluster
-          .bg-gray-50.rounded-lg.border.border-gray-200.overflow-hidden.group.hover:shadow-lg.hover:border-yellow-300.hover:bg-yellow-50.transition-all.duration-300.transform.hover:-translate-y-1
-            = link_to breakthroughs_kluster_path, class: "block no-underline" do
-              .h-48.bg-gray-200.overflow-hidden
-                = image_tag "kluster-two.png", alt: "The Kluster", class: "w-full h-full object-cover"
-              .p-6
-                .mb-4
-                  h3.text-lg.font-semibold.text-gray-900.group-hover:text-yellow-900.transition-colors.duration-300 The Kluster
-                  span.text-sm.text-gray-500.group-hover:text-yellow-600.transition-colors.duration-300 Cluster Technology
-                p.text-gray-600.mb-4.group-hover:text-gray-700.transition-colors.duration-300 Advanced clustering technology that enables multiple Baldrick boards to work together as a unified system.
-                ul.text-sm.text-gray-600.mb-4.space-y-1.group-hover:text-gray-700.transition-colors.duration-300
-                  li • Multi-board coordination
-                  li • Load balancing
-                  li • Fault tolerance
-                  li • Scalable performance
-
-          / CE & UKCA Certification
-          .bg-gray-50.rounded-lg.border.border-gray-200.overflow-hidden.group.hover:shadow-lg.hover:border-yellow-300.hover:bg-yellow-50.transition-all.duration-300.transform.hover:-translate-y-1
-            = link_to breakthroughs_ce_ukca_certification_path, class: "block no-underline" do
-              .h-48.bg-gray-200.overflow-hidden
-                = image_tag "ce-ukca-rohs.png", alt: "CE & UKCA Certification", class: "w-full h-full object-cover"
-              .p-6
-                .mb-4
-                  h3.text-lg.font-semibold.text-gray-900.group-hover:text-yellow-900.transition-colors.duration-300 CE & UKCA Certification
-                  span.text-sm.text-gray-500.group-hover:text-yellow-600.transition-colors.duration-300 Compliance & Safety
-                p.text-gray-600.mb-4.group-hover:text-gray-700.transition-colors.duration-300 Our commitment to safety and compliance with European and UK standards.
-                ul.text-sm.text-gray-600.mb-4.space-y-1.group-hover:text-gray-700.transition-colors.duration-300
-                  li • European compliance
-                  li • UK safety standards
-                  li • Quality assurance
-                  li • Professional reliability
-
-          / Turniput
-          .bg-gray-50.rounded-lg.border.border-gray-200.overflow-hidden.group.hover:shadow-lg.hover:border-yellow-300.hover:bg-yellow-50.transition-all.duration-300.transform.hover:-translate-y-1
-            = link_to breakthroughs_turniput_path, class: "block no-underline" do
-              .h-48.bg-gray-200.overflow-hidden
-                = image_tag "baldrickinput8/web-interface-turnip-config.png", alt: "Turniput", class: "w-full h-full object-cover"
-              .p-6
-                .mb-4
-                  h3.text-lg.font-semibold.text-gray-900.group-hover:text-yellow-900.transition-colors.duration-300 Turniput
-                  span.text-sm.text-gray-500.group-hover:text-yellow-600.transition-colors.duration-300 Development Tools
-                p.text-gray-600.mb-4.group-hover:text-gray-700.transition-colors.duration-300 Advanced development and programming tools for Baldrick board customization and control.
-                ul.text-sm.text-gray-600.mb-4.space-y-1.group-hover:text-gray-700.transition-colors.duration-300
-                  li • Programming interfaces
-                  li • Custom development
-                  li • Advanced control
-                  li • Developer tools
-
-          / Hodgical Test Mode
-          .bg-gray-50.rounded-lg.border.border-gray-200.overflow-hidden.group.hover:shadow-lg.hover:border-yellow-300.hover:bg-yellow-50.transition-all.duration-300.transform.hover:-translate-y-1
-            = link_to breakthroughs_hodgical_test_mode_path, class: "block no-underline" do
-              .h-48.bg-gray-200.overflow-hidden
-                = image_tag "hodgical-header.png", alt: "Hodgical Test Mode", class: "w-full h-full object-cover"
-              .p-6
-                .mb-4
-                  h3.text-lg.font-semibold.text-gray-900.group-hover:text-yellow-900.transition-colors.duration-300 Hodgical Test Mode
-                  span.text-sm.text-gray-500.group-hover:text-yellow-600.transition-colors.duration-300 Testing & Diagnostics
-                p.text-gray-600.mb-4.group-hover:text-gray-700.transition-colors.duration-300 Advanced testing and diagnostic capabilities for comprehensive board validation and troubleshooting.
-                ul.text-sm.text-gray-600.mb-4.space-y-1.group-hover:text-gray-700.transition-colors.duration-300
-                  li • Comprehensive testing
-                  li • Diagnostic tools
-                  li • Validation systems
-                  li • Troubleshooting aids
-
-          / CunningFX
-          .bg-gray-50.rounded-lg.border.border-gray-200.overflow-hidden.group.hover:shadow-lg.hover:border-yellow-300.hover:bg-yellow-50.transition-all.duration-300.transform.hover:-translate-y-1
-            = link_to breakthroughs_cunningfx_path, class: "block no-underline" do
-              .h-48.bg-gray-200.overflow-hidden
-                = image_tag "cunningfx.png", alt: "CunningFX", class: "w-full h-full object-cover"
-              .p-6
-                .mb-4
-                  h3.text-lg.font-semibold.text-gray-900.group-hover:text-yellow-900.transition-colors.duration-300 CunningFX
-                  span.text-sm.text-gray-500.group-hover:text-yellow-600.transition-colors.duration-300 Effects Engine
-                p.text-gray-600.mb-4.group-hover:text-gray-700.transition-colors.duration-300 Revolutionary effects engine that brings stunning visual effects to life with Baldrick boards.
-                ul.text-sm.text-gray-600.mb-4.space-y-1.group-hover:text-gray-700.transition-colors.duration-300
-                  li • Advanced effects
-                  li • Real-time processing
-                  li • Creative tools
-                  li • Visual innovation
+section.cta
+  .wrap
+    h2 Ready to pick a board?
+    p Explore the full range and find the right controller for your display.
+    .cta-btns
+      = link_to boards_path, class: 'btn btn-bone' do
+        | Explore the range
+        span.ar →
+      = link_to where_to_buy_baldrick_boards_path, class: 'btn btn-clear' do
+        | Where to buy

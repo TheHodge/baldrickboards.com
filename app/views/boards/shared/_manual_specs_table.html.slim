@@ -1,0 +1,17 @@
+- rows = board_tech_specs_rows(board_id)
+- return if rows.blank?
+
+h3 id="at-a-glance" At a glance
+.doc-table
+  .tr
+    span.tk Specification
+    span.tv Value
+  - rows.each do |row|
+    .tr
+      span.tk = row[:label]
+      span.tv
+        - if row[:mono].present?
+          span.mono = row[:mono]
+          = row[:suffix]
+        - else
+          = row[:value]

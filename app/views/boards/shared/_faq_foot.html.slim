@@ -1,0 +1,6 @@
+.faq-foot
+  .t
+    b = local_assigns.fetch(:title, 'More questions?')
+    span = local_assigns.fetch(:subtitle, 'Our team and community are happy to help.')
+  = render 'shared/triage_button'
+  = render 'shared/community_button'

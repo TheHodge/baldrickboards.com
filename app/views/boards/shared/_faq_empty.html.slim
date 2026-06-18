@@ -1,0 +1,26 @@
+- board_id = local_assigns.fetch(:board_id)
+- coming_soon = board_faq_coming_soon(board_id)
+
+.faq-empty
+  .callout.note
+    svg.ci viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      path d="M12 16v-4m0-4h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"
+    div
+      b = coming_soon&.dig(:title) || 'Coming soon'
+      - if coming_soon&.dig(:body).present?
+        .faq-empty-body == coming_soon[:body]
+      - else
+        p = board_faq_empty_message(board_id)
+
+  - links = board_faq_resource_links(board_id)
+  - if links.present?
+    h3.faq-empty-heading Helpful links
+    .faq-empty-links
+      - links.each do |link|
+        = link_to link[:path], class: 'faq-empty-link' do
+          span.faq-empty-link-title = link[:title]
+          span.faq-empty-link-sub = link[:subtitle]
+          span.ar →
+
+  = render 'boards/shared/faq_foot', title: 'Need help now?', subtitle: 'Our team and community are happy to help while we build out the FAQ.'
+  = render 'boards/shared/faq_help'

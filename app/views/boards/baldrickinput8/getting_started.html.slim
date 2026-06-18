@@ -1,35 +1,21 @@
 - content_for :title, "BaldrickInput8 Getting Started - Baldrick Board Documentation"
 
-/ Board Submenu
-= render 'boards/shared/board_submenu', board_name: 'BaldrickInput8', menu_items: board_menu_items('baldrickinput8')
+= render 'boards/shared/content_page', board_id: 'baldrickinput8', page_title: 'Getting Started with BaldrickInput8', current_page: 'Getting Started', page_subtitle: 'Setup and Configuration Guide', document_title: "BaldrickInput8 Getting Started - Baldrick Board Documentation" do
+  .prose.max-w-none
+    h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickInput8
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickinput8', 'Getting Started')
+    .bg-blue-50.border-l-4.border-blue-400.p-6.mb-8
+      .flex
+        .flex-shrink-0
+          svg.h-8.w-8.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+            path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+        .ml-4
+          h2.text-2xl.font-bold.text-blue-900.mb-2 Yeah, we've not written this yet...
+          p.text-blue-700
+            | For now you can checkout the #{link_to "getting started guide for the BaldrickInput1", board_page_path('baldrickinput1', 'getting-started'), class: "text-blue-600 hover:text-blue-800 underline"}.
+            | It's similar but you've got an extra 7 inputs to play with!
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'Getting Started with BaldrickInput8', subtitle: 'Setup and Configuration Guide', image_url: 'baldrickinput8/board.png'
-
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickInput8
-          
-          .bg-blue-50.border-l-4.border-blue-400.p-6.mb-8
-            .flex
-              .flex-shrink-0
-                svg.h-8.w-8.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-              .ml-4
-                h2.text-2xl.font-bold.text-blue-900.mb-2 Yeah, we've not written this yet...
-                p.text-blue-700
-                  | For now you can checkout the #{link_to "getting started guide for the BaldrickInput1", board_page_path('baldrickinput1', 'getting-started'), class: "text-blue-600 hover:text-blue-800 underline"}.
-                  | It's similar but you've got an extra 7 inputs to play with!
-
-          .flex.flex-col.sm:flex-row.gap-4.mt-8
-            = link_to 'BaldrickInput1 Getting Started Guide', board_page_path('baldrickinput1', 'getting-started'), class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'Web Interface Guide', board_page_path('baldrickinput8', 'web-interface'), class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'Technical Specifications', board_page_path('baldrickinput8', 'tech-specs'), class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
+    .flex.flex-col.sm:flex-row.gap-4.mt-8
+      = link_to 'BaldrickInput1 Getting Started Guide', board_page_path('baldrickinput1', 'getting-started'), class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+      = link_to 'Web Interface Guide', board_page_path('baldrickinput8', 'web-interface'), class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+      = link_to 'Technical Specifications', board_page_path('baldrickinput8', 'tech-specs'), class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'

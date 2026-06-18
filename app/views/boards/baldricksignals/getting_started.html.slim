@@ -1,99 +1,85 @@
 - content_for :title, "BaldrickSignals Getting Started - Baldrick Board Documentation"
 
-/ Board Submenu
-= render 'boards/shared/board_submenu', board_name: 'BaldrickSignals', menu_items: board_menu_items('baldricksignals')
+= render 'boards/shared/content_page', board_id: 'baldricksignals', page_title: 'Getting Started with BaldrickSignals', current_page: 'Getting Started', page_subtitle: 'Setup and Configuration Guide', document_title: "BaldrickSignals Getting Started - Baldrick Board Documentation" do
+  .prose.max-w-none
+    h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickSignals
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldricksignals', 'Getting Started')
+    .bg-blue-50.border-l-4.border-blue-400.p-6.mb-8
+      .flex
+        .flex-shrink-0
+          svg.h-8.w-8.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+            path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+        .ml-4
+          h2.text-2xl.font-bold.text-blue-900.mb-2 Yeah, we've not written this yet...
+          p.text-blue-700
+            | We're still working on this getting started guide. In the meantime, check out our #{link_to "web interface documentation", board_page_path('baldricksignals', 'web-interface'), class: "text-blue-600 hover:text-blue-800 underline"} for some configuration details.
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'Getting Started with BaldrickSignals', subtitle: 'Setup and Configuration Guide'
+    h2.text-3xl.font-bold.text-gray-900.mb-4 Exporting Data
 
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with BaldrickSignals
-          
-          .bg-blue-50.border-l-4.border-blue-400.p-6.mb-8
-            .flex
-              .flex-shrink-0
-                svg.h-8.w-8.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-              .ml-4
-                h2.text-2xl.font-bold.text-blue-900.mb-2 Yeah, we've not written this yet...
-                p.text-blue-700
-                  | We're still working on this getting started guide. In the meantime, check out our #{link_to "web interface documentation", board_page_path('baldricksignals', 'web-interface'), class: "text-blue-600 hover:text-blue-800 underline"} for some configuration details.
+    p.text-gray-700.mb-4
+      | By adding 
+      code.bg-gray-100.text-gray-800.px-2.py-1.rounded
+        | /csv
+      |  to the IP Address of your signals board, you'll get a lovely CSV of all the historical data we've got.
 
-          h2.text-3xl.font-bold.text-gray-900.mb-4 Exporting Data
+    p.text-gray-700.mb-4
+      | We've got a Google Sheet that you can use to visualise this data and translate it.
 
-          p.text-gray-700.mb-4
-            | By adding 
-            code.bg-gray-100.text-gray-800.px-2.py-1.rounded
-              | /csv
-            |  to the IP Address of your signals board, you'll get a lovely CSV of all the historical data we've got.
+    .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
+      .flex
+        .flex-shrink-0
+          svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+            path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+        .ml-3
+          p.text-sm.text-yellow-700
+            strong Google Sheets Template: 
+            = link_to "BaldrickSignals Data Visualization Template", "https://docs.google.com/spreadsheets/d/1HxzmnijoHGhpXuaj56Qjr46F0nn8GIqbdiMp5Fp0N6U/edit?usp=sharing", class: "text-yellow-800 hover:text-yellow-900 underline", target: "_blank"
 
-          p.text-gray-700.mb-4
-            | We've got a Google Sheet that you can use to visualise this data and translate it.
+    h3.text-2xl.font-semibold.text-gray-900.mb-3 How to Use the Template
 
-          .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6
-            .flex
-              .flex-shrink-0
-                svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
-              .ml-3
-                p.text-sm.text-yellow-700
-                  strong Google Sheets Template: 
-                  = link_to "BaldrickSignals Data Visualization Template", "https://docs.google.com/spreadsheets/d/1HxzmnijoHGhpXuaj56Qjr46F0nn8GIqbdiMp5Fp0N6U/edit?usp=sharing", class: "text-yellow-800 hover:text-yellow-900 underline", target: "_blank"
+    ol.space-y-3.text-gray-700.mb-6
+      li
+        strong.text-gray-900 1. Access the Template
+        p.mt-1
+          | Click the link above to open the Google Sheets template in your browser.
 
-          h3.text-2xl.font-semibold.text-gray-900.mb-3 How to Use the Template
+      li
+        strong.text-gray-900 2. Make a Copy
+        p.mt-1
+          | Go to File → Make a copy to create your own version of the spreadsheet.
 
-          ol.space-y-3.text-gray-700.mb-6
-            li
-              strong.text-gray-900 1. Access the Template
-              p.mt-1
-                | Click the link above to open the Google Sheets template in your browser.
+      li
+        strong.text-gray-900 3. Export Your Data
+        p.mt-1
+          | Navigate to your BaldrickSignals IP address with 
+          code.bg-gray-100.text-gray-800.px-2.py-1.rounded
+            | /csv
+          |  appended (e.g., 
+          code.bg-gray-100.text-gray-800.px-2.py-1.rounded
+            | http://192.168.1.100/csv
+          | ) and copy the CSV data.
 
-            li
-              strong.text-gray-900 2. Make a Copy
-              p.mt-1
-                | Go to File → Make a copy to create your own version of the spreadsheet.
+      li
+        strong.text-gray-900 4. Import Your Data
+        p.mt-1
+          | Delete the information in the first two columns of the template and paste your CSV data.
 
-            li
-              strong.text-gray-900 3. Export Your Data
-              p.mt-1
-                | Navigate to your BaldrickSignals IP address with 
-                code.bg-gray-100.text-gray-800.px-2.py-1.rounded
-                  | /csv
-                |  appended (e.g., 
-                code.bg-gray-100.text-gray-800.px-2.py-1.rounded
-                  | http://192.168.1.100/csv
-                | ) and copy the CSV data.
+      li
+        strong.text-gray-900 5. View Your Graphs
+        p.mt-1
+          | The Graph page will now show you a pretty graph of your signals data.
 
-            li
-              strong.text-gray-900 4. Import Your Data
-              p.mt-1
-                | Delete the information in the first two columns of the template and paste your CSV data.
+    .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+      .flex
+        .flex-shrink-0
+          svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+            path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+        .ml-3
+          p.text-sm.text-blue-700
+            strong Note: 
+            | Eventually this should update automatically but we are not there yet!
 
-            li
-              strong.text-gray-900 5. View Your Graphs
-              p.mt-1
-                | The Graph page will now show you a pretty graph of your signals data.
-
-          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
-            .flex
-              .flex-shrink-0
-                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-              .ml-3
-                p.text-sm.text-blue-700
-                  strong Note: 
-                  | Eventually this should update automatically but we are not there yet!
-
-          .flex.flex-col.sm:flex-row.gap-4.mt-8
-            = link_to 'Web Interface Guide', board_page_path('baldricksignals', 'web-interface'), class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'Technical Specifications', board_page_path('baldricksignals', 'tech-specs'), class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'FAQ', board_page_path('baldricksignals', 'faq'), class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
+    .flex.flex-col.sm:flex-row.gap-4.mt-8
+      = link_to 'Web Interface Guide', board_page_path('baldricksignals', 'web-interface'), class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+      = link_to 'Technical Specifications', board_page_path('baldricksignals', 'tech-specs'), class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+      = link_to 'FAQ', board_page_path('baldricksignals', 'faq'), class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'

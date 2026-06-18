@@ -1,69 +1,51 @@
-/ Footer
-footer.bg-purple-900.text-white
-  .max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-12
-    .grid.md:grid-cols-3.gap-8
-      / Column 1: Our Boards
-      div
-        h3.text-lg.font-semibold.mb-4 Our Boards
-        ul.space-y-2.text-purple-200
-          li
-            = link_to "Baldrick8 Docs", board_path("baldrick8"), class: "hover:text-white transition-colors"
-          li
-            = link_to "Baldrick17 Docs", board_path("baldrick17"), class: "hover:text-white transition-colors"
-          li
-            = link_to "BaldrickSwitchy Docs", board_path("baldrickswitchy"), class: "hover:text-white transition-colors"
-          li
-            = link_to "BaldrickDMX Docs", board_path("baldrickdmx"), class: "hover:text-white transition-colors"
-          li
-            = link_to "BaldrickInput1 Docs", board_path("baldrickinput1"), class: "hover:text-white transition-colors"
-          li
-            = link_to "BaldrickSignals Docs", board_path("baldricksignals"), class: "hover:text-white transition-colors"
-      
-      / Column 2: Help
-      div
-        h3.text-lg.font-semibold.mb-4 Help
-        ul.space-y-2.text-purple-200
-          li
-            = link_to "Baldrick Boards Facebook Group", t('facebook_group_url'), target: "_blank", class: "hover:text-white transition-colors"
-          li
-            = link_to "Hardware Support Form", support_path, class: "hover:text-white transition-colors"
-          li
-            = link_to "Fun Stuff", fun_stuff_path, class: "hover:text-white transition-colors"
-          li
-            = link_to "FAQ", faq_path, class: "hover:text-white transition-colors"
-      
-      / Column 3: More
-      div
-        h3.text-lg.font-semibold.mb-4 More
-        ul.space-y-2.text-purple-200
-          li
-            = link_to "About Baldrick", about_path, class: "hover:text-white transition-colors"
-          li
-            = link_to "Testimonials", fun_stuff_testimonials_path, class: "hover:text-white transition-colors"
-          li
-            = link_to "Where to Buy", where_to_buy_baldrick_boards_path, class: "hover:text-white transition-colors"
-          li
-            = link_to "Complaints", "https://www.youtube.com/watch?v=g4IQjUpTNVU", target: "_blank", class: "hover:text-white transition-colors"
-        
-        / Seasonal Decorations Dropdown
-        .mt-6
-          h4.text-sm.font-semibold.mb-2.text-purple-200 Seasonal Decorations
-          .relative
-            select.bg-purple-800.text-white.border.border-purple-600.rounded-md.px-3.py-2.text-sm.w-full.focus:outline-none.focus:ring-2.focus:ring-purple-500.focus:border-transparent data-seasonal-themes-target="select" data-action="change->seasonal-themes#change"
-              option value="default" Not Decorated
-              option value="christmas" Christmas
-              option value="halloween" Halloween
-              option value="easter" Easter
-              option value="british" 4th July
-  
-  / Copyright
-  .border-t.border-purple-800
-    .max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-6
-      .flex.flex-col.md:flex-row.justify-between.items-center.text-purple-300
-        p 
-          | Copyright © 2026 
-          = link_to "www.ilightthat.com", "https://www.ilightthat.com", target: "_blank", class: "hover:text-white transition-colors"
-        
-        / Language Switcher (commented out until we have proper translations)
-        / .mt-4.md:mt-0
-        /   = render 'shared/language_switcher'
+footer.footer
+  .wrap
+    .foot-top
+      .foot-brand
+        = link_to root_path, class: "brand" do
+          span.bm
+            = image_tag "bb-mark-white.png", alt: ""
+          span.wm
+            b Baldrick Boards
+            i Factory tested funny.
+        p Powerful, flexible and reliable controllers for lighting projects of all sizes. Designed by makers, for makers.
+        .foot-soc
+          = link_to t('facebook_group_url'), target: "_blank", rel: "noopener", aria: { label: "Facebook" }
+            svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
+              path d="M14 9h3V6h-3c-2 0-3 1-3 3v2H9v3h2v7h3v-7h2.5l.5-3H14V9z"
+      .foot-col
+        h5 Boards
+        = link_to "Baldrick8", board_path("baldrick8")
+        = link_to "Baldrick17", board_path("baldrick17")
+        = link_to "BaldrickDMX", board_path("baldrickdmx")
+        = link_to "BaldrickSwitchy", board_path("baldrickswitchy")
+        = link_to "BaldrickInput8", board_path("baldrickinput8")
+        = link_to "BaldrickSignals", board_path("baldricksignals")
+      .foot-col
+        h5 Support
+        = link_to "Docs & Guides", boards_path
+        = link_to "STLs & Mounts", fun_stuff_stls_and_mounts_path
+        = link_to "FAQ", faq_path
+        = link_to "Hardware Support", support_path
+        = link_to "Contact Support", support_path
+      .foot-col
+        h5 Company
+        = link_to "About Baldrick", about_path
+        = link_to "Where to Buy", where_to_buy_baldrick_boards_path
+        = link_to "Release Notes", fun_stuff_release_notes_path
+        = link_to "Testimonials", fun_stuff_testimonials_path
+        = link_to "Complaints", "https://www.youtube.com/watch?v=g4IQjUpTNVU", target: "_blank", rel: "noopener"
+    .foot-bottom
+      span.cc
+        | Copyright © #{Time.current.year}
+        = link_to " www.ilightthat.com", "https://www.ilightthat.com", target: "_blank", rel: "noopener"
+      .foot-meta
+        .seasonal
+          label for="seasonal-theme" Seasonal
+          select#seasonal-theme data-seasonal-themes-target="select" data-action="change->seasonal-themes#change"
+            option value="default" Not decorated
+            option value="christmas" Christmas
+            option value="halloween" Halloween
+            option value="easter" Easter
+            option value="british" 4th July
+        span.foot-flag Designed in the UK 🇬🇧
