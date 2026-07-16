@@ -117,6 +117,16 @@
               - elsif media.video?
                 = video_tag blob_url_without_locale(media), controls: true, class: "w-full h-48 rounded"
 
+      / Debugging File
+      - if @case.debugging_file.attached?
+        .bg-white.shadow.rounded-lg.p-6
+          h2.text-2xl.font-bold.mb-4 Debugging File
+          .border.border-gray-200.rounded-lg.p-4.bg-gray-50
+            p.font-medium.text-gray-900 = @case.debugging_file.filename.to_s
+            p.text-sm.text-gray-500.mt-1 = number_to_human_size(@case.debugging_file.byte_size)
+            .mt-3
+              = link_to "Open / Download debugging file", blob_url_without_locale(@case.debugging_file), target: "_blank", rel: "noopener", class: "inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-medium"
+
       / Matched Solutions
       - if @solutions.any?
         .bg-white.shadow.rounded-lg.p-6

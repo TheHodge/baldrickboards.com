@@ -107,6 +107,21 @@ module Todoist
           end
         end
 
+        if case_record.debugging_file.attached?
+          case_record.debugging_file.blob.open do |file|
+            uploaded = client.upload_file!(
+              io: file,
+              filename: case_record.debugging_file.filename.to_s,
+              content_type: case_record.debugging_file.blob.content_type || "application/octet-stream"
+            )
+            client.create_comment!(
+              task_id: case_record.todoist_task_id,
+              content: "Debugging file attached from Christmas Triage",
+              attachment: uploaded
+            )
+          end
+        end
+
         if case_record.system_state.present?
           Tempfile.create(["case-#{case_record.case_number}-system-state", ".txt"]) do |tmp|
             tmp.write(case_record.system_state)
