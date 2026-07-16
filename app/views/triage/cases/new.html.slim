@@ -38,12 +38,20 @@
               p.text-xs.text-gray-500.mb-2 So we can send you updates and you can edit / mark as solved
               = form.email_field :email, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500", required: true
           
-          div
-            = form.label :debugging_file, "Baldrick debugging file", class: "block text-sm font-medium text-gray-700 mb-2"
-            p.text-xs.text-gray-500.mb-2 Download the debugging file from the Help > Debugging Info link on your board, then upload it here. This is one of the most useful things you can send us.
-            .border.border-purple-200.bg-purple-50.rounded-lg.p-4
-              = form.file_field :debugging_file, accept: ".json,application/json,text/plain", class: "block w-full text-sm text-gray-700 file:mr-4 file:rounded-md file:border-0 file:bg-purple-600 file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-purple-700"
-              p.text-xs.text-gray-500.mt-2 Accepts `.json` or text files up to 10MB.
+          .grid.lg:grid-cols-2.gap-6.items-start
+            div
+              = form.label :debugging_file, "Baldrick debugging file", class: "block text-sm font-medium text-gray-700 mb-2"
+              p.text-xs.text-gray-500.mb-3 Download the debugging file from the Help > Debugging Info link on your board, then upload it here. This is one of the most useful things you can send us.
+              .border.border-purple-200.bg-purple-50.rounded-lg.p-4
+                = form.file_field :debugging_file, accept: ".json,application/json,text/plain", class: "block w-full text-sm text-gray-700 file:mr-4 file:rounded-md file:border-0 file:bg-purple-600 file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-purple-700"
+                p.text-xs.text-gray-500.mt-2 Accepts `.json` or text files up to 10MB.
+            .border.border-gray-200.rounded-lg.bg-white.overflow-hidden.shadow-sm
+              .px-4.py-3.bg-gray-50.border-b.border-gray-200
+                h3.text-sm.font-semibold.text-gray-900 Where to find it
+                p.text-xs.text-gray-500.mt-1 Scroll to the bottom of the board screen and look in the Help section.
+              .p-4
+                = image_tag asset_path("triage-debugging-help.png"), alt: "Screenshot showing the Help section and Debugging Info link", class: "w-full rounded border border-gray-200 shadow-sm"
+                p.text-xs.text-gray-500.mt-3 Click `Debugging Info`, save the downloaded file, then upload it here with your case.
 
           div
             = form.label :problem_description, "What seems to be the problem", class: "block text-sm font-medium text-gray-700 mb-2"
