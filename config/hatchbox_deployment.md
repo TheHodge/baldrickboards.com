@@ -24,6 +24,23 @@ Make sure these environment variables are set in Hatchbox:
 - `DATABASE_URL` (your production database URL)
 - Any other environment variables your app needs
 
+### 2a. Manual PDF generation (Grover / Chromium)
+
+Board manuals can be downloaded as PDF via Grover (headless Chromium).
+
+On the Hatchbox server, install Chromium (or Google Chrome) and set:
+
+- `GROVER_EXECUTABLE_PATH=/usr/bin/chromium`  
+  (or `/usr/bin/chromium-browser` / `/usr/bin/google-chrome` — use `which chromium` on the host)
+
+Local development uses Puppeteer instead:
+
+```bash
+npm install
+```
+
+Markdown downloads (`/boards/:board/manual.md`) do not need Chromium.
+
 ### 3. Post-Deployment Hook (Optional)
 
 You can add a post-deployment hook in Hatchbox to generate the initial sitemap:

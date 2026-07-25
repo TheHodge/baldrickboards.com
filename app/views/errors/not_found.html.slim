@@ -1,0 +1,41 @@
+- content_for :title, '404 - Page Not Found - Baldrick Board Documentation'
+
+article.page.page--404
+  .col
+    h1 You've broke it!
+    p.sub That page isn't here. Here's something to distract yourself while we pretend we meant to do this.
+
+    .pixel-game data-controller="pixel-repair"
+      .pixel-game-hud
+        .pixel-game-stats
+          .pixel-game-badge data-pixel-repair-target="score" Score: 0
+          .pixel-game-badge data-pixel-repair-target="best" Best: 0
+          .pixel-game-badge data-pixel-repair-target="faults" Faults: 0 / 10
+          .pixel-game-badge data-pixel-repair-target="speed" Speed: 1×
+        .pixel-game-tagline A timewasting game from Baldrick
+      .pixel-game-stage
+        canvas#game data-pixel-repair-target="canvas" aria-label="Pixel Repair Crew mini-game" role="img"
+        .pixel-game-overlay.show data-pixel-repair-target="intro" data-action="click->pixel-repair#start"
+          .pixel-game-box
+            h3 Pixel Repair Crew
+            p== "Keep the dead pixel count below <strong>10</strong> and you'll be fine."
+            small Click anywhere to begin.
+        .pixel-game-overlay data-pixel-repair-target="overlay" data-action="click->pixel-repair#restart"
+          .pixel-game-box
+            .pixel-game-cancel THE SHOW HAS BEEN CANCELLED!!
+            p data-pixel-repair-target="finalStats" Score 0 • Best 0
+            small Click anywhere to play again.
+
+    .pixel-game-nav
+      = link_to root_path, class: 'btn btn-solid btn-sm' do
+        | Back to Home
+        span.ar →
+      = link_to boards_path, class: 'btn btn-line-light btn-sm' do
+        | Browse Boards
+        span.ar →
+      = link_to fun_stuff_path, class: 'btn btn-line-light btn-sm' do
+        | Fun Stuff
+        span.ar →
+      = link_to faq_path, class: 'btn btn-line-light btn-sm' do
+        | FAQ
+        span.ar →

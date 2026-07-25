@@ -1,41 +1,27 @@
 - content_for :title, "Baldrick17 Getting Started - Baldrick Board Documentation"
 
-/ Board Submenu
-= render 'boards/shared/board_submenu', board_name: 'Baldrick17', menu_items: board_menu_items('baldrick17')
+= render 'boards/shared/content_page', board_id: 'baldrick17', page_title: 'Getting Started with Baldrick17', current_page: 'Getting Started', page_subtitle: 'Setup and Configuration Guide', document_title: "Baldrick17 Getting Started - Baldrick Board Documentation" do
+  .prose.max-w-none
+    h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with Baldrick17
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrick17', 'Getting Started')
+    .bg-blue-50.border-l-4.border-blue-400.p-6.mb-8
+      .flex
+        .flex-shrink-0
+          svg.h-8.w-8.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+            path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+        .ml-4
+          h2.text-2xl.font-bold.text-blue-900.mb-2 Yeah, just look at the Baldrick8 guide...
+          p.text-lg.text-blue-800.mb-4
+            | ...and imagine more ports! 
+            em 
+              | (It's basically the same thing, just with 17 ports instead of 8 and some Turniputs)
+          p.text-blue-700
+            | All the setup instructions, power requirements, firmware installation, and pixel connection methods are identical. 
+            | The only difference is you get 9 extra ports to play with!
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'Getting Started with Baldrick17', subtitle: 'Setup and Configuration Guide', image_url: 'baldrick17/board.png'
 
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        .prose.max-w-none
-          h1.text-4xl.font-bold.text-gray-900.mb-6 Getting Started with Baldrick17
-          
-          .bg-blue-50.border-l-4.border-blue-400.p-6.mb-8
-            .flex
-              .flex-shrink-0
-                svg.h-8.w-8.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-              .ml-4
-                h2.text-2xl.font-bold.text-blue-900.mb-2 Yeah, just look at the Baldrick8 guide...
-                p.text-lg.text-blue-800.mb-4
-                  | ...and imagine more ports! 
-                  em 
-                    | (It's basically the same thing, just with 17 ports instead of 8 and some Turniputs)
-                p.text-blue-700
-                  | All the setup instructions, power requirements, firmware installation, and pixel connection methods are identical. 
-                  | The only difference is you get 9 extra ports to play with!
-          
-          
-          / Navigation Links
-          .flex.flex-col.sm:flex-row.gap-4.mt-8
-            = link_to 'Baldrick8 Getting Started Guide', '/boards/baldrick8/getting-started', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'Web Interface Guide', '/boards/baldrick17/web-interface', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
-            = link_to 'Technical Specifications', '/boards/baldrick17/tech-specs', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'
+    / Navigation Links
+    .flex.flex-col.sm:flex-row.gap-4.mt-8
+      = link_to 'Baldrick8 Getting Started Guide', '/boards/baldrick8/getting-started', class: 'bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center'
+      = link_to 'Web Interface Guide', '/boards/baldrick17/web-interface', class: 'bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors inline-flex items-center justify-center'
+      = link_to 'Technical Specifications', '/boards/baldrick17/tech-specs', class: 'bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center'

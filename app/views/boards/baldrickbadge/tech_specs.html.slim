@@ -1,32 +1,17 @@
 - content_for :title, "BaldrickBadge Tech Specs - Baldrick Board Documentation"
 
-/ Board Submenu
-= render 'boards/shared/board_submenu', board_name: 'BaldrickBadge', menu_items: board_menu_items('baldrickbadge')
+= render 'boards/shared/content_page', board_id: 'baldrickbadge', page_title: 'Technical Specifications', current_page: 'Tech Specs', page_subtitle: 'Board components and detailed specifications for BaldrickBadge', document_title: "BaldrickBadge Tech Specs - Baldrick Board Documentation" do
+  .prose.max-w-none
+    h2.text-3xl.font-bold.text-gray-900.mb-6 Board Components
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickbadge', 'Tech Specs')
+    .bg-white.rounded-lg.shadow-md.p-6.mb-6
+      = image_tag "baldrickbadge/board.png", class: "w-full rounded-lg mb-6", alt: "BaldrickBadge Board Overview"
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'Technical Specifications', subtitle: 'Board components and detailed specifications for BaldrickBadge', image_url: 'baldrickbadge/board-t.png'
-
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        / Board Components
-        .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Board Components
-
-          .bg-white.rounded-lg.shadow-md.p-6.mb-6
-            = image_tag "baldrickbadge/board.png", class: "w-full rounded-lg mb-6", alt: "BaldrickBadge Board Overview"
-            
-            .text-center.py-12
-              h3.text-2xl.font-semibold.text-gray-900.mb-4 Dunno
-              p.text-gray-700.mb-6
-                | We've got a new version of this in the pipeline, then we can talk about tech specs. Why don't you take a look at some of the boards we actually sell though!
-              p.text-gray-700
-                | In the meantime, check out our 
-                = link_to "overview page", board_page_path('baldrickbadge', 'overview'), class: "text-blue-600 hover:text-blue-800 underline"
-                |  for general information about the BaldrickBadge.
+      .text-center.py-12
+        h3.text-2xl.font-semibold.text-gray-900.mb-4 Dunno
+        p.text-gray-700.mb-6
+          | We've got a new version of this in the pipeline, then we can talk about tech specs. Why don't you take a look at some of the boards we actually sell though!
+        p.text-gray-700
+          | In the meantime, check out our 
+          = link_to "overview page", board_page_path('baldrickbadge', 'overview'), class: "text-blue-600 hover:text-blue-800 underline"
+          |  for general information about the BaldrickBadge.

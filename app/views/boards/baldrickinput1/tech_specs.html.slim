@@ -1,62 +1,47 @@
 - content_for :title, "BaldrickInput1 Tech Specs - Baldrick Board Documentation"
 
-/ Board Submenu
-= render 'boards/shared/board_submenu', board_name: 'BaldrickInput1', menu_items: board_menu_items('baldrickinput1')
+= render 'boards/shared/content_page', board_id: 'baldrickinput1', page_title: 'Technical Specifications', current_page: 'Tech Specs', page_subtitle: 'Board components and detailed specifications for BaldrickInput1', document_title: "BaldrickInput1 Tech Specs - Baldrick Board Documentation" do
+  .prose.max-w-none
+    h2.text-3xl.font-bold.text-gray-900.mb-6 Board Components
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickinput1', 'Tech Specs')
+    .bg-white.rounded-lg.shadow-md.p-6.mb-6
+      = image_tag "baldrickinput1/breakdown.png", class: "w-full rounded-lg mb-6", alt: "BaldrickInput1 Board Overview"
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'Technical Specifications', subtitle: 'Board components and detailed specifications for BaldrickInput1', image_url: 'baldrickinput1/board.png'
+      ol.list-decimal.list-inside.text-gray-700.space-y-3
+        li
+          strong Wireless Chip - 
+          | The BaldrickInput1 can run on either Wifi or Ethernet (but to get the wifi working, you'll need an antenna).
+        li
+          strong 100mb Ethernet Port - 
+          | You can use this to connect to your show network.
+        li
+          strong Test Button - 
+          | Use this to test what you've setup.
+        li
+          strong Turniput - 
+          | Connect a button, motion sensor, beambreak or anything here to trigger an effect (it also has an output for lamp control).
+        li
+          strong Power Jack - 
+          | Can take 5v to 24v (each side can take different voltages) and will automatically step down to power the components, no jumpers needed. 
+          strong Whatever voltage you used here is also used to power the lamp.
+        li
+          strong Oh No button - 
+          | Use this to reset the board by holding for 5 seconds when the board is booting.
+        li
+          strong Mounting Holes - 
+          | The BaldrickInput1 is classed as a 
+          em small 
+          | family member.
+        li
+          strong QR Code - 
+          | An easy to scan QR code which will take you to these docs for easy troubleshooting.
 
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        / Board Components
-        .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Board Components
-
-          .bg-white.rounded-lg.shadow-md.p-6.mb-6
-            = image_tag "baldrickinput1/breakdown.png", class: "w-full rounded-lg mb-6", alt: "BaldrickInput1 Board Overview"
-            
-            ol.list-decimal.list-inside.text-gray-700.space-y-3
-              li
-                strong Wireless Chip - 
-                | The BaldrickInput1 can run on either Wifi or Ethernet (but to get the wifi working, you'll need an antenna).
-              li
-                strong 100mb Ethernet Port - 
-                | You can use this to connect to your show network.
-              li
-                strong Test Button - 
-                | Use this to test what you've setup.
-              li
-                strong Turniput - 
-                | Connect a button, motion sensor, beambreak or anything here to trigger an effect (it also has an output for lamp control).
-              li
-                strong Power Jack - 
-                | Can take 5v to 24v (each side can take different voltages) and will automatically step down to power the components, no jumpers needed. 
-                strong Whatever voltage you used here is also used to power the lamp.
-              li
-                strong Oh No button - 
-                | Use this to reset the board by holding for 5 seconds when the board is booting.
-              li
-                strong Mounting Holes - 
-                | The BaldrickInput1 is classed as a 
-                em small 
-                | family member.
-              li
-                strong QR Code - 
-                | An easy to scan QR code which will take you to these docs for easy troubleshooting.
-
-            .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6.mt-4
-              .flex
-                .flex-shrink-0
-                  svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
-                    path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
-                .ml-3
-                  p.text-yellow-700
-                    strong Note: 
-                    | The BaldrickInput1 is a small family member, so it uses smaller mounting holes compatible with other small Baldrick boards.
+      .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6.mt-4
+        .flex
+          .flex-shrink-0
+            svg.h-5.w-5.text-yellow-400 viewBox="0 0 20 20" fill="currentColor"
+              path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
+          .ml-3
+            p.text-yellow-700
+              strong Note: 
+              | The BaldrickInput1 is a small family member, so it uses smaller mounting holes compatible with other small Baldrick boards.

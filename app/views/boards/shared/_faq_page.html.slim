@@ -1,0 +1,51 @@
+- data = board_data.fetch(board_id)
+- board_name = data[:name]
+- meta = board_faq_meta(board_id)
+- questions = board_faq_questions(board_id)
+
+- content_for :title, meta[:page_title]
+
+- content_for :boardbar do
+  = render 'boards/shared/board_submenu', board_name: board_name, board_id: board_id, menu_items: board_menu_items(board_id)
+
+section.dhead
+  .wrap
+    nav.crumb
+      = link_to "Home", root_path
+      span.sep= "/"
+      = link_to "Boards", boards_path
+      span.sep= "/"
+      = link_to board_name, board_path(board_id)
+      span.sep= "/"
+      span.cur FAQ
+    .dhead-in
+      div
+        .dhead-eye
+          span.bar
+          span.annot FAQ
+        h1 = meta[:header_title]
+        p.sub = meta[:header_subtitle]
+        .dhead-meta
+          span = data[:subtitle]
+          - if questions.present?
+            span = "#{questions.size} #{'question'.pluralize(questions.size)}"
+      .dhead-actions
+        = link_to board_page_path(board_id, 'manual'), class: "btn btn-line" do
+          | Manual & Docs
+
+.docpage
+  .wrap.doc-wrap class=(questions.present? ? nil : 'doc-wrap--single')
+    - if questions.present?
+      aside.toc data-controller="manual-toc"
+        h6 On this page
+        nav
+          - questions.each do |faq|
+            a.toc-sub href="##{faq[:key]}" data-manual-toc-target="link" data-action="click->manual-toc#jump" = faq[:question]
+    article.prose.faq-prose class=(questions.present? ? nil : 'faq-prose--empty')
+      p.lead = meta[:content_description]
+      - if questions.present?
+        = render 'boards/shared/faq_accordion', questions: questions, anchors: true
+        = render 'boards/shared/faq_foot'
+        = render 'boards/shared/faq_help'
+      - else
+        = render 'boards/shared/faq_empty', board_id: board_id

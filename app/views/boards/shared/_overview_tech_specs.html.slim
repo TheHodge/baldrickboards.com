@@ -1,0 +1,21 @@
+- rows = board_tech_specs_rows(board_id)
+- return if rows.blank?
+
+- sec_class = local_assigns[:light] ? 'sec light' : 'sec'
+
+section class=sec_class id="specs"
+  .wrap
+    .sec-eye
+      span.bar
+      span.annot Tech Specs
+    h2 Technical specifications.
+    .specs-table
+      - rows.each do |row|
+        .tr
+          span.tk = row[:label]
+          span.tv
+            - if row[:mono].present?
+              span.mono = row[:mono]
+              = row[:suffix]
+            - else
+              = row[:value]

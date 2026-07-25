@@ -1,0 +1,42 @@
+- config = category_page_config(category_key)
+
+- content_for :title, "#{config[:title]} - Baldrick Board Documentation"
+
+section.hero-blueprint
+  .wrap.inner
+    nav.crumb
+      = link_to "Home", root_path
+      span.sep= "/"
+      - if category_key.to_s == 'all_boards'
+        span.cur= config[:title]
+      - else
+        = link_to "Boards", boards_path
+        span.sep= "/"
+        span.cur= config[:title]
+    .eye
+      span.bar
+      span.annot= config[:eye]
+    h1 = config[:title]
+    p.sub = config[:subtitle]
+    - if config[:meta].present?
+      .meta
+        - config[:meta].each do |item|
+          span = item
+
+section.catalog
+  .wrap
+    .cat-grid
+      - config[:boards].each do |board_id|
+        = board_card(board_id)
+
+- if config[:boards].present?
+  section.cta
+    .wrap
+      h2 Not sure which board fits?
+      p Tell us about your display and we'll point you at the right controller — and where to buy it.
+      .cta-btns
+        = link_to root_path(anchor: "cats"), class: "btn btn-bone" do
+          | Find the right board
+          span.ar →
+        = link_to where_to_buy_baldrick_boards_path, class: "btn btn-clear" do
+          | Where to buy

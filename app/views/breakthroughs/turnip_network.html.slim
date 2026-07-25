@@ -1,46 +1,101 @@
-- content_for :title, "The Turnip Network - Baldrick Board Integration"
+= render 'shared/breakthrough_page', page_title: 'The Turnip Network', current_page: 'The Turnip Network', page_subtitle: 'Seamless integration and communication between Baldrick boards', document_title: 'The Turnip Network - Baldrick Board Integration', meta: ['Board-to-board networking', 'No code required', 'Works with FPP'] do
+  p.lead One of the guiding principles of the Baldrick Boards ecosystem is simple: make life easier.
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: '/' }, { title: 'Baldrick Breakthroughs', path: '/breakthroughs' }, { title: 'The Turnip Network', path: nil }]
+  .prose
+    p We knew people would soon have more than one Baldrick Board in their setup, so we created a clever little networking layer to let them chat to each other and share info.
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'The Turnip Network', subtitle: 'Seamless integration and communication between Baldrick boards', image_url: 'baldrick-logo-dynamic.svg'
+    h2
+      span.hk
+        span.bar
+        span.annot Features
+      | What the Turnip Network does
 
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 The Turnip Network
+    .spec-grid
+      .spec
+        span.ic
+          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+            circle cx="12" cy="12" r="3"
+            path d="M12 2v4M12 18v4M2 12h4M18 12h4"
+        h4 Discoverability
+        p See every Baldrick Board on your network along with its IP, firmware version and current state.
+      .spec
+        span.ic
+          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+            path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"
+        h4 Test sync
+        p Get boards of the same type marching in step — perfect when you've got props dotted round the garden and you want them all lighting up together.
+      .spec
+        span.ic
+          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+            path d="M12 2v4M5 7l3 3M19 7l-3 3M5 17l3-3M19 17l-3-3M12 18v4"
+        h4 FPP discoverability
+        p
+          | Your boards go hunting for FPP installs on your network, giving you instant interactive fun with buttons or
+          = link_to 'Turniputs', breakthroughs_turniput_path
+          |  — all without writing a single line of code.
+      .spec
+        span.ic
+          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+            path d="M12 6v6l4 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"
+        h4 More on the way
+        p Update sharing, time sync and a few other surprises are all in the pipeline.
 
-          .prose.prose-lg.max-w-none
-            p.text-lg.text-gray-700.mb-6
-              | One of the guiding principles of the Baldrick Boards ecosystem is simple: make life easier.
+    figure.figure
+      .fimg
+        = image_tag 'baldrick8/web-interface-turnip-network.png', alt: 'Turnip Network screen in the Baldrick web interface'
+      figcaption The Turnip Network view in the Baldrick web interface — every board on your show network, at a glance.
 
-            p.text-lg.text-gray-700.mb-6
-              | We knew people would soon have more than one Baldrick Board in their setup, so we created a clever little networking layer to let them chat to each other and share info.
+    .callout.info
+      span.ic
+        svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          circle cx="12" cy="12" r="10"
+          path d="M12 16v-4M12 8h.01"
+      div
+        span.lbl Good to know
+        p.bd
+          | The Turnip Network is Baldrick once again going the extra mile to make your lights easier, smarter and a lot more fun. Pair it with
+          = link_to 'Turniput inputs', breakthroughs_turniput_path
+          |  for visitor-triggered effects without touching a line of code.
 
-            p.text-lg.text-gray-700.mb-6
-              | It all began with discoverability. Suddenly you could see every Baldrick Board on your network along with its IP, firmware and state.
+    h2
+      span.hk
+        span.bar
+        span.annot Keep reading
+      | Related breakthroughs
 
-            p.text-lg.text-gray-700.mb-6
-              | Then came test sync, so you could get boards of the same type marching in step. Perfect when you've got props dotted round the garden and you want them all lighting up together.
+    .next-grid
+      = link_to breakthroughs_turniput_path, class: 'next-card' do
+        .top
+          span.kind Breakthrough
+          span.go →
+        h4 Turniput
+        p Physical inputs that trigger effects across your show network.
+      = link_to breakthroughs_kluster_path, class: 'next-card' do
+        .top
+          span.kind Breakthrough
+          span.go →
+        h4 The Kluster
+        p Group boards together for coordinated control and testing.
+      = link_to breakthroughs_cunningfx_path, class: 'next-card' do
+        .top
+          span.kind Breakthrough
+          span.go →
+        h4 CunningFX
+        p Advanced effects and scheduling built into the Baldrick ecosystem.
+      = link_to breakthroughs_path, class: 'next-card' do
+        .top
+          span.kind Index
+          span.go →
+        h4 All breakthroughs
+        p Explore everything that makes Baldrick boards a bit special.
 
-            p.text-lg.text-gray-700.mb-6
-              | Next we added FPP discoverability. That means your boards now go hunting for FPP installs on your network, giving you instant interactive fun with buttons or 
-              = link_to "Turniputs", breakthroughs_turniput_path, class: "text-blue-600 hover:text-blue-800 underline font-medium"
-              | , all without writing a single line of code.
-
-            p.text-lg.text-gray-700.mb-8
-              | And we're not stopping there. Update sharing, time sync and a few other surprises are all on the way. The Turnip Network is Baldrick once again going the extra mile to make your lights easier, smarter and a lot more fun.
-
-          / Learn More
-          .mt-8.bg-gray-50.rounded-lg.p-6.border.border-gray-200
-            h4.text-lg.font-semibold.text-gray-900.mb-3 Learn More About Baldrick
-            p.text-gray-700.mb-4
-              | Discover how The Turnip Network fits into the broader Baldrick ecosystem and learn about other innovative features.
-            .grid.md:grid-cols-2.gap-4
-              = link_to "The Kluster", breakthroughs_kluster_path, class: "inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors"
-              = link_to "Turniput Software", breakthroughs_turniput_path, class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+section.cta
+  .wrap
+    h2 Ready to wire up your show?
+    p Pick a Baldrick controller and let the Turnip Network handle the rest.
+    .cta-btns
+      = link_to boards_path, class: 'btn btn-bone' do
+        | Explore the range
+        span.ar →
+      = link_to where_to_buy_baldrick_boards_path, class: 'btn btn-clear' do
+        | Where to buy

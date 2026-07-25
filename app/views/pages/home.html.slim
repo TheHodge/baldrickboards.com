@@ -1,287 +1,195 @@
-- content_for :title, "Baldrick Boards - Excellent Hardware, Questionable Sense of Humour"
+- content_for :title, "Baldrick Boards — Controllers for serious light displays"
 
-/ Hero Carousel Section
-.bg-gradient-to-br.from-indigo-900.via-purple-900.to-indigo-800.text-white.relative.overflow-hidden data-controller="carousel" data-action="mouseenter->carousel#pauseOnHover mouseleave->carousel#resumeOnLeave"
-  / Carousel Container
-  .carousel-container.relative
-    / Slide 1: Baldrick8 (Image on Right)
-    .carousel-slide.active data-slide="1" data-carousel-target="slide"
-      .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-24
-        .flex.flex-col.lg:flex-row.items-center.justify-between.gap-12
-          .lg:w-1/2.mb-8.lg:mb-0
-            h1.text-3xl.md:text-4xl.lg:text-5xl.font-bold.mb-6.leading-tight
-              | Boards as cunning as a fox who's just been appointed 
-              span.text-yellow-300 Professor of Cunning
-              |  at Oxford University
-            p.text-xl.md:text-2xl.text-indigo-200.mb-8
-              | Professional-grade controller boards for lighting displays, interactive installations, and automated shows
-            .flex.flex-col.sm:flex-row.gap-4
-              = link_to boards_path, class: "bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center" do
-                | Explore Boards
-                svg.ml-2.h-5.w-5 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                  path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"
-          .lg:w-1/2.flex.justify-center
-            .relative
-              = link_to board_path('baldrick8'), class: "block transition-transform duration-200 hover:scale-105" do
-                = image_tag 'baldrick8.png', alt: 'Baldrick8 Controller Board', class: 'w-full max-w-md h-auto rounded-lg shadow-lg'
-                .absolute.-bottom-4.-right-4.bg-yellow-400.text-indigo-900.px-4.py-2.rounded-lg.font-bold.text-lg
-                  | Baldrick8
+div data-controller="reveal"
+  section.hero
+    .wrap.hero-grid
+      .hero-copy
+        .hero-eye
+          span.bar
+          span.annot Pixel · DMX · Relay · Input controllers
+        h1 Controllers that create <span class="hl">joy</span> around the world.
+        p.hero-sub From back gardens to theatres, gigs & tours to mega churches - powerful, flexible hardware for pixels, DMX, relays and inputs. 
+        .hero-cta
+          = link_to "#cats", class: "btn btn-solid" do
+            | Find the right board
+            span.ar →
+          = link_to "#range", class: "btn btn-line" do
+            | Browse the range
 
-    / Slide 2: BaldrickSwitchy (Image on Left)
-    .carousel-slide data-slide="2" data-carousel-target="slide"
-      .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-24
-        .flex.flex-col.lg:flex-row-reverse.items-center.justify-between.gap-12
-          .lg:w-1/2.mb-8.lg:mb-0
-            h1.text-3xl.md:text-4xl.lg:text-5xl.font-bold.mb-6.leading-tight
-              | Powerful relay control with 
-              span.text-green-300 precision timing
-              |  and rock-solid reliability
-            p.text-xl.md:text-2xl.text-indigo-200.mb-8
-              | Control AC lights, motors, and other high-power devices with our robust relay controller
-            .flex.flex-col.sm:flex-row.gap-4
-              = link_to board_path('baldrickswitchy'), class: "bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center" do
-                | Learn More
-                svg.ml-2.h-5.w-5 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                  path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"
-              = link_to boards_path, class: "bg-transparent border-2 border-white hover:bg-white hover:text-indigo-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center" do
-                | All Boards
-          .lg:w-1/2.flex.justify-center
-            .relative
-              = link_to board_path('baldrickswitchy'), class: "block transition-transform duration-200 hover:scale-105" do
-                = image_tag 'baldrickswitchy.png', alt: 'BaldrickSwitchy Controller Board', class: 'w-full max-w-md h-auto rounded-lg shadow-lg'
-                .absolute.-bottom-4.-right-4.bg-green-400.text-indigo-900.px-4.py-2.rounded-lg.font-bold.text-lg
-                  | BaldrickSwitchy
+      .hero-board data-controller="hero-rotator" data-action="mouseenter->hero-rotator#pause mouseleave->hero-rotator#resume"
+        .board-rotator
+          - [["baldrick8", "Baldrick8"], ["baldrick17", "Baldrick17"], ["baldrickdmx", "BaldrickDMX"], ["baldrickswitchy", "BaldrickSwitchy"], ["baldrickinput8", "BaldrickInput8"], ["baldricksignals", "BaldrickSignals"]].each_with_index do |(slug, name), index|
+            = link_to board_path(slug), class: "brot#{' on' if index == 0}", data: { hero_rotator_target: "slide", nm: name } do
+              = image_tag "#{slug}.png", alt: name
+        .brot-foot
+          = link_to board_path("baldrick8"), class: "brot-name", data: { hero_rotator_target: "name" } do
+            | Baldrick8
+          .brot-dots data-hero-rotator-target="dots"
 
-    / Slide 3: BaldrickDMX (Image on Right)
-    .carousel-slide data-slide="3" data-carousel-target="slide"
-      .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-24
-        .flex.flex-col.lg:flex-row.items-center.justify-between.gap-12
-          .lg:w-1/2.mb-8.lg:mb-0
-            h1.text-3xl.md:text-4xl.lg:text-5xl.font-bold.mb-6.leading-tight
-              | Professional 
-              span.text-purple-300 DMX control
-              |  for stage and event lighting
-            p.text-xl.md:text-2xl.text-indigo-200.mb-8
-              | Industry-standard DMX512 output with advanced features for professional lighting applications
-            .flex.flex-col.sm:flex-row.gap-4
-              = link_to board_path('baldrickdmx'), class: "bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center" do
-                | Learn More
-                svg.ml-2.h-5.w-5 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                  path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"
-              = link_to boards_path, class: "bg-transparent border-2 border-white hover:bg-white hover:text-indigo-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center" do
-                | All Boards
-          .lg:w-1/2.flex.justify-center
-            .relative
-              = link_to board_path('baldrickdmx'), class: "block transition-transform duration-200 hover:scale-105" do
-                = image_tag 'baldrickdmx.png', alt: 'BaldrickDMX Controller Board', class: 'w-full max-w-md h-auto rounded-lg shadow-lg'
-                .absolute.-bottom-4.-right-4.bg-purple-400.text-indigo-900.px-4.py-2.rounded-lg.font-bold.text-lg
-                  | BaldrickDMX
+  .ticker aria-hidden="true"
+    .ticker-track
+      - items = ["Trusted by thousands", "ArtNet / E1.31 / sACN / DPP", "Pixels, Relays, Sensors, Buttons & DMX", "Free STL mounts", "5V to 48V DC (on most boards)", "Designed in the UK", "CE + UKCA + RoHS"]
+      - 2.times do
+        - items.each do |item|
+          span.ticker-item = item
 
-    / Slide 4: BaldrickInput1 (Image on Left)
-    .carousel-slide data-slide="4" data-carousel-target="slide"
-      .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-24
-        .flex.flex-col.lg:flex-row-reverse.items-center.justify-between.gap-12
-          .lg:w-1/2.mb-8.lg:mb-0
-            h1.text-3xl.md:text-4xl.lg:text-5xl.font-bold.mb-6.leading-tight
-              | Interactive control with 
-              span.text-orange-300 Turniput integration
-              |  for endless possibilities
-            p.text-xl.md:text-2xl.text-indigo-200.mb-8
-              | Connect buttons, sensors, and switches to create interactive lighting experiences
-            .flex.flex-col.sm:flex-row.gap-4
-              = link_to board_path('baldrickinput1'), class: "bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center" do
-                | Learn More
-                svg.ml-2.h-5.w-5 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                  path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"
-              = link_to boards_path, class: "bg-transparent border-2 border-white hover:bg-white hover:text-indigo-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center" do
-                | All Boards
-          .lg:w-1/2.flex.justify-center
-            .relative
-              = link_to board_path('baldrickinput1'), class: "block transition-transform duration-200 hover:scale-105" do
-                = image_tag 'baldrickinput1.png', alt: 'BaldrickInput1 Controller Board', class: 'w-full max-w-md h-auto rounded-lg shadow-lg'
-                .absolute.-bottom-4.-right-4.bg-orange-400.text-indigo-900.px-4.py-2.rounded-lg.font-bold.text-lg
-                  | BaldrickInput1
+          
+  section.sec.cats#cats
+    .wrap
+      .sec-head-row
+        div
+          .sec-kick.rv
+            span.bar
+            span.annot Start here
+          h2.rv data-d="1" What are you controlling?
+        p.sec-lead.rv data-d="2" Tell us what you're driving and we'll point you to the right board. The full range is just below.
+      .cat-grid.rv data-d="1"
+        = link_to boards_pixel_controllers_path, class: "catx" do
+          span.ci
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              path d="M5 4v16M9 4v16M13 4v16M17 4v16"
+              circle cx="5" cy="8" r="1.4" fill="currentColor"
+              circle cx="9" cy="14" r="1.4" fill="currentColor"
+              circle cx="13" cy="9" r="1.4" fill="currentColor"
+              circle cx="17" cy="15" r="1.4" fill="currentColor"
+          h3 Pixels
+          p Strings, props, matrices, trees and mega builds.
+        = link_to boards_dmx_controllers_path, class: "catx" do
+          span.ci
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              circle cx="12" cy="12" r="9"
+              circle cx="12" cy="8" r="1.3" fill="currentColor"
+              circle cx="8.5" cy="14" r="1.3" fill="currentColor"
+              circle cx="15.5" cy="14" r="1.3" fill="currentColor"
+          h3 DMX
+          p Moving heads, dimmers and stage fixtures.
+        = link_to boards_relay_controllers_path, class: "catx" do
+          span.ci
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              path d="M9 2v6M15 2v6M7 8h10v3a5 5 0 0 1-10 0z"
+              path d="M12 16v6"
+          h3 Relays
+          p Switch mains-powered and real-world devices.
+        = link_to boards_interactive_controllers_path, class: "catx" do
+          span.ci
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              path d="M9 11V6a2 2 0 1 1 4 0v5"
+              path d="M13 11V8a1.8 1.8 0 1 1 3.6 0v3"
+              path d="M16.6 11a1.8 1.8 0 1 1 3.4 0v3a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L4 15a1.8 1.8 0 0 1 3-2l1.5 2"
+          h3 Inputs & Sensors
+          p Buttons, triggers, beam breaks and switches.
+        = link_to board_path("baldricksignals"), class: "catx" do
+          span.ci
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              path d="M4 20V4M4 20h16"
+              rect x="7" y="12" width="3" height="5"
+              rect x="12" y="8" width="3" height="9"
+              rect x="17" y="5" width="3" height="12"
+          h3 Monitoring
+          p Something a little bit special.
 
-  / Carousel Navigation
-  .absolute.bottom-8.left-1/2.transform.-translate-x-1/2.flex.space-x-3.z-50
-    button.carousel-dot.active.w-4.h-4.bg-white.rounded-full.opacity-50.hover:opacity-100.transition-opacity.cursor-pointer data-slide="1" data-action="click->carousel#goToSlide" data-carousel-target="dot"
-    button.carousel-dot.w-4.h-4.bg-white.rounded-full.opacity-50.hover:opacity-100.transition-opacity.cursor-pointer data-slide="2" data-action="click->carousel#goToSlide" data-carousel-target="dot"
-    button.carousel-dot.w-4.h-4.bg-white.rounded-full.opacity-50.hover:opacity-100.transition-opacity.cursor-pointer data-slide="3" data-action="click->carousel#goToSlide" data-carousel-target="dot"
-    button.carousel-dot.w-4.h-4.bg-white.rounded-full.opacity-50.hover:opacity-100.transition-opacity.cursor-pointer data-slide="4" data-action="click->carousel#goToSlide" data-carousel-target="dot"
+  section.sec.range#range
+    .wrap
+      .sec-head-row
+        div
+          .sec-kick.rv
+            span.bar
+            span.annot The full family
+          h2.rv data-d="1" The full family.
+        p.sec-lead.rv data-d="2" Each board is special in it's own way but remember they get lonley so it's best to buy more than one!
+      .range-strip.rv data-d="1"
+        - [["baldrick8", "Baldrick8"], ["baldrick17", "Baldrick17"], ["baldrickdmx", "BaldrickDMX"], ["baldrickswitchy", "BaldrickSwitchy"], ["baldrickinput8", "BaldrickInput8"], ["baldrickinput1", "BaldrickInput1"], ["baldricksignals", "BaldrickSignals"]].each do |slug, name|
+          = link_to board_path(slug), class: "brd" do
+            .brd-vis
+              = image_tag "#{slug}.png", alt: name
+            .nm = name
 
-/ Features Section
-.bg-white.py-16
-  .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8
-    .text-center.mb-12
-      h2.text-3xl.font-bold.text-gray-900.mb-4 Why Choose Baldrick Boards?
-      p.text-xl.text-gray-600.max-w-3xl.mx-auto
-        | Built by lighting professionals, for lighting professionals. Our controllers deliver the performance and reliability you need for stunning displays.
-    
-    .grid.md:grid-cols-3.gap-8
-      .text-center
-        .bg-indigo-100.rounded-full.w-16.h-16.flex.items-center.justify-center.mx-auto.mb-4
-          svg.h-8.w-8.text-indigo-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3a1.5 1.5 0 115-1.5m5 1.5a1.5 1.5 0 11-5 1.5"
-        h3.text-xl.font-semibold.text-gray-900.mb-2 Easy to Use
-        p.text-gray-600 Designed from the very beginning to be easy to connect and get going.
-      
-      .text-center
-        .bg-indigo-100.rounded-full.w-16.h-16.flex.items-center.justify-center.mx-auto.mb-4
-          svg.h-8.w-8.text-indigo-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
-        h3.text-xl.font-semibold.text-gray-900.mb-2 Installation Ready
-        p.text-gray-600 Designed for easy installation in any environment. Compact form factors mean more mounting options and cleaner installations for professional lighting setups.
-      
-      .text-center
-        .bg-indigo-100.rounded-full.w-16.h-16.flex.items-center.justify-center.mx-auto.mb-4
-          svg.h-8.w-8.text-indigo-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        h3.text-xl.font-semibold.text-gray-900.mb-2 Named after a genius
-        p.text-gray-600 Baldrick is the ultimate sidekick, always there for an idea, someone to blame or even come up with a poem in a time of need.
+  section.sec.buy#buy
+    .wrap
+      .sec-head-row
+        div
+          .sec-kick.rv
+            span.bar
+            span.annot Where to buy
+          h2.rv data-d="1" Buy from a vendor near you.
+          p.sec-lead.rv data-d="2" Order from an authorised Baldrick vendor in your region, or direct from us alongside our trusted partners.
+        = link_to "View all vendors →", where_to_buy_baldrick_boards_path, class: "lnk rv", style: "margin-bottom:6px", data: { d: "2" }
+      .buy-grid
+        - reveal_delays = { 1 => '1', 2 => '2', 4 => '1' }
+        - home_buy_regions.each_with_index do |region, index|
+          = render 'shared/buy_region_tile', region: region, tile_options: (reveal_delays[index] ? { data: { d: reveal_delays[index] } } : {})
 
-/ Main Content Section
-.bg-gray-50.py-16
-  .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8
-    .text-center.mb-12
-      h2.text-3xl.font-bold.text-gray-900.mb-4 Documentation & Fun Stuff
-      p.text-xl.text-gray-600 Everything you need to get the most out of your Baldrick boards
+  section.sec.why#why
+    .wrap
+      .why-head
+        .sec-kick.rv
+          span.bar
+          span.annot Why Baldrick?
+        h2.rv data-d="1" Our boards don't just power shows around the world, they power ours
+        p.sec-lead.rv data-d="2" No marketing department invented these. Every board comes from a real need on a real display and is built to hold up on the night, every night of the season.
 
-    .grid.md:grid-cols-2.lg:grid-cols-3.gap-6
-      / Turniputs Section
-      = link_to breakthroughs_turniput_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
-        .p-6
-          .flex.items-center.mb-4
-            .bg-green-100.rounded-lg.p-3.mr-4.group-hover:bg-green-200.transition-colors.duration-300
-              svg.h-6.w-6.text-green-600.group-hover:text-green-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
-            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 Turniputs
-          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 Making lightshow interactivity as simple as pressing a button.
+  section.sec.docs#docs
+    .wrap
+      .sec-head-row
+        div
+          .sec-kick.rv
+            span.bar
+            span.annot Explore
+          h2.rv data-d="1" More to explore.
+        p.sec-lead.rv data-d="2" Everything beyond the boards — guides, downloads and the community that keeps the shows running.
+      .ex-grid.rv data-d="1"
+        = link_to boards_path, class: "ex-card"
+          span.ex-ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              path d="M4 5a2 2 0 0 1 2-2h6v18H6a2 2 0 0 1-2-2zM20 5a2 2 0 0 0-2-2h-6v18h6a2 2 0 0 0 2-2z"
+          h3
+            | Documentation & Guides
+            span.go →
+          p Set up, wire and get the most out of every board, step by step.
+        = link_to fun_stuff_stls_and_mounts_path, class: "ex-card"
+          span.ex-ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              path d="M12 3v12m0 0 4-4m-4 4-4-4"
+              path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"
+          h3
+            | Downloads
+            span.go →
+          p Free 3D-printable mounts, enclosures and STLs for tidy installs.
+        = link_to fun_stuff_customer_showcase_path, class: "ex-card"
+          span.ex-ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              rect x="3" y="5" width="18" height="14" rx="2"
+              circle cx="8.5" cy="10" r="1.5"
+              path d="M21 16l-5-5-4 4-2-2-5 5"
+          h3
+            | Customer Showcase
+            span.go →
+          p Real displays from real customers — see what Baldrick boards power in the wild.
+        = link_to breakthroughs_cunningfx_path, class: "ex-card"
+          span.ex-ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              path d="M13 2 4 14h7l-1 8 9-12h-7z"
+          h3
+            | CunningFX
+            span.go →
+          p Advanced effects and animations for displays that like to show off.
+        = link_to fun_stuff_release_notes_path, class: "ex-card"
+          span.ex-ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              path d="M14 2v6h6M8 13h8M8 17h5"
+          h3
+            | Release Notes
+            span.go →
+          p What's new, what changed and what we quietly fixed.
+        = link_to support_path, class: "ex-card"
+          span.ex-ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              circle cx="9" cy="8" r="3"
+              path d="M3 20a6 6 0 0 1 12 0"
+              path d="M16 6a3 3 0 0 1 0 6M22 20a6 6 0 0 0-5-5.9"
+          h3
+            | Community & Support
+            span.go →
+          p Christmas Triage, active Facebook groups and our Zoom room — help when you need a hand.
 
-      / Release Notes Section
-      = link_to fun_stuff_release_notes_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
-        .p-6
-          .flex.items-center.mb-4
-            .bg-blue-100.rounded-lg.p-3.mr-4.group-hover:bg-blue-200.transition-colors.duration-300
-              svg.h-6.w-6.text-blue-600.group-hover:text-blue-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 Release Notes
-          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 Stay up to date with the latest features and improvements.
-
-      / Mounts & STLs Section
-      = link_to fun_stuff_stls_and_mounts_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
-        .p-6
-          .flex.items-center.mb-4
-            .bg-purple-100.rounded-lg.p-3.mr-4.group-hover:bg-purple-200.transition-colors.duration-300
-              svg.h-6.w-6.text-purple-600.group-hover:text-purple-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 Mounts & STLs
-          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 3D printable mounts and enclosures for Baldrick boards.
-
-      / Where to Buy Section
-      = link_to where_to_buy_baldrick_boards_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
-        .p-6
-          .flex.items-center.mb-4
-            .bg-indigo-100.rounded-lg.p-3.mr-4.group-hover:bg-indigo-200.transition-colors.duration-300
-              svg.h-6.w-6.text-indigo-600.group-hover:text-indigo-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 Where to Buy
-          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 Find authorized retailers and purchase options for Baldrick boards.
-
-      / CunningFX Section
-      = link_to breakthroughs_cunningfx_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
-        .p-6
-          .flex.items-center.mb-4
-            .bg-orange-100.rounded-lg.p-3.mr-4.group-hover:bg-orange-200.transition-colors.duration-300
-              svg.h-6.w-6.text-orange-600.group-hover:text-orange-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"
-            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 CunningFX
-          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 Advanced effects and animations for professional lighting displays.
-
-      / CE & UKCA Certification Section
-      = link_to breakthroughs_ce_ukca_certification_path, class: "block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 group"
-        .p-6
-          .flex.items-center.mb-4
-            .bg-yellow-100.rounded-lg.p-3.mr-4.group-hover:bg-yellow-200.transition-colors.duration-300
-              svg.h-6.w-6.text-yellow-600.group-hover:text-yellow-700 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            h3.text-xl.font-semibold.text-gray-900.group-hover:text-indigo-600.transition-colors.duration-300 CE & UKCA Certification
-          p.text-gray-600.group-hover:text-gray-700.transition-colors.duration-300 Quality that goes beyond the basics - certified safe and compliant.
-
-/ CTA Section
-.bg-indigo-900.text-white.py-16
-  .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.text-center
-    h2.text-3xl.font-bold.mb-4 Ready to Get Started?
-    p.text-xl.text-indigo-200.mb-8.max-w-2xl.mx-auto
-      | Join the community of lighting professionals who trust Baldrick boards for their most demanding projects.
-    .flex.flex-col.sm:flex-row.gap-4.justify-center
-      = link_to boards_path, class: "bg-white text-indigo-900 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center" do
-        | Browse Boards
-        svg.ml-2.h-5.w-5 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"
-
-/ Carousel Styles
-css:
-  .carousel-container {
-    position: relative;
-    width: 100%;
-    min-height: 600px;
-  }
-
-  .carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 600px;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* Mobile responsiveness */
-  @media (max-width: 768px) {
-    .carousel-container {
-      min-height: 600px;
-    }
-    
-    .carousel-slide {
-      min-height: 600px;
-    }
-    
-    .carousel-slide h1 {
-      font-size: 2rem !important;
-      line-height: 1.2 !important;
-    }
-    
-    .carousel-slide p {
-      font-size: 1rem !important;
-    }
-    
-    .carousel-slide img {
-      max-width: 280px !important;
-    }
-  }
-
-  .carousel-slide.active {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 2;
-  }
-
-  .carousel-dot {
-    z-index: 50;
-    cursor: pointer;
-    pointer-events: auto;
-  }
-
-  .carousel-dot.active {
-    opacity: 1 !important;
-  }
-
-  @media (max-width: 768px) {
-    .carousel-dot {
-      width: 12px !important;
-      height: 12px !important;
-    }
-  }

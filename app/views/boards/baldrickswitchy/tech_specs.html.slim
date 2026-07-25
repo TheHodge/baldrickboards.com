@@ -1,129 +1,114 @@
 - content_for :title, "BaldrickSwitchy Tech Specs - Baldrick Board Documentation"
 
-/ Board Submenu
-= render 'boards/shared/board_submenu', board_name: 'BaldrickSwitchy', menu_items: board_menu_items('baldrickswitchy')
+= render 'boards/shared/content_page', board_id: 'baldrickswitchy', page_title: 'Technical Specifications', current_page: 'Tech Specs', page_subtitle: 'Board components and detailed specifications for BaldrickSwitchy', document_title: "BaldrickSwitchy Tech Specs - Baldrick Board Documentation" do
+  .prose.max-w-none
+    h2.text-3xl.font-bold.text-gray-900.mb-6 Board Components
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: board_breadcrumbs('baldrickswitchy', 'Tech Specs')
+    / Tab Container
+    .tabs-container data-controller="tabs"
+      / Tab Navigation
+      .border-b.border-gray-200.mb-6
+        nav.-mb-px.flex.space-x-8
+          button.tab-button.py-2.px-1.border-b-2.font-medium.text-sm.transition-colors.duration-200 data-action="click->tabs#switch" data-tab="v1-1" class="border-purple-500 text-purple-600"
+            | BaldrickSwitchy v1.1
+          button.tab-button.py-2.px-1.border-b-2.font-medium.text-sm.transition-colors.duration-200 data-action="click->tabs#switch" data-tab="v1-0" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+            | BaldrickSwitchy v1.0
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'Technical Specifications', subtitle: 'Board components and detailed specifications for BaldrickSwitchy', image_url: 'baldrickswitchy/board.png'
+      / Tab Content
+      .tab-content
+        / v1.1 Content (Default)
+        .tab-panel data-tab="v1-1"
+          .bg-white.rounded-lg.shadow-md.p-6.mb-6
+            = image_tag "baldrickswitchy/breakdown11.png", class: "w-full rounded-lg mb-6", alt: "BaldrickSwitchy v1.1 Board Overview"
 
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        / Board Version Tabs
-        .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Board Components
-          
-          / Tab Container
-          .tabs-container data-controller="tabs"
-            / Tab Navigation
-            .border-b.border-gray-200.mb-6
-              nav.-mb-px.flex.space-x-8
-                button.tab-button.py-2.px-1.border-b-2.font-medium.text-sm.transition-colors.duration-200 data-action="click->tabs#switch" data-tab="v1-1" class="border-purple-500 text-purple-600"
-                  | BaldrickSwitchy v1.1
-                button.tab-button.py-2.px-1.border-b-2.font-medium.text-sm.transition-colors.duration-200 data-action="click->tabs#switch" data-tab="v1-0" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                  | BaldrickSwitchy v1.0
+            ul.list-none.text-gray-700.space-y-3
+              li
+                strong 1. Power Jack - 
+                | You can put 5v-48v through a barrel connector (centre positive) and we use 5.5x2.1mm barrel jacks. Please remember you are just powering the board not the devices.
+              li
+                strong 2. 2 Pin Pheonix Connector - 
+                | You can put 5v-48v through this connector. Please remember you are just powering the board not the devices.
+              li
+                strong 3. 3 Pin Relays - 
+                | Connect your device to enable control via the BaldrickSwitchy.
+              li
+                strong 4. QR Code - 
+                | An easy to scan QR code which will take you to these docs for quick troubleshooting.
+              li
+                strong 5. Ethernet port - 
+                | To ensure the consistent connection to your devices, we've added a 100mb ethernet port to connect to your show network.
+              li
+                strong 6. Oh No Button - 
+                | Did you break our board? Press and hold this for 5 seconds on boot to reset to factory settings.
+              li
+                strong 7. Mounting Holes - 
+                | The BaldrickSwitchy is classed as a medium family member. 
+                br
+                .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6.mt-2
+                  span.text-yellow-700.font-semibold
+                    ' ⚠️ DO NOT DRILL out these holes to make them fit the screws you've got already, doing this will void any warranty.
 
-            / Tab Content
-            .tab-content
-              / v1.1 Content (Default)
-              .tab-panel data-tab="v1-1"
-                .bg-white.rounded-lg.shadow-md.p-6.mb-6
-                  = image_tag "baldrickswitchy/breakdown11.png", class: "w-full rounded-lg mb-6", alt: "BaldrickSwitchy v1.1 Board Overview"
-                  
-                  ul.list-none.text-gray-700.space-y-3
-                    li
-                      strong 1. Power Jack - 
-                      | You can put 5v-48v through a barrel connector (centre positive) and we use 5.5x2.1mm barrel jacks. Please remember you are just powering the board not the devices.
-                    li
-                      strong 2. 2 Pin Pheonix Connector - 
-                      | You can put 5v-48v through this connector. Please remember you are just powering the board not the devices.
-                    li
-                      strong 3. 3 Pin Relays - 
-                      | Connect your device to enable control via the BaldrickSwitchy.
-                    li
-                      strong 4. QR Code - 
-                      | An easy to scan QR code which will take you to these docs for quick troubleshooting.
-                    li
-                      strong 5. Ethernet port - 
-                      | To ensure the consistent connection to your devices, we've added a 100mb ethernet port to connect to your show network.
-                    li
-                      strong 6. Oh No Button - 
-                      | Did you break our board? Press and hold this for 5 seconds on boot to reset to factory settings.
-                    li
-                      strong 7. Mounting Holes - 
-                      | The BaldrickSwitchy is classed as a medium family member. 
-                      br
-                      .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6.mt-2
-                        span.text-yellow-700.font-semibold
-                          ' ⚠️ DO NOT DRILL out these holes to make them fit the screws you've got already, doing this will void any warranty.
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Note: 
+                  | The board will also come affixed to a 
+                  = link_to "Darwin Tray", board_page_path('baldrickswitchy', 'faq', anchor: 'darwin-tray'), class: "text-blue-600 hover:text-blue-800 underline font-bold"
+                  |  for your protection.
 
-                .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
-                  .flex
-                    .flex-shrink-0
-                      svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
-                        path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-                    .ml-3
-                      p.text-sm.text-blue-700
-                        strong Note: 
-                        | The board will also come affixed to a 
-                        = link_to "Darwin Tray", board_page_path('baldrickswitchy', 'faq', anchor: 'darwin-tray'), class: "text-blue-600 hover:text-blue-800 underline font-bold"
-                        |  for your protection.
+        / v1.0 Content
+        .tab-panel.hidden data-tab="v1-0"
+          .bg-white.rounded-lg.shadow-md.p-6.mb-6
+            = image_tag "baldrickswitchy/breakdown.png", class: "w-full rounded-lg mb-6", alt: "BaldrickSwitchy v1.0 Board Overview"
 
-              / v1.0 Content
-              .tab-panel.hidden data-tab="v1-0"
-                .bg-white.rounded-lg.shadow-md.p-6.mb-6
-                  = image_tag "baldrickswitchy/breakdown.png", class: "w-full rounded-lg mb-6", alt: "BaldrickSwitchy v1.0 Board Overview"
-                  
-                  ol.list-decimal.list-inside.text-gray-700.space-y-3
-                    li
-                      strong Power Jack - 
-                      | You can put 5v-24v through a barrel connector (centre positive) and we use 5.5x2.1mm barrel jacks. Please remember you are just powering the board not the devices.
-                    li
-                      strong Relay 1 - 
-                      | Connect your device to enable control via the BaldrickSwitchy.
-                    li
-                      strong Relay 2 - 
-                      | Connect your device to enable control via the BaldrickSwitchy.
-                    li
-                      strong Relay 3 - 
-                      | Connect your device to enable control via the BaldrickSwitchy.
-                    li
-                      strong Relay 4 - 
-                      | Connect your device to enable control via the BaldrickSwitchy.
-                    li
-                      strong QR Code - 
-                      | An easy to scan QR code which will take you to these docs for quick troubleshooting.
-                    li
-                      strong Ethernet port - 
-                      | To ensure the consistent connection to your devices, we've added a 100mb ethernet port to connect to your show network.
-                    li
-                      strong ESP32 - 
-                      | The brains of our board, don't worry about this too much, that's our job, not yours.
-                    li
-                      strong Company logo - 
-                      | Our company logo, isn't it great?
-                    li
-                      strong Mounting Holes - 
-                      | We've designed the BaldrickSwitchy to not only be as compact as possible, we've matched the mounting holes to other common controllers so mounts can be reused (in this case the Falcon SRX2 Receiver). 
-                      br
-                      .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6.mt-2
-                        span.text-yellow-700.font-semibold
-                          ' ⚠️ DO NOT DRILL out these holes to make them fit the screws you've got already, doing this will void any warranty.
+            ol.list-decimal.list-inside.text-gray-700.space-y-3
+              li
+                strong Power Jack - 
+                | You can put 5v-24v through a barrel connector (centre positive) and we use 5.5x2.1mm barrel jacks. Please remember you are just powering the board not the devices.
+              li
+                strong Relay 1 - 
+                | Connect your device to enable control via the BaldrickSwitchy.
+              li
+                strong Relay 2 - 
+                | Connect your device to enable control via the BaldrickSwitchy.
+              li
+                strong Relay 3 - 
+                | Connect your device to enable control via the BaldrickSwitchy.
+              li
+                strong Relay 4 - 
+                | Connect your device to enable control via the BaldrickSwitchy.
+              li
+                strong QR Code - 
+                | An easy to scan QR code which will take you to these docs for quick troubleshooting.
+              li
+                strong Ethernet port - 
+                | To ensure the consistent connection to your devices, we've added a 100mb ethernet port to connect to your show network.
+              li
+                strong ESP32 - 
+                | The brains of our board, don't worry about this too much, that's our job, not yours.
+              li
+                strong Company logo - 
+                | Our company logo, isn't it great?
+              li
+                strong Mounting Holes - 
+                | We've designed the BaldrickSwitchy to not only be as compact as possible, we've matched the mounting holes to other common controllers so mounts can be reused (in this case the Falcon SRX2 Receiver). 
+                br
+                .bg-yellow-50.border-l-4.border-yellow-400.p-4.mb-6.mt-2
+                  span.text-yellow-700.font-semibold
+                    ' ⚠️ DO NOT DRILL out these holes to make them fit the screws you've got already, doing this will void any warranty.
 
-                .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
-                  .flex
-                    .flex-shrink-0
-                      svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
-                        path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-                    .ml-3
-                      p.text-sm.text-blue-700
-                        strong Note: 
-                        | The board will also come affixed to a 
-                        = link_to "Darwin Tray", board_page_path('baldrickswitchy', 'faq', anchor: 'darwin-tray'), class: "text-blue-600 hover:text-blue-800 underline font-bold"
-                        |  for your protection.
+          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-6
+            .flex
+              .flex-shrink-0
+                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
+                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
+              .ml-3
+                p.text-sm.text-blue-700
+                  strong Note: 
+                  | The board will also come affixed to a 
+                  = link_to "Darwin Tray", board_page_path('baldrickswitchy', 'faq', anchor: 'darwin-tray'), class: "text-blue-600 hover:text-blue-800 underline font-bold"
+                  |  for your protection.

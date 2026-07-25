@@ -1,17 +1,16 @@
-- content_for :title, "New page - Knowledge"
+- wiki_breadcrumbs = admin_knowledge_breadcrumbs(mode: :new, wiki_page: @wiki_page)
 
-.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  = render "breadcrumb_bar", mode: :new, wiki_page: @wiki_page
-  .flex.gap-8
-    = render "sidebar", current_page: @wiki_page
-    .flex-1.min-w-0
-      .bg-white.rounded-xl.shadow.border.border-gray-100.p-8
-        h1.text-2xl.font-bold.text-gray-900.mb-6 New knowledge page
+= render 'shared/admin_page', page_title: 'New knowledge page', current_page: 'New page', document_title: 'New page - Knowledge', breadcrumbs: wiki_breadcrumbs do
+  div style="display:grid;grid-template-columns:minmax(260px,1fr) minmax(0,2fr);gap:22px;align-items:start"
+    .admin-stack
+      = render 'sidebar', current_page: @wiki_page
+    .admin-stack
+      .admin-panel
         - if @prefilled_missing_wiki_target.present?
-          .mb-6.rounded-lg.border.border-amber-200.bg-amber-50.p-4.text-sm.text-amber-900
-            p.font-medium.mb-1 Creating a page for a link that does not exist yet
-            p
+          .admin-panel style="margin-bottom:20px;border-color:oklch(0.70 0.13 70/.5);background:oklch(0.70 0.13 70/.08)"
+            p style="font-weight:600;margin:0 0 8px" Creating a page for a link that does not exist yet
+            p style="margin:0;color:var(--ink-text)"
               | You followed a wiki link to
-              code.mx-1.rounded.bg-amber-100.px-1.5.py-0.5.text-amber-950 = "[[#{@prefilled_missing_wiki_target}]]"
+              code.admin-mono style="margin:0 4px" = "[[#{@prefilled_missing_wiki_target}]]"
               | . The title and parent below were guessed from that text—change them if needed, add your body, then save.
-        = render "form"
+        = render 'form'

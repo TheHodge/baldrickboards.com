@@ -1,0 +1,106 @@
+/* Print/PDF-only overrides for board manuals (used with Grover emulate_media: print). */
+
+body.pdf-manual,
+body.board-page.pdf-manual {
+  background: var(--paper) !important;
+  color: var(--ink-text) !important;
+  overflow: visible !important;
+}
+
+.pdf-manual .pdf-cover {
+  padding: 8px 0 28px;
+  margin-bottom: 8px;
+  border-bottom: 1.5px solid var(--ink-text);
+}
+
+.pdf-manual .pdf-kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-d);
+  margin: 0 0 14px;
+}
+
+.pdf-manual .pdf-cover h1 {
+  font-family: var(--disp);
+  font-weight: 800;
+  font-size: 34px;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--ink-text);
+  margin: 0;
+}
+
+.pdf-manual .pdf-sub {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-mut);
+  margin: 14px 0 0;
+  max-width: 540px;
+}
+
+.pdf-manual .pdf-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-mut);
+  margin: 16px 0 0;
+}
+
+.pdf-manual .pdf-manual-body {
+  max-width: none;
+  padding: 0;
+}
+
+.pdf-manual .pdf-hero {
+  padding: 24px 0 8px;
+  margin: 0 0 8px;
+  border-bottom: none;
+}
+
+.pdf-manual .pdf-hero .manual-hero-photo {
+  max-width: 320px;
+  margin-bottom: 0;
+}
+
+.pdf-manual .manual-prose > section {
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+.pdf-manual .manual-prose h2,
+.pdf-manual .manual-prose h3 {
+  break-after: avoid-page;
+  page-break-after: avoid;
+}
+
+.pdf-manual .callout,
+.pdf-manual .figure,
+.pdf-manual .doc-table,
+.pdf-manual .spec-grid {
+  break-inside: avoid-page;
+  page-break-inside: avoid;
+}
+
+/* Show every hardware revision tab in the PDF. */
+.pdf-manual .manual-tab-nav {
+  display: none !important;
+}
+
+.pdf-manual .tab-panel.hidden {
+  display: block !important;
+}
+
+.pdf-manual .tab-panel + .tab-panel {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-p);
+}
+
+@media print {
+  body.pdf-manual,
+  body.board-page.pdf-manual {
+    background: var(--paper) !important;
+  }
+}

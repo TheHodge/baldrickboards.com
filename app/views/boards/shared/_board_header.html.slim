@@ -1,0 +1,30 @@
+- data = board_data[board_id]
+- overview_data = board_overview_data(board_id)
+- category_label = board_category_label(board_id)
+
+section.bhead
+  .wrap
+    nav.crumb
+      = link_to "Home", root_path
+      span.sep= "/"
+      = link_to "Boards", boards_path
+      span.sep= "/"
+      span.cur= data[:name]
+    .bhead-grid
+      div
+        .bhead-eye
+          span.bar
+          span.annot = category_label
+        h1 = data[:name]
+        p.tag = overview_data[:description]
+        .bhead-chips
+          span.spec-chip
+            b = data[:subtitle]
+        .bhead-cta
+          = link_to board_page_path(board_id, 'buy-this-board'), class: "btn btn-green" do
+            | Where to buy
+            span.ar →
+          = link_to board_page_path(board_id, 'manual'), class: "btn btn-line" do
+            | Manual & docs
+      .bhead-vis
+        = image_tag "#{board_id}.png", alt: "#{data[:name]} controller board"

@@ -158,9 +158,14 @@ Rails.application.routes.draw do
   get 'boards/power-distribution', to: 'boards#power_distribution'
   get 'boards/dmx-controllers', to: 'boards#dmx_controllers'
   
+  # Manual downloads (must be before the generic :page route)
+  get 'boards/:board/manual.pdf', to: 'boards#manual_pdf', as: :board_manual_pdf
+  get 'boards/:board/manual.md', to: 'boards#manual_markdown', as: :board_manual_markdown
+
   # Generic board routes - handles all board pages automatically
   get 'boards/:board', to: 'boards#show', as: :board
   get 'boards/:board/:page', to: 'boards#show', as: :board_page
+
   
   # About Baldrick section
   get 'about', to: 'about#index'

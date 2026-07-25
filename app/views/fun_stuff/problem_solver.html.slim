@@ -1,0 +1,49 @@
+= render 'shared/fun_stuff_page', page_title: 'Problem Solver', current_page: 'Problem Solver', page_subtitle: 'Interactive troubleshooting for common display issues', document_title: 'Problem Solver - Fun Stuff', meta: ['Coming soon', 'Troubleshooting', 'Interactive help'] do
+  p.lead A guided troubleshooting tool is on the way — for now, start with board FAQs and support.
+
+  .prose
+    .callout.info
+      span.ic
+        svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          circle cx="12" cy="12" r="10"
+          path d="M12 16v-4M12 8h.01"
+      div
+        span.lbl Work in progress
+        p.bd We're building an interactive problem solver. Until then, these paths cover most issues.
+
+    .next-grid
+      = link_to fun_stuff_faq_path, class: 'next-card' do
+        .top
+          span.kind FAQ
+          span.go →
+        h4 Fun Stuff FAQ
+        p General questions about setup, compatibility and troubleshooting.
+      = link_to support_path, class: 'next-card' do
+        .top
+          span.kind Support
+          span.go →
+        h4 Support hub
+        p Hardware support, asking for help and community links.
+      = link_to boards_path, class: 'next-card' do
+        .top
+          span.kind Docs
+          span.go →
+        h4 Board FAQs
+        p Per-board frequently asked questions and manuals.
+      = link_to fun_stuff_path, class: 'next-card' do
+        .top
+          span.kind Index
+          span.go →
+        h4 All fun stuff
+        p Back to downloads, release notes and the rest.
+
+section.cta
+  .wrap
+    h2 Stuck on something specific?
+    p Tell us what the board is doing — we'll point you at the right doc.
+    .cta-btns
+      = link_to support_asking_for_help_path, class: 'btn btn-bone' do
+        | Asking for help
+        span.ar →
+      = link_to fun_stuff_faq_path, class: 'btn btn-clear' do
+        | Read the FAQ

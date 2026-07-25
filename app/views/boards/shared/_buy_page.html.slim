@@ -1,0 +1,75 @@
+- data = board_data.fetch(board_id)
+- board_name = data[:name]
+- meta = board_buy_meta(board_id)
+- regions = board_buy_retailers(board_id)
+
+- content_for :title, meta[:page_title]
+
+- content_for :boardbar do
+  = render 'boards/shared/board_submenu', board_name: board_name, board_id: board_id, menu_items: board_menu_items(board_id)
+
+section.dhead
+  .wrap
+    nav.crumb
+      = link_to 'Home', root_path
+      span.sep= '/'
+      = link_to 'Boards', boards_path
+      span.sep= '/'
+      = link_to board_name, board_path(board_id)
+      span.sep= '/'
+      span.cur Where to Buy
+    .dhead-in
+      div
+        .dhead-eye
+          span.bar
+          span.annot Where to Buy
+        h1 = meta[:header_title]
+        p.sub = meta[:header_subtitle]
+        .dhead-meta
+          span = data[:subtitle]
+          - if regions.present?
+            span = "#{regions.size} #{'region'.pluralize(regions.size)}"
+      .dhead-actions
+        = link_to where_to_buy_baldrick_boards_path, class: 'btn btn-line' do
+          | All vendors
+
+.docpage
+  .wrap.doc-wrap.buy-wrap class=(regions.present? ? nil : 'doc-wrap--single')
+    - if regions.present?
+      aside.toc
+        h6 Regions
+        nav
+          - regions.each do |region|
+            a.toc-sub href="##{region[:key]}" = region[:country]
+    article.prose.buy-prose
+      p.lead = meta[:content_description]
+      - if regions.blank?
+        .callout.note
+          svg.ci viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            path d="M12 16v-4m0-4h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"
+          div
+            b Availability
+            p = board_buy_empty_message(board_id)
+      - else
+        .callout.note
+          svg.ci viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            path d="M12 16v-4m0-4h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"
+          div
+            b Global availability
+            p
+              | #{board_name} is available through our trusted network of authorised retailers. Each vendor has been selected for service and support in their region.
+              = link_to 'View all Baldrick boards', where_to_buy_baldrick_boards_path, class: 'lnk'
+              |  if you need a different controller.
+        - regions.each do |region|
+          section.vendor-region id=region[:key]
+            .vendor-region-head
+              span.vendor-flag
+                = render 'shared/country_flag', code: region[:code], size: :md
+              h3 = region[:country]
+            ul.vendor-links
+              - region[:vendors].each do |vendor|
+                li
+                  = link_to vendor[:url], target: '_blank', rel: 'noopener', class: 'lnk ext' do
+                    = vendor[:name]
+                    span.ar ↗
+      = render 'boards/shared/buy_foot', board_id: board_id

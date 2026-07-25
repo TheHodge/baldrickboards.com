@@ -1,347 +1,62 @@
-- content_for :title, "Where to Buy Baldrick Boards - Get Your Professional Pixel Controller"
+= render 'shared/site_page', page_title: 'Where to Buy', current_page: 'Where to Buy', page_subtitle: 'Get your professional pixel controller from trusted retailers worldwide', document_title: 'Where to Buy Baldrick Boards', meta: ['7 boards', '5 regions', 'Authorised retailers'], toc: where_to_buy_toc, toc_class: 'toc--releases' do
+  p.lead The Baldrick family is available from several of our partners around the world. If your country isn't listed and you are interested in stocking Baldrick boards, please get in touch.
 
-.max-w-6xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Breadcrumb
-  = render 'shared/breadcrumbs', breadcrumbs: page_breadcrumbs('Home', 'Where to Buy')
+  .prose.buy-prose
+    section#overview
+      .callout.info
+        span.ic
+          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            circle cx="12" cy="12" r="10"
+            path d="M12 16v-4M12 8h.01"
+        div
+          span.lbl Global availability
+          p.bd Baldrick boards are available through our trusted network of authorised retailers worldwide. Each retailer has been carefully selected to provide excellent service and support.
 
-  / Main Content Card
-  .bg-white.rounded-lg.shadow-lg.overflow-hidden
-    / Header Section
-    = render 'shared/page_header', title: 'Where to Buy Baldrick Boards', subtitle: 'Get your professional pixel controller from trusted retailers worldwide'
+    section#all-boards
+      h2
+        span.hk
+          span.bar
+          span.annot Retailers
+        | By board
 
-    / Content Section
-    .px-8.py-8
-      .max-w-4xl.mx-auto
-        .prose.max-w-none
-          h2.text-3xl.font-bold.text-gray-900.mb-6 Where Can I Buy?
+      - where_to_buy_boards.each do |board|
+        = render 'pages/where_to_buy_board', board: board
 
-          p.text-lg.text-gray-700.mb-8
-            | The Baldrick family is available from several of our partners around the world. If your country isn't listed and you are interested in stocking Baldrick boards, please get in touch with us.
+    section#partners
+      h2
+        span.hk
+          span.bar
+          span.annot Network
+        | Our trusted retail partners
 
-          .bg-blue-50.border-l-4.border-blue-400.p-4.mb-8
-            .flex
-              .flex-shrink-0
-                svg.h-5.w-5.text-blue-400 viewBox="0 0 20 20" fill="currentColor"
-                  path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-              .ml-3
-                p.text-sm.text-blue-700
-                  strong Global Availability:
-                  |  Baldrick boards are available through our trusted network of authorized retailers worldwide. Each retailer has been carefully selected to provide excellent service and support.
+      .spec-grid
+        .spec
+          span.ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              circle cx="12" cy="12" r="10"
+              path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"
+          h4 Global coverage
+          p
+            | Baldrick boards ship through partners in the United Kingdom, United States, Australia, Netherlands and Canada — including
+            = link_to ' Build a Light Show', 'https://buildalightshow.com/', target: '_blank', rel: 'noopener', class: 'lnk'
+            | , Gilbert Engineering, Wired Watts, Hanson Electronics, Propixeler and Light Show Factory.
+        .spec
+          span.ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
+          h4 Become a retailer
+          p Interested in stocking Baldrick boards in your region? We're always looking to expand our global network of trusted partners.
+          = link_to support_path, class: 'btn btn-solid btn-sm' do
+            | Contact us
+            span.ar →
 
-          / Baldrick8
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
-            h3.text-2xl.font-bold.text-gray-900.mb-4.flex.items-center
-              = image_tag "baldrick8.png", class: "h-12 w-12 mr-3 rounded-lg", alt: "Baldrick8 Board"
-              | Baldrick8
-            
-            .grid.md:grid-cols-2.gap-6
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇬🇧
-                  div
-                    h4.font-semibold.text-gray-900 United Kingdom
-                    = link_to "Build a Light Show", "https://buildalightshow.com/67-baldrick-board", target: "_blank", class: "text-purple-600 hover:text-purple-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇺🇸
-                  div
-                    h4.font-semibold.text-gray-900 United States
-                    .space-y-1
-                      = link_to "Gilbert Engineering", "https://gilbertengineeringusa.com/products/baldrick-8-port-controller", target: "_blank", class: "text-purple-600 hover:text-purple-700 text-sm block"
-                      = link_to "Wired Watts", "https://www.wiredwatts.com/brpixel8", target: "_blank", class: "text-purple-600 hover:text-purple-700 text-sm block"
-                      = link_to "Baldrick Store", "https://www.baldrickstore.com/pixel-controllers/baldrick8-pixel-controller/", target: "_blank", class: "text-purple-600 hover:text-purple-700 text-sm block"
-              
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇦🇺
-                  div
-                    h4.font-semibold.text-gray-900 Australia
-                    = link_to "Hanson Electronics", "https://www.hansonelectronics.com.au/product/baldrick/", target: "_blank", class: "text-purple-600 hover:text-purple-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇳🇱
-                  div
-                    h4.font-semibold.text-gray-900 Netherlands
-                    = link_to "Propixeler", "https://www.propixeler.nl/product/baldrick8", target: "_blank", class: "text-purple-600 hover:text-purple-700 text-sm"
-
-                .flex.items-center
-                  span.text-2xl.mr-3 🇨🇦
-                  div
-                    h4.font-semibold.text-gray-900 Canada
-                    = link_to "Light Show Factory", "https://lightshowfactory.ca/en-ca/products/ilightthat-baldrick8?variant=48773341610241", target: "_blank", class: "text-purple-600 hover:text-purple-700 text-sm"
-
-          / Baldrick17
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
-            h3.text-2xl.font-bold.text-gray-900.mb-4.flex.items-center
-              = image_tag "baldrick17.png", class: "h-12 w-12 mr-3 rounded-lg", alt: "Baldrick17 Board"
-              | Baldrick17
-            
-            .grid.md:grid-cols-2.gap-6
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇬🇧
-                  div
-                    h4.font-semibold.text-gray-900 United Kingdom
-                    = link_to "Build a Light Show", "https://buildalightshow.com/baldrick-board/1699-baldrick-b17-controller.html", target: "_blank", class: "text-green-600 hover:text-green-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇺🇸
-                  div
-                    h4.font-semibold.text-gray-900 United States
-                    .space-y-1
-                      = link_to "Gilbert Engineering", "https://gilbertengineeringusa.com/products/baldrick-17-port-controller-geusa-edition", target: "_blank", class: "text-green-600 hover:text-green-700 text-sm block"
-                      = link_to "Wired Watts", "https://www.wiredwatts.com/products/brpixel17", target: "_blank", class: "text-green-600 hover:text-green-700 text-sm block"
-              
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇦🇺
-                  div
-                    h4.font-semibold.text-gray-900 Australia
-                    = link_to "Hanson Electronics", "https://www.hansonelectronics.com.au/product/baldrick-17-port-pixel-controller/", target: "_blank", class: "text-green-600 hover:text-green-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇳🇱
-                  div
-                    h4.font-semibold.text-gray-900 Netherlands
-                    = link_to "Propixeler", "https://www.propixeler.nl/product/baldrick17", target: "_blank", class: "text-green-600 hover:text-green-700 text-sm"
-
-                .flex.items-center
-                  span.text-2xl.mr-3 🇨🇦
-                  div
-                    h4.font-semibold.text-gray-900 Canada
-                    = link_to "Light Show Factory", "https://lightshowfactory.ca/en-ca/products/ilightthat-baldrick17?variant=48773467832577", target: "_blank", class: "text-green-600 hover:text-green-700 text-sm"
-
-          / BaldrickSwitchy
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
-            h3.text-2xl.font-bold.text-gray-900.mb-4.flex.items-center
-              = image_tag "baldrickswitchy.png", class: "h-12 w-12 mr-3 rounded-lg", alt: "BaldrickSwitchy Board"
-              | BaldrickSwitchy
-            
-            .grid.md:grid-cols-2.gap-6
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇬🇧
-                  div
-                    h4.font-semibold.text-gray-900 United Kingdom
-                    = link_to "Build a Light Show", "https://buildalightshow.com/baldrick-board/1455-baldrick-switchy.html", target: "_blank", class: "text-blue-600 hover:text-blue-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇺🇸
-                  div
-                    h4.font-semibold.text-gray-900 United States
-                    .space-y-1
-                      = link_to "Gilbert Engineering", "https://gilbertengineeringusa.com/products/baldrick-switchy", target: "_blank", class: "text-blue-600 hover:text-blue-700 text-sm block"
-                      = link_to "Wired Watts", "https://www.wiredwatts.com/brswitchy", target: "_blank", class: "text-blue-600 hover:text-blue-700 text-sm block"
-                      = link_to "Baldrick Store", "https://www.baldrickstore.com/relay-controllers/baldrickswitchy/", target: "_blank", class: "text-blue-600 hover:text-blue-700 text-sm block"
-              
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇦🇺
-                  div
-                    h4.font-semibold.text-gray-900 Australia
-                    = link_to "Hanson Electronics", "https://www.hansonelectronics.com.au/product/baldrick-switchy/", target: "_blank", class: "text-blue-600 hover:text-blue-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇳🇱
-                  div
-                    h4.font-semibold.text-gray-900 Netherlands
-                    = link_to "Propixeler", "https://www.propixeler.nl/product/baldrickswitchy", target: "_blank", class: "text-blue-600 hover:text-blue-700 text-sm"
-
-                .flex.items-center
-                  span.text-2xl.mr-3 🇨🇦
-                  div
-                    h4.font-semibold.text-gray-900 Canada
-                    = link_to "Light Show Factory", "https://lightshowfactory.ca/en-ca/products/ilightthat-baldrickswitchy?variant=48810550329601", target: "_blank", class: "text-blue-600 hover:text-blue-700 text-sm"
-
-          / BaldrickDMX
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
-            h3.text-2xl.font-bold.text-gray-900.mb-4.flex.items-center
-              = image_tag "baldrickdmx.png", class: "h-12 w-12 mr-3 rounded-lg", alt: "BaldrickDMX Board"
-              | BaldrickDMX
-            
-            .grid.md:grid-cols-2.gap-6
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇬🇧
-                  div
-                    h4.font-semibold.text-gray-900 United Kingdom
-                    = link_to "Build a Light Show", "https://buildalightshow.com/baldrick-board/1503-baldrick-dmx.html", target: "_blank", class: "text-orange-600 hover:text-orange-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇺🇸
-                  div
-                    h4.font-semibold.text-gray-900 United States
-                    .space-y-1
-                      = link_to "Gilbert Engineering", "https://gilbertengineeringusa.com/collections/controllers", target: "_blank", class: "text-orange-600 hover:text-orange-700 text-sm block"
-                      = link_to "Wired Watts", "https://www.wiredwatts.com/brdmx", target: "_blank", class: "text-orange-600 hover:text-orange-700 text-sm block"
-                      = link_to "Baldrick Store", "https://www.baldrickstore.com/dmx-controllers/baldrickdmx/", target: "_blank", class: "text-orange-600 hover:text-orange-700 text-sm block"
-              
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇦🇺
-                  div
-                    h4.font-semibold.text-gray-900 Australia
-                    = link_to "Hanson Electronics", "https://www.hansonelectronics.com.au/product/baldrick-dmx/", target: "_blank", class: "text-orange-600 hover:text-orange-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇳🇱
-                  div
-                    h4.font-semibold.text-gray-900 Netherlands
-                    = link_to "Propixeler", "https://www.propixeler.nl/product/baldrickdmx", target: "_blank", class: "text-orange-600 hover:text-orange-700 text-sm"
-
-                .flex.items-center
-                  span.text-2xl.mr-3 🇨🇦
-                  div
-                    h4.font-semibold.text-gray-900 Canada
-                    = link_to "Light Show Factory", "https://lightshowfactory.ca/en-ca/products/ilightthat-baldrickdmx?variant=48808396947713", target: "_blank", class: "text-orange-600 hover:text-orange-700 text-sm"
-
-          / BaldrickInput1
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
-            h3.text-2xl.font-bold.text-gray-900.mb-4.flex.items-center
-              = image_tag "baldrickinput1.png", class: "h-12 w-12 mr-3 rounded-lg", alt: "BaldrickInput1 Board"
-              | BaldrickInput1
-            
-            .grid.md:grid-cols-2.gap-6
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇬🇧
-                  div
-                    h4.font-semibold.text-gray-900 United Kingdom
-                    = link_to "Build a Light Show", "https://buildalightshow.com/baldrick-board/1516-baldrick-input-1.html", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇺🇸
-                  div
-                    h4.font-semibold.text-gray-900 United States
-                    .space-y-1
-                      = link_to "Gilbert Engineering", "https://gilbertengineeringusa.com/products/baldrick-input-1", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm block"
-                      = link_to "Wired Watts", "https://www.wiredwatts.com/brinput1", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm block"
-                      = link_to "Baldrick Store", "https://www.baldrickstore.com/interactive-controllers/baldrickinput1/", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm block"
-              
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇦🇺
-                  div
-                    h4.font-semibold.text-gray-900 Australia
-                    = link_to "Hanson Electronics", "https://www.hansonelectronics.com.au/product/baldrick-input1/", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇳🇱
-                  div
-                    h4.font-semibold.text-gray-900 Netherlands
-                    = link_to "Propixeler", "https://www.propixeler.nl/product/baldrickinput1", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm"
-
-                .flex.items-center
-                  span.text-2xl.mr-3 🇨🇦
-                  div
-                    h4.font-semibold.text-gray-900 Canada
-                    = link_to "Light Show Factory", "https://lightshowfactory.ca/en-ca/products/ilightthat-baldrickinput1?variant=48810556129537", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm"
-
-          / BaldrickInput8
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
-            h3.text-2xl.font-bold.text-gray-900.mb-4.flex.items-center
-              = image_tag "baldrickinput8.png", class: "h-12 w-12 mr-3 rounded-lg", alt: "BaldrickInput8 Board"
-              | BaldrickInput8
-            
-            .grid.md:grid-cols-2.gap-6
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇬🇧
-                  div
-                    h4.font-semibold.text-gray-900 United Kingdom
-                    = link_to "Build a Light Show", "https://buildalightshow.com/baldrick-board/1517-baldrick-input-8.html", target: "_blank", class: "text-teal-600 hover:text-teal-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇺🇸
-                  div
-                    h4.font-semibold.text-gray-900 United States
-                    .space-y-1
-                      = link_to "Gilbert Engineering", "https://gilbertengineeringusa.com/products/baldrick-input-8", target: "_blank", class: "text-teal-600 hover:text-teal-700 text-sm block"
-                      = link_to "Wired Watts", "https://www.wiredwatts.com/brinput8", target: "_blank", class: "text-teal-600 hover:text-teal-700 text-sm block"
-                      = link_to "Baldrick Store", "https://www.baldrickstore.com/interactive-controllers/baldrickinput8-interactive-controller/", target: "_blank", class: "text-teal-600 hover:text-teal-700 text-sm block"
-              
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇦🇺
-                  div
-                    h4.font-semibold.text-gray-900 Australia
-                    = link_to "Hanson Electronics", "https://www.hansonelectronics.com.au/product/baldrick-input8/", target: "_blank", class: "text-teal-600 hover:text-teal-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇳🇱
-                  div
-                    h4.font-semibold.text-gray-900 Netherlands
-                    = link_to "Propixeler", "https://www.propixeler.nl/product/input8", target: "_blank", class: "text-teal-600 hover:text-teal-700 text-sm"
-
-                .flex.items-center
-                  span.text-2xl.mr-3 🇨🇦
-                  div
-                    h4.font-semibold.text-gray-900 Canada
-                    = link_to "Light Show Factory", "https://lightshowfactory.ca/en-ca/products/ilightthat-baldrickinput8?variant=48808426111233", target: "_blank", class: "text-teal-600 hover:text-teal-700 text-sm"
-
-          / BaldrickSignals
-          .bg-white.border.border-gray-200.rounded-lg.p-6.mb-8
-            h3.text-2xl.font-bold.text-gray-900.mb-4.flex.items-center
-              = image_tag "BaldrickSignals.png", class: "h-12 w-12 mr-3 rounded-lg", alt: "BaldrickSignals Board"
-              | BaldrickSignals
-            
-            .grid.md:grid-cols-2.gap-6
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇬🇧
-                  div
-                    h4.font-semibold.text-gray-900 United Kingdom
-                    = link_to "Build a Light Show", "https://buildalightshow.com/baldrick-board/1535-baldricksignals.html", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇺🇸
-                  div
-                    h4.font-semibold.text-gray-900 United States
-                    .space-y-1
-                      = link_to "Gilbert Engineering", "https://gilbertengineeringusa.com/products/baldrick-signal?_pos=1&_sid=dd987a345&_ss=r", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm block"
-                      = link_to "Wired Watts", "https://www.wiredwatts.com/products/brsignal", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm block"
-                      = link_to "Baldrick Store", "https://www.baldrickstore.com/interactive-controllers/baldricksignals/", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm block"
-              
-              .space-y-4
-                .flex.items-center
-                  span.text-2xl.mr-3 🇦🇺
-                  div
-                    h4.font-semibold.text-gray-900 Australia
-                    = link_to "Hanson Electronics", "https://www.hansonelectronics.com.au/product/baldrick-signals/", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm"
-                
-                .flex.items-center
-                  span.text-2xl.mr-3 🇳🇱
-                  div
-                    h4.font-semibold.text-gray-900 Netherlands
-                    = link_to "Propixeler", "https://www.propixeler.nl/product/baldricksignals", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm"
-
-                .flex.items-center
-                  span.text-2xl.mr-3 🇨🇦
-                  div
-                    h4.font-semibold.text-gray-900 Canada
-                    = link_to "Light Show Factory", "https://lightshowfactory.ca/en-ca/products/ilightthat-baldricksignals?variant=48810561241345", target: "_blank", class: "text-indigo-600 hover:text-indigo-700 text-sm"
-
-          / Retailer Information
-          h3.text-2xl.font-bold.text-gray-900.mb-4 Our Trusted Retail Partners
-
-          .grid.md:grid-cols-2.gap-6.mb-8
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Global Coverage
-              p.text-gray-700.mb-4
-                | Baldrick boards are available in five key regions through our carefully selected network of authorized retailers.
-              ul.space-y-2.text-sm.text-gray-600
-                li • 🇬🇧 United Kingdom - Build a Light Show
-                li • 🇺🇸 United States - Gilbert Engineering, Wired Watts & Baldrick Store
-                li • 🇦🇺 Australia - Hanson Electronics
-                li • 🇳🇱 Netherlands - Propixeler
-                li
-                  | • 🇨🇦 Canada -
-                  = link_to "Light Show Factory", "https://lightshowfactory.ca/en-ca/collections/controllers-baldrick-boards?page=1#f2d4f37147cb204458d01f363c0a6fd2", target: "_blank", class: "text-purple-600 hover:text-purple-700"
-
-            .bg-gray-50.rounded-lg.p-6.border.border-gray-200
-              h4.text-lg.font-semibold.text-gray-900.mb-3 Become a Retailer
-              p.text-gray-700.mb-4
-                | Interested in stocking Baldrick boards in your region? We're always looking to expand our global network of trusted partners.
-              = link_to support_path, class: "inline-block bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors" do
-                | Contact Us
-
+section.cta
+  .wrap
+    h2 Not sure which board you need?
+    p Explore the range — pixel controllers, relays, inputs and more.
+    .cta-btns
+      = link_to boards_path, class: 'btn btn-bone' do
+        | Explore boards
+        span.ar →
+      = link_to about_path, class: 'btn btn-clear' do
+        | About Baldrick

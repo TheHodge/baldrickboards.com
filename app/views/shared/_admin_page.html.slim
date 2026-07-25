@@ -1,0 +1,29 @@
+- content_for :title, local_assigns.fetch(:document_title, "#{page_title} - Admin - Baldrick Boards")
+- crumbs = Array(local_assigns[:breadcrumbs]).map { |c| c.is_a?(Hash) ? c.with_indifferent_access : c }
+- wide = local_assigns.fetch(:wide, true)
+- on_dashboard = current_page.to_s.in?(%w[Dashboard Admin])
+
+article.page.admin-shell class=("page--wide" if wide)
+  .col
+    .admin-head
+      div
+        - unless on_dashboard
+          nav.admin-crumb
+            = link_to 'Admin', admin_root_path
+            - crumbs.each do |crumb|
+              span.sep= '/'
+              - if crumb[:path].present?
+                = link_to crumb[:name], crumb[:path]
+              - else
+                span.cur= crumb[:name]
+            - unless crumbs.last && crumbs.last[:name].to_s == current_page.to_s
+              span.sep= '/'
+              span.cur= current_page
+        h1= page_title
+        - if local_assigns[:page_subtitle].present?
+          p.admin-sub= page_subtitle
+      - if content_for?(:admin_actions)
+        .admin-head-actions
+          = yield :admin_actions
+
+    = yield

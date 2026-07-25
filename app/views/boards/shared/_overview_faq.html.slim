@@ -1,0 +1,13 @@
+- questions = board_faq_questions(board_id)
+- return if questions.blank?
+
+- sec_class = local_assigns[:light] ? 'sec light' : 'sec'
+
+section class=sec_class id="faq"
+  .wrap
+    .sec-eye
+      span.bar
+      span.annot FAQ
+    h2 Frequently asked questions.
+    = render 'boards/shared/faq_accordion', questions: questions
+    = render 'boards/shared/faq_foot', subtitle: 'Our team and community are happy to help,'

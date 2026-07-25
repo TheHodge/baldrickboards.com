@@ -1,0 +1,8 @@
+/ Homepage vendor region tile — flag + label
+- region = local_assigns.fetch(:region)
+- tile_options = local_assigns.fetch(:tile_options, {})
+
+= link_to where_to_buy_baldrick_boards_path, class: ['buy-tile', 'rv', tile_options[:class]].compact.join(' '), **(tile_options[:data] ? { data: tile_options[:data] } : {}) do
+  .buy-flag-wrap
+    = render 'shared/country_flag', code: region[:code], size: :tile
+  h4 = region[:country]

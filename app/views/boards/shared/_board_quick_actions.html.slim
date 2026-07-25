@@ -1,0 +1,42 @@
+section.qa#qa
+  .wrap.qa-grid
+    = link_to board_page_path(board_id, 'buy-this-board'), class: "qa-card buy" do
+      span.qa-ic
+        svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"
+          path d="M3 1a1 1 0 000 2h1.22l.305 1.222.01.042 1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+      span.qa-tx
+        b
+          | Where to Buy
+          span.go →
+        span Authorised vendors in your region
+    - unless board_id == 'baldrickbadge'
+      = link_to board_page_path(board_id, 'manual'), class: "qa-card" do
+        span.qa-ic
+          svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            path d="M4 5a2 2 0 0 1 2-2h6v18H6a2 2 0 0 1-2-2zM20 5a2 2 0 0 0-2-2h-6v18h6a2 2 0 0 0 2-2z"
+        span.qa-tx
+          b
+            | Manual & Docs
+            span.go →
+          span Setup guide, wiring & datasheets
+    = link_to fun_stuff_stls_and_mounts_path, class: "qa-card" do
+      span.qa-ic
+        svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+          path d="M12 3 2 8l10 5 10-5-10-5z"
+          path d="M2 12l10 5 10-5M2 17l10 5 10-5"
+      span.qa-tx
+        b
+          | Mounts & STLs
+          span.go →
+        span 3D prints, mounts & dimensions
+    = link_to board_page_path(board_id, 'faq'), class: "qa-card" do
+      span.qa-ic
+        svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+          circle cx="12" cy="12" r="9"
+          path d="M9.5 9a2.5 2.5 0 0 1 4.5 1.5c0 1.5-2 2-2 3"
+          circle cx="12" cy="16.5" r="0.6" fill="currentColor"
+      span.qa-tx
+        b
+          | FAQ
+          span.go →
+        span Quick answers to common questions

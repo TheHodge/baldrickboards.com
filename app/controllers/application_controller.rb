@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
       user_agent: request.user_agent,
       ip: real_client_ip
     )
-    
+
+    @baldrickboard_page = true
     render 'errors/not_found', status: :not_found, layout: 'application'
   end
 

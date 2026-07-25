@@ -1,0 +1,9 @@
+- board_name = board_data.fetch(board_id)[:name]
+
+- content_for :title, "#{board_name} - Baldrick Board Documentation"
+
+- content_for :boardbar do
+  = render 'boards/shared/board_submenu', board_name: board_name, board_id: board_id, menu_items: board_menu_items(board_id)
+= render 'boards/shared/board_header', board_id: board_id
+= render 'boards/shared/board_quick_actions', board_id: board_id
+= render 'boards/shared/overview_body', board_id: board_id

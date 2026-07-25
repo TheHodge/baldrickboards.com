@@ -1,79 +1,61 @@
-- breadcrumbs = [{ name: "Triage Solutions", path: admin_triage_solutions_path }, { name: "Solution ##{@solution.id}" }]
+- content_for :admin_actions do
+  = link_to 'Edit', edit_admin_triage_solution_path(@solution), class: 'btn btn-solid btn-sm'
+  = link_to 'Back to Solutions', admin_triage_solutions_path, class: 'btn btn-line-light btn-sm'
 
-.container.mx-auto.px-4.py-8
-  / Breadcrumbs
-  = render 'shared/admin_breadcrumbs'
-  
-  .flex.justify-between.items-center.mb-8
-    h1.text-3xl.font-bold.text-gray-900 Solution ##{@solution.id}
-    div.space-x-2
-      = link_to "Edit", edit_admin_triage_solution_path(@solution), class: "bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium"
-      = link_to "Back to Solutions", admin_triage_solutions_path, class: "bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm font-medium"
-
-  .grid.md:grid-cols-2.gap-6
-    / Main Content
-    .space-y-6
-      .bg-white.shadow.rounded-lg.p-6
-        h2.text-2xl.font-bold.mb-4 Solution Details
-        .space-y-4
-          div
-            strong Problem Title:
-            p.text-lg = @solution.problem_title
-          
-          div
-            strong Solution:
-            p.text-gray-700 = simple_format(@solution.solution_text)
-          
-          div
-            strong Keywords:
-            .flex.flex-wrap.gap-2
+= render 'shared/admin_page', page_title: "Solution ##{@solution.id}", current_page: "Solution ##{@solution.id}", page_subtitle: @solution.problem_title, breadcrumbs: [{ name: 'Triage Solutions', path: admin_triage_solutions_path }], meta: ['Support', 'Solutions'] do
+  .admin-grid-main
+    div
+      .admin-panel
+        h2 Solution Details
+        .admin-dl
+          .row
+            .k Problem Title
+            .v= @solution.problem_title
+          .row
+            .k Solution
+            .v.box= simple_format(@solution.solution_text)
+          .row
+            .k Keywords
+            .v
               - @solution.problem_keywords.each do |keyword|
-                span.inline-flex.px-2.py-1.text-xs.font-semibold.rounded-full.bg-blue-100.text-blue-800 = keyword
-          
+                span.admin-badge.admin-badge--info style="margin:0 6px 6px 0"= keyword
           - if @solution.board_types.any?
-            div
-              strong Board Types:
-              .flex.flex-wrap.gap-2
+            .row
+              .k Board Types
+              .v
                 - @solution.board_types.each do |board|
-                  span.inline-flex.px-2.py-1.text-xs.font-semibold.rounded-full.bg-green-100.text-green-800 = board
-          
-          div
-            strong Status:
-            p
-              span.inline-flex.px-2.py-1.text-xs.font-semibold.rounded-full class="#{@solution.active? ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}"
-                = @solution.active? ? 'Active' : 'Inactive'
+                  span.admin-badge.admin-badge--ok style="margin:0 6px 6px 0"= board
+          .row
+            .k Status
+            .v
+              span.admin-badge class=(@solution.active? ? 'admin-badge--ok' : 'admin-badge--muted') = @solution.active? ? 'Active' : 'Inactive'
 
-      / Statistics
-      .bg-white.shadow.rounded-lg.p-6
-        h2.text-2xl.font-bold.mb-4 Statistics
-        .grid.grid-cols-2.gap-4
-          div
-            .text-3xl.font-bold.text-gray-900 = @solution.match_count
-            .text-sm.text-gray-600 Total Matches
-          div
-            .text-3xl.font-bold.text-green-600 = @solution.success_count
-            .text-sm.text-gray-600 Successful
-          div.col-span-2
-            .text-3xl.font-bold.text-blue-600 = "#{@solution.success_rate}%"
-            .text-sm.text-gray-600 Success Rate
+      .admin-panel
+        h2 Statistics
+        .admin-stats style="margin-bottom:0"
+          .admin-stat
+            .n= @solution.match_count
+            .l Total Matches
+          .admin-stat
+            .n.ok= @solution.success_count
+            .l Successful
+          .admin-stat
+            .n.accent= "#{@solution.success_rate}%"
+            .l Success Rate
 
-    / Sidebar
-    .space-y-6
-      / Recent Cases
+    .admin-stack
       - if @cases.any?
-        .bg-white.shadow.rounded-lg.p-6
-          h3.text-xl.font-bold.mb-4 Recent Cases (#{@cases.count})
-          .space-y-3
+        .admin-panel
+          h3 Recent Cases (#{@cases.count})
+          .admin-dl
             - @cases.each do |case_record|
-              .border.border-gray-200.rounded.p-3
-                .flex.justify-between.items-start
-                  div
-                    = link_to "Case ##{case_record.case_number}", admin_triage_case_path(case_record), class: "text-indigo-600 hover:text-indigo-900 font-semibold"
-                    p.text-sm.text-gray-600 = case_record.name
+              .row
+                .k
+                  = link_to "Case ##{case_record.case_number}", admin_triage_case_path(case_record)
                   - case_solution = case_record.case_solutions.find_by(solution: @solution)
                   - if case_solution
-                    span.text-xs.text-gray-500 Score: #{case_solution.match_score}
+                    span style="font-weight:400;margin-left:8px" Score: #{case_solution.match_score}
+                .v
+                  = case_record.name
                   - if case_record.solved_by_solution_id == @solution.id
-                    span.inline-flex.px-2.py-1.text-xs.font-semibold.rounded-full.bg-green-100.text-green-800
-                      | Fixed!
-
+                    span.admin-badge.admin-badge--solved style="margin-left:8px" Fixed!

@@ -1,0 +1,64 @@
+- data = board_data.fetch(board_id)
+- board_name = data[:name]
+- sections = board_manual_sections(board_id)
+- toc = board_manual_toc(board_id)
+
+- content_for :title, "#{board_name} Manual - Baldrick Board Documentation"
+
+- content_for :boardbar do
+  = render 'boards/shared/board_submenu', board_name: board_name, board_id: board_id, menu_items: board_menu_items(board_id)
+
+section.dhead
+  .wrap
+    nav.crumb
+      = link_to "Home", root_path
+      span.sep= "/"
+      = link_to "Boards", boards_path
+      span.sep= "/"
+      = link_to board_name, board_path(board_id)
+      span.sep= "/"
+      span.cur Manual
+    .dhead-in
+      div
+        .dhead-eye
+          span.bar
+          span.annot Manual & Docs
+        h1 = "#{board_name} Manual"
+        p.sub = board_manual_subtitle(board_id)
+        .dhead-meta
+          span = data[:subtitle]
+          - if (updated = board_manual_updated_label(board_id))
+            span = "Last updated #{updated}"
+      .dhead-actions
+        = link_to board_manual_pdf_path(board_id), class: "btn btn-solid", data: { turbo: false } do
+          svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            path d="M12 3v12m0 0 4-4m-4 4-4-4"
+            path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"
+          | Download PDF
+        = link_to board_manual_markdown_path(board_id), class: "btn btn-line", data: { turbo: false } do
+          | Markdown
+        = link_to board_page_path(board_id, 'faq'), class: "btn btn-line" do
+          | FAQ
+
+.docpage
+  .wrap.doc-wrap
+    aside.toc data-controller="manual-toc"
+      h6 On this page
+      nav#toc
+        - toc.each do |group|
+          a.toc-section href="##{group[:id]}" data-manual-toc-target="link" data-action="click->manual-toc#jump" = group[:title]
+          - group[:items].each do |item|
+            a.toc-sub href="##{item[:id]}" data-manual-toc-target="link" data-action="click->manual-toc#jump" = item[:title]
+      .toc-dl
+        = link_to board_manual_pdf_path(board_id), class: "btn btn-line-light", data: { turbo: false } do
+          | Download PDF
+        = link_to board_manual_markdown_path(board_id), class: "btn btn-line-light", data: { turbo: false } do
+          | Markdown for LLMs
+    article.prose.manual-prose
+      = render "boards/shared/manual_hero", board_id: board_id, board_name: board_name
+      - sections.each do |section|
+        section id=section[:id]
+          h2 = section[:title]
+          - if section[:specs_table]
+            = render 'boards/shared/manual_specs_table', board_id: board_id
+          = render_board_manual_section(section)

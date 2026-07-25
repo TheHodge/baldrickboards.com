@@ -1,0 +1,23 @@
+- data = board_data.fetch(board_id)
+- board_name = data[:name]
+- sections = board_manual_sections(board_id)
+
+- content_for :title, "#{board_name} Manual"
+
+.pdf-cover
+  p.pdf-kicker Baldrick Boards · Manual & Docs
+  h1 = "#{board_name} Manual"
+  p.pdf-sub = board_manual_subtitle(board_id)
+  - if (updated = board_manual_updated_label(board_id))
+    p.pdf-meta Last updated #{updated}
+
+article.prose.manual-prose.pdf-manual-body
+  header.manual-hero.pdf-hero
+    .manual-hero-photo
+      = image_tag board_manual_image(board_id), alt: "#{board_name} controller board"
+  - sections.each do |section|
+    section id=section[:id]
+      h2 = section[:title]
+      - if section[:specs_table]
+        = render "boards/shared/manual_specs_table", board_id: board_id
+      = render_board_manual_section(section)

@@ -1,4 +1,6 @@
 class BreakthroughsController < ApplicationController
+  before_action :set_baldrickboard_page
+
   def index
   end
 
@@ -18,5 +20,11 @@ class BreakthroughsController < ApplicationController
   end
 
   def cunningfx
+  end
+
+  private
+
+  def set_baldrickboard_page
+    @baldrickboard_page = true
   end
 end

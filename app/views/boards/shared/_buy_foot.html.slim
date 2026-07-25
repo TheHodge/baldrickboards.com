@@ -1,0 +1,12 @@
+- board_id = local_assigns.fetch(:board_id)
+- board_name = board_data.fetch(board_id)[:name]
+
+.buy-foot
+  .t
+    b = local_assigns.fetch(:title, "Ready to get your #{board_name}?")
+    span = local_assigns.fetch(:subtitle, 'Choose your preferred retailer, then dive into the manual when it arrives.')
+  = link_to board_path(board_id), class: 'btn btn-solid' do
+    | Board overview
+    span.ar →
+  = link_to support_path, class: 'btn btn-line-light' do
+    | Get support

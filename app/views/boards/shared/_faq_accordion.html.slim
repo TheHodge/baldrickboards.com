@@ -1,0 +1,16 @@
+- questions = local_assigns.fetch(:questions)
+- return if questions.blank?
+
+.faq-list
+  - questions.each_with_index do |faq, index|
+    - attrs = { class: 'faq' }
+    - attrs[:id] = faq[:key] if local_assigns[:anchors] && faq[:key].present?
+    - attrs[:open] = 'open' if index.zero? && !local_assigns[:anchors]
+    = content_tag(:details, attrs) do
+      summary
+        = faq[:question]
+        span.ic
+          svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            path d="M12 5v14M5 12h14"
+      .ans
+        == board_faq_answer_html(faq)

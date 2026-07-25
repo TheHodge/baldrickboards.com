@@ -1,103 +1,51 @@
-- content_for :title, "Admin Dashboard - Baldrick Boards"
+= render 'shared/admin_page', page_title: 'Admin Dashboard', current_page: 'Dashboard', page_subtitle: 'Welcome to the Baldrick Boards admin area', meta: ['Overview', 'Quick links'] do
+  .admin-stats
+    = link_to admin_newsletter_subscribers_path, class: 'admin-stat' do
+      .n= @total_newsletter_subscribers
+      .l Newsletter subscribers
+      .h Manage subscriber list and exports
 
-.container.mx-auto.px-4.py-8
-  / Header
-  .flex.justify-between.items-center.mb-8
-    div
-      h1.text-3xl.font-bold.text-gray-900 Admin Dashboard
-      p.text-gray-600 Welcome to the Baldrick Boards admin area
+    = link_to admin_feedbacks_path, class: 'admin-stat' do
+      .n class=("warn" if @new_feedbacks.to_i > 0)
+        = @total_feedbacks
+      .l Total feedback
+      .h
+        - if @new_feedbacks.to_i > 0
+          = "#{@new_feedbacks} new · review submissions"
+        - else
+          | Review and respond to user feedback
 
-  / Statistics Cards
-  .grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-3.gap-8.mb-8
-    = link_to admin_newsletter_subscribers_path, class: "bg-white p-8 rounded-xl shadow hover:shadow-lg transition-shadow cursor-pointer"
-      .flex.flex-col
-        .flex.items-center.mb-4
-          .flex-shrink-0
-            .w-12.h-12.bg-blue-500.rounded-lg.flex.items-center.justify-center
-              svg.w-6.h-6.text-white fill="currentColor" viewBox="0 0 20 20"
-                path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-                path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-          .ml-4
-            .text-3xl.font-bold.text-gray-900 = @total_newsletter_subscribers
-            .text-lg.text-gray-600 Newsletter Subscribers
-        .text-sm.text-gray-500.mt-2 Manage subscriber list and exports
-    
-    = link_to admin_feedbacks_path, class: "bg-white p-8 rounded-xl shadow hover:shadow-lg transition-shadow cursor-pointer"
-      .flex.flex-col
-        .flex.items-center.mb-4
-          .flex-shrink-0
-            .w-12.h-12.bg-green-500.rounded-lg.flex.items-center.justify-center
-              svg.w-6.h-6.text-white fill="currentColor" viewBox="0 0 20 20"
-                path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"
-          .ml-4
-            .text-3xl.font-bold.text-gray-900 = @total_feedbacks
-            .text-lg.text-gray-600 Total Feedback
-            - if @new_feedbacks > 0
-              .text-sm.text-orange-600.font-medium = "#{@new_feedbacks} new"
-        .text-sm.text-gray-500.mt-2 Review and respond to user feedback
-    
-    = link_to admin_search_logs_path, class: "bg-white p-8 rounded-xl shadow hover:shadow-lg transition-shadow cursor-pointer"
-      .flex.flex-col
-        .flex.items-center.mb-4
-          .flex-shrink-0
-            .w-12.h-12.bg-purple-500.rounded-lg.flex.items-center.justify-center
-              svg.w-6.h-6.text-white fill="currentColor" viewBox="0 0 20 20"
-                path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"
-          .ml-4
-            .text-3xl.font-bold.text-gray-900 = @total_searches
-            .text-lg.text-gray-600 Total Searches
-            .text-sm.text-gray-500 = "#{@recent_searches} this week"
-        .text-sm.text-gray-500.mt-2 Track search queries and user behavior
-    
-    = link_to admin_analytics_path, class: "bg-white p-8 rounded-xl shadow hover:shadow-lg transition-shadow cursor-pointer"
-      .flex.flex-col
-        .flex.items-center.mb-4
-          .flex-shrink-0
-            .w-12.h-12.bg-orange-500.rounded-lg.flex.items-center.justify-center
-              svg.w-6.h-6.text-white fill="currentColor" viewBox="0 0 20 20"
-                path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"
-          .ml-4
-            .text-3xl.font-bold.text-gray-900 = @total_visits
-            .text-lg.text-gray-600 Website Visits
-            .text-sm.text-gray-500 = "#{@recent_visits} this week"
-        .text-sm.text-gray-500.mt-2 View detailed traffic analytics and charts
-    
-    = link_to admin_error_logs_path, class: "bg-white p-8 rounded-xl shadow hover:shadow-lg transition-shadow cursor-pointer"
-      .flex.flex-col
-        .flex.items-center.mb-4
-          .flex-shrink-0
-            .w-12.h-12.bg-red-500.rounded-lg.flex.items-center.justify-center
-              svg.w-6.h-6.text-white fill="currentColor" viewBox="0 0 20 20"
-                path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"
-          .ml-4
-            .text-3xl.font-bold.text-gray-900 = @total_404_errors
-            .text-lg.text-gray-600 404 Errors
-            .text-sm.text-gray-500 = "#{@recent_404_errors} this week"
-        .text-sm.text-gray-500.mt-2 Monitor and fix broken links
-    
-    = link_to admin_triage_cases_path, class: "bg-white p-8 rounded-xl shadow hover:shadow-lg transition-shadow cursor-pointer"
-      .flex.flex-col
-        .flex.items-center.mb-4
-          .flex-shrink-0
-            .w-12.h-12.bg-indigo-500.rounded-lg.flex.items-center.justify-center
-              svg.w-6.h-6.text-white fill="currentColor" viewBox="0 0 20 20"
-                path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"
-          .ml-4
-            .text-3xl.font-bold.text-gray-900 = @total_cases
-            .text-lg.text-gray-600 Triage Cases
-            - if @open_cases > 0
-              .text-sm.text-orange-600.font-medium = "#{@open_cases} open"
-        .text-sm.text-gray-500.mt-2 Manage support cases and solutions
-    
-    = link_to admin_triage_solutions_path, class: "bg-white p-8 rounded-xl shadow hover:shadow-lg transition-shadow cursor-pointer"
-      .flex.flex-col
-        .flex.items-center.mb-4
-          .flex-shrink-0
-            .w-12.h-12.bg-teal-500.rounded-lg.flex.items-center.justify-center
-              svg.w-6.h-6.text-white fill="currentColor" viewBox="0 0 20 20"
-                path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"
-          .ml-4
-            .text-3xl.font-bold.text-gray-900 = @total_solutions
-            .text-lg.text-gray-600 Triage Solutions
-            .text-sm.text-gray-500 = "#{@active_solutions} active"
-        .text-sm.text-gray-500.mt-2 Manage solution database
+    = link_to admin_search_logs_path, class: 'admin-stat' do
+      .n.accent= @total_searches
+      .l Total searches
+      .h= "#{@recent_searches} this week"
+
+    = link_to admin_analytics_path, class: 'admin-stat' do
+      .n= @total_visits
+      .l Website visits
+      .h= "#{@recent_visits} this week"
+
+    = link_to admin_error_logs_path, class: 'admin-stat' do
+      .n.danger= @total_404_errors
+      .l 404 errors
+      .h= "#{@recent_404_errors} this week"
+
+    = link_to admin_triage_cases_path, class: 'admin-stat' do
+      .n class=("warn" if @open_cases.to_i > 0)
+        = @total_cases
+      .l Triage cases
+      .h
+        - if @open_cases.to_i > 0
+          = "#{@open_cases} open"
+        - else
+          | Manage support cases
+
+    = link_to admin_triage_solutions_path, class: 'admin-stat' do
+      .n.ok= @total_solutions
+      .l Triage solutions
+      .h= "#{@active_solutions} active"
+
+    = link_to admin_wiki_pages_path, class: 'admin-stat' do
+      .n —
+      .l Knowledge
+      .h Internal wiki and docs

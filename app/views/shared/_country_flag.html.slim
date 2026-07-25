@@ -1,0 +1,2 @@
+/ Renders a country flag SVG (flag-icons). Locals: code (iso or region key), size (:sm, :md, :lg)
+= country_flag local_assigns.fetch(:code), size: local_assigns.fetch(:size, :md), class: local_assigns[:class]

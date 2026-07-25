@@ -1,0 +1,6 @@
+header.manual-hero
+  .manual-hero-photo
+    = image_tag board_manual_image(board_id), alt: "#{board_name} controller board"
+  h2 = "#{board_name} Manual"
+  - if (updated = board_manual_updated_label(board_id))
+    p.manual-hero-updated Last updated #{updated}

@@ -1,0 +1,11 @@
+{
+  "name": "baldrickboards-docs",
+  "private": true,
+  "description": "Puppeteer/Chromium for Grover PDF generation of board manuals.",
+  "dependencies": {
+    "puppeteer": "25.3.0"
+  },
+  "scripts": {
+    "postinstall": "npx puppeteer browsers install chrome"
+  }
+}
