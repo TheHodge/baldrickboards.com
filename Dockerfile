@@ -14,16 +14,18 @@ FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 # Rails app lives here
 WORKDIR /rails
 
-# Install base packages
+# Install base packages (Chromium powers Grover manual PDF generation)
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 sqlite3 && \
+    apt-get install --no-install-recommends -y curl libjemalloc2 sqlite3 chromium fonts-liberation && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development" \
+    GROVER_EXECUTABLE_PATH="/usr/bin/chromium" \
+    PUPPETEER_SKIP_DOWNLOAD="true"
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build

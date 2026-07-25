@@ -127,38 +127,6 @@ div data-controller="reveal"
           span.annot Why Baldrick?
         h2.rv data-d="1" Our boards don't just power shows around the world, they power ours
         p.sec-lead.rv data-d="2" No marketing department invented these. Every board comes from a real need on a real display and is built to hold up on the night, every night of the season.
-      .why-cards
-        .why-card.rv
-          span.wc-ic
-            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
-              circle cx="6" cy="6" r="2.5"
-              circle cx="18" cy="18" r="2.5"
-              path d="M8.5 6H15a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h6.5"
-          h3 Boards that look great, UI that feels great
-          p With our own custom written firmware, we are in control of every aspect of the journey so from pluggin the board in to entertaining thousands, we've tried to make it as simple as possible.
-        .why-card.rv data-d="1"
-          span.wc-ic
-            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
-              rect x="4" y="4" width="16" height="16" rx="2"
-              circle cx="8" cy="8" r="1.3" fill="currentColor"
-              circle cx="16" cy="8" r="1.3" fill="currentColor"
-              circle cx="8" cy="16" r="1.3" fill="currentColor"
-              circle cx="16" cy="16" r="1.3" fill="currentColor"
-          h3 Factory Tested Funny.
-          p Our boards are only only tested in our Kluster, we've sent them to independent labs to be certified for sale in the UK & EU.
-        .why-card.rv data-d="2"
-          span.wc-ic
-            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
-              path d="M21 12a9 9 0 1 1-3-6.7"
-              path d="M21 4v5h-5"
-          h3 One firmware to rule them all
-          p Every board runs on the same firmware base so if you bought a Baldrick on day 1, you are still getting the same firmware updates and UI enhancements as someone who bought the latest version
-      .why-cta.rv data-d="2"
-        = link_to "#range", class: "btn btn-bone" do
-          | Find your board
-          span.ar →
-        = link_to "Read the docs", "#docs", class: "btn btn-clear"
-        span.note Designed in the UK · shipped worldwide
 
   section.sec.docs#docs
     .wrap
@@ -186,17 +154,17 @@ div data-controller="reveal"
           h3
             | Downloads
             span.go →
-          p Latest firmware, configs and 3D-printable mounts and enclosures.
-        = link_to support_asking_for_help_path, class: "ex-card"
+          p Free 3D-printable mounts, enclosures and STLs for tidy installs.
+        = link_to fun_stuff_customer_showcase_path, class: "ex-card"
           span.ex-ic
             svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
-              circle cx="6" cy="6" r="2.5"
-              circle cx="18" cy="18" r="2.5"
-              path d="M8.5 6H15a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h6.5"
+              rect x="3" y="5" width="18" height="14" rx="2"
+              circle cx="8.5" cy="10" r="1.5"
+              path d="M21 16l-5-5-4 4-2-2-5 5"
           h3
-            | Wiring Examples
+            | Customer Showcase
             span.go →
-          p Real-world diagrams for clean, reliable installs that just work.
+          p Real displays from real customers — see what Baldrick boards power in the wild.
         = link_to breakthroughs_cunningfx_path, class: "ex-card"
           span.ex-ic
             svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
@@ -223,5 +191,5 @@ div data-controller="reveal"
           h3
             | Community & Support
             span.go →
-          p The forum, the Facebook group and help when you need a hand.
+          p Christmas Triage, active Facebook groups and our Zoom room — help when you need a hand.
 

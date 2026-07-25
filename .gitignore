@@ -38,6 +38,9 @@ Thumbs.db
 
 /public/assets
 
+# Node / Puppeteer (used by Grover for local PDF generation)
+/node_modules
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 

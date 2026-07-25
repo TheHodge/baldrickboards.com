@@ -1,0 +1,32 @@
+# Baldrick Boards
+
+> Pixel, relay and interactive lighting controllers — manuals and docs for makers.
+
+Prefer the Markdown manuals below for LLM context. They are the source content for each board manual (same material as the HTML docs and PDF downloads).
+
+## Manuals (Markdown)
+
+- [Baldrick8 Manual](https://www.baldrickboard.com/en/boards/baldrick8/manual.md)
+- [Baldrick17 Manual](https://www.baldrickboard.com/en/boards/baldrick17/manual.md)
+- [BaldrickSwitchy Manual](https://www.baldrickboard.com/en/boards/baldrickswitchy/manual.md)
+- [BaldrickDMX Manual](https://www.baldrickboard.com/en/boards/baldrickdmx/manual.md)
+- [BaldrickInput1 Manual](https://www.baldrickboard.com/en/boards/baldrickinput1/manual.md)
+- [BaldrickInput8 Manual](https://www.baldrickboard.com/en/boards/baldrickinput8/manual.md)
+- [BaldrickSignals Manual](https://www.baldrickboard.com/en/boards/baldricksignals/manual.md)
+- [BaldrickBadge Manual](https://www.baldrickboard.com/en/boards/baldrickbadge/manual.md)
+
+## HTML manuals
+
+- https://www.baldrickboard.com/en/boards/baldrick8/manual
+- https://www.baldrickboard.com/en/boards/baldrick17/manual
+- https://www.baldrickboard.com/en/boards/baldrickswitchy/manual
+- https://www.baldrickboard.com/en/boards/baldrickdmx/manual
+- https://www.baldrickboard.com/en/boards/baldrickinput1/manual
+- https://www.baldrickboard.com/en/boards/baldrickinput8/manual
+- https://www.baldrickboard.com/en/boards/baldricksignals/manual
+- https://www.baldrickboard.com/en/boards/baldrickbadge/manual
+
+## Optional
+
+- PDF downloads: append `.pdf` instead of `.md` on any manual download URL above
+- Site: https://www.baldrickboard.com/

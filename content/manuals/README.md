@@ -104,3 +104,15 @@ Use `**bold**` and *italic* as usual.
 ### Complex layouts
 
 For tabs, spec grids, or other interactive blocks you can embed raw HTML directly in the Markdown file — it passes through unchanged.
+
+## Downloads
+
+Each board manual page offers:
+
+| Format | URL | Audience |
+| --- | --- | --- |
+| PDF | `/en/boards/{board_id}/manual.pdf` | Print / offline reading (Grover + Chromium) |
+| Markdown | `/en/boards/{board_id}/manual.md` | LLMs and editors (concatenated source files + specs table) |
+
+`public/llms.txt` points crawlers and agents at the Markdown manuals.
+

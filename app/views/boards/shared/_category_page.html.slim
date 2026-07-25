@@ -2,26 +2,26 @@
 
 - content_for :title, "#{config[:title]} - Baldrick Board Documentation"
 
-.hero-wrap
-  .wrap
+section.hero-blueprint
+  .wrap.inner
     nav.crumb
       = link_to "Home", root_path
       span.sep= "/"
-      = link_to "Boards", boards_path
-      span.sep= "/"
-      span.cur= config[:title]
-    section.hero
-      .mark
-        = image_tag config[:image], alt: ""
-      .eye
-        span.bar
-        span = config[:eye]
-      h1 = config[:title]
-      p.sub = config[:subtitle]
-      - if config[:meta].present?
-        .hmeta
-          - config[:meta].each do |item|
-            span = item
+      - if category_key.to_s == 'all_boards'
+        span.cur= config[:title]
+      - else
+        = link_to "Boards", boards_path
+        span.sep= "/"
+        span.cur= config[:title]
+    .eye
+      span.bar
+      span.annot= config[:eye]
+    h1 = config[:title]
+    p.sub = config[:subtitle]
+    - if config[:meta].present?
+      .meta
+        - config[:meta].each do |item|
+          span = item
 
 section.catalog
   .wrap
