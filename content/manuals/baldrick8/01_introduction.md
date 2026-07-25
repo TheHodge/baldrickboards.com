@@ -2,7 +2,7 @@
 title: Baldrick8 Introduction
 ---
 
-Used in installations around the world, the Baldrick8 is our flagship controller, powering everything from light-up shelves to theatre productions. 
+Used in installations around the world, the Baldrick8 powers everything from light-up shelves to theatre productions. 
 
 With our custom hardware and firmware, this small board packs a punch when it comes to features and can go toe to toe with boards of all sizes and prices.
 

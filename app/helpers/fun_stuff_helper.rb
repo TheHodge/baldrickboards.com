@@ -169,12 +169,27 @@ module FunStuffHelper
   def stls_and_mounts_toc
     [
       {
-        id: 'downloads',
-        title: 'Downloads',
+        id: 'small',
+        title: 'Small board mounts',
         items: [
+          { id: 'skadis-small', title: 'IKEA SKÅDIS Mount' }
+        ]
+      },
+      {
+        id: 'medium',
+        title: 'Medium board mounts',
+        items: [
+          { id: 'skadis-medium', title: 'IKEA SKÅDIS Mount' },
           { id: 'greg-mount', title: 'Original Baldrick Mount' },
           { id: 'pi-buck-mount', title: 'Pi + Buck Converter Mount' },
-          { id: 'double-stack', title: 'Double Stack Meanwell Mounts' },
+          { id: 'double-stack', title: 'Double Stack Meanwell Mounts' }
+        ]
+      },
+      {
+        id: 'large',
+        title: 'Large board mounts',
+        items: [
+          { id: 'skadis-large', title: 'IKEA SKÅDIS Mount' },
           { id: 'b17-mount', title: 'Baldrick17 Mount' }
         ]
       },

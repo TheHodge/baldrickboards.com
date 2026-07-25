@@ -183,9 +183,9 @@ en:
       subtitle: "8 Outputs"
       description: "An 8 port controller which pushes the boundaries of what's possible with a budget lighting controller."
       overview:
-        description: "The Baldrick8 is our flagship 8-output pixel controller, designed for professional lighting displays and large-scale installations. With support for up to 2250 channels per port (which is 750 RGB pixels at 40fps) and high refresh rates, it's perfect for creating stunning visual effects."
+        description: "Eight ports, proper ethernet, and up to 750 RGB pixels per port at 40fps. Built for budget shows that still want to look good."
         features:
-          - "2 ports accepting 5v–24v (or up to 48v on version 1.1) with onboard power management and the option for individual voltages (to avoid any BOOM BOOM BOOM BOOMS)."
+          - "2 ports accepting 5v-24v (or up to 48v on version 1.1) with onboard power management and the option for individual voltages (to avoid any BOOM BOOM BOOM BOOMS)."
           - "8 Ports handling many pixels per port (up to 2250 channels per port (which is 750 RGB pixels at 40fps)"
           - "2 Power inputs (which combined with the included 7.5 amp fuses allows for full pixel runs at 100%)"
           - "DDP, Artnet, E1.31 & sACN compatible"
@@ -199,11 +199,11 @@ en:
           value: 8 smart ports
         - label: Channels per port
           mono: "2250"
-          suffix: " — 750 RGB pixels at 40fps"
+          suffix: " (750 RGB pixels at 40fps)"
         - label: Protocols
           value: DDP, Art-Net, E1.31, sACN
         - label: Power input
-          mono: 5–48V DC
+          mono: 5-48V DC
           suffix: " (up to 48V on v1.1), 2 inputs"
         - label: Fusing
           value: 7.5A fuses included (full runs at 100%)

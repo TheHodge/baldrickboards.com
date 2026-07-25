@@ -11,7 +11,7 @@ The way you tell the difference between the boards is that if under the ILightTh
 :::
 
 1. **Left Power Jack** - See below.
-2. **Right Power Jack** — Our screw jacks are voltage independent (each side can take different voltages) and will handle 5v-48v (24v for 1.0 boards) they will step down to power the components and have reverse polairty protection. We recommend 10AWG cable for these inputs.
+2. **Right Power Jack:** Our screw jacks are voltage independent (each side can take different voltages) and will handle 5v-48v (24v for 1.0 boards) they will step down to power the components and have reverse polairty protection. We recommend 10AWG cable for these inputs.
 3. **Pixel Phoenix Connectors** - Ordering G (Ground) D (Data) + (Positive / Voltage).
 4. **Fuse Holder** - Comes profilled with 7.5A fuses, these easy to access fuses are for protection and their location makes them easy to change.
 5. **Ethernet Port** - The Baldrick8 does not run over wifi to ensure the high FPS that this controller is designed for we've added a 100mb ethernet port to connect to your show network.

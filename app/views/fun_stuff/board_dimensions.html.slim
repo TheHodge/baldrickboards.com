@@ -27,6 +27,9 @@
             li Category: Small form factor
             li Mounting holes: M3
             li Installation: Hidden installs
+            li
+              | Mounts:
+              = link_to ' Small board STLs', fun_stuff_stls_and_mounts_path(anchor: 'small'), class: 'lnk'
         figure.figure
           .fimg
             = image_tag 'dimensions-small.jpeg', alt: 'Small Baldrick Board Dimensions'
@@ -44,14 +47,6 @@
         strong  medium Baldrick boards
         |  to match similar boards already in the market so you can reuse mounts and 3D printed elements.
 
-      .callout.info
-        span.ic
-          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            path d="M9 12l2 2 4-4"
-        div
-          span.lbl Community mounts
-          p.bd The Baldrick community have created an amazing range of mounts and STLs you can print today.
-
       .dim-block
         .dim-spec
           h4 Specifications
@@ -60,6 +55,9 @@
             li Board footprint: 117mm × 74mm
             li Mounting holes: M3
             li Compatibility: Matches similar boards in market
+            li
+              | Mounts:
+              = link_to ' Medium board STLs', fun_stuff_stls_and_mounts_path(anchor: 'medium'), class: 'lnk'
         figure.figure
           .fimg
             = image_tag 'dimensions-medium.jpeg', alt: 'Medium Baldrick Board Dimensions'
@@ -85,6 +83,9 @@
             li Board: Baldrick17
             li Mounting holes: M3
             li Board footprint: 115mm × 180mm
+            li
+              | Mounts:
+              = link_to ' Large board STLs', fun_stuff_stls_and_mounts_path(anchor: 'large'), class: 'lnk'
         figure.figure
           .fimg
             = image_tag 'dimensions-large.png', alt: 'Large Baldrick Board Dimensions'

@@ -2,10 +2,10 @@
 title: Getting started
 ---
 
-Welcome to your new Baldrick8! This comprehensive guide will walk you through everything you need to know to get your board up and running, from plugging in power to creating your first light show.
+Got a Baldrick8. Here's how to power it, flash it, wire pixels, and talk to xLights.
 
-::: warn Safety First
-Always ensure your power supply is disconnected before making any connections. Double-check all wiring before powering on.
+::: warn Warning
+Unplug the power supply before you change any wiring. Check it twice before you switch on.
 :::
 
 ### Step 1: Plugging in Your Controller {#step-1-plugging-in-your-controller}

@@ -5,27 +5,27 @@ en:
         # Open Graph data for Baldrick8
         og:
           title: "Baldrick8 - 8 Port LED Controller Board"
-          description: "Professional 8 port LED controller board for holiday lighting displays. Features web interface, xLights integration, and robust construction."
+          description: "An 8 port LED controller with a web interface and xLights support. From Baldrick Boards."
           image: "og-baldrick8"
           buy_this_board:
             title: "Where to buy the Baldrick8"
-            description: "Purchase the Baldrick8 professional LED controller board with 8 channels for holiday lighting displays and xLights integration."
+            description: "Where to buy the Baldrick8, our 8 port LED controller with xLights support."
             image: "og-baldrick8"
           faq:
             title: "Baldrick8 FAQ - Frequently Asked Questions"
-            description: "Common questions and answers about the Baldrick8 LED controller board, setup, troubleshooting, and features."
+            description: "Questions people ask about the Baldrick8: setup, wiring, WiFi, and the odd thing we made up."
             image: "og-baldrick8-faq"
           getting_started:
             title: "Baldrick8 Getting Started Guide"
-            description: "Complete getting started guide for the Baldrick8 LED controller board including setup, configuration, and first steps."
+            description: "Power, firmware, pixels, and xLights. How to get a Baldrick8 running."
             image: "og-baldrick8"
           tech_specs:
             title: "Baldrick8 Technical Specifications"
-            description: "Detailed technical specifications for the Baldrick8 LED controller board including power requirements, dimensions, and capabilities."
+            description: "Power, ports, dimensions, and the rest of the Baldrick8 numbers."
             image: "og-baldrick8"
           web_interface:
             title: "Baldrick8 Web Interface Guide"
-            description: "Complete guide to using the Baldrick8 web interface for configuration, monitoring, and control."
+            description: "What the Baldrick8 web UI pages and buttons actually do."
             image: "og-baldrick8-web"
         faq:
           title: "FAQ - Baldrick8 - Baldrick Board Documentation"
@@ -34,8 +34,8 @@ en:
             subtitle: "Common questions about Baldrick8"
           content:
             title: "Baldrick8 FAQ"
-            description: "Find answers to the most commonly asked questions about the Baldrick8 controller."
-            quick_navigation: "Quick Navigation"
+            description: "The questions people actually ask us about the Baldrick8. Plus a few we made up."
+            quick_navigation: "On this page"
             questions:
               hodgical_test_mode:
                 key: "hodgical-test-mode"
@@ -43,7 +43,7 @@ en:
                 images: []
                 answer: |
                   <p class="text-gray-700 mb-4">Hodgical Mode is our special test mode that adds a bit of fun to testing your pixels.</p>
-                  <p class="text-gray-700">It's named after one of our team members who has a particular sense of humor about these things.</p>
+                  <p class="text-gray-700">It's named after one of our team members who has a particular sense of humour about these things.</p>
               where_is_wifi:
                 key: "where-is-wifi"
                 question: "Where is the WiFi?"

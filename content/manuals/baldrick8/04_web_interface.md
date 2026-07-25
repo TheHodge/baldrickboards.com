@@ -2,7 +2,7 @@
 title: Web interface
 ---
 
-The Baldrick8 includes a powerful web-based configuration interface that allows you to set up and control your board from any web browser. This comprehensive guide covers every aspect of the web interface.
+Every Baldrick8 has a web UI. This page is what the buttons and pages actually do.
 
 ### Stats Dashboard {#stats-dashboard}
 
@@ -159,7 +159,7 @@ If you want to get your hands dirty with FPP commands, here it is - almost every
 
 ###### Test Mode Activation
 
-Sometimes you just want to quickly test how the props look (or put something up when the neighbors pop round to 'see how it's going'). You can quickly enable any of our test modes at a specific brightness with the touch (or activation) of an input.
+Sometimes you just want to quickly test how the props look (or put something up when the neighbours pop round to 'see how it's going'). You can quickly enable any of our test modes at a specific brightness with the touch (or activation) of an input.
 
 ::: figure
 ![Test Mode Configuration](baldrick8/web-button-advanced-test-mode.png)
