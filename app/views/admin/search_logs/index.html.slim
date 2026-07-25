@@ -1,83 +1,77 @@
-- breadcrumbs = [{ name: "Search Analytics" }]
+= render 'shared/admin_page', page_title: 'Search Analytics', current_page: 'Search Analytics', page_subtitle: 'Track on-site search queries and result clicks', meta: ['Search', 'Analytics'] do
+  .admin-stats
+    .admin-stat
+      .n.accent= @total_searches
+      .l Total Searches
+    .admin-stat
+      .n.ok= @total_clicks
+      .l Total Clicks
+    .admin-stat
+      .n.accent= @recent_searches
+      .l Recent Searches (7 days)
+    .admin-stat
+      .n.warn= @recent_clicks
+      .l Recent Clicks (7 days)
 
-.container.mx-auto.px-4.py-8
-  / Breadcrumbs
-  = render 'shared/admin_breadcrumbs'
-  
-  .flex.justify-between.items-center.mb-8
-    h1.text-3xl.font-bold.text-gray-900 Search Analytics
-    = link_to "Admin Dashboard", admin_root_path, class: "bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm font-medium"
-
-  .grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-4.gap-6.mb-8
-    .bg-white.p-6.rounded-lg.shadow
-      h3.text-lg.font-semibold.text-gray-700.mb-2 Total Searches
-      p.text-3xl.font-bold.text-blue-600 = @total_searches
-    
-    .bg-white.p-6.rounded-lg.shadow
-      h3.text-lg.font-semibold.text-gray-700.mb-2 Total Clicks
-      p.text-3xl.font-bold.text-green-600 = @total_clicks
-    
-    .bg-white.p-6.rounded-lg.shadow
-      h3.text-lg.font-semibold.text-gray-700.mb-2 Recent Searches (7 days)
-      p.text-3xl.font-bold.text-purple-600 = @recent_searches
-    
-    .bg-white.p-6.rounded-lg.shadow
-      h3.text-lg.font-semibold.text-gray-700.mb-2 Recent Clicks (7 days)
-      p.text-3xl.font-bold.text-orange-600 = @recent_clicks
-
-  .grid.grid-cols-1.lg:grid-cols-2.gap-8.mb-8
-    .bg-white.p-6.rounded-lg.shadow
-      h3.text-xl.font-semibold.text-gray-900.mb-4 Top Search Queries
+  .admin-grid-2
+    .admin-panel
+      h3 Top Search Queries
       - if @top_queries.any?
-        .space-y-2
+        .admin-list
           - @top_queries.each do |query, count|
-            .flex.justify-between.items-center.py-2.border-b.border-gray-100
-              span.font-medium.text-gray-700 = query
-              span.text-sm.text-gray-500.bg-gray-100.px-2.py-1.rounded = count
+            .admin-list-row
+              span= query
+              span.count= count
       - else
-        p.text-gray-500 No search data available yet.
+        .admin-empty
+          p No search data available yet.
 
-    .bg-white.p-6.rounded-lg.shadow
-      h3.text-xl.font-semibold.text-gray-900.mb-4 Top Clicked Results
+    .admin-panel
+      h3 Top Clicked Results
       - if @top_clicks.any?
-        .space-y-2
+        .admin-list
           - @top_clicks.each do |(url, title), count|
-            .flex.justify-between.items-center.py-2.border-b.border-gray-100
-              .flex-1.min-w-0
-                p.font-medium.text-gray-700.truncate = title || url
-                p.text-xs.text-gray-500.truncate = url
-              span.text-sm.text-gray-500.bg-gray-100.px-2.py-1.rounded = count
+            .admin-list-row
+              span
+                = title || url
+                - if title.present?
+                  br
+                  span.admin-mono style="font-size:11px;color:var(--ink-mut)"= url
+              span.count= count
       - else
-        p.text-gray-500 No click data available yet.
+        .admin-empty
+          p No click data available yet.
 
-  .bg-white.rounded-lg.shadow
-    h3.text-xl.font-semibold.text-gray-900.p-6.border-b.border-gray-200 Recent Search Activity
+  .admin-panel
+    h3 Recent Search Activity
     - if @search_logs.any?
-      .overflow-x-auto
-        table.w-full
-          thead.bg-gray-50
+      .admin-table-wrap
+        table.admin-table
+          thead
             tr
-              th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider Time
-              th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider Query
-              th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider Type
-              th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider Result
-              th.px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase.tracking-wider IP
-          tbody.bg-white.divide-y.divide-gray-200
+              th Time
+              th Query
+              th Type
+              th Result
+              th IP
+          tbody
             - @search_logs.each do |log|
               tr
-                td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-900 = log.created_at.strftime("%Y-%m-%d %H:%M:%S")
-                td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900 = log.query
-                td.px-6.py-4.whitespace-nowrap
+                td= log.created_at.strftime('%Y-%m-%d %H:%M:%S')
+                td= log.query
+                td
                   - if log.clicked?
-                    span.inline-flex.px-2.py-1.text-xs.font-semibold.rounded-full.bg-green-100.text-green-800 Click
+                    span.admin-badge.admin-badge--ok Click
                   - else
-                    span.inline-flex.px-2.py-1.text-xs.font-semibold.rounded-full.bg-blue-100.text-blue-800 Search
-                td.px-6.py-4.text-sm.text-gray-900
+                    span.admin-badge.admin-badge--info Search
+                td
                   - if log.clicked? && log.result_title.present?
-                    .truncate.max-w-xs = log.result_title
-                    .text-xs.text-gray-500.truncate.max-w-xs = log.result_url
+                    = log.result_title
+                    br
+                    span.admin-mono style="font-size:11px;color:var(--ink-mut)"= log.result_url
                   - else
-                    span.text-gray-400 -
-                td.px-6.py-4.whitespace-nowrap.text-sm.text-gray-500 = log.ip_address
+                    | —
+                td= log.ip_address
     - else
-      .p-6.text-center.text-gray-500 No search activity yet.
+      .admin-empty
+        p No search activity yet.

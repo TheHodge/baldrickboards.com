@@ -1,13 +1,6 @@
-- breadcrumbs = [{ name: "Triage Solutions", path: admin_triage_solutions_path }, { name: "New Solution" }]
+- content_for :admin_actions do
+  = link_to 'Back to Solutions', admin_triage_solutions_path, class: 'btn btn-line-light btn-sm'
 
-.container.mx-auto.px-4.py-8
-  / Breadcrumbs
-  = render 'shared/admin_breadcrumbs'
-  
-  .flex.justify-between.items-center.mb-8
-    h1.text-3xl.font-bold.text-gray-900 New Solution
-    = link_to "Back to Solutions", admin_triage_solutions_path, class: "bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm font-medium"
-
-  .bg-white.shadow.rounded-lg.p-6
+= render 'shared/admin_page', page_title: 'New Solution', current_page: 'New Solution', page_subtitle: 'Create a new triage solution for automated matching', breadcrumbs: [{ name: 'Triage Solutions', path: admin_triage_solutions_path }], meta: ['Support', 'Solutions'] do
+  .admin-panel
     = render 'form'
-

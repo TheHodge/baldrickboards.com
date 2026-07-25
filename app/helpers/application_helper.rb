@@ -66,13 +66,13 @@ module ApplicationHelper
   def admin_menu_items
     [
       { title: 'Dashboard', path: admin_root_path },
-      { title: 'Newsletter Subscribers', path: admin_newsletter_subscribers_path },
-      { title: 'Feedback Management', path: admin_feedbacks_path },
-      { title: 'Triage Cases', path: admin_triage_cases_path },
-      { title: 'Triage Solutions', path: admin_triage_solutions_path },
-      { title: 'Search Analytics', path: admin_search_logs_path },
-      { title: 'Website Analytics', path: admin_analytics_path },
-      { title: '404 Error Logs', path: admin_error_logs_path },
+      { title: 'Newsletter', path: admin_newsletter_subscribers_path },
+      { title: 'Feedback', path: admin_feedbacks_path },
+      { title: 'Cases', path: admin_triage_cases_path },
+      { title: 'Solutions', path: admin_triage_solutions_path },
+      { title: 'Search', path: admin_search_logs_path },
+      { title: 'Analytics', path: admin_analytics_path },
+      { title: '404s', path: admin_error_logs_path },
       { title: 'Knowledge', path: admin_wiki_pages_path }
     ]
   end

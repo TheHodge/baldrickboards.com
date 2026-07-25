@@ -1,200 +1,121 @@
-/ Page header
-.bg-white.shadow-lg.rounded-xl.mb-12
-  .px-8.py-8
-    .flex.items-center.justify-between
-      div
-        h1.text-3xl.font-bold.text-gray-900.mb-2 Website Analytics
-        p.text-base.text-gray-600 Track your website performance and visitor behavior
-      .flex.items-center.space-x-4
-        = form_with url: admin_analytics_path, method: :get, local: true, class: "flex items-center space-x-3" do |f|
-          = f.select :date_range, options_for_select([['Last 7 days', '7'], ['Last 30 days', '30'], ['Last 90 days', '90'], ['Last year', '365']], @date_range), {}, { class: "rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm px-3 py-2" }
-          = f.submit "Update", class: "bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 text-sm font-medium transition-colors"
+- content_for :admin_actions do
+  = form_with url: admin_analytics_path, method: :get, local: true, class: 'admin-filters' do |f|
+    .field
+      = f.label :date_range, 'Date range', class: 'admin-field-label'
+      = f.select :date_range, options_for_select([['Last 7 days', '7'], ['Last 30 days', '30'], ['Last 90 days', '90'], ['Last year', '365']], @date_range), {}, class: 'admin-input'
+    .admin-filter-actions
+      = f.submit 'Update', class: 'btn btn-solid btn-sm'
 
-/ Summary cards
-.grid.grid-cols-1.md:grid-cols-3.gap-8.mb-16
-  .bg-white.overflow-hidden.shadow-lg.rounded-xl.border.border-gray-100
-    .px-8.py-10
-      .flex.items-center
-        .flex-shrink-0
-          .w-16.h-16.bg-gradient-to-r.from-blue-500.to-blue-600.rounded-xl.flex.items-center.justify-center.shadow-lg
-            svg.w-8.h-8.text-white fill="currentColor" viewBox="0 0 20 20"
-              path d="M10 12a2 2 0 100-4 2 2 0 000 4z"
-              path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"
-        .ml-8.flex-1
-          dl
-            dt.text-sm.font-semibold.text-gray-600.uppercase.tracking-wide.mb-2 Total Visits
-            dd.text-4xl.font-bold.text-gray-900.mb-2 = number_with_delimiter(@total_visits)
-            dd.text-sm.text-gray-500 Page views in selected period
+= render 'shared/admin_page', page_title: 'Website Analytics', current_page: 'Analytics', page_subtitle: 'Track your website performance and visitor behavior', meta: ["Last #{@date_range} days", "#{number_with_delimiter(@total_visits)} visits"] do
+  .admin-stats
+    .admin-stat
+      .n.accent= number_with_delimiter(@total_visits)
+      .l Total visits
+      .h Page views in selected period
 
-  .bg-white.overflow-hidden.shadow-lg.rounded-xl.border.border-gray-100
-    .px-8.py-10
-      .flex.items-center
-        .flex-shrink-0
-          .w-16.h-16.bg-gradient-to-r.from-green-500.to-green-600.rounded-xl.flex.items-center.justify-center.shadow-lg
-            svg.w-8.h-8.text-white fill="currentColor" viewBox="0 0 20 20"
-              path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"
-        .ml-8.flex-1
-          dl
-            dt.text-sm.font-semibold.text-gray-600.uppercase.tracking-wide.mb-2 Total Events
-            dd.text-4xl.font-bold.text-gray-900.mb-2 = number_with_delimiter(@total_events)
-            dd.text-sm.text-gray-500 All tracked interactions
+    .admin-stat
+      .n= number_with_delimiter(@total_events)
+      .l Total events
+      .h All tracked interactions
 
-  .bg-white.overflow-hidden.shadow-lg.rounded-xl.border.border-gray-100
-    .px-8.py-10
-      .flex.items-center
-        .flex-shrink-0
-          .w-16.h-16.bg-gradient-to-r.from-purple-500.to-purple-600.rounded-xl.flex.items-center.justify-center.shadow-lg
-            svg.w-8.h-8.text-white fill="currentColor" viewBox="0 0 20 20"
-              path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
-        .ml-8.flex-1
-          dl
-            dt.text-sm.font-semibold.text-gray-600.uppercase.tracking-wide.mb-2 Unique Visitors
-            dd.text-4xl.font-bold.text-gray-900.mb-2 = number_with_delimiter(@unique_visitors)
-            dd.text-sm.text-gray-500 Distinct users
+    .admin-stat
+      .n.ok= number_with_delimiter(@unique_visitors)
+      .l Unique visitors
+      .h Distinct users
 
-/ Hourly visitors chart (48 hours)
-.bg-white.overflow-hidden.shadow-lg.rounded-xl.border.border-gray-100.mb-16
-  .px-8.py-8
-    .flex.items-center.justify-between.mb-8
-      h3.text-xl.font-semibold.text-gray-900 Hourly Visitors (Last 48 Hours)
-      .text-sm.text-gray-500.font-medium = "#{@hourly_visits_48h.count} hours"
+  .admin-panel
+    .admin-panel-head
+      h2 Hourly visitors (last 48 hours)
+      span.admin-badge.admin-badge--muted = "#{@hourly_visits_48h.count} hours"
     - if @hourly_visits_48h.any?
-      .overflow-x-auto
-        .flex.items-end.space-x-1.min-h-40.py-4
-          - max_count = @hourly_visits_48h.max_by { |_, count| count }&.last || 1
+      - max_count = @hourly_visits_48h.max_by { |_, count| count }&.last || 1
+      div style="overflow-x:auto"
+        div style="display:flex;align-items:flex-end;gap:4px;min-height:160px;padding:8px 0"
           - @hourly_visits_48h.each do |hour, count|
-            .flex.flex-col.items-center.flex-1.min-w-0.group
-              - bar_height = max_count > 0 ? [(count.to_f / max_count * 120).round, 4].max : 0
-              .bg-gradient-to-t.from-blue-500.to-blue-400.rounded-t.transition-all.duration-300.hover:from-blue-600.hover:to-blue-500.w-full.max-w-8 style="height: #{bar_height}px; min-height: #{count > 0 ? '4px' : '0px'}"
-              .text-xs.text-gray-500.mt-2.text-center.break-words = hour.strftime("%m/%d")
-              .text-xs.text-gray-400.text-center = hour.strftime("%H:%M")
-              .text-xs.font-semibold.text-gray-700.mt-1 = count
+            - bar_height = max_count > 0 ? [(count.to_f / max_count * 120).round, 4].max : 0
+            div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:0"
+              div style="width:100%;max-width:32px;background:var(--violet);border-radius:4px 4px 0 0;height:#{bar_height}px;min-height:#{count > 0 ? '4px' : '0'}"
+              span style="font-size:11px;color:var(--ink-mut);margin-top:6px;text-align:center" = hour.strftime('%m/%d')
+              span style="font-size:10px;color:var(--ink-mut);text-align:center" = hour.strftime('%H:%M')
+              span style="font-size:12px;font-weight:600;margin-top:4px" = count
     - else
-      .text-center.py-12
-        .text-gray-400.mb-4
-          svg.w-16.h-16.mx-auto fill="currentColor" viewBox="0 0 20 20"
-            path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"
-        p.text-gray-500.text-base No hourly data available for the last 48 hours
+      .admin-empty
+        p No hourly data available for the last 48 hours
 
-/ Charts and detailed stats
-.grid.grid-cols-1.lg:grid-cols-2.gap-10.mb-16
-  / Visits by day chart
-  .bg-white.overflow-hidden.shadow-lg.rounded-xl.border.border-gray-100
-    .px-8.py-8
-      .flex.items-center.justify-between.mb-8
-        h3.text-xl.font-semibold.text-gray-900 Visits by Day
-        .text-sm.text-gray-500.font-medium = "#{@visits_by_day.count} days"
+  .admin-grid-2
+    .admin-panel
+      .admin-panel-head
+        h2 Visits by day
+        span.admin-badge.admin-badge--muted = "#{@visits_by_day.count} days"
       - if @visits_by_day.any?
-        .space-y-6
+        - peak = @visits_by_day.max_by { |_, c| c }[1]
+        .admin-list
           - @visits_by_day.each do |date, count|
-            .group
-              .flex.justify-between.items-center.mb-3
-                span.text-base.font-medium.text-gray-700 = date.strftime("%B %d, %Y")
-                span.text-lg.font-bold.text-gray-900 = count
-              .w-full.bg-gray-100.rounded-full.h-4.overflow-hidden
-                .bg-gradient-to-r.from-blue-500.to-blue-600.h-4.rounded-full.transition-all.duration-300 style="width: #{(@visits_by_day.max_by { |_, c| c }[1] > 0) ? (count.to_f / @visits_by_day.max_by { |_, c| c }[1] * 100).round : 0}%"
+            .admin-list-row style="flex-direction:column;align-items:stretch;gap:8px"
+              div style="display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%"
+                span = date.strftime('%B %d, %Y')
+                span.admin-badge.admin-badge--info = count
+              div style="width:100%;background:oklch(0 0 0/.06);border-radius:999px;height:8px;overflow:hidden"
+                div style="height:100%;background:var(--violet);border-radius:999px;width:#{peak > 0 ? (count.to_f / peak * 100).round : 0}%"
       - else
-        .text-center.py-12
-          .text-gray-400.mb-4
-            svg.w-16.h-16.mx-auto fill="currentColor" viewBox="0 0 20 20"
-              path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"
-          p.text-gray-500.text-base No data available for the selected period
+        .admin-empty
+          p No data available for the selected period
 
-  / Top pages
-  .bg-white.overflow-hidden.shadow-lg.rounded-xl.border.border-gray-100
-    .px-8.py-8
-      .flex.items-center.justify-between.mb-8
-        h3.text-xl.font-semibold.text-gray-900 Top Pages
-        .text-sm.text-gray-500.font-medium = "#{@top_pages.count} pages"
+    .admin-panel
+      .admin-panel-head
+        h2 Top pages
+        span.admin-badge.admin-badge--muted = "#{@top_pages.count} pages"
       - if @top_pages.any?
-        .space-y-5
+        .admin-list
           - @top_pages.each_with_index do |(url, count), index|
-            .group.flex.items-center.justify-between.p-4.rounded-lg.hover:bg-gray-50.transition-colors
-              .flex.items-center.flex-1.min-w-0
-                .flex-shrink-0.w-10.h-10.bg-gray-100.rounded-full.flex.items-center.justify-center.mr-4
-                  span.text-sm.font-bold.text-gray-600 = index + 1
-                .flex-1.min-w-0
-                  p.text-base.font-medium.text-gray-900.truncate = url.gsub('http://127.0.0.1:3001', '').presence || url
-              .ml-6.flex-shrink-0
-                span.inline-flex.items-center.px-4.py-2.rounded-full.text-sm.font-bold.bg-blue-100.text-blue-800 = count
+            .admin-list-row
+              span
+                span.admin-badge.admin-badge--muted style="margin-right:8px" = index + 1
+                = url.gsub('http://127.0.0.1:3001', '').presence || url
+              span.count = count
       - else
-        .text-center.py-12
-          .text-gray-400.mb-4
-            svg.w-16.h-16.mx-auto fill="currentColor" viewBox="0 0 20 20"
-              path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"
-          p.text-gray-500.text-base No page views recorded for the selected period
+        .admin-empty
+          p No page views recorded for the selected period
 
-/ Additional stats - Row 1: Referrers and Browsers
-.grid.grid-cols-1.lg:grid-cols-2.gap-8.mb-8
-  / Top referrers
-  .bg-white.overflow-hidden.shadow-lg.rounded-xl.border.border-gray-100
-    .px-8.py-8
-      .flex.items-center.mb-8
-        .w-12.h-12.bg-gradient-to-r.from-orange-500.to-orange-600.rounded-lg.flex.items-center.justify-center.mr-4
-          svg.w-6.h-6.text-white fill="currentColor" viewBox="0 0 20 20"
-            path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"
-        h3.text-lg.font-semibold.text-gray-900 Top Referrers
+  .admin-grid-2
+    .admin-panel
+      .admin-panel-head
+        h2 Top referrers
       - if @top_referrers.any?
-        .space-y-3
+        .admin-list
           - @top_referrers.each do |referrer, count|
-            .flex.items-center.justify-between.p-3.rounded-lg.hover:bg-gray-50.transition-colors
-              .flex-1.min-w-0.mr-3
-                p.text-sm.font-medium.text-gray-900.break-all = referrer.presence || 'Direct / Unknown'
-              .flex-shrink-0
-                span.inline-flex.items-center.px-2.py-1.rounded-full.text-xs.font-bold.bg-orange-100.text-orange-800 = count
+            .admin-list-row
+              span style="word-break:break-all" = referrer.presence || 'Direct / Unknown'
+              span.count = count
       - else
-        .text-center.py-10
-          .text-gray-400.mb-3
-            svg.w-12.h-12.mx-auto fill="currentColor" viewBox="0 0 20 20"
-              path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"
-          p.text-gray-500.text-sm No referrer data available
+        .admin-empty
+          p No referrer data available
 
-  / Top browsers
-  .bg-white.overflow-hidden.shadow-lg.rounded-xl.border.border-gray-100
-    .px-8.py-8
-      .flex.items-center.mb-8
-        .w-12.h-12.bg-gradient-to-r.from-indigo-500.to-indigo-600.rounded-lg.flex.items-center.justify-center.mr-4
-          svg.w-6.h-6.text-white fill="currentColor" viewBox="0 0 20 20"
-            path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"
-        h3.text-lg.font-semibold.text-gray-900 Top Browsers
+    .admin-panel
+      .admin-panel-head
+        h2 Top browsers
       - if @top_browsers.any?
-        .space-y-3
+        .admin-list
           - @top_browsers.each do |user_agent, count|
-            .flex.items-center.justify-between.p-3.rounded-lg.hover:bg-gray-50.transition-colors
-              .flex-1.min-w-0.mr-3
-                p.text-sm.font-medium.text-gray-900.break-words = user_agent.split(' ').first(2).join(' ')
-              .flex-shrink-0
-                span.inline-flex.items-center.px-2.py-1.rounded-full.text-xs.font-bold.bg-indigo-100.text-indigo-800 = count
+            .admin-list-row
+              span = user_agent.split(' ').first(2).join(' ')
+              span.count = count
       - else
-        .text-center.py-10
-          .text-gray-400.mb-3
-            svg.w-12.h-12.mx-auto fill="currentColor" viewBox="0 0 20 20"
-              path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"
-          p.text-gray-500.text-sm No browser data available
+        .admin-empty
+          p No browser data available
 
-/ Additional stats - Row 2: Countries (centered)
-.flex.justify-center
-  .w-full.max-w-md
-    .bg-white.overflow-hidden.shadow-lg.rounded-xl.border.border-gray-100
-      .px-8.py-8
-        .flex.items-center.mb-8
-          .w-12.h-12.bg-gradient-to-r.from-emerald-500.to-emerald-600.rounded-lg.flex.items-center.justify-center.mr-4
-            svg.w-6.h-6.text-white fill="currentColor" viewBox="0 0 20 20"
-              path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"
-          h3.text-lg.font-semibold.text-gray-900 Top Countries
-        - if @top_countries.any?
-          .space-y-3
-            - @top_countries.each do |country, count|
-              .flex.items-center.justify-between.p-3.rounded-lg.hover:bg-gray-50.transition-colors
-                .flex-1.min-w-0.mr-3
-                  .flex.items-center.space-x-2
-                    span.text-lg = country_flag(country)
-                    p.text-sm.font-medium.text-gray-900 = country.presence || 'Unknown'
-                .flex-shrink-0
-                  span.inline-flex.items-center.px-2.py-1.rounded-full.text-xs.font-bold.bg-emerald-100.text-emerald-800 = count
-        - else
-          .text-center.py-10
-            .text-gray-400.mb-3
-              svg.w-12.h-12.mx-auto fill="currentColor" viewBox="0 0 20 20"
-                path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"
-            p.text-gray-500.text-sm No country data available
+  .admin-panel style="max-width:480px"
+    .admin-panel-head
+      h2 Top countries
+    - if @top_countries.any?
+      .admin-list
+        - @top_countries.each do |country, count|
+          .admin-list-row
+            span
+              = country_flag(country)
+              |  
+              = country.presence || 'Unknown'
+            span.count = count
+    - else
+      .admin-empty
+        p No country data available

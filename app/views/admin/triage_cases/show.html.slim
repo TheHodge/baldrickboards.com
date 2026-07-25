@@ -1,279 +1,270 @@
-- breadcrumbs = [{ name: "Triage Cases", path: admin_triage_cases_path }, { name: "Case ##{@case.case_number}" }]
 - public_case_url = triage_case_url(@case.case_number, locale: I18n.default_locale)
+- case_meta = ["Case ##{@case.case_number}"]
+- case_meta << 'Spam' if @case.spam?
+- content_for :admin_actions do
+  = link_to 'Back to Cases', admin_triage_cases_path, class: 'btn btn-line-light btn-sm'
 
-.container.mx-auto.px-4.py-8
-  / Breadcrumbs
-  = render 'shared/admin_breadcrumbs'
-  
-  .flex.justify-between.items-center.mb-8
-    h1.text-3xl.font-bold.text-gray-900 Case ##{@case.case_number}
-    - if @case.spam?
-      span.inline-flex.px-3.py-1.rounded-full.text-sm.font-semibold.bg-red-100.text-red-800.mr-4 SPAM
-    = link_to "Back to Cases", admin_triage_cases_path, class: "bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm font-medium"
+= render 'shared/admin_page', page_title: "Case ##{@case.case_number}", current_page: "Case ##{@case.case_number}", page_subtitle: 'Review case details, respond to the user, and manage resolution', breadcrumbs: [{ name: 'Triage Cases', path: admin_triage_cases_path }], meta: case_meta do
+  .admin-grid-main
+    div
+      .admin-panel
+        h2 Case Information
 
-  .grid.md:grid-cols-3.gap-6
-    / Main Content
-    .md:col-span-2.space-y-6
-      / Case Information
-      .bg-white.shadow.rounded-lg.p-6
-        h2.text-2xl.font-bold.mb-4 Case Information
-        
-        = form_with model: [:admin, @case], url: admin_triage_case_path(@case), local: true, class: "space-y-4" do |form|
+        = form_with model: [:admin, @case], url: admin_triage_case_path(@case), local: true do |form|
           - if @case.errors.any?
-            .bg-red-50.border.border-red-200.rounded-md.p-4.mb-6
-              ul.text-sm.text-red-700.list-disc.list-inside
-                - @case.errors.full_messages.each do |message|
-                  li = message
+            .admin-dl
+              .row
+                .k Errors
+                .v.box
+                  ul
+                    - @case.errors.full_messages.each do |message|
+                      li= message
 
-          .grid.md:grid-cols-2.gap-4
-            div
-              = form.label :name, "Name", class: "block text-sm font-medium text-gray-700 mb-1"
-              = form.text_field :name, class: "w-full px-3 py-2 border border-gray-300 rounded-md"
-            
-            div
-              = form.label :email, "Email", class: "block text-sm font-medium text-gray-700 mb-1"
-              = form.email_field :email, class: "w-full px-3 py-2 border border-gray-300 rounded-md"
-          
-          div
-            = form.label :status, "Status", class: "block text-sm font-medium text-gray-700 mb-1"
-            = form.select :status, options_for_select([["Open", "open"], ["Solved", "solved"], ["Closed", "closed"]], @case.status), {}, { class: "w-full px-3 py-2 border border-gray-300 rounded-md" }
-          
-          .grid.md:grid-cols-2.gap-4
-            div
-              = form.label :baldrick_version, "Baldrick Version", class: "block text-sm font-medium text-gray-700 mb-1"
-              = form.text_field :baldrick_version, class: "w-full px-3 py-2 border border-gray-300 rounded-md"
-            
-            div
-              = form.label :fpp_version, "FPP Version", class: "block text-sm font-medium text-gray-700 mb-1"
-              = form.text_field :fpp_version, class: "w-full px-3 py-2 border border-gray-300 rounded-md"
-          
-          div
-            = form.label :problem_description, "Problem Description", class: "block text-sm font-medium text-gray-700 mb-1"
-            = form.text_area :problem_description, rows: 5, class: "w-full px-3 py-2 border border-gray-300 rounded-md"
-          
-          - if @case.tried_solutions.present?
-            div
-              = form.label :tried_solutions, "What they tried", class: "block text-sm font-medium text-gray-700 mb-1"
-              = form.text_area :tried_solutions, rows: 4, class: "w-full px-3 py-2 border border-gray-300 rounded-md"
-          
-          .flex.justify-end
-            = form.submit "Update Case", class: "bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md"
+          .admin-dl
+            .admin-grid-2
+              .row
+                = form.label :name, 'Name', class: 'admin-field-label'
+                = form.text_field :name, class: 'admin-input'
+              .row
+                = form.label :email, 'Email', class: 'admin-field-label'
+                = form.email_field :email, class: 'admin-input'
 
-      / Admin Comments Section
-      .bg-white.shadow.rounded-lg.p-6
-        h2.text-2xl.font-bold.mb-4 Admin Comments
-        p.text-sm.text-gray-600.mb-4 Add a comment that will be emailed to the user.
-        
-        = form_with url: add_comment_admin_triage_case_path(@case), method: :post, local: true, class: "space-y-4" do |form|
-          div
-            = form.label :admin_name, "Your Name", class: "block text-sm font-medium text-gray-700 mb-1"
-            = form.text_field :admin_name, placeholder: "Admin name", class: "w-full px-3 py-2 border border-gray-300 rounded-md", required: true
-          
-          div
-            = form.label :content, "Comment", class: "block text-sm font-medium text-gray-700 mb-1"
-            = form.text_area :content, rows: 5, placeholder: "Enter your comment...", class: "w-full px-3 py-2 border border-gray-300 rounded-md", required: true
-          
-          .flex.justify-end
-            = form.submit "Send Comment to User", class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
-      
-      / Previous Comments
+            .row
+              = form.label :status, 'Status', class: 'admin-field-label'
+              = form.select :status, options_for_select([['Open', 'open'], ['Solved', 'solved'], ['Closed', 'closed']], @case.status), {}, class: 'admin-input'
+
+            .admin-grid-2
+              .row
+                = form.label :baldrick_version, 'Baldrick Version', class: 'admin-field-label'
+                = form.text_field :baldrick_version, class: 'admin-input'
+              .row
+                = form.label :fpp_version, 'FPP Version', class: 'admin-field-label'
+                = form.text_field :fpp_version, class: 'admin-input'
+
+            .row
+              = form.label :problem_description, 'Problem Description', class: 'admin-field-label'
+              = form.text_area :problem_description, rows: 5, class: 'admin-input'
+
+            - if @case.tried_solutions.present?
+              .row
+                = form.label :tried_solutions, 'What they tried', class: 'admin-field-label'
+                = form.text_area :tried_solutions, rows: 4, class: 'admin-input'
+
+          .admin-filter-actions style="margin-top:18px"
+            = form.submit 'Update Case', class: 'btn btn-solid btn-sm'
+
+      .admin-panel
+        h2 Admin Comments
+        p style="font-size:13px;color:var(--ink-mut);margin:-8px 0 16px" Add a comment that will be emailed to the user.
+
+        = form_with url: add_comment_admin_triage_case_path(@case), method: :post, local: true do |form|
+          .admin-dl
+            .row
+              = form.label :admin_name, 'Your Name', class: 'admin-field-label'
+              = form.text_field :admin_name, placeholder: 'Admin name', class: 'admin-input', required: true
+            .row
+              = form.label :content, 'Comment', class: 'admin-field-label'
+              = form.text_area :content, rows: 5, placeholder: 'Enter your comment...', class: 'admin-input', required: true
+
+          .admin-filter-actions style="margin-top:18px"
+            = form.submit 'Send Comment to User', class: 'btn btn-solid btn-sm'
+
       - if @case.case_comments.any?
-        .bg-white.shadow.rounded-lg.p-6
-          h2.text-2xl.font-bold.mb-4 Previous Comments
-          .space-y-4
+        .admin-panel
+          h2 Previous Comments
+          .admin-dl
             - @case.case_comments.order(created_at: :desc).each do |comment|
-              .border.border-gray-200.rounded-lg.p-4
-                .flex.justify-between.items-start.mb-2
-                  p.text-sm.font-semibold.text-gray-900 = comment.admin_name
-                  p.text-xs.text-gray-500 = comment.created_at.strftime("%B %-d, %Y at %I:%M %p")
-                p.text-gray-700.whitespace-pre-wrap = comment.content
+              .row
+                .k
+                  = comment.admin_name
+                  span style="font-weight:400;margin-left:8px" = comment.created_at.strftime('%B %-d, %Y at %I:%M %p')
+                .v.box style="white-space:pre-wrap"= comment.content
 
-      / Force Solution Section
-      .bg-white.shadow.rounded-lg.p-6
-        h2.text-2xl.font-bold.mb-4 Force Solution
-        p.text-sm.text-gray-600.mb-4 As an admin, you can force a solution for this case without user interaction.
-        
-        = form_with url: force_solution_admin_triage_case_path(@case), method: :patch, local: true, class: "space-y-4" do |form|
-          div
-            = form.label :solution_id, "Select a Solution", class: "block text-sm font-medium text-gray-700 mb-1"
-            = form.select :solution_id, options_from_collection_for_select(@all_solutions, :id, :problem_title, @case.solved_by_solution_id), { prompt: "Choose a solution..." }, { class: "w-full px-3 py-2 border border-gray-300 rounded-md" }
-          
-          div
-            = form.label :custom_solution, "Or Write Custom Solution", class: "block text-sm font-medium text-gray-700 mb-1"
-            = form.text_area :custom_solution, rows: 4, placeholder: "Enter a custom solution...", class: "w-full px-3 py-2 border border-gray-300 rounded-md"
-            p.text-xs.text-gray-500.mt-1 Leave blank if selecting a solution above
-          
-          .flex.justify-end
-            = form.submit "Force Solution", class: "bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md"
+      .admin-panel
+        h2 Force Solution
+        p style="font-size:13px;color:var(--ink-mut);margin:-8px 0 16px" As an admin, you can force a solution for this case without user interaction.
 
-      / Media
+        = form_with url: force_solution_admin_triage_case_path(@case), method: :patch, local: true do |form|
+          .admin-dl
+            .row
+              = form.label :solution_id, 'Select a Solution', class: 'admin-field-label'
+              = form.select :solution_id, options_from_collection_for_select(@all_solutions, :id, :problem_title, @case.solved_by_solution_id), { prompt: 'Choose a solution...' }, class: 'admin-input'
+            .row
+              = form.label :custom_solution, 'Or Write Custom Solution', class: 'admin-field-label'
+              = form.text_area :custom_solution, rows: 4, placeholder: 'Enter a custom solution...', class: 'admin-input'
+              p style="font-size:12px;color:var(--ink-mut);margin:6px 0 0" Leave blank if selecting a solution above
+
+          .admin-filter-actions style="margin-top:18px"
+            = form.submit 'Force Solution', class: 'btn btn-solid btn-sm'
+
       - if @case.media.attached?
-        .bg-white.shadow.rounded-lg.p-6
-          h2.text-2xl.font-bold.mb-4 Media
-          .grid.grid-cols-3.gap-4
+        .admin-panel
+          h2 Media
+          .admin-grid-2
             - @case.media.each do |media|
               - if media.image?
-                = image_tag blob_url_without_locale(media), class: "w-full h-48 object-cover rounded"
+                = image_tag blob_url_without_locale(media), style: 'width:100%;height:192px;object-fit:cover;border-radius:8px;border:1px solid var(--line-p)'
               - elsif media.video?
-                = video_tag blob_url_without_locale(media), controls: true, class: "w-full h-48 rounded"
+                = video_tag blob_url_without_locale(media), controls: true, style: 'width:100%;height:192px;border-radius:8px;border:1px solid var(--line-p)'
 
-      / Debugging File
       - if @case.debugging_file.attached?
-        .bg-white.shadow.rounded-lg.p-6
-          h2.text-2xl.font-bold.mb-4 Debugging File
-          .border.border-gray-200.rounded-lg.p-4.bg-gray-50
-            p.font-medium.text-gray-900 = @case.debugging_file.filename.to_s
-            p.text-sm.text-gray-500.mt-1 = number_to_human_size(@case.debugging_file.byte_size)
-            .mt-3
-              = link_to "Open / Download debugging file", blob_url_without_locale(@case.debugging_file), target: "_blank", rel: "noopener", class: "inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-medium"
+        .admin-panel
+          h2 Debugging File
+          .admin-dl
+            .row
+              .k Filename
+              .v= @case.debugging_file.filename.to_s
+            .row
+              .k Size
+              .v= number_to_human_size(@case.debugging_file.byte_size)
+            .row
+              .k Download
+              .v
+                = link_to 'Open / Download debugging file', blob_url_without_locale(@case.debugging_file), target: '_blank', rel: 'noopener', class: 'btn btn-solid btn-sm'
 
-      / Matched Solutions
       - if @solutions.any?
-        .bg-white.shadow.rounded-lg.p-6
-          h2.text-2xl.font-bold.mb-4 Matched Solutions (#{@solutions.count})
-          .space-y-4
+        .admin-panel
+          h2 Matched Solutions (#{@solutions.count})
+          .admin-dl
             - @solutions.each do |solution|
-              .border.border-gray-200.rounded.p-4
-                .flex.justify-between.items-start.mb-2
-                  h3.text-lg.font-semibold = solution.problem_title
+              .row
+                .k
+                  = solution.problem_title
                   - case_solution = @case.case_solutions.find_by(solution: solution)
                   - if case_solution
-                    span.text-sm.text-gray-500 Match Score: #{case_solution.match_score}
-                p.text-gray-700 = simple_format(solution.solution_text)
-                - if @case.solved_by_solution_id == solution.id
-                  span.inline-flex.px-2.py-1.text-xs.font-semibold.rounded-full.bg-green-100.text-green-800
-                    | This solution fixed it!
+                    span style="font-weight:400;margin-left:8px" Match Score: #{case_solution.match_score}
+                .v.box
+                  = simple_format(solution.solution_text)
+                  - if @case.solved_by_solution_id == solution.id
+                    span.admin-badge.admin-badge--solved style="margin-top:10px" This solution fixed it!
 
-      / Current Solution (if solved)
       - if @case.solved? && (@case.solved_by_solution.present? || @case.custom_solution.present?)
-        .bg-white.shadow.rounded-lg.p-6
-          h2.text-2xl.font-bold.mb-4 Current Solution
+        .admin-panel
+          h2 Current Solution
           - if @case.solved_by_solution.present?
-            .bg-green-50.border.border-green-200.rounded.p-4
-              h3.text-lg.font-semibold.mb-2 = @case.solved_by_solution.problem_title
-              p.text-gray-700 = simple_format(@case.solved_by_solution.solution_text)
+            .admin-dl
+              .row
+                .k= @case.solved_by_solution.problem_title
+                .v.box= simple_format(@case.solved_by_solution.solution_text)
           - elsif @case.custom_solution.present?
-            .bg-blue-50.border.border-blue-200.rounded.p-4
-              p.text-gray-700 = simple_format(@case.custom_solution)
+            .admin-dl
+              .row
+                .v.box= simple_format(@case.custom_solution)
 
-    / Sidebar
-    .space-y-6
-      / Same shareable URL users see after creating a case (default locale)
-      .bg-indigo-50.border.border-indigo-200.shadow.rounded-lg.p-6
-        h3.text-xl.font-bold.mb-2.text-gray-900 Public shareable link
-        p.text-sm.text-gray-700.mb-3 Users get this URL after submitting. Copy it to share with the user or community if they lost it.
-        .bg-white.border.border-gray-300.rounded-md.p-3.mb-2.flex.items-center.justify-between.gap-3
-          = link_to public_case_url, public_case_url, id: "admin-triage-case-url-link", class: "text-sm font-mono text-indigo-600 hover:text-indigo-800 break-all flex-1", target: "_blank", rel: "noopener"
-          button#admin-triage-copy-case-url.inline-flex.items-center.px-3.py-2.bg-gray-100.text-gray-700.rounded-md.hover:bg-gray-200.focus:outline-none.focus:ring-2.focus:ring-offset-2.focus:ring-indigo-500.transition-colors.text-sm.font-medium.shrink-0 type="button" data-url=public_case_url
-            svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+    .admin-stack
+      .admin-panel
+        h3 Public shareable link
+        p style="font-size:13px;color:var(--ink-mut);margin:-8px 0 12px" Users get this URL after submitting. Copy it to share with the user or community if they lost it.
+        .v.box style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px"
+          = link_to public_case_url, public_case_url, id: 'admin-triage-case-url-link', target: '_blank', rel: 'noopener', style: 'font-family:var(--mono);font-size:12.5px;word-break:break-all;flex:1'
+          button#admin-triage-copy-case-url.btn.btn-line-light.btn-sm.bg-gray-100.text-gray-700 type="button" data-url=public_case_url style="flex-shrink:0"
+            svg style="width:16px;height:16px;margin-right:6px" fill="none" stroke="currentColor" viewBox="0 0 24 24"
               path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
             span#admin-triage-copy-case-url-text Copy
-        p.text-xs.text-gray-600 Uses the site default locale (#{I18n.default_locale}) in the path, matching the usual share link.
+        p style="font-size:12px;color:var(--ink-mut);margin:8px 0 0" Uses the site default locale (#{I18n.default_locale}) in the path, matching the usual share link.
 
-      / Quick Actions
-      .bg-white.shadow.rounded-lg.p-6
-        h3.text-xl.font-bold.mb-4 Quick Actions
-        .space-y-2
+      .admin-panel
+        h3 Quick Actions
+        .admin-actions
           - if @case.spam?
-            = button_to "Unmark as Spam", mark_spam_admin_triage_case_path(@case.id, spam: false), method: :patch, data: { turbo: false }, class: "w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm"
+            = button_to 'Unmark as Spam', mark_spam_admin_triage_case_path(@case.id, spam: false), method: :patch, data: { turbo: false }, class: 'btn btn-solid btn-sm'
           - else
-            = button_to "Mark as Spam", mark_spam_admin_triage_case_path(@case.id, spam: true), method: :patch, data: { turbo: false }, class: "w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm"
+            = button_to 'Mark as Spam', mark_spam_admin_triage_case_path(@case.id, spam: true), method: :patch, data: { turbo: false }, class: 'btn btn-line-light btn-sm danger'
           - if @case.open?
-            = button_to "Mark as Solved", update_status_admin_triage_case_path(@case, status: 'solved'), method: :patch, class: "w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm"
+            = button_to 'Mark as Solved', update_status_admin_triage_case_path(@case, status: 'solved'), method: :patch, class: 'btn btn-solid btn-sm'
           - if @case.solved?
-            = button_to "Mark as Closed", update_status_admin_triage_case_path(@case, status: 'closed'), method: :patch, class: "w-full bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm"
+            = button_to 'Mark as Closed', update_status_admin_triage_case_path(@case, status: 'closed'), method: :patch, class: 'btn btn-line-light btn-sm'
           - if @case.open?
-            = button_to "Mark as Closed", update_status_admin_triage_case_path(@case, status: 'closed'), method: :patch, class: "w-full bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm"
-          = button_to "Delete Case", admin_triage_case_path(@case), method: :delete, data: { confirm: "Are you sure you want to delete this case?" }, class: "w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm"
+            = button_to 'Mark as Closed', update_status_admin_triage_case_path(@case, status: 'closed'), method: :patch, class: 'btn btn-line-light btn-sm'
+          = button_to 'Delete Case', admin_triage_case_path(@case), method: :delete, data: { confirm: 'Are you sure you want to delete this case?' }, class: 'btn btn-line-light btn-sm danger'
 
-      / Case Details
-      .bg-white.shadow.rounded-lg.p-6
-        h3.text-xl.font-bold.mb-4 Case Details
-        .space-y-3.text-sm
-          div
-            strong Case Number:
-            p.font-mono = @case.case_number
-          div
-            strong Created:
-            p = @case.created_at.strftime("%B %d, %Y at %I:%M %p")
+      .admin-panel
+        h3 Case Details
+        .admin-dl
+          .row
+            .k Case Number
+            .v.admin-mono= @case.case_number
+          .row
+            .k Created
+            .v= @case.created_at.strftime('%B %d, %Y at %I:%M %p')
           - if @case.updated_at != @case.created_at
-            div
-              strong Last Updated:
-              p = @case.updated_at.strftime("%B %d, %Y at %I:%M %p")
-          div
-            strong Status:
-            p
-              span class="px-2 py-1 rounded text-xs font-semibold #{@case.status == 'open' ? 'bg-blue-100 text-blue-800' : @case.status == 'solved' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}"
-                = @case.status.titleize
+            .row
+              .k Last Updated
+              .v= @case.updated_at.strftime('%B %d, %Y at %I:%M %p')
+          .row
+            .k Status
+            .v
+              - status_badge = case @case.status when 'open' then 'admin-badge--open' when 'solved' then 'admin-badge--solved' else 'admin-badge--closed' end
+              span.admin-badge class=status_badge = @case.status.titleize
           - if @case.knowledge_level.present?
-            div
-              strong Knowledge Level:
-              p = "#{@case.knowledge_level}/10 - #{knowledge_level_description(@case.knowledge_level)}"
+            .row
+              .k Knowledge Level
+              .v= "#{@case.knowledge_level}/10 - #{knowledge_level_description(@case.knowledge_level)}"
           - if @case.affected_boards.any?
-            div
-              strong Affected Boards:
-              p = @case.affected_boards.join(', ')
+            .row
+              .k Affected Boards
+              .v= @case.affected_boards.join(', ')
           - if @case.baldrick_version.present?
-            div
-              strong Baldrick Version:
-              p = @case.baldrick_version
+            .row
+              .k Baldrick Version
+              .v= @case.baldrick_version
           - if @case.fpp_version.present?
-            div
-              strong FPP Version:
-              p = @case.fpp_version
+            .row
+              .k FPP Version
+              .v= @case.fpp_version
           - if @case.xlights_version.present?
-            div
-              strong xLights Version:
-              p = @case.xlights_version
+            .row
+              .k xLights Version
+              .v= @case.xlights_version
           - if @case.operating_system.present?
-            div
-              strong OS:
-              p = @case.operating_system
-          div
-            strong Todoist Sync:
-            p
-              - sync_status_class = @case.todoist_sync_status == 'synced' ? 'bg-green-100 text-green-800' : @case.todoist_sync_status == 'failed' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'
-              span class="px-2 py-1 rounded text-xs font-semibold #{sync_status_class}"
-                = @case.todoist_sync_status.titleize
+            .row
+              .k OS
+              .v= @case.operating_system
+          .row
+            .k Todoist Sync
+            .v
+              - sync_badge = case @case.todoist_sync_status when 'synced' then 'admin-badge--ok' when 'failed' then 'admin-badge--danger' else 'admin-badge--warn' end
+              span.admin-badge class=sync_badge = @case.todoist_sync_status.titleize
           - if @case.todoist_task_id.present?
-            div
-              strong Todoist Task ID:
-              p.font-mono.text-xs.break-all = @case.todoist_task_id
+            .row
+              .k Todoist Task ID
+              .v.admin-mono= @case.todoist_task_id
           - if @case.todoist_sync_error.present?
-            div
-              strong Last Sync Error:
-              p.text-xs.text-red-700.break-all = @case.todoist_sync_error
+            .row
+              .k Last Sync Error
+              .v.admin-mono style="color:oklch(0.52 0.2 25)"= @case.todoist_sync_error
 
-      / Admin-Only Details
-      .bg-yellow-50.border.border-yellow-200.shadow.rounded-lg.p-6
-        h3.text-xl.font-bold.mb-4.text-yellow-900 Admin Details
-        .space-y-3.text-sm
-          div
-            strong Access Code:
-            p.font-mono.text-xs = @case.access_code
-          div
-            strong Access Token:
-            p.font-mono.text-xs.break-all = @case.access_token
+      .admin-panel
+        h3 Admin Details
+        .admin-dl
+          .row
+            .k Access Code
+            .v.admin-mono= @case.access_code
+          .row
+            .k Access Token
+            .v.admin-mono= @case.access_token
           - if @case.ip_address.present?
-            div
-              strong IP Address:
-              p.font-mono.text-xs = @case.ip_address
-          div
-            strong Case URL:
-            p.text-xs.break-all
-              = link_to public_case_url, public_case_url, target: "_blank", rel: "noopener", class: "text-blue-600 hover:text-blue-800"
+            .row
+              .k IP Address
+              .v.admin-mono= @case.ip_address
+          .row
+            .k Case URL
+            .v
+              = link_to public_case_url, public_case_url, target: '_blank', rel: 'noopener'
           - if @case.system_state.present?
-            div
-              strong System State:
-              details
-                summary.text-xs.text-gray-600.cursor-pointer Click to view
-                pre.text-xs.bg-gray-100.p-2.mt-2.rounded.overflow-auto.max-h-48 = @case.system_state
+            .row
+              .k System State
+              .v
+                details
+                  summary style="font-size:12px;color:var(--ink-mut);cursor:pointer" Click to view
+                  pre.admin-mono style="margin-top:8px;max-height:192px;overflow:auto;padding:10px;background:var(--paper-2);border:1px solid var(--line-p);border-radius:8px"= @case.system_state
           - if @case.fpp_outputs_state.present?
-            div
-              strong FPP Outputs State:
-              details
-                summary.text-xs.text-gray-600.cursor-pointer Click to view
-                pre.text-xs.bg-gray-100.p-2.mt-2.rounded.overflow-auto.max-h-48 = @case.fpp_outputs_state
+            .row
+              .k FPP Outputs State
+              .v
+                details
+                  summary style="font-size:12px;color:var(--ink-mut);cursor:pointer" Click to view
+                  pre.admin-mono style="margin-top:8px;max-height:192px;overflow:auto;padding:10px;background:var(--paper-2);border:1px solid var(--line-p);border-radius:8px"= @case.fpp_outputs_state
 
 script
   | (function() {

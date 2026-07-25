@@ -1,58 +1,37 @@
-/ Header
-.bg-white.shadow-lg.rounded-xl.mb-12
-  .px-8.py-8
-    .flex.items-center.justify-between
-      div
-        h1.text-3xl.font-bold.text-gray-900.mb-2 404 Error Details
-        p.text-base.text-gray-600 Detailed information about this error
-      .flex.items-center.space-x-4
-        = link_to "← Back to Error Logs", admin_error_logs_path, class: "bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 text-sm font-medium transition-colors"
-        = link_to "Delete", admin_error_log_path(@error_log), method: :delete, confirm: "Are you sure?", class: "bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 text-sm font-medium transition-colors"
+= render 'shared/admin_page', page_title: '404 Error Details', current_page: '404 Error Details', page_subtitle: 'Detailed information about this error', breadcrumbs: [{ name: '404 Error Logs', path: admin_error_logs_path }], meta: ['Errors', 'Detail'] do
+  .admin-grid-main
+    .admin-stack
+      .admin-panel
+        h3 Error Information
+        .admin-dl
+          .row
+            span.k URL
+            span.v.box= @error_log.url
+          .row
+            span.k Error Count
+            span.v
+              span.admin-badge.admin-badge--danger= @error_log.count
+          .row
+            span.k Last Seen
+            span.v= @error_log.last_seen.strftime('%B %d, %Y at %I:%M %p')
+          .row
+            span.k Referrer
+            span.v.box= @error_log.referrer.presence || 'Direct / Unknown'
+          .row
+            span.k Browser
+            span.v= @error_log.browser
+          .row
+            span.k IP Address
+            span.v= @error_log.ip.presence || 'Unknown'
 
-/ Error details
-.bg-white.overflow-hidden.shadow-lg.rounded-xl.border.border-gray-100.mb-16
-  .px-8.py-8
-    h3.text-xl.font-semibold.text-gray-900.mb-8 Error Information
-    
-    .grid.grid-cols-1.lg:grid-cols-2.gap-8
-      .space-y-6
-        div
-          label.text-sm.font-medium.text-gray-500.block.mb-2 URL
-          .p-4.bg-gray-50.rounded-lg
-            p.text-sm.text-gray-900.break-all = @error_log.url
-        
-        div
-          label.text-sm.font-medium.text-gray-500.block.mb-2 Error Count
-          .p-4.bg-gray-50.rounded-lg
-            span.inline-flex.items-center.px-3.py-1.rounded-full.text-sm.font-bold.bg-red-100.text-red-800 = @error_log.count
-        
-        div
-          label.text-sm.font-medium.text-gray-500.block.mb-2 Last Seen
-          .p-4.bg-gray-50.rounded-lg
-            p.text-sm.text-gray-900 = @error_log.last_seen.strftime("%B %d, %Y at %I:%M %p")
-      
-      .space-y-6
-        div
-          label.text-sm.font-medium.text-gray-500.block.mb-2 Referrer
-          .p-4.bg-gray-50.rounded-lg
-            p.text-sm.text-gray-900.break-all = @error_log.referrer.presence || 'Direct / Unknown'
-        
-        div
-          label.text-sm.font-medium.text-gray-500.block.mb-2 Browser
-          .p-4.bg-gray-50.rounded-lg
-            p.text-sm.text-gray-900 = @error_log.browser
-        
-        div
-          label.text-sm.font-medium.text-gray-500.block.mb-2 IP Address
-          .p-4.bg-gray-50.rounded-lg
-            p.text-sm.text-gray-900 = @error_log.ip.presence || 'Unknown'
+      .admin-panel
+        h3 User Agent Details
+        .admin-dl
+          .row
+            span.v.box.admin-mono= @error_log.user_agent.presence || 'Unknown'
 
-/ User agent details
-.bg-white.overflow-hidden.shadow-lg.rounded-xl.border.border-gray-100
-  .px-8.py-8
-    h3.text-xl.font-semibold.text-gray-900.mb-8 User Agent Details
-    
-    .p-4.bg-gray-50.rounded-lg
-      p.text-sm.text-gray-900.break-all = @error_log.user_agent.presence || 'Unknown'
-
-
+    .admin-panel
+      h3 Actions
+      .admin-actions
+        = link_to 'Back to Error Logs', admin_error_logs_path, class: 'btn btn-line-light btn-sm'
+        = link_to 'Delete', admin_error_log_path(@error_log), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-line-light btn-sm admin-danger'

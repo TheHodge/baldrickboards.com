@@ -1,4 +1,6 @@
 class Admin::SessionsController < ApplicationController
+  before_action { @baldrickboard_page = true; @hide_newsletter_footer = true }
+
   def new
     # Show login form
   end

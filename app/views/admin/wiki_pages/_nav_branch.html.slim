@@ -1,8 +1,8 @@
 - pages = by_parent[parent_id] || []
-ul class=(parent_id.nil? ? "space-y-1" : "mt-1 ml-2 space-y-1 border-l border-gray-200 pl-2")
+ul.admin-list class=(parent_id.nil? ? nil : 'style="margin:8px 0 0 12px;padding-left:12px;border-left:1.5px solid var(--line-p)"')
   - pages.each do |page|
     li
       - active = current_page&.id == page.id
-      = link_to page.title, admin_wiki_page_path(wiki_path: page.url_path), class: (active ? "block text-sm font-medium text-indigo-700" : "block text-sm text-gray-700 hover:text-indigo-600")
+      = link_to page.title, admin_wiki_page_path(wiki_path: page.url_path), class: ('lnk' unless active), style: (active ? 'display:block;font-size:14px;font-weight:700;color:var(--violet-d)' : 'display:block;font-size:14px;padding:4px 0')
       - if (by_parent[page.id] || []).any?
-        = render "nav_branch", by_parent: by_parent, parent_id: page.id, current_page: current_page
+        = render 'nav_branch', by_parent: by_parent, parent_id: page.id, current_page: current_page

@@ -1,42 +1,44 @@
 - form_url = @solution.new_record? ? admin_triage_solutions_path : admin_triage_solution_path(@solution)
-= form_with model: @solution, url: form_url, local: true, class: "space-y-6" do |form|
+= form_with model: @solution, url: form_url, local: true do |form|
   - if @solution.errors.any?
-    .bg-red-50.border.border-red-200.rounded-md.p-4.mb-6
-      h3.text-sm.font-medium.text-red-800.mb-2 There were some problems:
-      ul.text-sm.text-red-700.list-disc.list-inside
-        - @solution.errors.full_messages.each do |message|
-          li = message
+    .admin-dl
+      .row
+        .k Errors
+        .v.box
+          ul
+            - @solution.errors.full_messages.each do |message|
+              li= message
 
-  .space-y-4
-    div
-      = form.label :problem_title, "Problem Title", class: "block text-sm font-medium text-gray-700 mb-1"
-      = form.text_field :problem_title, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500", placeholder: "e.g., Wrong pixels lighting up on each port"
-    
-    div
-      = form.label :solution_text, "Solution Text", class: "block text-sm font-medium text-gray-700 mb-1"
-      = form.text_area :solution_text, rows: 6, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500", placeholder: "Detailed solution description..."
-    
-    div
-      = form.label :problem_keywords, "Problem Keywords (one per line)", class: "block text-sm font-medium text-gray-700 mb-1"
-      p.text-xs.text-gray-500.mb-2 Enter keywords that would match this problem, one per line. These will be used for matching.
-      - current_keywords = @solution.problem_keywords.present? ? @solution.problem_keywords.join("\n") : ""
-      = form.text_area :problem_keywords, value: current_keywords, rows: 6, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm", placeholder: "pixels\nlighting\nwrong\nport"
-      p.text-xs.text-gray-500.mt-1 Keywords will be split by newlines
-    
-    div
-      = form.label :board_types, "Board Types (optional)", class: "block text-sm font-medium text-gray-700 mb-1"
-      p.text-xs.text-gray-500.mb-2 Select which boards this solution applies to (leave empty for all boards)
-      .grid.grid-cols-2.md:grid-cols-4.gap-3
+  .admin-dl
+    .row
+      = form.label :problem_title, 'Problem Title', class: 'admin-field-label'
+      = form.text_field :problem_title, class: 'admin-input', placeholder: 'e.g., Wrong pixels lighting up on each port'
+
+    .row
+      = form.label :solution_text, 'Solution Text', class: 'admin-field-label'
+      = form.text_area :solution_text, rows: 6, class: 'admin-input', placeholder: 'Detailed solution description...'
+
+    .row
+      = form.label :problem_keywords, 'Problem Keywords (one per line)', class: 'admin-field-label'
+      p style="font-size:13px;color:var(--ink-mut);margin:0 0 8px" Enter keywords that would match this problem, one per line. These will be used for matching.
+      - current_keywords = @solution.problem_keywords.present? ? @solution.problem_keywords.join("\n") : ''
+      = form.text_area :problem_keywords, value: current_keywords, rows: 6, class: 'admin-input admin-mono', placeholder: "pixels\nlighting\nwrong\nport"
+      p style="font-size:12px;color:var(--ink-mut);margin:6px 0 0" Keywords will be split by newlines
+
+    .row
+      = form.label :board_types, 'Board Types (optional)', class: 'admin-field-label'
+      p style="font-size:13px;color:var(--ink-mut);margin:0 0 8px" Select which boards this solution applies to (leave empty for all boards)
+      .admin-grid-2
         - %w[Baldrick8 Baldrick17 BaldrickDMX BaldrickSwitchy BaldrickInput1 BaldrickInput8 BaldrickSignals].each do |board|
-          .flex.items-center
+          label style="display:flex;align-items:center;gap:8px;font-size:14px"
             = form.check_box :board_types, { multiple: true, checked: @solution.board_types&.include?(board) }, board, nil
-            = form.label "board_types_#{board.downcase}", board, class: "ml-2 text-sm text-gray-700"
-    
-    div
-      .flex.items-center
-        = form.check_box :active, class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-        = form.label :active, "Active (solution will be used for matching)", class: "ml-2 text-sm text-gray-700"
+            = board
 
-  .flex.justify-end.space-x-4
-    = link_to "Cancel", admin_triage_solutions_path, class: "px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
-    = form.submit "Save Solution", class: "px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+    .row
+      label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"
+        = form.check_box :active
+        span Active (solution will be used for matching)
+
+  .admin-filter-actions style="margin-top:18px"
+    = link_to 'Cancel', admin_triage_solutions_path, class: 'btn btn-line-light btn-sm'
+    = form.submit 'Save Solution', class: 'btn btn-solid btn-sm'
