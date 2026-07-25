@@ -6,6 +6,7 @@ class Case < ApplicationRecord
   has_many :solutions, through: :case_solutions
   has_many :case_comments, dependent: :destroy
   has_many_attached :media
+  has_one_attached :debugging_file
 
   # Validations
   validates :name, presence: true, length: { minimum: 2, maximum: 100 }
@@ -18,6 +19,7 @@ class Case < ApplicationRecord
   validates :case_number, presence: true, uniqueness: true
   validates :knowledge_level, inclusion: { in: 1..10 }, allow_nil: true
   validate :validate_media_attachments
+  validate :validate_debugging_file
 
   def validate_media_attachments
     return unless media.attached?
@@ -35,6 +37,19 @@ class Case < ApplicationRecord
         errors.add(:media, "#{file.filename} is too large (maximum 100MB per file)")
       end
     end
+  end
+
+  def validate_debugging_file
+    return unless debugging_file.attached?
+
+    if debugging_file.blob.byte_size > 10.megabytes
+      errors.add(:debugging_file, "is too large (maximum 10MB)")
+    end
+
+    allowed_content_types = %w[application/json text/plain application/octet-stream]
+    return if debugging_file.blob.content_type.in?(allowed_content_types)
+
+    errors.add(:debugging_file, "must be a JSON or text file")
   end
 
   # Scopes

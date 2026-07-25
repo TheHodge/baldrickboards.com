@@ -26,6 +26,20 @@
             = form.email_field :email, class: 'triage-input', required: true
 
         .triage-field
+          = form.label :debugging_file, 'Baldrick debugging file', class: 'triage-label'
+          p.triage-hint Download the debugging file from the Help > Debugging Info link on your board, then upload it here. This is one of the most useful things you can send us.
+          .triage-media-grid
+            div
+              = form.file_field :debugging_file, accept: '.json,application/json,text/plain', class: 'triage-input'
+              p.triage-hint Accepts `.json` or text files up to 10MB.
+            .triage-media-help
+              p.triage-hint
+                strong Where to find it
+                |  — scroll to the bottom of the board screen and look in the Help section.
+              = image_tag asset_path('triage-debugging-help.png'), alt: 'Screenshot showing the Help section and Debugging Info link'
+              p.triage-hint Click `Debugging Info`, save the downloaded file, then upload it here with your case.
+
+        .triage-field
           = form.label :problem_description, 'What seems to be the problem', class: 'triage-label'
           p.triage-hint Please be as descriptive as possible — LIGHTS DO NOT WORK is not helpful, but lights on port 5 are showing the wrong colours when FPP is playing does.
           = form.text_area :problem_description, rows: 5, class: 'triage-input', required: true, minlength: 10

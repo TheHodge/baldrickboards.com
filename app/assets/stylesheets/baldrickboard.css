@@ -933,6 +933,7 @@ article.page.page--sidebar .toc.toc--releases .toc-sub{font-size:12px;padding-to
 .page .triage-upload-icon svg{width:28px;height:28px}
 .page .triage-media-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:10px}
 .page .triage-media-grid--spaced{margin-top:24px}
+.page .triage-media-help img{width:100%;border-radius:8px;border:1px solid var(--line-p);margin:8px 0}
 .page .triage-media-help ul{list-style:none;margin:8px 0 0;padding:0}
 .page .triage-media-help li{font-size:14px;line-height:1.55;color:var(--ink-mut);margin-bottom:6px;padding-left:16px;position:relative}
 .page .triage-media-help li::before{content:"";position:absolute;left:0;top:.58em;width:6px;height:6px;background:var(--accent-ink);border-radius:1px}

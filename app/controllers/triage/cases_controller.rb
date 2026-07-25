@@ -147,10 +147,12 @@ class Triage::CasesController < ApplicationController
     else
       []
     end
+    debugging_file = params[:case][:debugging_file] if params[:case][:debugging_file].is_a?(ActionDispatch::Http::UploadedFile)
     
-    # Remove media from params to prevent automatic attachment
-    case_params_without_media = case_params.except(:media)
-    @case = Case.new(case_params_without_media)
+    # Remove file attachments from params to prevent automatic attachment
+    case_params_without_attachments = case_params.except(:media, :debugging_file)
+    @case = Case.new(case_params_without_attachments)
+    @case.debugging_file.attach(debugging_file) if debugging_file.present?
     
     # Capture IP address for admin tracking
     @case.ip_address = real_client_ip
@@ -300,7 +302,11 @@ class Triage::CasesController < ApplicationController
 
   def update
     # Authorization checked in before_action
-    if @case.update(case_params)
+    debugging_file = params[:case][:debugging_file] if params[:case][:debugging_file].is_a?(ActionDispatch::Http::UploadedFile)
+    @case.assign_attributes(case_params.except(:debugging_file))
+    @case.debugging_file.attach(debugging_file) if debugging_file.present?
+
+    if @case.save
       Triage::MattermostNotifier.case_updated(@case)
       redirect_to triage_case_path(@case.case_number),
                   notice: 'Case updated successfully.'
@@ -414,6 +420,7 @@ class Triage::CasesController < ApplicationController
       :fpp_version,
       :xlights_version,
       :operating_system,
+      :debugging_file,
       :system_state,
       :fpp_outputs_state,
       :custom_solution,

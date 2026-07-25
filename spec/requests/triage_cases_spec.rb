@@ -19,8 +19,10 @@ RSpec.describe 'Triage Cases', type: :request do
       # Create temporary test files
       let(:test_image_path) { Rails.root.join('tmp', 'test_image.png') }
       let(:test_video_path) { Rails.root.join('tmp', 'test_video.mp4') }
+      let(:debug_file_path) { Rails.root.join('tmp', 'debug_test.json') }
       let(:image_file) { Rack::Test::UploadedFile.new(test_image_path, 'image/png') }
       let(:video_file) { Rack::Test::UploadedFile.new(test_video_path, 'video/mp4') }
+      let(:debug_file) { Rack::Test::UploadedFile.new(debug_file_path, 'application/json') }
 
       before do
         # Create test files
@@ -31,6 +33,7 @@ RSpec.describe 'Triage Cases', type: :request do
         
         # Create a minimal MP4 file (valid MP4 header)
         File.write(test_video_path, "\x00\x00\x00\x20ftypisom\x00\x00\x02\x00isomiso2avc1mp41\x00\x00\x00\x08mdat\x00\x00\x00\x00")
+        File.write(debug_file_path, '{"state":{"board_model":"Baldrick8"}}')
         
         # Mock mailers
         allow(TriageMailer).to receive(:case_created).and_return(double(deliver_now: true))
@@ -43,6 +46,7 @@ RSpec.describe 'Triage Cases', type: :request do
         # Clean up test files
         File.delete(test_image_path) if File.exist?(test_image_path)
         File.delete(test_video_path) if File.exist?(test_video_path)
+        File.delete(debug_file_path) if File.exist?(debug_file_path)
       end
 
       it 'creates a case with a single image file' do
@@ -112,6 +116,20 @@ RSpec.describe 'Triage Cases', type: :request do
         # Verify one is image, one is video
         expect(case_record.media.any?(&:image?)).to be true
         expect(case_record.media.any?(&:video?)).to be true
+      end
+
+      it 'creates a case with a debugging file upload' do
+        params = valid_params.deep_dup
+        params[:case][:debugging_file] = debug_file
+
+        expect {
+          post triage_cases_path(locale: :en), params: params
+        }.to change(Case, :count).by(1)
+          .and change { ActiveStorage::Attachment.count }.by(1)
+
+        case_record = Case.last
+        expect(case_record.debugging_file).to be_attached
+        expect(case_record.debugging_file.filename.to_s).to eq('debug_test.json')
       end
 
       it 'logs what files are being received in params' do

@@ -69,15 +69,59 @@
     h3 What is RoHS?
     p RoHS (Restriction of Hazardous Substances) restricts the use of specific hazardous materials in electrical and electronic equipment — making products safer for users and the environment.
 
+    h2
+      span.hk
+        span.bar
+        span.annot Downloads
+      | Certification documents
+
+    p
+      | Our Baldrick Board Family has been independently tested and certified. The certificates below cover the full product range, including Baldrick8, Baldrick17, BaldrickSwitchy, BaldrickDMX, BaldrickSignals, BaldrickInput8, BaldrickInput1, Baldrick2, BaldrickCue, and BaldrickScene.
+
+    .spec-grid
+      .spec
+        span.ic
+          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+            path d="M9 12l2 2 4-4"
+            path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"
+        h4 CE marking
+        p
+          = link_to '/certificates/ce-lvd-certificate.pdf', target: '_blank', rel: 'noopener' do
+            | LVD Certificate
+          |  — BS EN IEC 62368-1
+        p
+          = link_to '/certificates/ce-emc-certificate.pdf', target: '_blank', rel: 'noopener' do
+            | EMC Certificate
+          |  — EN 55032 / EN 55035
+        p
+          = link_to '/certificates/eu-rohs-certificate.pdf', target: '_blank', rel: 'noopener' do
+            | EU RoHS Certificate
+      .spec
+        span.ic
+          svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+            path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+        h4 UKCA marking
+        p
+          = link_to '/certificates/ukca-lvd-certificate.pdf', target: '_blank', rel: 'noopener' do
+            | LVD Certificate
+          |  — BS EN IEC 62368-1
+        p
+          = link_to '/certificates/ukca-emc-certificate.pdf', target: '_blank', rel: 'noopener' do
+            | EMC Certificate
+          |  — EN 55032 / EN 55035
+        p
+          = link_to '/certificates/uk-rohs-certificate.pdf', target: '_blank', rel: 'noopener' do
+            | UK RoHS Certificate
+
     .callout.info
       span.ic
         svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           circle cx="12" cy="12" r="10"
           path d="M12 16v-4M12 8h.01"
       div
-        span.lbl Need the paperwork?
+        span.lbl Need something else?
         p.bd
-          | If you require copies of our CE or UKCA certificates for compliance purposes, our support team can provide them on request —
+          | If you need additional compliance documentation or have questions about certification for a specific product, our support team can help —
           = link_to ' contact support', support_path(anchor: 'hardware-support')
           | .
 
