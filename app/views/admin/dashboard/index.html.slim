@@ -49,3 +49,36 @@
       .n —
       .l Knowledge
       .h Internal wiki and docs
+
+  .admin-panel
+    .admin-panel-head
+      h3 Baldrick Buddy releases
+      - if @baldrick_buddy_releases_enabled
+        = button_to 'Purge release cache', admin_baldrick_buddy_purge_cache_path, method: :post, class: 'btn btn-line-light btn-sm', data: { confirm: 'Fetch the latest GitHub release immediately?' }
+      - else
+        span.admin-mono style="color:var(--ink-mut)" GitHub not configured
+    - if @baldrick_buddy_releases_enabled
+      - if @baldrick_buddy_release
+        p.admin-sub style="margin:0 0 8px"
+          | Cached release:
+          strong= " #{@baldrick_buddy_release.tag_name}"
+          - if @baldrick_buddy_release.published_at
+            span.admin-mono style="color:var(--ink-mut)"= " · #{l(@baldrick_buddy_release.published_at.to_date, format: :long)}"
+        p style="margin:0;font-size:14px;color:var(--ink-mut)"
+          | Release metadata is cached for up to 30 minutes. Purge after publishing a new GitHub release to update the docs page and
+          = link_to ' latest.json', '/fun-stuff/baldrick-buddy/latest.json', target: '_blank', rel: 'noopener'
+          |  straight away.
+        ul style="margin:12px 0 0;padding-left:20px;font-size:14px;color:var(--ink-mut)"
+          - @baldrick_buddy_release.assets.each do |asset|
+            li= "#{asset.platform}: #{asset.name}"
+      - else
+        p style="margin:0;font-size:14px;color:var(--ink-mut)" Could not fetch the latest release. Check GitHub credentials and try purging the cache.
+    - else
+      p style="margin:0;font-size:14px;color:var(--ink-mut)"
+        | Set
+        code BALDRICK_BUDDY_GITHUB_TOKEN
+        | ,
+        code BALDRICK_BUDDY_GITHUB_OWNER
+        | , and
+        code BALDRICK_BUDDY_GITHUB_REPO
+        |  to enable release downloads.

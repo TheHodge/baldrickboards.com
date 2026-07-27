@@ -217,6 +217,17 @@ RSpec.describe "Pages", type: :request do
     end
   end
 
+  describe "GET /en/fun-stuff/baldrick-buddy" do
+    it "loads Baldrick Buddy page" do
+      allow(BaldrickBuddy::ReleaseFetcher).to receive(:fetch).and_return(nil)
+
+      get fun_stuff_baldrick_buddy_path(locale: :en)
+
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include("Baldrick Buddy")
+    end
+  end
+
   describe "GET /en/support" do
     it "loads support index page" do
       get support_path(locale: :en)

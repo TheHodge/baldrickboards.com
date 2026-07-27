@@ -28,6 +28,10 @@ class FunStuffController < ApplicationController
   def customer_showcase
   end
 
+  def baldrick_buddy
+    @release = BaldrickBuddy::ReleaseFetcher.fetch
+  end
+
   private
 
   def set_baldrickboard_page

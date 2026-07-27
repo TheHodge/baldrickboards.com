@@ -1,0 +1,152 @@
+- content_for :og_image, asset_url('baldrick-buddy-screenshot.png')
+
+= render 'shared/fun_stuff_page', page_title: 'Baldrick Buddy', current_page: 'Baldrick Buddy', page_subtitle: 'Find Baldrick boards on your network and update their firmware', document_title: 'Baldrick Buddy - Fun Stuff', meta: ['Mac, Windows & Linux', 'Network scanner', 'Firmware updates'], toc: baldrick_buddy_toc do
+  p.lead Baldrick Buddy is a desktop app that scans your local network for Baldrick boards, shows their status at a glance, and makes firmware updates a one-click affair.
+
+  .prose
+    section#overview
+      h2
+        span.hk
+          span.bar
+          span.annot Overview
+        | What is Baldrick Buddy?
+
+      p Instead of hunting for board IP addresses or opening each web interface in turn, Baldrick Buddy discovers your boards automatically and lists them in one place — board name, type, firmware version, IP address, and uptime.
+
+      figure.figure
+        .fimg
+          = image_tag 'baldrick-buddy-screenshot.png', alt: 'Baldrick Buddy showing two boards on the network with firmware update option'
+
+      p When a newer firmware is available, Buddy shows an update button right in the list. Hit Rescan any time you've powered on a new board or changed networks.
+
+    section#download
+      h2
+        span.hk
+          span.bar
+          span.annot Download
+        | Get Baldrick Buddy
+
+      - if @release
+        p
+          | Latest version:
+          strong= " #{@release.tag_name}"
+          - if @release.published_at
+            span.text-muted= " — released #{l(@release.published_at.to_date, format: :long)}"
+
+        .buddy-download-grid
+          - baldrick_buddy_platforms.each do |platform|
+            - asset = @release.asset_for(platform[:id])
+            .buddy-download-card id="download-#{platform[:id]}"
+              h3= platform[:label]
+              - if asset
+                p.buddy-filename= asset.name
+                p.buddy-size= number_to_human_size(asset.size)
+                = link_to baldrick_buddy_download_path(asset_id: asset.id, locale: nil), class: 'btn btn-solid btn-sm' do
+                  | Download
+                  span.ar ↓
+              - else
+                p.buddy-unavailable No #{platform[:label]} build available for this release yet.
+      - else
+        .callout.warn
+          span.ic
+            svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"
+              path d="M12 9v4M12 17h.01"
+          div
+            span.lbl Downloads temporarily unavailable
+            p.bd We're having trouble fetching the latest release. Please try again shortly or #{link_to 'contact support', support_path}.
+
+      p.small Baldrick Buddy is not code-signed. You'll need to approve it once on first launch — see the platform notes below.
+
+    section#macos
+      h2
+        span.hk
+          span.bar
+          span.annot macOS
+        | Installing on Mac
+
+      p On first launch, macOS Gatekeeper may block the app because it isn't signed with an Apple Developer certificate.
+
+      ol
+        li Download and open the <code>.dmg</code> file.
+        li Drag Baldrick Buddy to Applications.
+        li <strong>Right-click</strong> the app in Applications and choose <strong>Open</strong> (don't double-click the first time).
+        li Click <strong>Open</strong> in the dialog to confirm.
+      p Alternatively, go to <strong>System Settings → Privacy & Security</strong> and click <strong>Open Anyway</strong> after the first blocked launch. You only need to do this once.
+
+    section#windows
+      h2
+        span.hk
+          span.bar
+          span.annot Windows
+        | Installing on Windows
+
+      p Windows SmartScreen may warn that Baldrick Buddy is from an unknown publisher. This is expected for unsigned software.
+
+      ol
+        li Download and run the installer or <code>.exe</code>.
+        li When SmartScreen appears, click <strong>More info</strong>.
+        li Click <strong>Run anyway</strong>.
+      p If the file was blocked before you ran it, right-click the downloaded file → <strong>Properties</strong> → check <strong>Unblock</strong> at the bottom of the General tab → Apply.
+
+    section#linux
+      h2
+        span.hk
+          span.bar
+          span.annot Linux
+        | Installing on Linux
+
+      p Linux builds are distributed as an AppImage (or similar). The app is not signed with a distribution key.
+
+      ol
+        li Download the AppImage (or package).
+        li Make it executable: <code>chmod +x Baldrick-Buddy-*.AppImage</code>
+        li Run it: <code>./Baldrick-Buddy-*.AppImage</code>
+      p Some desktop environments show an "untrusted application" prompt — confirm to run. If your distro blocks unknown binaries entirely, run from a terminal so you can see any policy errors.
+
+    section#using-buddy
+      h2
+        span.hk
+          span.bar
+          span.annot Guide
+        | Using Baldrick Buddy
+
+      ol
+        li Install and launch Baldrick Buddy.
+        li Make sure your computer is on the same network as your Baldrick boards.
+        li Click <strong>Rescan</strong> if boards don't appear immediately.
+        li Click a board's IP to copy it, or use the firmware update button when an update is available.
+
+    section#support
+      h2
+        span.hk
+          span.bar
+          span.annot Help
+        | Support
+
+      p Having trouble with Baldrick Buddy or a firmware update? Our support team and community can help.
+
+      .next-grid
+        = link_to support_path, class: 'next-card' do
+          .top
+            span.kind Support
+            span.go →
+          h4 Need help?
+          p Questions about Buddy, updates, or board setup.
+        = link_to t('facebook_group_url'), class: 'next-card', target: '_blank', rel: 'noopener' do
+          .top
+            span.kind Community
+            span.go →
+          h4 Facebook group
+          p Discuss Buddy and share tips with other builders.
+
+section.cta
+  .wrap
+    h2 Keep your boards current
+    p Firmware updates also ship through each board's web interface — check System when your board nudges you.
+    .cta-btns
+      = link_to fun_stuff_release_notes_path, class: 'btn btn-bone' do
+        | Release notes
+        span.ar →
+      = link_to fun_stuff_path, class: 'btn btn-clear' do
+        | All fun stuff

@@ -35,7 +35,11 @@ registry:
 env:
   secret:
     - RAILS_MASTER_KEY
+    # Baldrick Buddy GitHub Releases (private repo read-only PAT)
+    - BALDRICK_BUDDY_GITHUB_TOKEN
   clear:
+    BALDRICK_BUDDY_GITHUB_OWNER: TheHodge
+    BALDRICK_BUDDY_GITHUB_REPO: baldrick_buddy
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
     SOLID_QUEUE_IN_PUMA: true

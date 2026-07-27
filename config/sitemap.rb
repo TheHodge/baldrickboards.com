@@ -90,6 +90,7 @@ SitemapGenerator::Sitemap.create do
     add "#{locale_prefix}/fun-stuff/panic-mode", changefreq: 'monthly', priority: 0.5
     add "#{locale_prefix}/fun-stuff/testimonials", changefreq: 'weekly', priority: 0.6
     add "#{locale_prefix}/fun-stuff/customer-showcase", changefreq: 'weekly', priority: 0.6
+    add "#{locale_prefix}/fun-stuff/baldrick-buddy", changefreq: 'weekly', priority: 0.6
     
     # Support
     add "#{locale_prefix}/support", changefreq: 'monthly', priority: 0.6

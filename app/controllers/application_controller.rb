@@ -39,7 +39,12 @@ class ApplicationController < ActionController::Base
   end
 
   def skip_locale?
-    api_route? || active_storage_route? || request.path == "/qr-code-sticker" || request.path == "/2026"
+    api_route? || baldrick_buddy_api_route? || active_storage_route? || request.path == "/qr-code-sticker" || request.path == "/2026"
+  end
+
+  def baldrick_buddy_api_route?
+    request.path == "/fun-stuff/baldrick-buddy/latest.json" ||
+      request.path.match?(%r{\A/fun-stuff/baldrick-buddy/download/\d+\z})
   end
 
   def api_route?

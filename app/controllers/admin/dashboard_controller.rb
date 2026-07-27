@@ -25,5 +25,8 @@ class Admin::DashboardController < Admin::BaseController
     @total_404_errors = ErrorLog.sum(:count)
     @unique_404_errors = ErrorLog.count
     @recent_404_errors = ErrorLog.where(last_seen: 7.days.ago..Time.current).sum(:count)
+
+    @baldrick_buddy_releases_enabled = BaldrickBuddy::Config.enabled?
+    @baldrick_buddy_release = BaldrickBuddy::ReleaseFetcher.fetch if @baldrick_buddy_releases_enabled
   end
 end

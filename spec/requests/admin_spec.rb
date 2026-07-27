@@ -51,6 +51,24 @@ RSpec.describe "Admin", type: :request do
         expect(response.body).to include("Admin Dashboard")
       end
 
+      it "purges Baldrick Buddy release cache" do
+        release = BaldrickBuddy::Release.new(
+          tag_name: "v0.3.9",
+          version: "0.3.9",
+          published_at: Time.zone.parse("2026-07-20T14:30:00Z"),
+          body: nil,
+          assets: []
+        )
+
+        expect(BaldrickBuddy::ReleaseFetcher).to receive(:purge_cache!)
+        expect(BaldrickBuddy::ReleaseFetcher).to receive(:fetch).and_return(release)
+
+        post admin_baldrick_buddy_purge_cache_path(locale: :en)
+
+        expect(response).to redirect_to(admin_root_path(locale: :en))
+        expect(flash[:notice]).to include("v0.3.9")
+      end
+
       it "allows access to admin newsletter subscribers" do
         get "/en/admin/newsletter-subscribers"
         expect(response).to have_http_status(:success)

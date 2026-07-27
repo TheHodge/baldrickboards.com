@@ -57,6 +57,15 @@ module FunStuffHelper
       bullets: ['Photo gallery', 'Real-world installs', 'Get featured', 'Submit your show']
     },
     {
+      id: 'baldrick_buddy',
+      path: :fun_stuff_baldrick_buddy_path,
+      title: 'Baldrick Buddy',
+      tag: 'Desktop app',
+      image: 'baldrick-buddy-screenshot.png',
+      description: 'Scan your network for Baldrick boards and update firmware from one desktop app — Mac, Windows and Linux.',
+      bullets: ['Network discovery', 'One-click updates', 'Mac, Windows & Linux', 'Free download']
+    },
+    {
       id: 'faq',
       path: :fun_stuff_faq_path,
       title: 'FAQ',
@@ -203,6 +212,26 @@ module FunStuffHelper
       { id: 'medium', title: 'Medium boards', items: [] },
       { id: 'large', title: 'Large boards', items: [] },
       { id: 'compatibility', title: 'Board compatibility', items: [] }
+    ]
+  end
+
+  def baldrick_buddy_toc
+    [
+      { id: 'overview', title: 'Overview', items: [] },
+      { id: 'download', title: 'Download', items: baldrick_buddy_platforms.map { |p| { id: "download-#{p[:id]}", title: p[:label] } } },
+      { id: 'macos', title: 'macOS', items: [] },
+      { id: 'windows', title: 'Windows', items: [] },
+      { id: 'linux', title: 'Linux', items: [] },
+      { id: 'using-buddy', title: 'Using Buddy', items: [] },
+      { id: 'support', title: 'Support', items: [] }
+    ]
+  end
+
+  def baldrick_buddy_platforms
+    [
+      { id: 'mac', label: 'macOS' },
+      { id: 'windows', label: 'Windows' },
+      { id: 'linux', label: 'Linux' }
     ]
   end
 

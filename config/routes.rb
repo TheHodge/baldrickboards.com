@@ -138,6 +138,10 @@ Rails.application.routes.draw do
     match "todoist/webhook", to: "todoist_webhooks#verify", via: [:get, :head]
     post "todoist/webhook", to: "todoist_webhooks#create"
   end
+
+  # Baldrick Buddy release API (no locale prefix — used by desktop app)
+  get "fun-stuff/baldrick-buddy/latest.json", to: "baldrick_buddy/releases#latest", defaults: { format: :json }
+  get "fun-stuff/baldrick-buddy/download/:asset_id", to: "baldrick_buddy/downloads#show", as: :baldrick_buddy_download
   
   # Locale-based routing
   scope "(:locale)", locale: /en|es|fr|de/ do
@@ -195,6 +199,7 @@ Rails.application.routes.draw do
   get 'fun-stuff/panic-mode', to: 'fun_stuff#panic_mode'
   get 'fun-stuff/testimonials', to: 'fun_stuff#testimonials'
   get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
+  get 'fun-stuff/baldrick-buddy', to: 'fun_stuff#baldrick_buddy'
     
   # Where to buy page
   get 'where-to-buy-baldrick-boards', to: 'pages#where_to_buy'
@@ -250,6 +255,8 @@ Rails.application.routes.draw do
     
     # Admin dashboard
     root 'dashboard#index'
+
+    post 'baldrick-buddy/purge-cache', to: 'baldrick_buddy_releases#purge', as: :baldrick_buddy_purge_cache
     
     # Analytics redirect
     get 'analytics', to: 'analytics#index'

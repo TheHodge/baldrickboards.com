@@ -61,8 +61,14 @@ namespace :search do
       'fun-stuff' => {
         title: 'Fun Stuff',
         url: '/fun-stuff',
-        description: 'Fun Stuff and additional resources for Baldrick Boards. Release notes, STL files, board dimensions, panic mode information, and other useful resources for Baldrick enthusiasts.',
-        features: 'release notes, STL files, board dimensions, panic mode, resources, enthusiasts'
+        description: 'Fun Stuff and additional resources for Baldrick Boards. Release notes, STL files, board dimensions, Baldrick Buddy desktop app, panic mode information, and other useful resources for Baldrick enthusiasts.',
+        features: 'release notes, STL files, board dimensions, Baldrick Buddy, panic mode, resources, enthusiasts'
+      },
+      'baldrick-buddy' => {
+        title: 'Baldrick Buddy',
+        url: '/fun-stuff/baldrick-buddy',
+        description: 'Baldrick Buddy desktop app for Mac, Windows and Linux. Scan your network for Baldrick boards and update firmware from one app.',
+        features: 'desktop app, network scanner, firmware updates, Mac, Windows, Linux, download'
       }
     }
     
