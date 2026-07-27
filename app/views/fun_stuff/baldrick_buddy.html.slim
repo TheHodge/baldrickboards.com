@@ -27,25 +27,41 @@
         | Get Baldrick Buddy
 
       - if @release
-        p
-          | Latest version:
-          strong= " #{@release.tag_name}"
-          - if @release.published_at
-            span.text-muted= " — released #{l(@release.published_at.to_date, format: :long)}"
+        - mac_asset = @release.asset_for('mac')
+        - windows_asset = @release.asset_for('windows')
+        - linux_asset = @release.asset_for('linux')
+        .buddy-downloads data-controller="buddy-download" data-buddy-download-mac-url-value=(mac_asset ? baldrick_buddy_download_path(asset_id: mac_asset.id, locale: nil) : '') data-buddy-download-windows-url-value=(windows_asset ? baldrick_buddy_download_path(asset_id: windows_asset.id, locale: nil) : '') data-buddy-download-linux-url-value=(linux_asset ? baldrick_buddy_download_path(asset_id: linux_asset.id, locale: nil) : '') data-buddy-download-version-value=@release.tag_name
+          .buddy-primary
+            a.btn.btn-solid.buddy-primary-btn href="#download" data-buddy-download-target="primary"
+              span.buddy-primary-label data-buddy-download-target="label" Download Baldrick Buddy
+              span.ar ↓
+            .buddy-primary-meta
+              p.buddy-primary-hint data-buddy-download-target="hint" Detecting your platform…
+              p.buddy-version
+                | Latest:
+                strong= " #{@release.tag_name}"
+                - if @release.published_at
+                  span= " · #{l(@release.published_at.to_date, format: :long)}"
 
-        .buddy-download-grid
-          - baldrick_buddy_platforms.each do |platform|
-            - asset = @release.asset_for(platform[:id])
-            .buddy-download-card id="download-#{platform[:id]}"
-              h3= platform[:label]
-              - if asset
-                p.buddy-filename= asset.name
-                p.buddy-size= number_to_human_size(asset.size)
-                = link_to baldrick_buddy_download_path(asset_id: asset.id, locale: nil), class: 'btn btn-solid btn-sm' do
-                  | Download
-                  span.ar ↓
-              - else
-                p.buddy-unavailable No #{platform[:label]} build available for this release yet.
+          .buddy-download-grid
+            - baldrick_buddy_platforms.each do |platform|
+              - asset = @release.asset_for(platform[:id])
+              .buddy-download-card id="download-#{platform[:id]}" data-buddy-download-target="card" data-platform=platform[:id] class=(asset ? nil : 'is-unavailable')
+                .buddy-card-icon
+                  = baldrick_buddy_platform_icon(platform[:id])
+                .buddy-card-body
+                  h3= platform[:label]
+                  - if asset
+                    p.buddy-filename= asset.name
+                    p.buddy-size= number_to_human_size(asset.size)
+                  - else
+                    p.buddy-unavailable No build for this release yet.
+                - if asset
+                  = link_to baldrick_buddy_download_path(asset_id: asset.id, locale: nil), class: 'btn btn-line-light btn-sm buddy-card-btn' do
+                    | Download
+                    span.ar ↓
+                - else
+                  span.buddy-card-btn.is-disabled Unavailable
       - else
         .callout.warn
           span.ic
