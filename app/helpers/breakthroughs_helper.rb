@@ -53,6 +53,15 @@ module BreakthroughsHelper
       image: 'cunningfx.png',
       description: 'Built-in effects and presets in the web interface — rainbow, twinkle, bounce and more, no show player required.',
       bullets: ['Layered presets', 'Per-port effects', 'Real-time control', 'Turnip Network triggers']
+    },
+    {
+      id: 'busk_board',
+      path: :breakthroughs_busk_board_path,
+      title: 'Busk Board',
+      tag: 'Live control',
+      image: 'big-red-button.png',
+      description: 'Trigger CunningFX and DMX presets from big buttons on your phone or tablet — busk your show without a laptop.',
+      bullets: ['Mobile & tablet ready', 'CunningFX triggers', 'DMX preset control', 'One-tap busking']
     }
   ].freeze
 
@@ -94,6 +103,14 @@ module BreakthroughsHelper
         ]
       },
       { id: 'turnip-network', title: 'Turnip Network', items: [] }
+    ]
+  end
+
+  def busk_board_toc
+    [
+      { id: 'what-is-busk-board', title: 'What is Busk Board', items: [] },
+      { id: 'how-it-works', title: 'How it works', items: [] },
+      { id: 'inspiration', title: 'Inspiration', items: [] }
     ]
   end
 

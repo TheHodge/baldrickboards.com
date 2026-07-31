@@ -153,6 +153,14 @@ RSpec.describe "Pages", type: :request do
     end
   end
 
+  describe "GET /en/breakthroughs/busk-board" do
+    it "loads Busk Board breakthrough page" do
+      get breakthroughs_busk_board_path(locale: :en)
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include("Busk Board")
+    end
+  end
+
   describe "GET /en/breakthroughs/hodgical-test-mode" do
     it "loads Hodgical Test Mode breakthrough page" do
       get breakthroughs_hodgical_test_mode_path(locale: :en)

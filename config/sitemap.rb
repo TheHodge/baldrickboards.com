@@ -79,6 +79,7 @@ SitemapGenerator::Sitemap.create do
     add "#{locale_prefix}/breakthroughs/turniput", changefreq: 'monthly', priority: 0.7
     add "#{locale_prefix}/breakthroughs/hodgical-test-mode", changefreq: 'monthly', priority: 0.7
     add "#{locale_prefix}/breakthroughs/cunningfx", changefreq: 'monthly', priority: 0.7
+    add "#{locale_prefix}/breakthroughs/busk-board", changefreq: 'monthly', priority: 0.7
     
     # Fun Stuff
     add "#{locale_prefix}/fun-stuff", changefreq: 'weekly', priority: 0.6

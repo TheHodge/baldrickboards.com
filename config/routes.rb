@@ -182,6 +182,7 @@ Rails.application.routes.draw do
   get 'breakthroughs/turniput', to: 'breakthroughs#turniput'
   get 'breakthroughs/hodgical-test-mode', to: 'breakthroughs#hodgical_test_mode'
   get 'breakthroughs/cunningfx', to: 'breakthroughs#cunningfx'
+  get 'breakthroughs/busk-board', to: 'breakthroughs#busk_board'
   
   # FAQ section
   get 'faq', to: 'faq#index'

@@ -22,6 +22,9 @@ class BreakthroughsController < ApplicationController
   def cunningfx
   end
 
+  def busk_board
+  end
+
   private
 
   def set_baldrickboard_page

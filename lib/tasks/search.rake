@@ -190,6 +190,11 @@ namespace :search do
         name: 'CunningFX',
         description: 'Advanced web interface features for Baldrick8. Enhanced user interface with beta software releases, original naming options, and cutting-edge capabilities.',
         features: 'web interface, beta releases, original naming, advanced features, user interface'
+      },
+      'busk-board' => {
+        name: 'Busk Board',
+        description: 'Trigger CunningFX and DMX presets from big buttons on your phone or tablet. Live busking control surface inspired by Chris Pinkham\'s Big Button plugin.',
+        features: 'busking, mobile control, tablet buttons, CunningFX triggers, DMX presets, live control'
       }
     }
     

@@ -26,10 +26,18 @@
   {
     "title": "Fun Stuff",
     "url": "/fun-stuff",
-    "content": "Fun Stuff and additional resources for Baldrick Boards. Release notes, STL files, board dimensions, panic mode information, and other useful resources for Baldrick enthusiasts. Features include: release notes, STL files, board dimensions, panic mode, resources, enthusiasts",
+    "content": "Fun Stuff and additional resources for Baldrick Boards. Release notes, STL files, board dimensions, Baldrick Buddy desktop app, panic mode information, and other useful resources for Baldrick enthusiasts. Features include: release notes, STL files, board dimensions, Baldrick Buddy, panic mode, resources, enthusiasts",
     "category": "fun-stuff",
     "tags": [],
-    "excerpt": "Fun Stuff and additional resources for Baldrick Boards. Release notes, STL files, board dimensions, panic mode information, and other useful resources for Baldrick enthusiasts. Features include: releas..."
+    "excerpt": "Fun Stuff and additional resources for Baldrick Boards. Release notes, STL files, board dimensions, Baldrick Buddy desktop app, panic mode information, and other useful resources for Baldrick enthusias..."
+  },
+  {
+    "title": "Baldrick Buddy",
+    "url": "/fun-stuff/baldrick-buddy",
+    "content": "Baldrick Buddy desktop app for Mac, Windows and Linux. Scan your network for Baldrick boards and update firmware from one app. Features include: desktop app, network scanner, firmware updates, Mac, Windows, Linux, download",
+    "category": "baldrick-buddy",
+    "tags": [],
+    "excerpt": "Baldrick Buddy desktop app for Mac, Windows and Linux. Scan your network for Baldrick boards and update firmware from one app. Features include: desktop app, network scanner, firmware updates, Mac, Win..."
   },
   {
     "title": "baldrickboard.local not loading - FAQ",
@@ -137,23 +145,23 @@
   {
     "title": "Baldrick8",
     "url": "/boards/baldrick8",
-    "content": "An 8 port controller which pushes the boundaries of what's possible with a budget lighting controller. The Baldrick8 is our flagship 8-output pixel controller, designed for professional lighting displays and large-scale installations. With support for up to 2250 channels per port (which is 750 RGB pixels at 40fps) and high refresh rates, it's perfect for creating stunning visual effects. Features include: 2 ports accepting 5v–24v (or up to 48v on version 1.1) with onboard power management and the option for individual voltages (to avoid any BOOM BOOM BOOM BOOMS)., 8 Ports handling many pixels per port (up to 2250 channels per port (which is 750 RGB pixels at 40fps), 2 Power inputs (which combined with the included 7.5 amp fuses allows for full pixel runs at 100%), DDP, Artnet, E1.31 & sACN compatible, 3 Programmable Button ports (Can use the FPP API to start / stop a sequence), Small footprint compatible with other smart receiver mounts, No Pi or FPP Licence required, Push from xLights integration In addition, we've tried to add some simple quality of life improvements such as a QR code which links directly to the manual (easy to read on a mobile in the dark) and the three buttons have not only ports but physical buttons onboard to help you test without having to hook everything up.",
+    "content": "An 8 port controller which pushes the boundaries of what's possible with a budget lighting controller. Eight ports, proper ethernet, and up to 750 RGB pixels per port at 40fps. Built for budget shows that still want to look good. Features include: 2 ports accepting 5v-24v (or up to 48v on version 1.1) with onboard power management and the option for individual voltages (to avoid any BOOM BOOM BOOM BOOMS)., 8 Ports handling many pixels per port (up to 2250 channels per port (which is 750 RGB pixels at 40fps), 2 Power inputs (which combined with the included 7.5 amp fuses allows for full pixel runs at 100%), DDP, Artnet, E1.31 & sACN compatible, 3 Programmable Button ports (Can use the FPP API to start / stop a sequence), Small footprint compatible with other smart receiver mounts, No Pi or FPP Licence required, Push from xLights integration In addition, we've tried to add some simple quality of life improvements such as a QR code which links directly to the manual (easy to read on a mobile in the dark) and the three buttons have not only ports but physical buttons onboard to help you test without having to hook everything up.",
     "category": "boards",
     "tags": [
       "baldrick8"
     ],
-    "excerpt": "An 8 port controller which pushes the boundaries of what's possible with a budget lighting controller. The Baldrick8 is our flagship 8-output pixel controller, designed for professional lighting displa..."
+    "excerpt": "An 8 port controller which pushes the boundaries of what's possible with a budget lighting controller. Eight ports, proper ethernet, and up to 750 RGB pixels per port at 40fps. Built for budget shows t..."
   },
   {
     "title": "What is Hodgical Mode? - Baldrick8",
     "url": "/boards/baldrick8/faq#hodgical-test-mode",
-    "content": "What is Hodgical Mode? Hodgical Mode is our special test mode that adds a bit of fun to testing your pixels. It's named after one of our team members who has a particular sense of humor about these things.",
+    "content": "What is Hodgical Mode? Hodgical Mode is our special test mode that adds a bit of fun to testing your pixels. It's named after one of our team members who has a particular sense of humour about these things.",
     "category": "Baldrick8 FAQ",
     "tags": [
       "baldrick8",
       "faq"
     ],
-    "excerpt": "What is Hodgical Mode? Hodgical Mode is our special test mode that adds a bit of fun to testing your pixels. It's named after one of our team members who has a particular sense of humor about these thi..."
+    "excerpt": "What is Hodgical Mode? Hodgical Mode is our special test mode that adds a bit of fun to testing your pixels. It's named after one of our team members who has a particular sense of humour about these th..."
   },
   {
     "title": "Where is the WiFi? - Baldrick8",
@@ -448,6 +456,14 @@
     "category": "breakthroughs",
     "tags": [],
     "excerpt": "Advanced web interface features for Baldrick8. Enhanced user interface with beta software releases, original naming options, and cutting-edge capabilities. Features include: web interface, beta release..."
+  },
+  {
+    "title": "Busk Board",
+    "url": "/breakthroughs/busk-board",
+    "content": "Trigger CunningFX and DMX presets from big buttons on your phone or tablet. Live busking control surface inspired by Chris Pinkham's Big Button plugin. Features include: busking, mobile control, tablet buttons, CunningFX triggers, DMX presets, live control",
+    "category": "breakthroughs",
+    "tags": [],
+    "excerpt": "Trigger CunningFX and DMX presets from big buttons on your phone or tablet. Live busking control surface inspired by Chris Pinkham's Big Button plugin. Features include: busking, mobile control, tablet..."
   },
   {
     "title": "Support",

@@ -52,6 +52,7 @@ namespace :og do
       { path: '/breakthroughs/turniput', name: 'Turniput', type: 'breakthrough' },
       { path: '/breakthroughs/hodgical-test-mode', name: 'Hodgical Test Mode', type: 'breakthrough' },
       { path: '/breakthroughs/cunningfx', name: 'CunningFX', type: 'breakthrough' },
+      { path: '/breakthroughs/busk-board', name: 'Busk Board', type: 'breakthrough' },
     ]
     
     # Fun Stuff section

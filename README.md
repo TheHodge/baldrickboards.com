@@ -26,6 +26,7 @@ The site follows the navigation structure:
   - Turniput (`/breakthroughs/turniput/`)
   - Hodgical Test Mode (`/breakthroughs/hodgical-test-mode/`)
   - CunningFX (`/breakthroughs/cunningfx/`)
+  - Busk Board (`/breakthroughs/busk-board/`)
 - **Guides** (`/guides/`) - Tutorials and how-to guides
   - Light Show 101 (`/guides/light-show-101/`)
   - Easy FPP Joke Button (`/guides/easy-fpp-joke-button/`)
