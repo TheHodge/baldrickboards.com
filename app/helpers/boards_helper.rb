@@ -421,7 +421,8 @@ module BoardsHelper
         ] },
         { key: 'us', code: 'us', country: 'United States', vendors: [
           { name: 'Gilbert Engineering', url: 'https://gilbertengineeringusa.com/products/baldrick-17-port-controller-geusa-edition' },
-          { name: 'Wired Watts', url: 'https://www.wiredwatts.com/products/brpixel17' }
+          { name: 'Wired Watts', url: 'https://www.wiredwatts.com/products/brpixel17' },
+          { name: 'Baldrick Store', url: 'https://www.baldrickstore.com/pixel-controllers/baldrick17/' }
         ] },
         { key: 'au', code: 'au', country: 'Australia', vendors: [
           { name: 'Hanson Electronics', url: 'https://www.hansonelectronics.com.au/product/baldrick-17-port-pixel-controller/' }
