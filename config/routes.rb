@@ -201,6 +201,7 @@ Rails.application.routes.draw do
   get 'fun-stuff/testimonials', to: 'fun_stuff#testimonials'
   get 'fun-stuff/customer-showcase', to: 'fun_stuff#customer_showcase'
   get 'fun-stuff/baldrick-buddy', to: 'fun_stuff#baldrick_buddy'
+  get 'fun-stuff/baldrick-buddy/privacy', to: 'fun_stuff#baldrick_buddy_privacy'
     
   # Where to buy page
   get 'where-to-buy-baldrick-boards', to: 'pages#where_to_buy'

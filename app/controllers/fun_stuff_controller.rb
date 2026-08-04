@@ -32,6 +32,9 @@ class FunStuffController < ApplicationController
     @release = BaldrickBuddy::ReleaseFetcher.fetch
   end
 
+  def baldrick_buddy_privacy
+  end
+
   private
 
   def set_baldrickboard_page

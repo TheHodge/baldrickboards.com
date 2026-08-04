@@ -7,6 +7,9 @@ section.hero-blueprint
       span.sep= '/'
       = link_to 'Fun Stuff', fun_stuff_path
       span.sep= '/'
+      - if local_assigns[:parent_title].present? && local_assigns[:parent_path].present?
+        = link_to parent_title, parent_path
+        span.sep= '/'
       span.cur= current_page
     .eye
       span.bar

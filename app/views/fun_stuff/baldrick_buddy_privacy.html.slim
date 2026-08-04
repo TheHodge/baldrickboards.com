@@ -1,0 +1,216 @@
+= render 'shared/fun_stuff_page', page_title: 'Privacy Policy', current_page: 'Privacy Policy', page_subtitle: 'How Baldrick Buddy handles information on phone, tablet, or desktop', document_title: 'Privacy Policy — Baldrick Buddy', eye_label: 'Baldrick Buddy', parent_title: 'Baldrick Buddy', parent_path: fun_stuff_baldrick_buddy_path, meta: ['Effective 4 August 2026', 'Baldrick Buddy', 'No account required'], toc: baldrick_buddy_privacy_toc do
+  p.lead This privacy policy explains how Baldrick Buddy (“the app”) handles information when you use it on phone, tablet, or desktop.
+
+  .prose
+    .callout.info
+      span.ic
+        svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          circle cx="12" cy="12" r="10"
+          path d="M12 16v-4M12 8h.01"
+      div
+        span.lbl Details
+        p.bd
+          | Product: Baldrick Buddy · Operator: Baldrick (
+          = link_to 'www.baldrickboard.com', 'https://www.baldrickboard.com', target: '_blank', rel: 'noopener'
+          | ) · Contact: via
+          = link_to ' www.baldrickboard.com', 'https://www.baldrickboard.com', target: '_blank', rel: 'noopener'
+
+    section#summary
+      h2
+        span.hk
+          span.bar
+          span.annot At a glance
+        | Summary
+
+      ul
+        li Baldrick Buddy does
+          strong  not
+          |  require an account.
+        li Baldrick Buddy does
+          strong  not
+          |  sell personal data.
+        li Discovery and firmware updates talk to devices on
+          strong  your local network
+          | .
+        li Limited optional contact with baldrickboard.com may occur (for example, checking for a newer version of the app).
+        li Some information may be stored
+          strong  only on your device
+          |  to make the app work better.
+
+    section#what-the-app-does
+      h2
+        span.hk
+          span.bar
+          span.annot Product
+        | What the app does
+
+      p Baldrick Buddy helps you find Baldrick lighting controllers on your local network, view basic status, open each board’s web interface in your browser, and start firmware updates.
+
+    section#information-we-process
+      h2
+        span.hk
+          span.bar
+          span.annot Data
+        | Information we process
+
+      h3#on-your-device On your device
+
+      p Depending on platform and version, the app may store locally:
+
+      ul
+        li Recently discovered board identifiers such as IP addresses and hostnames (so boards can reappear faster)
+        li App preferences and settings
+        li Temporary caches needed for scanning or update progress
+
+      p This data stays on your device unless you choose to share it somehow outside the app (for example by copying an IP address).
+
+      h3#on-your-local-network On your local network
+
+      p To find and manage boards, the app may:
+
+      ul
+        li Send and receive local-network discovery traffic (including broadcast/multicast/UDP and Bonjour/mDNS-style service discovery where available)
+        li Make HTTP requests to devices on your LAN (for example
+          code  /system_state
+          |  and update endpoints)
+        li Scan nearby addresses on your local subnet when needed to locate boards
+
+      p Traffic used for discovery and board control is intended to stay on your LAN. The app validates responses so non-Baldrick devices are not listed as boards after checks fail.
+
+      h3#with-baldrickboard-com With baldrickboard.com
+
+      p The app may occasionally contact baldrickboard.com (or related Baldrick-operated URLs) for product purposes such as:
+
+      ul
+        li Checking whether a newer version of Baldrick Buddy is available
+        li Opening Baldrick website links you choose (for example support or product pages)
+
+      p Those requests are not used to upload your board list or LAN inventory as a cloud sync feature.
+
+    section#what-we-do-not-do
+      h2
+        span.hk
+          span.bar
+          span.annot Limits
+        | What we do not do
+
+      p Baldrick Buddy does not:
+
+      ul
+        li Create user accounts or require sign-in
+        li Sell your personal information
+        li Use your board discovery data for advertising
+        li Require access to your contacts, photos, microphone, or camera for core features
+
+    section#permissions
+      h2
+        span.hk
+          span.bar
+          span.annot Access
+        | Permissions
+
+      p Depending on the platform, the operating system may ask for permission to:
+
+      ul
+        li Access the
+          strong  local network
+          |  (required to discover and talk to boards)
+        li Use related networking capabilities (for example multicast/broadcast where the platform requires approval)
+
+      p If you deny local-network access, discovery and updates will not work correctly.
+
+    section#children
+      h2
+        span.hk
+          span.bar
+          span.annot Age
+        | Children
+
+      p Baldrick Buddy is not directed at children under 13, and we do not knowingly collect personal information from children under 13.
+
+    section#data-retention
+      h2
+        span.hk
+          span.bar
+          span.annot Retention
+        | Data retention
+
+      p Locally stored board history and preferences remain on your device until you clear app data, uninstall the app, or use an in-app option to clear them (where provided).
+
+    section#third-parties
+      h2
+        span.hk
+          span.bar
+          span.annot Stores
+        | Third parties
+
+      p Store platforms (Apple App Store, Google Play, Microsoft Store, and similar) may collect their own analytics, crash, or purchase information under their policies when you download or update the app. That processing is controlled by those platforms, not by Baldrick Buddy’s discovery features.
+
+    section#international-users
+      h2
+        span.hk
+          span.bar
+          span.annot Where
+        | International users
+
+      p Baldrick Buddy is offered internationally. Local storage and network requests happen on the device and network you use. Any contact with baldrickboard.com is processed in connection with operating that website and related product services.
+
+    section#your-choices
+      h2
+        span.hk
+          span.bar
+          span.annot Control
+        | Your choices
+
+      p You can:
+
+      ul
+        li Revoke local-network (or related) permissions in system settings
+        li Clear app data or uninstall the app to remove locally stored preferences and known-board history
+        li Avoid optional website/update checks by not using those features, where the app makes them optional
+
+    section#changes
+      h2
+        span.hk
+          span.bar
+          span.annot Updates
+        | Changes to this policy
+
+      p We may update this privacy policy from time to time. The version published on baldrickboard.com is the authoritative version. Material changes will be reflected by updating the effective date above.
+
+    section#contact
+      h2
+        span.hk
+          span.bar
+          span.annot Reach us
+        | Contact
+
+      p
+        | Privacy questions about Baldrick Buddy: use the contact options on
+        = link_to ' www.baldrickboard.com', 'https://www.baldrickboard.com', target: '_blank', rel: 'noopener'
+        | .
+
+    .next-grid
+      = link_to fun_stuff_baldrick_buddy_path, class: 'next-card' do
+        .top
+          span.kind Product
+          span.go →
+        h4 Baldrick Buddy
+        p Back to downloads and how Buddy works.
+      = link_to support_path, class: 'next-card' do
+        .top
+          span.kind Support
+          span.go →
+        h4 Support
+        p Questions about Buddy, updates, or board setup.
+
+section.cta
+  .wrap
+    h2 Baldrick Buddy
+    p Find boards on your network and keep their firmware current.
+    .cta-btns
+      = link_to fun_stuff_baldrick_buddy_path, class: 'btn btn-bone' do
+        | Get Baldrick Buddy
+        span.ar →
+      = link_to fun_stuff_path, class: 'btn btn-clear' do
+        | All fun stuff

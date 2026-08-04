@@ -236,6 +236,16 @@ RSpec.describe "Pages", type: :request do
     end
   end
 
+  describe "GET /en/fun-stuff/baldrick-buddy/privacy" do
+    it "loads Baldrick Buddy privacy policy page" do
+      get fun_stuff_baldrick_buddy_privacy_path(locale: :en)
+
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include("Privacy Policy")
+      expect(response.body).to include("Baldrick Buddy")
+    end
+  end
+
   describe "GET /en/support" do
     it "loads support index page" do
       get support_path(locale: :en)

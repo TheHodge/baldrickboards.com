@@ -227,6 +227,31 @@ module FunStuffHelper
     ]
   end
 
+  def baldrick_buddy_privacy_toc
+    [
+      { id: 'summary', title: 'Summary', items: [] },
+      { id: 'what-the-app-does', title: 'What the app does', items: [] },
+      {
+        id: 'information-we-process',
+        title: 'Information we process',
+        items: [
+          { id: 'on-your-device', title: 'On your device' },
+          { id: 'on-your-local-network', title: 'On your local network' },
+          { id: 'with-baldrickboard-com', title: 'With baldrickboard.com' }
+        ]
+      },
+      { id: 'what-we-do-not-do', title: 'What we do not do', items: [] },
+      { id: 'permissions', title: 'Permissions', items: [] },
+      { id: 'children', title: 'Children', items: [] },
+      { id: 'data-retention', title: 'Data retention', items: [] },
+      { id: 'third-parties', title: 'Third parties', items: [] },
+      { id: 'international-users', title: 'International users', items: [] },
+      { id: 'your-choices', title: 'Your choices', items: [] },
+      { id: 'changes', title: 'Changes', items: [] },
+      { id: 'contact', title: 'Contact', items: [] }
+    ]
+  end
+
   def baldrick_buddy_platforms
     [
       { id: 'mac', label: 'macOS' },
