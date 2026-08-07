@@ -24,6 +24,6 @@ section.hero-blueprint
         - meta.each do |item|
           span= item
 
-article.page
+article.page class=("page--wide" if local_assigns[:wide])
   .col
     = yield

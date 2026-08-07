@@ -204,10 +204,7 @@ class Triage::CasesController < ApplicationController
     @solutions = @case.solutions.includes(:case_solutions)
                       .order('case_solutions.match_score DESC')
                       .limit(5)
-    # Eager load comments for display
-    @case.case_comments.load
-    # Eager load solved_by_solution association
-    @case = Case.includes(:solved_by_solution).find(@case.id)
+    @case = Case.includes(:solved_by_solution, :case_comments).find(@case.id)
   end
 
   def verify_access

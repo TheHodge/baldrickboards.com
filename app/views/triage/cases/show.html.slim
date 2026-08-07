@@ -1,6 +1,3 @@
-- content_for :title, "Christmas Triage - Case ##{@case.case_number}"
-
-/ Open Graph Meta Tags for Social Media Sharing
 - case_url = triage_case_url(@case.case_number, locale: I18n.locale)
 - case_title = "Case ##{@case.case_number} - Christmas Triage - Baldrick Boards"
 - case_description = @case.problem_summary.present? ? @case.problem_summary : truncate(@case.problem_description, length: 200)
@@ -8,402 +5,241 @@
 - if @case.media.attached?
   - first_image = @case.media.find { |m| m.image? }
   - if first_image
-    - # Generate full URL for Open Graph (must be absolute URL with domain)
     - og_image_url = rails_blob_url(first_image, only_path: false)
 - set_og_data title: case_title, description: case_description, url: case_url, image: og_image_url, type: "article"
 - content_for :og_url, case_url
 
-.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
-  / Case Created Success Box - Only show on case creation (when flash notice is present)
+- issue_summary = @case.problem_summary.present? ? @case.problem_summary : truncate(@case.problem_description, length: 150, separator: ' ', omission: '...')
+- status_label = @case.open? ? 'Open' : 'Solved'
+- opened_meta = @case.created_at.strftime('%b %-d, %Y')
+- case_meta = [status_label, "Opened #{opened_meta}"]
+- case_meta << @case.affected_boards.join(', ') if @case.affected_boards.present? && @case.affected_boards.any?
+
+= render 'shared/triage_page', page_title: "Case ##{@case.case_number}", current_page: "Case ##{@case.case_number}", parent_page: true, page_subtitle: issue_summary, document_title: "Christmas Triage - Case ##{@case.case_number}", meta: case_meta, wide: true do
+
   - if flash[:notice].present? && flash[:notice].include?('Case created successfully')
-    - case_url = triage_case_url(@case.case_number, locale: I18n.locale)
-    .mb-8.bg-gradient-to-r.from-indigo-50.to-purple-50.rounded-lg.shadow-sm.border.border-indigo-200.overflow-hidden
-      .p-6
-        h3.text-lg.font-bold.text-gray-900.mb-4.flex.items-center
-          svg.w-5.h-5.mr-2.text-indigo-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          | Case created!
-        p.text-gray-700.mb-4 You can now use this URL to get help in the Baldrick community or other resources (it's also pinged our team with the information):
-        .bg-white.border.border-gray-300.rounded-md.p-3.mb-4.flex.items-center.justify-between.gap-3
-          = link_to case_url, case_url, id: "case-url-link", class: "text-sm font-mono text-indigo-600 hover:text-indigo-800 break-all flex-1", target: "_blank", data: { url: case_url }
-          button#copy-url-btn.inline-flex.items-center.px-3.py-2.bg-gray-100.text-gray-700.rounded-md.hover:bg-gray-200.focus:outline-none.focus:ring-2.focus:ring-offset-2.focus:ring-indigo-500.transition-colors.text-sm.font-medium type="button" data-url=case_url
-            svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-            span#copy-btn-text Copy
-        - community_url = 'https://www.facebook.com/groups/ilightthat'
-        = link_to community_url, target: "_blank", class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors font-medium mb-4" do
-          svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-          | Visit Baldrick Community
-        p.text-sm.text-gray-600 At the bottom of the case we have some possible solutions for you to look at. If you find a solution, please update the case to say solved and let us know what fixed it!
+    .triage-banner.is-success
+      h3 Case created!
+      p You can now use this URL to get help in the Baldrick community or other resources — we've also pinged our team with the information:
+      .triage-url-row
+        = link_to case_url, case_url, id: 'case-url-link', target: '_blank', data: { url: case_url }
+        button#copy-url-btn.btn.btn-line-light.btn-sm type="button" data-url=case_url
+          span#copy-btn-text Copy
+      = link_to 'https://www.facebook.com/groups/ilightthat', target: '_blank', class: 'btn btn-solid btn-sm' do
+        | Visit Baldrick Community
+        span.ar →
+      p At the bottom of the case we have some possible solutions. If you find a fix, please mark the case as solved and tell us what worked.
 
-  / Breadcrumb Navigation
-  = render 'shared/breadcrumbs', breadcrumbs: [{ title: 'Home', path: root_path }, { title: 'Christmas Triage', path: triage_cases_path }, { title: "Case ##{@case.case_number}", path: nil }]
+  - if can_edit_case?
+    .triage-case-actions
+      = link_to 'Edit Case', edit_triage_case_path(@case.case_number), class: 'btn btn-line-light btn-sm'
+      - if @case.open?
+        = link_to 'Mark as Solved', mark_solved_triage_case_path(@case.case_number), class: 'btn btn-solid btn-sm'
 
-  / Header
-  .mb-8
-    .grid.lg:grid-cols-3.gap-6
-      .lg:col-span-2
-        h1.text-3xl.font-bold.text-gray-900.mb-2 Case ##{@case.case_number}
-        - if @case.problem_summary.present?
-          p.text-lg.text-gray-600 = @case.problem_summary
-        - else
-          - issue_summary = truncate(@case.problem_description, length: 150, separator: ' ', omission: '...')
-          p.text-lg.text-gray-600 = issue_summary
-      .flex.flex-col.items-end.gap-3
-        - if can_edit_case?
-          .flex.flex-col.gap-2
-            = link_to edit_triage_case_path(@case.case_number), class: "inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors text-sm font-medium" do
-              svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-              | Edit Case
-            - if @case.open?
-              = link_to mark_solved_triage_case_path(@case.case_number), class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors font-medium text-sm" do
-                svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                  path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                | Mark as Solved
-        - case @case.status
-        - when 'open'
-          span.inline-flex.items-center.px-4.py-2.rounded-full.text-sm.font-semibold.bg-blue-100.text-blue-800.border.border-blue-200
-            svg.w-4.h-4.mr-2 fill="currentColor" viewBox="0 0 20 20"
-              path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"
-            | Open
-        - when 'solved'
-          span.inline-flex.items-center.px-4.py-2.rounded-full.text-sm.font-semibold.bg-green-100.text-green-800.border.border-green-200
-            svg.w-4.h-4.mr-2 fill="currentColor" viewBox="0 0 20 20"
-              path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"
-            | Solved
-        - when 'closed'
-          span.inline-flex.items-center.px-4.py-2.rounded-full.text-sm.font-semibold.bg-gray-100.text-gray-800.border.border-gray-200
-            svg.w-4.h-4.mr-2 fill="currentColor" viewBox="0 0 20 20"
-              path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"
-            | Solved
+  .triage-case
+    .triage-case-main
+      .triage-panel
+        h2 Current Issue
+        .body = @case.problem_description
 
-  .grid.lg:grid-cols-3.gap-6
-    / Main Content
-    .lg:col-span-2.space-y-6
-      / Current Issue
-      .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
-        .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
-          h2.text-xl.font-bold.text-gray-900.flex.items-center
-            svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-            | Current Issue
-        .p-6
-          .prose.max-w-none
-            p.text-gray-700.whitespace-pre-wrap = @case.problem_description
-
-      / Support Team Updates + Conversation Thread
-      .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
-        .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
-          h2.text-xl.font-bold.text-gray-900.flex.items-center
-            svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-            | Support Team Updates
-        .p-6.space-y-4
-          - if @case.case_comments.any?
+      .triage-panel
+        h2 Support Team Updates
+        - if @case.case_comments.any?
+          .triage-thread
             - @case.case_comments.order(created_at: :desc).each do |comment|
               - team_comment = comment.admin_name == 'Baldrick Team'
-              - card_class = team_comment ? 'bg-blue-50 border-blue-200' : 'bg-gray-50 border-gray-200'
-              .border.rounded-lg.p-4 class=card_class
-                .flex.justify-between.items-start.mb-3
-                  .flex.items-center.gap-2
-                    svg.w-5.h-5 class=(team_comment ? 'text-blue-600' : 'text-gray-600') fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                      path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    p.text-sm.font-semibold class=(team_comment ? 'text-blue-900' : 'text-gray-900') = comment.admin_name
-                  p.text-xs class=(team_comment ? 'text-blue-600' : 'text-gray-600') = comment.created_at.strftime("%B %-d, %Y at %I:%M %p")
-                p.text-gray-800.whitespace-pre-wrap.leading-relaxed = render_comment_content(comment.content)
-          - else
-            p.text-sm.text-gray-600 No updates yet. The support team will reply here.
+              .triage-comment class=('is-team' if team_comment)
+                .who
+                  b = comment.admin_name
+                  time = comment.created_at.strftime('%B %-d, %Y at %I:%M %p')
+                .txt = render_comment_content(comment.content)
+        - else
+          p.triage-empty No updates yet. The support team will reply here.
 
-          - if can_edit_case?
-            .border-t.border-gray-200.pt-4
-              = form_with url: add_comment_triage_case_path(@case.case_number), method: :post, local: true, class: "space-y-3" do |form|
-                div
-                  = form.label :content, "Reply to Support Team", class: "block text-sm font-medium text-gray-700 mb-1"
-                  = form.text_area :content, rows: 4, required: true, placeholder: "Type your update or reply here...", class: "w-full px-3 py-2 border border-gray-300 rounded-md"
-                div
-                  = form.label :media, "Add images (optional)", class: "block text-sm font-medium text-gray-700 mb-1"
-                  = form.file_field :media, multiple: true, accept: "image/*", class: "w-full px-3 py-2 border border-gray-300 rounded-md bg-white"
-                  p.text-xs.text-gray-500.mt-1 You can upload one or more images with your reply.
-                .flex.justify-end
-                  = form.submit "Send Reply", class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors text-sm font-medium"
-      
-      / Solution (if case is solved with a selected solution)
+        - if can_edit_case?
+          .triage-reply
+            = form_with url: add_comment_triage_case_path(@case.case_number), method: :post, local: true, class: 'triage-form' do |form|
+              .triage-field
+                = form.label :content, 'Reply to Support Team', class: 'triage-label'
+                = form.text_area :content, rows: 4, required: true, placeholder: 'Type your update or reply here...', class: 'triage-input'
+              .triage-field
+                = form.label :media, 'Add images (optional)', class: 'triage-label'
+                = form.file_field :media, multiple: true, accept: 'image/*', class: 'triage-input'
+                p.triage-hint You can upload one or more images with your reply.
+              .triage-submit
+                = form.submit 'Send Reply', class: 'btn btn-solid btn-sm'
+
       - if @case.solved? && @case.solved_by_solution.present?
-        .bg-white.rounded-lg.shadow-sm.border.border-green-200.overflow-hidden
-          .bg-gradient-to-r.from-green-50.to-emerald-50.px-6.py-4.border-b.border-green-200
-            h2.text-xl.font-bold.text-gray-900.flex.items-center
-              svg.w-5.h-5.mr-2.text-green-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              | Solution
-          .p-6
-            .bg-green-50.border.border-green-200.rounded-lg.p-4
-              h3.text-lg.font-semibold.text-gray-900.mb-3 = @case.solved_by_solution.problem_title
-              .prose.max-w-none
-                p.text-gray-700 = simple_format(@case.solved_by_solution.solution_text)
-      
-      / Custom Solution (if case is solved with a custom solution)
+        .triage-panel.is-solved
+          h2 Solution
+          h3.sol-title = @case.solved_by_solution.problem_title
+          .body = simple_format(@case.solved_by_solution.solution_text)
+
       - if @case.solved? && @case.custom_solution.present? && @case.solved_by_solution.blank?
-        .bg-white.rounded-lg.shadow-sm.border.border-green-200.overflow-hidden
-          .bg-gradient-to-r.from-green-50.to-emerald-50.px-6.py-4.border-b.border-green-200
-            h2.text-xl.font-bold.text-gray-900.flex.items-center
-              svg.w-5.h-5.mr-2.text-green-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              | Solution
-          .p-6
-            .bg-green-50.border.border-green-200.rounded-lg.p-4
-              .prose.max-w-none
-                p.text-gray-700 = simple_format(@case.custom_solution)
+        .triage-panel.is-solved
+          h2 Solution
+          .body = simple_format(@case.custom_solution)
 
-      / What have they tried
       - if @case.tried_solutions.present?
-        .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
-          .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
-            h2.text-xl.font-bold.text-gray-900.flex.items-center
-              svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-              | What have they tried?
-          .p-6
-            .prose.max-w-none
-              p.text-gray-700.whitespace-pre-wrap = @case.tried_solutions
+        .triage-panel
+          h2 What have they tried?
+          .body = @case.tried_solutions
 
-      / Photos & Media
       - if @case.media.attached?
-        .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden data-controller="image-modal"
-          .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
-            h2.text-xl.font-bold.text-gray-900.flex.items-center
-              svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              | Photos & Media
-          .p-6
-            .grid.grid-cols-2.sm:grid-cols-3.md:grid-cols-4.gap-4
-              - @case.media.each do |media|
-                - if media.image?
-                  - thumbnail_variant = media.variant(resize_to_limit: [400, 400])
-                  .relative.group.rounded-lg.overflow-hidden.border.border-gray-200.bg-gray-50.shadow-sm.cursor-pointer.hover:shadow-md.transition-all data-action="click->image-modal#openModal" data-image-src=blob_url_without_locale(media) data-image-alt=media.filename.to_s
-                    = image_tag blob_url_without_locale(thumbnail_variant), class: "w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300", alt: media.filename.to_s
-                    .absolute.bottom-0.left-0.right-0.bg-gradient-to-t.from-black.via-black.to-transparent.p-2.pointer-events-none
-                      p.text-white.text-xs.font-medium.truncate = media.filename.to_s
-                - elsif media.video?
-                  .relative.group.rounded-lg.overflow-hidden.border.border-gray-200.bg-gray-50.shadow-sm
-                    = video_tag blob_url_without_locale(media), controls: true, class: "w-full h-48", preload: "metadata", playsinline: true, style: "object-fit: contain; background: black;"
-                    .absolute.bottom-0.left-0.right-0.bg-gradient-to-t.from-black.via-black.to-transparent.p-2.pointer-events-none
-                      p.text-white.text-xs.font-medium.truncate = media.filename.to_s
-          
-          / Image Modal
-          .fixed.inset-0.bg-black.bg-opacity-75.flex.items-center.justify-center.z-50.hidden data-image-modal-target="modal" data-action="click->image-modal#closeModal"
-            .relative.max-w-5xl.max-h-full.m-4
-              button.absolute.top-4.right-4.text-white.hover:text-gray-300.transition-colors.z-10.bg-black.bg-opacity-50.rounded-full.p-2 data-action="click->image-modal#closeModal"
-                svg.h-6.w-6 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        .triage-panel data-controller="image-modal"
+          h2 Photos & Media
+          .triage-photos
+            - @case.media.each do |media|
+              - if media.image?
+                - thumbnail_variant = media.variant(resize_to_limit: [400, 400])
+                .triage-photo data-action="click->image-modal#openModal" data-image-src=blob_url_without_locale(media) data-image-alt=media.filename.to_s
+                  = image_tag blob_url_without_locale(thumbnail_variant), alt: media.filename.to_s
+                  .cap = media.filename.to_s
+              - elsif media.video?
+                .triage-photo
+                  = video_tag blob_url_without_locale(media), controls: true, preload: 'metadata', playsinline: true
+                  .cap = media.filename.to_s
+
+          .triage-modal.hidden data-image-modal-target="modal" data-action="click->image-modal#closeModal"
+            .triage-modal-inner
+              button.triage-modal-close type="button" data-action="click->image-modal#closeModal" aria-label="Close"
+                svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                   path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"
-              .bg-white.rounded-lg.overflow-hidden.shadow-2xl
-                img.w-full.h-auto.max-h-screen.object-contain data-image-modal-target="modalImage" alt=""
-                .p-4.bg-gray-50
-                  p.text-gray-700.text-center.text-sm data-image-modal-target="modalCaption"
+              img data-image-modal-target="modalImage" alt=""
+              .cap data-image-modal-target="modalCaption"
 
-      / Debugging File
       - if @case.debugging_file.attached?
-        .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
-          .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
-            h2.text-xl.font-bold.text-gray-900.flex.items-center
-              svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-              | Baldrick Debugging File
-          .p-6
-            .bg-gray-50.border.border-gray-200.rounded-md.p-4.flex.items-center.justify-between.gap-4
-              .min-w-0
-                p.text-sm.font-medium.text-gray-900.truncate = @case.debugging_file.filename.to_s
-                p.text-xs.text-gray-500 Uploaded with this case
-              = link_to "Open file", blob_url_without_locale(@case.debugging_file), target: "_blank", rel: "noopener", class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors text-sm font-medium"
+        .triage-panel
+          h2 Baldrick Debugging File
+          .triage-file-row
+            div
+              .name = @case.debugging_file.filename.to_s
+              .hint Uploaded with this case
+            = link_to 'Open file', blob_url_without_locale(@case.debugging_file), target: '_blank', rel: 'noopener', class: 'btn btn-solid btn-sm'
 
-      / System State
       - if @case.system_state.present?
-        .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
-          .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
-            h2.text-xl.font-bold.text-gray-900.flex.items-center
-              svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-              | Baldrick Board System State
-          .p-6
-            .bg-gray-50.border.border-gray-200.rounded-md.p-4
-              pre.text-xs.text-gray-700.whitespace-pre-wrap.overflow-auto.max-h-96.font-mono = @case.system_state
+        .triage-panel
+          h2 Baldrick Board System State
+          pre.triage-pre = @case.system_state
 
-      / FPP Outputs State
       - if @case.fpp_outputs_state.present?
-        .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
-          .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
-            h2.text-xl.font-bold.text-gray-900.flex.items-center
-              svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-              | FPP Outputs State
-          .p-6
-            .bg-gray-50.border.border-gray-200.rounded-md.p-4
-              pre.text-xs.text-gray-700.whitespace-pre-wrap.overflow-auto.max-h-96.font-mono = @case.fpp_outputs_state
+        .triage-panel
+          h2 FPP Outputs State
+          pre.triage-pre = @case.fpp_outputs_state
 
-    / Sidebar
-    .space-y-6
-      / Affected Boards
+      .triage-panel
+        h2 Possible Solutions
+        .triage-solutions
+          .bot
+            = image_tag asset_path('chatbotdom.png'), alt: 'ChatBotDom'
+          .bubble
+            h3 ChatBotDom suggests
+            - if @solutions.any?
+              - @solutions.each do |solution|
+                .triage-sol
+                  .copy
+                    h4 = solution.problem_title
+                    = simple_format(solution.solution_text)
+                  - if can_mark_solution_fixed? && @case.open?
+                    = form_with url: mark_solution_fixed_triage_case_path(@case.case_number), method: :patch, local: true, data: { turbo_method: :patch } do |form|
+                      = form.hidden_field :solution_id, value: solution.id
+                      = form.button 'This fixed it!', type: 'submit', class: 'btn btn-ok btn-sm'
+            - else
+              p.triage-empty I got nothing! Try asking the Baldrick Community.
+              = link_to 'https://www.facebook.com/groups/ilightthat', target: '_blank', class: 'btn btn-solid btn-sm empty-cta' do
+                | Visit Baldrick Community
+                span.ar →
+
+    .triage-case-side
       - if @case.affected_boards.present? && @case.affected_boards.any?
-        .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
-          .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
-            h3.text-lg.font-bold.text-gray-900 Affected Boards
-          .p-6
-            .flex.flex-wrap.gap-2
-              - @case.affected_boards.each do |board|
-                span.inline-flex.items-center.px-3.py-1.rounded-full.text-sm.font-medium.bg-purple-100.text-purple-800.border.border-purple-200
-                  = board
-      
-      / Case Details
-      .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
-        .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
-          h3.text-lg.font-bold.text-gray-900 Case Details
-        .p-6.space-y-4
+        .triage-panel
+          h3 Affected Boards
+          .triage-chips
+            - @case.affected_boards.each do |board|
+              span.triage-chip = board
+
+      .triage-panel
+        h3 Case Details
+        .triage-dl
           div
-            .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 Submitted By
-            p.text-gray-900.font-medium = @case.name
+            .k Submitted By
+            .v = @case.name
           - if @case.knowledge_level.present?
             div
-              .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 Knowledge Level
-              p.text-gray-900.font-medium = "#{@case.knowledge_level}/10"
-              p.text-sm.text-gray-600.mt-1 = knowledge_level_description(@case.knowledge_level)
+              .k Knowledge Level
+              .v = "#{@case.knowledge_level}/10"
+              .s = knowledge_level_description(@case.knowledge_level)
           div
-            .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 Case Opened
-            p.text-gray-900.font-medium = @case.created_at.strftime("%A, %B %-d, %Y")
-            p.text-sm.text-gray-500 = @case.created_at.strftime("at %I:%M %p")
+            .k Case Opened
+            .v = @case.created_at.strftime('%A, %B %-d, %Y')
+            .s = @case.created_at.strftime('at %I:%M %p')
           - if @case.solved? || @case.closed?
             div
-              .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 Case Solved
-              p.text-gray-900.font-medium = @case.updated_at.strftime("%A, %B %-d, %Y")
-              p.text-sm.text-gray-500 = @case.updated_at.strftime("at %I:%M %p")
+              .k Case Solved
+              .v = @case.updated_at.strftime('%A, %B %-d, %Y')
+              .s = @case.updated_at.strftime('at %I:%M %p')
 
-      / System Information
       - if @case.baldrick_version.present? || @case.fpp_version.present? || @case.xlights_version.present? || @case.operating_system.present?
-        .bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
-          .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
-            h3.text-lg.font-bold.text-gray-900 System Information
-          .p-6.space-y-4
+        .triage-panel
+          h3 System Information
+          .triage-dl
             - if @case.baldrick_version.present?
               div
-                .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 Baldrick Version
-                p.text-gray-900.font-medium = @case.baldrick_version
+                .k Baldrick Version
+                .v = @case.baldrick_version
             - if @case.fpp_version.present?
               div
-                .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 FPP Version
-                p.text-gray-900.font-medium = @case.fpp_version
+                .k FPP Version
+                .v = @case.fpp_version
             - if @case.xlights_version.present?
               div
-                .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 xLights Version
-                p.text-gray-900.font-medium = @case.xlights_version
+                .k xLights Version
+                .v = @case.xlights_version
             - if @case.operating_system.present?
               div
-                .text-xs.font-semibold.text-gray-500.uppercase.tracking-wide.mb-1 Operating System
-                p.text-gray-900.font-medium = @case.operating_system
-
-  / ChatBotDom Solutions Section
-  .mt-8.bg-white.rounded-lg.shadow-sm.border.border-gray-200.overflow-hidden
-    .bg-gradient-to-r.from-purple-50.to-purple-100.px-6.py-4.border-b.border-purple-200
-      h2.text-xl.font-bold.text-gray-900.flex.items-center
-        svg.w-5.h-5.mr-2.text-purple-600 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-        | Possible Solutions
-    .p-6
-      .flex.items-start.gap-4
-        / ChatBotDom Image
-        .flex-shrink-0
-          = image_tag asset_path("chatbotdom.png"), alt: "ChatBotDom", class: "w-24 h-24 object-contain"
-        
-        / Speech Bubble
-        .flex-1.relative
-          .bg-white.rounded-lg.border-2.border-purple-200.shadow-md.p-4.relative.ml-4
-            / Speech bubble tail pointing left (CSS triangle)
-            .absolute style="left: -12px; top: 32px; width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-right: 12px solid #c7d2fe;"
-            .absolute style="left: -10px; top: 33px; width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-right: 10px solid white;"
-            / Speech bubble content
-            .relative
-              h3.text-lg.font-bold.text-gray-900.mb-2 ChatBotDom suggests
-              
-              - if @solutions.any?
-                .space-y-4.mt-4
-                  - @solutions.each do |solution|
-                    .bg-gray-50.rounded-lg.border.border-gray-200.p-4.shadow-sm.hover:shadow-md.transition-shadow
-                      .flex.flex-col.sm:flex-row.sm:items-start.sm:justify-between.gap-4
-                        .flex-1
-                          h4.text-base.font-semibold.text-gray-900.mb-2 = solution.problem_title
-                          .prose.max-w-none.text-sm
-                            p.text-gray-700 = simple_format(solution.solution_text)
-                        - if can_mark_solution_fixed? && @case.open?
-                          .flex-shrink-0
-                            = form_with url: mark_solution_fixed_triage_case_path(@case.case_number), method: :patch, local: true, data: { turbo_method: :patch }, class: "inline-block" do |form|
-                              = form.hidden_field :solution_id, value: solution.id
-                              = form.button type: "submit", class: "inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors font-medium text-sm whitespace-nowrap" do
-                                svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                  path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"
-                                | This fixed it!
-              
-              - if @solutions.empty?
-                .mt-4
-                  p.text-gray-700.mb-4 I got nothing! Try asking the Baldrick Community!
-                  = link_to 'https://www.facebook.com/groups/ilightthat', target: "_blank", class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors font-medium text-sm" do
-                    svg.w-4.h-4.mr-2 fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                      path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    | Visit Baldrick Community
-
+                .k Operating System
+                .v = @case.operating_system
 
 - if flash[:notice].present? && flash[:notice].include?('Case created successfully')
-  script
-    | (function() {
-    |   function initCopyButton() {
-    |     var copyBtn = document.getElementById('copy-url-btn');
-    |     var copyBtnText = document.getElementById('copy-btn-text');
-    |     if (copyBtn && !copyBtn.dataset.initialized) {
-    |       copyBtn.dataset.initialized = 'true';
-    |       copyBtn.addEventListener('click', function() {
-    |         var url = copyBtn.getAttribute('data-url');
-    |         if (navigator.clipboard && navigator.clipboard.writeText) {
-    |           navigator.clipboard.writeText(url).then(function() {
-    |             copyBtnText.textContent = 'Copied!';
-    |             copyBtn.classList.remove('bg-gray-100', 'text-gray-700');
-    |             copyBtn.classList.add('bg-green-100', 'text-green-700');
-    |             setTimeout(function() {
-    |               copyBtnText.textContent = 'Copy';
-    |               copyBtn.classList.remove('bg-green-100', 'text-green-700');
-    |               copyBtn.classList.add('bg-gray-100', 'text-gray-700');
-    |             }, 2000);
-    |           }).catch(function(err) {
-    |             console.error('Failed to copy:', err);
-    |             copyBtnText.textContent = 'Error';
-    |           });
-    |         } else {
-    |           var textArea = document.createElement('textarea');
-    |           textArea.value = url;
-    |           textArea.style.position = 'fixed';
-    |           textArea.style.opacity = '0';
-    |           document.body.appendChild(textArea);
-    |           textArea.select();
-    |           try {
-    |             document.execCommand('copy');
-    |             copyBtnText.textContent = 'Copied!';
-    |             copyBtn.classList.remove('bg-gray-100', 'text-gray-700');
-    |             copyBtn.classList.add('bg-green-100', 'text-green-700');
-    |             setTimeout(function() {
-    |               copyBtnText.textContent = 'Copy';
-    |               copyBtn.classList.remove('bg-green-100', 'text-green-700');
-    |               copyBtn.classList.add('bg-gray-100', 'text-gray-700');
-    |             }, 2000);
-    |           } catch (err) {
-    |             console.error('Fallback copy failed:', err);
-    |             copyBtnText.textContent = 'Error';
-    |           }
-    |           document.body.removeChild(textArea);
-    |         }
-    |       });
-    |     }
-    |   }
-    |   if (document.readyState === 'loading') {
-    |     document.addEventListener('DOMContentLoaded', initCopyButton);
-    |   } else {
-    |     initCopyButton();
-    |   }
-    |   document.addEventListener('turbo:load', initCopyButton);
-    | })();
+  javascript:
+    (function() {
+      function initCopyButton() {
+        var copyBtn = document.getElementById('copy-url-btn');
+        var copyBtnText = document.getElementById('copy-btn-text');
+        if (copyBtn && !copyBtn.dataset.initialized) {
+          copyBtn.dataset.initialized = 'true';
+          copyBtn.addEventListener('click', function() {
+            var url = copyBtn.getAttribute('data-url');
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(url).then(function() {
+                copyBtnText.textContent = 'Copied!';
+                setTimeout(function() { copyBtnText.textContent = 'Copy'; }, 2000);
+              }).catch(function() {
+                copyBtnText.textContent = 'Error';
+              });
+            } else {
+              var textArea = document.createElement('textarea');
+              textArea.value = url;
+              textArea.style.position = 'fixed';
+              textArea.style.opacity = '0';
+              document.body.appendChild(textArea);
+              textArea.select();
+              try {
+                document.execCommand('copy');
+                copyBtnText.textContent = 'Copied!';
+                setTimeout(function() { copyBtnText.textContent = 'Copy'; }, 2000);
+              } catch (err) {
+                copyBtnText.textContent = 'Error';
+              }
+              document.body.removeChild(textArea);
+            }
+          });
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCopyButton);
+      } else {
+        initCopyButton();
+      }
+      document.addEventListener('turbo:load', initCopyButton);
+    })();
