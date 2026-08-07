@@ -1,0 +1,17 @@
+- overview = board_overview_data(board_id)
+- youtube_id = overview[:youtube_id]
+- return if youtube_id.blank?
+
+- youtube_title = overview[:youtube_title].presence || "#{board_data.fetch(board_id)[:name]} overview"
+- sec_class = local_assigns[:light] ? 'sec light' : 'sec'
+
+section class=sec_class id="video"
+  .wrap
+    .sec-eye
+      span.bar
+      span.annot Watch
+    h2 Baldrick Basics.
+    p.lead
+      | A quick walkthrough of the #{board_data.fetch(board_id)[:name]} — what it does and how to get started.
+    .board-video
+      iframe src="https://www.youtube.com/embed/#{youtube_id}" title=youtube_title frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"

@@ -1,11 +1,15 @@
 / Sections alternate dark/light after the light .qa block above
+- overview = board_overview_data(board_id)
 - blocks = []
+- blocks << :video if overview[:youtube_id].present?
 - blocks << :tech_specs if board_tech_specs_rows(board_id).present?
 - blocks << :faq if board_faq_questions(board_id).present?
 
 - blocks.each_with_index do |block, index|
   - light = index.odd?
   - case block
+  - when :video
+    = render 'boards/shared/overview_video', board_id: board_id, light: light
   - when :tech_specs
     = render 'boards/shared/overview_tech_specs', board_id: board_id, light: light
   - when :faq

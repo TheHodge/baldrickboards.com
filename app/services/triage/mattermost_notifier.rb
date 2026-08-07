@@ -6,6 +6,7 @@ module Triage
       todoist_last_event_at
       todoist_sync_status
       todoist_sync_error
+      mattermost_root_post_id
     ].freeze
 
     class << self
@@ -24,7 +25,7 @@ module Triage
           todoist_link(case_record)
         ].join("\n")
 
-        post(message)
+        post_for_case(case_record, message, as_root: true)
       end
 
       def case_updated(case_record, changes: nil)
@@ -43,7 +44,7 @@ module Triage
           todoist_link(case_record)
         ].join("\n")
 
-        post(message)
+        post_for_case(case_record, message)
       end
 
       def comment_added(case_record, comment)
@@ -59,7 +60,7 @@ module Triage
           todoist_link(case_record)
         ].join("\n")
 
-        post(message)
+        post_for_case(case_record, message)
       end
 
       private
@@ -71,10 +72,54 @@ module Triage
         true
       end
 
-      def post(message)
-        Mattermost::Client.new.create_post!(message: message)
+      def post_for_case(case_record, message, as_root: false)
+        root_id = case_record.mattermost_root_post_id
+        # New cases always start a top-level post. Follow-ups reply in that thread
+        # when we have a root id; otherwise post top-level and adopt it as root
+        # (covers pre-threading cases that have no stored Mattermost post id).
+        reply_root_id = as_root ? nil : root_id.presence
+
+        response = create_post_with_optional_root!(message, reply_root_id, case_record)
+        return if response.nil?
+
+        persist_root_post_id!(case_record, response) if as_root || case_record.mattermost_root_post_id.blank?
+        response
+      end
+
+      def create_post_with_optional_root!(message, root_id, case_record)
+        Mattermost::Client.new.create_post!(message: message, root_id: root_id)
       rescue Mattermost::Client::Error => e
+        # Stale/deleted root posts on older cases should not block notifications.
+        if root_id.present?
+          Rails.logger.warn(
+            "[MattermostNotifier] Thread reply failed for case ##{case_record.case_number} " \
+            "(root_id=#{root_id}): #{e.message}; falling back to a new top-level post"
+          )
+          clear_root_post_id!(case_record)
+          begin
+            return Mattermost::Client.new.create_post!(message: message, root_id: nil)
+          rescue Mattermost::Client::Error => fallback_error
+            Rails.logger.error("[MattermostNotifier] #{fallback_error.message}")
+            return nil
+          end
+        end
+
         Rails.logger.error("[MattermostNotifier] #{e.message}")
+        nil
+      end
+
+      def persist_root_post_id!(case_record, response)
+        post_id = response.is_a?(Hash) ? response["id"] : nil
+        return if post_id.blank?
+        return if case_record.mattermost_root_post_id == post_id
+
+        case_record.update_column(:mattermost_root_post_id, post_id)
+      end
+
+      def clear_root_post_id!(case_record)
+        return if case_record.mattermost_root_post_id.blank?
+
+        case_record.update_column(:mattermost_root_post_id, nil)
       end
 
       def todoist_link(case_record)

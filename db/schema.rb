@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_15_120000) do
+ActiveRecord::Schema[8.0].define(version: 2026_08_07_101500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -161,14 +161,17 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_15_120000) do
     t.string "todoist_sync_status", default: "pending", null: false
     t.text "todoist_sync_error"
     t.datetime "todoist_last_event_at"
+    t.string "mattermost_root_post_id"
     t.index ["access_token"], name: "index_cases_on_access_token", unique: true
     t.index ["case_number"], name: "index_cases_on_case_number", unique: true
     t.index ["email"], name: "index_cases_on_email"
+    t.index ["mattermost_root_post_id"], name: "index_cases_on_mattermost_root_post_id"
     t.index ["status"], name: "index_cases_on_status"
     t.index ["todoist_sync_status"], name: "index_cases_on_todoist_sync_status"
     t.index ["todoist_task_id"], name: "index_cases_on_todoist_task_id", unique: true
     t.index ["user_id"], name: "index_cases_on_user_id"
   end
+
 
   create_table "contacts", force: :cascade do |t|
     t.string "name", null: false

@@ -149,7 +149,7 @@ Webhook endpoint:
 
 ## Mattermost Integration (Christmas Triage)
 
-Posts triage activity to the Mattermost channel (default team `ilightthat`, channel `christmas-triage` on Waffle). Links in messages point at the synced Todoist task, not the docs site.
+Posts triage activity to the Mattermost channel (default team `ilightthat`, channel `christmas-triage` on Waffle). Links in messages point at the synced Todoist task, not the docs site. The first notification for a case is a top-level channel post; later updates and comments reply in that thread.
 
 Set these environment variables (or Rails credentials equivalents):
 

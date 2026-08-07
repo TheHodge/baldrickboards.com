@@ -101,6 +101,7 @@ RSpec.describe "Pages", type: :request do
       get board_path('baldrickdmx', locale: :en)
       expect(response).to have_http_status(:success)
       expect(response.body).to include("BaldrickDMX")
+      expect(response.body).to include("youtube.com/embed/p93Va08nifI")
     end
   end
 

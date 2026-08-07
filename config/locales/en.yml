@@ -280,6 +280,8 @@ en:
       description: "The easiest way to bring DMX to xLights"
       overview:
         description: "The BaldrickDMX is the perfect controller for adding DMX to your show."
+        youtube_id: "p93Va08nifI"
+        youtube_title: "BaldrickDMX - Baldrick Basics"
         features:
           - "5v–24v (or up to 48v on version 1.1) barrel or 2 pin connector with onboard power management (to avoid any BOOM BOOM BOOM BOOMS)"
           - "Single output on 3 ports (RJ45, 3 Pin Neutrik XLR, 5 Pin Neutrik XLR)"

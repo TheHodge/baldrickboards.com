@@ -26,13 +26,16 @@ module Mattermost
       channel.fetch("id")
     end
 
-    def create_post!(message:, channel_id: nil)
+    def create_post!(message:, channel_id: nil, root_id: nil)
       channel_id ||= resolve_channel_id!
-      post_json("/api/v4/posts", {
+      payload = {
         channel_id: channel_id,
         message: message
-      })
+      }
+      payload[:root_id] = root_id if root_id.present?
+      post_json("/api/v4/posts", payload)
     end
+
 
     private
 
