@@ -286,6 +286,7 @@ class Triage::CasesController < ApplicationController
       @case.update!(status: 'solved', solved_by_solution_id: nil, custom_solution: custom_solution)
     end
 
+    Todoist::CaseSync.sync_solution(@case)
     Todoist::CaseSync.sync_status(@case, @case.status)
     Triage::MattermostNotifier.case_updated(@case)
 

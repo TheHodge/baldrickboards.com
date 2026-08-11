@@ -133,6 +133,30 @@ RSpec.describe "Todoist webhooks", type: :request do
     end
   end
 
+  context "with mirrored solution sync comment" do
+    let(:event_name) { "note:added" }
+    let(:payload_hash) do
+      {
+        event_name: event_name,
+        event_data: {
+          item_id: "task-123",
+          item: { id: "task-123" },
+          content: "Solution from Christmas Triage: I had the board replaced, as it was faulty from manufacturing."
+        }
+      }
+    end
+
+    it "ignores looped solution comments" do
+      expect do
+        post "/integrations/todoist/webhook",
+             params: payload,
+             headers: { "CONTENT_TYPE" => "application/json", "X-Todoist-Hmac-SHA256" => signature }
+      end.not_to change(CaseComment, :count)
+
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   context "with close webhook event" do
     let(:event_name) { "task:closed" }
 

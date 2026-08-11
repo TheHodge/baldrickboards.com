@@ -61,6 +61,22 @@ module Todoist
         mark_sync_error(case_record, e)
       end
 
+      def sync_solution(case_record)
+        return unless syncable_case?(case_record)
+
+        content = solution_comment_content(case_record)
+        return if content.blank?
+
+        client = Todoist::Client.new
+        client.create_comment!(
+          task_id: case_record.todoist_task_id,
+          content: content
+        )
+        touch_synced(case_record)
+      rescue StandardError => e
+        mark_sync_error(case_record, e)
+      end
+
       def sync_status(case_record, status)
         return unless syncable_case?(case_record)
 
@@ -196,6 +212,17 @@ module Todoist
           "Problem:",
           case_record.problem_description
         ].join("\n")
+      end
+
+      def solution_comment_content(case_record)
+        if case_record.custom_solution.present?
+          "Solution from Christmas Triage: #{case_record.custom_solution}"
+        elsif case_record.solved_by_solution_id.present?
+          solution = case_record.solved_by_solution || Solution.find_by(id: case_record.solved_by_solution_id)
+          return if solution.blank?
+
+          "Solution from Christmas Triage (#{solution.problem_title}): #{solution.solution_text}"
+        end
       end
 
       def touch_synced(case_record)

@@ -115,7 +115,8 @@ module Todoist
         "Attachment uploaded from Christmas Triage",
         "Debugging file attached from Christmas Triage",
         "System state attached from Christmas Triage",
-        "FPP outputs state attached from Christmas Triage"
+        "FPP outputs state attached from Christmas Triage",
+        "Solution from Christmas Triage"
       )
     end
 

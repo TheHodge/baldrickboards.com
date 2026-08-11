@@ -99,11 +99,13 @@ class Admin::TriageCasesController < Admin::BaseController
         return
       end
       @case.mark_as_solved!(solution.id, nil)
+      Todoist::CaseSync.sync_solution(@case)
       Todoist::CaseSync.sync_status(@case, @case.status)
       Triage::MattermostNotifier.case_updated(@case)
       redirect_to admin_triage_case_path(@case), notice: "Case marked as solved with solution: #{solution.problem_title}"
     elsif custom_solution.present?
       @case.mark_as_solved!(nil, custom_solution)
+      Todoist::CaseSync.sync_solution(@case)
       Todoist::CaseSync.sync_status(@case, @case.status)
       Triage::MattermostNotifier.case_updated(@case)
       redirect_to admin_triage_case_path(@case), notice: 'Case marked as solved with custom solution.'
