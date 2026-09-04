@@ -27,6 +27,11 @@
 threads_count = ENV.fetch("RAILS_MAX_THREADS", 3)
 threads threads_count, threads_count
 
+# Large triage uploads (xLights show zips up to 100MB) can exceed the default 60s.
+if ENV.fetch("RAILS_ENV", "development") == "production"
+  worker_timeout Integer(ENV.fetch("PUMA_WORKER_TIMEOUT", "180"))
+end
+
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 port ENV.fetch("PORT", 3000)
 

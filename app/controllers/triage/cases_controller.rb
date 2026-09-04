@@ -148,24 +148,20 @@ class Triage::CasesController < ApplicationController
       []
     end
     debugging_file = params[:case][:debugging_file] if params[:case][:debugging_file].is_a?(ActionDispatch::Http::UploadedFile)
-    
+    xlights_show_folder = params[:case][:xlights_show_folder] if params[:case][:xlights_show_folder].is_a?(ActionDispatch::Http::UploadedFile)
+
     # Remove file attachments from params to prevent automatic attachment
-    case_params_without_attachments = case_params.except(:media, :debugging_file)
+    case_params_without_attachments = case_params.except(:media, :debugging_file, :xlights_show_folder)
     @case = Case.new(case_params_without_attachments)
     @case.debugging_file.attach(debugging_file) if debugging_file.present?
+    attach_xlights_show_folder(@case, xlights_show_folder)
     
     # Capture IP address for admin tracking
     @case.ip_address = real_client_ip
 
     if @case.save
       # Attach media files manually (images and videos)
-      if media_files.present?
-        # Remove duplicates based on filename and size
-        unique_files = media_files.uniq { |f| [f.original_filename, f.size] }
-        unique_files.each do |file|
-          @case.media.attach(file)
-        end
-      end
+      attach_converted_media(@case, media_files)
 
       # Match solutions
       matched_solutions = @case.match_solutions
@@ -301,8 +297,10 @@ class Triage::CasesController < ApplicationController
   def update
     # Authorization checked in before_action
     debugging_file = params[:case][:debugging_file] if params[:case][:debugging_file].is_a?(ActionDispatch::Http::UploadedFile)
-    @case.assign_attributes(case_params.except(:debugging_file))
+    xlights_show_folder = params[:case][:xlights_show_folder] if params[:case][:xlights_show_folder].is_a?(ActionDispatch::Http::UploadedFile)
+    @case.assign_attributes(case_params.except(:debugging_file, :xlights_show_folder))
     @case.debugging_file.attach(debugging_file) if debugging_file.present?
+    attach_xlights_show_folder(@case, xlights_show_folder)
 
     if @case.save
       Triage::MattermostNotifier.case_updated(@case)
@@ -346,9 +344,7 @@ class Triage::CasesController < ApplicationController
 
       attached_media = []
       if media_files.present?
-        media_files.each do |file|
-          @case.media.attach(file)
-        end
+        attach_converted_media(@case, media_files)
         attached_media = @case.media.attachments.order(created_at: :desc).limit(media_files.length)
       end
 
@@ -419,6 +415,7 @@ class Triage::CasesController < ApplicationController
       :xlights_version,
       :operating_system,
       :debugging_file,
+      :xlights_show_folder,
       :system_state,
       :fpp_outputs_state,
       :custom_solution,
@@ -470,6 +467,23 @@ class Triage::CasesController < ApplicationController
 
   def set_baldrickboard_page
     @baldrickboard_page = true
+  end
+
+  def attach_converted_media(case_record, media_files)
+    return if media_files.blank?
+
+    unique_files = media_files.uniq { |file| [file.original_filename, file.size] }
+    unique_files.each do |file|
+      case_record.media.attach(Triage::HeicConverter.convert(file))
+    end
+  end
+
+  def attach_xlights_show_folder(case_record, uploaded_file)
+    return if uploaded_file.blank?
+
+    summary = Triage::XlightsShowParser.parse(uploaded_file.tempfile.path)
+    case_record.xlights_show_folder.attach(uploaded_file)
+    case_record.xlights_summary = summary
   end
 
   helper_method :triage_user_email, :triage_user_logged_in?, :can_mark_solution_fixed?, :can_edit_case?

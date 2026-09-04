@@ -35,13 +35,13 @@
             .triage-media-help
               p.triage-hint
                 strong Where to find it
-                |  — scroll to the bottom of the board screen and look in the Help section.
+                | : scroll to the bottom of the board screen and look in the Help section.
               = image_tag asset_path('triage-debugging-help.png'), alt: 'Screenshot showing the Help section and Debugging Info link'
               p.triage-hint Click `Debugging Info`, save the downloaded file, then upload it here with your case.
 
         .triage-field
           = form.label :problem_description, 'What seems to be the problem', class: 'triage-label'
-          p.triage-hint Please be as descriptive as possible — LIGHTS DO NOT WORK is not helpful, but lights on port 5 are showing the wrong colours when FPP is playing does.
+          p.triage-hint Please be as descriptive as possible. LIGHTS DO NOT WORK is not helpful, but lights on port 5 are showing the wrong colours when FPP is playing does.
           = form.text_area :problem_description, rows: 5, class: 'triage-input', required: true, minlength: 10
 
       .triage-section
@@ -63,17 +63,32 @@
               ul
                 li Baldrick Interface (the Status section and Ports)
                 li FPP Outputs page (If Relevant)
-                li xLights Settings of the relevant controller
-                li xLights Visuliser of the relevant controller
                 li An example of the issue (flickering or slowness)
             #triage-upload-box.triage-upload
-              = form.file_field :media, multiple: true, accept: 'image/*,video/*', class: 'hidden', id: 'media-upload', data: { multiple: true }
+              = form.file_field :media, multiple: true, accept: 'image/*,video/*,.heic,.heif,image/heic,image/heif', class: 'hidden', id: 'media-upload', data: { multiple: true }
               label.triage-upload-inner for="media-upload"
                 .triage-upload-icon
                   svg fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                 p.triage-upload-cta Drag & drop media here or click to upload
           #media-preview
+
+      .triage-section
+        .triage-field
+          .triage-label-row
+            = form.label :xlights_show_folder, 'ZIPPED xLights show folder', class: 'triage-label'
+            span.triage-file-count max 100MB · no sequences
+          p.triage-hint Zip the show folder only. Do not include sequences. They make the zip huge and we do not need them. We extract ILightThat controller settings from `xlights_networks.xml` and matching props from `xlights_rgbeffects.xml`.
+          #xlights-upload-box.triage-upload.triage-upload--tall
+            = form.file_field :xlights_show_folder, accept: '.zip,application/zip,application/x-zip-compressed', class: 'hidden', id: 'xlights-upload'
+            label.triage-upload-inner for="xlights-upload"
+              .triage-upload-icon
+                svg fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+              div
+                p.triage-upload-cta Drag & drop a zipped xLights show folder here or click to upload
+                p.triage-hint Please do not include sequences.
+          #xlights-preview
 
       .triage-section
         .triage-grid-2
@@ -101,24 +116,6 @@
       .triage-submit
         p This is enough basic information to start with, so you can create a case now.
         = form.submit 'Create a Case', class: 'btn btn-solid'
-        p.triage-submit-note Or continue below to add more information which will help us
-
-      .triage-section
-        .triage-media-grid
-          div
-            = form.label :system_state, 'The Baldrick Board System State', class: 'triage-label'
-            p.triage-hint If you load up the IP address of your Baldrick Board and put /system_state at the end of the URL, you'll be given a bunch of text, paste it into here.
-          = form.text_area :system_state, rows: 6, class: 'triage-input triage-input--mono'
-
-        .triage-media-grid.triage-media-grid--spaced
-          div
-            = form.label :fpp_outputs_state, 'FPP Outputs state', class: 'triage-label'
-            p.triage-hint If you load up the IP address of your Main FPP instance and put /api/configfile/co-universes.json at the end of the URL, you'll be given a bunch of text, paste it into here.
-          = form.text_area :fpp_outputs_state, rows: 6, class: 'triage-input triage-input--mono'
-
-        .triage-submit style="margin-top:28px"
-          p That will do for now, let's create your case.
-          = form.submit 'Create a Case', class: 'btn btn-solid'
 
 javascript:
   document.addEventListener('DOMContentLoaded', function() {
@@ -405,7 +402,8 @@ javascript:
         if (isProcessing) return;
         isProcessing = true;
         const files = Array.from(e.dataTransfer.files).filter(function(file) {
-          return file.type.startsWith('image/') || file.type.startsWith('video/');
+          if (file.type.startsWith('image/') || file.type.startsWith('video/')) return true;
+          return /\.(heic|heif|heics|heifs)$/i.test(file.name || '');
         });
         if (selectedFiles.length >= MAX_FILES) {
           alert('Maximum of ' + MAX_FILES + ' files allowed. Please remove some files first.');
@@ -432,4 +430,87 @@ javascript:
         setTimeout(function() { isProcessing = false; }, 100);
       });
     }
+  })();
+
+  (function() {
+    const zipUpload = document.getElementById('xlights-upload');
+    const zipBox = document.getElementById('xlights-upload-box');
+    const zipPreview = document.getElementById('xlights-preview');
+    const MAX_ZIP_SIZE = 100 * 1024 * 1024;
+    if (!zipUpload || !zipBox || !zipPreview) return;
+
+    function isZipFile(file) {
+      if (!file) return false;
+      if (file.type === 'application/zip' || file.type === 'application/x-zip-compressed' || file.type === 'application/octet-stream') {
+        return /\.zip$/i.test(file.name || '') || file.type !== 'application/octet-stream';
+      }
+      return /\.zip$/i.test(file.name || '');
+    }
+
+    function formatFileSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function setZipFile(file) {
+      if (!file) return;
+      if (!isZipFile(file)) {
+        alert('Please upload a .zip of your xLights show folder. Do not include sequences.');
+        zipUpload.value = '';
+        return;
+      }
+      if (file.size > MAX_ZIP_SIZE) {
+        alert(file.name + ' is too large (maximum 100MB). Zip the show folder without sequences.');
+        zipUpload.value = '';
+        return;
+      }
+      try {
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        zipUpload.files = dt.files;
+      } catch (e) {}
+      zipPreview.innerHTML = '<div class="triage-media-item"><div class="meta"><p class="name">' + escapeHtml(file.name) + '</p><p class="size">' + formatFileSize(file.size) + '</p></div><button type="button" id="xlights-remove" aria-label="Remove zip"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div>';
+      const removeBtn = document.getElementById('xlights-remove');
+      if (removeBtn) {
+        removeBtn.addEventListener('click', function() {
+          zipUpload.value = '';
+          zipPreview.innerHTML = '';
+        });
+      }
+    }
+
+    zipUpload.addEventListener('change', function() {
+      const file = zipUpload.files && zipUpload.files[0];
+      if (file) setZipFile(file);
+      else zipPreview.innerHTML = '';
+    });
+
+    zipBox.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      zipBox.classList.add('is-dragover');
+    });
+    zipBox.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      zipBox.classList.remove('is-dragover');
+    });
+    zipBox.addEventListener('drop', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      zipBox.classList.remove('is-dragover');
+      const file = Array.from(e.dataTransfer.files).find(isZipFile);
+      if (!file) {
+        alert('Please drop a .zip of your xLights show folder. Do not include sequences.');
+        return;
+      }
+      setZipFile(file);
+    });
   })();

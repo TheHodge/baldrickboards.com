@@ -156,19 +156,19 @@ module Todoist
           end
         end
 
-        if case_record.fpp_outputs_state.present?
-          Tempfile.create(["case-#{case_record.case_number}-fpp-outputs-state", ".txt"]) do |tmp|
-            tmp.write(case_record.fpp_outputs_state)
+        if case_record.xlights_summary.present?
+          Tempfile.create(["case-#{case_record.case_number}-xlights-summary", ".txt"]) do |tmp|
+            tmp.write(xlights_summary_text(case_record))
             tmp.rewind
 
             uploaded = client.upload_file!(
               io: tmp,
-              filename: "case-#{case_record.case_number}-fpp-outputs-state.txt",
+              filename: "case-#{case_record.case_number}-xlights-summary.txt",
               content_type: "text/plain"
             )
             client.create_comment!(
               task_id: case_record.todoist_task_id,
-              content: "FPP outputs state attached from Christmas Triage",
+              content: "xLights ILightThat summary attached from Christmas Triage",
               attachment: uploaded
             )
           end
@@ -223,6 +223,25 @@ module Todoist
 
           "Solution from Christmas Triage (#{solution.problem_title}): #{solution.solution_text}"
         end
+      end
+
+      def xlights_summary_text(case_record)
+        summary = case_record.xlights_summary
+        return summary.to_s unless summary.is_a?(Hash)
+        return "Parse error: #{summary["error"]}" if summary["error"].present?
+
+        lines = ["ILightThat controllers from uploaded xLights show folder:"]
+        Array(summary["controllers"]).each do |controller|
+          lines << ""
+          lines << "#{controller["name"]} (#{controller["model"]}) #{controller["ip"]} #{controller["protocol"]} #{controller["active_state"]}"
+          if controller["network"].present?
+            lines << "  network: #{controller["network"].map { |k, v| "#{k}=#{v}" }.join(", ")}"
+          end
+          Array(controller["props"]).each do |prop|
+            lines << "  - #{prop["name"]}: port #{prop["port"]} #{prop["pixel_protocol"]} #{prop["num_strings"]}x#{prop["nodes_per_string"]} #{prop["start_channel"]} (#{prop["channels"]} ch)"
+          end
+        end
+        lines.join("\n")
       end
 
       def touch_synced(case_record)

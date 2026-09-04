@@ -64,7 +64,7 @@
                 = form.text_area :content, rows: 4, required: true, placeholder: 'Type your update or reply here...', class: 'triage-input'
               .triage-field
                 = form.label :media, 'Add images (optional)', class: 'triage-label'
-                = form.file_field :media, multiple: true, accept: 'image/*', class: 'triage-input'
+                = form.file_field :media, multiple: true, accept: 'image/*,.heic,.heif,image/heic,image/heif', class: 'triage-input'
                 p.triage-hint You can upload one or more images with your reply.
               .triage-submit
                 = form.submit 'Send Reply', class: 'btn btn-solid btn-sm'
@@ -116,6 +116,8 @@
               .name = @case.debugging_file.filename.to_s
               .hint Uploaded with this case
             = link_to 'Open file', blob_url_without_locale(@case.debugging_file), target: '_blank', rel: 'noopener', class: 'btn btn-solid btn-sm'
+
+      = render 'triage/cases/xlights_summary', case_record: @case
 
       - if @case.system_state.present?
         .triage-panel

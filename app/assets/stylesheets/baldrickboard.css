@@ -956,6 +956,9 @@ article.page.page--sidebar .toc.toc--releases .toc-sub{font-size:12px;padding-to
 .page .triage-upload-cta{font-size:13px;font-weight:600;color:var(--ink-text);margin:0;line-height:1.5}
 .page .triage-upload-icon{width:56px;height:56px;border-radius:50%;background:var(--violet);color:var(--bone);display:grid;place-items:center;flex-shrink:0}
 .page .triage-upload-icon svg{width:28px;height:28px}
+.page .triage-upload--tall{min-height:280px;padding:56px 28px;display:flex;align-items:center;justify-content:center}
+.page .triage-upload--tall .triage-upload-inner{width:100%;min-height:200px}
+.page #xlights-preview{margin-top:12px}
 .page .triage-media-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:10px}
 .page .triage-media-grid--spaced{margin-top:24px}
 .page .triage-media-help img{width:100%;border-radius:8px;border:1px solid var(--line-p);margin:8px 0}
@@ -1023,6 +1026,14 @@ article.page.page--wide > .col{max-width:1100px}
 .page .triage-file-row .name{font-size:14px;font-weight:600;color:var(--ink-text);word-break:break-all}
 .page .triage-file-row .hint{font-size:12px;color:var(--ink-mut);margin-top:3px}
 .page .triage-pre{margin:0;padding:14px 16px;border:1px solid var(--line-p);border-radius:10px;background:var(--paper-2);font-family:var(--mono);font-size:12px;line-height:1.55;color:var(--ink-mut);white-space:pre-wrap;overflow:auto;max-height:24rem}
+.page .triage-xlights{display:grid;gap:18px}
+.page .triage-xlights-controller{padding:14px 16px;border:1px solid var(--line-p);border-radius:10px;background:var(--paper-2)}
+.page .triage-xlights-controller h3{font-family:var(--disp);font-weight:700;font-size:16px;margin:0 0 6px;color:var(--ink-text)}
+.page .triage-xlights-controller .meta{font-size:13px;color:var(--ink-mut);margin:0 0 8px}
+.page .triage-xlights table,.page .admin-xlights-table{width:100%;border-collapse:collapse;font-size:13px}
+.page .triage-xlights th,.page .triage-xlights td,.page .admin-xlights-table th,.page .admin-xlights-table td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line-p);vertical-align:top}
+.page .triage-xlights th,.page .admin-xlights-table th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mut)}
+.page .triage-xlights td.mono,.page .admin-xlights-table td.admin-mono{font-family:var(--mono);font-size:12px}
 .page .triage-solutions{display:flex;gap:18px;align-items:flex-start}
 .page .triage-solutions .bot{flex-shrink:0;width:88px}
 .page .triage-solutions .bot img{width:88px;height:88px;object-fit:contain}

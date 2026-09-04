@@ -7,6 +7,7 @@ class Case < ApplicationRecord
   has_many :case_comments, dependent: :destroy
   has_many_attached :media
   has_one_attached :debugging_file
+  has_one_attached :xlights_show_folder
 
   # Validations
   validates :name, presence: true, length: { minimum: 2, maximum: 100 }
@@ -20,6 +21,7 @@ class Case < ApplicationRecord
   validates :knowledge_level, inclusion: { in: 1..10 }, allow_nil: true
   validate :validate_media_attachments
   validate :validate_debugging_file
+  validate :validate_xlights_show_folder
 
   def validate_media_attachments
     return unless media.attached?
@@ -52,6 +54,20 @@ class Case < ApplicationRecord
     errors.add(:debugging_file, "must be a JSON or text file")
   end
 
+  def validate_xlights_show_folder
+    return unless xlights_show_folder.attached?
+
+    if xlights_show_folder.blob.byte_size > 100.megabytes
+      errors.add(:xlights_show_folder, "is too large (maximum 100MB). Zip the show folder without sequences.")
+    end
+
+    allowed_content_types = %w[application/zip application/x-zip-compressed application/octet-stream]
+    extension = File.extname(xlights_show_folder.filename.to_s).downcase
+    return if xlights_show_folder.blob.content_type.in?(allowed_content_types) || extension == ".zip"
+
+    errors.add(:xlights_show_folder, "must be a zip of your xLights show folder")
+  end
+
   # Scopes
   scope :open, -> { where(status: 'open') }
   scope :solved, -> { where(status: 'solved') }
@@ -70,6 +86,7 @@ class Case < ApplicationRecord
   before_validation :generate_access_code, on: :create
   before_validation :assign_case_number, on: :create
   before_save :generate_problem_summary, if: -> { problem_description.present? && (new_record? || problem_description_changed?) }
+  after_save :purge_xlights_show_folder_when_closed
 
   # Instance methods
   def open?
@@ -90,6 +107,22 @@ class Case < ApplicationRecord
 
   def mark_as_closed!
     update!(status: 'closed')
+  end
+
+  def xlights_controllers
+    return [] unless xlights_summary.is_a?(Hash)
+
+    Array(xlights_summary["controllers"])
+  end
+
+  def xlights_parse_error
+    return unless xlights_summary.is_a?(Hash)
+
+    xlights_summary["error"]
+  end
+
+  def xlights_summary_present?
+    xlights_controllers.any? || xlights_parse_error.present?
   end
 
   # Check if case belongs to a user (for future login integration)
@@ -257,5 +290,13 @@ class Case < ApplicationRecord
       summary += ' ' + word
     end
     summary.strip + (summary.length < text.length ? '...' : '')
+  end
+
+  def purge_xlights_show_folder_when_closed
+    return unless saved_change_to_status?
+    return unless closed?
+    return unless xlights_show_folder.attached?
+
+    xlights_show_folder.purge
   end
 end

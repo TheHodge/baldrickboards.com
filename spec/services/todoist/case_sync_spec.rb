@@ -47,6 +47,28 @@ RSpec.describe Todoist::CaseSync do
         )
       )
     end
+
+    it "uploads an xLights summary instead of the show-folder zip" do
+      case_record.update_column(:xlights_summary, {
+        "controllers" => [{
+          "name" => "B17-5",
+          "model" => "Baldrick17",
+          "ip" => "192.168.72.42",
+          "protocol" => "DDP",
+          "active_state" => "Active",
+          "props" => [{ "name" => "Matrix", "port" => "1" }]
+        }]
+      })
+
+      described_class.sync_create(case_record)
+
+      expect(client).to have_received(:create_comment!).with(
+        hash_including(
+          task_id: "task-1",
+          content: "xLights ILightThat summary attached from Christmas Triage"
+        )
+      )
+    end
   end
 
   describe ".sync_solution" do

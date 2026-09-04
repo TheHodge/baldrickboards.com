@@ -1,0 +1,50 @@
+- if case_record.xlights_summary_present? || case_record.xlights_show_folder.attached?
+  .triage-panel
+    h2 xLights ILightThat controllers
+    - if case_record.xlights_show_folder.attached?
+      .triage-file-row style="margin-bottom:16px"
+        div
+          .name = case_record.xlights_show_folder.filename.to_s
+          .hint Show folder zip (removed automatically when the case is closed)
+        = link_to 'Download zip', blob_url_without_locale(case_record.xlights_show_folder), target: '_blank', rel: 'noopener', class: 'btn btn-solid btn-sm'
+    - elsif case_record.xlights_summary_present?
+      p.triage-hint The show folder zip was removed when this case was closed.
+
+    - if case_record.xlights_parse_error.present?
+      p.triage-hint = case_record.xlights_parse_error
+    - elsif case_record.xlights_controllers.any?
+      .triage-xlights
+        - case_record.xlights_controllers.each do |controller|
+          .triage-xlights-controller
+            h3 = controller["name"]
+            p.meta
+              - bits = [controller["model"], controller["ip"], controller["protocol"], controller["active_state"]].compact_blank
+              = bits.join(" · ")
+            - if controller["network"].present?
+              p.meta Network: #{controller["network"].map { |k, v| "#{k}=#{v}" }.join(", ")}
+            - props = Array(controller["props"])
+            - if props.any?
+              table
+                thead
+                  tr
+                    th Prop
+                    th Type
+                    th Port
+                    th Protocol
+                    th Strings
+                    th Start
+                    th Channels
+                tbody
+                  - props.each do |prop|
+                    tr
+                      td = prop["name"]
+                      td = prop["display_as"]
+                      td = prop["port"]
+                      td = prop["pixel_protocol"]
+                      td
+                        - if prop["num_strings"].present? || prop["nodes_per_string"].present?
+                          | #{prop["num_strings"]} × #{prop["nodes_per_string"]}
+                      td.mono = prop["start_channel"]
+                      td = prop["channels"]
+            - else
+              p.triage-hint No props in the layout are assigned to this controller.

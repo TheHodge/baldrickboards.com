@@ -122,6 +122,59 @@
               .v
                 = link_to 'Open / Download debugging file', blob_url_without_locale(@case.debugging_file), target: '_blank', rel: 'noopener', class: 'btn btn-solid btn-sm'
 
+      - if @case.xlights_summary_present? || @case.xlights_show_folder.attached?
+        .admin-panel
+          h2 xLights ILightThat controllers
+          .admin-dl
+            - if @case.xlights_show_folder.attached?
+              .row
+                .k Show folder zip
+                .v
+                  = @case.xlights_show_folder.filename.to_s
+                  span style="margin-left:8px;color:var(--ink-mut)" = number_to_human_size(@case.xlights_show_folder.byte_size)
+              .row
+                .k Download
+                .v
+                  = link_to 'Download zip', blob_url_without_locale(@case.xlights_show_folder), target: '_blank', rel: 'noopener', class: 'btn btn-solid btn-sm'
+            - elsif @case.xlights_summary_present?
+              .row
+                .k Show folder zip
+                .v Removed when the case was closed
+            - if @case.xlights_parse_error.present?
+              .row
+                .k Parse error
+                .v.box= @case.xlights_parse_error
+            - @case.xlights_controllers.each do |controller|
+              .row
+                .k= controller["name"]
+                .v.box
+                  p style="margin:0 0 8px"
+                    = [controller["model"], controller["ip"], controller["protocol"], controller["active_state"]].compact_blank.join(" · ")
+                  - if controller["network"].present?
+                    p.admin-mono style="margin:0 0 10px;font-size:12px"= controller["network"].map { |k, v| "#{k}=#{v}" }.join(", ")
+                  - props = Array(controller["props"])
+                  - if props.any?
+                    table.admin-xlights-table
+                      thead
+                        tr
+                          th Prop
+                          th Port
+                          th Protocol
+                          th Strings
+                          th Start
+                          th Channels
+                      tbody
+                        - props.each do |prop|
+                          tr
+                            td= prop["name"]
+                            td= prop["port"]
+                            td= prop["pixel_protocol"]
+                            td= "#{prop["num_strings"]} × #{prop["nodes_per_string"]}"
+                            td.admin-mono= prop["start_channel"]
+                            td= prop["channels"]
+                  - else
+                    p style="margin:0;color:var(--ink-mut)" No props assigned to this controller.
+
       - if @solutions.any?
         .admin-panel
           h2 Matched Solutions (#{@solutions.count})

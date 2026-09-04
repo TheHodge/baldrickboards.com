@@ -41,6 +41,40 @@ npm install
 
 Markdown downloads (`/boards/:board/manual.md`) do not need Chromium.
 
+### 2b. Christmas Triage HEIC conversion and xLights uploads
+
+Triage converts iPhone HEIC screenshots to JPEG and accepts zipped xLights show folders up to 100MB (no sequences).
+
+**HEIC packages** (ImageMagick is already installed; HEIC is not). SSH in as `root` and run:
+
+```bash
+apt-get update
+apt-get install -y libheif1 libheif-plugin-libde265 libheif-plugin-aomdec libheif-examples
+apt-get install -y libmagickcore-6.q16-6-extra || apt-get install -y libmagickcore-7.q16-10-extra || true
+convert -list format | grep -i HEIC
+heif-convert -h
+```
+
+If `convert` still has no HEIC delegate, the app falls back to `heif-convert`. Hatchbox **Configure** will keep apt packages updated.
+
+**Caddy upload limit (Hatchbox v2):** in the app Settings → Caddyfile, add this *before* `%{default}`:
+
+```
+request_body {
+    max_size 110MB
+}
+
+%{default}
+```
+
+If this is still Hatchbox Classic (nginx), set `client_max_body_size 110m;` in the extra nginx config instead.
+
+Puma `worker_timeout` is 180 seconds in production so a slow 100MB upload is less likely to be killed. If uploads hang and then 504, raise the Caddy reverse_proxy read timeout as well.
+
+Cloudflare Free/Pro also cap uploads at 100MB, which matches this limit. Ask people not to include sequences so the zip stays small.
+
+Active Storage files live in `storage/`, which Hatchbox already persists across deploys.
+
 ### 3. Post-Deployment Hook (Optional)
 
 You can add a post-deployment hook in Hatchbox to generate the initial sitemap:

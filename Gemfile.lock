@@ -322,6 +322,7 @@ GEM
     ruby-vips (2.3.0)
       ffi (~> 1.12)
       logger
+    rubyzip (2.4.1)
     safely_block (0.5.0)
     securerandom (0.4.1)
     sitemap_generator (6.3.0)
@@ -427,6 +428,7 @@ DEPENDENCIES
   rails (~> 8.0.2)
   rspec-rails (~> 6.0)
   rubocop-rails-omakase
+  rubyzip (~> 2.3)
   sitemap_generator
   slim-rails (~> 3.7)
   solid_cache

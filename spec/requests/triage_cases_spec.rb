@@ -132,6 +132,74 @@ RSpec.describe 'Triage Cases', type: :request do
         expect(case_record.debugging_file.filename.to_s).to eq('debug_test.json')
       end
 
+      it 'converts HEIC media to JPEG before attaching' do
+        heic_path = Rails.root.join('tmp', 'phone.heic')
+        File.write(heic_path, 'heic-bytes')
+        heic_file = Rack::Test::UploadedFile.new(heic_path, 'image/heic')
+        jpeg_path = Rails.root.join('tmp', 'phone.jpg')
+        File.write(jpeg_path, 'jpeg-bytes')
+        jpeg_file = Rack::Test::UploadedFile.new(jpeg_path, 'image/jpeg')
+        allow(Triage::HeicConverter).to receive(:convert).and_return(jpeg_file)
+
+        params = valid_params.deep_dup
+        params[:case][:media] = [heic_file]
+
+        post triage_cases_path(locale: :en), params: params
+
+        case_record = Case.last
+        expect(Triage::HeicConverter).to have_received(:convert)
+        expect(case_record.media.first.filename.to_s).to include('phone')
+        expect(case_record.media.first.content_type).to eq('image/jpeg')
+      ensure
+        File.delete(heic_path) if heic_path && File.exist?(heic_path)
+        File.delete(jpeg_path) if jpeg_path && File.exist?(jpeg_path)
+      end
+
+      it 'parses an xLights show zip into ILightThat controller summary' do
+        zip_path = Rails.root.join('tmp', 'show.zip')
+        FileUtils.mkdir_p(File.dirname(zip_path))
+        File.delete(zip_path) if File.exist?(zip_path)
+        require 'zip'
+        Zip::File.open(zip_path, Zip::File::CREATE) do |zip|
+          zip.get_output_stream('show/xlights_networks.xml') do |f|
+            f.write(<<~XML)
+              <?xml version="1.0" encoding="UTF-8"?>
+              <Networks>
+                <Controller Id="8" Name="B17-5" Vendor="ILightThat" Model="Baldrick17" IP="192.168.72.42" Protocol="DDP" ActiveState="Active">
+                  <network MaxChannels="38250" />
+                </Controller>
+              </Networks>
+            XML
+          end
+          zip.get_output_stream('show/xlights_rgbeffects.xml') do |f|
+            f.write(<<~XML)
+              <?xml version="1.0" encoding="UTF-8"?>
+              <xrgb>
+                <models>
+                  <model name="Matrix" DisplayAs="Matrix" Controller="B17-5" NumStrings="17" NodesPerString="750" StringType="RGB Nodes" StartChannel="!B17-5:1">
+                    <ControllerConnection Port="1" Protocol="ws2811"/>
+                  </model>
+                </models>
+              </xrgb>
+            XML
+          end
+        end
+        zip_file = Rack::Test::UploadedFile.new(zip_path, 'application/zip')
+
+        params = valid_params.deep_dup
+        params[:case][:xlights_show_folder] = zip_file
+
+        post triage_cases_path(locale: :en), params: params
+
+        case_record = Case.last
+        expect(case_record.xlights_show_folder).to be_attached
+        expect(case_record.xlights_controllers.first["name"]).to eq("B17-5")
+        expect(case_record.xlights_controllers.first["props"].first["name"]).to eq("Matrix")
+      ensure
+        File.delete(zip_path) if zip_path && File.exist?(zip_path)
+      end
+
+
       it 'logs what files are being received in params' do
         params = valid_params.deep_dup
         params[:case][:media] = [image_file, video_file]
@@ -187,6 +255,17 @@ RSpec.describe 'Triage Cases', type: :request do
     it 'displays the case without requiring access token' do
       get triage_case_path(case_record.case_number, locale: :en)
       expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe 'GET /triage/cases/new' do
+    it 'does not include the unused system state paste boxes and offers an xLights zip field' do
+      get new_triage_case_path(locale: :en)
+      expect(response).to have_http_status(:success)
+      expect(response.body).not_to include('The Baldrick Board System State')
+      expect(response.body).not_to include('FPP Outputs state')
+      expect(response.body).to include('ZIPPED xLights show folder')
+      expect(response.body).to include('Do not include sequences')
     end
   end
 
