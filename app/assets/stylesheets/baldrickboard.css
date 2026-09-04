@@ -958,7 +958,7 @@ article.page.page--sidebar .toc.toc--releases .toc-sub{font-size:12px;padding-to
 .page .triage-upload-icon svg{width:28px;height:28px}
 .page .triage-upload--tall{min-height:280px;padding:56px 28px;display:flex;align-items:center;justify-content:center}
 .page .triage-upload--tall .triage-upload-inner{width:100%;min-height:200px}
-.page #xlights-preview{margin-top:12px}
+.page #xlights-preview,.page #debug-preview{margin-top:12px}
 .page .triage-media-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:10px}
 .page .triage-media-grid--spaced{margin-top:24px}
 .page .triage-media-help img{width:100%;border-radius:8px;border:1px solid var(--line-p);margin:8px 0}

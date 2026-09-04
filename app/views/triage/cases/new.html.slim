@@ -26,23 +26,33 @@
             = form.email_field :email, class: 'triage-input', required: true
 
         .triage-field
-          = form.label :debugging_file, 'Baldrick debugging file', class: 'triage-label'
-          p.triage-hint Download the debugging file from the Help > Debugging Info link on your board, then upload it here. This is one of the most useful things you can send us.
+          = form.label :problem_description, 'What seems to be the problem', class: 'triage-label'
+          p.triage-hint Please be as descriptive as possible. LIGHTS DO NOT WORK is not helpful, but lights on port 5 are showing the wrong colours when FPP is playing does.
+          = form.text_area :problem_description, rows: 5, class: 'triage-input', required: true, minlength: 10
+
+      .triage-section
+        .triage-field
+          .triage-label-row
+            = form.label :debugging_file, 'Baldrick debugging file', class: 'triage-label'
+            span.triage-file-count max 10MB · .json
+          p.triage-hint Download the debugging file from Help > Debugging Info on your board, then drop it here. This is one of the most useful things you can send us.
           .triage-media-grid
-            div
-              = form.file_field :debugging_file, accept: '.json,application/json,text/plain', class: 'triage-input'
-              p.triage-hint Accepts `.json` or text files up to 10MB.
             .triage-media-help
               p.triage-hint
                 strong Where to find it
                 | : scroll to the bottom of the board screen and look in the Help section.
               = image_tag asset_path('triage-debugging-help.png'), alt: 'Screenshot showing the Help section and Debugging Info link'
-              p.triage-hint Click `Debugging Info`, save the downloaded file, then upload it here with your case.
-
-        .triage-field
-          = form.label :problem_description, 'What seems to be the problem', class: 'triage-label'
-          p.triage-hint Please be as descriptive as possible. LIGHTS DO NOT WORK is not helpful, but lights on port 5 are showing the wrong colours when FPP is playing does.
-          = form.text_area :problem_description, rows: 5, class: 'triage-input', required: true, minlength: 10
+              p.triage-hint Click `Debugging Info`, save the file, then upload it here.
+            #debug-upload-box.triage-upload
+              = form.file_field :debugging_file, accept: '.json,application/json,text/plain', class: 'hidden', id: 'debug-upload'
+              label.triage-upload-inner for="debug-upload"
+                .triage-upload-icon
+                  svg fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                div
+                  p.triage-upload-cta Drag & drop the debugging file here or click to upload
+                  p.triage-hint Accepts `.json` or text files up to 10MB.
+          #debug-preview
 
       .triage-section
         = form.label :affected_boards, 'What board / boards does this affect?', class: 'triage-label'
@@ -512,5 +522,84 @@ javascript:
         return;
       }
       setZipFile(file);
+    });
+  })();
+
+  (function() {
+    const debugUpload = document.getElementById('debug-upload');
+    const debugBox = document.getElementById('debug-upload-box');
+    const debugPreview = document.getElementById('debug-preview');
+    const MAX_DEBUG_SIZE = 10 * 1024 * 1024;
+    if (!debugUpload || !debugBox || !debugPreview) return;
+
+    function isDebugFile(file) {
+      if (!file) return false;
+      const name = (file.name || '').toLowerCase();
+      if (/\.(json|txt)$/.test(name)) return true;
+      return file.type === 'application/json' || file.type === 'text/plain';
+    }
+
+    function formatFileSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function setDebugFile(file) {
+      if (!file) return;
+      if (!isDebugFile(file)) {
+        alert('Please upload the debugging file from your board. It should be a .json or text file.');
+        debugUpload.value = '';
+        return;
+      }
+      if (file.size > MAX_DEBUG_SIZE) {
+        alert(file.name + ' is too large (maximum 10MB).');
+        debugUpload.value = '';
+        return;
+      }
+      try {
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        debugUpload.files = dt.files;
+      } catch (e) {}
+      debugPreview.innerHTML = '<div class="triage-media-item"><div class="meta"><p class="name">' + escapeHtml(file.name) + '</p><p class="size">' + formatFileSize(file.size) + '</p></div><button type="button" id="debug-remove" aria-label="Remove debugging file"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div>';
+      const removeBtn = document.getElementById('debug-remove');
+      if (removeBtn) {
+        removeBtn.addEventListener('click', function() {
+          debugUpload.value = '';
+          debugPreview.innerHTML = '';
+        });
+      }
+    }
+
+    debugUpload.addEventListener('change', function() {
+      const file = debugUpload.files && debugUpload.files[0];
+      if (file) setDebugFile(file);
+      else debugPreview.innerHTML = '';
+    });
+
+    debugBox.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      debugBox.classList.add('is-dragover');
+    });
+    debugBox.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      debugBox.classList.remove('is-dragover');
+    });
+    debugBox.addEventListener('drop', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      debugBox.classList.remove('is-dragover');
+      const file = Array.from(e.dataTransfer.files).find(isDebugFile) || e.dataTransfer.files[0];
+      if (!file) return;
+      setDebugFile(file);
     });
   })();
