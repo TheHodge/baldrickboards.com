@@ -59,18 +59,31 @@ module Triage
     def convert_to_jpeg
       dest = Tempfile.new([File.basename(original_filename, ".*"), ".jpg"])
       dest.binmode
+      sanitized = nil
 
-      if convert_with_mini_magick(dest.path) || convert_with_heif_convert(dest.path)
+      if convert_path(source_path, dest.path)
+        dest.rewind
+        return dest
+      end
+
+      sanitized = HeicIrefSanitizer.sanitize_to_tempfile(source_path)
+      if sanitized && convert_path(sanitized, dest.path)
         dest.rewind
         dest
       else
         dest.close!
         nil
       end
+    ensure
+      File.delete(sanitized) if sanitized && File.exist?(sanitized)
     end
 
-    def convert_with_mini_magick(dest_path)
-      image = MiniMagick::Image.open(source_path)
+    def convert_path(path, dest_path)
+      convert_with_mini_magick(path, dest_path) || convert_with_heif_convert(path, dest_path)
+    end
+
+    def convert_with_mini_magick(path, dest_path)
+      image = MiniMagick::Image.open("#{path}[0]")
       image.format("jpg")
       image.write(dest_path)
       File.size?(dest_path).to_i.positive?
@@ -79,8 +92,8 @@ module Triage
       false
     end
 
-    def convert_with_heif_convert(dest_path)
-      _stdout, stderr, status = Open3.capture3("heif-convert", source_path, dest_path)
+    def convert_with_heif_convert(path, dest_path)
+      _stdout, stderr, status = Open3.capture3("heif-convert", path, dest_path)
       return true if status.success? && File.size?(dest_path).to_i.positive?
 
       Rails.logger.info("[Triage::HeicConverter] heif-convert failed: #{stderr.presence || status}")

@@ -57,6 +57,8 @@ heif-convert -h
 
 If `convert` still has no HEIC delegate, the app falls back to `heif-convert`. Hatchbox **Configure** will keep apt packages updated.
 
+Ubuntu 24.04 ships **libheif 1.17.6**, which rejects many iOS 18 photos (HDR gain-map / `tmap` plus Portrait depth) with `Non-existing depth image referenced`. The app retargets those refs and retries. Optionally upgrade libheif to 1.18.2+ (for example `ppa:ubuntuhandbook1/libheif`) so ImageMagick can read those files natively.
+
 **Caddy upload limit (Hatchbox v2):** in the app Settings → Caddyfile, add this *before* `%{default}`:
 
 ```

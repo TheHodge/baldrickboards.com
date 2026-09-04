@@ -55,5 +55,30 @@ RSpec.describe Triage::HeicConverter do
       expect(result.content_type).to eq("image/jpeg")
       expect(result.read).to eq("jpeg-bytes")
     end
+
+    it "retries conversion after retargeting iOS 18 tmap auxiliary refs" do
+      file = uploaded_file(filename: "photo.heic", content_type: "image/heic")
+      sanitized = Tempfile.new(["sanitized", ".heic"])
+      sanitized.write("sanitized-heic")
+      sanitized.flush
+
+      image = instance_double(MiniMagick::Image)
+      allow(MiniMagick::Image).to receive(:open) do |path|
+        raise MiniMagick::Error, "Non-existing depth image referenced" unless path.include?("sanitized")
+
+        image
+      end
+      allow(image).to receive(:format)
+      allow(image).to receive(:write) { |path| File.binwrite(path, "jpeg-bytes") }
+      status = instance_double(Process::Status, success?: false)
+      allow(Open3).to receive(:capture3).and_return(["", "depth", status])
+      allow(Triage::HeicIrefSanitizer).to receive(:sanitize_to_tempfile).and_return(sanitized.path)
+
+      result = described_class.convert(file)
+      expect(result.original_filename).to eq("photo.jpg")
+      expect(result.read).to eq("jpeg-bytes")
+    ensure
+      sanitized.close!
+    end
   end
 end
